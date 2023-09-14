@@ -1,0 +1,105 @@
+format: jb-book
+root: intro
+parts:
+  - caption: About this course
+    numbered: false
+    chapters:
+    - file: about/learningoutcomes
+    - file: about/instructor
+    - file: about/jupyter
+    - file: about/evaluation
+
+  - caption: Week 1
+    chapters:
+    - file: week1/trailer
+      sections: 
+      - file: week1/trailer_hep
+      - file: week1/trailer_mldef
+      - file: week1/trailer_pb
+
+    - file: week1/warmup_1D
+      sections: 
+      - file: week1/warmup_1D_linRegGD
+      - file: week1/warmup_1D_linRegGDmulti
+      - file: week1/warmup_1D_learningR
+      - file: week1/warmup_1D_practice
+      
+    - file: week1/class_algs
+      sections: 
+      - file: week1/class_algs_logReg
+      - file: week1/class_algs_sigmoid
+      - file: week1/class_algs_costF
+      - file: week1/class_algs_reg
+      - file: week1/class_algs_biasV
+
+    - file: week1/BDTs
+      sections: 
+      - file: week1/BDTs_def
+      - file: week1/BDTs_forest
+      - file: week1/BDTs_boosting
+
+    - file: week1/review_week1
+
+  - caption: Week 2
+    chapters:
+    - file: week2/NN1
+      sections: 
+      - file: week2/NN1_motivations
+      - file: week2/NN1_modelRep
+      - file: week2/NN1_activationF
+      - file: week2/NN1_feedforward 
+
+    - file: week2/NN2
+      sections: 
+      - file: week2/NN2_costF
+      - file: week2/NN2_init
+      - file: week2/NN2_backprop
+
+    - file: week2/DL
+      sections: 
+      - file: week2/DL_stochGD
+      - file: week2/DL_adaptLR
+      - file: week2/DL_paramHyper
+      - file: week2/DL_trainNN
+
+    - file: week2/CNN
+      sections: 
+      - file: week2/CNN_resources
+      - file: week2/CNN_guest
+
+    - file: week2/review_week2
+
+  - caption: Week 3
+    chapters:
+    - file: week3/unsupervised_learning
+      sections: 
+      - file: week3/unsupervised_learning_overview
+      - file: week3/unsupervised_learning_k-Means
+      - file: week3/unsupervised_learning_dimRed
+
+    - file: week3/unsupervised_learning2
+      sections: 
+      - file: week3/unsupervised_learning2_autoEncoder
+      - file: week3/unsupervised_learning2_VAE_for_AD
+
+    - file: week3/ML_BigData
+      sections: 
+      - file: week3/ML_BigData_7Vs
+      - file: week3/ML_BigData_strategies
+
+    - file: week3/ethics_outlook
+      sections: 
+      - file: week3/ethics_outlook_1
+      - file: week3/ethics_outlook_2
+
+    - file: week3/projects_exam
+
+
+  - caption: Tutorials
+    numbered: true
+    chapters:
+    - file: tutorials/t01_linear_regression
+    - file: tutorials/t02_forestry
+    - file: tutorials/t03_class_game
+    - file: tutorials/t04_anomaly_detection
+
