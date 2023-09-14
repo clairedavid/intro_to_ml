@@ -1,0 +1,1403 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>What is boosting? &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. Review Week 1" href="review_week1.html" />
+    <link rel="prev" title="Ensemble Learning and Random Forests" href="BDTs_forest.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction<br> to Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About this course
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/learningoutcomes.html">
+   Learning outcomes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/instructor.html">
+   Instructor &amp; Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/jupyter.html">
+   JupyterHub for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/evaluation.html">
+   Evaluation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 1
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="trailer.html">
+   1. Course Trailer
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="trailer_hep.html">
+     From detectors to publications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="trailer_mldef.html">
+     What is Machine Learning?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="trailer_pb.html">
+     Which problems does ML solve?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="warmup_1D.html">
+   2. Warm up: Linear Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="warmup_1D_linRegGD.html">
+     Gradient Descent in 1D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="warmup_1D_linRegGDmulti.html">
+     Multivariate linear regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="warmup_1D_learningR.html">
+     Learning Rate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="warmup_1D_practice.html">
+     Gradient Descent in practice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="class_algs.html">
+   3. Classification algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="class_algs_logReg.html">
+     Logistic Regression: introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="class_algs_sigmoid.html">
+     What is the Sigmoid Function?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="class_algs_costF.html">
+     Cost Function for Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="class_algs_reg.html">
+     Regularization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="class_algs_biasV.html">
+     Performance Metrics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="BDTs.html">
+   4. Decision Trees and Boosting
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="BDTs_def.html">
+     What are Decision Trees?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="BDTs_forest.html">
+     Ensemble Learning and Random Forests
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     What is boosting?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="review_week1.html">
+   5. Review Week 1
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week2/NN1.html">
+   6. Neural Networks Part I
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/NN1_motivations.html">
+     Motivations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/NN1_modelRep.html">
+     Model Representation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/NN1_activationF.html">
+     Activation Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/NN1_feedforward.html">
+     Feedforward Propagation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week2/NN2.html">
+   7. Neural Networks Part II
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/NN2_costF.html">
+     Neural Network Loss Function
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/NN2_init.html">
+     Initialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/NN2_backprop.html">
+     Backpropagation Algorithm
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week2/DL.html">
+   8. Towards Deep Learning Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/DL_stochGD.html">
+     Stochastic Gradient Descent
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/DL_adaptLR.html">
+     Varying the Learning Rate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/DL_paramHyper.html">
+     Hyperparameters in DL
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/DL_trainNN.html">
+     Let’s train our NN!
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week2/CNN.html">
+   9. Convolutional Neural Networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/CNN_resources.html">
+     Learn CNNs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/CNN_guest.html">
+     Guest Lecture
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../week2/review_week2.html">
+   10. Review Week 2
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week3/unsupervised_learning.html">
+   11. Unsupervised Learning Part I
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/unsupervised_learning_overview.html">
+     Overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/unsupervised_learning_k-Means.html">
+     k-Means Clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/unsupervised_learning_dimRed.html">
+     Dimensionality Reduction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week3/unsupervised_learning2.html">
+   12. Unsupervised Learning Part II
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/unsupervised_learning2_autoEncoder.html">
+     Autoencoders
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/unsupervised_learning2_VAE_for_AD.html">
+     Variational Autoencoder for Anomaly Detection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week3/ML_BigData.html">
+   13. Big Data &amp; ML Strategies
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/ML_BigData_7Vs.html">
+     Big Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/ML_BigData_strategies.html">
+     Strategies in Machine Learning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week3/ethics_outlook.html">
+   14. Ethics in ML &amp; Outlook
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/ethics_outlook_1.html">
+     Ethics in ML
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/ethics_outlook_2.html">
+     Outlook
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../week3/projects_exam.html">
+   15. Project presentations &amp; Exam
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tutorials/t01_linear_regression.html">
+   1. Linear Regression in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tutorials/t02_forestry.html">
+   2. ‘Forestree’ with LHC collisions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tutorials/t03_class_game.html">
+   3. Classification Contest
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tutorials/t04_anomaly_detection.html">
+   4. Anomaly Detection
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fweek1/BDTs_boosting.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/week1/BDTs_boosting.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definitions">
+   Definitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adaboost">
+   AdaBoost
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#algorithm">
+     Algorithm
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementation">
+     Implementation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradient-boosting">
+   Gradient Boosting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#core-concept">
+     Core concept
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-minimal-example">
+     A minimal example
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#predictions-on-test-samples">
+     Predictions on test samples
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Implementation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#xgboost-the-warrior">
+     XGBoost the warrior
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>What is boosting?</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definitions">
+   Definitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adaboost">
+   AdaBoost
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#algorithm">
+     Algorithm
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#implementation">
+     Implementation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradient-boosting">
+   Gradient Boosting
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#core-concept">
+     Core concept
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-minimal-example">
+     A minimal example
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#predictions-on-test-samples">
+     Predictions on test samples
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Implementation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#xgboost-the-warrior">
+     XGBoost the warrior
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="what-is-boosting">
+<h1>What is boosting?<a class="headerlink" href="#what-is-boosting" title="Permalink to this headline">#</a></h1>
+<section id="definitions">
+<h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">#</a></h2>
+<p>The general idea behind boosting is a correction of previous learners by the next row of classifiers.</p>
+<div class="proof definition admonition" id="boostingdef">
+<p class="admonition-title"><span class="caption-number">Definition 47 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Boosting</strong> refers to ensemble methods that are tuning weak learners into a strong one, usually sequentially, with the next predictor correcting its predecessors.</p>
+</section>
+</div><p>Usually the predictors are really shallow trees, namely one root nodes and two final leaves. This has a name:</p>
+<div class="proof definition admonition" id="decisionstumpdef">
+<p class="admonition-title"><span class="caption-number">Definition 48 </span></p>
+<section class="definition-content" id="proof-content">
+<p>A <strong>decision stump</strong> is a one-level decision tree. It has one root node evaluating only one input feature and the two resulting branches immediately connect to two terminal nodes, i.e. leaves.</p>
+</section>
+</div><p>Many boosting methods are available. We will see two popular ones: AdaBoost and Gradient Boosting.</p>
+</section>
+<section id="adaboost">
+<h2>AdaBoost<a class="headerlink" href="#adaboost" title="Permalink to this headline">#</a></h2>
+<section id="algorithm">
+<h3>Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this headline">#</a></h3>
+<p>AdaBoost is short for Adaptative Boosting. It works by assigning larger weights to data samples misclassified by the previous learner. Let’s see how this work.</p>
+<div class="proof algorithm admonition" id="AdaBoostalgo">
+<p class="admonition-title"><span class="caption-number">Algorithm 4 </span> (AdaBoost)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs</strong><br />
+Training data set <span class="math notranslate nohighlight">\(X\)</span> of <span class="math notranslate nohighlight">\(m\)</span> samples</p>
+<p><strong>Outputs</strong><br />
+A collection on decision boundaries segmenting the <span class="math notranslate nohighlight">\(k\)</span> feature phase space.</p>
+<p><strong>Initialization</strong><br />
+Each training instance <span class="math notranslate nohighlight">\(x^{(i)}\)</span> is given the same weight</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+w^{(i)} = \frac{1}{m}
+\end{equation*}\]</div>
+<p><strong>Start</strong><br />
+<strong>For</strong> each predictor <span class="math notranslate nohighlight">\(j = 1 , \cdots , N^\text{pred}\)</span><br />
+a. Train on all samples and compute the weighted error rate <span class="math notranslate nohighlight">\(r_j\)</span></p>
+<div class="amsmath math notranslate nohighlight" id="equation-5aca6df0-afd5-48a2-8880-203c2752aca0">
+<span class="eqno">(33)<a class="headerlink" href="#equation-5aca6df0-afd5-48a2-8880-203c2752aca0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+   r_j = \frac{\sum_{i = 1}^m w^{(i)} [ \hat{y}_j^{(i)} \neq y^{(i)} ]   }{\sum_{i = 1}^m w^{(i)}}
+   \end{equation}\]</div>
+<p>b. Give the predictor <span class="math notranslate nohighlight">\(j\)</span> a weight <span class="math notranslate nohighlight">\(W_j\)</span> measuring accuracy</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ad600c49-f20e-4fa0-bf47-f3bb51efa7d3">
+<span class="eqno">(34)<a class="headerlink" href="#equation-ad600c49-f20e-4fa0-bf47-f3bb51efa7d3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+   W_j = \alpha \log \frac{1 - r_j}{r_j} 
+   \end{equation}\]</div>
+<p><span class="math notranslate nohighlight">\(W_j\)</span> points to zero if the predictor is bad, or a high number if the predictor is good.<br />
+<span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate.</p>
+<p>c. Update the weights of all data samples:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9092991e-8410-4ac7-90b3-16030336546e">
+<span class="eqno">(35)<a class="headerlink" href="#equation-9092991e-8410-4ac7-90b3-16030336546e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+   w^{(i)} = \left\{\begin{matrix}
+   w^{(i)} \;\;\;\;  &amp;\text{if} \;\;\;\; \hat{y}_j^{(i)} = y_j^{(i)} \\[2ex]
+   \;\;w^{(i)} \exp (-W_j)  \;\;\;\;  &amp;\text{if} \;\;\;\; \hat{y}_j^{(i)} \neq y_j^{(i)} \\
+   \end{matrix}\right.
+   \end{equation}\]</div>
+<p>d. Normalize the weights</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f38e510a-115c-4fe8-bf12-3ec4f60507ca">
+<span class="eqno">(36)<a class="headerlink" href="#equation-f38e510a-115c-4fe8-bf12-3ec4f60507ca" title="Permalink to this equation">#</a></span>\[\begin{equation}
+    w^{(i)} \rightarrow \frac{w^{(i)}}{\sum_{i = 1}^m w^{(i)}}
+   \end{equation}\]</div>
+<p><strong>Exit conditions</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(N^\text{pred}\)</span> is reached</p></li>
+<li><p>All data sample are correctly classified (perfect classifier)</p></li>
+</ul>
+</section>
+</div><p>The illustration below gives a visual of the algorithm.</p>
+<figure class="align-default" id="lec04-3-adaboost">
+<a class="reference internal image-reference" href="../_images/lec04_3_adaboost.png"><img alt="../_images/lec04_3_adaboost.png" src="../_images/lec04_3_adaboost.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">. Visual of AdaBoost.<br />
+Misclassified samples are given a higher weight for the next predictor.<br />
+Base classifiers are decision stumps (one-level tree).<br />
+<sub>Source: modified work by the author, originally from subscription.packtpub.com</sub></span><a class="headerlink" href="#lec04-3-adaboost" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As the next predictor needs input from the previous one, the boosting is not an algorithm that can be parallelized on several cores but demands to be run in series.</p>
+</div>
+<p>How does the algorithm make predictions? In other words, how are all the decision boundaries (cuts) combined into the final boosted learner?</p>
+<p>The combined prediction is the class obtaining a weighted majority-vote, where votes are weighted with the predictor weights <span class="math notranslate nohighlight">\(W_j\)</span>.</p>
+<div class="math notranslate nohighlight" id="equation-week1-bdts-boosting-0">
+<span class="eqno">(37)<a class="headerlink" href="#equation-week1-bdts-boosting-0" title="Permalink to this equation">#</a></span>\[\hat{y}(x^\text{new}) = \arg\max_k \; \; \sum_{j = 1}^{N^\text{pred}} W_j \;[\; \hat{y}_j(x^\text{new}) = k \;]\]</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">argmax</span></code> operator finds the argument that gives the maximum value from a target function. The expression in square braket is a condition on the sum. There are as many sums as classes <span class="math notranslate nohighlight">\(k\)</span>, going over all predictors <span class="math notranslate nohighlight">\(j\)</span>. The predicted class is the one having the largest sum.</p>
+</section>
+<section id="implementation">
+<h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">#</a></h3>
+<p>In Scikit-Learn, the AdaBoost classifier can be implemented this way (sample loading not shown):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">AdaBoostClassifier</span>
+
+<span class="n">ada_clf</span> <span class="o">=</span> <span class="n">AdaBoostClassifier</span><span class="p">(</span> 
+    <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+    <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;SAMME.R&quot;</span><span class="p">,</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">ada_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The decision trees are very ‘shallow’ learners: only a root note and two final leaf nodes (that’s what a max depth of 1 translates to). But there are usually a couple of hundreds of them. The <code class="docutils literal notranslate"><span class="pre">SAMME</span></code> acronym stands for Stagewise Additive Modeling using a Multiclass Exponential Loss Function. It’s nothing else than an extension of the algorithm where there are more than two classes. The <code class="docutils literal notranslate"><span class="pre">.R</span></code> stands for Real and it allows for probabilities to be estimated (predictors need the option <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> activated, otherwise it will not work). The predictor weights <span class="math notranslate nohighlight">\(W_j\)</span> can be printed using <code class="docutils literal notranslate"><span class="pre">ada_clf.estimator_weights_</span></code>.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Learn More</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html">AdaBoost on Scikit-Learn</a></p></li>
+<li><p>AdaBoost, Clearly Explained - StatQuest <a class="reference external" href="https://www.youtube.com/watch?v=LsK-xG1cLYA">video on YouTube</a></p></li>
+<li><p>A comparison between a decision stump, decision tree and AdaBoost SAMME and SAMME.R from <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/ensemble/plot_adaboost_hastie_10_2.html">Scikit-Learn.org</a></p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="gradient-boosting">
+<h2>Gradient Boosting<a class="headerlink" href="#gradient-boosting" title="Permalink to this headline">#</a></h2>
+<p>The gradient is back!</p>
+<section id="core-concept">
+<h3>Core concept<a class="headerlink" href="#core-concept" title="Permalink to this headline">#</a></h3>
+<p>Contrary to AdaBoost, which builds another decision stump based on the errors made by the previous decision stump, Gradient Boosting starts by making a single leaf. This leaf represents an initial guess (round 0). Next, a first tree is made, outputting a first round of predictions (round 1). Then the pseudo-residuals are calculated. They are residuals, in the sense that they are the difference, for each training sample, between the predicted class and the observed class. We will see how this is computed from a binary output to a probability soon. The key concept behind Gradient Boosting is that the next tree fits the residuals of the previous one. In this sense, Gradient Boosting is performing a gradient descent, the residuals giving the step direction to go to minimize the errors and thus improve the prediction’s accuracy. Final predictions are made by ‘summing the trees’ (times a learning rate) and converting the final number into a probability for a given class.</p>
+<p>We will go through an example with a very small dataset to understand the steps and calculations.</p>
+</section>
+<section id="a-minimal-example">
+<h3>A minimal example<a class="headerlink" href="#a-minimal-example" title="Permalink to this headline">#</a></h3>
+<p>Let’s say we have a dataset of simulated training samples of collisions and for each collision some features such as an invariant mass and missing transverse energy (these variables will be explained during tutorials). We want to use Gradient Boosting to search for new physics. This new physics process is simulated in signal samples (target <span class="math notranslate nohighlight">\(y=1\)</span>) and background processes, i.e. interactions from known physics processes but mimicking the signal outputs, are with <span class="math notranslate nohighlight">\(y=0\)</span>.</p>
+<table class="table">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Row</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(m_{bb}\)</span></p></th>
+<th class="head"><p>MET</p></th>
+<th class="head"><p>…</p></th>
+<th class="head"><p>Class</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>60</p></td>
+<td><p>35</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>110</p></td>
+<td><p>130</p></td>
+<td><p>…</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>45</p></td>
+<td><p>78</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>87</p></td>
+<td><p>93</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>135</p></td>
+<td><p>95</p></td>
+<td><p>…</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>67</p></td>
+<td><p>46</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 0: Initial Guess</strong><br />
+We start by an initial guess. In Gradient Boosting for classification, the initial prediction for every samples is the log of the odds. It is an equivalent of the average for logistic regression:</p>
+<div class="math notranslate nohighlight" id="equation-logodds">
+<span class="eqno">(38)<a class="headerlink" href="#equation-logodds" title="Permalink to this equation">#</a></span>\[\text{log(odds) } = \log \frac{N[y=1]}{N[y=0]} \]</div>
+<p>Here we have 2 signal events and 4 background ones, so log(odds) = <span class="math notranslate nohighlight">\(\log \frac{2}{4}\)</span> = -0.69</p>
+<p>How to proceed now with classification? If you recall logistic regression, the binary outcomes were converted as an equivalent of a probability with the logistic function (sigmoid). We will use it again here:</p>
+<div class="math notranslate nohighlight" id="equation-logoddsigmoid">
+<span class="eqno">(39)<a class="headerlink" href="#equation-logoddsigmoid" title="Permalink to this equation">#</a></span>\[\text{ Probability of signal } = \frac{1}{1 + e^{- \text{log(odds)}}} \]</div>
+<p>In our example, <span class="math notranslate nohighlight">\(\frac{1}{1 + e^{ - \log \frac{2}{4} }} = \frac{1}{3}\)</span>.</p>
+<p><strong>Step 1: pseudo residuals</strong><br />
+Now let’s calculate the pseudo residuals.</p>
+<div class="proof definition admonition" id="pseudodef">
+<p class="admonition-title"><span class="caption-number">Definition 49 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Pseudo residuals</strong> are intermediate errors terms measuring the difference between the observed values and an intermediate predicted value.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\text{Pseudo residuals} = ( \text{Observed} - \text{Prediction} ) 
+\end{equation*}\]</div>
+</section>
+</div><p>We will store pseudo residuals as an extra column. For the first row (index 0), the pseudo residual is <span class="math notranslate nohighlight">\(( 0 - \frac{1}{3}) = -\frac{1}{3}\)</span>. The second, with observed value 1, is <span class="math notranslate nohighlight">\(( 1 - \frac{1}{3}) = \frac{2}{3}\)</span>.</p>
+<table class="table">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Row</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(m_{bb}\)</span></p></th>
+<th class="head"><p>MET</p></th>
+<th class="head"><p>…</p></th>
+<th class="head"><p>Class</p></th>
+<th class="head"><p>Residuals</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>60</p></td>
+<td><p>35</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+<td><p>-0.33</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>110</p></td>
+<td><p>130</p></td>
+<td><p>…</p></td>
+<td><p>1</p></td>
+<td><p>0.67</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>45</p></td>
+<td><p>78</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+<td><p>-0.33</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>87</p></td>
+<td><p>93</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+<td><p>-0.33</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>135</p></td>
+<td><p>95</p></td>
+<td><p>…</p></td>
+<td><p>1</p></td>
+<td><p>0.67</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>67</p></td>
+<td><p>46</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+<td><p>-0.33</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2: tree targeting the pseudo residuals</strong><br />
+Now let’s build a tree using the input features but to predict the residuals.</p>
+<figure class="align-default" id="lec04-3-treegboost">
+<a class="reference internal image-reference" href="../_images/lec04_3_treeGBoost.png"><img alt="../_images/lec04_3_treeGBoost.png" src="../_images/lec04_3_treeGBoost.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">. First tree predicting the residuals.<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#lec04-3-treegboost" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The tree is very minimal because we only have six samples in the dataset! Usually there can be up to 32 leaves in Gradient Boosting intermediary trees.</p>
+<p><strong>Step 3: leaves’ output values</strong><br />
+The predictions are in terms of the log of the odds, whereas leaves are derived from a probability. We will have to translate the residuals in the leaves above as “log of the odds” first. Only after getting the correct leave outputs can we combine trees together. When using Gradient Boost for classification, the most common transformation is the ratio:</p>
+<div class="math notranslate nohighlight" id="equation-residualtoodds">
+<span class="eqno">(40)<a class="headerlink" href="#equation-residualtoodds" title="Permalink to this equation">#</a></span>\[\frac{ \sum \text{Residuals}_i }{\sum [ \text{Previous Probability}_i \times ( 1 -  \text{Previous Probability}_i )]}\]</div>
+<p>The numerator is the sum of residuals in a given leaf <span class="math notranslate nohighlight">\(i\)</span>. The denominator is the product of the previously predicted probabilities for each residual in that same leaf <span class="math notranslate nohighlight">\(i\)</span>. Let’s illustrate with our example. For the leaf on the very left, there is only one residual (from sample row 4) of 0.67 with an associated probability of <span class="math notranslate nohighlight">\(\frac{1}{1 + \exp( - \log \frac{2}{4} )} = \frac{1}{3}\)</span>. So:</p>
+<div class="math notranslate nohighlight" id="equation-leafleft">
+<span class="eqno">(41)<a class="headerlink" href="#equation-leafleft" title="Permalink to this equation">#</a></span>\[\frac{\frac{2}{3}}{ \frac{1}{3} \times ( 1 - \frac{1}{3})} = 3\]</div>
+<p>The new output value for the leaf is 3. Now the second leaf from the left has two samples in it: rows 1 and 3. The former is signal, with a residual of <span class="math notranslate nohighlight">\(\frac{2}{3}\)</span> and an associated (previous) probability of <span class="math notranslate nohighlight">\(\frac{1}{3}\)</span>, whereas the latter is a background sample with a residual of <span class="math notranslate nohighlight">\(-\frac{1}{3}\)</span> and associated probability of <span class="math notranslate nohighlight">\(\frac{2}{3}\)</span>.</p>
+<div class="math notranslate nohighlight" id="equation-leafmiddle">
+<span class="eqno">(42)<a class="headerlink" href="#equation-leafmiddle" title="Permalink to this equation">#</a></span>\[\frac{ \frac{2}{3} -\frac{1}{3}}{ \frac{1}{3} \times ( 1 - \frac{1}{3}) + \frac{2}{3} \times ( 1 - \frac{2}{3})} = \frac{3}{4} = 0.75\]</div>
+<p>For the last leaf, we have:</p>
+<div class="math notranslate nohighlight" id="equation-leafright">
+<span class="eqno">(43)<a class="headerlink" href="#equation-leafright" title="Permalink to this equation">#</a></span>\[\frac{-\frac{1}{3} -\frac{1}{3} -\frac{1}{3}}{ \frac{2}{3} \times ( 1 - \frac{2}{3}) + \frac{2}{3} \times ( 1 - \frac{2}{3}) + \frac{2}{3} \times ( 1 - \frac{2}{3})} = -\frac{3}{2} = -1.5\]</div>
+<p>The tree has now output values:</p>
+<figure class="align-default" id="lec04-3-treegboost-outputs">
+<a class="reference internal image-reference" href="../_images/lec04_3_treeGBoost_outputs.png"><img alt="../_images/lec04_3_treeGBoost_outputs.png" src="../_images/lec04_3_treeGBoost_outputs.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text">. First tree predicting the residuals with output values for each leaves as ‘predictions’ (log of odds).<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#lec04-3-treegboost-outputs" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Step 4: update predictions</strong><br />
+The first tree targeting the residuals is combined with the initial guess:</p>
+<figure class="align-default" id="lec04-3-treegboost-combi1">
+<a class="reference internal image-reference" href="../_images/lec04_3_treeGBoost_combi1.png"><img alt="../_images/lec04_3_treeGBoost_combi1.png" src="../_images/lec04_3_treeGBoost_combi1.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text">. The initial guess and the first tree are combined. The tree is scaled by a learning rate <span class="math notranslate nohighlight">\(\alpha\)</span>.<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#lec04-3-treegboost-combi1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Usually the learning rate is around 0.1 but for simplicity here in our example, we will take a larger value of <span class="math notranslate nohighlight">\(\alpha = 0.5\)</span> (to get a more drastic change after only two rounds).
+The first row of index 0 falls into the right leaf. To calculate the new <em>log of the odds</em> prediction for row 0, we sum the initial guess with the learning rate times the leaf output (expressed as a <em>log of the odds</em> from the calculation above):</p>
+<div class="math notranslate nohighlight" id="equation-suminittree">
+<span class="eqno">(44)<a class="headerlink" href="#equation-suminittree" title="Permalink to this equation">#</a></span>\[\text{log(odds) Prediction row 0} = - 0.69 + {\color{Mahogany}\alpha} \times (-1.5) =  - 0.69 + {\color{Mahogany}0.5} \times (-1.5) = -1.44\]</div>
+<p>Now we convert the new <em>log of the odds</em> as a probability:</p>
+<div class="math notranslate nohighlight" id="equation-logoddsrow0">
+<span class="eqno">(45)<a class="headerlink" href="#equation-logoddsrow0" title="Permalink to this equation">#</a></span>\[\text{ Probability row 0 } = \frac{1}{1 + e^{- (-1.44) }} =  0.19\]</div>
+<p>As this row 0 is a background event, we went from an initial guess of probability <span class="math notranslate nohighlight">\(\frac{1}{3}\)</span> to now 0.20, which is closer to zero, so our first residual-fitted-tree added a correction in the right direction. Let’s take row 1 now. It lands in the middle leaf. Thus:</p>
+<div class="math notranslate nohighlight" id="equation-suminittree2">
+<span class="eqno">(46)<a class="headerlink" href="#equation-suminittree2" title="Permalink to this equation">#</a></span>\[\text{log(odds) Prediction row 1} = - 0.69 + {\color{Mahogany}\alpha} \times 0.75 =  - 0.69 + {\color{Mahogany}0.5} \times 0.75 = -0.315\]</div>
+<p>The probability is:</p>
+<div class="math notranslate nohighlight" id="equation-logoddsrow1">
+<span class="eqno">(47)<a class="headerlink" href="#equation-logoddsrow1" title="Permalink to this equation">#</a></span>\[\text{ Probability row 0 } = \frac{1}{1 + e^{- (-0.315) }} =  0.42\]</div>
+<p>The event is signal, so our prediction should be close to 1. We went from an initial guess probability of <span class="math notranslate nohighlight">\(\frac{1}{3}\)</span> to 0.42. We indeed go in the right direction! Smoothly, but surely.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It has been shown empirically that a slow learning rate is preferrable to reach a good accuracy. It comes at the price of having to build numerous intermediary trees incrementing the predictions in small steps. Without a learning rate scaling the trees, there is a high risk to stay too close to the data, which would bring a low bias but very high variance. Thanks to a small learning rate, taking lots of small steps in the right direction results in better predictions with a testing dataset. This technique is called <em>shrinkage</em>.</p>
+</div>
+<p>We can add an extra column with the predicted probabilities (pred prob) in our dataset table:</p>
+<table class="table">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Row</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(m_{bb}\)</span></p></th>
+<th class="head"><p>MET</p></th>
+<th class="head"><p>…</p></th>
+<th class="head"><p>Class</p></th>
+<th class="head"><p>Residuals</p></th>
+<th class="head"><p>Pred Prob</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>60</p></td>
+<td><p>35</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+<td><p>-0.33</p></td>
+<td><p>0.19</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>110</p></td>
+<td><p>130</p></td>
+<td><p>…</p></td>
+<td><p>1</p></td>
+<td><p>0.67</p></td>
+<td><p>0.42</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>45</p></td>
+<td><p>78</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+<td><p>-0.33</p></td>
+<td><p>0.19</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>87</p></td>
+<td><p>93</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+<td><p>-0.33</p></td>
+<td><p>0.42</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>135</p></td>
+<td><p>95</p></td>
+<td><p>…</p></td>
+<td><p>1</p></td>
+<td><p>0.67</p></td>
+<td><p>0.69</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>67</p></td>
+<td><p>46</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+<td><p>-0.33</p></td>
+<td><p>0.19</p></td>
+</tr>
+</tbody>
+</table>
+<p>We can see that the predicted probabilities for background went towards zero, whereas those for signal got incremented towards 1.</p>
+<p><strong>Step 2bis: new pseudo residuals</strong>
+We go back to step 2 to compute the new pseudo residuals from the last set of predictions. Then the step 3 will consist of building a second tree targeting those new residuals. Finally, one we have all the output values for the resulting tree leaves, we can add the second tree to the initial guess and the first tree (also scaled with the learning rate).</p>
+<figure class="align-default" id="lec04-3-treegboost-combi-gen">
+<a class="reference internal image-reference" href="../_images/lec04_3_treeGBoost_combi_gen.png"><img alt="../_images/lec04_3_treeGBoost_combi_gen.png" src="../_images/lec04_3_treeGBoost_combi_gen.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">. The Gradient Boosting sums the trees fitting the pseudo residuals from the previous predition.<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#lec04-3-treegboost-combi-gen" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The process repeats until the number of predictors is reached or the residuals get super small.</p>
+</section>
+<section id="predictions-on-test-samples">
+<h3>Predictions on test samples<a class="headerlink" href="#predictions-on-test-samples" title="Permalink to this headline">#</a></h3>
+<p>How are predictions made on new data? By simply using the sum above. We run the new sample in the first tree, get the output value of the leaf in which the sample ends up, then run it through the second tree, get the final leaf output value as well. The final prediction is done computing the sum with the initial prediction and each tree prediction scaled by the learning rate. If it is greater than 0.5, the class is signal: <span class="math notranslate nohighlight">\(y^\text{pred} = 1\)</span>. If lower, we predict the sample to be background.</p>
+</section>
+<section id="id1">
+<h3>Implementation<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>Scikit-Learn has two classes implementing Boosting: <code class="docutils literal notranslate"><span class="pre">GradientBoostingRegressor</span></code> (for regression, see below some links covering it if you are curious) and <code class="docutils literal notranslate"><span class="pre">GradientBoostingClassifier</span></code>. The latter supports multi-class classification. The main hyperparameters are the number of estimators <code class="docutils literal notranslate"><span class="pre">n_estimators</span></code> (how many intermediary trees are built) and the <code class="docutils literal notranslate"><span class="pre">learning_rate</span></code> <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingClassifier</span>
+
+<span class="c1"># Getting the dataset [sample loading not shown]</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Creating the Gradient Boosting (GB) classifier:</span>
+<span class="n">gb_clf</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">(</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> 
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="c1"># no shrinkage here, otherwise 0.1 is a common value</span>
+    <span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="c1"># here decision stumps</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">gb_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Printing score (accuracy by default)</span>
+<span class="n">gb_clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The size of each intermediate tree can be controlled by <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> (it is rarely a stump, rather a tree of depth 2 to 5) or <code class="docutils literal notranslate"><span class="pre">max_leaf_nodes</span></code>. There are different log functions available, the <code class="docutils literal notranslate"><span class="pre">log-loss</span></code> being the default.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The classes above have been superseeded by <code class="docutils literal notranslate"><span class="pre">HistGradientBoostingRegressor</span></code> and <code class="docutils literal notranslate"><span class="pre">HistGradientBoostingClassifier</span></code>. They are inspired by the framework <a class="reference external" href="https://papers.nips.cc/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html">LightGBM</a> for Light Gradient Boosting Machine, developed by Microsoft. Histogram-based estimator will run orders of magnitude faster on dataset larger than 10,000 samples. More information on <a class="reference external" href="https://scikit-learn.org/stable/modules/ensemble.html#histogram-based-gradient-boosting">Scikit-Learn Historgram-Based Gradient Boosting</a>.</p>
+</div>
+</section>
+<section id="xgboost-the-warrior">
+<h3>XGBoost the warrior<a class="headerlink" href="#xgboost-the-warrior" title="Permalink to this headline">#</a></h3>
+<p>XGBoost, for eXtreme Gradient Boosting, is a software library offering a fully optimized implementation of gradient boosting machines, focused on computational speed and model performance. It was created in 2016 by Tianqi Chen, at the time Ph.D. student at the University of Washington. XGBoost gained significant popularity in the last few years as a result of helping individuals and teams win virtually every <a class="reference external" href="https://www.kaggle.com/">Kaggle</a> structured data competition, and in particular the <a class="reference external" href="https://www.kaggle.com/c/higgs-boson">Higgs Boson Machine Learning Challenge</a>.</p>
+<p>In terms of model features, XGBoost has the standard Gradient Boosting, as well as a Stochastic Gradient Boosting (more on this Lecture 7) and a Regularized one (with both L1 and L2 regularization methods).</p>
+<p>It has also system features. Parallelization (to efficiently construct trees using all available CPU cores), Distributed Computing (if working with a cluster of machines), Out-of-Core Computing (when very large datasets can’t be loaded entirely in the memory), Cache Optimization (to minimize the need to access data in underlying slower storage layers).</p>
+<p>The algorithm features contains some technical jargon. Here is a selection of the main ones with some explanations:<br />
+<strong>Sparsity Awareness</strong>  Data is considered sparse when certain expected values in a dataset are missing, or with mostly the same value, which is a common phenomenon in general large scaled data analysis. This can alter the performance of machine learning algorithms. XGBoost handles sparsities in data with the Sparsity-aware Split Finding algorithm that choose an optimal direction in the split, where only non-missing observations are visited.<br />
+<strong>Block Structure</strong> Data is sorted and stored in in-memory units called blocks, enabling the data layout to be reused by subsequent iterations instead of computing it again.<br />
+<strong>Continued Training</strong>  XGBoost makes it possible to further boost an already fitted model on new data, without having to reload everything.</p>
+<p>Here is a <a class="reference external" href="https://xgboost.ai/about">minimal example of implementation in Python</a> as well as other languages.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>arXiv is a free distribution service and an open-access platform for more than two million scholarly articles in the fields of physics, mathematics and computer science among others. Some articles are submitted to journals (peered-review) but others are not peered-reviewed. It is possible to subscribe and receive a selection of newly submitted articles in your mailbox: <a class="reference external" href="https://arxiv.org/help/subscribe">To Subscribe to the E-Mail Alerting Service</a></p>
+</aside>
+<div class="seealso admonition">
+<p class="admonition-title">Exercise</p>
+<p>It is always good to ‘go to the source,’ i.e. the original papers. Yet this can be over-technical and daunting.</p>
+<p>Here is the paper of XGBoost on the arXiv platform:
+<a class="reference external" href="https://arxiv.org/abs/1603.02754">XGBoost: A Scalable Tree Boosting System, paper on arXiv</a> (2016)</p>
+<p>To make it more enriching and fun, dive into the paper with a classmate. After each section, take turns to explain to your peer what you understand with your own words. This will train you to read the literature in the future, be confronted to different mathematical notations and digest the content (papers are usually dense in information, so don’t worry if it takes you time to go through it).</p>
+</div>
+<p>In the tutorial, we will classify collision data from the Large Hadron Collider using decision trees, then a random forest and finally boosted classifiers. We will compare their performance with the metrics introduced in Lecture 3.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Learn More</p>
+<p><strong>Gradient Boosting</strong><br />
+<a class="reference external" href="https://scikit-learn.org/stable/modules/ensemble.html#gradient-tree-boosting">Gradient Tree Boosting in Scikit-Learn</a><br />
+<a class="reference external" href="https://www.kaggle.com/code/prashant111/adaboost-classifier-tutorial/notebook">AdaBoost Tutorial on Kaggle</a></p>
+<p><strong>StatQuest series on Gradient Boost (with Josh Starmer and his humour)</strong><br />
+Gradient Boost Part 1: Regression Main Ideas <a class="reference external" href="https://www.youtube.com/watch?v=3CC4N4z3GJc">video</a><br />
+Gradient Boost Part 2: Regression Details <a class="reference external" href="https://www.youtube.com/watch?v=2xudPOBz-vs">video</a><br />
+Gradient Boost Part 3: Classification <a class="reference external" href="https://www.youtube.com/watch?v=jxuNLH5dXCs">video</a><br />
+Gradient Boost Part 4: Classification Details <a class="reference external" href="https://www.youtube.com/watch?v=StWY5QWMXCw">video</a></p>
+<p><strong>XGBoost</strong><br />
+Documentation <a class="reference external" href="https://xgboost.readthedocs.io/en/stable/">Read The Docs</a><br />
+XGBoost: A Scalable Tree Boosting System, <a class="reference external" href="https://arxiv.org/abs/1603.02754">paper on ArXiv</a> (2016)<br />
+Tianqi Chen provides a brief and interesting back story on the creation of XGBoost in the post <a class="reference external" href="https://sites.google.com/site/nttrungmtwiki/home/it/data-science---python/xgboost/story-and-lessons-behind-the-evolution-of-xgboost">Story and Lessons Behind the Evolution of XGBoost</a>.</p>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./week1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="BDTs_forest.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Ensemble Learning and Random Forests</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="review_week1.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">5. Review Week 1</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Claire David<br/>
+  
+      &copy; Copyright 2022.<br/>
+    <div class="extra_footer">
+      <div>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
+    All content on this site (unless otherwise specified) is licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 license</a>
+</div>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

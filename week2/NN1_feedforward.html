@@ -1,0 +1,1032 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Feedforward Propagation &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7. Neural Networks Part II" href="NN2.html" />
+    <link rel="prev" title="Activation Functions" href="NN1_activationF.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction<br> to Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About this course
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/learningoutcomes.html">
+   Learning outcomes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/instructor.html">
+   Instructor &amp; Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/jupyter.html">
+   JupyterHub for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/evaluation.html">
+   Evaluation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week1/trailer.html">
+   1. Course Trailer
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week1/trailer_hep.html">
+     From detectors to publications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week1/trailer_mldef.html">
+     What is Machine Learning?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week1/trailer_pb.html">
+     Which problems does ML solve?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week1/warmup_1D.html">
+   2. Warm up: Linear Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week1/warmup_1D_linRegGD.html">
+     Gradient Descent in 1D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week1/warmup_1D_linRegGDmulti.html">
+     Multivariate linear regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week1/warmup_1D_learningR.html">
+     Learning Rate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week1/warmup_1D_practice.html">
+     Gradient Descent in practice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week1/class_algs.html">
+   3. Classification algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week1/class_algs_logReg.html">
+     Logistic Regression: introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week1/class_algs_sigmoid.html">
+     What is the Sigmoid Function?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week1/class_algs_costF.html">
+     Cost Function for Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week1/class_algs_reg.html">
+     Regularization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week1/class_algs_biasV.html">
+     Performance Metrics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week1/BDTs.html">
+   4. Decision Trees and Boosting
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week1/BDTs_def.html">
+     What are Decision Trees?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week1/BDTs_forest.html">
+     Ensemble Learning and Random Forests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week1/BDTs_boosting.html">
+     What is boosting?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../week1/review_week1.html">
+   5. Review Week 1
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 2
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="NN1.html">
+   6. Neural Networks Part I
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="NN1_motivations.html">
+     Motivations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NN1_modelRep.html">
+     Model Representation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NN1_activationF.html">
+     Activation Functions
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Feedforward Propagation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="NN2.html">
+   7. Neural Networks Part II
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NN2_costF.html">
+     Neural Network Loss Function
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NN2_init.html">
+     Initialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="NN2_backprop.html">
+     Backpropagation Algorithm
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="DL.html">
+   8. Towards Deep Learning Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="DL_stochGD.html">
+     Stochastic Gradient Descent
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="DL_adaptLR.html">
+     Varying the Learning Rate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="DL_paramHyper.html">
+     Hyperparameters in DL
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="DL_trainNN.html">
+     Let’s train our NN!
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="CNN.html">
+   9. Convolutional Neural Networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="CNN_resources.html">
+     Learn CNNs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="CNN_guest.html">
+     Guest Lecture
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="review_week2.html">
+   10. Review Week 2
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week3/unsupervised_learning.html">
+   11. Unsupervised Learning Part I
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/unsupervised_learning_overview.html">
+     Overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/unsupervised_learning_k-Means.html">
+     k-Means Clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/unsupervised_learning_dimRed.html">
+     Dimensionality Reduction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week3/unsupervised_learning2.html">
+   12. Unsupervised Learning Part II
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/unsupervised_learning2_autoEncoder.html">
+     Autoencoders
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/unsupervised_learning2_VAE_for_AD.html">
+     Variational Autoencoder for Anomaly Detection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week3/ML_BigData.html">
+   13. Big Data &amp; ML Strategies
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/ML_BigData_7Vs.html">
+     Big Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/ML_BigData_strategies.html">
+     Strategies in Machine Learning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week3/ethics_outlook.html">
+   14. Ethics in ML &amp; Outlook
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/ethics_outlook_1.html">
+     Ethics in ML
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/ethics_outlook_2.html">
+     Outlook
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../week3/projects_exam.html">
+   15. Project presentations &amp; Exam
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tutorials/t01_linear_regression.html">
+   1. Linear Regression in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tutorials/t02_forestry.html">
+   2. ‘Forestree’ with LHC collisions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tutorials/t03_class_game.html">
+   3. Classification Contest
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tutorials/t04_anomaly_detection.html">
+   4. Anomaly Detection
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fweek2/NN1_feedforward.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/week2/NN1_feedforward.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-feedforward-propagation">
+   What is Feedforward Propagation?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notations">
+   Notations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-by-step-calculations">
+   Step by step calculations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computation-of-the-first-hidden-layer">
+     Computation of the first hidden layer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computation-of-the-second-hidden-layer">
+     Computation of the second hidden layer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computation-of-the-third-hidder-layer">
+     Computation of the third hidder layer
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-rule-for-forward-propagation">
+   General rule for Forward Propagation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Feedforward Propagation</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-feedforward-propagation">
+   What is Feedforward Propagation?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notations">
+   Notations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-by-step-calculations">
+   Step by step calculations
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computation-of-the-first-hidden-layer">
+     Computation of the first hidden layer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computation-of-the-second-hidden-layer">
+     Computation of the second hidden layer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#computation-of-the-third-hidder-layer">
+     Computation of the third hidder layer
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-rule-for-forward-propagation">
+   General rule for Forward Propagation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="feedforward-propagation">
+<h1>Feedforward Propagation<a class="headerlink" href="#feedforward-propagation" title="Permalink to this headline">#</a></h1>
+<section id="what-is-feedforward-propagation">
+<h2>What is Feedforward Propagation?<a class="headerlink" href="#what-is-feedforward-propagation" title="Permalink to this headline">#</a></h2>
+<p>It is a first step in the training of a neural network (after initialization of the weights, which will be covered in the next lecture). The forward direction means going from input to output nodes.</p>
+<div class="proof definition admonition" id="feedforwardpropdef">
+<p class="admonition-title"><span class="caption-number">Definition 56 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>Feedforward Propagation</strong>, also called <strong>Forward Pass</strong>, is the process consisting of computing and storing all network nodes’ output values, starting with the first hidden layer until the last output layer, using at start either a subset or the entire dataset samples.</p>
+</section>
+</div><p>Forward propagation thus leads to a list of the neural network predictions for each data instance row used as input. At each node, the computation is the key equation <a class="reference internal" href="NN1_modelRep.html#equation-aneq">(48)</a> we saw in the previous Section <a class="reference internal" href="NN1_modelRep.html#nn1-modelrep"><span class="std std-ref">Model Representation</span></a>, written again for convenience:</p>
+<div class="math notranslate nohighlight" id="equation-sumwixieq">
+<span class="eqno">(55)<a class="headerlink" href="#equation-sumwixieq" title="Permalink to this equation">#</a></span>\[y = f\left(\sum_{j=1}^n w_j x_j + b \right)\]</div>
+<p>But there will be some change in the notations. Let’s define everything in the next subsection.</p>
+</section>
+<section id="notations">
+<h2>Notations<a class="headerlink" href="#notations" title="Permalink to this headline">#</a></h2>
+<p>Let’s say we have the following network with <span class="math notranslate nohighlight">\(x_n\)</span> input features, one first hidden layer with <span class="math notranslate nohighlight">\(q\)</span> activation units and a second one with <span class="math notranslate nohighlight">\(r\)</span> activation units. For simplicity, we will choose an output layer with only one node:</p>
+<figure class="align-default" id="lec05-4-nn-notations">
+<a class="reference internal image-reference" href="../_images/lec05_4_nn_notations.png"><img alt="../_images/lec05_4_nn_notations.png" src="../_images/lec05_4_nn_notations.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 53 </span><span class="caption-text">. A feedforward neural network with the notation we will use for the forward propagation equations (more in text).<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#lec05-4-nn-notations" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>There are lots of subscripts and upperscripts here. Let’s explain the conventions we will use.</p>
+<p><strong>Input data</strong><br />
+We saw in Lecture 2 that the dataset in supervised learning can be represented as a matrix <span class="math notranslate nohighlight">\(X\)</span> of <span class="math notranslate nohighlight">\(m\)</span> data instances (rows) of <span class="math notranslate nohighlight">\(n\)</span> input features (columns). For clarity in the notations, we will focus for now on only one data instance, the <span class="math notranslate nohighlight">\(i\)</span>th sample row <span class="math notranslate nohighlight">\(\boldsymbol{x^{(i)}} = ( x_1, x_2, \cdots, x_n)\)</span>. And we will omit the <span class="math notranslate nohighlight">\((i)\)</span> upperscript for now.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The layer numbering starts at the first hidden layer where <span class="math notranslate nohighlight">\(\ell=1\)</span>. The input layer is <span class="math notranslate nohighlight">\(\ell=0\)</span>.</p>
+</aside>
+<p><strong>Activation units</strong><br />
+In a given layer <span class="math notranslate nohighlight">\(\ell = 1, 2, \cdots, N^\text{layer}\)</span>, the activation units will give outputs that we will note as a row vector</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{a^{(\ell)}} = \left( a_1^{(\ell)}, a_2^{(\ell)}, \cdots , a_q^{(\ell)} \right) \;, \]</div>
+<p>where the upperscript is the layer number and the subscript is the row of the activation unit in the layer, starting from the top.</p>
+<p><strong>Biases</strong><br />
+The biases are also row vectors, one for each layer it connects to and of dimension the number of nodes in that layer:</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{b^{(\ell)}} = \left( b_1^{(\ell)}, b_2^{(\ell)}, \cdots , b_q^{(\ell)}\right)\]</div>
+<p>If the last layer is only made of one node like in our example above, then <span class="math notranslate nohighlight">\(b\)</span> is a scalar.</p>
+<p><strong>Weights</strong><br />
+Now the weights. You may see in the literature different ways to represent them. In here we use a convention we could write as:</p>
+<div class="math notranslate nohighlight">
+\[w^\ell_{(\ell -1) \; \to \; \ell}\]</div>
+<p>In other words, the first index is the row of the node from the previous layer (departing node of the weight’s arrow) and the second index is the row of the node from the current layer (the one the weight’s arrow points to). For instance <span class="math notranslate nohighlight">\(w^{(2)}_{3,1}\)</span> is the weight from the third node of layer (1) going to the first node of layer (2).</p>
+<p>We can actually represent each weight from layer <span class="math notranslate nohighlight">\(\ell -1\)</span> to layer <span class="math notranslate nohighlight">\(\ell\)</span> as a matrix <span class="math notranslate nohighlight">\(W^{(\ell)}\)</span>. If the previous layer <span class="math notranslate nohighlight">\(\ell -1\)</span> has <span class="math notranslate nohighlight">\(n\)</span> nodes and the layer <span class="math notranslate nohighlight">\(\ell\)</span> has <span class="math notranslate nohighlight">\(q\)</span> activation units, we will have:</p>
+<div class="math notranslate nohighlight" id="equation-wmatrixeq">
+<span class="eqno">(56)<a class="headerlink" href="#equation-wmatrixeq" title="Permalink to this equation">#</a></span>\[\begin{split}W^{(\ell)} = \begin{pmatrix}
+w_{1,1}^{(\ell)} &amp; w_{1,2}^{(\ell)} &amp; \cdots &amp; w_{1,q}^{(\ell)} \\[2ex]
+w_{2,1}^{(\ell)} &amp; w_{2,2}^{(\ell)} &amp; \cdots &amp; w_{2,q}^{(\ell)} \\[1ex]
+\vdots  &amp; \vdots &amp; \ddots   &amp; \vdots \\[1ex]
+w_{n,1}^{(\ell)} &amp; w_{n,2}^{(\ell)} &amp;  \cdots &amp; w_{n,q}^{(\ell)} \\
+\end{pmatrix}\end{split}\]</div>
+<p>Let’s now see how we calculate all the values of the activation units!</p>
+</section>
+<section id="step-by-step-calculations">
+<h2>Step by step calculations<a class="headerlink" href="#step-by-step-calculations" title="Permalink to this headline">#</a></h2>
+<section id="computation-of-the-first-hidden-layer">
+<h3>Computation of the first hidden layer<a class="headerlink" href="#computation-of-the-first-hidden-layer" title="Permalink to this headline">#</a></h3>
+<p>Let’s use Equation <a class="reference internal" href="#equation-sumwixieq">(55)</a> to compute the activation unit outputs of the first layer. The activation function is represented as <span class="math notranslate nohighlight">\(f\)</span> here:</p>
+<div class="math notranslate nohighlight" id="equation-firstlayereq">
+<span class="eqno">(57)<a class="headerlink" href="#equation-firstlayereq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+a^{(1)}_1 &amp;= f\left(\; w_{1,1}^{(1)} \; x_1 \;+\; w_{2,1}^{(1)} \; x_2 \;+\; \cdots + \; w_{n,1}^{(1)} \; x_n \;+\; b^{(1)}_1\right)\\[2ex]
+a^{(1)}_2 &amp;= f\left(\; w_{1,2}^{(1)} \; x_1 \;+\; w_{2,2}^{(1)} \; x_2 \;+\; \cdots + \; w_{n,2}^{(1)} \; x_n \;+\; b^{(1)}_2\right)\\
+&amp;\vdots \\[2ex]
+a^{(1)}_q &amp;= f\left(\; w_{1,q}^{(1)} \; x_1 \;+\; w_{2,q}^{(1)} \; x_2 \;+\; \cdots + \; w_{n,q}^{(1)} \; x_n \;+\; b^{(1)}_q\right)\\
+\end{align*}\end{split}\]</div>
+<p>We can actually write it in the matrix form. Let’s first write it in an expanded version with the matrix elements:</p>
+<div class="math notranslate nohighlight" id="equation-firstlayermatrixexpandedeq">
+<span class="eqno">(58)<a class="headerlink" href="#equation-firstlayermatrixexpandedeq" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol{a^{(1)}} = f\left[ \; ( x_1, x_2, \cdots, x_n) 
+\begin{pmatrix}w_{1,1}^{(1)} &amp; w_{1,2}^{(1)} &amp; \cdots &amp; w_{1,q}^{(1)} \\[2ex]w_{2,1}^{(1)} &amp; w_{2,2}^{(1)} &amp; \cdots &amp; w_{2,q}^{(1)} \\[1ex]\vdots  &amp; \vdots &amp; \ddots   &amp; \vdots \\[1ex]w_{n,1}^{(1)} &amp; w_{n,2}^{(1)} &amp;  \cdots &amp; w_{n,q}^{(1)} \\\end{pmatrix}
+ \;+\; ( b_1^{(1)}, b_2^{(1)}, \cdots , b_q^{(1)}) \; \right]\end{split}\]</div>
+<p>This can be written in a compact way:</p>
+<div class="math notranslate nohighlight" id="equation-firstlayermatrixeq">
+<span class="eqno">(59)<a class="headerlink" href="#equation-firstlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(1)}} = f\left( \; \boldsymbol{x} \;W^{(1)} \;+\; \boldsymbol{b}^{(1)} \;\right)\]</div>
+<p>Much lighter.</p>
+</section>
+<section id="computation-of-the-second-hidden-layer">
+<h3>Computation of the second hidden layer<a class="headerlink" href="#computation-of-the-second-hidden-layer" title="Permalink to this headline">#</a></h3>
+<p>Let’s do the same calculation for the second layer of activation units. Instead of the dataset vector <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span>, we will have <span class="math notranslate nohighlight">\(\boldsymbol{a^{(1)}}\)</span> as input:</p>
+<div class="math notranslate nohighlight" id="equation-secondlayermatrixexpandedeq">
+<span class="eqno">(60)<a class="headerlink" href="#equation-secondlayermatrixexpandedeq" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol{a^{(2)}} = f\left[ \; ( a^{(1)}_1, a^{(1)}_2, \cdots, a^{(1)}_q) 
+\begin{pmatrix}w_{1,1}^{(2)} &amp; w_{1,2}^{(2)} &amp; \cdots &amp; w_{1,r}^{(2)} \\[2ex]
+w_{2,1}^{(2)} &amp; w_{2,2}^{(2)} &amp; \cdots &amp; w_{2,r}^{(2)} \\[1ex]
+\vdots  &amp; \vdots &amp; \ddots   &amp; \vdots \\[1ex]
+w_{q,1}^{(2)} &amp; w_{q,2}^{(2)} &amp;  \cdots &amp; w_{q,r}^{(2)} \\
+\end{pmatrix} \;+\; ( b_1^{(2)}, b_2^{(2)}, \cdots , b_r^{(2)}) \; \right]\end{split}\]</div>
+<p>And the elegant, light version:</p>
+<div class="math notranslate nohighlight" id="equation-secondlayermatrixeq">
+<span class="eqno">(61)<a class="headerlink" href="#equation-secondlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(2)}} = f\left( \; \boldsymbol{a^{(1)}} \;W^{(2)} \;+\; \boldsymbol{b}^{(2)} \;\right)\]</div>
+<p>We start seeing a pattern here thanks to the matricial form. More on this soon in Section <a class="reference internal" href="#nn1-forwardprop-rule"><span class="std std-ref">General rule for Forward Propagation</span></a>. Let’s finish the process with the last layer:</p>
+</section>
+<section id="computation-of-the-third-hidder-layer">
+<h3>Computation of the third hidder layer<a class="headerlink" href="#computation-of-the-third-hidder-layer" title="Permalink to this headline">#</a></h3>
+<p>With one output node, it is actually simpler than for the hidden layers above. We can still write it in the same form as Equation <a class="reference internal" href="#equation-secondlayermatrixeq">(61)</a>:</p>
+<div class="math notranslate nohighlight" id="equation-thirdlayermatrixeq">
+<span class="eqno">(62)<a class="headerlink" href="#equation-thirdlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(3)}} = f\left( \; \boldsymbol{a^{(2)}} \;W^{(3)} \;+\; \boldsymbol{b}^{(3)} \;\right)\]</div>
+<p>with <span class="math notranslate nohighlight">\(\boldsymbol{a^{(2)}} = (a^{(2)}_1, a^{(2)}_2, \cdots, a^{(2)}_r)\)</span> that we calculated above.</p>
+<p>In our case <span class="math notranslate nohighlight">\(\boldsymbol{a^{(3)}}\)</span> has only one element: <span class="math notranslate nohighlight">\(a^{(3)}_1 = y\)</span>.</p>
+<p>The matrix <span class="math notranslate nohighlight">\(W^{(3)}\)</span> has only one column.</p>
+<p>The bias ‘vector’ is actually a scalar: <span class="math notranslate nohighlight">\(b^{(3)}\)</span>.</p>
+<p>That’s the end of the forward propagation process! As you can see, it contains lots of calculations. And now you may understand why activation functions that are simple and fast to compute are preferrable, as they intervene each time we compute the output of an activation unit.</p>
+<p>Let’s now generalize this with a general formula.</p>
+</section>
+</section>
+<section id="general-rule-for-forward-propagation">
+<span id="nn1-forwardprop-rule"></span><h2>General rule for Forward Propagation<a class="headerlink" href="#general-rule-for-forward-propagation" title="Permalink to this headline">#</a></h2>
+<p>If we rewrite the first layer of inputs as:</p>
+<div class="math notranslate nohighlight" id="equation-xisazeroeq">
+<span class="eqno">(63)<a class="headerlink" href="#equation-xisazeroeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{x^{(i)}} = ( x_1, x_2, \cdots, x_n) = ( a^{(0)}_1, a^{(0)}_2, \cdots, a^{(0)}_n) = \boldsymbol{a^{(0)}} \;,\]</div>
+<p>then we can write a general rule for computing the outputs of a fully connected layer <span class="math notranslate nohighlight">\(\ell\)</span> knowing the outputs of the previous layer <span class="math notranslate nohighlight">\(\ell\)</span> (which become the layer <span class="math notranslate nohighlight">\(\ell\)</span>’s inputs):</p>
+<div class="math notranslate nohighlight" id="equation-genrulefeedforwardeq">
+<span class="eqno">(64)<a class="headerlink" href="#equation-genrulefeedforwardeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(\ell)}} = f\left( \; \boldsymbol{a^{(\ell -1)}} \;W^{(\ell)} \;+\; \boldsymbol{b}^{(\ell)} \;\right)\]</div>
+<p>This is the general rule for computing all outputs of a fully connected feedforward neural network.</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<p>Feedforward propagation is the computation of the values of all activation units of a fully connected feedforward neural network.</p>
+<p>As the process includes the last layer (output), feedforward propagation also leads to predictions.</p>
+<p>These predictions will be compared to the observed values.</p>
+<p>Feedforward propagation is a step in the training of a neural network.</p>
+<p>The next step of the training is to go ‘backward’, from the output error <span class="math notranslate nohighlight">\(\hat{y}^\text{pred} - y^\text{obs}\)</span> to the first layer to then adjust all weights using a gradient-based procedure. This is the core of backpropagation, which we will cover at the next lecture.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Learn More</p>
+<p>Very nice animations <a class="reference external" href="https://yogayu.github.io/DeepLearningCourse/03/ForwardPropagation.html">here</a> illustrating the forward propagation process.<br />
+Source: <a class="reference external" href="https://yogayu.github.io/DeepLearningCourse/intro.html">Xinyu You’s course <em>An online deep learning course for humanists</em></a></p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./week2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="NN1_activationF.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Activation Functions</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="NN2.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">7. Neural Networks Part II</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Claire David<br/>
+  
+      &copy; Copyright 2022.<br/>
+    <div class="extra_footer">
+      <div>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
+    All content on this site (unless otherwise specified) is licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 license</a>
+</div>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

@@ -1,0 +1,1173 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Gradient Descent in 1D &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Multivariate linear regression" href="warmup_1D_linRegGDmulti.html" />
+    <link rel="prev" title="2. Warm up: Linear Regression" href="warmup_1D.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction<br> to Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About this course
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/learningoutcomes.html">
+   Learning outcomes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/instructor.html">
+   Instructor &amp; Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/jupyter.html">
+   JupyterHub for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/evaluation.html">
+   Evaluation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 1
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="trailer.html">
+   1. Course Trailer
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="trailer_hep.html">
+     From detectors to publications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="trailer_mldef.html">
+     What is Machine Learning?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="trailer_pb.html">
+     Which problems does ML solve?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="warmup_1D.html">
+   2. Warm up: Linear Regression
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Gradient Descent in 1D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="warmup_1D_linRegGDmulti.html">
+     Multivariate linear regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="warmup_1D_learningR.html">
+     Learning Rate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="warmup_1D_practice.html">
+     Gradient Descent in practice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="class_algs.html">
+   3. Classification algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="class_algs_logReg.html">
+     Logistic Regression: introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="class_algs_sigmoid.html">
+     What is the Sigmoid Function?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="class_algs_costF.html">
+     Cost Function for Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="class_algs_reg.html">
+     Regularization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="class_algs_biasV.html">
+     Performance Metrics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="BDTs.html">
+   4. Decision Trees and Boosting
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="BDTs_def.html">
+     What are Decision Trees?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="BDTs_forest.html">
+     Ensemble Learning and Random Forests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="BDTs_boosting.html">
+     What is boosting?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="review_week1.html">
+   5. Review Week 1
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week2/NN1.html">
+   6. Neural Networks Part I
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/NN1_motivations.html">
+     Motivations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/NN1_modelRep.html">
+     Model Representation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/NN1_activationF.html">
+     Activation Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/NN1_feedforward.html">
+     Feedforward Propagation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week2/NN2.html">
+   7. Neural Networks Part II
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/NN2_costF.html">
+     Neural Network Loss Function
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/NN2_init.html">
+     Initialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/NN2_backprop.html">
+     Backpropagation Algorithm
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week2/DL.html">
+   8. Towards Deep Learning Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/DL_stochGD.html">
+     Stochastic Gradient Descent
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/DL_adaptLR.html">
+     Varying the Learning Rate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/DL_paramHyper.html">
+     Hyperparameters in DL
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/DL_trainNN.html">
+     Let’s train our NN!
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week2/CNN.html">
+   9. Convolutional Neural Networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/CNN_resources.html">
+     Learn CNNs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week2/CNN_guest.html">
+     Guest Lecture
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../week2/review_week2.html">
+   10. Review Week 2
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week3/unsupervised_learning.html">
+   11. Unsupervised Learning Part I
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/unsupervised_learning_overview.html">
+     Overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/unsupervised_learning_k-Means.html">
+     k-Means Clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/unsupervised_learning_dimRed.html">
+     Dimensionality Reduction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week3/unsupervised_learning2.html">
+   12. Unsupervised Learning Part II
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/unsupervised_learning2_autoEncoder.html">
+     Autoencoders
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/unsupervised_learning2_VAE_for_AD.html">
+     Variational Autoencoder for Anomaly Detection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week3/ML_BigData.html">
+   13. Big Data &amp; ML Strategies
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/ML_BigData_7Vs.html">
+     Big Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/ML_BigData_strategies.html">
+     Strategies in Machine Learning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../week3/ethics_outlook.html">
+   14. Ethics in ML &amp; Outlook
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/ethics_outlook_1.html">
+     Ethics in ML
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../week3/ethics_outlook_2.html">
+     Outlook
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../week3/projects_exam.html">
+   15. Project presentations &amp; Exam
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tutorials/t01_linear_regression.html">
+   1. Linear Regression in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tutorials/t02_forestry.html">
+   2. ‘Forestree’ with LHC collisions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tutorials/t03_class_game.html">
+   3. Classification Contest
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../tutorials/t04_anomaly_detection.html">
+   4. Anomaly Detection
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fweek1/warmup_1D_linRegGD.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/week1/warmup_1D_linRegGD.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-representation">
+   Model representation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cost-function-in-linear-regression">
+   Cost Function in Linear Regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-the-cost">
+   Visualizing the cost
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradient-descent">
+   Gradient Descent
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graphical-visualization-of-the-gradient-descent">
+   Graphical Visualization of the Gradient Descent
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Gradient Descent in 1D</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-representation">
+   Model representation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cost-function-in-linear-regression">
+   Cost Function in Linear Regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-the-cost">
+   Visualizing the cost
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradient-descent">
+   Gradient Descent
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graphical-visualization-of-the-gradient-descent">
+   Graphical Visualization of the Gradient Descent
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="gradient-descent-in-1d">
+<h1>Gradient Descent in 1D<a class="headerlink" href="#gradient-descent-in-1d" title="Permalink to this headline">#</a></h1>
+<section id="model-representation">
+<h2>Model representation<a class="headerlink" href="#model-representation" title="Permalink to this headline">#</a></h2>
+<p>We will study the following situation where we want to predict a real-valued output <span class="math notranslate nohighlight">\(y\)</span> based on a collection of input values <span class="math notranslate nohighlight">\(x\)</span> that would be spread in the following way:</p>
+<figure class="align-default" id="plot-linreg-50pts" style="width: 80%">
+<div class="cell_output docutils container">
+<img alt="../_images/warmup_1D_linRegGD_plots_12_0.png" src="../_images/warmup_1D_linRegGD_plots_12_0.png" />
+</div>
+</figure>
+<p>Now I see what you are thinking: it’s very straightforward (pun intended), it is just about fitting a straight line to the data. Yes. But this over-simplified setup is the starting point of our machine learning journey as it contains the basic mathematical machinery. Things will complicate soon, don’t worry.</p>
+<p>So, what is linear regression to start with?</p>
+<div class="proof definition admonition" id="linRegDef">
+<p class="admonition-title"><span class="caption-number">Definition 3 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Linear regression is a model assuming a linear relationship between input variables and real-valued output variables.</p>
+<ul class="simple">
+<li><p>Input variables are called <em>independent variables</em>, or <em>explanatory variables</em>.</p></li>
+<li><p>The output variable is considered a <em>dependent</em> variable.</p></li>
+</ul>
+<p>Linear regression is used to <strong>predict a real-valued output variable</strong> (dependent variable) based on the values of the input variables (independent variables).</p>
+</section>
+</div><div class="proof definition admonition" id="simpleRegDef">
+<p class="admonition-title"><span class="caption-number">Definition 4 </span></p>
+<section class="definition-content" id="proof-content">
+<ul class="simple">
+<li><p>If there is one explanatory variable, this is <strong>simple linear regression</strong> or <strong>univariate linear regression</strong>.</p></li>
+<li><p>In the case of several explanatory variables, it is called <strong>multiple linear regression</strong>.</p></li>
+</ul>
+</section>
+</div><p>Let’s now introduce terms more specific to the machine learning jargon and define some notations we will use through the course.</p>
+<div class="admonition-terminology-and-notation admonition">
+<p class="admonition-title">Terminology and Notation </p>
+<ul class="simple">
+<li><p>The input variables are called <strong>features</strong> and are denoted with <span class="math notranslate nohighlight">\(x\)</span>.</p></li>
+<li><p>The output variable is the <strong>target</strong> and is denoted with <span class="math notranslate nohighlight">\(y\)</span>.</p></li>
+<li><p>In supervised learning the dataset is called a <strong>training set</strong>.</p></li>
+<li><p>The number of training examples is denoted with <span class="math notranslate nohighlight">\(m\)</span>.</p></li>
+<li><p>The <span class="math notranslate nohighlight">\(i^{th}\)</span> example is <span class="math notranslate nohighlight">\((x^{(i)} , y^{(i)})\)</span>.</p></li>
+</ul>
+</div>
+<p>So the pair <span class="math notranslate nohighlight">\((x^{(1)} , y^{(1)})\)</span> is the first training example from the data set, and <span class="math notranslate nohighlight">\((x^{(m)} , y^{(m)})\)</span> is the last.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Here we start counting from one. When you will write code, the convention is to start at index zero. So your last sample will be of index <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">-</span> <span class="pre">1</span></code>. Keep this in mind.</p>
+</div>
+<p>When we refer to the entire list of all features and targets, we will use, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> respectively. Those are <strong>vectors</strong>.</p>
+<p>We defined the input and output. In the middle is our model. We feed it first with all the input features and their associated known targets.
+This first step of supervised learning is called the <strong>training</strong> and we will see the mathematics behind it now. What we need first is a function that best maps input to output.</p>
+<div class="proof definition admonition" id="hypothesisFunction">
+<p class="admonition-title"><span class="caption-number">Definition 5 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The hypothesis function, denoted <span class="math notranslate nohighlight">\(h\)</span>, is a mapping function used to predict an output <span class="math notranslate nohighlight">\(y\)</span> from an input <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+y = h(x)
+\end{equation*}\]</div>
+</section>
+</div><p>In our simple case of linear regression, our function <span class="math notranslate nohighlight">\(h\)</span> will be of the form:</p>
+<div class="math notranslate nohighlight" id="equation-h-theta-lin">
+<span class="eqno">(1)<a class="headerlink" href="#equation-h-theta-lin" title="Permalink to this equation">#</a></span>\[  h_\theta(x) = \theta_0 + \theta_1 \; x\]</div>
+<p>The subscript <span class="math notranslate nohighlight">\(\theta\)</span> means that the function depends on the values taken by <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span>.</p>
+<div class="proof definition admonition" id="modelParameters">
+<p class="admonition-title"><span class="caption-number">Definition 6 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The mapping function’s internal variables are called the model parameters. They are denoted by the <strong>vector</strong> <span class="math notranslate nohighlight">\(\theta\)</span>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\boldsymbol{\theta}  = \begin{pmatrix} 
+\theta_0 \\
+\theta_1 \\
+ \\
+... \\ 
+ \\
+\theta_n \\
+\end{pmatrix}
+\end{equation*}\]</div>
+</section>
+</div><p>In our case with the linear regression with one input feature, we only need two parameters:</p>
+<div class="math notranslate nohighlight" id="equation-theta-0-1">
+<span class="eqno">(2)<a class="headerlink" href="#equation-theta-0-1" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol{\theta} = \begin{pmatrix} 
+\theta_0 \\
+\theta_1 \\
+\end{pmatrix}\end{split}\]</div>
+<p>We want to find the values of <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> that fit the data well.
+We could pick one training example <span class="math notranslate nohighlight">\((x^{(k)} , y^{(k)})\)</span> and derive the coefficients from there. But will this be the ‘best’ straight line to draw?
+The mathematical phrasing for such a task is to think in terms of errors. How do we calculate the errors? That’s a first question to ask.
+From a given vector of <span class="math notranslate nohighlight">\(\theta\)</span>, how small are the errors?
+This picture below helps to visualize. From a given parameterization, that is to say a given tuple (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span> ), the mapping function will output continuous values of a predicted <span class="math notranslate nohighlight">\(y\)</span> for a continuous range of <span class="math notranslate nohighlight">\(x\)</span>. That is the dashed line. The errors are the (vertical) intervals between the <span class="math notranslate nohighlight">\(y\)</span> from the prediction and each data points.</p>
+<figure class="align-default" id="squareerrvisual">
+<a class="reference internal image-reference" href="../_images/lec02_1_square_err_graph.png"><img alt="../_images/lec02_1_square_err_graph.png" src="../_images/lec02_1_square_err_graph.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">. Visualization of errors (dotted vertical lines) between observed and predicted values.<br />
+Image: Don Cowan.</span><a class="headerlink" href="#squareerrvisual" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To see how well the prediction fit the data, we want the sum of all these errors to be as small as possible. In other words, we want to solve a minimization problem.</p>
+<p>To avoid cancellation between positive and negative error values, we take the square of each distance; we get a positive number each time that will add up to the total error. Such evaluation is very similar to what is done for the minimum chi-square estimation. The name “chi” comes from the Greek letter <span class="math notranslate nohighlight">\(\chi\)</span>, commonly used for the chi-square statistic. We will follow this protocol but in the ‘machine learning way,’ introducing a key concept: the cost function.</p>
+</section>
+<section id="cost-function-in-linear-regression">
+<h2>Cost Function in Linear Regression<a class="headerlink" href="#cost-function-in-linear-regression" title="Permalink to this headline">#</a></h2>
+<p>The accuracy of the mapping function is measured by using a cost function.</p>
+<div class="proof definition admonition" id="costFunction">
+<p class="admonition-title"><span class="caption-number">Definition 7 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>cost function</strong> in linear regression returns a global error between the predicted values from a mapping function <span class="math notranslate nohighlight">\(h_\theta\)</span> (predictions) and all the target values (observations) of the training data set.</p>
+<p>The commonly used cost function for linear regression, also called <em>squared error function</em>, or <em>mean squared error (MSE)</em> is defined as:</p>
+<div class="math notranslate nohighlight" id="equation-costfunctionlinreg">
+<span class="eqno">(3)<a class="headerlink" href="#equation-costfunctionlinreg" title="Permalink to this equation">#</a></span>\[ J\left(\theta_0, \theta_1\right) =\frac{1}{2 m} \sum_{i=1}^m\left(h_\theta(x^{(i)})-y^{(i)}\right)^2\]</div>
+</section>
+</div><p>You can recognize the form of an average. The factor <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> is to make it convenient when taking the derivative of this expression.
+In Equation <a class="reference internal" href="#equation-costfunctionlinreg">(3)</a>, each <span class="math notranslate nohighlight">\(h_\theta (x^{(i)})\)</span> is the prediction with our mapping function, whereas <span class="math notranslate nohighlight">\(y_i\)</span> is the observed value in the data.</p>
+<p>The initial goal to “fit the data well” can now be formulated in a mathematical way: <strong>find the parameters <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> that minimize the cost function</strong>.</p>
+<div class="math notranslate nohighlight" id="equation-mincostfunction">
+<span class="eqno">(4)<a class="headerlink" href="#equation-mincostfunction" title="Permalink to this equation">#</a></span>\[\min_{\theta_0, \theta_1} J\left(\theta_0, \theta_1\right)\]</div>
+<p>Let’s simplify for now the problem by assuming the following data set:</p>
+<figure class="align-default" id="plot-linreg-1234" style="width: 80%">
+<div class="cell_output docutils container">
+<img alt="../_images/warmup_1D_linRegGD_plots_6_0.png" src="../_images/warmup_1D_linRegGD_plots_6_0.png" />
+</div>
+</figure>
+<p>This is an ideal case for pedagogical purposes. What are the values of <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> here?</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Check your answers</p>
+<p>Recall the mapping function for linear regression: <span class="math notranslate nohighlight">\(h_\theta(x) = \theta_0 + \theta_1 x\)</span>. As we have a correspondance <span class="math notranslate nohighlight">\(y = 2x\)</span> for all points, so <span class="math notranslate nohighlight">\(h_\theta(x) = 2x\)</span>, so <span class="math notranslate nohighlight">\(\theta_0 = 0\)</span> and <span class="math notranslate nohighlight">\(\theta_1 = 2\)</span>.</p>
+</div>
+<p>You will appreciate the simplification, as we will calculate the cost by hand for different values of <span class="math notranslate nohighlight">\(\theta_1\)</span>. More complicated things await you in the tutorial, promised.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Exercise</p>
+<ul class="simple">
+<li><p>Start with a value of <span class="math notranslate nohighlight">\(\theta_1\)</span> = 1 and calculate the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span>.</p></li>
+<li><p>Proceed the same for other values of <span class="math notranslate nohighlight">\(\theta_1\)</span> of 0.5, 1.5, 2, 2.5, 3.</p></li>
+<li><p>How would the graph of the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span> as a function of <span class="math notranslate nohighlight">\(\theta_1\)</span> look like?</p></li>
+<li><p>Are there maxima/minima? If yes how many?</p></li>
+</ul>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Solutions  |   Don’t look too soon! Give it a try first.</p>
+<p>The values of the cost function for each <span class="math notranslate nohighlight">\(\theta_1\)</span> are reported on the plot below:</p>
+<figure class="align-default" id="plot-linreg-costvstheta1">
+<div class="cell_output docutils container">
+<img alt="../_images/warmup_1D_linRegGD_plots_10_0.png" src="../_images/warmup_1D_linRegGD_plots_10_0.png" />
+</div>
+</figure>
+<p>We see that in this configuration, as we ‘swipe’ over the data points with ‘candidate’ straight lines, there will be a value for which we minimize our cost function. That is the value we look for (but you will learn to make such fancy plot during the tutorials).</p>
+</div>
+<p>This was with only one parameter. How do we proceed to minimize with two parameters?</p>
+</section>
+<section id="visualizing-the-cost">
+<h2>Visualizing the cost<a class="headerlink" href="#visualizing-the-cost" title="Permalink to this headline">#</a></h2>
+<p>Let’s see a visual representation of our cost function as a function of our <span class="math notranslate nohighlight">\(\theta\)</span> parameters. We saw in the simple example above that the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span> with only one parameter is a U-shaped parabola. The same goes if we fix <span class="math notranslate nohighlight">\(\theta_1\)</span> and vary <span class="math notranslate nohighlight">\(\theta_0\)</span>. Combining the two, it will look like a bowl. The figure below is not made from the data above, just for illustration:</p>
+<figure class="align-default" id="plot-linreg-bowl">
+<div class="cell_output docutils container">
+<img alt="../_images/warmup_1D_linRegGD_plots_3_0.png" src="../_images/warmup_1D_linRegGD_plots_3_0.png" />
+</div>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">. The cost function (vertical axis) as a function of the parameters <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span>.</span><a class="headerlink" href="#plot-linreg-bowl" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>What does this represent? It shows the result of the cost function calculated for a range of <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> parameters. For each coordinate (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span>), there has been a loop over all the training data set to get the global error. The vertical value shows thus how ‘costly’ it is to pick up a given (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span>). The higher, the worse is the fit. The center of the bowl, where <span class="math notranslate nohighlight">\(J(\theta_0 , \theta_1)\)</span> is minimum, corresponds to the best choice of the <span class="math notranslate nohighlight">\(\theta\)</span> parameters. In other words: the best fit to the data.</p>
+<p>How do we proceed to find the <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> parameters minimizing the cost function?</p>
+</section>
+<section id="gradient-descent">
+<span id="warmup-linreggd-gradientdescent"></span><h2>Gradient Descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">#</a></h2>
+<p>This concept is key in machine learning. We will see the procedure with our example. But first of all, what is gradient descent?</p>
+<div class="proof definition admonition" id="GDesc">
+<p class="admonition-title"><span class="caption-number">Definition 8 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Gradient descent is an iterative optimization algorithm to find the minimum of a function.</p>
+</section>
+</div><p><a class="reference internal" href="#plot-linreg-bowl"><span class="std std-ref">The 3D plot above</span></a> is misleading, as we will see that once we add input features we cannot have any visual of how the data landscape looks like (we are stuck with 3D vision, rarely 4D and that’s it). In a way, we are blind. Think of yourself walking from a point of the bowl-shaped surface but in the dark. How to reach the ‘valley’ where the cost function is minimum?</p>
+<p>The idea behind gradient descent is to walk step by step following the <strong>slope</strong> of the cost function locally. In mathematical words: the partial derivatives of the cost function will give us the best direction to go towards the minimum.</p>
+<div class="admonition-terminology admonition">
+<p class="admonition-title">Terminology</p>
+<p><strong>Hyperparameter</strong><br />
+A model argument set before starting the machine learning algorithm.<br />
+Hyperparameters control the learning process.</p>
+<p><strong>Learning rate</strong> <span class="math notranslate nohighlight">\(\alpha\)</span><br />
+Hyperparameter in an optimization algorithm that determines the step size at each iteration while moving toward a minimum of a loss function.<br />
+The learning rate is always a strictly positive number.</p>
+<p><strong>Epoch</strong><br />
+In machine learning, an epoch is the number of passes of the entire training dataset the machine learning algorithm has completed.<br />
+The number of epochs is a hyperparameter controlling the number of passes of the algorithm.</p>
+</div>
+<p>The steps of the gradient descent algorithm for a linear regression with two parameters (i.e. in 1D) are written below.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>This definition will be generalized in the next section with more parameters, from <span class="math notranslate nohighlight">\(\theta_0\)</span> to <span class="math notranslate nohighlight">\(\theta_n\)</span>.</p>
+</aside>
+<div class="proof algorithm admonition" id="GD_algo_1D">
+<p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (Gradient Descent for Univariate Linear Regression)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs</strong></p>
+<ul class="simple">
+<li><p>Training data set with input features <span class="math notranslate nohighlight">\(x\)</span> associated with their targets <span class="math notranslate nohighlight">\(y\)</span>:</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+x  = \begin{pmatrix}
+x^{(1)} \\
+x^{(2)} \\
+\vdots \\
+ \\
+x^{(m)}
+\end{pmatrix}  \hspace{10ex}  y = \begin{pmatrix}
+y^{(1)} \\
+y^{(2)} \\
+\vdots \\
+ \\
+y^{(m)} \end{pmatrix}
+\end{equation*}\]</div>
+<p><strong>Hyperparameters</strong></p>
+<ul class="simple">
+<li><p>Learning rate <span class="math notranslate nohighlight">\(\alpha\)</span></p></li>
+<li><p>Number of epochs <span class="math notranslate nohighlight">\(N\)</span></p></li>
+</ul>
+<p><strong>Outputs</strong><br />
+The optimized values of the parameters: <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span>, minimizing <span class="math notranslate nohighlight">\(J(\theta_0 , \theta_1)\)</span>.</p>
+<ol>
+<li><p><strong>Initialization</strong>: Set values for <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span></p></li>
+<li><p><strong>Iterate N times or while the exit condition is not met</strong>:</p>
+<ol class="simple">
+<li><p><strong>Derivatives of the cost function</strong>:<br />
+Compute the partial derivatives of <span class="math notranslate nohighlight">\(\frac{\partial }{\partial \theta_0} J(\theta_0 , \theta_1)\)</span> and <span class="math notranslate nohighlight">\(\frac{\partial }{\partial \theta_1} J(\theta_0 , \theta_1)\)</span></p></li>
+<li><p><strong>Update the parameters</strong>:<br />
+Calculate the new parameters according to:</p></li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-eqgdlincost">
+<span class="eqno">(5)<a class="headerlink" href="#equation-eqgdlincost" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+&amp;\\
+\theta'_0 &amp;= \theta_0-\alpha \frac{\partial}{\partial \theta_0} J\left(\theta_0, \theta_1\right) \\
+\\
+\theta'_1 &amp;= \theta_1-\alpha \frac{\partial}{\partial \theta_1} J\left(\theta_0, \theta_1\right) 
+\end{align*}\end{split}\]</div>
+<p>         Reassign the new <span class="math notranslate nohighlight">\(\theta\)</span> parameters to prepare for next iteration</p>
+</li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-equpdatetheta">
+<span class="eqno">(6)<a class="headerlink" href="#equation-equpdatetheta" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+\theta_0 &amp;= \theta'_0 \\
+ \\
+\theta_1 &amp;= \theta'_1 \\
+\end{align*}\end{split}\]</div>
+<p><strong>Exit conditions</strong></p>
+<ul class="simple">
+<li><p>After the maximum number of epochs <span class="math notranslate nohighlight">\(N\)</span> is reached</p></li>
+<li><p>If both derivatives of the cost function <span class="math notranslate nohighlight">\(\frac{\partial}{\partial \theta_0} J\left(\theta_0, \theta_1\right) = \frac{\partial}{\partial \theta_1} J\left(\theta_0, \theta_1\right)  = 0\)</span></p></li>
+</ul>
+</section>
+</div><p>In linear regression, the partial derivatives can be simplified.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Exercise</p>
+<p>Knowing the form of the hypothesis function <span class="math notranslate nohighlight">\(h_\theta(x)\)</span> for linear regression and the definition of the cost function, rewrite the Equation <a class="reference internal" href="#equation-eqgdlincost">(5)</a> with the explicit partial derivatives.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\theta'_0 &amp;= \theta_0-\alpha \frac{1}{m} \sum_{i = 1}^m \left(h_\theta(x^{(i)})-y^{(i)}\right) \\ 
+\\
+\theta'_1 &amp;= \theta_1-\alpha \frac{1}{m} \sum_{i = 1}^m \left(h_\theta(x^{(i)})-y^{(i)}\right) x^{(i)} 
+\end{align*}\]</div>
+<p>Details on demand during office hours.</p>
+</div>
+<p><strong>Important</strong><br />
+Note that at the step 2.1., there is an implicit loop over all training data samples, as it is required by the cost function.</p>
+<p><strong>Why a minus sign before alpha?</strong><br />
+This illustration helps see why the minus sign in Equation <a class="reference internal" href="#equation-eqgdlincost">(5)</a> is necessary.</p>
+<figure class="align-default" id="costsigndirection">
+<a class="reference internal image-reference" href="../_images/lec02_1_costSignDirection.png"><img alt="../_images/lec02_1_costSignDirection.png" src="../_images/lec02_1_costSignDirection.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">. The sign of the cost function’s derivative changes for two different parameter values either lower (left) or greater (right) than the parameter value for which the cost function is minimized.<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#costsigndirection" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>If our parameter is randomly picked on the left side of the U-shaped parabola, the partial derivatives will be negative. As the learning rate is always positive, the incremental update <span class="math notranslate nohighlight">\(-\alpha \frac{d}{d \theta} J(\theta)\)</span> will thus be positive. We will add an increment to our parameter. At the next iteration, we will have a new parameter <span class="math notranslate nohighlight">\(\theta\)</span> closer to the one we look for. The reverse goes with the other side of the curve: with a positive derivative, we will decrease our parameter and slide to the left. All the time we go ‘downhill’ towards the minimum.</p>
+</section>
+<section id="graphical-visualization-of-the-gradient-descent">
+<h2>Graphical Visualization of the Gradient Descent<a class="headerlink" href="#graphical-visualization-of-the-gradient-descent" title="Permalink to this headline">#</a></h2>
+<p>When computing the gradient descent for linear regression, we get new parameters so we can draw a candidate straight line to fit the data. With proper tuning (more on this later), we reach the ideal fit, minimizing the cost function.</p>
+<figure class="align-default" id="linreg-animated">
+<a class="reference internal image-reference" href="../_images/lec02_1_linReg_animated.gif"><img alt="../_images/lec02_1_linReg_animated.gif" src="../_images/lec02_1_linReg_animated.gif" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">. Animation of the gradient descent. At each generation a new set of parameters are computed. In this picture <span class="math notranslate nohighlight">\(m\)</span> corresponds to <span class="math notranslate nohighlight">\(\theta_1\)</span> and the constant <span class="math notranslate nohighlight">\(c\)</span> to <span class="math notranslate nohighlight">\(\theta_0\)</span>. Sometimes they are also referred to the <em>slope</em> and <em>intercept</em> respectively.<br />
+<sub>Source GIF: <a class="reference external" href="https://towardsdatascience.com/linear-regression-using-python-b136c91bf0a2">Medium</a></sub></span><a class="headerlink" href="#linreg-animated" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In our example, the best linear fit will be:</p>
+<figure class="align-default" id="plot-linreg-50pts-line">
+<div class="cell_output docutils container">
+<img alt="../_images/warmup_1D_linRegGD_plots_20_0.png" src="../_images/warmup_1D_linRegGD_plots_20_0.png" />
+</div>
+</figure>
+<p>How to picture this in the <span class="math notranslate nohighlight">\(\theta\)</span> parameter space? For this, contour and 3D plot are handy. Below, the new parameters’trajectory (red points) are “descending” towards the minimum of the cost function:</p>
+<figure class="align-default" id="plot-linreg-3d">
+<div class="cell_output docutils container">
+<img alt="../_images/warmup_1D_linRegGD_plots_22_0.png" src="../_images/warmup_1D_linRegGD_plots_22_0.png" />
+</div>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">. Contour plot (left) and 3D rendering (right) of the cost function with respect to the values of the <span class="math notranslate nohighlight">\(\theta\)</span> parameter. The red dots are the intermediary values of the parameters at a given iteration of the gradient descent. You can see that it converges toward the minimum of the cost function.</span><a class="headerlink" href="#plot-linreg-3d" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We will discuss the presence of the zig-zag behaviour in the first iterations in section <a class="reference internal" href="warmup_1D_learningR.html#warmup-lr"><span class="std std-ref">Learning Rate</span></a>.</p>
+<p>This was linear regression with one input feature. Let’s move on with a more generalized version of linear regression involving multiple features.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./week1"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="warmup_1D.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">2. Warm up: Linear Regression</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="warmup_1D_linRegGDmulti.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Multivariate linear regression</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Claire David<br/>
+  
+      &copy; Copyright 2022.<br/>
+    <div class="extra_footer">
+      <div>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
+    All content on this site (unless otherwise specified) is licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 license</a>
+</div>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

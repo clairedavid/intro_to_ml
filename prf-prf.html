@@ -1,0 +1,1450 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proof Index &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+
+    <script>
+      DOCUMENTATION_OPTIONS.COLLAPSE_INDEX = true;
+    </script>
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction<br> to Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction to Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About this course
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="about/learningoutcomes.html">
+   Learning outcomes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="about/instructor.html">
+   Instructor &amp; Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="about/jupyter.html">
+   JupyterHub for class
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="about/evaluation.html">
+   Evaluation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="week1/trailer.html">
+   1. Course Trailer
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week1/trailer_hep.html">
+     From detectors to publications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week1/trailer_mldef.html">
+     What is Machine Learning?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week1/trailer_pb.html">
+     Which problems does ML solve?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="week1/warmup_1D.html">
+   2. Warm up: Linear Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week1/warmup_1D_linRegGD.html">
+     Gradient Descent in 1D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week1/warmup_1D_linRegGDmulti.html">
+     Multivariate linear regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week1/warmup_1D_learningR.html">
+     Learning Rate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week1/warmup_1D_practice.html">
+     Gradient Descent in practice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="week1/class_algs.html">
+   3. Classification algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week1/class_algs_logReg.html">
+     Logistic Regression: introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week1/class_algs_sigmoid.html">
+     What is the Sigmoid Function?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week1/class_algs_costF.html">
+     Cost Function for Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week1/class_algs_reg.html">
+     Regularization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week1/class_algs_biasV.html">
+     Performance Metrics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="week1/BDTs.html">
+   4. Decision Trees and Boosting
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week1/BDTs_def.html">
+     What are Decision Trees?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week1/BDTs_forest.html">
+     Ensemble Learning and Random Forests
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week1/BDTs_boosting.html">
+     What is boosting?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week1/review_week1.html">
+   5. Review Week 1
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="week2/NN1.html">
+   6. Neural Networks Part I
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week2/NN1_motivations.html">
+     Motivations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week2/NN1_modelRep.html">
+     Model Representation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week2/NN1_activationF.html">
+     Activation Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week2/NN1_feedforward.html">
+     Feedforward Propagation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="week2/NN2.html">
+   7. Neural Networks Part II
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week2/NN2_costF.html">
+     Neural Network Loss Function
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week2/NN2_init.html">
+     Initialization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week2/NN2_backprop.html">
+     Backpropagation Algorithm
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="week2/DL.html">
+   8. Towards Deep Learning Models
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week2/DL_stochGD.html">
+     Stochastic Gradient Descent
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week2/DL_adaptLR.html">
+     Varying the Learning Rate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week2/DL_paramHyper.html">
+     Hyperparameters in DL
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week2/DL_trainNN.html">
+     Let’s train our NN!
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="week2/CNN.html">
+   9. Convolutional Neural Networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week2/CNN_resources.html">
+     Learn CNNs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week2/CNN_guest.html">
+     Guest Lecture
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week2/review_week2.html">
+   10. Review Week 2
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Week 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="week3/unsupervised_learning.html">
+   11. Unsupervised Learning Part I
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week3/unsupervised_learning_overview.html">
+     Overview
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week3/unsupervised_learning_k-Means.html">
+     k-Means Clustering
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week3/unsupervised_learning_dimRed.html">
+     Dimensionality Reduction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="week3/unsupervised_learning2.html">
+   12. Unsupervised Learning Part II
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week3/unsupervised_learning2_autoEncoder.html">
+     Autoencoders
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week3/unsupervised_learning2_VAE_for_AD.html">
+     Variational Autoencoder for Anomaly Detection
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="week3/ML_BigData.html">
+   13. Big Data &amp; ML Strategies
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week3/ML_BigData_7Vs.html">
+     Big Data
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week3/ML_BigData_strategies.html">
+     Strategies in Machine Learning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="week3/ethics_outlook.html">
+   14. Ethics in ML &amp; Outlook
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week3/ethics_outlook_1.html">
+     Ethics in ML
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="week3/ethics_outlook_2.html">
+     Outlook
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="week3/projects_exam.html">
+   15. Project presentations &amp; Exam
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Tutorials
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="tutorials/t01_linear_regression.html">
+   1. Linear Regression in Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tutorials/t02_forestry.html">
+   2. ‘Forestree’ with LHC collisions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tutorials/t03_class_game.html">
+   3. Classification Contest
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tutorials/t04_anomaly_detection.html">
+   4. Anomaly Detection
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fprf-prf.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1></h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+
+   <h1>Proof Index</h1>
+
+   <div class="modindex-jumpbox">
+   <a href="#cap-AdaBoostalgo"><strong>AdaBoostalgo</strong></a> | 
+   <a href="#cap-DTalgo"><strong>DTalgo</strong></a> | 
+   <a href="#cap-GD_algo_1D"><strong>GD_algo_1D</strong></a> | 
+   <a href="#cap-GD_algo_multi"><strong>GD_algo_multi</strong></a> | 
+   <a href="#cap-GDesc"><strong>GDesc</strong></a> | 
+   <a href="#cap-SGDdef"><strong>SGDdef</strong></a> | 
+   <a href="#cap-activfuncdef"><strong>activfuncdef</strong></a> | 
+   <a href="#cap-andef"><strong>andef</strong></a> | 
+   <a href="#cap-anndef"><strong>anndef</strong></a> | 
+   <a href="#cap-aucdef"><strong>aucdef</strong></a> | 
+   <a href="#cap-backpropalgo"><strong>backpropalgo</strong></a> | 
+   <a href="#cap-backpropalgosummary"><strong>backpropalgosummary</strong></a> | 
+   <a href="#cap-backpropdef"><strong>backpropdef</strong></a> | 
+   <a href="#cap-baggingdef"><strong>baggingdef</strong></a> | 
+   <a href="#cap-balancedaccdef"><strong>balancedaccdef</strong></a> | 
+   <a href="#cap-batchsizedef"><strong>batchsizedef</strong></a> | 
+   <a href="#cap-biasdef"><strong>biasdef</strong></a> | 
+   <a href="#cap-binaryDef"><strong>binaryDef</strong></a> | 
+   <a href="#cap-boostingdef"><strong>boostingdef</strong></a> | 
+   <a href="#cap-catVar"><strong>catVar</strong></a> | 
+   <a href="#cap-chainruledef"><strong>chainruledef</strong></a> | 
+   <a href="#cap-confusionMatrix def"><strong>confusionMatrix def</strong></a> | 
+   <a href="#cap-costFLogRegDef"><strong>costFLogRegDef</strong></a> | 
+   <a href="#cap-costFunction"><strong>costFunction</strong></a> | 
+   <a href="#cap-costnndef"><strong>costnndef</strong></a> | 
+   <a href="#cap-datacleaning"><strong>datacleaning</strong></a> | 
+   <a href="#cap-decBoundDef"><strong>decBoundDef</strong></a> | 
+   <a href="#cap-decisionstumpdef"><strong>decisionstumpdef</strong></a> | 
+   <a href="#cap-defFeatureScaling"><strong>defFeatureScaling</strong></a> | 
+   <a href="#cap-defMeanNormalization"><strong>defMeanNormalization</strong></a> | 
+   <a href="#cap-defStandardization"><strong>defStandardization</strong></a> | 
+   <a href="#cap-definition-1"><strong>definition-1</strong></a> | 
+   <a href="#cap-definition-4"><strong>definition-4</strong></a> | 
+   <a href="#cap-definition-5"><strong>definition-5</strong></a> | 
+   <a href="#cap-dtdef"><strong>dtdef</strong></a> | 
+   <a href="#cap-ensembledef"><strong>ensembledef</strong></a> | 
+   <a href="#cap-errorDef"><strong>errorDef</strong></a> | 
+   <a href="#cap-errormetricsclassdef"><strong>errormetricsclassdef</strong></a> | 
+   <a href="#cap-fanindef"><strong>fanindef</strong></a> | 
+   <a href="#cap-feedforwardpropdef"><strong>feedforwardpropdef</strong></a> | 
+   <a href="#cap-flexibilitydef"><strong>flexibilitydef</strong></a> | 
+   <a href="#cap-ginidef"><strong>ginidef</strong></a> | 
+   <a href="#cap-gradientsinitxavier"><strong>gradientsinitxavier</strong></a> | 
+   <a href="#cap-gridsearchdef"><strong>gridsearchdef</strong></a> | 
+   <a href="#cap-heinitdef"><strong>heinitdef</strong></a> | 
+   <a href="#cap-hypothesisFunction"><strong>hypothesisFunction</strong></a> | 
+   <a href="#cap-hypothesisFunctionMulti"><strong>hypothesisFunctionMulti</strong></a> | 
+   <a href="#cap-kfoldxvalidation"><strong>kfoldxvalidation</strong></a> | 
+   <a href="#cap-learningratescheduledef"><strong>learningratescheduledef</strong></a> | 
+   <a href="#cap-lecuninitdef"><strong>lecuninitdef</strong></a> | 
+   <a href="#cap-linRegDef"><strong>linRegDef</strong></a> | 
+   <a href="#cap-logFuncDef"><strong>logFuncDef</strong></a> | 
+   <a href="#cap-logRegDef"><strong>logRegDef</strong></a> | 
+   <a href="#cap-mappingSigDef"><strong>mappingSigDef</strong></a> | 
+   <a href="#cap-mldef"><strong>mldef</strong></a> | 
+   <a href="#cap-mlpb"><strong>mlpb</strong></a> | 
+   <a href="#cap-modelParameters"><strong>modelParameters</strong></a> | 
+   <a href="#cap-multiclass1to1def"><strong>multiclass1to1def</strong></a> | 
+   <a href="#cap-multiclass1toalldef"><strong>multiclass1toalldef</strong></a> | 
+   <a href="#cap-nnlayerdef"><strong>nnlayerdef</strong></a> | 
+   <a href="#cap-nodesdef"><strong>nodesdef</strong></a> | 
+   <a href="#cap-overfittingdef"><strong>overfittingdef</strong></a> | 
+   <a href="#cap-perceptrondef"><strong>perceptrondef</strong></a> | 
+   <a href="#cap-pseudodef"><strong>pseudodef</strong></a> | 
+   <a href="#cap-randomforestdef"><strong>randomforestdef</strong></a> | 
+   <a href="#cap-randomsearchdef"><strong>randomsearchdef</strong></a> | 
+   <a href="#cap-regularizationdef"><strong>regularizationdef</strong></a> | 
+   <a href="#cap-residualDef"><strong>residualDef</strong></a> | 
+   <a href="#cap-rmseDef"><strong>rmseDef</strong></a> | 
+   <a href="#cap-rocdef"><strong>rocdef</strong></a> | 
+   <a href="#cap-simpleRegDef"><strong>simpleRegDef</strong></a> | 
+   <a href="#cap-softhardvoterdef"><strong>softhardvoterdef</strong></a> | 
+   <a href="#cap-stochasticdef"><strong>stochasticdef</strong></a> | 
+   <a href="#cap-tprfprdef"><strong>tprfprdef</strong></a> | 
+   <a href="#cap-trainvaltestsetsdef"><strong>trainvaltestsetsdef</strong></a> | 
+   <a href="#cap-underfittingdef"><strong>underfittingdef</strong></a> | 
+   <a href="#cap-unitheodef"><strong>unitheodef</strong></a> | 
+   <a href="#cap-variancedef"><strong>variancedef</strong></a> | 
+   <a href="#cap-varianceinitxavier"><strong>varianceinitxavier</strong></a> | 
+   <a href="#cap-xaviernormaldef"><strong>xaviernormaldef</strong></a> | 
+   <a href="#cap-xavieruniformdef"><strong>xavieruniformdef</strong></a>
+   </div>
+
+   <table class="indextable modindextable">
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-AdaBoostalgo"><td></td><td>
+       <strong>AdaBoostalgo</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/BDTs_boosting.html#AdaBoostalgo"><code class="xref">AdaBoostalgo</code></a> <em>(week1/BDTs_boosting)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-DTalgo"><td></td><td>
+       <strong>DTalgo</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/BDTs_def.html#DTalgo"><code class="xref">DTalgo</code></a> <em>(week1/BDTs_def)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-GD_algo_1D"><td></td><td>
+       <strong>GD_algo_1D</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/warmup_1D_linRegGD.html#GD_algo_1D"><code class="xref">GD_algo_1D</code></a> <em>(week1/warmup_1D_linRegGD)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-GD_algo_multi"><td></td><td>
+       <strong>GD_algo_multi</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/warmup_1D_linRegGDmulti.html#GD_algo_multi"><code class="xref">GD_algo_multi</code></a> <em>(week1/warmup_1D_linRegGDmulti)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-GDesc"><td></td><td>
+       <strong>GDesc</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/warmup_1D_linRegGD.html#GDesc"><code class="xref">GDesc</code></a> <em>(week1/warmup_1D_linRegGD)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-SGDdef"><td></td><td>
+       <strong>SGDdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/DL_stochGD.html#SGDdef"><code class="xref">SGDdef</code></a> <em>(week2/DL_stochGD)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-activfuncdef"><td></td><td>
+       <strong>activfuncdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN1_modelRep.html#activfuncdef"><code class="xref">activfuncdef</code></a> <em>(week2/NN1_modelRep)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-andef"><td></td><td>
+       <strong>andef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN1_modelRep.html#andef"><code class="xref">andef</code></a> <em>(week2/NN1_modelRep)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-anndef"><td></td><td>
+       <strong>anndef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN1_motivations.html#anndef"><code class="xref">anndef</code></a> <em>(week2/NN1_motivations)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-aucdef"><td></td><td>
+       <strong>aucdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_biasV.html#aucdef"><code class="xref">aucdef</code></a> <em>(week1/class_algs_biasV)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-backpropalgo"><td></td><td>
+       <strong>backpropalgo</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN2_backprop.html#backpropalgo"><code class="xref">backpropalgo</code></a> <em>(week2/NN2_backprop)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-backpropalgosummary"><td></td><td>
+       <strong>backpropalgosummary</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN2_backprop.html#backpropalgosummary"><code class="xref">backpropalgosummary</code></a> <em>(week2/NN2_backprop)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-backpropdef"><td></td><td>
+       <strong>backpropdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN2_backprop.html#backpropdef"><code class="xref">backpropdef</code></a> <em>(week2/NN2_backprop)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-baggingdef"><td></td><td>
+       <strong>baggingdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/BDTs_forest.html#baggingdef"><code class="xref">baggingdef</code></a> <em>(week1/BDTs_forest)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-balancedaccdef"><td></td><td>
+       <strong>balancedaccdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_biasV.html#balancedaccdef"><code class="xref">balancedaccdef</code></a> <em>(week1/class_algs_biasV)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-batchsizedef"><td></td><td>
+       <strong>batchsizedef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/DL_stochGD.html#batchsizedef"><code class="xref">batchsizedef</code></a> <em>(week2/DL_stochGD)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-biasdef"><td></td><td>
+       <strong>biasdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_biasV.html#biasdef"><code class="xref">biasdef</code></a> <em>(week1/class_algs_biasV)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-binaryDef"><td></td><td>
+       <strong>binaryDef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_logReg.html#binaryDef"><code class="xref">binaryDef</code></a> <em>(week1/class_algs_logReg)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-boostingdef"><td></td><td>
+       <strong>boostingdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/BDTs_boosting.html#boostingdef"><code class="xref">boostingdef</code></a> <em>(week1/BDTs_boosting)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-catVar"><td></td><td>
+       <strong>catVar</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_logReg.html#catVar"><code class="xref">catVar</code></a> <em>(week1/class_algs_logReg)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-chainruledef"><td></td><td>
+       <strong>chainruledef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN2_backprop.html#chainruledef"><code class="xref">chainruledef</code></a> <em>(week2/NN2_backprop)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-confusionMatrix def"><td></td><td>
+       <strong>confusionMatrix def</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_biasV.html#confusionMatrix def"><code class="xref">confusionMatrix def</code></a> <em>(week1/class_algs_biasV)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-costFLogRegDef"><td></td><td>
+       <strong>costFLogRegDef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_costF.html#costFLogRegDef"><code class="xref">costFLogRegDef</code></a> <em>(week1/class_algs_costF)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-costFunction"><td></td><td>
+       <strong>costFunction</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/warmup_1D_linRegGD.html#costFunction"><code class="xref">costFunction</code></a> <em>(week1/warmup_1D_linRegGD)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-costnndef"><td></td><td>
+       <strong>costnndef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN2_costF.html#costnndef"><code class="xref">costnndef</code></a> <em>(week2/NN2_costF)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-datacleaning"><td></td><td>
+       <strong>datacleaning</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/DL_trainNN.html#datacleaning"><code class="xref">datacleaning</code></a> <em>(week2/DL_trainNN)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-decBoundDef"><td></td><td>
+       <strong>decBoundDef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_sigmoid.html#decBoundDef"><code class="xref">decBoundDef</code></a> <em>(week1/class_algs_sigmoid)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-decisionstumpdef"><td></td><td>
+       <strong>decisionstumpdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/BDTs_boosting.html#decisionstumpdef"><code class="xref">decisionstumpdef</code></a> <em>(week1/BDTs_boosting)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defFeatureScaling"><td></td><td>
+       <strong>defFeatureScaling</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/warmup_1D_linRegGDmulti.html#defFeatureScaling"><code class="xref">defFeatureScaling</code></a> <em>(week1/warmup_1D_linRegGDmulti)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defMeanNormalization"><td></td><td>
+       <strong>defMeanNormalization</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/warmup_1D_linRegGDmulti.html#defMeanNormalization"><code class="xref">defMeanNormalization</code></a> <em>(week1/warmup_1D_linRegGDmulti)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defStandardization"><td></td><td>
+       <strong>defStandardization</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/warmup_1D_linRegGDmulti.html#defStandardization"><code class="xref">defStandardization</code></a> <em>(week1/warmup_1D_linRegGDmulti)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-1"><td></td><td>
+       <strong>definition-1</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/DL_adaptLR.html#definition-1"><code class="xref">definition-1</code></a> <em>(week2/DL_adaptLR)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-4"><td></td><td>
+       <strong>definition-4</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN1_modelRep.html#definition-4"><code class="xref">definition-4</code></a> <em>(week2/NN1_modelRep)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-5"><td></td><td>
+       <strong>definition-5</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_biasV.html#definition-5"><code class="xref">definition-5</code></a> <em>(week1/class_algs_biasV)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-dtdef"><td></td><td>
+       <strong>dtdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/BDTs_def.html#dtdef"><code class="xref">dtdef</code></a> <em>(week1/BDTs_def)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ensembledef"><td></td><td>
+       <strong>ensembledef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/BDTs_forest.html#ensembledef"><code class="xref">ensembledef</code></a> <em>(week1/BDTs_forest)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-errorDef"><td></td><td>
+       <strong>errorDef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_biasV.html#errorDef"><code class="xref">errorDef</code></a> <em>(week1/class_algs_biasV)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-errormetricsclassdef"><td></td><td>
+       <strong>errormetricsclassdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_biasV.html#errormetricsclassdef"><code class="xref">errormetricsclassdef</code></a> <em>(week1/class_algs_biasV)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-fanindef"><td></td><td>
+       <strong>fanindef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN2_init.html#fanindef"><code class="xref">fanindef</code></a> <em>(week2/NN2_init)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-feedforwardpropdef"><td></td><td>
+       <strong>feedforwardpropdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN1_feedforward.html#feedforwardpropdef"><code class="xref">feedforwardpropdef</code></a> <em>(week2/NN1_feedforward)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-flexibilitydef"><td></td><td>
+       <strong>flexibilitydef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_reg.html#flexibilitydef"><code class="xref">flexibilitydef</code></a> <em>(week1/class_algs_reg)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ginidef"><td></td><td>
+       <strong>ginidef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/BDTs_def.html#ginidef"><code class="xref">ginidef</code></a> <em>(week1/BDTs_def)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-gradientsinitxavier"><td></td><td>
+       <strong>gradientsinitxavier</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN2_init.html#gradientsinitxavier"><code class="xref">gradientsinitxavier</code></a> <em>(week2/NN2_init)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-gridsearchdef"><td></td><td>
+       <strong>gridsearchdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/DL_paramHyper.html#gridsearchdef"><code class="xref">gridsearchdef</code></a> <em>(week2/DL_paramHyper)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-heinitdef"><td></td><td>
+       <strong>heinitdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN2_init.html#heinitdef"><code class="xref">heinitdef</code></a> <em>(week2/NN2_init)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-hypothesisFunction"><td></td><td>
+       <strong>hypothesisFunction</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/warmup_1D_linRegGD.html#hypothesisFunction"><code class="xref">hypothesisFunction</code></a> <em>(week1/warmup_1D_linRegGD)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-hypothesisFunctionMulti"><td></td><td>
+       <strong>hypothesisFunctionMulti</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/warmup_1D_linRegGDmulti.html#hypothesisFunctionMulti"><code class="xref">hypothesisFunctionMulti</code></a> <em>(week1/warmup_1D_linRegGDmulti)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-kfoldxvalidation"><td></td><td>
+       <strong>kfoldxvalidation</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_biasV.html#kfoldxvalidation"><code class="xref">kfoldxvalidation</code></a> <em>(week1/class_algs_biasV)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-learningratescheduledef"><td></td><td>
+       <strong>learningratescheduledef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/DL_adaptLR.html#learningratescheduledef"><code class="xref">learningratescheduledef</code></a> <em>(week2/DL_adaptLR)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-lecuninitdef"><td></td><td>
+       <strong>lecuninitdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN2_init.html#lecuninitdef"><code class="xref">lecuninitdef</code></a> <em>(week2/NN2_init)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-linRegDef"><td></td><td>
+       <strong>linRegDef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/warmup_1D_linRegGD.html#linRegDef"><code class="xref">linRegDef</code></a> <em>(week1/warmup_1D_linRegGD)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-logFuncDef"><td></td><td>
+       <strong>logFuncDef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_sigmoid.html#logFuncDef"><code class="xref">logFuncDef</code></a> <em>(week1/class_algs_sigmoid)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-logRegDef"><td></td><td>
+       <strong>logRegDef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_logReg.html#logRegDef"><code class="xref">logRegDef</code></a> <em>(week1/class_algs_logReg)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-mappingSigDef"><td></td><td>
+       <strong>mappingSigDef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_sigmoid.html#mappingSigDef"><code class="xref">mappingSigDef</code></a> <em>(week1/class_algs_sigmoid)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-mldef"><td></td><td>
+       <strong>mldef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/trailer_mldef.html#mldef"><code class="xref">mldef</code></a> <em>(week1/trailer_mldef)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-mlpb"><td></td><td>
+       <strong>mlpb</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/trailer_pb.html#mlpb"><code class="xref">mlpb</code></a> <em>(week1/trailer_pb)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-modelParameters"><td></td><td>
+       <strong>modelParameters</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/warmup_1D_linRegGD.html#modelParameters"><code class="xref">modelParameters</code></a> <em>(week1/warmup_1D_linRegGD)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-multiclass1to1def"><td></td><td>
+       <strong>multiclass1to1def</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_costF.html#multiclass1to1def"><code class="xref">multiclass1to1def</code></a> <em>(week1/class_algs_costF)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-multiclass1toalldef"><td></td><td>
+       <strong>multiclass1toalldef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_costF.html#multiclass1toalldef"><code class="xref">multiclass1toalldef</code></a> <em>(week1/class_algs_costF)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-nnlayerdef"><td></td><td>
+       <strong>nnlayerdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN1_modelRep.html#nnlayerdef"><code class="xref">nnlayerdef</code></a> <em>(week2/NN1_modelRep)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-nodesdef"><td></td><td>
+       <strong>nodesdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/BDTs_def.html#nodesdef"><code class="xref">nodesdef</code></a> <em>(week1/BDTs_def)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-overfittingdef"><td></td><td>
+       <strong>overfittingdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_reg.html#overfittingdef"><code class="xref">overfittingdef</code></a> <em>(week1/class_algs_reg)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-perceptrondef"><td></td><td>
+       <strong>perceptrondef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN1_modelRep.html#perceptrondef"><code class="xref">perceptrondef</code></a> <em>(week2/NN1_modelRep)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-pseudodef"><td></td><td>
+       <strong>pseudodef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/BDTs_boosting.html#pseudodef"><code class="xref">pseudodef</code></a> <em>(week1/BDTs_boosting)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-randomforestdef"><td></td><td>
+       <strong>randomforestdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/BDTs_forest.html#randomforestdef"><code class="xref">randomforestdef</code></a> <em>(week1/BDTs_forest)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-randomsearchdef"><td></td><td>
+       <strong>randomsearchdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/DL_paramHyper.html#randomsearchdef"><code class="xref">randomsearchdef</code></a> <em>(week2/DL_paramHyper)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-regularizationdef"><td></td><td>
+       <strong>regularizationdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_reg.html#regularizationdef"><code class="xref">regularizationdef</code></a> <em>(week1/class_algs_reg)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-residualDef"><td></td><td>
+       <strong>residualDef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_biasV.html#residualDef"><code class="xref">residualDef</code></a> <em>(week1/class_algs_biasV)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rmseDef"><td></td><td>
+       <strong>rmseDef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_biasV.html#rmseDef"><code class="xref">rmseDef</code></a> <em>(week1/class_algs_biasV)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-rocdef"><td></td><td>
+       <strong>rocdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_biasV.html#rocdef"><code class="xref">rocdef</code></a> <em>(week1/class_algs_biasV)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-simpleRegDef"><td></td><td>
+       <strong>simpleRegDef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/warmup_1D_linRegGD.html#simpleRegDef"><code class="xref">simpleRegDef</code></a> <em>(week1/warmup_1D_linRegGD)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-softhardvoterdef"><td></td><td>
+       <strong>softhardvoterdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/BDTs_forest.html#softhardvoterdef"><code class="xref">softhardvoterdef</code></a> <em>(week1/BDTs_forest)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-stochasticdef"><td></td><td>
+       <strong>stochasticdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/DL_stochGD.html#stochasticdef"><code class="xref">stochasticdef</code></a> <em>(week2/DL_stochGD)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-tprfprdef"><td></td><td>
+       <strong>tprfprdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_biasV.html#tprfprdef"><code class="xref">tprfprdef</code></a> <em>(week1/class_algs_biasV)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-trainvaltestsetsdef"><td></td><td>
+       <strong>trainvaltestsetsdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_biasV.html#trainvaltestsetsdef"><code class="xref">trainvaltestsetsdef</code></a> <em>(week1/class_algs_biasV)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-underfittingdef"><td></td><td>
+       <strong>underfittingdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_reg.html#underfittingdef"><code class="xref">underfittingdef</code></a> <em>(week1/class_algs_reg)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-unitheodef"><td></td><td>
+       <strong>unitheodef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN1_activationF.html#unitheodef"><code class="xref">unitheodef</code></a> <em>(week2/NN1_activationF)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-variancedef"><td></td><td>
+       <strong>variancedef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week1/class_algs_biasV.html#variancedef"><code class="xref">variancedef</code></a> <em>(week1/class_algs_biasV)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-varianceinitxavier"><td></td><td>
+       <strong>varianceinitxavier</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN2_init.html#varianceinitxavier"><code class="xref">varianceinitxavier</code></a> <em>(week2/NN2_init)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-xaviernormaldef"><td></td><td>
+       <strong>xaviernormaldef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN2_init.html#xaviernormaldef"><code class="xref">xaviernormaldef</code></a> <em>(week2/NN2_init)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-xavieruniformdef"><td></td><td>
+       <strong>xavieruniformdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="week2/NN2_init.html#xavieruniformdef"><code class="xref">xavieruniformdef</code></a> <em>(week2/NN2_init)</em></td><td>
+       <em>definition</em></td></tr>
+   </table>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Claire David<br/>
+  
+      &copy; Copyright 2022.<br/>
+    <div class="extra_footer">
+      <div>
+<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
+    All content on this site (unless otherwise specified) is licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 license</a>
+</div>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
