@@ -8,7 +8,9 @@ It is designed for the Master's course [AI For Science](https://ai.aims.ac.za/),
 
 The course uses [Jupyter-Book](https://jupyterbook.org/en/stable/intro.html) as a wrapper for displaying lecture content and exercises.
 
-Programming tutorials and assignments will be done in Python using [Jupyter Notebooks](https://jupyter.org/).
+You can access the published version [here](https://clairedavid.github.io/intro_to_ml).
+
+Programming tutorials and assignments are done in Python using [Jupyter Notebooks](https://jupyter.org/).
 
 ## Calendar
 
