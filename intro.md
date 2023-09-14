@@ -12,7 +12,7 @@ Learn how to improve your algorithm and/or code for optimal results.
 
 Learn how to learn 😉, autonomously and ethically ⚖️, about Artificial Intelligence.
 
-Learn how to implement machine learning to beautiful problems in your favourite science field!
+Learn how to apply machine learning to beautiful problems in your favourite science field!
 <br><br>
 
 ***  
