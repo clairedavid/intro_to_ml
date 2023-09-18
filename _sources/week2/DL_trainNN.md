@@ -32,9 +32,6 @@ It supports various programming languages besides python (JavaSCript, C++, Java)
 
 TensorFlow offers excellent [visualization tools](https://www.tensorflow.org/resources/tools). In particular, the [PlayGround](https://playground.tensorflow.org) is a brilliant interface to gain intuition in deep learning by changing graphically the neural network architecture and properties. 
 
-```{note}
-In this course, tutorials will be done using the PyTorch framework.
-```
 
 
 ## Steps in Building your NN
