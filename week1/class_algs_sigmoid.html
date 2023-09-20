@@ -852,7 +852,7 @@ Previously with linear regression, we could predict the target <span class="math
 <li><p>if the logistic function outputs a value <span class="math notranslate nohighlight">\(y &lt; 0.5\)</span>, the event is classified as background</p></li>
 <li><p>if the logistic function outputs a value <span class="math notranslate nohighlight">\(y \geq 0.5\)</span>, the event is classified as signal</p></li>
 </ul>
-<p>This way and looking at the distribution on Figure <a class="reference internal" href="#scattersigmoid"><span class="std std-ref">. Data 1D distribution and sigmoid overlaid</span></a>, the majority of data points will be correctly classified with the <span class="math notranslate nohighlight">\(1/2\)</span> horizontal threshold.</p>
+<p>This way and looking at the distribution on <a class="reference internal" href="#scattersigmoid"><span class="std std-numref">Fig. 19</span></a>, the majority of data points will be correctly classified with the <span class="math notranslate nohighlight">\(1/2\)</span> horizontal threshold.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Careful with how the logistic function is used. We are not computing it directly with <span class="math notranslate nohighlight">\(x^{(i)}\)</span> as argument but we calculate <span class="math notranslate nohighlight">\(f(x^{(i)}\theta^{\: T})\)</span>.</p>
@@ -877,7 +877,7 @@ Previously with linear regression, we could predict the target <span class="math
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Here the input does not have to be linear. Any function of the <span class="math notranslate nohighlight">\(\theta\)</span> parameters and <span class="math notranslate nohighlight">\(x^{(i)}\)</span> will work.</p>
+<p>Here the input does not have to be linear. We can have any function of the <span class="math notranslate nohighlight">\(\theta\)</span> parameters and <span class="math notranslate nohighlight">\(x^{(i)}\)</span>. In this lecture, we keep the assumption of linearity.</p>
 </div>
 <p>With this new tool at hand, let’s now see how it is incorporated in a custom-made cost function for logistic regression.</p>
 </section>

@@ -85,7 +85,7 @@ In the section {ref}`class:sigmoid:better` above, we can split the data sample u
 * if the logistic function outputs a value $y < 0.5$, the event is classified as background 
 * if the logistic function outputs a value $y \geq 0.5$, the event is classified as signal
 
-This way and looking at the distribution on Figure {ref}`scattersigmoid`, the majority of data points will be correctly classified with the $1/2$ horizontal threshold.
+This way and looking at the distribution on {numref}`scattersigmoid`, the majority of data points will be correctly classified with the $1/2$ horizontal threshold.
 
 ```{warning}
 Careful with how the logistic function is used. We are not computing it directly with $x^{(i)}$ as argument but we calculate $f(x^{(i)}\theta^{\: T})$.
@@ -112,7 +112,7 @@ Thus, to predict if a new data point $x^\text{new}$ (row vector of input feature
 ````
 
 ```{note}
-Here the input does not have to be linear. Any function of the $\theta$ parameters and $x^{(i)}$ will work.
+Here the input does not have to be linear. We can have any function of the $\theta$ parameters and $x^{(i)}$. In this lecture, we keep the assumption of linearity.
 ```
 
 

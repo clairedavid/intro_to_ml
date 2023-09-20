@@ -844,7 +844,7 @@ Like this:</p>
 </section>
 <section id="gradient-descent">
 <h2>Gradient descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">#</a></h2>
-<p>The gradient descent for classification follows the same procedure as described in Algorithm <a class="reference internal" href="warmup_1D_linRegGDmulti.html#GD_algo_multi">Algorithm 2</a> in Section <a class="reference internal" href="warmup_1D_linRegGDmulti.html#warmup-linregmulti-graddesc"><span class="std std-ref">Gradient Descent in Multilinear Regression</span></a> with the definition of the cost function from Equation <a class="reference internal" href="#equation-costfunctionlogreg">(13)</a> above.</p>
+<p>The gradient descent for classification follows the same procedure as described in <a class="reference internal" href="warmup_1D_linRegGDmulti.html#GD_algo_multi">Algorithm 2</a> in Section <a class="reference internal" href="warmup_1D_linRegGDmulti.html#warmup-linregmulti-graddesc"><span class="std std-ref">Gradient Descent in Multilinear Regression</span></a> with the definition of the cost function from Equation <a class="reference internal" href="#equation-costfunctionlogreg">(13)</a> above.</p>
 <section id="derivatives-in-the-linear-case">
 <h3>Derivatives in the linear case<a class="headerlink" href="#derivatives-in-the-linear-case" title="Permalink to this headline">#</a></h3>
 <aside class="margin sidebar">
@@ -906,8 +906,8 @@ There are two main approaches of such methods for multiclassification.</p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-One approach</strong> consists of applying a binary classification for each pair of classes, ignoring the other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of models to train, <span class="math notranslate nohighlight">\(N^\text{model}\)</span> is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8eff8c1c-15b8-44e8-975d-dfa894c8355e">
-<span class="eqno">(15)<a class="headerlink" href="#equation-8eff8c1c-15b8-44e8-975d-dfa894c8355e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6a28dd1b-04c4-4d4c-ab8d-ae7ebb5cb89f">
+<span class="eqno">(15)<a class="headerlink" href="#equation-6a28dd1b-04c4-4d4c-ab8d-ae7ebb5cb89f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 N^\text{model} = \frac{N^\text{class}(N^\text{class}-1)}{2}
 \end{equation}\]</div>
 <p>Each model predicts one class label. The final decision is the class label receiving the most votes, i.e. being predicted most of the time.</p>
@@ -921,8 +921,8 @@ The pairing makes the number of models to train large and thus computer intensiv
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-All or One-to-Rest approach</strong> consists of training each class against the collection of all other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of pairs to train is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9a1c55c3-1dd8-4591-8bcf-3dcbea417b70">
-<span class="eqno">(16)<a class="headerlink" href="#equation-9a1c55c3-1dd8-4591-8bcf-3dcbea417b70" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b660ae6d-8804-42e6-b01a-5990b961752b">
+<span class="eqno">(16)<a class="headerlink" href="#equation-b660ae6d-8804-42e6-b01a-5990b961752b" title="Permalink to this equation">#</a></span>\[\begin{equation}
  N^\text{model} = N^\text{class}
 \end{equation}\]</div>
 <p>The final prediction is given by the highest value of the hypothesis function <span class="math notranslate nohighlight">\(h^{k}_\theta(x)\)</span>, <span class="math notranslate nohighlight">\(k \in [1, N^\text{model}]\)</span> among the <span class="math notranslate nohighlight">\(N^\text{model}\)</span> binary classifiers.</p>
