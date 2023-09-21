@@ -22,7 +22,7 @@ A __decision tree__ is a flowchart mapping a decision making process. It is orga
 :label: nodesdef
 A __node__ is a condition box evaluating one or more input features.  
 
-The outcomes of that evaluation (either boolean or numerical) is divised into __branches__, or edges.
+The outcomes of that evaluation (either boolean or numerical) is divided into __branches__, or edges.
 
 Each branch supports one outcome (usually True/False) on the condition from the previous node.
 

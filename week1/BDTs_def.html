@@ -835,7 +835,7 @@ title="Print to PDF"
 <p class="admonition-title"><span class="caption-number">Definition 41 </span></p>
 <section class="definition-content" id="proof-content">
 <p>A <strong>node</strong> is a condition box evaluating one or more input features.</p>
-<p>The outcomes of that evaluation (either boolean or numerical) is divised into <strong>branches</strong>, or edges.</p>
+<p>The outcomes of that evaluation (either boolean or numerical) is divided into <strong>branches</strong>, or edges.</p>
 <p>Each branch supports one outcome (usually True/False) on the condition from the previous node.</p>
 <p>A node at the end of a branch that is not divising further is called a <strong>leaf</strong>.</p>
 </section>
@@ -876,8 +876,8 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p>The <strong>Gini’s diversity index</strong> is a measure of a node’s impurity.</p>
 <p>It is defined for each tree node <span class="math notranslate nohighlight">\(i\)</span> as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ec6a5f91-2e9b-4a4d-8d1d-ddeff828b835">
-<span class="eqno">(31)<a class="headerlink" href="#equation-ec6a5f91-2e9b-4a4d-8d1d-ddeff828b835" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2426f871-3982-47c4-84e3-5996fa80782b">
+<span class="eqno">(31)<a class="headerlink" href="#equation-2426f871-3982-47c4-84e3-5996fa80782b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 G_i = 1 - \sum_{k=1}^{N_\text{classes}} \left( \frac{N_{k, i}}{ N_i} \right)^2 
 \end{equation}\]</div>
 <p>with <span class="math notranslate nohighlight">\(N_{k, i}\)</span> the number of data samples of class <span class="math notranslate nohighlight">\(k\)</span> in node <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(N_{i}\)</span> the total number of data samples in node <span class="math notranslate nohighlight">\(i\)</span>.</p>
@@ -922,8 +922,8 @@ A collection on decision boundaries segmenting the <span class="math notranslate
 <p><strong>1 Threshold computation</strong>:
 For each feature <span class="math notranslate nohighlight">\(k\)</span>, finds the threshold value <span class="math notranslate nohighlight">\(t_k\)</span> maximizing purity of the two resulting subsets either lower (left) or higher (right) than the threshold <span class="math notranslate nohighlight">\(t_k\)</span>.
 The cost function is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-64a1ff52-5830-4014-8687-73d9b55f1207">
-<span class="eqno">(32)<a class="headerlink" href="#equation-64a1ff52-5830-4014-8687-73d9b55f1207" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-25a26db0-66b6-47bd-83ac-8fc19c455719">
+<span class="eqno">(32)<a class="headerlink" href="#equation-25a26db0-66b6-47bd-83ac-8fc19c455719" title="Permalink to this equation">#</a></span>\[\begin{equation}
 J(k, t_k) = \frac{n_\text{left}}{n_\text{node}} G_\text{left} + \frac{n_\text{right}}{n_\text{node}} G_\text{right}
 \end{equation}\]</div>
 <p>The purity is weighted by the subset sizes. The pair (<span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(t_k\)</span>) producing the purest subsets is set for the node.</p>

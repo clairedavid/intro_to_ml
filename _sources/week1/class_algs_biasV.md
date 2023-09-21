@@ -15,11 +15,11 @@ The __training set__ is a subset of the input data dedicated to the fitting proc
 
 The __validation set__ is used to assess the performance of the model and tune the model's hyperparameters (step 2).
 
-_Multiple models with various hyperparameters are iteratively trained again using __only__ the training set, then validated using __only__ the validation test until a given satisfying performance is achieved. The model of higher performance goes to the test step._
+_The model is iteratively trained using __only__ the training set, then validated using __only__ the validation test until a given satisfying performance is achieved._
 
 The __test set__ is the final assessment done on the model; the resulting error rate on the test set is called __generalization error__, an estimate on the errors for future predictions with new data samples (step 3).
 ````
-The general split between the training, validation and test subsets are 60%, 20% and 20%. But depending on the number of samples, a smaller test set is sufficient. Reducing it allows for an increase of the training and validation set sizes, exposing the model to more data samples for training and validation.
+The general split between the training, validation and test subsets is 60%, 20% and 20% respectively. But depending on the number of samples, a smaller test set is sufficient. Reducing it allows for an increase of the training and validation set sizes, exposing the model to more data samples for training and validation.
 
 ```{warning}
 The terms _validation_ and _test_ are sometimes interchangeably used both in industry and in academia, creating some terminological confusion. What is important to keep in mind is that once the iterative back-and-forth of steps 1 and 2 are giving a most performing model, the hyperparameters of the model are frozen and the last check, step 3, is done on not-yet-seen data with those hyperparameters.  
