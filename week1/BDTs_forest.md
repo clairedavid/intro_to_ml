@@ -26,7 +26,7 @@ We attribute to Aristotle the old adage "the whole is greater than the sum of it
 
 ````{prf:definition}
 :label: ensembledef
-A __Ensemble Learning__ is a technique consisting of aggregating the predictions of an Ensemble, i.e. a group of predictors.  
+An __Ensemble Learning__ is a technique consisting of aggregating the predictions of an Ensemble, i.e. a group of predictors.  
 
 An Ensemble Learning algorithm is called an __Ensemble method__.
 ````
@@ -114,7 +114,7 @@ Random forests are popular as they present numerous qualities:
 * their results are among the most accurate compared with other machine learning algorithms
 * they are less likely to overfit the data
 * they run quickly even with a large dataset
-* they require less data to train
+* they require fewer data to train
 * they are easy to interpret
 * they can be scaled using parallel computing (cores)
 * they can rank the features by their relative importance
