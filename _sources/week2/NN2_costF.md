@@ -48,6 +48,8 @@ The most commonly used loss function is the Mean Squarred Error (MSE) that we ar
 :label: lossmseeq
 L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= \left(  \hat{y}^{(i)} - y^{(i)}  \right)^2
 ```
+where $i$ here is the sample row number.
+
 For several output nodes, we sum all losses:
 
 ```{math}

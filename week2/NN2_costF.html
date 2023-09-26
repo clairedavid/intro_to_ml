@@ -876,6 +876,7 @@ It is important to note that in the equation above, the <span class="math notran
 <p>The most commonly used loss function is the Mean Squarred Error (MSE) that we are now familiar with. If we have only one output node:</p>
 <div class="math notranslate nohighlight" id="equation-lossmseeq">
 <span class="eqno">(67)<a class="headerlink" href="#equation-lossmseeq" title="Permalink to this equation">#</a></span>\[L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= \left(  \hat{y}^{(i)} - y^{(i)}  \right)^2\]</div>
+<p>where <span class="math notranslate nohighlight">\(i\)</span> here is the sample row number.</p>
 <p>For several output nodes, we sum all losses:</p>
 <div class="math notranslate nohighlight" id="equation-lossmsekeq">
 <span class="eqno">(68)<a class="headerlink" href="#equation-lossmsekeq" title="Permalink to this equation">#</a></span>\[L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= \sum_{k = 1}^K  \left( \hat{y}^{(i)}_k - y^{(i)}_k \right)^2\]</div>

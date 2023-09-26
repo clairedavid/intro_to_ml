@@ -933,9 +933,9 @@ w_{q,1}^{(2)} &amp; w_{q,2}^{(2)} &amp;  \cdots &amp; w_{q,r}^{(2)} \\
 </section>
 <section id="general-rule-for-forward-propagation">
 <span id="nn1-forwardprop-rule"></span><h2>General rule for Forward Propagation<a class="headerlink" href="#general-rule-for-forward-propagation" title="Permalink to this headline">#</a></h2>
-<p>If we rewrite the first layer of inputs as:</p>
+<p>If we rewrite the first layer of inputs for a given sample <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> (one row vector) as:</p>
 <div class="math notranslate nohighlight" id="equation-xisazeroeq">
-<span class="eqno">(63)<a class="headerlink" href="#equation-xisazeroeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{x^{(i)}} = ( x_1, x_2, \cdots, x_n) = ( a^{(0)}_1, a^{(0)}_2, \cdots, a^{(0)}_n) = \boldsymbol{a^{(0)}} \;,\]</div>
+<span class="eqno">(63)<a class="headerlink" href="#equation-xisazeroeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{x} = ( x_1, x_2, \cdots, x_n) = ( a^{(0)}_1, a^{(0)}_2, \cdots, a^{(0)}_n) = \boldsymbol{a^{(0)}} \;,\]</div>
 <p>then we can write a general rule for computing the outputs of a fully connected layer <span class="math notranslate nohighlight">\(\ell\)</span> knowing the outputs of the previous layer <span class="math notranslate nohighlight">\(\ell\)</span> (which become the layer <span class="math notranslate nohighlight">\(\ell\)</span>’s inputs):</p>
 <div class="math notranslate nohighlight" id="equation-genrulefeedforwardeq">
 <span class="eqno">(64)<a class="headerlink" href="#equation-genrulefeedforwardeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(\ell)}} = f\left( \; \boldsymbol{a^{(\ell -1)}} \;W^{(\ell)} \;+\; \boldsymbol{b}^{(\ell)} \;\right)\]</div>

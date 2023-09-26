@@ -146,10 +146,10 @@ Let's now generalize this with a general formula.
 (NN1:forwardprop:rule)=
 ## General rule for Forward Propagation
 
-If we rewrite the first layer of inputs as:
+If we rewrite the first layer of inputs for a given sample $\boldsymbol{x}$ (one row vector) as:
 ```{math}
 :label: xisazeroeq
-\boldsymbol{x^{(i)}} = ( x_1, x_2, \cdots, x_n) = ( a^{(0)}_1, a^{(0)}_2, \cdots, a^{(0)}_n) = \boldsymbol{a^{(0)}} \;,
+\boldsymbol{x} = ( x_1, x_2, \cdots, x_n) = ( a^{(0)}_1, a^{(0)}_2, \cdots, a^{(0)}_n) = \boldsymbol{a^{(0)}} \;,
 ```
 then we can write a general rule for computing the outputs of a fully connected layer $\ell$ knowing the outputs of the previous layer $\ell$ (which become the layer $\ell$'s inputs):
 
