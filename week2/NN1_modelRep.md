@@ -96,7 +96,7 @@ A __Perceptron__ is a neural network based on a single specific artificial neuro
 It computes a weighted sum of real-valued inputs, has a bias term in the form of an extra node and yield the output:
 
 \begin{equation*}
-h_{\vec{w},b} = \text{step} \left( x w^T + b \right)
+h_{\vec{w},b} = \text{step} \left( w^T x + b \right)
 \end{equation*}
 
 A perceptron is thus a linear binary classifier.

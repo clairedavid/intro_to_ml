@@ -16,7 +16,7 @@ Forward propagation thus leads to a list of the neural network predictions for e
 y = f\left(\sum_{j=1}^n w_j x_j + b \right)
 ```
 
-But there will be some change in the notations. Let's define everything in the next subsection.
+Let's define everything in the next subsection.
 
 ## Notations
 Let's say we have the following network with $x_n$ input features, one first hidden layer with $q$ activation units and a second one with $r$ activation units. For simplicity, we will choose an output layer with only one node:
@@ -34,7 +34,15 @@ Let's say we have the following network with $x_n$ input features, one first hid
 There are lots of subscripts and upperscripts here. Let's explain the conventions we will use.  
 
 __Input data__  
-We saw in Lecture 2 that the dataset in supervised learning can be represented as a matrix $X$ of $m$ data instances (rows) of $n$ input features (columns). For clarity in the notations, we will focus for now on only one data instance, the $i$th sample row $\boldsymbol{x^{(i)}} = ( x_1, x_2, \cdots, x_n)$. And we will omit the $(i)$ upperscript for now.  
+We saw in Lecture 2 that the dataset in supervised learning can be represented as a matrix $X$ of $m$ data instances (rows) of $n$ input features (columns). For clarity in the notations, we will focus for now on only one data instance, the $i^{\text{th}}$ sample row 
+```{math}
+$\boldsymbol{x^{(i)}} = \begin{pmatrix} 
+x_1 \\
+x_2 \\
+\cdots \\
+x_n \\
+\end{pmatrix}
+```
 ````{margin}
 The layer numbering starts at the first hidden layer where $\ell=1$. The input layer is $\ell=0$.
 ````
