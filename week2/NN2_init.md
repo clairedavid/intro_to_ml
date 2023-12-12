@@ -42,7 +42,7 @@ Initialization is a crucial processs for neural networks. The initial values can
 ## Introduction
 ### Everyone at zero?
 We could ask ourself: should we simply put all weights to zero?  
-This corresponds to deactivating all neurons. The formula $\boldsymbol{a^{(\ell)}} = f\left( \; \boldsymbol{a^{(\ell -1)}} \;W^{(\ell)} \;+\; \boldsymbol{b}^{(\ell)} \;\right)$ would make no progress through all layers if all weights and biases are zero. 
+This corresponds to deactivating all neurons. The formula $\boldsymbol{a^{(i, \: \ell)}} = f\left[ \; \left(W^{(\ell)}\right)^\top \; \boldsymbol{a^{(i, \: \ell -1)}} \;+\; \boldsymbol{b^{(\ell)}} \;\right]$ would make no progress through all layers if all weights and biases are zero. 
 
 We will see after covering backpropagation in the next section that any other constant for the weight initialization will lead to a problem. 
 

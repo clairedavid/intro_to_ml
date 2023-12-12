@@ -22,20 +22,25 @@ The loss function is not to be confused with the hypothesis function $h_{W,b}(x^
 This is not to be confused with the activation function either, which only gets the neural network inputs (training data, weights and biases) and does not perform any comparison with the observed values $\boldsymbol{y}$).
 ```
 
-We saw that forward propagation 'fills' in the network with values for all activation units using the weight matrices $W^1, W^2, \cdots, W^{L}$ and biases $b^1, b^2, \cdots b^L$, up to the last layer $L$ being the output layer:
+We saw that forward propagation 'fills' in the network with values for all activation units using the weight matrices $W^{(1)}, W^{(2)}, \cdots, W^{L}$ and biases $\boldsymbol{b^{(1)}}, \boldsymbol{b^{(2)}}, \cdots \boldsymbol{b^{(L)}}$, up to the last layer $L$ being the output layer:
 ```{math}
 :label: aLasteq
-\boldsymbol{a^{(L)}} = f\left( \; \boldsymbol{a^{(L -1)}} \;W^{(L)} \;+\; \boldsymbol{b}^{(L)} \;\right)
+\boldsymbol{a^{(i, \: L)}} = f\left[ \; \left(W^{(L)}\right)^\top \; \boldsymbol{a^{(i, \: L -1)}} \;+\; \boldsymbol{b^{(L)}} \;\right]
 ```
 
 If the last layer contains $K$ output nodes, we can write the elements of vector 
 ```{math}
-\boldsymbol{a^{(L)}} = (a^{L}_1, a^{L}_2, \cdots, a^{L}_k, \cdots a^{L}_K)
+\boldsymbol{a^{(i, \: L)}} = \begin{pmatrix} 
+a^{L}_1 \\
+a^{L}_2 \\
+\cdots \\
+a^{L}_K
+\end{pmatrix}
 ```
-in the form of a hypothesis function. For each output node $a^{L}_k$, the predicted value is:
+in the form of a hypothesis function. For each output node $a^{(i, \: L)}_k$, the predicted value is:
 ```{math}
 :label: ypredhWbeq
- a^{L}_k = h_{W,b}(x^{(i)})_k  = \hat{y}^{(i)}_k \;,
+ a^{(i, \: L)}_k = h_{W,\: b}(x^{(i)})_k  = \hat{y}^{(i)}_k \;,
 ```
 where the hat is the statistical convention for a predicted value (by opposition to an observed one).
 It is important to note that in the equation above, the $W,b$ indices refer to __all weights and biases of the network__ (from forward propagation).
@@ -46,7 +51,7 @@ It is important to note that in the equation above, the $W,b$ indices refer to _
 The most commonly used loss function is the Mean Squarred Error (MSE) that we are now familiar with. If we have only one output node:
 ```{math}
 :label: lossmseeq
-L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= \left(  \hat{y}^{(i)} - y^{(i)}  \right)^2
+L \left(\;\hat{y}^{(i)}, y^{(i)}\;\right)= \left(  \hat{y}^{(i)} - y^{(i)}  \right)^2
 ```
 where $i$ here is the sample row number.
 
@@ -54,14 +59,14 @@ For several output nodes, we sum all losses:
 
 ```{math}
 :label: lossmsekeq
-L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= \sum_{k = 1}^K  \left( \hat{y}^{(i)}_k - y^{(i)}_k \right)^2
+L \left(\;\boldsymbol{\hat{y}^{(i)}}, \boldsymbol{y^{(i)}}\;\right)= \sum_{k = 1}^K  \left( \hat{y}^{(i)}_k - y^{(i)}_k \right)^2
 ```
 with the $k$ indices being the prediction or observed value for the node $k$.
 
 Then the cost function would be the average of the losses over all the training sample of $m$ instances:
 ```{math}
 :label: costmsekeq
-J \left(\;\hat{y}_k, y_k\;\right)= \frac{1}{2m} \sum_{i=1}^m \sum_{k = 1}^K  \left( \hat{y}^{(i)}_k - y^{(i)}_k \right)^2
+J \left(\;\boldsymbol{\hat{y}}, \boldsymbol{y}\;\right)= \frac{1}{2m} \sum_{i=1}^m \sum_{k = 1}^K  \left( \hat{y}^{(i)}_k - y^{(i)}_k \right)^2
 ```
 
 
@@ -69,7 +74,7 @@ J \left(\;\hat{y}_k, y_k\;\right)= \frac{1}{2m} \sum_{i=1}^m \sum_{k = 1}^K  \le
 If there are lots of outliers in the training set, aka samples associated with a large error between the prediction and the observed values, the Mean Squarred Errror will make the loss (and cost) very big. A preferrable choice would be to take the absolute loss:
 ```{math}
 :label: lossabseq
-L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= \left| \;\hat{y}^{(i)} - y^{(i)} \; \right|
+L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= \left| \;\hat{y}_k^{(i)} - y_k^{(i)} \; \right|
 ```
 
 ### Huber Loss
@@ -90,15 +95,19 @@ We are familiar with this one as it was introduced in Lecture 3. We will rewrite
 
 ```{math}
 :label: lossbinceeq
-L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)=-\left[ \;y^{(i)}  \log \left(\hat{y}^{(i)}\right)+\left(1-y^{(i)}\right) \log \left(1-\hat{y}^{(i)}\right) \; \right]
+L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)=-\left[ \;y_k^{(i)}  \log \left(\hat{y}_k^{(i)}\right)+\left(1-y_k^{(i)}\right) \log \left(1-\hat{y}_k^{(i)}\right) \; \right]
 ```
 And the cost function will be
 
 ```{math}
 :label: costbinceeq
-J \left(\;\hat{y}_k, y_k\;\right) = - \frac{1}{m} \sum_{i=1}^m \left[ \;y^{(i)}  \log \left(\hat{y}^{(i)}\right)+\left(1-y^{(i)}\right) \log \left(1-\hat{y}^{(i)}\right) \; \right] 
+J \left(\;\boldsymbol{\hat{y}}, \boldsymbol{y}\;\right) = - \frac{1}{m} \sum_{i=1}^m \sum_{k = 1}^K \left[ \;y_k^{(i)}  \log \left(\hat{y}_k^{(i)}\right)+\left(1-y_k^{(i)}\right) \log \left(1-\hat{y}_k^{(i)}\right) \; \right] 
 ```
-There is nothing new here, except that the hypothesis function $h_{W,b}(x^{(i)})$ is not a linear function but the output of neural network forward propagation.
+
+````{margin}
+Recall that $\boldsymbol{\hat{y}^{(i)}} = h_{\boldsymbol{W},\boldsymbol{b}}(\boldsymbol{x^{(i)}})$.
+````
+There is nothing new here, except that the predictions $\boldsymbol{\hat{y}^{(i)}}$ from the hypothesis function are not a linear function but the output of the entire neural network forward propagation.
 
 ### Categorical Cross-Entropy
 A neural network with one output node will classify from two classes: $y=1$ and $y=0$. The cross-entropy is the sum of the actual outcome multiplied by the logarithm of the outcome predicted by the model. If we have more than two classes, we can write the outcome of a given training data instance $i$ as a vector:
@@ -127,14 +136,14 @@ This is the general equation for $K$ classes.
 The categorial cross-entropy reduces to the binary equation {eq}`lossbinceeq` for $n =2$.
 ```{math}
 :label: losscateq
-L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)=  - \sum_{k=1}^K \; y^{(i)}_k \log \left( \hat{y}^{(i)} \right) 
+L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)=  - \sum_{k=1}^K \; y^{(i)}_k \log \left( \hat{y}_k^{(i)} \right) 
 ```
 
-And the cost function
+And the cost function becomes:
 
 ```{math}
 :label: costcateq
-J \left(\;\hat{y}_k, y_k\;\right) = - \frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K \; y^{(i)}_k \log \left( \hat{y}^{(i)}_k \right) 
+J \left(\;\boldsymbol{\hat{y}}, \boldsymbol{y}\;\right) = - \frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K \; y^{(i)}_k \log \left( \hat{y}^{(i)}_k \right) 
 ```
 
 ## Regularization term
@@ -142,7 +151,7 @@ In Lecture 3 section {ref}`class:algs:reg` we saw two techniques adding an extra
 
 ```{math}
 :label: 
-J \left(\;\hat{y}_k, y_k\;\right) = \frac{1}{m} \sum_{i=1}^m  L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right) + \frac{\lambda}{2m} \sum_{\ell=1}^L \sum_{q=1}^{n^{L-1}} \sum_{r=1}^{n^{L}} \left( W^{(\ell)}_{q, r} \; \right)^2
+J \left(\;\boldsymbol{\hat{y}}, \boldsymbol{y}\;\right) = \frac{1}{m} \sum_{i=1}^m  L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right) + \frac{\lambda}{2m} \sum_{\ell=1}^L \sum_{q=1}^{n_{L-1}} \sum_{r=1}^{n_{L}} \left( W^{(\ell)}_{q, r} \; \right)^2
 ```
 
 The triple sum is daunting but let's decompose it: it's the sum of all matrices $W^{(\ell)}$ of the network. For each of them, the weights are squared and added together (those are the two last sums). The equation above corresponds to the Lasso's regularization (introduced in Lecture 3 subsection {ref}`class:algs:reg:lasso`). The Ridge regularization would sum only the weights without squaring them.

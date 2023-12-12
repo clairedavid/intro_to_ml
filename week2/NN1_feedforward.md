@@ -45,16 +45,16 @@ x^{(i)}_n \\
 ```
 The vector elements are all the features in the data. The upperscript indicates the sample index $i$, going from 1 to $m$, the total number of samples in the dataset.
 ````{margin}
-The layer numbering starts at the first hidden layer where $\ell=1$. The input layer is $\ell=0$.
+The layer numbering starts at the first hidden layer where $\ell=1$.
 ````
 __Activation units__  
 In a given layer $\ell = 1, 2, \cdots, N^\text{layer}$, the activation units will give outputs that we will note as a column vector as well:
 ```{math}
-\boldsymbol{a^{(i, \ell)}} = \begin{pmatrix} 
- a_1^{(i, \ell)}\\
-a_2^{(i, \ell)},\\
+\boldsymbol{a^{(i, \: \ell)}} = \begin{pmatrix} 
+ a_1^{(i, \: \ell)}\\
+a_2^{(i, \: \ell)},\\
 \cdots\\
-a_q^{(i, \ell)} 
+a_q^{(i, \: \ell)} 
 \end{pmatrix}  \;, 
 ```
 where subscript is the row of the activation unit in the layer, starting from the top. The upperscript indicates the sample index $i$ and the layer number $\ell$. Why the presence of the sample here? We will see soon that these activation units will get a different value for each data sample. 
@@ -62,14 +62,14 @@ where subscript is the row of the activation unit in the layer, starting from th
 __Biases__  
 The biases are also column vectors, one for each layer it connects to and of dimension the number of nodes in that layer:
 ```{math}
-\boldsymbol{b^{(i, \ell)}} = \begin{pmatrix}
-b_1^{(i, \ell)} \\
-b_2^{(i, \ell)} \\
+\boldsymbol{b^{(\ell)}} = \begin{pmatrix}
+b_1^{(\ell)} \\
+b_2^{(\ell)} \\
 \cdots \\
-b_q^{(i, \ell)}
+b_q^{(\ell)}
 \end{pmatrix}
 ```
-If the last layer is only made of one node like in our example above, then $b^{(i, L)}$ is a scalar. 
+If the last layer is only made of one node like in our example above, then $b^{(L)}$ is a scalar. Note that the biases do not depend on the sample index $i$. 
 
 __Weights__  
 Now the weights. You may see in the literature different ways to represent them. In here we use a convention we could write as:
@@ -90,7 +90,7 @@ w_{n,1}^{(\ell)} & w_{n,2}^{(\ell)} &  \cdots & w_{n,q}^{(\ell)} \\
 \end{pmatrix}
 ```
 
-Note that we do not have an index $i$ for the weight matrix $W^{(\ell)}$. Why? Because the weights are unique for a given network. In fact the weights are optimized after the network has incorporated all the data samples. We will actually determine the optimal weights in the next chapter after.
+Note that we do not have an index $i$ for the weight matrix $W^{(\ell)}$. Why? Because the weights are unique for a given network. In fact the weights -- and the biases -- are optimized after the network has incorporated all the data samples. We will actually determine the optimal weights and biases in the next chapter after.
 
 Let's now see how we calculate all the values of the activation units!
 
@@ -102,14 +102,14 @@ Let's use Equation {eq}`sumwixieq` to compute the activation unit outputs of the
 ```{math}
 :label: firstlayereq
 \begin{align*}
-a^{(i, \: 1)}_1 &= f\left(\; w_{1,1}^{(1)} \; x^{(i)}_1 \;+\; w_{2,1}^{(1)} \; x^{(i)}_2 \;+\; \cdots + \; w_{n,1}^{(1)} \; x^{(i)}_n \;+\; b^{(i, \: 1)}_1\right)\\[2ex]
-a^{(i, \: 1)}_2 &= f\left(\; w_{1,2}^{(1)} \; x^{(i)}_1 \;+\; w_{2,2}^{(1)} \; x^{(i)}_2 \;+\; \cdots + \; w_{n,2}^{(1)} \; x^{(i)}_n \;+\; b^{(i, \: 1)}_2\right)\\
+a^{(i, \: 1)}_1 &= f\left(\; w_{1,1}^{(1)} \; x^{(i)}_1 \;+\; w_{2,1}^{(1)} \; x^{(i)}_2 \;+\; \cdots + \; w_{n,1}^{(1)} \; x^{(i)}_n \;+\; b^{(1)}_1\right)\\[2ex]
+a^{(i, \: 1)}_2 &= f\left(\; w_{1,2}^{(1)} \; x^{(i)}_1 \;+\; w_{2,2}^{(1)} \; x^{(i)}_2 \;+\; \cdots + \; w_{n,2}^{(1)} \; x^{(i)}_n \;+\; b^{(1)}_2\right)\\
 &\vdots \\[2ex]
-a^{(i, \: 1)}_q &= f\left(\; w_{1,q}^{(1)} \; x^{(i)}_1 \;+\; w_{2,q}^{(1)} \; x^{(i)}_2 \;+\; \cdots + \; w_{n,q}^{(1)} \; x^{(i)}_n \;+\; b^{(i, \: 1)}_q\right)\\
+a^{(i, \: 1)}_q &= f\left(\; w_{1,q}^{(1)} \; x^{(i)}_1 \;+\; w_{2,q}^{(1)} \; x^{(i)}_2 \;+\; \cdots + \; w_{n,q}^{(1)} \; x^{(i)}_n \;+\; b^{(1)}_q\right)\\
 \end{align*}
 ```
 
-  
+
 We can actually write it in the matrix form. Let's first write it in an expanded version with the matrix elements:
 ```{math}
 :label: firstlayermatrixexpandedeq
@@ -122,17 +122,17 @@ x^{(i)}_2 \\
 x^{(i)}_n \\
 \end{pmatrix} 
  \;+\; \begin{pmatrix}
-b_1^{(i, \: 1)} \\
-b_2^{(i, \: 1)} \\
+b_1^{(1)} \\
+b_2^{(1)} \\
 \cdots \\
-b_q^{(i, \: 1)}
+b_q^{(1)}
 \end{pmatrix} \; \right]
 ```
 You can verify that $\boldsymbol{a^{(i, \: 1)}}$ will be a column vector with $q$ elements.
 This can be written in a compact way:
 ```{math}
 :label: firstlayermatrixeq
-\boldsymbol{a^{(i, \: 1)}} = f\left[ \; \left(W^{(1)}\right)^\top \; \boldsymbol{x^{(i)}} \;+\; \boldsymbol{b^{(i, \: 1)}} \;\right]
+\boldsymbol{a^{(i, \: 1)}} = f\left[ \; \left(W^{(1)}\right)^\top \; \boldsymbol{x^{(i)}} \;+\; \boldsymbol{b^{(1)}} \;\right]
 ```
 Much lighter. 
 
@@ -149,17 +149,17 @@ a^{(i, \: 1)}_2 \\
 a^{(i, \: 1)}_q \\
 \end{pmatrix} 
  \;+\; \begin{pmatrix}
-b_1^{(i, \: 2)} \\
-b_2^{(i, \: 2)} \\
+b_1^{(2)} \\
+b_2^{(2)} \\
 \cdots \\
-b_r^{(i, \: 2)}
+b_r^{(2)}
 \end{pmatrix} \; \right]
 ```
 
 And the elegant, light version:
 ```{math}
 :label: secondlayermatrixeq
-\boldsymbol{a^{(i, \: 2)}} = f\left[ \; \left(W^{(2)}\right)^\top \; \boldsymbol{a^{(i, \: 1)}} \;+\; \boldsymbol{b^{(i, \: 2)}} \;\right]
+\boldsymbol{a^{(i, \: 2)}} = f\left[ \; \left(W^{(2)}\right)^\top \; \boldsymbol{a^{(i, \: 1)}} \;+\; \boldsymbol{b^{(2)}} \;\right]
 ```
 
 We start seeing a pattern here looking at the matricial equations {eq}`firstlayermatrixeq` and {eq}`secondlayermatrixeq`. More on this soon in Section {ref}`NN1:forwardprop:rule`. Let's finish the process with the last layer.
@@ -168,9 +168,9 @@ We start seeing a pattern here looking at the matricial equations {eq}`firstlaye
 With one output node, it is actually simpler than for the hidden layers above. We can still write it in the same form as Equation {eq}`secondlayermatrixeq`:
 ```{math}
 :label: thirdlayermatrixeq
-\boldsymbol{a^{(i, \: 3)}} = f\left[ \; \left(W^{(3)}\right)^\top \; \boldsymbol{a^{(i, \: 2)}} \;+\; \boldsymbol{b^{(i, \: 3)}} \;\right]
+\boldsymbol{a^{(i, \: 3)}} = f\left[ \; \left(W^{(3)}\right)^\top \; \boldsymbol{a^{(i, \: 2)}} \;+\; \boldsymbol{b^{(3)}} \;\right]
 ```
-using $\boldsymbol{a^{(i, \: 2)}}$ that we calculated above. In our case $\boldsymbol{a^{(i, \: 3)}}$ has only one element: $a^{(i, \: 3)}_1 = \hat{y}^{(i)}$. Thus the matrix $W^{(3)}$ has only one column. The bias 'vector' is actually a scalar: $b^{(i, \: 3)}$. 
+using $\boldsymbol{a^{(i, \: 2)}}$ that we calculated above. In our case $\boldsymbol{a^{(i, \: 3)}}$ has only one element: $a^{(i, \: 3)}_1 = \hat{y}^{(i)}$. Thus the matrix $W^{(3)}$ has only one column. The bias 'vector' is actually a scalar: $b^{(3)}$. 
 
 We have computed a value for each activation unit for a given data sample $\boldsymbol{x^{(i)}}$. That is the end of the forward propagation process! As you can see, it contains lots of calculations. And now you may understand why activation functions that are simple and fast to compute are preferrable, as they intervene each time we compute the output of an activation unit.
 
@@ -198,7 +198,7 @@ then we can write a general rule for computing the outputs of a fully connected 
 
 ```{math}
 :label: genrulefeedforwardeq
-\boldsymbol{a^{(i, \: \ell)}} = f\left[ \; \left(W^{(\ell)}\right)^\top \; \boldsymbol{a^{(i, \: \ell -1)}} \;+\; \boldsymbol{b^{(i, \: \ell)}} \;\right]
+\boldsymbol{a^{(i, \: \ell)}} = f\left[ \; \left(W^{(\ell)}\right)^\top \; \boldsymbol{a^{(i, \: \ell -1)}} \;+\; \boldsymbol{b^{(\ell)}} \;\right]
 ```
 
 This is the general rule for computing all outputs of a fully connected feedforward neural network.
