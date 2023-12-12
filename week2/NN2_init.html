@@ -850,7 +850,7 @@ title="Print to PDF"
 <section id="everyone-at-zero">
 <h3>Everyone at zero?<a class="headerlink" href="#everyone-at-zero" title="Permalink to this headline">#</a></h3>
 <p>We could ask ourself: should we simply put all weights to zero?<br />
-This corresponds to deactivating all neurons. The formula <span class="math notranslate nohighlight">\(\boldsymbol{a^{(\ell)}} = f\left( \; \boldsymbol{a^{(\ell -1)}} \;W^{(\ell)} \;+\; \boldsymbol{b}^{(\ell)} \;\right)\)</span> would make no progress through all layers if all weights and biases are zero.</p>
+This corresponds to deactivating all neurons. The formula <span class="math notranslate nohighlight">\(\boldsymbol{a^{(i, \: \ell)}} = f\left[ \; \left(W^{(\ell)}\right)^\top \; \boldsymbol{a^{(i, \: \ell -1)}} \;+\; \boldsymbol{b^{(\ell)}} \;\right]\)</span> would make no progress through all layers if all weights and biases are zero.</p>
 <p>We will see after covering backpropagation in the next section that any other constant for the weight initialization will lead to a problem.</p>
 </section>
 <section id="don-t-die-don-t-explode-don-t-saturate">

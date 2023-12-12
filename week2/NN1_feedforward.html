@@ -862,28 +862,28 @@ x^{(i)}_n \\
 <p>The vector elements are all the features in the data. The upperscript indicates the sample index <span class="math notranslate nohighlight">\(i\)</span>, going from 1 to <span class="math notranslate nohighlight">\(m\)</span>, the total number of samples in the dataset.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>The layer numbering starts at the first hidden layer where <span class="math notranslate nohighlight">\(\ell=1\)</span>. The input layer is <span class="math notranslate nohighlight">\(\ell=0\)</span>.</p>
+<p>The layer numbering starts at the first hidden layer where <span class="math notranslate nohighlight">\(\ell=1\)</span>.</p>
 </aside>
 <p><strong>Activation units</strong><br />
 In a given layer <span class="math notranslate nohighlight">\(\ell = 1, 2, \cdots, N^\text{layer}\)</span>, the activation units will give outputs that we will note as a column vector as well:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\boldsymbol{a^{(i, \ell)}} = \begin{pmatrix} 
- a_1^{(i, \ell)}\\
-a_2^{(i, \ell)},\\
+\[\begin{split}\boldsymbol{a^{(i, \: \ell)}} = \begin{pmatrix} 
+ a_1^{(i, \: \ell)}\\
+a_2^{(i, \: \ell)},\\
 \cdots\\
-a_q^{(i, \ell)} 
+a_q^{(i, \: \ell)} 
 \end{pmatrix}  \;, \end{split}\]</div>
 <p>where subscript is the row of the activation unit in the layer, starting from the top. The upperscript indicates the sample index <span class="math notranslate nohighlight">\(i\)</span> and the layer number <span class="math notranslate nohighlight">\(\ell\)</span>. Why the presence of the sample here? We will see soon that these activation units will get a different value for each data sample.</p>
 <p><strong>Biases</strong><br />
 The biases are also column vectors, one for each layer it connects to and of dimension the number of nodes in that layer:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\boldsymbol{b^{(i, \ell)}} = \begin{pmatrix}
-b_1^{(i, \ell)} \\
-b_2^{(i, \ell)} \\
+\[\begin{split}\boldsymbol{b^{(\ell)}} = \begin{pmatrix}
+b_1^{(\ell)} \\
+b_2^{(\ell)} \\
 \cdots \\
-b_q^{(i, \ell)}
+b_q^{(\ell)}
 \end{pmatrix}\end{split}\]</div>
-<p>If the last layer is only made of one node like in our example above, then <span class="math notranslate nohighlight">\(b^{(i, L)}\)</span> is a scalar.</p>
+<p>If the last layer is only made of one node like in our example above, then <span class="math notranslate nohighlight">\(b^{(L)}\)</span> is a scalar. Note that the biases do not depend on the sample index <span class="math notranslate nohighlight">\(i\)</span>.</p>
 <p><strong>Weights</strong><br />
 Now the weights. You may see in the literature different ways to represent them. In here we use a convention we could write as:</p>
 <div class="math notranslate nohighlight">
@@ -897,7 +897,7 @@ w_{2,1}^{(\ell)} &amp; w_{2,2}^{(\ell)} &amp; \cdots &amp; w_{2,q}^{(\ell)} \\[1
 \vdots  &amp; \vdots &amp; \ddots   &amp; \vdots \\[1ex]
 w_{n,1}^{(\ell)} &amp; w_{n,2}^{(\ell)} &amp;  \cdots &amp; w_{n,q}^{(\ell)} \\
 \end{pmatrix}\end{split}\]</div>
-<p>Note that we do not have an index <span class="math notranslate nohighlight">\(i\)</span> for the weight matrix <span class="math notranslate nohighlight">\(W^{(\ell)}\)</span>. Why? Because the weights are unique for a given network. In fact the weights are optimized after the network has incorporated all the data samples. We will actually determine the optimal weights in the next chapter after.</p>
+<p>Note that we do not have an index <span class="math notranslate nohighlight">\(i\)</span> for the weight matrix <span class="math notranslate nohighlight">\(W^{(\ell)}\)</span>. Why? Because the weights are unique for a given network. In fact the weights – and the biases – are optimized after the network has incorporated all the data samples. We will actually determine the optimal weights and biases in the next chapter after.</p>
 <p>Let’s now see how we calculate all the values of the activation units!</p>
 </section>
 <section id="step-by-step-calculations">
@@ -907,10 +907,10 @@ w_{n,1}^{(\ell)} &amp; w_{n,2}^{(\ell)} &amp;  \cdots &amp; w_{n,q}^{(\ell)} \\
 <p>Let’s use Equation <a class="reference internal" href="#equation-sumwixieq">(55)</a> to compute the activation unit outputs of the first layer. The activation function is represented as <span class="math notranslate nohighlight">\(f\)</span> here. So for a given data sample <span class="math notranslate nohighlight">\(i\)</span>, we have:</p>
 <div class="math notranslate nohighlight" id="equation-firstlayereq">
 <span class="eqno">(57)<a class="headerlink" href="#equation-firstlayereq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
-a^{(i, \: 1)}_1 &amp;= f\left(\; w_{1,1}^{(1)} \; x^{(i)}_1 \;+\; w_{2,1}^{(1)} \; x^{(i)}_2 \;+\; \cdots + \; w_{n,1}^{(1)} \; x^{(i)}_n \;+\; b^{(i, \: 1)}_1\right)\\[2ex]
-a^{(i, \: 1)}_2 &amp;= f\left(\; w_{1,2}^{(1)} \; x^{(i)}_1 \;+\; w_{2,2}^{(1)} \; x^{(i)}_2 \;+\; \cdots + \; w_{n,2}^{(1)} \; x^{(i)}_n \;+\; b^{(i, \: 1)}_2\right)\\
+a^{(i, \: 1)}_1 &amp;= f\left(\; w_{1,1}^{(1)} \; x^{(i)}_1 \;+\; w_{2,1}^{(1)} \; x^{(i)}_2 \;+\; \cdots + \; w_{n,1}^{(1)} \; x^{(i)}_n \;+\; b^{(1)}_1\right)\\[2ex]
+a^{(i, \: 1)}_2 &amp;= f\left(\; w_{1,2}^{(1)} \; x^{(i)}_1 \;+\; w_{2,2}^{(1)} \; x^{(i)}_2 \;+\; \cdots + \; w_{n,2}^{(1)} \; x^{(i)}_n \;+\; b^{(1)}_2\right)\\
 &amp;\vdots \\[2ex]
-a^{(i, \: 1)}_q &amp;= f\left(\; w_{1,q}^{(1)} \; x^{(i)}_1 \;+\; w_{2,q}^{(1)} \; x^{(i)}_2 \;+\; \cdots + \; w_{n,q}^{(1)} \; x^{(i)}_n \;+\; b^{(i, \: 1)}_q\right)\\
+a^{(i, \: 1)}_q &amp;= f\left(\; w_{1,q}^{(1)} \; x^{(i)}_1 \;+\; w_{2,q}^{(1)} \; x^{(i)}_2 \;+\; \cdots + \; w_{n,q}^{(1)} \; x^{(i)}_n \;+\; b^{(1)}_q\right)\\
 \end{align*}\end{split}\]</div>
 <p>We can actually write it in the matrix form. Let’s first write it in an expanded version with the matrix elements:</p>
 <div class="math notranslate nohighlight" id="equation-firstlayermatrixexpandedeq">
@@ -923,15 +923,15 @@ x^{(i)}_2 \\
 x^{(i)}_n \\
 \end{pmatrix} 
  \;+\; \begin{pmatrix}
-b_1^{(i, \: 1)} \\
-b_2^{(i, \: 1)} \\
+b_1^{(1)} \\
+b_2^{(1)} \\
 \cdots \\
-b_q^{(i, \: 1)}
+b_q^{(1)}
 \end{pmatrix} \; \right]\end{split}\]</div>
 <p>You can verify that <span class="math notranslate nohighlight">\(\boldsymbol{a^{(i, \: 1)}}\)</span> will be a column vector with <span class="math notranslate nohighlight">\(q\)</span> elements.
 This can be written in a compact way:</p>
 <div class="math notranslate nohighlight" id="equation-firstlayermatrixeq">
-<span class="eqno">(59)<a class="headerlink" href="#equation-firstlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(i, \: 1)}} = f\left[ \; \left(W^{(1)}\right)^\top \; \boldsymbol{x^{(i)}} \;+\; \boldsymbol{b^{(i, \: 1)}} \;\right]\]</div>
+<span class="eqno">(59)<a class="headerlink" href="#equation-firstlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(i, \: 1)}} = f\left[ \; \left(W^{(1)}\right)^\top \; \boldsymbol{x^{(i)}} \;+\; \boldsymbol{b^{(1)}} \;\right]\]</div>
 <p>Much lighter.</p>
 </section>
 <section id="computation-of-the-second-hidden-layer">
@@ -947,22 +947,22 @@ a^{(i, \: 1)}_2 \\
 a^{(i, \: 1)}_q \\
 \end{pmatrix} 
  \;+\; \begin{pmatrix}
-b_1^{(i, \: 2)} \\
-b_2^{(i, \: 2)} \\
+b_1^{(2)} \\
+b_2^{(2)} \\
 \cdots \\
-b_r^{(i, \: 2)}
+b_r^{(2)}
 \end{pmatrix} \; \right]\end{split}\]</div>
 <p>And the elegant, light version:</p>
 <div class="math notranslate nohighlight" id="equation-secondlayermatrixeq">
-<span class="eqno">(61)<a class="headerlink" href="#equation-secondlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(i, \: 2)}} = f\left[ \; \left(W^{(2)}\right)^\top \; \boldsymbol{a^{(i, \: 1)}} \;+\; \boldsymbol{b^{(i, \: 2)}} \;\right]\]</div>
+<span class="eqno">(61)<a class="headerlink" href="#equation-secondlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(i, \: 2)}} = f\left[ \; \left(W^{(2)}\right)^\top \; \boldsymbol{a^{(i, \: 1)}} \;+\; \boldsymbol{b^{(2)}} \;\right]\]</div>
 <p>We start seeing a pattern here looking at the matricial equations <a class="reference internal" href="#equation-firstlayermatrixeq">(59)</a> and <a class="reference internal" href="#equation-secondlayermatrixeq">(61)</a>. More on this soon in Section <a class="reference internal" href="#nn1-forwardprop-rule"><span class="std std-ref">General rule for Forward Propagation</span></a>. Let’s finish the process with the last layer.</p>
 </section>
 <section id="computation-of-the-third-hidder-layer">
 <h3>Computation of the third hidder layer<a class="headerlink" href="#computation-of-the-third-hidder-layer" title="Permalink to this headline">#</a></h3>
 <p>With one output node, it is actually simpler than for the hidden layers above. We can still write it in the same form as Equation <a class="reference internal" href="#equation-secondlayermatrixeq">(61)</a>:</p>
 <div class="math notranslate nohighlight" id="equation-thirdlayermatrixeq">
-<span class="eqno">(62)<a class="headerlink" href="#equation-thirdlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(i, \: 3)}} = f\left[ \; \left(W^{(3)}\right)^\top \; \boldsymbol{a^{(i, \: 2)}} \;+\; \boldsymbol{b^{(i, \: 3)}} \;\right]\]</div>
-<p>using <span class="math notranslate nohighlight">\(\boldsymbol{a^{(i, \: 2)}}\)</span> that we calculated above. In our case <span class="math notranslate nohighlight">\(\boldsymbol{a^{(i, \: 3)}}\)</span> has only one element: <span class="math notranslate nohighlight">\(a^{(i, \: 3)}_1 = y^{(i)}\)</span>. Thus the matrix <span class="math notranslate nohighlight">\(W^{(3)}\)</span> has only one column. The bias ‘vector’ is actually a scalar: <span class="math notranslate nohighlight">\(b^{(i, \: 3)}\)</span>.</p>
+<span class="eqno">(62)<a class="headerlink" href="#equation-thirdlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(i, \: 3)}} = f\left[ \; \left(W^{(3)}\right)^\top \; \boldsymbol{a^{(i, \: 2)}} \;+\; \boldsymbol{b^{(3)}} \;\right]\]</div>
+<p>using <span class="math notranslate nohighlight">\(\boldsymbol{a^{(i, \: 2)}}\)</span> that we calculated above. In our case <span class="math notranslate nohighlight">\(\boldsymbol{a^{(i, \: 3)}}\)</span> has only one element: <span class="math notranslate nohighlight">\(a^{(i, \: 3)}_1 = \hat{y}^{(i)}\)</span>. Thus the matrix <span class="math notranslate nohighlight">\(W^{(3)}\)</span> has only one column. The bias ‘vector’ is actually a scalar: <span class="math notranslate nohighlight">\(b^{(3)}\)</span>.</p>
 <p>We have computed a value for each activation unit for a given data sample <span class="math notranslate nohighlight">\(\boldsymbol{x^{(i)}}\)</span>. That is the end of the forward propagation process! As you can see, it contains lots of calculations. And now you may understand why activation functions that are simple and fast to compute are preferrable, as they intervene each time we compute the output of an activation unit.</p>
 <p>Let’s now get a general formula.</p>
 </section>
@@ -984,7 +984,7 @@ a^{(i, \: 0)}_n \\
 \end{pmatrix} = \boldsymbol{a^{(i, \: 0)}}\;,\end{split}\]</div>
 <p>then we can write a general rule for computing the outputs of a fully connected layer <span class="math notranslate nohighlight">\(\ell\)</span> knowing the outputs of the previous layer <span class="math notranslate nohighlight">\(\ell -1\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-genrulefeedforwardeq">
-<span class="eqno">(64)<a class="headerlink" href="#equation-genrulefeedforwardeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(i, \: \ell)}} = f\left[ \; \left(W^{(\ell)}\right)^\top \; \boldsymbol{a^{(i, \: \ell -1)}} \;+\; \boldsymbol{b^{(i, \: \ell)}} \;\right]\]</div>
+<span class="eqno">(64)<a class="headerlink" href="#equation-genrulefeedforwardeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(i, \: \ell)}} = f\left[ \; \left(W^{(\ell)}\right)^\top \; \boldsymbol{a^{(i, \: \ell -1)}} \;+\; \boldsymbol{b^{(\ell)}} \;\right]\]</div>
 <p>This is the general rule for computing all outputs of a fully connected feedforward neural network.</p>
 </section>
 <section id="summary">

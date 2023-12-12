@@ -864,7 +864,7 @@ title="Print to PDF"
 <h2>Motivations<a class="headerlink" href="#motivations" title="Permalink to this headline">#</a></h2>
 <p>We saw in previous lectures that the Gradient Descent algorithm updates the parameters, or weights, in the form:</p>
 <div class="math notranslate nohighlight" id="equation-paramupdate">
-<span class="eqno">(118)<a class="headerlink" href="#equation-paramupdate" title="Permalink to this equation">#</a></span>\[W_j \quad \leftarrow \quad W_j -\alpha \frac{\partial}{\partial W_j} J\left(\boldsymbol{W}\right) \;   \;   \;  \;   \;   \; \forall j \in [0..n]\]</div>
+<span class="eqno">(120)<a class="headerlink" href="#equation-paramupdate" title="Permalink to this equation">#</a></span>\[W_j \quad \leftarrow \quad W_j -\alpha \frac{\partial}{\partial W_j} J\left(\boldsymbol{W}\right) \;   \;   \;  \;   \;   \; \forall j \in [0..n]\]</div>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>Recall that the learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> is the hyperparameter defining the step size on the parameters at each update.</p>
@@ -902,14 +902,14 @@ Example: if we have 1000 training samples splits in batches of size 250 each, th
 <p>The <span class="math notranslate nohighlight">\(t\)</span> argument is the iteration integer, akin to a time yet the value are usually the iteration and/or epoch indices.</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-powerscheduleeq">
-<span class="eqno">(119)<a class="headerlink" href="#equation-powerscheduleeq" title="Permalink to this equation">#</a></span>\[\alpha(t) = \frac{\alpha_0}{\left(1 + \frac{t}{s}\right)^c} \; ,\]</div>
+<span class="eqno">(121)<a class="headerlink" href="#equation-powerscheduleeq" title="Permalink to this equation">#</a></span>\[\alpha(t) = \frac{\alpha_0}{\left(1 + \frac{t}{s}\right)^c} \; ,\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha_0\)</span> is the initial learning rate. The steps <span class="math notranslate nohighlight">\(s\)</span> and power <span class="math notranslate nohighlight">\(c\)</span> (usually 1) are hyperparameters. The learning rate drops at each step; e.g. after <span class="math notranslate nohighlight">\(s\)</span> steps it is divided by 2 (assuming <span class="math notranslate nohighlight">\(c\)</span> = 1).</p>
 </section>
 <section id="time-based-decay-scheduling">
 <h3>Time-Based Decay Scheduling<a class="headerlink" href="#time-based-decay-scheduling" title="Permalink to this headline">#</a></h3>
 <p>The time-based learning rate scheduler is often the standard (e.g. the default implementation in Keras library). It is controlled by a decay parameter <span class="math notranslate nohighlight">\(d = \frac{\alpha_0}{N}\)</span>, where <span class="math notranslate nohighlight">\(N\)</span> is the number of epochs. It is similar (a particular case even) to the power scheduling:</p>
 <div class="math notranslate nohighlight" id="equation-timebaseddecayeq">
-<span class="eqno">(120)<a class="headerlink" href="#equation-timebaseddecayeq" title="Permalink to this equation">#</a></span>\[\alpha(t) = \alpha_0 \times \frac{1}{1 + d \times t} \]</div>
+<span class="eqno">(122)<a class="headerlink" href="#equation-timebaseddecayeq" title="Permalink to this equation">#</a></span>\[\alpha(t) = \alpha_0 \times \frac{1}{1 + d \times t} \]</div>
 <p>As compared to a linear decrease, time-based decay causes learning rate to decrease faster upon training start, and much slower later (see graph below).</p>
 </section>
 <section id="exponential-decay-scheduling">
@@ -988,11 +988,11 @@ AdaGrad performs well on simple problem, like linear regression. With neural net
 <h3>RMSProp<a class="headerlink" href="#rmsprop" title="Permalink to this headline">#</a></h3>
 <p>RMSProp stands for Root Mean Square Propagation. It works the same as AdaGrad except that it keeps track of an exponentially decaying average of past squared gradients:</p>
 <div class="math notranslate nohighlight" id="equation-rmspropeq">
-<span class="eqno">(121)<a class="headerlink" href="#equation-rmspropeq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+<span class="eqno">(123)<a class="headerlink" href="#equation-rmspropeq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
 \boldsymbol{s} \; &amp;\leftarrow \; \beta\boldsymbol{s}  \;+\;  (1 - \beta) \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \;\otimes \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \\[2ex]
 \boldsymbol{W} \; &amp;\leftarrow \; \boldsymbol{W} - \alpha \; \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \oslash \sqrt{\boldsymbol{s} + \epsilon}
 \end{align*}\end{split}\]</div>
-<p>with the decay rate <span class="math notranslate nohighlight">\(\beta\)</span>, between 0 and 1, yet typically set to 0.9. One might ask: what is the point to introduce an extra hyparameter? It turns out the default value works well in most cases and does not require tuning. What the update in the expressions <a class="reference internal" href="#equation-rmspropeq">(121)</a> shows is a recursive way of computing a so-called Exponential Moving Average (EMA). In other words, <span class="math notranslate nohighlight">\(\beta\)</span> acts as a constant smoothing factor, representing the degree of weighting increase. A lower <span class="math notranslate nohighlight">\(\beta\)</span> discounts older observations faster. A higher <span class="math notranslate nohighlight">\(\beta\)</span> gives more weight to the previous gradient, a bit less weight to the previous previous gradient, etc.</p>
+<p>with the decay rate <span class="math notranslate nohighlight">\(\beta\)</span>, between 0 and 1, yet typically set to 0.9. One might ask: what is the point to introduce an extra hyparameter? It turns out the default value works well in most cases and does not require tuning. What the update in the expressions <a class="reference internal" href="#equation-rmspropeq">(123)</a> shows is a recursive way of computing a so-called Exponential Moving Average (EMA). In other words, <span class="math notranslate nohighlight">\(\beta\)</span> acts as a constant smoothing factor, representing the degree of weighting increase. A lower <span class="math notranslate nohighlight">\(\beta\)</span> discounts older observations faster. A higher <span class="math notranslate nohighlight">\(\beta\)</span> gives more weight to the previous gradient, a bit less weight to the previous previous gradient, etc.</p>
 <p>For more elaborated tasks than the simple linear case, RMSProp is robust. It reigned until dethrowned by a newcomer called Adam. Before introducing Adam, let’s first cover the notion of momentum optimization.</p>
 </section>
 <section id="momentum-optimization">
@@ -1018,7 +1018,7 @@ AdaGrad performs well on simple problem, like linear regression. With neural net
 <p>Adam stands for <em>Adaptative moment estimation</em>. It merges RMSProp with momentum optimization. Recall that RMSProp uses an exponentially decaying average of past squared gradients, while momentum does the same except with gradients (not squared).</p>
 <p>Mathematically:</p>
 <div class="math notranslate nohighlight" id="equation-adameq">
-<span class="eqno">(122)<a class="headerlink" href="#equation-adameq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+<span class="eqno">(124)<a class="headerlink" href="#equation-adameq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
 \boldsymbol{m} \; &amp;\leftarrow \; \beta_1 \boldsymbol{m} \; - \; (1 - \beta_1) \; \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}}\\[1ex]
 \boldsymbol{s} \; &amp;\leftarrow \; \; \beta_2\boldsymbol{s}  \;+\;  (1 - \beta_2) \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \otimes  \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \\[1ex]
 \boldsymbol{\widehat{m}} &amp;\leftarrow \frac{\boldsymbol{m}}{1 - \beta_1^t} \\[1ex]

@@ -89,10 +89,10 @@ __Start__
 __Step 0:__ Weight initialization
 
 __Step 1:__ Forward propagation:  
-$\qquad \qquad \qquad \qquad \Rightarrow$ get list of $m$ predictions $\boldsymbol{\hat{y}}$
+$\qquad \qquad \qquad \qquad \Rightarrow$ get list of $m$ predictions $\boldsymbol{\hat{y}^{(i)}}$
 
 __Step 2:__ Backpropagation:  
- $\qquad \qquad \qquad \qquad \Rightarrow$ get all errors $\boldsymbol{\delta}^{(\ell)}_{n^{\ell}}\\[2ex]$  
+ $\qquad \qquad \qquad \qquad \Rightarrow$ get all errors $\boldsymbol{\delta}^{(i, \: \ell)}_{n^{\ell}}$ using observations $\boldsymbol{y^{(i)}} \\[2ex]$  
 $\qquad \qquad \qquad \qquad \Rightarrow$ sum errors and get all cost derivatives: 
 ```{math}
 \frac{\partial \text{ Cost}}{\partial W^{(\ell)}} \qquad ; \qquad \frac{\partial \text{ Cost}}{\partial \boldsymbol{b}^{(\ell)}}
@@ -118,7 +118,7 @@ __Exit conditions:__
 Now there will be math.
 
 ### What is the goal?
-Always a good question to start. We want to tweak the weights $\boldsymbol{W}$ and biases $\boldsymbol{b}$ so that the network predictions $\boldsymbol{\hat{y}}$ get as close as they can be to the observed values $\boldsymbol{y}$. In other words, we want to know how to change the weights and biases so that we minimize the cost: 
+Always a good question to start. We want to tweak the weights $\boldsymbol{W}$ and biases $\boldsymbol{b}$ so that the network predictions $\boldsymbol{\hat{y}^{(i)}}$ get as close as they can be to the observed values $\boldsymbol{y^{(i)}}$. For all samples $i$ of the training dataset. In other words, we want to know how to change the weights and biases so that we minimize the cost: 
 ```{math}
 :label: costnnmineq
  \min_{\boldsymbol{W},\boldsymbol{b}} \text{ Cost}(\boldsymbol{W},\boldsymbol{b})
@@ -150,34 +150,37 @@ Equation {eq}`partialdevcostWbeq` can be overwhelming, especially given the nume
 Let's first rewrite the activation unit equation as a function of a function. We saw in the previous lecture:
 ```{math}
 :label: activvalueeq
-\boldsymbol{a}^{(\ell)} = f\left( \; \boldsymbol{a}^{(\ell -1)} \;W^{(\ell)} \;+\; \boldsymbol{b}^{(\ell)} \;\right) \;,
+\boldsymbol{a^{(i, \: \ell)}} = f\left[ \; \left(W^{(\ell)}\right)^\top \; \boldsymbol{a^{(i, \: \ell -1)}} \;+\; \boldsymbol{b^{(\ell)}} \;\right]
 ```
-with $f$ the node's activation function and $\ell$ is the current layer of the activation unit. Let's split the notation by defining a function, noted $z$, for the sum only:
+with $f$ the node's activation function and $\ell$ is the current layer of the activation unit. Let's split the notation by extracting the sum:
 ```{math}
 :label: zfunceq
-\boldsymbol{z}^{(\ell)} = \boldsymbol{a}^{(\ell-1)} W^{(\ell)} + \boldsymbol{b}^{(\ell)}
+\boldsymbol{z^{(i, \: \ell)}} = \left(W^{(\ell)}\right)^\top \; \boldsymbol{a^{(i, \: \ell -1)}} \;+\; \boldsymbol{b^{(\ell)}}
 ```
 
 This would be called the "weighted sum plus bias." So then each activation unit can be computed as:
+````{margin}
+$\boldsymbol{z^{(i, \: \ell)}}$ has the same shape as $\boldsymbol{a^{(i, \: \ell)}}$.  
+It is a column vector of size ($n_{\ell}$, 1), with $n_{\ell}$ the number of nodes on the layer $\ell$.
+````
 ```{math}
 :label: afzeq
-\boldsymbol{a}^{(\ell)} = f(\boldsymbol{z}^{(\ell)})
+\boldsymbol{a}^{(i, \: \ell)} = f \left(\boldsymbol{z}^{(i, \: \ell)} \right)
 ```
 
 We will denote the loss function through a general form as $L$:
 ```{math}
 :label: lossfunceq
-L\left(\hat{y}^{(i)}, y^{(i)}\right) 
+L\left(\boldsymbol{\hat{y}^{(i)}}, \boldsymbol{y^{(i)}} \right) 
 ```
-It is computed for each sample instance $\left\{ \boldsymbol{x^{(i)}}, y^{(i)} \right\}$, with $\boldsymbol{x^{(i)}} = (x_1^{(i)}, x_2^{(i)}, \cdots, x_n^{(i)})$ being one row of input features and $y^{(i)}$ the associated target. 
+It is computed for each sample instance $\left\{ \boldsymbol{x^{(i)}}, y^{(i)} \right\}$, with $\left(\boldsymbol{x^{(i)}}\right)^\top = (x_1^{(i)}, x_2^{(i)}, \cdots, x_n^{(i)})^\top$ being the vector of $n$ input features and $y^{(i)}$ the associated target.
 
-The cost is the sum of the losses over all data instances $m$. To make the equations of the following section more readable, the sum will be written without instance indices as superscript (already used for the layer number); it is implied that it is the sum over all data instances. 
+The cost is the sum of the losses over all data instances $m$.
 
 ```{math}
 :label: costfunceq
-\text{Cost} = \frac{1}{m} \sum_{i=1}^m L\left(\hat{y}^{(i)}, y^{(i)}\right) = \frac{1}{m} \sum L\left(\boldsymbol{\hat{y}}, \boldsymbol{y}\right)
+\text{Cost} = \frac{1}{m} \sum_{i=1}^m L\left(\hat{y}^{(i)}, y^{(i)}\right) 
 ```
-Here $\boldsymbol{\hat{y}}$ and $\boldsymbol{y}$ are in bold to show there are __lists__ (of $m$ elements).
 
 __How can we express the final output $\boldsymbol{\hat{y}}$?__  
 Let's take a similar network as the one in the previous lecture but layers are labeled from the last one (right) in decreasing order:
@@ -194,12 +197,12 @@ Let's take a similar network as the one in the previous lecture but layers are l
 The final prediction $\hat{y}^{(i)}$ is the output of the activation unit in the last layer:
 ```{math}
 :label: ypredaL
-\hat{y}_1^{(i)} = a_1^{(L,i)} 
+\hat{y}_1^{(i)} = a_1^{(i, \: L)} 
 ```
-In the network above, there is only one activation unit, so we can omit the subscript. But there is a prediction for each data sample. The collection of $m$ predictions will be a column vector $\boldsymbol{\hat{y}}$. So let's write the predictions and activation units in bold:
+In the network above, there is only one activation unit, so we can omit the subscript. If the network has $K$ outputs instead of one, we would have column vectors of $K$ elements:
 ```{math}
 :label: ypredbold
-\boldsymbol{\hat{y}} = \boldsymbol{a}^{(L)}
+\boldsymbol{\hat{y}^{(i)}} = \boldsymbol{a^{(i, \: L)}}
 ```
 
 So far, so good. Now the cost.
@@ -210,9 +213,11 @@ So far, so good. Now the cost.
 The cost function is obtained using Equations {eq}`afzeq`, {eq}`costfunceq` and {eq}`ypredbold`:
 ```{math}
 :label: costlossafzeq
-\text{Cost} = \frac{1}{m} \sum L\left(\boldsymbol{\hat{y}}, \boldsymbol{y}\right) = \frac{1}{m} \sum L\left(\boldsymbol{a}^{(L)}, \boldsymbol{y}\right) = \frac{1}{m} \sum L(f(\boldsymbol{z}^{(L)}), \boldsymbol{y}) 
+\text{Cost} = \frac{1}{m} \sum_{i=1}^m L\left(\boldsymbol{\hat{y}^{(i)}}, \boldsymbol{y^{(i)}}\right) = \frac{1}{m} \sum_{i=1}^m L\left(\boldsymbol{a^{(i, \: L)}}, \boldsymbol{y^{(i)}}\right) = \frac{1}{m} \sum_{i=1}^m L(f(\boldsymbol{z^{(i, \: L)}}), \boldsymbol{y^{(i)}}) 
 ```
 *** 
+
+There are three functions here: $L ( \: f( \: z ( \:\boldsymbol{W, b} ) ) )$. 
 
 Let's joyfully take the derivatives of that sandwich of functions! Now do you get the chain rule refresher? 
 
@@ -221,23 +226,42 @@ We will use it, starting with the last layer and see how things simplify (yes, i
 
 ### The backward walk
 As its name indicates, the backward propagation proceeds from the last to the first input layer. 
-Let's write the derivative of the cost function with respect to the weight matrix of the last layer:
+Let's write the derivative of the cost function with respect to the weight matrix of the last layer and apply the chain rule:
 ```{math}
 :label: dCostlastchaineq
-\frac{\partial \text { Cost }}{\partial \; W^{(L)}} = \; \frac{1}{m} \sum \; \frac{\partial L(f(\boldsymbol{z}^{(L)}), \boldsymbol{y})}{\partial \; W^{(L)}} = \; \frac{1}{m} \sum \; \frac{\partial L(f(\boldsymbol{z}^{(L)}), \boldsymbol{y})}{\partial f(\boldsymbol{z}^{(L)})} \; \cdot \; \frac{\partial f(\boldsymbol{z}^{(L)})}{\partial \boldsymbol{z}^{(L)}} \; \cdot \; \frac{\partial \boldsymbol{z}^{(L)}}{\partial W^{(L)}} 
+\begin{align*}
+\frac{\partial \text { Cost }}{\partial \; W^{(L)}} &= \; \frac{1}{m} \sum_{i=1}^m \; \frac{\partial L(f(\boldsymbol{z^{(i, \: L)}}), \boldsymbol{y^{(i)}})}{\partial \; W^{(L)}} \\[2ex]
+&= \; \frac{1}{m} \sum_{i=1}^m \; \frac{\partial L(f(\boldsymbol{z^{(i, \: L)}}), \boldsymbol{y})}{\partial f(\boldsymbol{z^{(i, \: L)}})} \; \cdot \;  \frac{\partial f(\boldsymbol{z^{(i, \: L)}})}{\partial \boldsymbol{z^{(i, \: L)}}} \; \cdot \; \frac{\partial \boldsymbol{z^{(i, \: L)}}}{\partial W^{(L)}}
+\end{align*}
 ```
 
-We can simplify things. The first term is the derivative of the loss function with $f(\boldsymbol{z}^{(L)}) = \boldsymbol{a}^{(L)}$ as argument. It's a value here, computed with all weights values. Same for the second term: it is the derivative of the activation function taken for the value $\boldsymbol{z}^{(L)}$. For the third, we use the definition in Equation {eq}`zfunceq` that yields: $\left( \boldsymbol{z}^{(L)} \right)^{\prime} = \boldsymbol{a}^{(L-1)}$. We can write:
-
+We can simplify things. The first term is the derivative of the loss function with argument $f(\boldsymbol{z^{(i, \: L)}}) = \boldsymbol{a^{(i, \: L)}}$:
 ```{math}
-:label: dCostlastsimpleeq
-\frac{\partial \text { Cost }}{\partial W^{(L)}}
-= \; \frac{1}{m}\; \sum \;\; L^{\prime}(\boldsymbol{a}^{(L)}, \boldsymbol{y}) 
-\;\cdot \; f^{\prime}(\boldsymbol{z}^{(L)}) 
-\;\cdot \; \boldsymbol{a}^{(L-1)}
+:label: dCostlprime
+\frac{\partial L(f(\boldsymbol{z^{(i, \: L)}}), \boldsymbol{y^{(i)}})}{\partial f(\boldsymbol{z^{(i, \: L)}})} = L^{\prime}(\boldsymbol{a^{(i, \: L)}}, \boldsymbol{y^{(i)}})
+```
+We have done the forward propagation, so we have access to the values for all the $\boldsymbol{a^{(i, \: L)}}$. This term is known!
+
+Same for the second term, which is the derivative of the activation function evaluated at $\boldsymbol{z^{(i, \: L)}}$:
+```{math}
+:label: dCostfprime
+\frac{\partial f(\boldsymbol{z^{(i, \: L)}})}{\partial \boldsymbol{z^{(i, \: L)}}} = f'(\boldsymbol{z^{(i, \: L)}})
+```
+This is also known!
+
+For the third term, let's recall the definition of the $z$ function in Equation {eq}`zfunceq`. With a bit of math, we can show that: 
+```{math}
+:label: dCostdzdwlastlayer
+\frac{\partial \boldsymbol{z^{(i, \: L)}}}{\partial W^{(L)}} = \boldsymbol{a^{(i, \: L-1)}}
 ```
 
-This is known! We can compute a value for this derivative!
+We actually know all these terms! 
+
+Before we continue to the before-last layer, let's first consider the dimensions of this product of three derivatives. What do we want? Looking at the left hand side of equation {eq}`dCostlastchaineq`, the cost is a scalar and the weight matrix $W^{(L)}$ is of shape $n_{L-1} \times n_L$, where $n_{L-1}$ and $n_L$ are the number of nodes in the before-last and last layers respectively. Eventually, we will update each weight using the gradient descent method. So our term $\frac{\partial \text { Cost }}{\partial \; W^{(L)}}$ should be of shape $n_{L-1} \times n_L$.
+
+
+LINEOFPROGRESS: below is not redone with new notation.
+
 
 Now let's proceed to the before last layer. Using the chain rule as usual:
 ```{math}
