@@ -22,15 +22,15 @@ The loss function is not to be confused with the hypothesis function $h_{W,b}(x^
 This is not to be confused with the activation function either, which only gets the neural network inputs (training data, weights and biases) and does not perform any comparison with the observed values $\boldsymbol{y}$).
 ```
 
-We saw that forward propagation 'fills' in the network with values for all activation units using the weight matrices $W^{(1)}, W^{(2)}, \cdots, W^{L}$ and biases $\boldsymbol{b^{(1)}}, \boldsymbol{b^{(2)}}, \cdots \boldsymbol{b^{(L)}}$, up to the last layer $L$ being the output layer:
+We saw that forward propagation 'fills' in the network with values for all activation units using the weight matrices $W^{(1)}, W^{(2)}, \cdots, W^{L}$ and biases $\boldsymbol{b}^{(1)}, \boldsymbol{b}^{(2)}, \cdots \boldsymbol{b}^{(L)}$, up to the last layer $L$ being the output layer:
 ```{math}
 :label: aLasteq
-\boldsymbol{a^{(i, \: L)}} = f\left[ \; \left(W^{(L)}\right)^\top \; \boldsymbol{a^{(i, \: L -1)}} \;+\; \boldsymbol{b^{(L)}} \;\right]
+\boldsymbol{a}^{(i, \: L)} = f\left[ \; \left(W^{(L)}\right)^\top \; \boldsymbol{a}^{(i, \: L -1)} \;+\; \boldsymbol{b}^{(L)} \;\right]
 ```
 
 If the last layer contains $K$ output nodes, we can write the elements of vector 
 ```{math}
-\boldsymbol{a^{(i, \: L)}} = \begin{pmatrix} 
+\boldsymbol{a}^{(i, \: L)} = \begin{pmatrix} 
 a^{L}_1 \\
 a^{L}_2 \\
 \cdots \\
@@ -59,7 +59,7 @@ For several output nodes, we sum all losses:
 
 ```{math}
 :label: lossmsekeq
-L \left(\;\boldsymbol{\hat{y}^{(i)}}, \boldsymbol{y^{(i)}}\;\right)= \sum_{k = 1}^K  \left( \hat{y}^{(i)}_k - y^{(i)}_k \right)^2
+L \left(\;\boldsymbol{\hat{y}}^{(i)}, \boldsymbol{y}^{(i)};\right)= \sum_{k = 1}^K  \left( \hat{y}^{(i)}_k - y^{(i)}_k \right)^2
 ```
 with the $k$ indices being the prediction or observed value for the node $k$.
 
@@ -105,27 +105,27 @@ J \left(\;\boldsymbol{\hat{y}}, \boldsymbol{y}\;\right) = - \frac{1}{m} \sum_{i=
 ```
 
 ````{margin}
-Recall that $\boldsymbol{\hat{y}^{(i)}} = h_{\boldsymbol{W},\boldsymbol{b}}(\boldsymbol{x^{(i)}})$.
+Recall that $\boldsymbol{\hat{y}}^{(i)} = h_{\boldsymbol{W},\boldsymbol{b}}(\boldsymbol{x}^{(i)})$.
 ````
-There is nothing new here, except that the predictions $\boldsymbol{\hat{y}^{(i)}}$ from the hypothesis function are not a linear function but the output of the entire neural network forward propagation.
+There is nothing new here, except that the predictions $\boldsymbol{\hat{y}}^{(i)}$ from the hypothesis function are not a linear function but the output of the entire neural network forward propagation.
 
 ### Categorical Cross-Entropy
 A neural network with one output node will classify from two classes: $y=1$ and $y=0$. The cross-entropy is the sum of the actual outcome multiplied by the logarithm of the outcome predicted by the model. If we have more than two classes, we can write the outcome of a given training data instance $i$ as a vector:
 ```{math}
 :label: catvecobseq
-\boldsymbol{y^{(i)}} = ( 1, 0, 0, \cdots 0)
+\boldsymbol{y}^{(i)} = ( 1, 0, 0, \cdots 0)
 ```
-of K elements, where K is the number of output nodes. A sample belonging to the class $k$ corresponds to the row index $k$. For instance a sample of the second class (the order is to be defined by convention) would be $\boldsymbol{y^{(i)}} = (0, 1, 0, \cdots 0 )$. 
+of K elements, where K is the number of output nodes. A sample belonging to the class $k$ corresponds to the row index $k$. For instance a sample of the second class (the order is to be defined by convention) would be $\boldsymbol{y}^{(i)} = (0, 1, 0, \cdots 0 )$. 
 
 A multi-class neural network would produce vectorial predictions for one sample of the form:
 ```{math}
 :label: ypredmulticlasseq
-\boldsymbol{\hat{y}^{(i)}} = (0.15, 0.68, \cdots , 0.03)
+\boldsymbol{\hat{y}}^{(i)} = (0.15, 0.68, \cdots , 0.03)
 ```
 ````{margin}
 The categorical cross-entropy is appropriate in combination with an activation function such as the softmax that can produce several probabilities for the number of classes that sum up to 1.
 ````
-Mutually exclusive classes would mean that for each $\boldsymbol{\hat{y}^{(i)}} = (\hat{y}^{(i)}_1, \hat{y}^{(i)}_2, \cdots, \hat{y}^{(i)}_K)$, all output values should add up to 1:
+Mutually exclusive classes would mean that for each $\boldsymbol{\hat{y}}^{(i)} = (\hat{y}^{(i)}_1, \hat{y}^{(i)}_2, \cdots, \hat{y}^{(i)}_K)$, all output values should add up to 1:
 ```{math}
 :label: ymulticlassoneeq
 \sum_{k=1}^K \; \hat{y}^{(i)}_k = 1
@@ -156,7 +156,7 @@ J \left(\;\boldsymbol{\hat{y}}, \boldsymbol{y}\;\right) = \frac{1}{m} \sum_{i=1}
 
 The triple sum is daunting but let's decompose it: it's the sum of all matrices $W^{(\ell)}$ of the network. For each of them, the weights are squared and added together (those are the two last sums). The equation above corresponds to the Lasso's regularization (introduced in Lecture 3 subsection {ref}`class:algs:reg:lasso`). The Ridge regularization would sum only the weights without squaring them.
 
-Recall that the regularization does not include the intercept term, which was written as $\theta_0$ in logistic regression. With the matrices $W^{(\ell)}$ we are safe as they do not contain any bias terms. Biases are gathered as separate vectors $\boldsymbol{b^{(\ell)}}$. 
+Recall that the regularization does not include the intercept term, which was written as $\theta_0$ in logistic regression. With the matrices $W^{(\ell)}$ we are safe as they do not contain any bias terms. Biases are gathered as separate vectors $\boldsymbol{b}^{(\ell)}$. 
 
 &nbsp;
 

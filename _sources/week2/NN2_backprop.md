@@ -89,10 +89,10 @@ __Start__
 __Step 0:__ Weight initialization
 
 __Step 1:__ Forward propagation:  
-$\qquad \qquad \qquad \qquad \Rightarrow$ get list of $m$ predictions $\boldsymbol{\hat{y}^{(i)}}$
+$\qquad \qquad \qquad \qquad \Rightarrow$ get list of $m$ predictions $\boldsymbol{\hat{y}}^{(i)}$
 
 __Step 2:__ Backpropagation:  
- $\qquad \qquad \qquad \qquad \Rightarrow$ get all errors $\boldsymbol{\delta}^{(i, \: \ell)}_{n^{\ell}}$ using observations $\boldsymbol{y^{(i)}} \\[2ex]$  
+ $\qquad \qquad \qquad \qquad \Rightarrow$ get all errors $\boldsymbol{\delta}^{(i, \: \ell)}$ using observations $\boldsymbol{y}^{(i)} \\[2ex]$  
 $\qquad \qquad \qquad \qquad \Rightarrow$ sum errors and get all cost derivatives: 
 ```{math}
 \frac{\partial \text{ Cost}}{\partial W^{(\ell)}} \qquad ; \qquad \frac{\partial \text{ Cost}}{\partial \boldsymbol{b}^{(\ell)}}
@@ -118,7 +118,7 @@ __Exit conditions:__
 Now there will be math.
 
 ### What is the goal?
-Always a good question to start. We want to tweak the weights $\boldsymbol{W}$ and biases $\boldsymbol{b}$ so that the network predictions $\boldsymbol{\hat{y}^{(i)}}$ get as close as they can be to the observed values $\boldsymbol{y^{(i)}}$. For all samples $i$ of the training dataset. In other words, we want to know how to change the weights and biases so that we minimize the cost: 
+Always a good question to start. We want to tweak the weights $\boldsymbol{W}$ and biases $\boldsymbol{b}$ so that the network predictions $\boldsymbol{\hat{y}}^{(i)}$ get as close as they can be to the observed values $\boldsymbol{y}^{(i)}$. For all samples $i$ of the training dataset. In other words, we want to know how to change the weights and biases so that we minimize the cost: 
 ```{math}
 :label: costnnmineq
  \min_{\boldsymbol{W},\boldsymbol{b}} \text{ Cost}(\boldsymbol{W},\boldsymbol{b})
@@ -150,17 +150,17 @@ Equation {eq}`partialdevcostWbeq` can be overwhelming, especially given the nume
 Let's first rewrite the activation unit equation as a function of a function. We saw in the previous lecture:
 ```{math}
 :label: activvalueeq
-\boldsymbol{a^{(i, \: \ell)}} = f\left[ \; \left(W^{(\ell)}\right)^\top \; \boldsymbol{a^{(i, \: \ell -1)}} \;+\; \boldsymbol{b^{(\ell)}} \;\right]
+\boldsymbol{a}^{(i, \: \ell)} = f\left[ \; \left(W^{(\ell)}\right)^\top \; \boldsymbol{a}^{(i, \: \ell -1)} \;+\; \boldsymbol{b}^{(\ell)} \;\right]
 ```
 with $f$ the node's activation function and $\ell$ is the current layer of the activation unit. Let's split the notation by extracting the sum:
 ```{math}
 :label: zfunceq
-\boldsymbol{z^{(i, \: \ell)}} = \left(W^{(\ell)}\right)^\top \; \boldsymbol{a^{(i, \: \ell -1)}} \;+\; \boldsymbol{b^{(\ell)}}
+\boldsymbol{z}^{(i, \: \ell)} = \left(W^{(\ell)}\right)^\top \; \boldsymbol{a}^{(i, \: \ell -1)} \;+\; \boldsymbol{b}^{(\ell)}
 ```
 
 This would be called the "weighted sum plus bias." So then each activation unit can be computed as:
 ````{margin}
-$\boldsymbol{z^{(i, \: \ell)}}$ has the same shape as $\boldsymbol{a^{(i, \: \ell)}}$.  
+$\boldsymbol{z}^{(i, \: \ell)}$ has the same shape as $\boldsymbol{a}^{(i, \: \ell)}$.  
 It is a column vector of size ($n_{\ell}$, 1), with $n_{\ell}$ the number of nodes on the layer $\ell$.
 ````
 ```{math}
@@ -171,9 +171,9 @@ It is a column vector of size ($n_{\ell}$, 1), with $n_{\ell}$ the number of nod
 We will denote the loss function through a general form as $L$:
 ```{math}
 :label: lossfunceq
-L\left(\boldsymbol{\hat{y}^{(i)}}, \boldsymbol{y^{(i)}} \right) 
+L\left(\boldsymbol{\hat{y}}^{(i)}, \boldsymbol{y}^{(i)} \right) 
 ```
-It is computed for each sample instance $\left\{ \boldsymbol{x^{(i)}}, y^{(i)} \right\}$, with $\left(\boldsymbol{x^{(i)}}\right)^\top = (x_1^{(i)}, x_2^{(i)}, \cdots, x_n^{(i)})^\top$ being the vector of $n$ input features and $y^{(i)}$ the associated target.
+It is computed for each sample instance $\left\{ \boldsymbol{x}^{(i)}, y^{(i)} \right\}$, with $\left(\boldsymbol{x}^{(i)}\right)^\top = (x_1^{(i)}, x_2^{(i)}, \cdots, x_n^{(i)})^\top$ being the vector of $n$ input features and $y^{(i)}$ the associated target.
 
 The cost is the sum of the losses over all data instances $m$.
 
@@ -202,7 +202,7 @@ The final prediction $\hat{y}^{(i)}$ is the output of the activation unit in the
 In the network above, there is only one activation unit, so we can omit the subscript. If the network has $K$ outputs instead of one, we would have column vectors of $K$ elements:
 ```{math}
 :label: ypredbold
-\boldsymbol{\hat{y}^{(i)}} = \boldsymbol{a^{(i, \: L)}}
+\boldsymbol{\hat{y}}^{(i)} = \boldsymbol{a}^{(i, \: L)}
 ```
 
 So far, so good. Now the cost.
@@ -213,7 +213,7 @@ So far, so good. Now the cost.
 The cost function is obtained using Equations {eq}`afzeq`, {eq}`costfunceq` and {eq}`ypredbold`:
 ```{math}
 :label: costlossafzeq
-\text{Cost} = \frac{1}{m} \sum_{i=1}^m L\left(\boldsymbol{\hat{y}^{(i)}}, \boldsymbol{y^{(i)}}\right) = \frac{1}{m} \sum_{i=1}^m L\left(\boldsymbol{a^{(i, \: L)}}, \boldsymbol{y^{(i)}}\right) = \frac{1}{m} \sum_{i=1}^m L(f(\boldsymbol{z^{(i, \: L)}}), \boldsymbol{y^{(i)}}) 
+\text{Cost} = \frac{1}{m} \sum_{i=1}^m L\left(\boldsymbol{\hat{y}}^{(i)}, \boldsymbol{y}^{(i)}\right) = \frac{1}{m} \sum_{i=1}^m L\left(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}\right) = \frac{1}{m} \sum_{i=1}^m L(f(\boldsymbol{z}^{(i, \: L)}), \boldsymbol{y}^{(i)}) 
 ```
 *** 
 
@@ -230,81 +230,126 @@ Let's write the derivative of the cost function with respect to the weight matri
 ```{math}
 :label: dCostlastchaineq
 \begin{align*}
-\frac{\partial \text { Cost }}{\partial \; W^{(L)}} &= \; \frac{1}{m} \sum_{i=1}^m \; \frac{\partial L(f(\boldsymbol{z^{(i, \: L)}}), \boldsymbol{y^{(i)}})}{\partial \; W^{(L)}} \\[2ex]
-&= \; \frac{1}{m} \sum_{i=1}^m \; \frac{\partial L(f(\boldsymbol{z^{(i, \: L)}}), \boldsymbol{y})}{\partial f(\boldsymbol{z^{(i, \: L)}})} \; \cdot \;  \frac{\partial f(\boldsymbol{z^{(i, \: L)}})}{\partial \boldsymbol{z^{(i, \: L)}}} \; \cdot \; \frac{\partial \boldsymbol{z^{(i, \: L)}}}{\partial W^{(L)}}
+\frac{\partial \text { Cost }}{\partial \; W^{(L)}} &= \; \frac{1}{m} \sum_{i=1}^m \; \frac{\partial L(f(\boldsymbol{z}^{(i, \: L)}), \boldsymbol{y}^{(i)})}{\partial \; W^{(L)}} \\[2ex]
+&= \; \frac{1}{m} \sum_{i=1}^m \; \frac{\partial L(f(\boldsymbol{z}^{(i, \: L)}), \boldsymbol{y}^{(i)})}{\partial f(\boldsymbol{z}^{(i, \: L)})} \; \cdot \;  \frac{\partial f(\boldsymbol{z}^{(i, \: L)})}{\partial \boldsymbol{z}^{(i, \: L)}} \; \cdot \; \frac{\partial \boldsymbol{z}^{(i, \: L)}}{\partial W^{(L)}}
 \end{align*}
 ```
 
-We can simplify things. The first term is the derivative of the loss function with argument $f(\boldsymbol{z^{(i, \: L)}}) = \boldsymbol{a^{(i, \: L)}}$:
+For now, the dot "$\cdot$" is ill-defined. We will write proper matrix products later. We can simplify things. The first term is the derivative of the loss function with argument $f(\boldsymbol{z}^{(i, \: L)}) = \boldsymbol{a}^{(i, \: L)}$:
 ```{math}
 :label: dCostlprime
-\frac{\partial L(f(\boldsymbol{z^{(i, \: L)}}), \boldsymbol{y^{(i)}})}{\partial f(\boldsymbol{z^{(i, \: L)}})} = L^{\prime}(\boldsymbol{a^{(i, \: L)}}, \boldsymbol{y^{(i)}})
+\frac{\partial L(f(\boldsymbol{z}^{(i, \: L)}), \boldsymbol{y}^{(i)})}{\partial f(\boldsymbol{z}^{(i, \: L)})} = L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)})
 ```
-We have done the forward propagation, so we have access to the values for all the $\boldsymbol{a^{(i, \: L)}}$. This term is known!
+We have done the forward propagation, so we have access to the values for all the $\boldsymbol{a}^{(i, \: L)}$. This term is known!
 
-Same for the second term, which is the derivative of the activation function evaluated at $\boldsymbol{z^{(i, \: L)}}$:
+Same for the second term, which is the derivative of the activation function evaluated at $\boldsymbol{z}^{(i, \: L)}$:
 ```{math}
 :label: dCostfprime
-\frac{\partial f(\boldsymbol{z^{(i, \: L)}})}{\partial \boldsymbol{z^{(i, \: L)}}} = f'(\boldsymbol{z^{(i, \: L)}})
+\frac{\partial f(\boldsymbol{z}^{(i, \: L)})}{\partial \boldsymbol{z}^{(i, \: L)}} = f'(\boldsymbol{z}^{(i, \: L)})
 ```
 This is also known!
 
-For the third term, let's recall the definition of the $z$ function in Equation {eq}`zfunceq`. With a bit of math, we can show that: 
+For the third term, let's recall the definition of the $z$ function in Equation {eq}`zfunceq`.  
+
+With a bit of math, we can show that: 
 ```{math}
 :label: dCostdzdwlastlayer
-\frac{\partial \boldsymbol{z^{(i, \: L)}}}{\partial W^{(L)}} = \boldsymbol{a^{(i, \: L-1)}}
+\frac{\partial \boldsymbol{z}^{(i, \: L)}}{\partial W^{(L)}} = \boldsymbol{a}^{(i, \: L-1)}
 ```
 
 We actually know all these terms! 
 
-Before we continue to the before-last layer, let's first consider the dimensions of this product of three derivatives. What do we want? Looking at the left hand side of equation {eq}`dCostlastchaineq`, the cost is a scalar and the weight matrix $W^{(L)}$ is of shape $n_{L-1} \times n_L$, where $n_{L-1}$ and $n_L$ are the number of nodes in the before-last and last layers respectively. Eventually, we will update each weight using the gradient descent method. So our term $\frac{\partial \text { Cost }}{\partial \; W^{(L)}}$ should be of shape $n_{L-1} \times n_L$.
+__But how to combine them together properly?__  
+Let's first consider the dimensions of this product of three derivatives. What do we want? Looking at the left hand side of equation {eq}`dCostlastchaineq`, the cost is a scalar and the weight matrix $W^{(L)}$ is of shape $n_{L-1} \times n_L$, where $n_{L-1}$ and $n_L$ are the number of nodes in the before-last and last layers respectively. Eventually, we will update each weight using the gradient descent method. So our term $\frac{\partial \text { Cost }}{\partial \; W^{(L)}}$ should be of shape $n_{L-1} \times n_L$ as well. With a bit of math, using the index notation, we can show that the product will be: 
+
+```{math}
+:label: dCostfirstvectorouterprod
+\frac{\partial \text { Cost }}{\partial \; W^{(L)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: L-1)} \otimes \left[  f'(\boldsymbol{z}^{(i, \: L)}) \odot L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \right]^\top  \;,
+```
+where $\otimes$ is the outer product and $\odot$ denotes the element-wise multiplication between the two column vectors. You can check the outer product will be of the desired dimensions of $n_{L-1} \times n_L$.
 
 
-LINEOFPROGRESS: below is not redone with new notation.
-
-
-Now let's proceed to the before last layer. Using the chain rule as usual:
+__Now let's proceed to the before last layer.__  
+Using the chain rule as usual:
 ```{math}
 :label: dCostbeforelastchaineq
 \begin{align*}
-& \frac{\partial \text { Cost }}{\partial W^{(L-1)}} =  \; \frac{1}{m}  \\[1ex]
-& \sum \; \frac{\partial L(f(\boldsymbol{z}^{(L)}), \boldsymbol{y})}{\partial f(\boldsymbol{z}^{(L)})} \; \cdot \; \frac{\partial f(\boldsymbol{z}^{(L)})}{\partial \boldsymbol{z}^{(L)}} \; \cdot \; \frac{\partial \boldsymbol{z}^{(L)}}{\partial \boldsymbol{a}^{(L-1)}}  \; \cdot \; \frac{\partial \; \boldsymbol{a}^{(L-1)} }{\partial\;\boldsymbol{z}^{(L-1)} } \; \cdot \; \frac{\partial \; \boldsymbol{z}^{(L-1)} }{\partial\;W^{(L-1)} }
+& \frac{\partial \text { Cost }}{\partial W^{(L-1)}} =  \; \frac{1}{m}\sum_{i=1}^m  \\[1ex]
+& \frac{\partial L(f(\boldsymbol{z}^{(i, \: L)}), \boldsymbol{y}^{(i)})}{\partial f(\boldsymbol{z}^{(i, \: L)})} \; \cdot \;  \frac{\partial f(\boldsymbol{z}^{(i, \: L)})}{\partial \boldsymbol{z}^{(i, \: L)}} \;\cdot \; \frac{\partial \boldsymbol{z}^{(i, \: L)}}{\partial \boldsymbol{a}^{(i, \: L-1)}}  \; \cdot \; \frac{\partial \; \boldsymbol{a}^{(i, \: L-1)} }{\partial\;\boldsymbol{z}^{(i, \: L-1)} } \; \cdot \; \frac{\partial \; \boldsymbol{z}^{(i, \: L-1)} }{\partial\;W^{(L-1)} }
 \end{align*}
 ```
 
-The two first terms are identical as in Equation {eq}`dCostlastchaineq`. Using the definitions of $\boldsymbol{a}$ and $\boldsymbol{z}$ we have: 
+The two first terms are identical as in Equation {eq}`dCostlastchaineq`. For the remaining three terms, we can show using the definitions of $\boldsymbol{a}$ and $\boldsymbol{z}$: 
 ```{math}
 :label: beforeLasttermssimplereq
-\begin{gathered}
-\frac{\partial \boldsymbol{z}^{(L)}}{\partial \boldsymbol{a}^{(L-1)}}  \;=\; W^{(L)}  \qquad,\qquad \frac{\partial \; \boldsymbol{a}^{(L-1)} }{\partial\;\boldsymbol{z}^{(L-1)} } \;=\; f'(\boldsymbol{z}^{(L-1)}) \qquad,\qquad \frac{\partial \; \boldsymbol{z}^{(L-1)} }{\partial\;W^{(L-1)} } \;=\; \boldsymbol{a}^{(L-2)}
-\end{gathered}
+\begin{array}{c c c c c}
+\displaystyle\frac{\partial \: \boldsymbol{z}^{(i, \: L)} }{\partial\ \boldsymbol{a}^{(i, \: L-1)} } & \ & \displaystyle\frac{\partial \: \boldsymbol{a}^{(i, \: L-1)} }{\partial\ \boldsymbol{z}^{(i, \: L-1)} } & \ & \displaystyle\frac{\partial \: \boldsymbol{z}^{(i, \: L-1)} }{\partial\ W^{(L-1)} }\\[2ex]
+\downarrow & \ & \downarrow & \ & \downarrow\\[2ex]
+\displaystyle W^{(L)} & \ &\displaystyle f'(\boldsymbol{z}^{(i, \: L-1)}) & \ & \displaystyle \boldsymbol{a}^{(i, \: L-2)}
+\end{array}
 ```
 
-Therefore:
+How to properly multiply these matrix and vectors? Using again the index notation, we can reach with a bit of math this expression: 
 ```{math}
 :label: dCostbeforelastsimpleeq
-\frac{\partial \text { Cost }}{\partial W^{(L-1)}}
-= \; \frac{1}{m} \; \sum \;\; L^{\prime}(\boldsymbol{a}^{(L)}, \boldsymbol{y}) 
-\;\cdot \; f^{\prime}(\boldsymbol{z}^{(L)}) 
-\;\cdot \; W^{(L)}
-\;\cdot \; f'(\boldsymbol{z}^{(L-1)})
-\;\cdot \; \boldsymbol{a}^{(L-2)}
+\begin{align*}
+& \frac{\partial \text { Cost }}{\partial \; W^{(L-1)}} = \frac{1}{m} \sum_{i=1}^m \: \\[1ex] 
+& \boldsymbol{a}^{(i, \: L-2)} \otimes \left[ f'(\boldsymbol{z}^{(i, \: L-1)}) \odot \left[ W^{(L)} \left[  f'(\boldsymbol{z}^{(i, \: L)}) \: \odot \: L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \right] \right] \right]^\top  \:,
+\end{align*}
 ```
 
-You can check yourself that for the derivative with respect to $W^{(L-2)}$ we will have: 
+You can check yourself that for the derivative with respect to $W^{(L-2)}$ we will have (scroll to the right, it's lengthy):
 ```{math}
 :label: dCostbeforebeforelastsimpleeq
 \begin{align*}
-& \frac{\partial \text { Cost }}{\partial W^{(L-2)}} = \; \frac{1}{m}  \\[1ex]
-& \sum \;\; L^{\prime}(\boldsymbol{a}^{(L)}, \boldsymbol{y}) 
-\;\cdot \; f^{\prime}(\boldsymbol{z}^{(L)}) 
-\;\cdot \; W^{(L)}
-\;\cdot \; f'(\boldsymbol{z}^{(L-1)})
-\;\cdot \; W^{(L-1)} 
-\;\cdot \; f'(\boldsymbol{z}^{(L-2)}) 
-\;\cdot \; \boldsymbol{a}^{(L-3)} 
+& \frac{\partial \text { Cost }}{\partial W^{(L-2)}} = \; \frac{1}{m} \sum_{i=1}^m \\[2ex]
+&   \frac{\partial L(f(\boldsymbol{z}^{(i, \: L)}), \boldsymbol{y}^{(i)})}{\partial f(\boldsymbol{z}^{(i, \: L)})} \: \cdot \:  \frac{\partial f(\boldsymbol{z}^{(i, \: L)})}{\partial \boldsymbol{z}^{(i, \: L)}} \:\cdot \: \frac{\partial \boldsymbol{z}^{(i, \: L)}}{\partial \boldsymbol{a}^{(i, \: L-1)}}  \: \cdot \: \frac{\partial \: \boldsymbol{a}^{(i, \: L-1)} }{\partial\;\boldsymbol{z}^{(i, \: L-1)} } \: \cdot \: \frac{\partial \: \boldsymbol{z}^{(i, \: L-1)} }{\partial\ \boldsymbol{a}^{(i, \: L-2)} } \: \cdot \: \frac{\partial \: \boldsymbol{a}^{(i, \: L-2)} }{\partial\ \boldsymbol{z}^{(i, \: L-2)} } \: \cdot \: \frac{\partial \: \boldsymbol{z}^{(i, \: L-2)} }{\partial\ W^{(L-2)} }
 \end{align*}
 ```
+
+Here the first four terms are the same as in Equation {eq}`dCostbeforelastchaineq`. Instead of the last one, $\boldsymbol{a}^{(i, \: L-1)}$, we have three new terms, whose derivatives are obtained using again the definition of the $z$ function in Equation {eq}`zfunceq`.
+```{math}
+:label: threenewtermsWminus2
+\begin{array}{c c c c c}
+\displaystyle\frac{\partial \: \boldsymbol{z}^{(i, \: L-1)} }{\partial\ \boldsymbol{a}^{(i, \: L-2)} } & \ & \displaystyle\frac{\partial \: \boldsymbol{a}^{(i, \: L-2)} }{\partial\ \boldsymbol{z}^{(i, \: L-2)} } & \ & \displaystyle\frac{\partial \: \boldsymbol{z}^{(i, \: L-2)} }{\partial\ W^{(L-2)} }\\[2ex]
+\downarrow & \ & \downarrow & \ & \downarrow\\[2ex]
+\displaystyle W^{(L-1)} & \ &\displaystyle f'(\boldsymbol{z}^{(i, \: L-2)}) & \ & \displaystyle \boldsymbol{a}^{(i, \: L-3)}
+\end{array}
+```
+
+We will see more rigorously how these multiply together later. But can you start to see a pattern here?
+
+In the next section, we will write the terms with a much lighter notation to make this pattern more obvious. 
+
+
+### Memoization (and it's not a typo)
+This is a computer science term. It refers to an optimization technique to make computations faster, in particular by reusing previous calculations. This translates into storing intermediary results so that they are called again if needed, not recomputed. Recursive functions by definition reuse the outcomes of the previous iteration at the current one, so memoization is at play. 
+
+Let's illustrate this point by writing the derivative equations for a network with three hidden layers. The output layer will be $L = 4$. Let's write the backpropagation terms.
+
+```{warning}
+The lighter notations! 
+```
+
+```{math}
+:label: lastfoursimpleeq
+\begin{align*}
+\frac{\partial \text { Cost }}{\partial W^{(4)}} &= \; \frac{1}{m} \; \sum \; 
+{\color{OliveGreen}L^{\prime}(\boldsymbol{a}^{(4)}, \boldsymbol{y}) \cdot f^{\prime}(\boldsymbol{z}^{(4)})} \cdot \boldsymbol{a}^{(3)} \\[2ex]
+\frac{\partial \text { Cost }}{\partial W^{(3)}} &= \; \frac{1}{m} \; \sum \; 
+{\color{OliveGreen}L^{\prime}(\boldsymbol{a}^{(4)}, \boldsymbol{y}) \cdot f^{\prime}(\boldsymbol{z}^{(4)})} \cdot {\color{Cyan}W^{(4)} \cdot f'(\boldsymbol{z}^{(3)})} \cdot \boldsymbol{a}^{(2)}  \\[2ex]
+\frac{\partial \text { Cost }}{\partial W^{(2)}} &= \; \frac{1}{m} \; \sum \; 
+{\color{OliveGreen}L^{\prime}(\boldsymbol{a}^{(4)}, \boldsymbol{y}) \cdot f^{\prime}(\boldsymbol{z}^{(4)})} \cdot {\color{Cyan}W^{(4)} \cdot f'(\boldsymbol{z}^{(3)})} \cdot {\color{DarkOrange}W^{(3)} \cdot f'(\boldsymbol{z}^{(2)})} \cdot \boldsymbol{a}^{(1)} \\[2ex]
+\frac{\partial \text { Cost }}{\partial W^{(1)}} &= \; \frac{1}{m} \; \sum \; 
+{\color{OliveGreen}L^{\prime}(\boldsymbol{a}^{(4)}, \boldsymbol{y}) \cdot f^{\prime}(\boldsymbol{z}^{(4)})} \cdot {\color{Cyan}W^{(4)} \cdot f'(\boldsymbol{z}^{(3)})} \cdot {\color{DarkOrange}W^{(3)} \cdot f'(\boldsymbol{z}^{(2)})}  \cdot W^{(2)} \cdot f'(\boldsymbol{z}^{(1)}) \cdot \boldsymbol{x}\\[2ex]
+\end{align*}
+```
+The reoccuring computations are highlighted in the same colour. Now you can get a sense of the genius behind neural network: although there are many computations, a lot of calculations are reused as we move backwards through the network. With proper memoization, the whole process can be very fast. 
+
+
+***
+
+
 We can see a pattern here! 
 
 We go all the way to the first hidden layer 1 (scroll to the right):
@@ -388,26 +433,6 @@ W^{(\ell)} &\leftarrow W^{(\ell)} - \alpha \frac{\partial \text{ Cost}}{\partial
 \boldsymbol{b}^{(\ell)} &\leftarrow \boldsymbol{b}^{(\ell)} - \alpha \frac{\partial \text{ Cost}}{\partial \boldsymbol{b}^{(\ell)}}
 \end{align*}
 ```
-
-### Memoization (and it's not a typo)
-This is a computer science term. It refers to an optimization technique to make computations faster, in particular by reusing previous calculations. This translates into storing intermediary results so that they are called again if needed, not recomputed. Recursive functions by definition reuse the outcomes of the previous iteration at the current one, so memoization is at play.  
-
-Let's illustrate this point by writing the derivative equations for a network with one output layer and three hidden layers:
-
-```{math}
-:label: lastfoursimpleeq
-\begin{align*}
-\frac{\partial \text { Cost }}{\partial W^{(4)}} &= \; \frac{1}{m} \; \sum \; 
-{\color{OliveGreen}L^{\prime}(\boldsymbol{a}^{(4)}, \boldsymbol{y}) \cdot f^{\prime}(\boldsymbol{z}^{(4)})} \cdot \boldsymbol{a}^{(3)} \\[2ex]
-\frac{\partial \text { Cost }}{\partial W^{(3)}} &= \; \frac{1}{m} \; \sum \; 
-{\color{OliveGreen}L^{\prime}(\boldsymbol{a}^{(4)}, \boldsymbol{y}) \cdot f^{\prime}(\boldsymbol{z}^{(4)})} \cdot {\color{Cyan}W^{(4)} \cdot f'(\boldsymbol{z}^{(3)})} \cdot \boldsymbol{a}^{(2)}  \\[2ex]
-\frac{\partial \text { Cost }}{\partial W^{(2)}} &= \; \frac{1}{m} \; \sum \; 
-{\color{OliveGreen}L^{\prime}(\boldsymbol{a}^{(4)}, \boldsymbol{y}) \cdot f^{\prime}(\boldsymbol{z}^{(4)})} \cdot {\color{Cyan}W^{(4)} \cdot f'(\boldsymbol{z}^{(3)})} \cdot {\color{DarkOrange}W^{(3)} \cdot f'(\boldsymbol{z}^{(2)})} \cdot \boldsymbol{a}^{(1)} \\[2ex]
-\frac{\partial \text { Cost }}{\partial W^{(1)}} &= \; \frac{1}{m} \; \sum \; 
-{\color{OliveGreen}L^{\prime}(\boldsymbol{a}^{(4)}, \boldsymbol{y}) \cdot f^{\prime}(\boldsymbol{z}^{(4)})} \cdot {\color{Cyan}W^{(4)} \cdot f'(\boldsymbol{z}^{(3)})} \cdot {\color{DarkOrange}W^{(3)} \cdot f'(\boldsymbol{z}^{(2)})}  \cdot W^{(2)} \cdot f'(\boldsymbol{z}^{(1)}) \cdot \boldsymbol{x}\\[2ex]
-\end{align*}
-```
-The reoccuring computations are highlighted in the same colour. Now you can get a sense of the genius behind neural network: although there are many computations, a lot of calculations are reused as we move backwards through the network. With proper memoization, the whole process can be very fast. 
 
 
 ## Summary on backpropagation

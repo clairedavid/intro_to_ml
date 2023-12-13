@@ -857,12 +857,12 @@ Before getting to the heart of the backpropagation, let’s cover an important i
 <p>The loss function is not to be confused with the hypothesis function <span class="math notranslate nohighlight">\(h_{W,b}(x^{(i)})\)</span> that serves to build a prediction <span class="math notranslate nohighlight">\(\hat{y}^{(i)}\)</span> for sample <span class="math notranslate nohighlight">\(i\)</span>.</p>
 <p>This is not to be confused with the activation function either, which only gets the neural network inputs (training data, weights and biases) and does not perform any comparison with the observed values <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span>).</p>
 </div>
-<p>We saw that forward propagation ‘fills’ in the network with values for all activation units using the weight matrices <span class="math notranslate nohighlight">\(W^{(1)}, W^{(2)}, \cdots, W^{L}\)</span> and biases <span class="math notranslate nohighlight">\(\boldsymbol{b^{(1)}}, \boldsymbol{b^{(2)}}, \cdots \boldsymbol{b^{(L)}}\)</span>, up to the last layer <span class="math notranslate nohighlight">\(L\)</span> being the output layer:</p>
+<p>We saw that forward propagation ‘fills’ in the network with values for all activation units using the weight matrices <span class="math notranslate nohighlight">\(W^{(1)}, W^{(2)}, \cdots, W^{L}\)</span> and biases <span class="math notranslate nohighlight">\(\boldsymbol{b}^{(1)}, \boldsymbol{b}^{(2)}, \cdots \boldsymbol{b}^{(L)}\)</span>, up to the last layer <span class="math notranslate nohighlight">\(L\)</span> being the output layer:</p>
 <div class="math notranslate nohighlight" id="equation-alasteq">
-<span class="eqno">(65)<a class="headerlink" href="#equation-alasteq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(i, \: L)}} = f\left[ \; \left(W^{(L)}\right)^\top \; \boldsymbol{a^{(i, \: L -1)}} \;+\; \boldsymbol{b^{(L)}} \;\right]\]</div>
+<span class="eqno">(65)<a class="headerlink" href="#equation-alasteq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a}^{(i, \: L)} = f\left[ \; \left(W^{(L)}\right)^\top \; \boldsymbol{a}^{(i, \: L -1)} \;+\; \boldsymbol{b}^{(L)} \;\right]\]</div>
 <p>If the last layer contains <span class="math notranslate nohighlight">\(K\)</span> output nodes, we can write the elements of vector</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\boldsymbol{a^{(i, \: L)}} = \begin{pmatrix} 
+\[\begin{split}\boldsymbol{a}^{(i, \: L)} = \begin{pmatrix} 
 a^{L}_1 \\
 a^{L}_2 \\
 \cdots \\
@@ -884,7 +884,7 @@ It is important to note that in the equation above, the <span class="math notran
 <p>where <span class="math notranslate nohighlight">\(i\)</span> here is the sample row number.</p>
 <p>For several output nodes, we sum all losses:</p>
 <div class="math notranslate nohighlight" id="equation-lossmsekeq">
-<span class="eqno">(68)<a class="headerlink" href="#equation-lossmsekeq" title="Permalink to this equation">#</a></span>\[L \left(\;\boldsymbol{\hat{y}^{(i)}}, \boldsymbol{y^{(i)}}\;\right)= \sum_{k = 1}^K  \left( \hat{y}^{(i)}_k - y^{(i)}_k \right)^2\]</div>
+<span class="eqno">(68)<a class="headerlink" href="#equation-lossmsekeq" title="Permalink to this equation">#</a></span>\[L \left(\;\boldsymbol{\hat{y}}^{(i)}, \boldsymbol{y}^{(i)};\right)= \sum_{k = 1}^K  \left( \hat{y}^{(i)}_k - y^{(i)}_k \right)^2\]</div>
 <p>with the <span class="math notranslate nohighlight">\(k\)</span> indices being the prediction or observed value for the node <span class="math notranslate nohighlight">\(k\)</span>.</p>
 <p>Then the cost function would be the average of the losses over all the training sample of <span class="math notranslate nohighlight">\(m\)</span> instances:</p>
 <div class="math notranslate nohighlight" id="equation-costmsekeq">
@@ -919,24 +919,24 @@ It is important to note that in the equation above, the <span class="math notran
 <span class="eqno">(73)<a class="headerlink" href="#equation-costbinceeq" title="Permalink to this equation">#</a></span>\[J \left(\;\boldsymbol{\hat{y}}, \boldsymbol{y}\;\right) = - \frac{1}{m} \sum_{i=1}^m \sum_{k = 1}^K \left[ \;y_k^{(i)}  \log \left(\hat{y}_k^{(i)}\right)+\left(1-y_k^{(i)}\right) \log \left(1-\hat{y}_k^{(i)}\right) \; \right] \]</div>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>Recall that <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}^{(i)}} = h_{\boldsymbol{W},\boldsymbol{b}}(\boldsymbol{x^{(i)}})\)</span>.</p>
+<p>Recall that <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}}^{(i)} = h_{\boldsymbol{W},\boldsymbol{b}}(\boldsymbol{x}^{(i)})\)</span>.</p>
 </aside>
-<p>There is nothing new here, except that the predictions <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}^{(i)}}\)</span> from the hypothesis function are not a linear function but the output of the entire neural network forward propagation.</p>
+<p>There is nothing new here, except that the predictions <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}}^{(i)}\)</span> from the hypothesis function are not a linear function but the output of the entire neural network forward propagation.</p>
 </section>
 <section id="categorical-cross-entropy">
 <h3>Categorical Cross-Entropy<a class="headerlink" href="#categorical-cross-entropy" title="Permalink to this headline">#</a></h3>
 <p>A neural network with one output node will classify from two classes: <span class="math notranslate nohighlight">\(y=1\)</span> and <span class="math notranslate nohighlight">\(y=0\)</span>. The cross-entropy is the sum of the actual outcome multiplied by the logarithm of the outcome predicted by the model. If we have more than two classes, we can write the outcome of a given training data instance <span class="math notranslate nohighlight">\(i\)</span> as a vector:</p>
 <div class="math notranslate nohighlight" id="equation-catvecobseq">
-<span class="eqno">(74)<a class="headerlink" href="#equation-catvecobseq" title="Permalink to this equation">#</a></span>\[\boldsymbol{y^{(i)}} = ( 1, 0, 0, \cdots 0)\]</div>
-<p>of K elements, where K is the number of output nodes. A sample belonging to the class <span class="math notranslate nohighlight">\(k\)</span> corresponds to the row index <span class="math notranslate nohighlight">\(k\)</span>. For instance a sample of the second class (the order is to be defined by convention) would be <span class="math notranslate nohighlight">\(\boldsymbol{y^{(i)}} = (0, 1, 0, \cdots 0 )\)</span>.</p>
+<span class="eqno">(74)<a class="headerlink" href="#equation-catvecobseq" title="Permalink to this equation">#</a></span>\[\boldsymbol{y}^{(i)} = ( 1, 0, 0, \cdots 0)\]</div>
+<p>of K elements, where K is the number of output nodes. A sample belonging to the class <span class="math notranslate nohighlight">\(k\)</span> corresponds to the row index <span class="math notranslate nohighlight">\(k\)</span>. For instance a sample of the second class (the order is to be defined by convention) would be <span class="math notranslate nohighlight">\(\boldsymbol{y}^{(i)} = (0, 1, 0, \cdots 0 )\)</span>.</p>
 <p>A multi-class neural network would produce vectorial predictions for one sample of the form:</p>
 <div class="math notranslate nohighlight" id="equation-ypredmulticlasseq">
-<span class="eqno">(75)<a class="headerlink" href="#equation-ypredmulticlasseq" title="Permalink to this equation">#</a></span>\[\boldsymbol{\hat{y}^{(i)}} = (0.15, 0.68, \cdots , 0.03)\]</div>
+<span class="eqno">(75)<a class="headerlink" href="#equation-ypredmulticlasseq" title="Permalink to this equation">#</a></span>\[\boldsymbol{\hat{y}}^{(i)} = (0.15, 0.68, \cdots , 0.03)\]</div>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>The categorical cross-entropy is appropriate in combination with an activation function such as the softmax that can produce several probabilities for the number of classes that sum up to 1.</p>
 </aside>
-<p>Mutually exclusive classes would mean that for each <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}^{(i)}} = (\hat{y}^{(i)}_1, \hat{y}^{(i)}_2, \cdots, \hat{y}^{(i)}_K)\)</span>, all output values should add up to 1:</p>
+<p>Mutually exclusive classes would mean that for each <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}}^{(i)} = (\hat{y}^{(i)}_1, \hat{y}^{(i)}_2, \cdots, \hat{y}^{(i)}_K)\)</span>, all output values should add up to 1:</p>
 <div class="math notranslate nohighlight" id="equation-ymulticlassoneeq">
 <span class="eqno">(76)<a class="headerlink" href="#equation-ymulticlassoneeq" title="Permalink to this equation">#</a></span>\[\sum_{k=1}^K \; \hat{y}^{(i)}_k = 1\]</div>
 <aside class="margin sidebar">
@@ -957,7 +957,7 @@ It is important to note that in the equation above, the <span class="math notran
 <div class="math notranslate nohighlight" id="equation-week2-nn2-costf-0">
 <span class="eqno">(79)<a class="headerlink" href="#equation-week2-nn2-costf-0" title="Permalink to this equation">#</a></span>\[J \left(\;\boldsymbol{\hat{y}}, \boldsymbol{y}\;\right) = \frac{1}{m} \sum_{i=1}^m  L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right) + \frac{\lambda}{2m} \sum_{\ell=1}^L \sum_{q=1}^{n_{L-1}} \sum_{r=1}^{n_{L}} \left( W^{(\ell)}_{q, r} \; \right)^2\]</div>
 <p>The triple sum is daunting but let’s decompose it: it’s the sum of all matrices <span class="math notranslate nohighlight">\(W^{(\ell)}\)</span> of the network. For each of them, the weights are squared and added together (those are the two last sums). The equation above corresponds to the Lasso’s regularization (introduced in Lecture 3 subsection <a class="reference internal" href="../week1/class_algs_reg.html#class-algs-reg-lasso"><span class="std std-ref">Lasso Regularization</span></a>). The Ridge regularization would sum only the weights without squaring them.</p>
-<p>Recall that the regularization does not include the intercept term, which was written as <span class="math notranslate nohighlight">\(\theta_0\)</span> in logistic regression. With the matrices <span class="math notranslate nohighlight">\(W^{(\ell)}\)</span> we are safe as they do not contain any bias terms. Biases are gathered as separate vectors <span class="math notranslate nohighlight">\(\boldsymbol{b^{(\ell)}}\)</span>.</p>
+<p>Recall that the regularization does not include the intercept term, which was written as <span class="math notranslate nohighlight">\(\theta_0\)</span> in logistic regression. With the matrices <span class="math notranslate nohighlight">\(W^{(\ell)}\)</span> we are safe as they do not contain any bias terms. Biases are gathered as separate vectors <span class="math notranslate nohighlight">\(\boldsymbol{b}^{(\ell)}\)</span>.</p>
 <p> </p>
 <p>We’ve seen forward propagation in the previous lecture and here the loss functions for neural network. One more thing before heading to the backpropagation:</p>
 <p><strong><center>How are the weights initialized?</center></strong></p>

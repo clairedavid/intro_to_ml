@@ -851,9 +851,9 @@ title="Print to PDF"
 </figure>
 <p>There are lots of subscripts and upperscripts here. Let’s explain the conventions we will use.</p>
 <p><strong>Input data</strong><br />
-We saw in Lecture 2 that the dataset in supervised learning can be represented as a matrix <span class="math notranslate nohighlight">\(X\)</span> of <span class="math notranslate nohighlight">\(m\)</span> data instances (rows) of <span class="math notranslate nohighlight">\(n\)</span> input features (columns). For clarity in the notations, we will focus for now on only one data instance, the <span class="math notranslate nohighlight">\(i^{\text{th}}\)</span> sample. We will note it as a column vector <span class="math notranslate nohighlight">\(\boldsymbol{x^{(i)}}\)</span>:</p>
+We saw in Lecture 2 that the dataset in supervised learning can be represented as a matrix <span class="math notranslate nohighlight">\(X\)</span> of <span class="math notranslate nohighlight">\(m\)</span> data instances (rows) of <span class="math notranslate nohighlight">\(n\)</span> input features (columns). For clarity in the notations, we will focus for now on only one data instance, the <span class="math notranslate nohighlight">\(i^{\text{th}}\)</span> sample. We will note it as a column vector <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(i)}\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\boldsymbol{x^{(i)}} = \begin{pmatrix} 
+\[\begin{split}\boldsymbol{x}^{(i)} = \begin{pmatrix} 
 x^{(i)}_1 \\
 x^{(i)}_2 \\
 \cdots \\
@@ -867,7 +867,7 @@ x^{(i)}_n \\
 <p><strong>Activation units</strong><br />
 In a given layer <span class="math notranslate nohighlight">\(\ell = 1, 2, \cdots, N^\text{layer}\)</span>, the activation units will give outputs that we will note as a column vector as well:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\boldsymbol{a^{(i, \: \ell)}} = \begin{pmatrix} 
+\[\begin{split}\boldsymbol{a}^{(i, \: \ell)} = \begin{pmatrix} 
  a_1^{(i, \: \ell)}\\
 a_2^{(i, \: \ell)},\\
 \cdots\\
@@ -877,7 +877,7 @@ a_q^{(i, \: \ell)}
 <p><strong>Biases</strong><br />
 The biases are also column vectors, one for each layer it connects to and of dimension the number of nodes in that layer:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\boldsymbol{b^{(\ell)}} = \begin{pmatrix}
+\[\begin{split}\boldsymbol{b}^{(\ell)} = \begin{pmatrix}
 b_1^{(\ell)} \\
 b_2^{(\ell)} \\
 \cdots \\
@@ -914,7 +914,7 @@ a^{(i, \: 1)}_q &amp;= f\left(\; w_{1,q}^{(1)} \; x^{(i)}_1 \;+\; w_{2,q}^{(1)} 
 \end{align*}\end{split}\]</div>
 <p>We can actually write it in the matrix form. Let’s first write it in an expanded version with the matrix elements:</p>
 <div class="math notranslate nohighlight" id="equation-firstlayermatrixexpandedeq">
-<span class="eqno">(58)<a class="headerlink" href="#equation-firstlayermatrixexpandedeq" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol{a^{(i, \: 1)}} = f\left[ \; 
+<span class="eqno">(58)<a class="headerlink" href="#equation-firstlayermatrixexpandedeq" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol{a}^{(i, \: 1)} = f\left[ \; 
 \begin{pmatrix}w_{1,1}^{(1)} &amp; w_{1,2}^{(1)} &amp; \cdots &amp; w_{1,q}^{(1)} \\[2ex]w_{2,1}^{(1)} &amp; w_{2,2}^{(1)} &amp; \cdots &amp; w_{2,q}^{(1)} \\[1ex]\vdots  &amp; \vdots &amp; \ddots   &amp; \vdots \\[1ex]w_{n,1}^{(1)} &amp; w_{n,2}^{(1)} &amp;  \cdots &amp; w_{n,q}^{(1)} \\\end{pmatrix}^\top
 \begin{pmatrix} 
 x^{(i)}_1 \\
@@ -928,17 +928,17 @@ b_2^{(1)} \\
 \cdots \\
 b_q^{(1)}
 \end{pmatrix} \; \right]\end{split}\]</div>
-<p>You can verify that <span class="math notranslate nohighlight">\(\boldsymbol{a^{(i, \: 1)}}\)</span> will be a column vector with <span class="math notranslate nohighlight">\(q\)</span> elements.
+<p>You can verify that <span class="math notranslate nohighlight">\(\boldsymbol{a}^{(i, \: 1)}\)</span> will be a column vector with <span class="math notranslate nohighlight">\(q\)</span> elements.
 This can be written in a compact way:</p>
 <div class="math notranslate nohighlight" id="equation-firstlayermatrixeq">
-<span class="eqno">(59)<a class="headerlink" href="#equation-firstlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(i, \: 1)}} = f\left[ \; \left(W^{(1)}\right)^\top \; \boldsymbol{x^{(i)}} \;+\; \boldsymbol{b^{(1)}} \;\right]\]</div>
+<span class="eqno">(59)<a class="headerlink" href="#equation-firstlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a}^{(i, \: 1)} = f\left[ \; \left(W^{(1)}\right)^\top \; \boldsymbol{x}^{(i)} \;+\; \boldsymbol{b}^{(1)} \;\right]\]</div>
 <p>Much lighter.</p>
 </section>
 <section id="computation-of-the-second-hidden-layer">
 <h3>Computation of the second hidden layer<a class="headerlink" href="#computation-of-the-second-hidden-layer" title="Permalink to this headline">#</a></h3>
-<p>Let’s do the same calculation for the second layer of activation units. Instead of the dataset vector <span class="math notranslate nohighlight">\(\boldsymbol{x^{(i)}}\)</span>, we will have <span class="math notranslate nohighlight">\(\boldsymbol{a^{(i, \: 1)}}\)</span> as input:</p>
+<p>Let’s do the same calculation for the second layer of activation units. Instead of the dataset vector <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(i)}\)</span>, we will have <span class="math notranslate nohighlight">\(\boldsymbol{a}^{(i, \: 1)}\)</span> as input:</p>
 <div class="math notranslate nohighlight" id="equation-secondlayermatrixexpandedeq">
-<span class="eqno">(60)<a class="headerlink" href="#equation-secondlayermatrixexpandedeq" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol{a^{(i, \: 2)}} = f\left[ \; 
+<span class="eqno">(60)<a class="headerlink" href="#equation-secondlayermatrixexpandedeq" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol{a}^{(i, \: 2)} = f\left[ \; 
 \begin{pmatrix}w_{1,1}^{(2)} &amp; w_{1,2}^{(2)} &amp; \cdots &amp; w_{1,r}^{(2)} \\[2ex]w_{2,1}^{(2)} &amp; w_{2,2}^{(2)} &amp; \cdots &amp; w_{2,q}^{(2)} \\[1ex]\vdots  &amp; \vdots &amp; \ddots   &amp; \vdots \\[1ex]w_{q,1}^{(2)} &amp; w_{q,2}^{(2)} &amp;  \cdots &amp; w_{q,r}^{(2)} \\\end{pmatrix}^\top
 \begin{pmatrix} 
 a^{(i, \: 1)}_1 \\
@@ -954,24 +954,24 @@ b_r^{(2)}
 \end{pmatrix} \; \right]\end{split}\]</div>
 <p>And the elegant, light version:</p>
 <div class="math notranslate nohighlight" id="equation-secondlayermatrixeq">
-<span class="eqno">(61)<a class="headerlink" href="#equation-secondlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(i, \: 2)}} = f\left[ \; \left(W^{(2)}\right)^\top \; \boldsymbol{a^{(i, \: 1)}} \;+\; \boldsymbol{b^{(2)}} \;\right]\]</div>
+<span class="eqno">(61)<a class="headerlink" href="#equation-secondlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a}^{(i, \: 2)} = f\left[ \; \left(W^{(2)}\right)^\top \; \boldsymbol{a}^{(i, \: 1)} \;+\; \boldsymbol{b}^{(2)} \;\right]\]</div>
 <p>We start seeing a pattern here looking at the matricial equations <a class="reference internal" href="#equation-firstlayermatrixeq">(59)</a> and <a class="reference internal" href="#equation-secondlayermatrixeq">(61)</a>. More on this soon in Section <a class="reference internal" href="#nn1-forwardprop-rule"><span class="std std-ref">General rule for Forward Propagation</span></a>. Let’s finish the process with the last layer.</p>
 </section>
 <section id="computation-of-the-third-hidder-layer">
 <h3>Computation of the third hidder layer<a class="headerlink" href="#computation-of-the-third-hidder-layer" title="Permalink to this headline">#</a></h3>
 <p>With one output node, it is actually simpler than for the hidden layers above. We can still write it in the same form as Equation <a class="reference internal" href="#equation-secondlayermatrixeq">(61)</a>:</p>
 <div class="math notranslate nohighlight" id="equation-thirdlayermatrixeq">
-<span class="eqno">(62)<a class="headerlink" href="#equation-thirdlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(i, \: 3)}} = f\left[ \; \left(W^{(3)}\right)^\top \; \boldsymbol{a^{(i, \: 2)}} \;+\; \boldsymbol{b^{(3)}} \;\right]\]</div>
-<p>using <span class="math notranslate nohighlight">\(\boldsymbol{a^{(i, \: 2)}}\)</span> that we calculated above. In our case <span class="math notranslate nohighlight">\(\boldsymbol{a^{(i, \: 3)}}\)</span> has only one element: <span class="math notranslate nohighlight">\(a^{(i, \: 3)}_1 = \hat{y}^{(i)}\)</span>. Thus the matrix <span class="math notranslate nohighlight">\(W^{(3)}\)</span> has only one column. The bias ‘vector’ is actually a scalar: <span class="math notranslate nohighlight">\(b^{(3)}\)</span>.</p>
-<p>We have computed a value for each activation unit for a given data sample <span class="math notranslate nohighlight">\(\boldsymbol{x^{(i)}}\)</span>. That is the end of the forward propagation process! As you can see, it contains lots of calculations. And now you may understand why activation functions that are simple and fast to compute are preferrable, as they intervene each time we compute the output of an activation unit.</p>
+<span class="eqno">(62)<a class="headerlink" href="#equation-thirdlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a}^{(i, \: 3)} = f\left[ \; \left(W^{(3)}\right)^\top \; \boldsymbol{a}^{(i, \: 2)} \;+\; \boldsymbol{b}^{(3)} \;\right]\]</div>
+<p>using <span class="math notranslate nohighlight">\(\boldsymbol{a}^{(i, \: 2)}\)</span> that we calculated above. In our case <span class="math notranslate nohighlight">\(\boldsymbol{a}^{(i, \: 3)}\)</span> has only one element: <span class="math notranslate nohighlight">\(a^{(i, \: 3)}_1 = \hat{y}^{(i)}\)</span>. Thus the matrix <span class="math notranslate nohighlight">\(W^{(3)}\)</span> has only one column. The bias ‘vector’ is actually a scalar: <span class="math notranslate nohighlight">\(b^{(3)}\)</span>.</p>
+<p>We have computed a value for each activation unit for a given data sample <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(i)}\)</span>. That is the end of the forward propagation process! As you can see, it contains lots of calculations. And now you may understand why activation functions that are simple and fast to compute are preferrable, as they intervene each time we compute the output of an activation unit.</p>
 <p>Let’s now get a general formula.</p>
 </section>
 </section>
 <section id="general-rule-for-forward-propagation">
 <span id="nn1-forwardprop-rule"></span><h2>General rule for Forward Propagation<a class="headerlink" href="#general-rule-for-forward-propagation" title="Permalink to this headline">#</a></h2>
-<p>If we rewrite the first layer of inputs for a given sample <span class="math notranslate nohighlight">\(\boldsymbol{x^{(i)}}\)</span> as a “layer zero” <span class="math notranslate nohighlight">\(\boldsymbol{a^{(i, \: 0)}}\)</span>:</p>
+<p>If we rewrite the first layer of inputs for a given sample <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(i)}\)</span> as a “layer zero” <span class="math notranslate nohighlight">\(\boldsymbol{a}^{(i, \: 0)}\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-xisazeroeq">
-<span class="eqno">(63)<a class="headerlink" href="#equation-xisazeroeq" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol{x^{(i)}} = \begin{pmatrix} 
+<span class="eqno">(63)<a class="headerlink" href="#equation-xisazeroeq" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol{x}^{(i)} = \begin{pmatrix} 
 x^{(i, \: 0)}_1 \\
 x^{(i, \: 0)}_2 \\
 \cdots \\
@@ -981,10 +981,10 @@ a^{(i, \: 0)}_1 \\
 a^{(i, \: 0)}_2 \\
 \cdots \\
 a^{(i, \: 0)}_n \\
-\end{pmatrix} = \boldsymbol{a^{(i, \: 0)}}\;,\end{split}\]</div>
+\end{pmatrix} = \boldsymbol{a}^{(i, \: 0)}\;,\end{split}\]</div>
 <p>then we can write a general rule for computing the outputs of a fully connected layer <span class="math notranslate nohighlight">\(\ell\)</span> knowing the outputs of the previous layer <span class="math notranslate nohighlight">\(\ell -1\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-genrulefeedforwardeq">
-<span class="eqno">(64)<a class="headerlink" href="#equation-genrulefeedforwardeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a^{(i, \: \ell)}} = f\left[ \; \left(W^{(\ell)}\right)^\top \; \boldsymbol{a^{(i, \: \ell -1)}} \;+\; \boldsymbol{b^{(\ell)}} \;\right]\]</div>
+<span class="eqno">(64)<a class="headerlink" href="#equation-genrulefeedforwardeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a}^{(i, \: \ell)} = f\left[ \; \left(W^{(\ell)}\right)^\top \; \boldsymbol{a}^{(i, \: \ell -1)} \;+\; \boldsymbol{b}^{(\ell)} \;\right]\]</div>
 <p>This is the general rule for computing all outputs of a fully connected feedforward neural network.</p>
 </section>
 <section id="summary">

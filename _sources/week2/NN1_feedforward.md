@@ -34,9 +34,9 @@ Let's say we have the following network with $x_n$ input features, one first hid
 There are lots of subscripts and upperscripts here. Let's explain the conventions we will use.  
 
 __Input data__  
-We saw in Lecture 2 that the dataset in supervised learning can be represented as a matrix $X$ of $m$ data instances (rows) of $n$ input features (columns). For clarity in the notations, we will focus for now on only one data instance, the $i^{\text{th}}$ sample. We will note it as a column vector $\boldsymbol{x^{(i)}}$: 
+We saw in Lecture 2 that the dataset in supervised learning can be represented as a matrix $X$ of $m$ data instances (rows) of $n$ input features (columns). For clarity in the notations, we will focus for now on only one data instance, the $i^{\text{th}}$ sample. We will note it as a column vector $\boldsymbol{x}^{(i)}$: 
 ```{math}
-\boldsymbol{x^{(i)}} = \begin{pmatrix} 
+\boldsymbol{x}^{(i)} = \begin{pmatrix} 
 x^{(i)}_1 \\
 x^{(i)}_2 \\
 \cdots \\
@@ -50,7 +50,7 @@ The layer numbering starts at the first hidden layer where $\ell=1$.
 __Activation units__  
 In a given layer $\ell = 1, 2, \cdots, N^\text{layer}$, the activation units will give outputs that we will note as a column vector as well:
 ```{math}
-\boldsymbol{a^{(i, \: \ell)}} = \begin{pmatrix} 
+\boldsymbol{a}^{(i, \: \ell)} = \begin{pmatrix} 
  a_1^{(i, \: \ell)}\\
 a_2^{(i, \: \ell)},\\
 \cdots\\
@@ -62,7 +62,7 @@ where subscript is the row of the activation unit in the layer, starting from th
 __Biases__  
 The biases are also column vectors, one for each layer it connects to and of dimension the number of nodes in that layer:
 ```{math}
-\boldsymbol{b^{(\ell)}} = \begin{pmatrix}
+\boldsymbol{b}^{(\ell)} = \begin{pmatrix}
 b_1^{(\ell)} \\
 b_2^{(\ell)} \\
 \cdots \\
@@ -113,7 +113,7 @@ a^{(i, \: 1)}_q &= f\left(\; w_{1,q}^{(1)} \; x^{(i)}_1 \;+\; w_{2,q}^{(1)} \; x
 We can actually write it in the matrix form. Let's first write it in an expanded version with the matrix elements:
 ```{math}
 :label: firstlayermatrixexpandedeq
-\boldsymbol{a^{(i, \: 1)}} = f\left[ \; 
+\boldsymbol{a}^{(i, \: 1)} = f\left[ \; 
 \begin{pmatrix}w_{1,1}^{(1)} & w_{1,2}^{(1)} & \cdots & w_{1,q}^{(1)} \\[2ex]w_{2,1}^{(1)} & w_{2,2}^{(1)} & \cdots & w_{2,q}^{(1)} \\[1ex]\vdots  & \vdots & \ddots   & \vdots \\[1ex]w_{n,1}^{(1)} & w_{n,2}^{(1)} &  \cdots & w_{n,q}^{(1)} \\\end{pmatrix}^\top
 \begin{pmatrix} 
 x^{(i)}_1 \\
@@ -128,19 +128,19 @@ b_2^{(1)} \\
 b_q^{(1)}
 \end{pmatrix} \; \right]
 ```
-You can verify that $\boldsymbol{a^{(i, \: 1)}}$ will be a column vector with $q$ elements.
+You can verify that $\boldsymbol{a}^{(i, \: 1)}$ will be a column vector with $q$ elements.
 This can be written in a compact way:
 ```{math}
 :label: firstlayermatrixeq
-\boldsymbol{a^{(i, \: 1)}} = f\left[ \; \left(W^{(1)}\right)^\top \; \boldsymbol{x^{(i)}} \;+\; \boldsymbol{b^{(1)}} \;\right]
+\boldsymbol{a}^{(i, \: 1)} = f\left[ \; \left(W^{(1)}\right)^\top \; \boldsymbol{x}^{(i)} \;+\; \boldsymbol{b}^{(1)} \;\right]
 ```
 Much lighter. 
 
 ### Computation of the second hidden layer 
-Let's do the same calculation for the second layer of activation units. Instead of the dataset vector $\boldsymbol{x^{(i)}}$, we will have $\boldsymbol{a^{(i, \: 1)}}$ as input:
+Let's do the same calculation for the second layer of activation units. Instead of the dataset vector $\boldsymbol{x}^{(i)}$, we will have $\boldsymbol{a}^{(i, \: 1)}$ as input:
 ```{math}
 :label: secondlayermatrixexpandedeq
-\boldsymbol{a^{(i, \: 2)}} = f\left[ \; 
+\boldsymbol{a}^{(i, \: 2)} = f\left[ \; 
 \begin{pmatrix}w_{1,1}^{(2)} & w_{1,2}^{(2)} & \cdots & w_{1,r}^{(2)} \\[2ex]w_{2,1}^{(2)} & w_{2,2}^{(2)} & \cdots & w_{2,q}^{(2)} \\[1ex]\vdots  & \vdots & \ddots   & \vdots \\[1ex]w_{q,1}^{(2)} & w_{q,2}^{(2)} &  \cdots & w_{q,r}^{(2)} \\\end{pmatrix}^\top
 \begin{pmatrix} 
 a^{(i, \: 1)}_1 \\
@@ -159,7 +159,7 @@ b_r^{(2)}
 And the elegant, light version:
 ```{math}
 :label: secondlayermatrixeq
-\boldsymbol{a^{(i, \: 2)}} = f\left[ \; \left(W^{(2)}\right)^\top \; \boldsymbol{a^{(i, \: 1)}} \;+\; \boldsymbol{b^{(2)}} \;\right]
+\boldsymbol{a}^{(i, \: 2)} = f\left[ \; \left(W^{(2)}\right)^\top \; \boldsymbol{a}^{(i, \: 1)} \;+\; \boldsymbol{b}^{(2)} \;\right]
 ```
 
 We start seeing a pattern here looking at the matricial equations {eq}`firstlayermatrixeq` and {eq}`secondlayermatrixeq`. More on this soon in Section {ref}`NN1:forwardprop:rule`. Let's finish the process with the last layer.
@@ -168,21 +168,21 @@ We start seeing a pattern here looking at the matricial equations {eq}`firstlaye
 With one output node, it is actually simpler than for the hidden layers above. We can still write it in the same form as Equation {eq}`secondlayermatrixeq`:
 ```{math}
 :label: thirdlayermatrixeq
-\boldsymbol{a^{(i, \: 3)}} = f\left[ \; \left(W^{(3)}\right)^\top \; \boldsymbol{a^{(i, \: 2)}} \;+\; \boldsymbol{b^{(3)}} \;\right]
+\boldsymbol{a}^{(i, \: 3)} = f\left[ \; \left(W^{(3)}\right)^\top \; \boldsymbol{a}^{(i, \: 2)} \;+\; \boldsymbol{b}^{(3)} \;\right]
 ```
-using $\boldsymbol{a^{(i, \: 2)}}$ that we calculated above. In our case $\boldsymbol{a^{(i, \: 3)}}$ has only one element: $a^{(i, \: 3)}_1 = \hat{y}^{(i)}$. Thus the matrix $W^{(3)}$ has only one column. The bias 'vector' is actually a scalar: $b^{(3)}$. 
+using $\boldsymbol{a}^{(i, \: 2)}$ that we calculated above. In our case $\boldsymbol{a}^{(i, \: 3)}$ has only one element: $a^{(i, \: 3)}_1 = \hat{y}^{(i)}$. Thus the matrix $W^{(3)}$ has only one column. The bias 'vector' is actually a scalar: $b^{(3)}$. 
 
-We have computed a value for each activation unit for a given data sample $\boldsymbol{x^{(i)}}$. That is the end of the forward propagation process! As you can see, it contains lots of calculations. And now you may understand why activation functions that are simple and fast to compute are preferrable, as they intervene each time we compute the output of an activation unit.
+We have computed a value for each activation unit for a given data sample $\boldsymbol{x}^{(i)}$. That is the end of the forward propagation process! As you can see, it contains lots of calculations. And now you may understand why activation functions that are simple and fast to compute are preferrable, as they intervene each time we compute the output of an activation unit.
 
 Let's now get a general formula.
 
 (NN1:forwardprop:rule)=
 ## General rule for Forward Propagation
 
-If we rewrite the first layer of inputs for a given sample $\boldsymbol{x^{(i)}}$ as a "layer zero" $\boldsymbol{a^{(i, \: 0)}}$:
+If we rewrite the first layer of inputs for a given sample $\boldsymbol{x}^{(i)}$ as a "layer zero" $\boldsymbol{a}^{(i, \: 0)}$:
 ```{math}
 :label: xisazeroeq
-\boldsymbol{x^{(i)}} = \begin{pmatrix} 
+\boldsymbol{x}^{(i)} = \begin{pmatrix} 
 x^{(i, \: 0)}_1 \\
 x^{(i, \: 0)}_2 \\
 \cdots \\
@@ -192,13 +192,13 @@ a^{(i, \: 0)}_1 \\
 a^{(i, \: 0)}_2 \\
 \cdots \\
 a^{(i, \: 0)}_n \\
-\end{pmatrix} = \boldsymbol{a^{(i, \: 0)}}\;,
+\end{pmatrix} = \boldsymbol{a}^{(i, \: 0)}\;,
 ```
 then we can write a general rule for computing the outputs of a fully connected layer $\ell$ knowing the outputs of the previous layer $\ell -1$:
 
 ```{math}
 :label: genrulefeedforwardeq
-\boldsymbol{a^{(i, \: \ell)}} = f\left[ \; \left(W^{(\ell)}\right)^\top \; \boldsymbol{a^{(i, \: \ell -1)}} \;+\; \boldsymbol{b^{(\ell)}} \;\right]
+\boldsymbol{a}^{(i, \: \ell)} = f\left[ \; \left(W^{(\ell)}\right)^\top \; \boldsymbol{a}^{(i, \: \ell -1)} \;+\; \boldsymbol{b}^{(\ell)} \;\right]
 ```
 
 This is the general rule for computing all outputs of a fully connected feedforward neural network.
