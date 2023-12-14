@@ -780,11 +780,6 @@ title="Print to PDF"
    Summary on backpropagation
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#complete-equations-and-dimensions">
-   Complete equations and dimensions
-  </a>
- </li>
 </ul>
 
     </nav>
@@ -873,11 +868,6 @@ title="Print to PDF"
    Summary on backpropagation
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#complete-equations-and-dimensions">
-   Complete equations and dimensions
-  </a>
- </li>
 </ul>
 
                         </nav>
@@ -915,13 +905,13 @@ title="Print to PDF"
 <p class="admonition-title"><span class="caption-number">Definition 64 </span></p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> be functions. For all <span class="math notranslate nohighlight">\(𝑥\)</span> in the domain of <span class="math notranslate nohighlight">\(g\)</span> for which <span class="math notranslate nohighlight">\(g\)</span> is differentiable at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is differentiable at <span class="math notranslate nohighlight">\(g(x)\)</span>, the derivative of the composite function:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3695fa28-4cfa-482f-a812-ed09eda5c4f9">
-<span class="eqno">(80)<a class="headerlink" href="#equation-3695fa28-4cfa-482f-a812-ed09eda5c4f9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-cf69a645-1220-4d6e-bd33-0d669fd4873c">
+<span class="eqno">(80)<a class="headerlink" href="#equation-cf69a645-1220-4d6e-bd33-0d669fd4873c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h(x) = f(g(x)) 
 \end{equation}\]</div>
 <p>is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7d5d4b83-558b-41b7-b09b-ed707694c10f">
-<span class="eqno">(81)<a class="headerlink" href="#equation-7d5d4b83-558b-41b7-b09b-ed707694c10f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f9532445-7077-41fa-8cb3-57432cb83cbb">
+<span class="eqno">(81)<a class="headerlink" href="#equation-f9532445-7077-41fa-8cb3-57432cb83cbb" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}} \;\cdot \;  \frac{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}}{\mathrm{d} \; x} = f'\left(g(x)\right) \;\cdot \; g'(x)
 \end{equation}\]</div>
 </section>
@@ -937,8 +927,8 @@ h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maro
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
 <p>What would be the chain rule for three functions?</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1dfd0540-5b28-4ee3-a3c7-163c6867df04">
-<span class="eqno">(82)<a class="headerlink" href="#equation-1dfd0540-5b28-4ee3-a3c7-163c6867df04" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3dad9548-66cb-4418-adb0-52a233f83bcc">
+<span class="eqno">(82)<a class="headerlink" href="#equation-3dad9548-66cb-4418-adb0-52a233f83bcc" title="Permalink to this equation">#</a></span>\[\begin{equation}
 k(x) = h(f(g(x))) 
 \end{equation}\]</div>
 </div>
@@ -1171,9 +1161,9 @@ Let’s define <span class="math notranslate nohighlight">\(\boldsymbol{\delta}^
 Looking at Equation <a class="reference internal" href="#equation-dcostfirstvectorouterprod">(98)</a>), we will have:</p>
 <div class="math notranslate nohighlight" id="equation-costwldeltal">
 <span class="eqno">(107)<a class="headerlink" href="#equation-costwldeltal" title="Permalink to this equation">#</a></span>\[\frac{\partial \text { Cost }}{\partial \; W^{(L)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: L-1)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; L)} \: \right]^\top \]</div>
-<p>In terms of dimensions, the outer product creates a <span class="math notranslate nohighlight">\(n_{L-1} \times n_L\)</span> matrix:</p>
+<p>In terms of dimensions, the outer product creates a <span class="math notranslate nohighlight">\(n_{L-1} \times n_L\)</span> matrix; this is what we want to get the correct dimensionality on the left hand side:</p>
 <a class="reference internal image-reference" href="../_images/lec07_tetris_dCostdWlastLayer.png"><img alt="tetris_dCostdWlastLayer" class="align-center" src="../_images/lec07_tetris_dCostdWlastLayer.png" style="width: 90%;" /></a>
-<p>Note that the derivatives of the cost on the left hand side – shown in green – are the result of the summation over the <span class="math notranslate nohighlight">\(m\)</span> samples so there is not ‘depth’ anymore.</p>
+<p>Note that the derivatives of the cost on the left hand side – shown in green – are the result of the summation over the <span class="math notranslate nohighlight">\(m\)</span> samples so there is no ‘depth’ anymore.</p>
 <p><strong>Error at the before-last layer</strong><br />
 From Equation <a class="reference internal" href="#equation-dcostbeforelastsimpleeq">(101)</a>, we inject the definition of <span class="math notranslate nohighlight">\(\boldsymbol{\delta}^{(i, \; L)}\)</span> and define the error at the before-last layer by adding the terms:</p>
 <div class="math notranslate nohighlight" id="equation-deltalminus1">
@@ -1184,7 +1174,7 @@ From Equation <a class="reference internal" href="#equation-dcostbeforelastsimpl
 Moving on backward, we still use Equation <a class="reference internal" href="#equation-dcostbeforelastsimpleeq">(101)</a> to express the derivative of the cost with respect to the weights of the before-last layer the following way:</p>
 <div class="math notranslate nohighlight" id="equation-costwldeltalminus1">
 <span class="eqno">(109)<a class="headerlink" href="#equation-costwldeltalminus1" title="Permalink to this equation">#</a></span>\[\frac{\partial \text { Cost }}{\partial \; W^{(L-1)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: L-2)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; L-1)} \: \right]^\top\]</div>
-<p>And the outer product gives the desired dimension for the left hand size, i.e. a <span class="math notranslate nohighlight">\(n_{L-2} \times n_{L-1}\)</span> matrix.</p>
+<p>And the outer product gives the proper dimensions for the left hand size, i.e. a <span class="math notranslate nohighlight">\(n_{L-2} \times n_{L-1}\)</span> matrix.</p>
 <a class="reference internal image-reference" href="../_images/lec07_tetris_dCostdWlastlastLayer.png"><img alt="lec07_tetris_dCostdWlastlastLayer" class="align-center" src="../_images/lec07_tetris_dCostdWlastlastLayer.png" style="width: 90%;" /></a>
 <p> </p>
 <p><strong>General equations for errors and costs</strong><br />
@@ -1248,14 +1238,14 @@ Training data set <span class="math notranslate nohighlight">\(X\)</span> of <sp
 <p><strong>Step 0: Weight initialization</strong></p>
 <p><strong>Step 1: Forward propagation</strong><br />
 <span class="math notranslate nohighlight">\(\qquad \quad \bullet\)</span> get list of <span class="math notranslate nohighlight">\(m\)</span> predictions <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}}^{(i)}\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-8bd2b71b-33b8-4a81-a1bf-65bb1d3b083a">
-<span class="eqno">(113)<a class="headerlink" href="#equation-8bd2b71b-33b8-4a81-a1bf-65bb1d3b083a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-cacd0c80-e282-4816-84b3-2f436cc7b326">
+<span class="eqno">(113)<a class="headerlink" href="#equation-cacd0c80-e282-4816-84b3-2f436cc7b326" title="Permalink to this equation">#</a></span>\[\begin{equation}
  f(\boldsymbol{z}^{(i, \; L)}) = \boldsymbol{a}^{(i, \;L)} = \boldsymbol{\hat{y}}^{(i)}
 \end{equation}\]</div>
 <p><strong>Step 2: Backpropagation</strong><br />
 <span class="math notranslate nohighlight">\(\qquad \quad \bullet\)</span> get the cost:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c5f702a0-011e-4354-9d5f-a1eeced7296b">
-<span class="eqno">(114)<a class="headerlink" href="#equation-c5f702a0-011e-4354-9d5f-a1eeced7296b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d59ba776-1df3-4a23-b578-21d2d69c81fd">
+<span class="eqno">(114)<a class="headerlink" href="#equation-d59ba776-1df3-4a23-b578-21d2d69c81fd" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Cost} =  \; \frac{1}{m} \; \sum_{i=1}^m \; L \biggl(\;f \Bigl( \;\boldsymbol{z}^{(i, \; L)}\Bigl), \boldsymbol{y}^{(i)} \biggl)\end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(\qquad \quad \bullet\)</span> get all errors:</p>
 <div class="amsmath math notranslate nohighlight">
@@ -1283,61 +1273,7 @@ Training data set <span class="math notranslate nohighlight">\(X\)</span> of <sp
 <li><p>If all derivatives are zero or below a small threshold</p></li>
 </ul>
 </section>
-</div></section>
-<section id="complete-equations-and-dimensions">
-<h2>Complete equations and dimensions<a class="headerlink" href="#complete-equations-and-dimensions" title="Permalink to this headline">#</a></h2>
-<p>Through this lecture, some indices have been omitted for more clarity. In the following, we will be more rigourous and add the indices, as well as the correct operation symbols. There are indeed some matrix and element-wise multiplications in the formulae.</p>
-<p>The activation nodes <span class="math notranslate nohighlight">\(\boldsymbol{a}\)</span> are row vectors and there is a different value for each sample <span class="math notranslate nohighlight">\(x^{(i)}\)</span>, with <span class="math notranslate nohighlight">\(i\)</span> ranging from 1 to <span class="math notranslate nohighlight">\(m\)</span> (size of the training dataset). This is a list of <span class="math notranslate nohighlight">\(m\)</span> row vectors. We will stick to the convention in the first lectures of writing the data sample index <span class="math notranslate nohighlight">\(i\)</span> as superscript. We will put the information of the layer also in the superscript. In the subscript, we will indicate the shape of the element (vector or matrix) in the form of <span class="math notranslate nohighlight">\(n_\text{row} \times n_\text{column}\)</span>. Thus, for the layer <span class="math notranslate nohighlight">\(\ell\)</span> with <span class="math notranslate nohighlight">\(n\)</span> activation units, our notation becomes:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7beb39b0-25b1-428f-96d1-3a8209dda3d1">
-<span class="eqno">(115)<a class="headerlink" href="#equation-7beb39b0-25b1-428f-96d1-3a8209dda3d1" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\boldsymbol{a}^{(\ell)} \longrightarrow  \boldsymbol{a}^{(i,\ell)}_{1 \times n_\ell} 
-\end{equation}\]</div>
-<p>You can directly ‘see’ the form of <span class="math notranslate nohighlight">\(\boldsymbol{a}^{(i,\ell)}_{1 \times n_\ell}\)</span>: a row vector of <span class="math notranslate nohighlight">\(n_\ell\)</span> elements.</p>
-<p>The <span class="math notranslate nohighlight">\(\boldsymbol{z}\)</span> row vectors (the weighted sum of a node before applying the activation function <span class="math notranslate nohighlight">\(f\)</span>) are of the same shape:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-294c02c7-1ad0-4ae4-875e-a0edb5c6a4c4">
-<span class="eqno">(116)<a class="headerlink" href="#equation-294c02c7-1ad0-4ae4-875e-a0edb5c6a4c4" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\boldsymbol{z}^{(\ell)} \longrightarrow \boldsymbol{z}^{(i,\ell)}_{1 \times n_\ell} 
-\end{equation}\]</div>
-<p>Now the weight matrices and biases. Unlike the node vectors above, weight matrices and the bias vectors are <strong>unique</strong> to the neural network. The same weights and bias values are applied to all the samples. The weight matrix at layer <span class="math notranslate nohighlight">\(\ell\)</span> connecting the <span class="math notranslate nohighlight">\(n_{\ell-1}\)</span> nodes of the previous layer to the <span class="math notranslate nohighlight">\(n_{\ell}\)</span> nodes of the current layer <span class="math notranslate nohighlight">\(\ell\)</span> will be of shape:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5dae8067-aac6-4c44-b7d3-60e7403f53ee">
-<span class="eqno">(117)<a class="headerlink" href="#equation-5dae8067-aac6-4c44-b7d3-60e7403f53ee" title="Permalink to this equation">#</a></span>\[\begin{equation}
-W^{(\ell)}  \longrightarrow  W^{(\ell)}_{n_{\ell-1} \times n_{\ell}}
-\end{equation}\]</div>
-<p>For the bias vector, it will be:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a4abe5b3-aadf-4eb8-9156-34954b572537">
-<span class="eqno">(118)<a class="headerlink" href="#equation-a4abe5b3-aadf-4eb8-9156-34954b572537" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\boldsymbol{b}^{(\ell)}  \longrightarrow \boldsymbol{b}^{(\ell)}_{1 \times n_\ell} 
-\end{equation}\]</div>
-<p>You can see that both <span class="math notranslate nohighlight">\(W\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{b}\)</span> do not have any index <span class="math notranslate nohighlight">\(i\)</span> in the superscript, because there is one set of weights and biases for the entire network.</p>
-<p>We can rewrite the equations <code class="xref eq docutils literal notranslate"><span class="pre">deltasandpartialcostseq</span></code> using all the information. The matrix multiplication will be written with the ‘<span class="math notranslate nohighlight">\(\cdot\)</span>’ symbol and element-wise multiplication (applied on vectors) as <span class="math notranslate nohighlight">\(\odot\)</span>.</p>
-<p>Thus for the last layer, the error is:</p>
-<a class="reference internal image-reference" href="../_images/lec07_tetris_deltaLayerL.png"><img alt="tetrominoDeltaL" class="align-center" src="../_images/lec07_tetris_deltaLayerL.png" style="width: 50%;" /></a>
-<div class="math notranslate nohighlight" id="equation-deltalastfulleq">
-<span class="eqno">(119)<a class="headerlink" href="#equation-deltalastfulleq" title="Permalink to this equation">#</a></span>\[\qquad \; \boldsymbol{\delta}^{(i,L)}_{1 \times n_L} =\; L^{\prime}\left(\boldsymbol{a}^{(i,L)}_{1 \times n_L}\right) \odot f^{\prime}\left(\boldsymbol{z}^{(i,L)}_{1 \times n_L}\right) \]</div>
-<p>It is an element-wise multiplication of two row vectors. The schematics on top of the equation shows the dimension of the terms. As they are lists with a value for each data sample, and we already use the left/right and up/down directions for matrix and vector operations, the <span class="math notranslate nohighlight">\(i\)</span> index is here the ‘depth’. In the schematics, it is represented as piled up Tetris-like tetrominos; here only a few data samples (sheets) are represented for illustrative purposes.</p>
-<p>The derivative of the cost is:</p>
-<a class="reference internal image-reference" href="../_images/lec07_tetris_dCostdWlastLayer.png"><img alt="tetrominodCostLast" class="align-center" src="../_images/lec07_tetris_dCostdWlastLayer.png" style="width: 50%;" /></a>
-<p> </p>
-<div class="math notranslate nohighlight" id="equation-dcostdwlastfulleq">
-<span class="eqno">(120)<a class="headerlink" href="#equation-dcostdwlastfulleq" title="Permalink to this equation">#</a></span>\[\qquad  \qquad \; \frac{\partial \text {Cost}}{\partial W^{(L)}_{n_{L-1} \times n_{L}}} = \; \frac{1}{m} \; \sum_{i=1}^m \; \left(\boldsymbol{a}^{(i,L-1)}_{1 \times n_{L-1}}\right)^T \cdot \boldsymbol{\delta}^{(i,L)}_{1 \times n_L} \]</div>
-<p> <br />
-Dimension-wise, the partial derivatives of the cost should be of the same size of the associated weight matrix, as it will be substracted from that weight matrix. So it makes sense in the end to have a matrix created. It is done via the product of a column vector (recall the derivative turns row into column vectors) times a row vector.<br />
- </p>
-<p>For the before-last layer, the error is:</p>
-<a class="reference internal image-reference" href="../_images/lec07_tetris_deltaLayerLminus1.png"><img alt="tetrominoDeltaLminusOne" class="align-center" src="../_images/lec07_tetris_deltaLayerLminus1.png" style="width: 50%;" /></a>
-<p> </p>
-<div class="math notranslate nohighlight" id="equation-deltabeforelastfulleq">
-<span class="eqno">(121)<a class="headerlink" href="#equation-deltabeforelastfulleq" title="Permalink to this equation">#</a></span>\[\qquad  \qquad \boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}} = \; \left[ \; \boldsymbol{\delta}^{(i,L)}_{1 \times n_L}     \cdot\;  \left(W^{(L)}_{n_{L-1} \times n_{L}} \right)^T \right] \odot\; f'\left(\boldsymbol{z}^{(i,L-1)}_{1 \times n_{L-1}}\right) \]</div>
-<p> </p>
-<p>The derivatives of the cost is thus:</p>
-<a class="reference internal image-reference" href="../_images/lec07_tetris_dCostdWlastlastLayer.png"><img alt="tetrominodCostBeforeLast" class="align-center" src="../_images/lec07_tetris_dCostdWlastlastLayer.png" style="width: 50%;" /></a>
-<p> </p>
-<div class="math notranslate nohighlight" id="equation-dcostdwbeforelastfulleq">
-<span class="eqno">(122)<a class="headerlink" href="#equation-dcostdwbeforelastfulleq" title="Permalink to this equation">#</a></span>\[\qquad  \qquad \frac{\partial \text {Cost}}{\partial W^{(L-1)}_{n_{L-2} \times n_{L-1}}} = \; \frac{1}{m} \; \sum_{i=1}^m \; \left(\boldsymbol{a}^{(i,L-2)}_{1 \times n_{L-2}}\right)^T \cdot \boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}} \]</div>
-<p> </p>
-<p>That’s it for the math.</p>
-<p> </p>
-<p>Now you know how neural networks are trained!</p>
+</div><p>Now you know how neural networks are trained!</p>
 <p>In the assignment, you will code yourself a small neural network from scratch. Don’t worry: it will be guided. In the next lecture, we will see a much more convenient way to build a neural network using dedicated libraries. We will introduce further optimization techniques proper to deep learning.</p>
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
