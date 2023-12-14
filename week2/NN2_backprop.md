@@ -89,11 +89,11 @@ __Start__
 __Step 0:__ Weight initialization
 
 __Step 1:__ Forward propagation:  
-$\qquad \qquad \qquad \qquad \Rightarrow$ get list of $m$ predictions $\boldsymbol{\hat{y}}^{(i)}$
+$\qquad \qquad \qquad \qquad \bullet$ get list of $m$ predictions $\boldsymbol{\hat{y}}^{(i)}$
 
 __Step 2:__ Backpropagation:  
- $\qquad \qquad \qquad \qquad \Rightarrow$ get all errors $\boldsymbol{\delta}^{(i, \: \ell)}$ using observations $\boldsymbol{y}^{(i)} \\[2ex]$  
-$\qquad \qquad \qquad \qquad \Rightarrow$ sum errors and get all cost derivatives: 
+ $\qquad \qquad \qquad \qquad \bullet$ get all errors $\boldsymbol{\delta}^{(i, \: \ell)}$ using observations $\boldsymbol{y}^{(i)} \\[2ex]$  
+$\qquad \qquad \qquad \qquad \bullet$ sum errors and get all cost derivatives: 
 ```{math}
 \frac{\partial \text{ Cost}}{\partial W^{(\ell)}} \qquad ; \qquad \frac{\partial \text{ Cost}}{\partial \boldsymbol{b}^{(\ell)}}
 ```
@@ -213,11 +213,11 @@ So far, so good. Now the cost.
 The cost function is obtained using Equations {eq}`afzeq`, {eq}`costfunceq` and {eq}`ypredbold`:
 ```{math}
 :label: costlossafzeq
-\text{Cost} = \frac{1}{m} \sum_{i=1}^m L\left(\boldsymbol{\hat{y}}^{(i)}, \boldsymbol{y}^{(i)}\right) = \frac{1}{m} \sum_{i=1}^m L\left(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}\right) = \frac{1}{m} \sum_{i=1}^m L(f(\boldsymbol{z}^{(i, \: L)}), \boldsymbol{y}^{(i)}) 
+\text{Cost} = \frac{1}{m} \sum_{i=1}^m L\left(\boldsymbol{\hat{y}}^{(i)}, \boldsymbol{y}^{(i)}\right) = \frac{1}{m} \sum_{i=1}^m L\left(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}\right) = \; \frac{1}{m} \; \sum_{i=1}^m \; L \biggl(\;f \Bigl( \;\boldsymbol{z}^{(i, \; L)}\Bigl), \boldsymbol{y}^{(i)} \biggl)
 ```
 *** 
 
-There are three functions here: $L ( \: f( \: z ( \:\boldsymbol{W, b} ) ) )$. 
+There are three functions here: $L \Bigl( \: f\bigl( \: z ( \:\boldsymbol{W, b} ) \bigl) \Bigl)$. 
 
 Let's joyfully take the derivatives of that sandwich of functions! Now do you get the chain rule refresher? 
 
@@ -294,7 +294,7 @@ How to properly multiply these matrix and vectors? Using again the index notatio
 :label: dCostbeforelastsimpleeq
 \begin{align*}
 & \frac{\partial \text { Cost }}{\partial \; W^{(L-1)}} = \frac{1}{m} \sum_{i=1}^m \: \\[1ex] 
-& \boldsymbol{a}^{(i, \: L-2)} \otimes \left[ f'(\boldsymbol{z}^{(i, \: L-1)}) \odot \left[ W^{(L)} \left[  f'(\boldsymbol{z}^{(i, \: L)}) \: \odot \: L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \right] \right] \right]^\top 
+& \boldsymbol{a}^{(i, \: L-2)} \otimes \biggr[ f'(\boldsymbol{z}^{(i, \: L-1)}) \odot \Bigr[ W^{(L)} \bigr[  f'(\boldsymbol{z}^{(i, \: L)}) \: \odot \: L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \bigr] \Bigr] \biggr]^\top 
 \end{align*}
 ```
 
@@ -307,7 +307,7 @@ You can check yourself that for the derivative with respect to $W^{(L-2)}$ we wi
 \end{align*}
 ```
 
-Here the first four terms are the same as in Equation {eq}`dCostbeforelastchaineq`. Instead of the last term of Equation {eq}`dCostbeforelastchaineq`, $\boldsymbol{a}^{(i, \: L-1)}$, we have three new terms, whose derivatives are obtained using again the definition of the $z$ function in Equation {eq}`zfunceq`.
+Here the first four terms are the same as in Equation {eq}`dCostbeforelastchaineq` but instead of the last term of Equation {eq}`dCostbeforelastchaineq`, $\boldsymbol{a}^{(i, \: L-1)}$, we have three new terms, whose derivatives are obtained using again the definition of the $z$ function in Equation {eq}`zfunceq`.
 ```{math}
 :label: threenewtermsWminus2
 \begin{array}{c c c c c}
@@ -316,8 +316,19 @@ Here the first four terms are the same as in Equation {eq}`dCostbeforelastchaine
 \displaystyle W^{(L-1)} & \ &\displaystyle f'(\boldsymbol{z}^{(i, \: L-2)}) & \ & \displaystyle \boldsymbol{a}^{(i, \: L-3)}
 \end{array}
 ```
+Again with the index notations (and some math), we can work out the proper operations between these vector and matrix derivatives:  
+````{margin}
+<br><br><br>$\leftarrow$ Scroll to the right.
+````
+```{math}
+:label: Lminus2outerprodelementwiseall
+\begin{align*}
+& \frac{\partial \text { Cost }}{\partial \; W^{(L-1)}} = \frac{1}{m} \sum_{i=1}^m \: \\[1ex] 
+& \boldsymbol{a}^{(i, \: L-3)} \otimes \Biggr[ f'(\boldsymbol{z}^{(i, \: L-2)}) \: \odot \: \biggr[ W^{(L-1)} \Bigr[ f'(\boldsymbol{z}^{(i, \: L-1)}) \: \odot \: \bigr[ W^{(L)} \bigr[  f'(\boldsymbol{z}^{(i, \: L)}) \: \odot \: L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \bigr] \bigr] \Bigr] \biggr] \Biggr]^\top 
+\end{align*}
+```
 
-We will see more rigorously how these multiply together later. But can you start to see a pattern here?
+Can you start to see a pattern here? Compare the equation above with {eq}`dCostbeforelastsimpleeq`. 
 
 In the next section, we will write the terms with a much lighter notation to make this pattern more obvious. 
 
@@ -328,7 +339,7 @@ This is a computer science term. It refers to an optimization technique to make 
 Let's illustrate this point by writing the derivative equations for a network with three hidden layers. The output layer will be $L = 4$. Let's write the backpropagation terms.
 
 ```{warning}
-The lighter notations! 
+In the following equations -- for this section only -- the sample index $i$ is omitted for clarity. Only the layer number is shown in the upper-script. The dot operator "$\cdot$" is unspecified at this point. We will see later the proper matrix operations.
 ```
 
 ```{math}
@@ -341,50 +352,98 @@ The lighter notations!
 \frac{\partial \text { Cost }}{\partial W^{(2)}} &= \; \frac{1}{m} \; \sum \; 
 {\color{OliveGreen}L^{\prime}(\boldsymbol{a}^{(4)}, \boldsymbol{y}) \cdot f^{\prime}(\boldsymbol{z}^{(4)})} \cdot {\color{Cyan}W^{(4)} \cdot f'(\boldsymbol{z}^{(3)})} \cdot {\color{DarkOrange}W^{(3)} \cdot f'(\boldsymbol{z}^{(2)})} \cdot \boldsymbol{a}^{(1)} \\[2ex]
 \frac{\partial \text { Cost }}{\partial W^{(1)}} &= \; \frac{1}{m} \; \sum \; 
-{\color{OliveGreen}L^{\prime}(\boldsymbol{a}^{(4)}, \boldsymbol{y}) \cdot f^{\prime}(\boldsymbol{z}^{(4)})} \cdot {\color{Cyan}W^{(4)} \cdot f'(\boldsymbol{z}^{(3)})} \cdot {\color{DarkOrange}W^{(3)} \cdot f'(\boldsymbol{z}^{(2)})}  \cdot W^{(2)} \cdot f'(\boldsymbol{z}^{(1)}) \cdot \boldsymbol{x}\\[2ex]
+{\color{OliveGreen}L^{\prime}(\boldsymbol{a}^{(4)}, \boldsymbol{y}) \cdot f^{\prime}(\boldsymbol{z}^{(4)})} \cdot {\color{Cyan}W^{(4)} \cdot f'(\boldsymbol{z}^{(3)})} \cdot {\color{DarkOrange}W^{(3)} \cdot f'(\boldsymbol{z}^{(2)})}  \cdot  {\color{awesome} W^{(2)} \cdot f'(\boldsymbol{z}^{(1)})} \cdot \boldsymbol{a}^{(0)}\\[2ex]
 \end{align*}
 ```
 The reoccuring computations are highlighted in the same colour. Now you can get a sense of the genius behind neural network: although there are many computations, a lot of calculations are reused as we move backwards through the network. With proper memoization, the whole process can be very fast. 
 
 
+We will now write a general formula for backpropagation -- you may have guessed it: it will be a recursive one! 
+
+### Recursive error equations
+We can write Equations {eq}`dCostfirstvectorouterprod` and {eq}`dCostbeforelastsimpleeq` by introducing an error term $\boldsymbol{\delta}^{(i, \; \ell)}$. It will be of the same shape as the activation unit vector $\boldsymbol{a}^{(i \; \ell)}$, that is to say $n_\ell \times 1$. And at each node there will be different error values for each sample $i$.
+
+__Error at the last layer__  
+Let's define $\boldsymbol{\delta}^{(i, \; L)}$ as the product of the derivative of the loss and the activation function at the last layer (last two terms of Equation {eq}`dCostfirstvectorouterprod`): 
+
+```{math}
+:label: defdeltaL
+\boldsymbol{\delta}^{(i, \; L)} \; = \; f'(\boldsymbol{z}^{(i, \: L)}) \: \odot \: L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)})
+```
+```{image} ../images/lec07_tetris_deltaLayerL.png
+:alt: tetrominoDeltaL
+:width: 90%
+:align: center
+```
+The schematic above illustrate the element-wise product done on the right hand side, where each term is a column vector of $n_L$ elements. As we already use the left/right and up/down directions for matrix and vector operations, the sample index $i$ is here the ‘depth’, represented by several piled up sheets, aka data samples (and only four for illustration purpose).
+
+__Derivative of the cost at the last layer__  
+Looking at Equation {eq}`dCostfirstvectorouterprod`), we will have:
+```{math}
+:label: costWLdeltaL
+\frac{\partial \text { Cost }}{\partial \; W^{(L)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: L-1)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; L)} \: \right]^\top 
+```
+In terms of dimensions, the outer product creates a $n_{L-1} \times n_L$ matrix:
+
+```{image} ../images/lec07_tetris_dCostdWlastLayer.png
+:alt: tetris_dCostdWlastLayer
+:width: 90%
+:align: center
+```
+Note that the derivatives of the cost on the left hand side -- shown in green -- are the result of the summation over the $m$ samples so there is not 'depth' anymore. 
+
+__Error at the before-last layer__  
+From Equation {eq}`dCostbeforelastsimpleeq`, we inject the definition of $\boldsymbol{\delta}^{(i, \; L)}$ and define the error at the before-last layer by adding the terms:
+```{math}
+:label: deltaLminus1
+\boldsymbol{\delta}^{(i, \; L-1)} = f'(\boldsymbol{z}^{(i, \: L-1)}) \:\odot\: \Bigr[ \: W^{(L)} \; \boldsymbol{\delta}^{(i, \; L)} \:  \Bigr]
+```
+Dimension-wise, the matrix multiplication $W^{(L)} \; \boldsymbol{\delta}^{(i, \; L)}$ leads to a column vector of $n_{L-1}$ elements, which is then multiplied element-wise to give a column vector of, again, $n_{L-1}$ elements.
+```{image} ../images/lec07_tetris_deltaLayerLminus1.png
+:alt: tetris_deltaLayerLminus1
+:width: 90%
+:align: center
+```
+
+__Derivative of the cost at the before-last layer__  
+Moving on backward, we still use Equation {eq}`dCostbeforelastsimpleeq` to express the derivative of the cost with respect to the weights of the before-last layer the following way:
+```{math}
+:label: costWLdeltaLminus1
+\frac{\partial \text { Cost }}{\partial \; W^{(L-1)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: L-2)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; L-1)} \: \right]^\top
+```
+And the outer product gives the desired dimension for the left hand size, i.e. a $n_{L-2} \times n_{L-1}$ matrix.
+```{image} ../images/lec07_tetris_dCostdWlastlastLayer.png
+:alt: lec07_tetris_dCostdWlastlastLayer
+:width: 90%
+:align: center
+```
+&nbsp;  
+
+__General equations for errors and costs__  
+We can generalize Equations {eq}`deltaLminus1` and {eq}`costWLdeltaLminus1`.  
+
 ***
 
-
-We can see a pattern here! 
-
-We go all the way to the first hidden layer 1 (scroll to the right):
+Error at layer $\ell$:
 ```{math}
-:label: dCostW1dotsxeq
-\frac{\partial \text { Cost }}{\partial W^{(1)}}
-= \; \frac{1}{m} \; \sum \;\; L^{\prime}(\boldsymbol{a}^{(L)}, \boldsymbol{y}) 
-\;\cdot \; f^{\prime}(\boldsymbol{z}^{(L)}) 
-\;\cdot \; W^{(L)}
-\;\cdot \; f'(\boldsymbol{z}^{(L-1)})
-\;\cdot \; W^{(L-1)} 
-\;\cdot \; f'(\boldsymbol{z}^{(L-2)}) 
-\;\cdot \; W^{(L-2)}
-\;\cdots\; W^{(2)}
-\;\cdot \; f'(\boldsymbol{z}^{(1)}) 
-\;\cdot \; \boldsymbol{x}
-```
-where $\boldsymbol{x} = \boldsymbol{a}^{(0)}$ as defined in the previous lecture in Equation {eq}`xisazeroeq`.
-
-### Recursive error equation
-We can write Equations {eq}`dCostlastsimpleeq`, {eq}`dCostbeforelastsimpleeq` and {eq}`dCostbeforebeforelastsimpleeq` by introducing an error term $\boldsymbol{\delta}$. For the last layer it is defined as the product of the first two partial derivatives times the activation unit's value at the previous layer. For the following (previous) layers it would be:
-```{math}
-:label: deltasandpartialcostseq
+:label: deltalayerl
 \begin{align*}
-\boldsymbol{\delta}^{(L)} &=\; L^{\prime}(\boldsymbol{a}^{(L)}, \boldsymbol{y})  \cdot f^{\prime}(\boldsymbol{z}^{(L)})   & \rightarrow   \frac{\partial \text{ Cost}}{\partial W^{(L)}}   &= \; \frac{1}{m} \; \sum \;\boldsymbol{\delta}^{(L)} \;\cdot\; \boldsymbol{a}^{(L-1)}\\[2ex]
-\boldsymbol{\delta}^{(L-1)} &=\; \boldsymbol{\delta}^{(L)}     \cdot\;  W^{(L)} \cdot\; f'(\boldsymbol{z}^{(L-1)})        & \rightarrow   \frac{\partial \text{ Cost}}{\partial W^{(L-1)}} &= \; \frac{1}{m} \; \sum \;\boldsymbol{\delta}^{(L-1)} \;\cdot\; \boldsymbol{a}^{(L-2)}\\[2ex]
-\boldsymbol{\delta}^{(L-2)} &=\; \boldsymbol{\delta}^{(L-1)} \cdot\; W^{(L-1)} \;\cdot\; f'(\boldsymbol{z}^{(L-2)})       & \rightarrow  \frac{\partial \text{ Cost}}{\partial W^{(L-2)}} &= \; \frac{1}{m} \; \sum \;\boldsymbol{\delta}^{(L-2)} \;\cdot\; \boldsymbol{a}^{(L-3)}\\
-\end{align*} 
+\boldsymbol{\delta}^{(i, \; \ell)} = f'(\boldsymbol{z}^{(i, \: \ell)}) \:\odot\: \Bigr[ \: W^{(\ell + 1)} \; \boldsymbol{\delta}^{(i, \; \ell + 1)} \:  \Bigr]^\top 
+\end{align*}
 ```
-This is recursive because errors from the current layer are used to evaluate error signals in a previous layer. We can write the recursive formula for any partial derivative in layer $\ell$ as:
 
+Derivative of the cost at layer $\ell$:
 ```{math}
-:label: partialdevrecueq
-\frac{\partial \text{ Cost}}{\partial W^{(\ell)}} = \;\;\; \frac{1}{m} \; \sum \quad\boldsymbol{\delta}^{(\ell)} \;\cdot\; \boldsymbol{a}^{(\ell-1)}
+:label: dCostlayerl
+\begin{align*}
+\frac{\partial \text { Cost }}{\partial \; W^{(\ell)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: \ell -1)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; \ell)} \: \right]^\top
+\end{align*}
 ```
+
+***
+
+This has become much simpler, hasn't it?
+
 
 __What about the biases?__  
 This is left as exercise for training. 
@@ -397,43 +456,27 @@ Hint: start with the last layer $L$ as done previously with the weights.
 
 ````{admonition} Check your answer
 :class: tip, dropdown
-
-The formula is essentially the same as for the weights, at the difference that the partial derivative of $\boldsymbol{z}^{(\ell)}$ with respect to $\boldsymbol{b}^{(\ell)}$ is 1:
-\begin{equation*}
-\frac{\partial \boldsymbol{z}^{(\ell)}}{\partial \boldsymbol{b}^{(\ell)}} = 1
-\end{equation*}
-
-Thus:
-```{math}
-:label: biaseq
-\begin{align*}
-\boldsymbol{\delta}^{(L)} &=\; L^{\prime}(\boldsymbol{a}^{(L)}, \boldsymbol{y})  \cdot f^{\prime}(\boldsymbol{z}^{(L)})  
-& \longrightarrow & \quad \frac{\partial \text {Cost}}{\partial \boldsymbol{b}^{(L)}} &=& \; \frac{1}{m} \quad \sum \quad\boldsymbol{\delta}^{(L)}  \\[1ex]
-\boldsymbol{\delta}^{(L-1)} &= \; \boldsymbol{\delta}^{(L)}     \cdot\;  W^{(L)} \cdot\; f'(\boldsymbol{z}^{(L-1)}) 
-& \longrightarrow & \quad \frac{\partial \text {Cost}}{\partial \boldsymbol{b}^{(L-1)}} &=& \; \frac{1}{m} \quad \sum \quad\boldsymbol{\delta}^{(L-1)}  \\[1ex]
-\boldsymbol{\delta}^{(L-2)} &= \; \boldsymbol{\delta}^{(L-1)} \cdot\; W^{(L-1)} \;\cdot\; f'(\boldsymbol{z}^{(L-2)}) 
-& \longrightarrow & \quad \frac{\partial \text {Cost}}{\partial \boldsymbol{b}^{(L-2)}} &=& \; \frac{1}{m} \quad \sum \quad\boldsymbol{\delta}^{(L-2)} \\[1ex]
-& \quad\cdots & & \cdots & \\[1ex]
-\boldsymbol{\delta}^{(1)} &= \; \boldsymbol{\delta}^{(2)} \cdot\; W^{(2)} \;\cdot\; f'(\boldsymbol{z}^{(1)}) 
-& \longrightarrow & \quad \frac{\partial \text {Cost}}{\partial \boldsymbol{b}^{(1)}} &=& \; \frac{1}{m} \quad \sum \quad\boldsymbol{\delta}^{(1)} \\[1ex]
-\end{align*} 
-```
+See the Summary section below.
 ````
+
 
 ### Weights and biases update
-After backpropagating, each weight and bias in the network is adjusted in proportion to how much it contributes to overall error.
+After backpropagating, each weight and each bias in the network are adjusted in proportion to how much they contribute to the overall error.  
 
-````{margin}
-The equations are different as in the section {ref}`NN2:backprop:mainstep` as we keep here the 'lite' notations introduced above. The indices referring to the row and column of each weight/bias are implied for smoother reading. But remember that $W$ and $b$ are matrices and vectors respectively.
-````
 ```{math}
 :label: weightbiasupdate
 \begin{align*}
-W^{(\ell)} &\leftarrow W^{(\ell)} - \alpha \frac{\partial \text{ Cost}}{\partial W^{(\ell)}} \\[1ex]
-\boldsymbol{b}^{(\ell)} &\leftarrow \boldsymbol{b}^{(\ell)} - \alpha \frac{\partial \text{ Cost}}{\partial \boldsymbol{b}^{(\ell)}}
+&W^{(\ell)} &\leftarrow& &W^{(\ell)} \quad &-& \alpha \frac{\partial \text{ Cost}}{\partial W^{(\ell)}} \\[2ex]
+&\boldsymbol{b}^{(\ell)} &\leftarrow& &\boldsymbol{b}^{(\ell)} \quad &-& \alpha \frac{\partial \text{ Cost}}{\partial \boldsymbol{b}^{(\ell)}}
 \end{align*}
 ```
+Nothing new here, it is the standard gradient descent step we are familiar with. They are just more elements to update. 
 
+```{admonition} Exercise
+:class: seealso
+For a network of $L$ layers, that it to say $L -1$ hidden layers plus an output layer, how many weight matrices $W^{(\ell)}$ and how many biases vectors $\boldsymbol{b}^{(\ell)}$ do we have to update?
+```
+Let's now wrap it up!
 
 ## Summary on backpropagation
 The backpropagation of error is a recursive algorithm reusing the computations from last until first layer to compute how much each activation unit and bias node contribute to the overall error. The idea behind backpropagation is to share the repeated computations wherever possible. 
@@ -455,38 +498,35 @@ __Start__
 __Step 0: Weight initialization__
 
 __Step 1: Forward propagation__  
-$\qquad \quad \Rightarrow$ get list of $m$ predictions $\boldsymbol{\hat{y}}$
+$\qquad \quad \bullet$ get list of $m$ predictions $\boldsymbol{\hat{y}}^{(i)}$
 \begin{equation}
- f(\boldsymbol{z}^{(L)}) = \boldsymbol{a}^{(L)} = \boldsymbol{\hat{y}}
+ f(\boldsymbol{z}^{(i, \; L)}) = \boldsymbol{a}^{(i, \;L)} = \boldsymbol{\hat{y}}^{(i)}
 \end{equation}
 
 __Step 2: Backpropagation__  
-$\qquad \quad \Rightarrow$ get the cost:
+$\qquad \quad \bullet$ get the cost:
 \begin{equation}
-\text{Cost} =  \; \frac{1}{m} \; \sum L(f(\boldsymbol{z}^{(L)}), \boldsymbol{y}) 
-\end{equation}
-$\qquad \quad \Rightarrow$ get all errors:
-\begin{equation}
-\boldsymbol{\delta}^{(L)} =\; L^{\prime}(\boldsymbol{a}^{(L)}, \boldsymbol{y}) \cdot f^{\prime}(\boldsymbol{z}^{(L)}) 
-\end{equation}
-\begin{equation}
-\qquad \;\; \boldsymbol{\delta}^{(\ell)} = \; \boldsymbol{\delta}^{(\ell+1)} \;\cdot\; W^{(\ell+1)} \;\cdot\; f'(\boldsymbol{z}^{(\ell)})
-\end{equation}
+\text{Cost} =  \; \frac{1}{m} \; \sum_{i=1}^m \; L \biggl(\;f \Bigl( \;\boldsymbol{z}^{(i, \; L)}\Bigl), \boldsymbol{y}^{(i)} \biggl)\end{equation}
+$\qquad \quad \bullet$ get all errors:
+\begin{align*}
+\boldsymbol{\delta}^{(i, \; L)} \; &= \quad f'(\boldsymbol{z}^{(i, \: L)}) \: &\odot& \quad L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \\[2ex]
+\boldsymbol{\delta}^{(i, \; \ell)} &=  \quad f'(\boldsymbol{z}^{(i, \: \ell)}) \: &\odot& \quad \Bigr[ \: W^{(\ell + 1)} \; \boldsymbol{\delta}^{(i, \; \ell + 1)} \:  \Bigr]^\top 
+\end{align*}
 
-$\qquad \quad \Rightarrow$ sum errors and get all cost derivatives:  
+$\qquad \quad \bullet$ sum errors and get all cost derivatives:  
 ```{math}
 \begin{align*}
-\frac{\partial \text{ Cost}}{\partial W^{(\ell)}} &= \;\frac{1}{m} \; \sum \; \boldsymbol{\delta}^{(\ell)} \;\cdot\; \boldsymbol{a}^{(\ell-1)}\\[2ex]
-\frac{\partial \text {Cost}}{\partial \boldsymbol{b}^{(\ell)}} &= \; \frac{1}{m} \; \sum \quad\boldsymbol{\delta}^{(\ell)}
-\end{align*}
+\frac{\partial \text { Cost }}{\partial \; W^{(\ell)}} &= \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: \ell -1)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; \ell)} \: \right]^\top
+\\[2ex]
+\frac{\partial \text { Cost }}{\partial \; \boldsymbol{b}^{(\ell)}} &= \frac{1}{m} \sum_{i=1}^m \;  \boldsymbol{\delta}^{(i, \; \ell)}\end{align*}
 ```
 
 __Step 3: Gradient Descent__  
-$\qquad \quad \Rightarrow$ update weights & biases:
+$\qquad \quad \bullet$ update weights & biases:
 ```{math}
 \begin{align*}
-W^{(\ell)} &\leftarrow W^{(\ell)} - \alpha \frac{\partial \text{ Cost}}{\partial W^{(\ell)}} \\[1ex]
-\boldsymbol{b}^{(\ell)} &\leftarrow \boldsymbol{b}^{(\ell)} - \alpha \frac{\partial \text{ Cost}}{\partial \boldsymbol{b}^{(\ell)}}
+&W^{(\ell)} &\leftarrow& &W^{(\ell)} \quad &-& \alpha \frac{\partial \text{ Cost}}{\partial W^{(\ell)}} \\[2ex]
+&\boldsymbol{b}^{(\ell)} &\leftarrow& &\boldsymbol{b}^{(\ell)} \quad &-& \alpha \frac{\partial \text{ Cost}}{\partial \boldsymbol{b}^{(\ell)}}
 \end{align*}
 ```
 
@@ -496,6 +536,7 @@ __Exit conditions:__
 * Number of epochs $N^\text{epoch}$ is reached
 * If all derivatives are zero or below a small threshold 
 ````
+
 
 ## Complete equations and dimensions
 Through this lecture, some indices have been omitted for more clarity. In the following, we will be more rigourous and add the indices, as well as the correct operation symbols. There are indeed some matrix and element-wise multiplications in the formulae.
@@ -596,11 +637,12 @@ In the assignment, you will code yourself a small neural network from scratch. D
 :class: seealso
 Now that you know the backpropagation algorithm, a question regarding the neural network initialization: what if all weights are first set to the same value? (not zero, as we saw, but any other constant)
 ```
-
 ````{admonition} Check your answer
 :class: tip, dropdown
-If the weights and biases are initialized to the same constant values $w$ and $b$, all activation units in a given layer will get the same signal $a = \sum_{j} w_j \; x_j + b$. As such, all nodes for that layer will be identical. Thus the gradients will be updated the same way. Despite having many neurons per layer, the network will act as if it had only one neuron per layer. Therefore, it is likely to fail to reproduce complex patterns from the data; it won't be that smart. For a feedforward neural network to work, there should be an asymmetric configuration for it to use each activation unit uniquely. This is why weights and biases should be initalized with random value to break the symmetry.
+If the weights and biases are initialized to the same constant values $w$ and $b$, all activation units in a given layer will get the same signal $a = f(\sum_{j} w_j \; x_j + b)$. As such, all nodes for that layer will be identical. Thus the gradients will be updated the same way. Despite having many neurons per layer, the network will act as if it had only one neuron per layer. Therefore, it is likely to fail to reproduce complex patterns from the data; it won't be that smart. For a feedforward neural network to work, there should be an asymmetric configuration for it to use each activation unit uniquely. This is why weights and biases should be initalized with random value to break the symmetry.
 ````
+
+
 
 &nbsp;&nbsp;
 
