@@ -383,14 +383,14 @@ Looking at Equation {eq}`dCostfirstvectorouterprod`), we will have:
 :label: costWLdeltaL
 \frac{\partial \text { Cost }}{\partial \; W^{(L)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: L-1)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; L)} \: \right]^\top 
 ```
-In terms of dimensions, the outer product creates a $n_{L-1} \times n_L$ matrix:
+In terms of dimensions, the outer product creates a $n_{L-1} \times n_L$ matrix; this is what we want to get the correct dimensionality on the left hand side:
 
 ```{image} ../images/lec07_tetris_dCostdWlastLayer.png
 :alt: tetris_dCostdWlastLayer
 :width: 90%
 :align: center
 ```
-Note that the derivatives of the cost on the left hand side -- shown in green -- are the result of the summation over the $m$ samples so there is not 'depth' anymore. 
+Note that the derivatives of the cost on the left hand side -- shown in green -- are the result of the summation over the $m$ samples so there is no 'depth' anymore. 
 
 __Error at the before-last layer__  
 From Equation {eq}`dCostbeforelastsimpleeq`, we inject the definition of $\boldsymbol{\delta}^{(i, \; L)}$ and define the error at the before-last layer by adding the terms:
@@ -411,7 +411,7 @@ Moving on backward, we still use Equation {eq}`dCostbeforelastsimpleeq` to expre
 :label: costWLdeltaLminus1
 \frac{\partial \text { Cost }}{\partial \; W^{(L-1)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: L-2)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; L-1)} \: \right]^\top
 ```
-And the outer product gives the desired dimension for the left hand size, i.e. a $n_{L-2} \times n_{L-1}$ matrix.
+And the outer product gives the proper dimensions for the left hand size, i.e. a $n_{L-2} \times n_{L-1}$ matrix.
 ```{image} ../images/lec07_tetris_dCostdWlastlastLayer.png
 :alt: lec07_tetris_dCostdWlastlastLayer
 :width: 90%
@@ -537,95 +537,6 @@ __Exit conditions:__
 * If all derivatives are zero or below a small threshold 
 ````
 
-
-## Complete equations and dimensions
-Through this lecture, some indices have been omitted for more clarity. In the following, we will be more rigourous and add the indices, as well as the correct operation symbols. There are indeed some matrix and element-wise multiplications in the formulae.
-
-The activation nodes $\boldsymbol{a}$ are row vectors and there is a different value for each sample $x^{(i)}$, with $i$ ranging from 1 to $m$ (size of the training dataset). This is a list of $m$ row vectors. We will stick to the convention in the first lectures of writing the data sample index $i$ as superscript. We will put the information of the layer also in the superscript. In the subscript, we will indicate the shape of the element (vector or matrix) in the form of $n_\text{row} \times n_\text{column}$. Thus, for the layer $\ell$ with $n$ activation units, our notation becomes:
-\begin{equation}
-\boldsymbol{a}^{(\ell)} \longrightarrow  \boldsymbol{a}^{(i,\ell)}_{1 \times n_\ell} 
-\end{equation}
-You can directly 'see' the form of $\boldsymbol{a}^{(i,\ell)}_{1 \times n_\ell}$: a row vector of $n_\ell$ elements.
-
-The $\boldsymbol{z}$ row vectors (the weighted sum of a node before applying the activation function $f$) are of the same shape:
-\begin{equation}
-\boldsymbol{z}^{(\ell)} \longrightarrow \boldsymbol{z}^{(i,\ell)}_{1 \times n_\ell} 
-\end{equation}
-
-Now the weight matrices and biases. Unlike the node vectors above, weight matrices and the bias vectors are __unique__ to the neural network. The same weights and bias values are applied to all the samples. The weight matrix at layer $\ell$ connecting the $n_{\ell-1}$ nodes of the previous layer to the $n_{\ell}$ nodes of the current layer $\ell$ will be of shape:
-\begin{equation}
-W^{(\ell)}  \longrightarrow  W^{(\ell)}_{n_{\ell-1} \times n_{\ell}}
-\end{equation}
-For the bias vector, it will be:
-\begin{equation}
-\boldsymbol{b}^{(\ell)}  \longrightarrow \boldsymbol{b}^{(\ell)}_{1 \times n_\ell} 
-\end{equation}
-
-You can see that both $W$ and $\boldsymbol{b}$ do not have any index $i$ in the superscript, because there is one set of weights and biases for the entire network. 
-
-We can rewrite the equations {eq}`deltasandpartialcostseq` using all the information. The matrix multiplication will be written with the '$\cdot$' symbol and element-wise multiplication (applied on vectors) as $\odot$.
-
-Thus for the last layer, the error is:
-
-```{image} ../images/lec07_tetris_deltaLayerL.png
-:alt: tetrominoDeltaL
-:width: 50%
-:align: center
-```
-```{math}
-:label: deltaLastFullEq
-\qquad \; \boldsymbol{\delta}^{(i,L)}_{1 \times n_L} =\; L^{\prime}\left(\boldsymbol{a}^{(i,L)}_{1 \times n_L}\right) \odot f^{\prime}\left(\boldsymbol{z}^{(i,L)}_{1 \times n_L}\right) 
-```
-It is an element-wise multiplication of two row vectors. The schematics on top of the equation shows the dimension of the terms. As they are lists with a value for each data sample, and we already use the left/right and up/down directions for matrix and vector operations, the $i$ index is here the 'depth'. In the schematics, it is represented as piled up Tetris-like tetrominos; here only a few data samples (sheets) are represented for illustrative purposes.
-
-The derivative of the cost is:
-```{image} ../images/lec07_tetris_dCostdWlastLayer.png
-:alt: tetrominodCostLast
-:width: 50%
-:align: center
-```
-&nbsp;  
-```{math}
-:label: dCostdWLastFullEq
-\qquad  \qquad \; \frac{\partial \text {Cost}}{\partial W^{(L)}_{n_{L-1} \times n_{L}}} = \; \frac{1}{m} \; \sum_{i=1}^m \; \left(\boldsymbol{a}^{(i,L-1)}_{1 \times n_{L-1}}\right)^T \cdot \boldsymbol{\delta}^{(i,L)}_{1 \times n_L} 
-```
-&nbsp;  
-Dimension-wise, the partial derivatives of the cost should be of the same size of the associated weight matrix, as it will be substracted from that weight matrix. So it makes sense in the end to have a matrix created. It is done via the product of a column vector (recall the derivative turns row into column vectors) times a row vector.  
-&nbsp; 
-
-For the before-last layer, the error is:
-```{image} ../images/lec07_tetris_deltaLayerLminus1.png
-:alt: tetrominoDeltaLminusOne
-:width: 50%
-:align: center
-```
-&nbsp;  
-```{math}
-:label: deltaBeforeLastFullEq
-\qquad  \qquad \boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}} = \; \left[ \; \boldsymbol{\delta}^{(i,L)}_{1 \times n_L}     \cdot\;  \left(W^{(L)}_{n_{L-1} \times n_{L}} \right)^T \right] \odot\; f'\left(\boldsymbol{z}^{(i,L-1)}_{1 \times n_{L-1}}\right) 
-```
-&nbsp;  
-
-The derivatives of the cost is thus:
-```{image} ../images/lec07_tetris_dCostdWlastlastLayer.png
-:alt: tetrominodCostBeforeLast
-:width: 50%
-:align: center
-```
-&nbsp;  
-```{math}
-:label: dCostdWBeforeLastFullEq
-\qquad  \qquad \frac{\partial \text {Cost}}{\partial W^{(L-1)}_{n_{L-2} \times n_{L-1}}} = \; \frac{1}{m} \; \sum_{i=1}^m \; \left(\boldsymbol{a}^{(i,L-2)}_{1 \times n_{L-2}}\right)^T \cdot \boldsymbol{\delta}^{(i,L-1)}_{1 \times n_{L-1}} 
-```
-
-
-
-
-&nbsp;  
-
-That's it for the math.
-
-&nbsp;  
 
 Now you know how neural networks are trained! 
 
