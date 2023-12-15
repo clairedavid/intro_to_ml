@@ -10,10 +10,16 @@ We want our neural network to solve the XOR problem. This is how the data look l
 ---
 Scatter plot of data representing the XOR configuration: it is not linearly separable.
 ```
+## Part 1: Derivation of Backpropagation
+In this question, you are asked to derive Equations {eq}`dCostfirstvectorouterprod`, {eq}`defdeltaL` -- {eq}`dCostlayerl` from the section on the {ref}`NN2:backprop`.
 
+* Remember that a matrix element $w_{jk}$ of a matrix $W$ becomes $w_{kj}$ once it is transposed as $W^\top$.   
+* The outer product of two vectors $a \otimes b$ can also be written as $a \; b^\top$
+* Refrain from using indices already taken in the course ($i$, $\ell$, $m$, $n$) to avoid confusion with sample index, layer number, total number of samples and number of features, respectively. Lots of other letters are available 😉.
 
+## Part 2: Code it!
 
-## 0. Setup
+### Setup
 Copy all of the following into a fresh Jupyter notebook.
 
 ```python
@@ -190,7 +196,7 @@ def feedforward(input_X, weights, biases):
   W1, W2, W3 = weights ; b1, b2, b3 = biases
 
   m  = len(input_X) 
-  a0 = input_X.reshape((m, 1, -1))
+  a0 = input_X.reshape((m, -1, 1))
 
   # First layer
   #...

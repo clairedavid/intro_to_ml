@@ -710,9 +710,21 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup">
-   0. Setup
+  <a class="reference internal nav-link" href="#part-1-derivation-of-backpropagation">
+   Part 1: Derivation of Backpropagation
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-2-code-it">
+   Part 2: Code it!
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#get-the-data">
@@ -759,9 +771,21 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setup">
-   0. Setup
+  <a class="reference internal nav-link" href="#part-1-derivation-of-backpropagation">
+   Part 1: Derivation of Backpropagation
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-2-code-it">
+   Part 2: Code it!
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     Setup
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#get-the-data">
@@ -808,8 +832,19 @@ title="Print to PDF"
 <p><span class="caption-text">Scatter plot of data representing the XOR configuration: it is not linearly separable.</span><a class="headerlink" href="#a03-data" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<section id="part-1-derivation-of-backpropagation">
+<h2>Part 1: Derivation of Backpropagation<a class="headerlink" href="#part-1-derivation-of-backpropagation" title="Permalink to this headline">#</a></h2>
+<p>In this question, you are asked to derive Equations <a class="reference internal" href="../week2/NN2_backprop.html#equation-dcostfirstvectorouterprod">(98)</a>, <a class="reference internal" href="../week2/NN2_backprop.html#equation-defdeltal">(106)</a> – <a class="reference internal" href="../week2/NN2_backprop.html#equation-dcostlayerl">(111)</a> from the section on the <a class="reference internal" href="../week2/NN2_backprop.html#nn2-backprop"><span class="std std-ref">Backpropagation Algorithm</span></a>.</p>
+<ul class="simple">
+<li><p>Remember that a matrix element <span class="math notranslate nohighlight">\(w_{jk}\)</span> of a matrix <span class="math notranslate nohighlight">\(W\)</span> becomes <span class="math notranslate nohighlight">\(w_{kj}\)</span> once it is transposed as <span class="math notranslate nohighlight">\(W^\top\)</span>.</p></li>
+<li><p>The outer product of two vectors <span class="math notranslate nohighlight">\(a \otimes b\)</span> can also be written as <span class="math notranslate nohighlight">\(a \; b^\top\)</span></p></li>
+<li><p>Refrain from using indices already taken in the course (<span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(\ell\)</span>, <span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(n\)</span>) to avoid confusion with sample index, layer number, total number of samples and number of features, respectively. Lots of other letters are available 😉.</p></li>
+</ul>
+</section>
+<section id="part-2-code-it">
+<h2>Part 2: Code it!<a class="headerlink" href="#part-2-code-it" title="Permalink to this headline">#</a></h2>
 <section id="setup">
-<h2>0. Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h2>
+<h3>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h3>
 <p>Copy all of the following into a fresh Jupyter notebook.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -894,6 +929,7 @@ title="Print to PDF"
   <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</section>
 </section>
 <section id="get-the-data">
 <h2>1. Get the data<a class="headerlink" href="#get-the-data" title="Permalink to this headline">#</a></h2>
@@ -983,7 +1019,7 @@ We do not have to know the number of activation units in each layer as the code 
   <span class="n">W1</span><span class="p">,</span> <span class="n">W2</span><span class="p">,</span> <span class="n">W3</span> <span class="o">=</span> <span class="n">weights</span> <span class="p">;</span> <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">b3</span> <span class="o">=</span> <span class="n">biases</span>
 
   <span class="n">m</span>  <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_X</span><span class="p">)</span> 
-  <span class="n">a0</span> <span class="o">=</span> <span class="n">input_X</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+  <span class="n">a0</span> <span class="o">=</span> <span class="n">input_X</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">m</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 
   <span class="c1"># First layer</span>
   <span class="c1">#...</span>
