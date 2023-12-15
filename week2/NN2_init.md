@@ -56,7 +56,7 @@ If we use a different number than zero, then we will validate the "don't die" pa
 ````
 The non-zero values should not lead to saturation nor explosion of the gradients. This must remind you of something. Yes: those were issues posed by some activation functions when their input values become large (Section {ref}`NN1:activationF:risksGradient`). But it has been found that the initialization could also make a neural network unstable. The whole instability problem of neural network was not clear until a paper (link on the right) in 2010 from Xavier Glorot and Yoshua Bengio revealed the culprits.
 
-At that time, there were heuristics found before 2010 (you will see why soon) consisting of initializing all weights to random values between -1 to 1, or -0.3 to 0.3 or either asymmetrically from 0 to 1. The weight values would follow either a Gaussian or uniform distribution. These heuristics work well in general. But the paper authors showed that the combination of a sigmoid as activation function with such initialization methods produces outputs with a larger variance than the inputs at the previous layer. The phenomenon amplifies itself layers after layers, eventually leading to saturation at the last layer. And as the sigmoid is not centered on zero but 0.5, this actually makes it even worse.
+At that time, there were heuristics found before 2010 (you will see why soon) consisting of initializing all weights to random values between -1 to 1, or -0.3 to 0.3 or either asymmetrically from 0 to 1. The weight values would follow either a Gaussian or uniform distribution. These heuristics work well in general. But the paper authors showed that the combination of a sigmoid as activation function with such initialization methods produces outputs with a larger variance than the inputs at the previous layer. The phenomenon amplifies itself layer after layer, eventually leading to saturation at the last layer. And as the sigmoid is not centered on zero but 0.5, this actually makes it even worse.
 
 Luckily the same authors in the same paper suggested a way to mitigate this, and with other experts (and papers) they proposed 'modern' initialization methods that we will present in the next section.
 
@@ -68,7 +68,7 @@ Let's first define the notion of _fan-in_ and _fan-out_.
 :label: fanindef
 
 In a neural network, __fan-in__ refers to the number of incoming network connections  
-(inputs neuron and bias of the previous layer)
+(input neurons and bias of the previous layer)
 
 The __fan-out__ is the number of outgoing connections, i.e. the number of neurons of the layer.
 
@@ -122,7 +122,7 @@ This initialization works with the SELU activation function (see Section {ref}`N
 
 &nbsp;
 
-Both Xavier and LeCun methods are for differentiable activation function. The following method is for non-differentiable activation function like ReLU.
+Both Xavier and LeCun methods are for differentiable activation functions. The following method is for non-differentiable activation functions like ReLU.
 
 ### He Weight Initialization
 
@@ -149,4 +149,4 @@ The __He Weight Initialization__ is obtained by drawing each weight from a rando
 
 &nbsp;
 
-We know what is neural network made of, how information flow from inputs to outputs (forward propagation) and how to properly initialize the weights. Let's now move on with backpropagation!
+We know what a neural network is made of, how information flow from inputs to outputs (forward propagation) and how to properly initialize the weights. Let's now move on with backpropagation!

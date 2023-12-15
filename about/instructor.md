@@ -38,7 +38,7 @@ The table below shows a tentative weekly schedule for this course. There may be 
 
 ## Acknowledgments
 
-I have received the precious help of colleagues and friends. A big thank you to Harrison Prosper for being a great mentor and sharing valuable resources.
+I have received the precious help of colleagues and friends. A big thank you to Harrison Prosper for being a great mentor and sharing valuable resources. Thanks to Mike Giles for catching all the typos and having this admirable attention to details.
 I would also like to thank Alex Held, Benjamin Nachman, Bruno Barton-Singer, Clara Nellist, Dag Gillberg, Matthew Feickert, Sascha Caron and Will Leight.
 
 For this course I got inspired by Coursera's Introduction to Machine Learning, by Andrew Ng. I found wonderful tutorials in Machine Learning Mastery, by Dr. Jason Brownlee. Aurélien Géron's book Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow ([Second Edition](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)) is fabulous. I am grateful to all 'StackOverflowers' helping me debug some parts of code to shape the tutorials and assignments into, I hope, an awesome learning experience for the students.
