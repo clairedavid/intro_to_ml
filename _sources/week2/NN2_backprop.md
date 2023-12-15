@@ -4,7 +4,7 @@
 ## Before Diving Into The Math 
 ### Ingredients
 
-The forward propagation, or forward pass, will fill the network with values for all bias nodes and activation units. That includes the last layer of activation units, so the forward pass provides predictions. 
+The forward propagation, or forward pass, will fill the network with values for all activation units. That includes the last layer of activation units, so the forward pass provides predictions. 
 
 We saw the loss function as the mathematical tool to compare the predictions with their associated observed values for a sample (and the cost function aggregates this for all data samples).
 
@@ -173,13 +173,13 @@ We will denote the loss function through a general form as $L$:
 :label: lossfunceq
 L\left(\boldsymbol{\hat{y}}^{(i)}, \boldsymbol{y}^{(i)} \right) 
 ```
-It is computed for each sample instance $\left\{ \boldsymbol{x}^{(i)}, y^{(i)} \right\}$, with $\left(\boldsymbol{x}^{(i)}\right)^\top = (x_1^{(i)}, x_2^{(i)}, \cdots, x_n^{(i)})^\top$ being the vector of $n$ input features and $y^{(i)}$ the associated target.
+It is computed for each sample instance $\left\{ \boldsymbol{x}^{(i)}, \boldsymbol{y}^{(i)} \right\}$, with $\left(\boldsymbol{x}^{(i)}\right)^\top = (x_1^{(i)}, x_2^{(i)}, \cdots, x_n^{(i)})^\top$ being the vector of $n$ input features and $\boldsymbol{y}^{(i)}$ the associated targets.
 
 The cost is the sum of the losses over all data instances $m$.
 
 ```{math}
 :label: costfunceq
-\text{Cost} = \frac{1}{m} \sum_{i=1}^m L\left(\hat{y}^{(i)}, y^{(i)}\right) 
+\text{Cost} = \frac{1}{m} \sum_{i=1}^m L\left(\boldsymbol{\hat{y}}^{(i)}, \boldsymbol{y}^{(i)}\right) 
 ```
 
 __How can we express the final output $\boldsymbol{\hat{y}}$?__  
@@ -254,7 +254,7 @@ For the third term, let's recall the definition of the $z$ function in Equation 
 With a bit of math, we can show that: 
 ```{math}
 :label: dCostdzdwlastlayer
-\frac{\partial \boldsymbol{z}^{(i, \: L)}}{\partial W^{(L)}} = \boldsymbol{a}^{(i, \: L-1)}
+\frac{\partial z_j^{(i, \: L)}}{\partial w_{kj}^{(L)}} = a_k^{(i, \: L-1)}
 ```
 
 We actually know all these terms! 
@@ -264,7 +264,7 @@ Let's first consider the dimensions of this product of three derivatives. What d
 
 ```{math}
 :label: dCostfirstvectorouterprod
-\frac{\partial \text { Cost }}{\partial \; W^{(L)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: L-1)} \otimes \left[  f'(\boldsymbol{z}^{(i, \: L)}) \odot L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \right]^\top  \;,
+\frac{\partial \text { Cost }}{\partial \; W^{(L)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: L-1)} \otimes \left[  f'(\boldsymbol{z}^{(i, \: L)}) \odot L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \right]  \;,
 ```
 where $\otimes$ is the outer product and $\odot$ denotes the element-wise multiplication between the two column vectors. You can check the outer product will be of the desired dimensions of $n_{L-1} \times n_L$.
 
@@ -294,7 +294,7 @@ How to properly multiply these matrix and vectors? Using again the index notatio
 :label: dCostbeforelastsimpleeq
 \begin{align*}
 & \frac{\partial \text { Cost }}{\partial \; W^{(L-1)}} = \frac{1}{m} \sum_{i=1}^m \: \\[1ex] 
-& \boldsymbol{a}^{(i, \: L-2)} \otimes \biggr[ f'(\boldsymbol{z}^{(i, \: L-1)}) \odot \Bigr[ W^{(L)} \bigr[  f'(\boldsymbol{z}^{(i, \: L)}) \: \odot \: L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \bigr] \Bigr] \biggr]^\top 
+& \boldsymbol{a}^{(i, \: L-2)} \;\otimes\; \biggr[ f'(\boldsymbol{z}^{(i, \: L-1)}) \;\odot\; \Bigr[ W^{(L)} \bigr[  f'(\boldsymbol{z}^{(i, \: L)}) \: \odot \: L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \bigr] \Bigr] \biggr] 
 \end{align*}
 ```
 
@@ -324,7 +324,7 @@ Again with the index notations (and some math), we can work out the proper opera
 :label: Lminus2outerprodelementwiseall
 \begin{align*}
 & \frac{\partial \text { Cost }}{\partial \; W^{(L-1)}} = \frac{1}{m} \sum_{i=1}^m \: \\[1ex] 
-& \boldsymbol{a}^{(i, \: L-3)} \otimes \Biggr[ f'(\boldsymbol{z}^{(i, \: L-2)}) \: \odot \: \biggr[ W^{(L-1)} \Bigr[ f'(\boldsymbol{z}^{(i, \: L-1)}) \: \odot \: \bigr[ W^{(L)} \bigr[  f'(\boldsymbol{z}^{(i, \: L)}) \: \odot \: L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \bigr] \bigr] \Bigr] \biggr] \Biggr]^\top 
+& \boldsymbol{a}^{(i, \: L-3)} \otimes \Biggr[ f'(\boldsymbol{z}^{(i, \: L-2)}) \: \odot \: \biggr[ W^{(L-1)} \Bigr[ f'(\boldsymbol{z}^{(i, \: L-1)}) \: \odot \: \bigr[ W^{(L)} \bigr[  f'(\boldsymbol{z}^{(i, \: L)}) \: \odot \: L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \bigr] \bigr] \Bigr] \biggr] \Biggr]
 \end{align*}
 ```
 
@@ -381,7 +381,7 @@ __Derivative of the cost at the last layer__
 Looking at Equation {eq}`dCostfirstvectorouterprod`), we will have:
 ```{math}
 :label: costWLdeltaL
-\frac{\partial \text { Cost }}{\partial \; W^{(L)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: L-1)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; L)} \: \right]^\top 
+\frac{\partial \text { Cost }}{\partial \; W^{(L)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: L-1)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; L)} \: \right]
 ```
 In terms of dimensions, the outer product creates a $n_{L-1} \times n_L$ matrix; this is what we want to get the correct dimensionality on the left hand side:
 
@@ -409,7 +409,7 @@ __Derivative of the cost at the before-last layer__
 Moving on backward, we still use Equation {eq}`dCostbeforelastsimpleeq` to express the derivative of the cost with respect to the weights of the before-last layer the following way:
 ```{math}
 :label: costWLdeltaLminus1
-\frac{\partial \text { Cost }}{\partial \; W^{(L-1)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: L-2)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; L-1)} \: \right]^\top
+\frac{\partial \text { Cost }}{\partial \; W^{(L-1)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: L-2)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; L-1)} \: \right]
 ```
 And the outer product gives the proper dimensions for the left hand size, i.e. a $n_{L-2} \times n_{L-1}$ matrix.
 ```{image} ../images/lec07_tetris_dCostdWlastlastLayer.png
@@ -436,7 +436,7 @@ Derivative of the cost at layer $\ell$:
 ```{math}
 :label: dCostlayerl
 \begin{align*}
-\frac{\partial \text { Cost }}{\partial \; W^{(\ell)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: \ell -1)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; \ell)} \: \right]^\top
+\frac{\partial \text { Cost }}{\partial \; W^{(\ell)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: \ell -1)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; \ell)} \: \right]
 \end{align*}
 ```
 
@@ -470,11 +470,11 @@ After backpropagating, each weight and each bias in the network are adjusted in 
 &\boldsymbol{b}^{(\ell)} &\leftarrow& &\boldsymbol{b}^{(\ell)} \quad &-& \alpha \frac{\partial \text{ Cost}}{\partial \boldsymbol{b}^{(\ell)}}
 \end{align*}
 ```
-Nothing new here, it is the standard gradient descent step we are familiar with. They are just more elements to update. 
+Nothing new here, it is the standard gradient descent step we are familiar with. There are just more elements to update. 
 
 ```{admonition} Exercise
 :class: seealso
-For a network of $L$ layers, that it to say $L -1$ hidden layers plus an output layer, how many weight matrices $W^{(\ell)}$ and how many biases vectors $\boldsymbol{b}^{(\ell)}$ do we have to update?
+For a network of $L$ layers, that is to say $L -1$ hidden layers plus an output layer, how many weight matrices $W^{(\ell)}$ and how many biases vectors $\boldsymbol{b}^{(\ell)}$ do we have to update?
 ```
 Let's now wrap it up!
 
@@ -508,15 +508,19 @@ $\qquad \quad \bullet$ get the cost:
 \begin{equation}
 \text{Cost} =  \; \frac{1}{m} \; \sum_{i=1}^m \; L \biggl(\;f \Bigl( \;\boldsymbol{z}^{(i, \; L)}\Bigl), \boldsymbol{y}^{(i)} \biggl)\end{equation}
 $\qquad \quad \bullet$ get all errors:
+```{math}
+:label: summarybackproperrors
 \begin{align*}
 \boldsymbol{\delta}^{(i, \; L)} \; &= \quad f'(\boldsymbol{z}^{(i, \: L)}) \: &\odot& \quad L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \\[2ex]
-\boldsymbol{\delta}^{(i, \; \ell)} &=  \quad f'(\boldsymbol{z}^{(i, \: \ell)}) \: &\odot& \quad \Bigr[ \: W^{(\ell + 1)} \; \boldsymbol{\delta}^{(i, \; \ell + 1)} \:  \Bigr]^\top 
+\boldsymbol{\delta}^{(i, \; \ell)} \;  &=  \quad f'(\boldsymbol{z}^{(i, \: \ell)}) \: &\odot& \quad \Bigr[ \: W^{(\ell + 1)} \; \boldsymbol{\delta}^{(i, \; \ell + 1)} \:  \Bigr] 
 \end{align*}
+```
 
 $\qquad \quad \bullet$ sum errors and get all cost derivatives:  
 ```{math}
+:label: summarybackpropcostd
 \begin{align*}
-\frac{\partial \text { Cost }}{\partial \; W^{(\ell)}} &= \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: \ell -1)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; \ell)} \: \right]^\top
+\frac{\partial \text { Cost }}{\partial \; W^{(\ell)}} &= \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: \ell -1)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; \ell)} \: \right]
 \\[2ex]
 \frac{\partial \text { Cost }}{\partial \; \boldsymbol{b}^{(\ell)}} &= \frac{1}{m} \sum_{i=1}^m \;  \boldsymbol{\delta}^{(i, \; \ell)}\end{align*}
 ```
@@ -541,7 +545,7 @@ __Exit conditions:__
 Now you know how neural networks are trained! 
 
 
-In the assignment, you will code yourself a small neural network from scratch. Don't worry: it will be guided. In the next lecture, we will see a much more convenient way to build a neural network using dedicated libraries. We will introduce further optimization techniques proper to deep learning.
+In the assignment, you will code yourself a small neural network from scratch. Don't worry: it will be guided. In the next lecture, we will see a much more convenient way to build a neural network using dedicated libraries. We will introduce further optimization techniques specific to deep learning.
 
 
 ```{admonition} Exercise

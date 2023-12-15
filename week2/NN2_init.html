@@ -862,7 +862,7 @@ This corresponds to deactivating all neurons. The formula <span class="math notr
 <p><a class="reference external" href="https://proceedings.mlr.press/v9/glorot10a/glorot10a.pdf">Xavier Glorot, Yoshua Bengio, <em>Understanding the difficulty of training deep feedforward neural networks</em> (2010)</a></p>
 </aside>
 <p>The non-zero values should not lead to saturation nor explosion of the gradients. This must remind you of something. Yes: those were issues posed by some activation functions when their input values become large (Section <a class="reference internal" href="NN1_activationF.html#nn1-activationf-risksgradient"><span class="std std-ref">The risk of vanishing or exploding gradients</span></a>). But it has been found that the initialization could also make a neural network unstable. The whole instability problem of neural network was not clear until a paper (link on the right) in 2010 from Xavier Glorot and Yoshua Bengio revealed the culprits.</p>
-<p>At that time, there were heuristics found before 2010 (you will see why soon) consisting of initializing all weights to random values between -1 to 1, or -0.3 to 0.3 or either asymmetrically from 0 to 1. The weight values would follow either a Gaussian or uniform distribution. These heuristics work well in general. But the paper authors showed that the combination of a sigmoid as activation function with such initialization methods produces outputs with a larger variance than the inputs at the previous layer. The phenomenon amplifies itself layers after layers, eventually leading to saturation at the last layer. And as the sigmoid is not centered on zero but 0.5, this actually makes it even worse.</p>
+<p>At that time, there were heuristics found before 2010 (you will see why soon) consisting of initializing all weights to random values between -1 to 1, or -0.3 to 0.3 or either asymmetrically from 0 to 1. The weight values would follow either a Gaussian or uniform distribution. These heuristics work well in general. But the paper authors showed that the combination of a sigmoid as activation function with such initialization methods produces outputs with a larger variance than the inputs at the previous layer. The phenomenon amplifies itself layer after layer, eventually leading to saturation at the last layer. And as the sigmoid is not centered on zero but 0.5, this actually makes it even worse.</p>
 <p>Luckily the same authors in the same paper suggested a way to mitigate this, and with other experts (and papers) they proposed ‘modern’ initialization methods that we will present in the next section.</p>
 </section>
 </section>
@@ -873,7 +873,7 @@ This corresponds to deactivating all neurons. The formula <span class="math notr
 <p class="admonition-title"><span class="caption-number">Definition 58 </span></p>
 <section class="definition-content" id="proof-content">
 <p>In a neural network, <strong>fan-in</strong> refers to the number of incoming network connections<br />
-(inputs neuron and bias of the previous layer)</p>
+(input neurons and bias of the previous layer)</p>
 <p>The <strong>fan-out</strong> is the number of outgoing connections, i.e. the number of neurons of the layer.</p>
 </section>
 </div><section id="xavier-weight-initialization">
@@ -919,7 +919,7 @@ This corresponds to deactivating all neurons. The formula <span class="math notr
 </section>
 </div><p>This initialization works with the SELU activation function (see Section <a class="reference internal" href="NN1_activationF.html#nn1-activationf-selu"><span class="std std-ref">Scaled Exponential Linear Unit (SELU)</span></a>).</p>
 <p> </p>
-<p>Both Xavier and LeCun methods are for differentiable activation function. The following method is for non-differentiable activation function like ReLU.</p>
+<p>Both Xavier and LeCun methods are for differentiable activation functions. The following method is for non-differentiable activation functions like ReLU.</p>
 </section>
 <section id="he-weight-initialization">
 <h3>He Weight Initialization<a class="headerlink" href="#he-weight-initialization" title="Permalink to this headline">#</a></h3>
@@ -941,7 +941,7 @@ This corresponds to deactivating all neurons. The formula <span class="math notr
 </ul>
 </div>
 <p> </p>
-<p>We know what is neural network made of, how information flow from inputs to outputs (forward propagation) and how to properly initialize the weights. Let’s now move on with backpropagation!</p>
+<p>We know what a neural network is made of, how information flow from inputs to outputs (forward propagation) and how to properly initialize the weights. Let’s now move on with backpropagation!</p>
 </section>
 </section>
 </section>

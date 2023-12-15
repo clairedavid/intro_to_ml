@@ -884,7 +884,7 @@ title="Print to PDF"
 <h2>Before Diving Into The Math<a class="headerlink" href="#before-diving-into-the-math" title="Permalink to this headline">#</a></h2>
 <section id="ingredients">
 <h3>Ingredients<a class="headerlink" href="#ingredients" title="Permalink to this headline">#</a></h3>
-<p>The forward propagation, or forward pass, will fill the network with values for all bias nodes and activation units. That includes the last layer of activation units, so the forward pass provides predictions.</p>
+<p>The forward propagation, or forward pass, will fill the network with values for all activation units. That includes the last layer of activation units, so the forward pass provides predictions.</p>
 <p>We saw the loss function as the mathematical tool to compare the predictions with their associated observed values for a sample (and the cost function aggregates this for all data samples).</p>
 <p>Then we are familiar with the gradient descent procedure, which gives at each iteration the positive or negative amount to correct the weights to eventually get a model that fits to the data.</p>
 <p>For a neural network, there are lots of knobs to tweak! Luckily, an efficient technique called backpropagation is able to compute the gradient of the network’s error for every single model parameter.</p>
@@ -905,13 +905,13 @@ title="Print to PDF"
 <p class="admonition-title"><span class="caption-number">Definition 64 </span></p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> be functions. For all <span class="math notranslate nohighlight">\(𝑥\)</span> in the domain of <span class="math notranslate nohighlight">\(g\)</span> for which <span class="math notranslate nohighlight">\(g\)</span> is differentiable at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is differentiable at <span class="math notranslate nohighlight">\(g(x)\)</span>, the derivative of the composite function:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cf69a645-1220-4d6e-bd33-0d669fd4873c">
-<span class="eqno">(80)<a class="headerlink" href="#equation-cf69a645-1220-4d6e-bd33-0d669fd4873c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a70be7df-8a5d-48f3-a82d-0d90048f0fe8">
+<span class="eqno">(80)<a class="headerlink" href="#equation-a70be7df-8a5d-48f3-a82d-0d90048f0fe8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h(x) = f(g(x)) 
 \end{equation}\]</div>
 <p>is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f9532445-7077-41fa-8cb3-57432cb83cbb">
-<span class="eqno">(81)<a class="headerlink" href="#equation-f9532445-7077-41fa-8cb3-57432cb83cbb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-10b34053-e0c0-4e27-afb9-5a4aa3de1057">
+<span class="eqno">(81)<a class="headerlink" href="#equation-10b34053-e0c0-4e27-afb9-5a4aa3de1057" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}} \;\cdot \;  \frac{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}}{\mathrm{d} \; x} = f'\left(g(x)\right) \;\cdot \; g'(x)
 \end{equation}\]</div>
 </section>
@@ -927,8 +927,8 @@ h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maro
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
 <p>What would be the chain rule for three functions?</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3dad9548-66cb-4418-adb0-52a233f83bcc">
-<span class="eqno">(82)<a class="headerlink" href="#equation-3dad9548-66cb-4418-adb0-52a233f83bcc" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b1785fe0-a30d-4f26-81c1-bd0121f1ef0c">
+<span class="eqno">(82)<a class="headerlink" href="#equation-b1785fe0-a30d-4f26-81c1-bd0121f1ef0c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 k(x) = h(f(g(x))) 
 \end{equation}\]</div>
 </div>
@@ -1023,10 +1023,10 @@ It is a column vector of size (<span class="math notranslate nohighlight">\(n_{\
 <p>We will denote the loss function through a general form as <span class="math notranslate nohighlight">\(L\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-lossfunceq">
 <span class="eqno">(89)<a class="headerlink" href="#equation-lossfunceq" title="Permalink to this equation">#</a></span>\[L\left(\boldsymbol{\hat{y}}^{(i)}, \boldsymbol{y}^{(i)} \right) \]</div>
-<p>It is computed for each sample instance <span class="math notranslate nohighlight">\(\left\{ \boldsymbol{x}^{(i)}, y^{(i)} \right\}\)</span>, with <span class="math notranslate nohighlight">\(\left(\boldsymbol{x}^{(i)}\right)^\top = (x_1^{(i)}, x_2^{(i)}, \cdots, x_n^{(i)})^\top\)</span> being the vector of <span class="math notranslate nohighlight">\(n\)</span> input features and <span class="math notranslate nohighlight">\(y^{(i)}\)</span> the associated target.</p>
+<p>It is computed for each sample instance <span class="math notranslate nohighlight">\(\left\{ \boldsymbol{x}^{(i)}, \boldsymbol{y}^{(i)} \right\}\)</span>, with <span class="math notranslate nohighlight">\(\left(\boldsymbol{x}^{(i)}\right)^\top = (x_1^{(i)}, x_2^{(i)}, \cdots, x_n^{(i)})^\top\)</span> being the vector of <span class="math notranslate nohighlight">\(n\)</span> input features and <span class="math notranslate nohighlight">\(\boldsymbol{y}^{(i)}\)</span> the associated targets.</p>
 <p>The cost is the sum of the losses over all data instances <span class="math notranslate nohighlight">\(m\)</span>.</p>
 <div class="math notranslate nohighlight" id="equation-costfunceq">
-<span class="eqno">(90)<a class="headerlink" href="#equation-costfunceq" title="Permalink to this equation">#</a></span>\[\text{Cost} = \frac{1}{m} \sum_{i=1}^m L\left(\hat{y}^{(i)}, y^{(i)}\right) \]</div>
+<span class="eqno">(90)<a class="headerlink" href="#equation-costfunceq" title="Permalink to this equation">#</a></span>\[\text{Cost} = \frac{1}{m} \sum_{i=1}^m L\left(\boldsymbol{\hat{y}}^{(i)}, \boldsymbol{y}^{(i)}\right) \]</div>
 <p><strong>How can we express the final output <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}}\)</span>?</strong><br />
 Let’s take a similar network as the one in the previous lecture but layers are labeled from the last one (right) in decreasing order:</p>
 <figure class="align-default" id="lec07-3-nn-lastlayers">
@@ -1073,12 +1073,12 @@ Let’s write the derivative of the cost function with respect to the weight mat
 <p>For the third term, let’s recall the definition of the <span class="math notranslate nohighlight">\(z\)</span> function in Equation <a class="reference internal" href="#equation-zfunceq">(87)</a>.</p>
 <p>With a bit of math, we can show that:</p>
 <div class="math notranslate nohighlight" id="equation-dcostdzdwlastlayer">
-<span class="eqno">(97)<a class="headerlink" href="#equation-dcostdzdwlastlayer" title="Permalink to this equation">#</a></span>\[\frac{\partial \boldsymbol{z}^{(i, \: L)}}{\partial W^{(L)}} = \boldsymbol{a}^{(i, \: L-1)}\]</div>
+<span class="eqno">(97)<a class="headerlink" href="#equation-dcostdzdwlastlayer" title="Permalink to this equation">#</a></span>\[\frac{\partial z_j^{(i, \: L)}}{\partial w_{kj}^{(L)}} = a_k^{(i, \: L-1)}\]</div>
 <p>We actually know all these terms!</p>
 <p><strong>But how to combine them together properly?</strong><br />
 Let’s first consider the dimensions of this product of three derivatives. What do we want? Looking at the left hand side of equation <a class="reference internal" href="#equation-dcostlastchaineq">(94)</a>, the cost is a scalar and the weight matrix <span class="math notranslate nohighlight">\(W^{(L)}\)</span> is of shape <span class="math notranslate nohighlight">\(n_{L-1} \times n_L\)</span>, where <span class="math notranslate nohighlight">\(n_{L-1}\)</span> and <span class="math notranslate nohighlight">\(n_L\)</span> are the number of nodes in the before-last and last layers respectively. Eventually, we will update each weight using the gradient descent method. So our term <span class="math notranslate nohighlight">\(\frac{\partial \text { Cost }}{\partial \; W^{(L)}}\)</span> should be of shape <span class="math notranslate nohighlight">\(n_{L-1} \times n_L\)</span> as well. With a bit of math, using the index notation, we can show that the product will be:</p>
 <div class="math notranslate nohighlight" id="equation-dcostfirstvectorouterprod">
-<span class="eqno">(98)<a class="headerlink" href="#equation-dcostfirstvectorouterprod" title="Permalink to this equation">#</a></span>\[\frac{\partial \text { Cost }}{\partial \; W^{(L)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: L-1)} \otimes \left[  f'(\boldsymbol{z}^{(i, \: L)}) \odot L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \right]^\top  \;,\]</div>
+<span class="eqno">(98)<a class="headerlink" href="#equation-dcostfirstvectorouterprod" title="Permalink to this equation">#</a></span>\[\frac{\partial \text { Cost }}{\partial \; W^{(L)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: L-1)} \otimes \left[  f'(\boldsymbol{z}^{(i, \: L)}) \odot L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \right]  \;,\]</div>
 <p>where <span class="math notranslate nohighlight">\(\otimes\)</span> is the outer product and <span class="math notranslate nohighlight">\(\odot\)</span> denotes the element-wise multiplication between the two column vectors. You can check the outer product will be of the desired dimensions of <span class="math notranslate nohighlight">\(n_{L-1} \times n_L\)</span>.</p>
 <p><strong>Now let’s proceed to the before last layer.</strong><br />
 Using the chain rule as usual:</p>
@@ -1098,7 +1098,7 @@ Using the chain rule as usual:</p>
 <div class="math notranslate nohighlight" id="equation-dcostbeforelastsimpleeq">
 <span class="eqno">(101)<a class="headerlink" href="#equation-dcostbeforelastsimpleeq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
 &amp; \frac{\partial \text { Cost }}{\partial \; W^{(L-1)}} = \frac{1}{m} \sum_{i=1}^m \: \\[1ex] 
-&amp; \boldsymbol{a}^{(i, \: L-2)} \otimes \biggr[ f'(\boldsymbol{z}^{(i, \: L-1)}) \odot \Bigr[ W^{(L)} \bigr[  f'(\boldsymbol{z}^{(i, \: L)}) \: \odot \: L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \bigr] \Bigr] \biggr]^\top 
+&amp; \boldsymbol{a}^{(i, \: L-2)} \;\otimes\; \biggr[ f'(\boldsymbol{z}^{(i, \: L-1)}) \;\odot\; \Bigr[ W^{(L)} \bigr[  f'(\boldsymbol{z}^{(i, \: L)}) \: \odot \: L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \bigr] \Bigr] \biggr] 
 \end{align*}\end{split}\]</div>
 <p>You can check yourself that for the derivative with respect to <span class="math notranslate nohighlight">\(W^{(L-2)}\)</span> we will have (scroll to the right, it’s lengthy):</p>
 <div class="math notranslate nohighlight" id="equation-dcostbeforebeforelastsimpleeq">
@@ -1121,7 +1121,7 @@ Using the chain rule as usual:</p>
 <div class="math notranslate nohighlight" id="equation-lminus2outerprodelementwiseall">
 <span class="eqno">(104)<a class="headerlink" href="#equation-lminus2outerprodelementwiseall" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
 &amp; \frac{\partial \text { Cost }}{\partial \; W^{(L-1)}} = \frac{1}{m} \sum_{i=1}^m \: \\[1ex] 
-&amp; \boldsymbol{a}^{(i, \: L-3)} \otimes \Biggr[ f'(\boldsymbol{z}^{(i, \: L-2)}) \: \odot \: \biggr[ W^{(L-1)} \Bigr[ f'(\boldsymbol{z}^{(i, \: L-1)}) \: \odot \: \bigr[ W^{(L)} \bigr[  f'(\boldsymbol{z}^{(i, \: L)}) \: \odot \: L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \bigr] \bigr] \Bigr] \biggr] \Biggr]^\top 
+&amp; \boldsymbol{a}^{(i, \: L-3)} \otimes \Biggr[ f'(\boldsymbol{z}^{(i, \: L-2)}) \: \odot \: \biggr[ W^{(L-1)} \Bigr[ f'(\boldsymbol{z}^{(i, \: L-1)}) \: \odot \: \bigr[ W^{(L)} \bigr[  f'(\boldsymbol{z}^{(i, \: L)}) \: \odot \: L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \bigr] \bigr] \Bigr] \biggr] \Biggr]
 \end{align*}\end{split}\]</div>
 <p>Can you start to see a pattern here? Compare the equation above with <a class="reference internal" href="#equation-dcostbeforelastsimpleeq">(101)</a>.</p>
 <p>In the next section, we will write the terms with a much lighter notation to make this pattern more obvious.</p>
@@ -1160,7 +1160,7 @@ Let’s define <span class="math notranslate nohighlight">\(\boldsymbol{\delta}^
 <p><strong>Derivative of the cost at the last layer</strong><br />
 Looking at Equation <a class="reference internal" href="#equation-dcostfirstvectorouterprod">(98)</a>), we will have:</p>
 <div class="math notranslate nohighlight" id="equation-costwldeltal">
-<span class="eqno">(107)<a class="headerlink" href="#equation-costwldeltal" title="Permalink to this equation">#</a></span>\[\frac{\partial \text { Cost }}{\partial \; W^{(L)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: L-1)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; L)} \: \right]^\top \]</div>
+<span class="eqno">(107)<a class="headerlink" href="#equation-costwldeltal" title="Permalink to this equation">#</a></span>\[\frac{\partial \text { Cost }}{\partial \; W^{(L)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: L-1)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; L)} \: \right]\]</div>
 <p>In terms of dimensions, the outer product creates a <span class="math notranslate nohighlight">\(n_{L-1} \times n_L\)</span> matrix; this is what we want to get the correct dimensionality on the left hand side:</p>
 <a class="reference internal image-reference" href="../_images/lec07_tetris_dCostdWlastLayer.png"><img alt="tetris_dCostdWlastLayer" class="align-center" src="../_images/lec07_tetris_dCostdWlastLayer.png" style="width: 90%;" /></a>
 <p>Note that the derivatives of the cost on the left hand side – shown in green – are the result of the summation over the <span class="math notranslate nohighlight">\(m\)</span> samples so there is no ‘depth’ anymore.</p>
@@ -1173,7 +1173,7 @@ From Equation <a class="reference internal" href="#equation-dcostbeforelastsimpl
 <p><strong>Derivative of the cost at the before-last layer</strong><br />
 Moving on backward, we still use Equation <a class="reference internal" href="#equation-dcostbeforelastsimpleeq">(101)</a> to express the derivative of the cost with respect to the weights of the before-last layer the following way:</p>
 <div class="math notranslate nohighlight" id="equation-costwldeltalminus1">
-<span class="eqno">(109)<a class="headerlink" href="#equation-costwldeltalminus1" title="Permalink to this equation">#</a></span>\[\frac{\partial \text { Cost }}{\partial \; W^{(L-1)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: L-2)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; L-1)} \: \right]^\top\]</div>
+<span class="eqno">(109)<a class="headerlink" href="#equation-costwldeltalminus1" title="Permalink to this equation">#</a></span>\[\frac{\partial \text { Cost }}{\partial \; W^{(L-1)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: L-2)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; L-1)} \: \right]\]</div>
 <p>And the outer product gives the proper dimensions for the left hand size, i.e. a <span class="math notranslate nohighlight">\(n_{L-2} \times n_{L-1}\)</span> matrix.</p>
 <a class="reference internal image-reference" href="../_images/lec07_tetris_dCostdWlastlastLayer.png"><img alt="lec07_tetris_dCostdWlastlastLayer" class="align-center" src="../_images/lec07_tetris_dCostdWlastlastLayer.png" style="width: 90%;" /></a>
 <p> </p>
@@ -1188,7 +1188,7 @@ We can generalize Equations <a class="reference internal" href="#equation-deltal
 <p>Derivative of the cost at layer <span class="math notranslate nohighlight">\(\ell\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-dcostlayerl">
 <span class="eqno">(111)<a class="headerlink" href="#equation-dcostlayerl" title="Permalink to this equation">#</a></span>\[\begin{align*}
-\frac{\partial \text { Cost }}{\partial \; W^{(\ell)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: \ell -1)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; \ell)} \: \right]^\top
+\frac{\partial \text { Cost }}{\partial \; W^{(\ell)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: \ell -1)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; \ell)} \: \right]
 \end{align*}\]</div>
 <hr class="docutils" />
 <p>This has become much simpler, hasn’t it?</p>
@@ -1212,10 +1212,10 @@ This is left as exercise for training.</p>
 &amp;W^{(\ell)} &amp;\leftarrow&amp; &amp;W^{(\ell)} \quad &amp;-&amp; \alpha \frac{\partial \text{ Cost}}{\partial W^{(\ell)}} \\[2ex]
 &amp;\boldsymbol{b}^{(\ell)} &amp;\leftarrow&amp; &amp;\boldsymbol{b}^{(\ell)} \quad &amp;-&amp; \alpha \frac{\partial \text{ Cost}}{\partial \boldsymbol{b}^{(\ell)}}
 \end{align*}\end{split}\]</div>
-<p>Nothing new here, it is the standard gradient descent step we are familiar with. They are just more elements to update.</p>
+<p>Nothing new here, it is the standard gradient descent step we are familiar with. There are just more elements to update.</p>
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
-<p>For a network of <span class="math notranslate nohighlight">\(L\)</span> layers, that it to say <span class="math notranslate nohighlight">\(L -1\)</span> hidden layers plus an output layer, how many weight matrices <span class="math notranslate nohighlight">\(W^{(\ell)}\)</span> and how many biases vectors <span class="math notranslate nohighlight">\(\boldsymbol{b}^{(\ell)}\)</span> do we have to update?</p>
+<p>For a network of <span class="math notranslate nohighlight">\(L\)</span> layers, that is to say <span class="math notranslate nohighlight">\(L -1\)</span> hidden layers plus an output layer, how many weight matrices <span class="math notranslate nohighlight">\(W^{(\ell)}\)</span> and how many biases vectors <span class="math notranslate nohighlight">\(\boldsymbol{b}^{(\ell)}\)</span> do we have to update?</p>
 </div>
 <p>Let’s now wrap it up!</p>
 </section>
@@ -1238,25 +1238,25 @@ Training data set <span class="math notranslate nohighlight">\(X\)</span> of <sp
 <p><strong>Step 0: Weight initialization</strong></p>
 <p><strong>Step 1: Forward propagation</strong><br />
 <span class="math notranslate nohighlight">\(\qquad \quad \bullet\)</span> get list of <span class="math notranslate nohighlight">\(m\)</span> predictions <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}}^{(i)}\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-cacd0c80-e282-4816-84b3-2f436cc7b326">
-<span class="eqno">(113)<a class="headerlink" href="#equation-cacd0c80-e282-4816-84b3-2f436cc7b326" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f30bff20-78fc-42dc-a31d-29ba227149cc">
+<span class="eqno">(113)<a class="headerlink" href="#equation-f30bff20-78fc-42dc-a31d-29ba227149cc" title="Permalink to this equation">#</a></span>\[\begin{equation}
  f(\boldsymbol{z}^{(i, \; L)}) = \boldsymbol{a}^{(i, \;L)} = \boldsymbol{\hat{y}}^{(i)}
 \end{equation}\]</div>
 <p><strong>Step 2: Backpropagation</strong><br />
 <span class="math notranslate nohighlight">\(\qquad \quad \bullet\)</span> get the cost:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d59ba776-1df3-4a23-b578-21d2d69c81fd">
-<span class="eqno">(114)<a class="headerlink" href="#equation-d59ba776-1df3-4a23-b578-21d2d69c81fd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7a46bf8d-794a-4259-9a7c-c13545f8bef3">
+<span class="eqno">(114)<a class="headerlink" href="#equation-7a46bf8d-794a-4259-9a7c-c13545f8bef3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Cost} =  \; \frac{1}{m} \; \sum_{i=1}^m \; L \biggl(\;f \Bigl( \;\boldsymbol{z}^{(i, \; L)}\Bigl), \boldsymbol{y}^{(i)} \biggl)\end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(\qquad \quad \bullet\)</span> get all errors:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<div class="math notranslate nohighlight" id="equation-summarybackproperrors">
+<span class="eqno">(115)<a class="headerlink" href="#equation-summarybackproperrors" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
 \boldsymbol{\delta}^{(i, \; L)} \; &amp;= \quad f'(\boldsymbol{z}^{(i, \: L)}) \: &amp;\odot&amp; \quad L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \\[2ex]
-\boldsymbol{\delta}^{(i, \; \ell)} &amp;=  \quad f'(\boldsymbol{z}^{(i, \: \ell)}) \: &amp;\odot&amp; \quad \Bigr[ \: W^{(\ell + 1)} \; \boldsymbol{\delta}^{(i, \; \ell + 1)} \:  \Bigr]^\top 
-\end{align*}\]</div>
+\boldsymbol{\delta}^{(i, \; \ell)} \;  &amp;=  \quad f'(\boldsymbol{z}^{(i, \: \ell)}) \: &amp;\odot&amp; \quad \Bigr[ \: W^{(\ell + 1)} \; \boldsymbol{\delta}^{(i, \; \ell + 1)} \:  \Bigr] 
+\end{align*}\end{split}\]</div>
 <p><span class="math notranslate nohighlight">\(\qquad \quad \bullet\)</span> sum errors and get all cost derivatives:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{align*}
-\frac{\partial \text { Cost }}{\partial \; W^{(\ell)}} &amp;= \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: \ell -1)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; \ell)} \: \right]^\top
+<div class="math notranslate nohighlight" id="equation-summarybackpropcostd">
+<span class="eqno">(116)<a class="headerlink" href="#equation-summarybackpropcostd" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+\frac{\partial \text { Cost }}{\partial \; W^{(\ell)}} &amp;= \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: \ell -1)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; \ell)} \: \right]
 \\[2ex]
 \frac{\partial \text { Cost }}{\partial \; \boldsymbol{b}^{(\ell)}} &amp;= \frac{1}{m} \sum_{i=1}^m \;  \boldsymbol{\delta}^{(i, \; \ell)}\end{align*}\end{split}\]</div>
 <p><strong>Step 3: Gradient Descent</strong><br />
@@ -1274,7 +1274,7 @@ Training data set <span class="math notranslate nohighlight">\(X\)</span> of <sp
 </ul>
 </section>
 </div><p>Now you know how neural networks are trained!</p>
-<p>In the assignment, you will code yourself a small neural network from scratch. Don’t worry: it will be guided. In the next lecture, we will see a much more convenient way to build a neural network using dedicated libraries. We will introduce further optimization techniques proper to deep learning.</p>
+<p>In the assignment, you will code yourself a small neural network from scratch. Don’t worry: it will be guided. In the next lecture, we will see a much more convenient way to build a neural network using dedicated libraries. We will introduce further optimization techniques specific to deep learning.</p>
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
 <p>Now that you know the backpropagation algorithm, a question regarding the neural network initialization: what if all weights are first set to the same value? (not zero, as we saw, but any other constant)</p>

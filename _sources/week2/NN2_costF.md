@@ -31,10 +31,10 @@ We saw that forward propagation 'fills' in the network with values for all activ
 If the last layer contains $K$ output nodes, we can write the elements of vector 
 ```{math}
 \boldsymbol{a}^{(i, \: L)} = \begin{pmatrix} 
-a^{L}_1 \\
-a^{L}_2 \\
+a^{(i, \: L)}_1 \\
+a^{(i, \: L)}_2 \\
 \cdots \\
-a^{L}_K
+a^{(i, \: L)}_K
 \end{pmatrix}
 ```
 in the form of a hypothesis function. For each output node $a^{(i, \: L)}_k$, the predicted value is:
@@ -47,19 +47,19 @@ It is important to note that in the equation above, the $W,b$ indices refer to _
 
 ## Loss Functions for Regression
 
-### Mean Squarred Error (MSE)
-The most commonly used loss function is the Mean Squarred Error (MSE) that we are now familiar with. If we have only one output node:
+### Mean Squared Error (MSE)
+The most commonly used loss function is the Mean Squared Error (MSE) that we are now familiar with. If we have only one output node:
 ```{math}
 :label: lossmseeq
-L \left(\;\hat{y}^{(i)}, y^{(i)}\;\right)= \left(  \hat{y}^{(i)} - y^{(i)}  \right)^2
+L \left(\;\hat{y}^{(i)}, y^{(i)}\;\right)= \frac{1}{2}\; \left(  \hat{y}^{(i)} - y^{(i)}  \right)^2
 ```
-where $i$ here is the sample row number.
+where $i$ here is the sample number.
 
 For several output nodes, we sum all losses:
 
 ```{math}
 :label: lossmsekeq
-L \left(\;\boldsymbol{\hat{y}}^{(i)}, \boldsymbol{y}^{(i)};\right)= \sum_{k = 1}^K  \left( \hat{y}^{(i)}_k - y^{(i)}_k \right)^2
+L \left(\;\boldsymbol{\hat{y}}^{(i)}, \boldsymbol{y}^{(i)}\;\right)=  \frac{1}{2}\;\sum_{k = 1}^K  \left( \hat{y}^{(i)}_k - y^{(i)}_k \right)^2
 ```
 with the $k$ indices being the prediction or observed value for the node $k$.
 
@@ -71,7 +71,7 @@ J \left(\;\boldsymbol{\hat{y}}, \boldsymbol{y}\;\right)= \frac{1}{2m} \sum_{i=1}
 
 
 ### Absolute Loss
-If there are lots of outliers in the training set, aka samples associated with a large error between the prediction and the observed values, the Mean Squarred Errror will make the loss (and cost) very big. A preferrable choice would be to take the absolute loss:
+If there are lots of outliers in the training set, aka samples associated with a large error between the prediction and the observed values, the Mean Squared Errror will make the loss (and cost) very big. A preferrable choice would be to take the absolute loss:
 ```{math}
 :label: lossabseq
 L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= \left| \;\hat{y}_k^{(i)} - y_k^{(i)} \; \right|
@@ -95,17 +95,17 @@ We are familiar with this one as it was introduced in Lecture 3. We will rewrite
 
 ```{math}
 :label: lossbinceeq
-L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)=-\left[ \;y_k^{(i)}  \log \left(\hat{y}_k^{(i)}\right)+\left(1-y_k^{(i)}\right) \log \left(1-\hat{y}_k^{(i)}\right) \; \right]
+L \left(\;\hat{y}^{(i)}, y^{(i)}\;\right)=-\left[ \;y^{(i)}  \log \left(\hat{y}^{(i)}\right)+\left(1-y^{(i)}\right) \log \left(1-\hat{y}^{(i)}\right) \; \right]
 ```
 And the cost function will be
 
 ```{math}
 :label: costbinceeq
-J \left(\;\boldsymbol{\hat{y}}, \boldsymbol{y}\;\right) = - \frac{1}{m} \sum_{i=1}^m \sum_{k = 1}^K \left[ \;y_k^{(i)}  \log \left(\hat{y}_k^{(i)}\right)+\left(1-y_k^{(i)}\right) \log \left(1-\hat{y}_k^{(i)}\right) \; \right] 
+J \left(\;\hat{y}, y\;\right) = - \frac{1}{m} \sum_{i=1}^m \left[ \;y^{(i)}  \log \left(\hat{y}^{(i)}\right)+\left(1-y^{(i)}\right) \log \left(1-\hat{y}^{(i)}\right) \; \right] 
 ```
 
 ````{margin}
-Recall that $\boldsymbol{\hat{y}}^{(i)} = h_{\boldsymbol{W},\boldsymbol{b}}(\boldsymbol{x}^{(i)})$.
+Recall that $\hat{y}^{(i)} = h_{\boldsymbol{W},\boldsymbol{b}}(\boldsymbol{x}^{(i)})$.
 ````
 There is nothing new here, except that the predictions $\boldsymbol{\hat{y}}^{(i)}$ from the hypothesis function are not a linear function but the output of the entire neural network forward propagation.
 
@@ -133,7 +133,7 @@ Mutually exclusive classes would mean that for each $\boldsymbol{\hat{y}}^{(i)} 
 ````{margin}
 This is the general equation for $K$ classes.
 ````
-The categorial cross-entropy reduces to the binary equation {eq}`lossbinceeq` for $n =2$.
+The categorial cross-entropy reduces to the binary equation {eq}`lossbinceeq` for $K =2$.
 ```{math}
 :label: losscateq
 L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)=  - \sum_{k=1}^K \; y^{(i)}_k \log \left( \hat{y}_k^{(i)} \right) 
@@ -147,14 +147,14 @@ J \left(\;\boldsymbol{\hat{y}}, \boldsymbol{y}\;\right) = - \frac{1}{m} \sum_{i=
 ```
 
 ## Regularization term
-In Lecture 3 section {ref}`class:algs:reg` we saw two techniques adding an extra penalty in order to constrain the $\theta$ parameters, helping at mitigating overtraining. Here the regularization term here will be expressed using the neural network $W$ matrices.
+In Lecture 3 section {ref}`class:algs:reg` we saw two techniques adding an extra penalty in order to constrain the $\theta$ parameters, helping at mitigating overtraining. Here the regularization term will be expressed using the neural network $W$ matrices.
 
 ```{math}
 :label: 
-J \left(\;\boldsymbol{\hat{y}}, \boldsymbol{y}\;\right) = \frac{1}{m} \sum_{i=1}^m  L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right) + \frac{\lambda}{2m} \sum_{\ell=1}^L \sum_{q=1}^{n_{L-1}} \sum_{r=1}^{n_{L}} \left( W^{(\ell)}_{q, r} \; \right)^2
+J \left(\;\boldsymbol{\hat{y}}, \boldsymbol{y}\;\right) = \frac{1}{m} \sum_{i=1}^m  L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right) + \frac{\lambda}{2m} \sum_{\ell=1}^L \sum_{q=1}^{n_{\ell-1}} \sum_{r=1}^{n_{\ell}} \left( W^{(\ell)}_{q, r} \; \right)^2
 ```
 
-The triple sum is daunting but let's decompose it: it's the sum of all matrices $W^{(\ell)}$ of the network. For each of them, the weights are squared and added together (those are the two last sums). The equation above corresponds to the Lasso's regularization (introduced in Lecture 3 subsection {ref}`class:algs:reg:lasso`). The Ridge regularization would sum only the weights without squaring them.
+The triple sum is daunting but let's decompose it: it's the sum over all matrices $W^{(\ell)}$ of the network. For each of them, the weights are squared and added together (those are the two last sums). The equation above corresponds to the Lasso regularization (introduced in Lecture 3 subsection {ref}`class:algs:reg:lasso`). The Ridge regularization would sum only the absolute weights without squaring them.
 
 Recall that the regularization does not include the intercept term, which was written as $\theta_0$ in logistic regression. With the matrices $W^{(\ell)}$ we are safe as they do not contain any bias terms. Biases are gathered as separate vectors $\boldsymbol{b}^{(\ell)}$. 
 
