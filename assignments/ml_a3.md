@@ -337,12 +337,6 @@ The double parenthesis is important to get the correct shape. To make your code 
 __Feedforward and predict__  
 * To return the last element of a list: `my_list[-1]`
 
-__Dimension of Nodes__  
-At the end of the lecture on {ref}`NN2:backprop`, the equations are written with the indices. In python, we will use 3D NumPy arrays of shape ($i$, $j$, $k$), with 
-* $i$ the sample index
-* $j$ the number of rows of the node vector
-* $k$ the number of columns
-
 __Matrix/Vector Operations__  
 * In python the matrix multiplication is done using `@`
 * The element-wise multiplication is done using `*`
