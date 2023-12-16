@@ -856,7 +856,7 @@ We saw in Lecture 2 that the dataset in supervised learning can be represented a
 \[\begin{split}\boldsymbol{x}^{(i)} = \begin{pmatrix} 
 x^{(i)}_1 \\
 x^{(i)}_2 \\
-\cdots \\
+\vdots \\
 x^{(i)}_n \\
 \end{pmatrix}\end{split}\]</div>
 <p>The vector elements are all the features in the data. The upperscript indicates the sample index <span class="math notranslate nohighlight">\(i\)</span>, going from 1 to <span class="math notranslate nohighlight">\(m\)</span>, the total number of samples in the dataset.</p>
@@ -870,7 +870,7 @@ In a given layer <span class="math notranslate nohighlight">\(\ell = 1, 2, \cdot
 \[\begin{split}\boldsymbol{a}^{(i, \: \ell)} = \begin{pmatrix} 
  a_1^{(i, \: \ell)}\\
 a_2^{(i, \: \ell)},\\
-\cdots\\
+\vdots\\
 a_q^{(i, \: \ell)} 
 \end{pmatrix}  \;, \end{split}\]</div>
 <p>where subscript is the row of the activation unit in the layer, starting from the top. The upperscript indicates the sample index <span class="math notranslate nohighlight">\(i\)</span> and the layer number <span class="math notranslate nohighlight">\(\ell\)</span>. Why the presence of the sample here? We will see soon that these activation units will get a different value for each data sample.</p>
@@ -880,15 +880,15 @@ The biases are also column vectors, one for each layer it connects to and of dim
 \[\begin{split}\boldsymbol{b}^{(\ell)} = \begin{pmatrix}
 b_1^{(\ell)} \\
 b_2^{(\ell)} \\
-\cdots \\
+\vdots \\
 b_q^{(\ell)}
 \end{pmatrix}\end{split}\]</div>
 <p>If the last layer is only made of one node like in our example above, then <span class="math notranslate nohighlight">\(b^{(L)}\)</span> is a scalar. Note that the biases do not depend on the sample index <span class="math notranslate nohighlight">\(i\)</span>.</p>
 <p><strong>Weights</strong><br />
 Now the weights. You may see in the literature different ways to represent them. In here we use a convention we could write as:</p>
 <div class="math notranslate nohighlight">
-\[w^\ell_{(\ell -1) \; \to \; \ell}\]</div>
-<p>In other words, the weights from the layer <span class="math notranslate nohighlight">\(\ell - 1\)</span> to the layer <span class="math notranslate nohighlight">\(\ell\)</span> have as their first index the row of the node from the previous layer (departing node of the weight’s arrow). The second index is the row of the node on layer <span class="math notranslate nohighlight">\(\ell\)</span> to which the weight arrrow points to. For instance <span class="math notranslate nohighlight">\(w^{(2)}_{3,1}\)</span> is the weight from the third node of layer (1) going to the first node of layer (2).</p>
+\[w^\ell_{j \; \to \; k}\]</div>
+<p>In other words, the weights from the layer <span class="math notranslate nohighlight">\(\ell - 1\)</span> to the layer <span class="math notranslate nohighlight">\(\ell\)</span> have as their first index the row of the node from the previous layer (departing node of the weight’s arrow). The second index is the row of the node on layer <span class="math notranslate nohighlight">\(\ell\)</span> to which the weight arrrow points to. The weight <span class="math notranslate nohighlight">\(w^\ell_{j \; \to \; k}\)</span> is the weight departing from node <span class="math notranslate nohighlight">\(j\)</span> on layer <span class="math notranslate nohighlight">\(\ell - 1\)</span> and connecting node <span class="math notranslate nohighlight">\(k\)</span> on layer <span class="math notranslate nohighlight">\(\ell\)</span>. For instance <span class="math notranslate nohighlight">\(w^{(2)}_{3,1}\)</span> is the weight from the third node of layer (1) going to the first node of layer (2).</p>
 <p>We can actually represent each weight from layer <span class="math notranslate nohighlight">\(\ell -1\)</span> to layer <span class="math notranslate nohighlight">\(\ell\)</span> as a matrix <span class="math notranslate nohighlight">\(W^{(\ell)}\)</span>. If the previous layer <span class="math notranslate nohighlight">\(\ell -1\)</span> has <span class="math notranslate nohighlight">\(n\)</span> activation units and the layer <span class="math notranslate nohighlight">\(\ell\)</span> has <span class="math notranslate nohighlight">\(q\)</span> activation units, we will have:</p>
 <div class="math notranslate nohighlight" id="equation-wmatrixeq">
 <span class="eqno">(56)<a class="headerlink" href="#equation-wmatrixeq" title="Permalink to this equation">#</a></span>\[\begin{split}W^{(\ell)} = \begin{pmatrix}
@@ -939,7 +939,7 @@ This can be written in a compact way:</p>
 <p>Let’s do the same calculation for the second layer of activation units. Instead of the dataset vector <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(i)}\)</span>, we will have <span class="math notranslate nohighlight">\(\boldsymbol{a}^{(i, \: 1)}\)</span> as input:</p>
 <div class="math notranslate nohighlight" id="equation-secondlayermatrixexpandedeq">
 <span class="eqno">(60)<a class="headerlink" href="#equation-secondlayermatrixexpandedeq" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol{a}^{(i, \: 2)} = f\left[ \; 
-\begin{pmatrix}w_{1,1}^{(2)} &amp; w_{1,2}^{(2)} &amp; \cdots &amp; w_{1,r}^{(2)} \\[2ex]w_{2,1}^{(2)} &amp; w_{2,2}^{(2)} &amp; \cdots &amp; w_{2,q}^{(2)} \\[1ex]\vdots  &amp; \vdots &amp; \ddots   &amp; \vdots \\[1ex]w_{q,1}^{(2)} &amp; w_{q,2}^{(2)} &amp;  \cdots &amp; w_{q,r}^{(2)} \\\end{pmatrix}^\top
+\begin{pmatrix}w_{1,1}^{(2)} &amp; w_{1,2}^{(2)} &amp; \cdots &amp; w_{1,r}^{(2)} \\[2ex]w_{2,1}^{(2)} &amp; w_{2,2}^{(2)} &amp; \cdots &amp; w_{2,r}^{(2)} \\[1ex]\vdots  &amp; \vdots &amp; \ddots   &amp; \vdots \\[1ex]w_{q,1}^{(2)} &amp; w_{q,2}^{(2)} &amp;  \cdots &amp; w_{q,r}^{(2)} \\\end{pmatrix}^\top
 \begin{pmatrix} 
 a^{(i, \: 1)}_1 \\
 a^{(i, \: 1)}_2 \\
