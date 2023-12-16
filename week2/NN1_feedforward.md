@@ -39,7 +39,7 @@ We saw in Lecture 2 that the dataset in supervised learning can be represented a
 \boldsymbol{x}^{(i)} = \begin{pmatrix} 
 x^{(i)}_1 \\
 x^{(i)}_2 \\
-\cdots \\
+\vdots \\
 x^{(i)}_n \\
 \end{pmatrix}
 ```
@@ -53,7 +53,7 @@ In a given layer $\ell = 1, 2, \cdots, N^\text{layer}$, the activation units wil
 \boldsymbol{a}^{(i, \: \ell)} = \begin{pmatrix} 
  a_1^{(i, \: \ell)}\\
 a_2^{(i, \: \ell)},\\
-\cdots\\
+\vdots\\
 a_q^{(i, \: \ell)} 
 \end{pmatrix}  \;, 
 ```
@@ -65,7 +65,7 @@ The biases are also column vectors, one for each layer it connects to and of dim
 \boldsymbol{b}^{(\ell)} = \begin{pmatrix}
 b_1^{(\ell)} \\
 b_2^{(\ell)} \\
-\cdots \\
+\vdots \\
 b_q^{(\ell)}
 \end{pmatrix}
 ```
@@ -74,9 +74,9 @@ If the last layer is only made of one node like in our example above, then $b^{(
 __Weights__  
 Now the weights. You may see in the literature different ways to represent them. In here we use a convention we could write as:
 ```{math}
-w^\ell_{(\ell -1) \; \to \; \ell}
+w^\ell_{j \; \to \; k}
 ```
-In other words, the weights from the layer $\ell - 1$ to the layer $\ell$ have as their first index the row of the node from the previous layer (departing node of the weight's arrow). The second index is the row of the node on layer $\ell$ to which the weight arrrow points to. For instance $w^{(2)}_{3,1}$ is the weight from the third node of layer (1) going to the first node of layer (2). 
+In other words, the weights from the layer $\ell - 1$ to the layer $\ell$ have as their first index the row of the node from the previous layer (departing node of the weight's arrow). The second index is the row of the node on layer $\ell$ to which the weight arrrow points to. The weight $w^\ell_{j \; \to \; k}$ is the weight departing from node $j$ on layer $\ell - 1$ and connecting node $k$ on layer $\ell$. For instance $w^{(2)}_{3,1}$ is the weight from the third node of layer (1) going to the first node of layer (2). 
 
 We can actually represent each weight from layer $\ell -1$ to layer $\ell$ as a matrix $W^{(\ell)}$. If the previous layer $\ell -1$ has $n$ activation units and the layer $\ell$ has $q$ activation units, we will have:
 
@@ -141,7 +141,7 @@ Let's do the same calculation for the second layer of activation units. Instead 
 ```{math}
 :label: secondlayermatrixexpandedeq
 \boldsymbol{a}^{(i, \: 2)} = f\left[ \; 
-\begin{pmatrix}w_{1,1}^{(2)} & w_{1,2}^{(2)} & \cdots & w_{1,r}^{(2)} \\[2ex]w_{2,1}^{(2)} & w_{2,2}^{(2)} & \cdots & w_{2,q}^{(2)} \\[1ex]\vdots  & \vdots & \ddots   & \vdots \\[1ex]w_{q,1}^{(2)} & w_{q,2}^{(2)} &  \cdots & w_{q,r}^{(2)} \\\end{pmatrix}^\top
+\begin{pmatrix}w_{1,1}^{(2)} & w_{1,2}^{(2)} & \cdots & w_{1,r}^{(2)} \\[2ex]w_{2,1}^{(2)} & w_{2,2}^{(2)} & \cdots & w_{2,r}^{(2)} \\[1ex]\vdots  & \vdots & \ddots   & \vdots \\[1ex]w_{q,1}^{(2)} & w_{q,2}^{(2)} &  \cdots & w_{q,r}^{(2)} \\\end{pmatrix}^\top
 \begin{pmatrix} 
 a^{(i, \: 1)}_1 \\
 a^{(i, \: 1)}_2 \\
