@@ -164,7 +164,7 @@ And the elegant, light version:
 
 We start seeing a pattern here looking at the matricial equations {eq}`firstlayermatrixeq` and {eq}`secondlayermatrixeq`. More on this soon in Section {ref}`NN1:forwardprop:rule`. Let's finish the process with the last layer.
 
-### Computation of the third hidder layer 
+### Computation of the third hidden layer 
 With one output node, it is actually simpler than for the hidden layers above. We can still write it in the same form as Equation {eq}`secondlayermatrixeq`:
 ```{math}
 :label: thirdlayermatrixeq
