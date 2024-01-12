@@ -1,5 +1,6 @@
 _build/
 .vscode/
 .DS_Store
+images/.DS_Store
 */.DS_Store
 */.ipynb_checkpoints/
