@@ -20,13 +20,13 @@ After a postdoctoral fellowship at [DESY](https://www.desy.de/) in Hamburg, Germ
 
 My main area of research is in collider physics. I have 10+ years' experience working for the [ATLAS Experiment](https://atlas.cern/), which is one of the detectors of the [Large Hadron Collider (LHC)](https://home.cern/science/accelerators/large-hadron-collider) at [CERN](https://home.web.cern.ch/), on both data analysis and detector upgrade.
 
-During the academic year 2022-2023, I took a leave from York University to build a course on machine learning designed for the [African Institute for Mathematical Sciences](https://nexteinstein.org/) (AIMS) format. I taught this course at [AIMS Senegal](https://aims-senegal.org/), [AIMS South Africa](https://aims.ac.za/) and [AIMS Ghana](https://aims.edu.gh/). During my stay at AIMS South Africa, I was offered the opportunity to become a Resident Researcher in Machine Learning and the Program & Researcher Manager of a new Master's course [AI For Science](https://ai.aims.ac.za/), founded by Google DeepMind. 
+During the academic year 2022-2023, I took a leave from York University to build a course on machine learning designed for the [African Institute for Mathematical Sciences](https://nexteinstein.org/) (AIMS) format. I taught this course at [AIMS Senegal](https://aims-senegal.org/), [AIMS South Africa](https://aims.ac.za/) and [AIMS Ghana](https://aims.edu.gh/). During my stay at AIMS South Africa, I was offered the opportunity to become a Resident Researcher in Machine Learning and the Academic Director of a new Master's course [AI For Science](https://ai.aims.ac.za/), founded by Google DeepMind. 
 
-My interests range from advanced machine learning implementations for experimental particle physics to ethics in A.I., education in Africa and sustainability on this fragile planet. 
+My interests range from advanced machine learning implementations for experimental particle physics to ethics in AI, education in Africa and sustainability on this fragile planet. 
 
 
 ## Schedule
-The table below shows a tentative weekly schedule for this course. There may be adjustements and as you can see there is time dedicated for reviews. The tutorials will run mostly during evening sessions so that you can learn at your own pace.
+The table below shows a tentative weekly schedule for this course. There may be adjustements. As you can see, there is plenty of time dedicated for reviews. The tutorials will run mostly during evening sessions so that you can learn at your own pace.
 
 ```{image} ../images/about_instructor_menu.png
 :alt: Course Menu
