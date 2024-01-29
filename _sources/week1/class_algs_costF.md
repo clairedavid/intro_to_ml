@@ -42,7 +42,7 @@ J(\theta) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; {\color{RoyalBlue}y^{(i)} \lo
  This function is also called __cross-entropy loss function__ and is the standard cost function for binary classifiers.
 ````
 
-Note the negative sign factorized at the beginning of the equation. Multiplying by ${\color{RoyalBlue}y^{(i)}}$ and ${\color{OliveGreen}(1 - y^{(i)})}$ the first and second term of the sum respectively acts as a "switch" between the cases ${\color{RoyalBlue}y=1}$ and ${\color{OliveGreen}y=0}$. If ${\color{RoyalBlue}y=1}$, the first term cancels out and the cost takes the value of the second. If ${\color{OliveGreen}y=0}$, the second term vanishes. The two cases are combined into one mathematical expression.
+Note the negative sign factorized at the beginning of the equation. The first and second term inside the sum are multiplied by ${\color{RoyalBlue}y^{(i)}}$ and ${\color{OliveGreen}(1 - y^{(i)})}$. This acts as a "switch" between the two possible cases for the targets: ${\color{RoyalBlue}y=1}$ and ${\color{OliveGreen}y=0}$. If ${\color{RoyalBlue}y=1}$, the second term cancels out and the cost takes the value of the first. If ${\color{OliveGreen}y=0}$, the first term vanishes. The two mutually exclusive cases are combined into one mathematical expression. 
 
 ## Gradient descent
 The gradient descent for classification follows the same procedure as described in {prf:ref}`GD_algo_multi` in Section {ref}`warmup:linRegMulti:graddesc` with the definition of the cost function from Equation {eq}`costFunctionLogReg` above.
