@@ -1037,7 +1037,7 @@ This happens when the features are of different ranges. One parameter will have 
 <div class="proof definition admonition" id="defMeanNormalization">
 <p class="admonition-title"><span class="caption-number">Definition 11 </span></p>
 <section class="definition-content" id="proof-content">
-<p><strong>Mean normalization</strong> consists of calculating the mean <span class="math notranslate nohighlight">\(\mu_j\)</span> of all training examples <span class="math notranslate nohighlight">\(x_j^{(1)}, x_j^{(2)}, \cdots,  x_j^{(m)}\)</span> of a given feature <span class="math notranslate nohighlight">\(j\)</span> and substract it to each example <span class="math notranslate nohighlight">\(x_j^{(i)}\)</span> of that feature:</p>
+<p><strong>Mean normalization</strong> consists of calculating the mean <span class="math notranslate nohighlight">\(\mu_j\)</span> of all training examples <span class="math notranslate nohighlight">\(x_j^{(1)}, x_j^{(2)}, \cdots,  x_j^{(m)}\)</span> of a given feature <span class="math notranslate nohighlight">\(j\)</span> and subtract it to each example <span class="math notranslate nohighlight">\(x_j^{(i)}\)</span> of that feature:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
 \left(x^{(i)}_j\right)^\text{ norm} = x^{(i)}_j - \mu_j  \;   \;   \;  \;   \;   \;    \forall i \in [1..m]
@@ -1055,7 +1055,7 @@ This happens when the features are of different ranges. One parameter will have 
 <div class="proof definition admonition" id="defStandardization">
 <p class="admonition-title"><span class="caption-number">Definition 12 </span></p>
 <section class="definition-content" id="proof-content">
-<p>The mean normalization procedure using as denominator the standard deviation <span class="math notranslate nohighlight">\(\sigma_j\)</span> all the samples for this feature is called <strong>Standardization</strong></p>
+<p><strong>Standardization</strong> is a mean normalization procedure using as denominator the standard deviation <span class="math notranslate nohighlight">\(\sigma_j\)</span> of all the samples for a given feature.</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
 \widehat{x}^{(i)}_j = \frac{x^{(i)}_j - \mu_j}{\sigma_j} \;   \;   \;  \;   \;   \;    \forall i \in [1..m]
