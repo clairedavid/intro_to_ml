@@ -6,21 +6,24 @@ Before getting into the details here are some general definitions.
 
 ````{prf:definition}
 :label: logRegDef
-__Logistic regression__ is a statistical model used in machine learning to make a prediction from one or more independent variables about a __categorical variable__. 
+__Logistic regression__ is a statistical model used in machine learning to make a prediction from one or more independent variables about a __categorical variable__ as target. 
 ````
-In other words, it is about making predictions about a discrete variable versus a continuous one.
 
 ````{prf:definition}
 :label: catVar
-A __categorical variable__ is a variable that can take a limited number of possible values: true or false, yes or no, 1 or 0. 
+A __categorical variable__ is a variable that can take a limited number of possible values.  
+Examples: true or false, yes or no, the 10 digits from 0 to 9, the 26 letters of the latin alphabet, etc.
 ````
+
+In other words, logistic regression is about making predictions about a discrete variable instead of a continuous one.
 
 ````{prf:definition}
 :label: binaryDef
-__Binary classification__ refers to a classification task that has two categorical variables.  
+__Binary classification__ refers to a classification task into two mutually exclusive categories. 
 
 __Multi-class classification__ refers to a classification task that has more than two categorical variables. 
 ````
+
 
 
 
