@@ -870,7 +870,7 @@ This corresponds to deactivating all neurons. The formula <span class="math notr
 <h2>Standard Initialization Strategies<a class="headerlink" href="#standard-initialization-strategies" title="Permalink to this headline">#</a></h2>
 <p>Let’s first define the notion of <em>fan-in</em> and <em>fan-out</em>.</p>
 <div class="proof definition admonition" id="fanindef">
-<p class="admonition-title"><span class="caption-number">Definition 58 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 59 </span></p>
 <section class="definition-content" id="proof-content">
 <p>In a neural network, <strong>fan-in</strong> refers to the number of incoming network connections<br />
 (input neurons and bias of the previous layer)</p>
@@ -891,14 +891,14 @@ This corresponds to deactivating all neurons. The formula <span class="math notr
 </section>
 </div><p>It is impossible to validate the two properties at the same time. But Glorot and Bengio offered a compromise that passed the experimental tests with success, mostly with the sigmoid activation function.</p>
 <div class="proof definition admonition" id="xavieruniformdef">
-<p class="admonition-title"><span class="caption-number">Definition 59 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 60 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>Uniform Xavier Initialization</strong> is obtained by drawing each weight from a random uniform distribution in in <span class="math notranslate nohighlight">\([-x,x]\)</span>, with</p>
 <div class="math notranslate nohighlight">
 \[ x= \sqrt{\frac{6}{\textit{fan}_\text{ in} + \textit{fan}_\text{ out}}}\]</div>
 </section>
 </div><div class="proof definition admonition" id="xaviernormaldef">
-<p class="admonition-title"><span class="caption-number">Definition 60 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 61 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>Normal Xavier Initialization</strong> is obtained by drawing each weight from a random normal distribution with mean of 0, and a standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> of:</p>
 <div class="math notranslate nohighlight">
@@ -911,7 +911,7 @@ This corresponds to deactivating all neurons. The formula <span class="math notr
 <h3>LeCun Weight Initialization<a class="headerlink" href="#lecun-weight-initialization" title="Permalink to this headline">#</a></h3>
 <p>A variant of Xavier initilization has been proposed by Yann LeCun, one of the godfathers of deep learning and among the top most influential AI researchers in the world. His trick is to only use the number of inputs, <em>fan-in</em>.</p>
 <div class="proof definition admonition" id="lecuninitdef">
-<p class="admonition-title"><span class="caption-number">Definition 61 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 62 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>LeCun Weight Initialization</strong> is obtained by drawing each weight from a random normal distribution with mean of 0, and a standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> of:</p>
 <div class="math notranslate nohighlight">
@@ -925,7 +925,7 @@ This corresponds to deactivating all neurons. The formula <span class="math notr
 <h3>He Weight Initialization<a class="headerlink" href="#he-weight-initialization" title="Permalink to this headline">#</a></h3>
 <p>Kaiming He and others published a paper providing a good initialization strategy for the ReLU activation function and its variants.</p>
 <div class="proof definition admonition" id="heinitdef">
-<p class="admonition-title"><span class="caption-number">Definition 62 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 63 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>He Weight Initialization</strong> is obtained by drawing each weight from a random normal distribution with mean of 0, and a standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span> of:</p>
 <div class="math notranslate nohighlight">

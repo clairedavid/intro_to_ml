@@ -853,7 +853,7 @@ If you are curious to read the original paper marking the birth of the artificia
 “A logical calculus of the ideas immanent in nervous activity” - <a class="reference external" href="https://link.springer.com/article/10.1007/BF02478259">Link on Springer</a></p>
 </div>
 <div class="proof definition admonition" id="andef">
-<p class="admonition-title"><span class="caption-number">Definition 51 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 52 </span></p>
 <section class="definition-content" id="proof-content">
 <p>An <strong>artificial neuron</strong> is an elementary computational unit of artificial neural networks.</p>
 <p>It receives inputs from the dataset or other artificial neurons, combine the information and provide output value(s).</p>
@@ -884,11 +884,11 @@ If you are curious to read the original paper marking the birth of the artificia
 <p>We used to write <span class="math notranslate nohighlight">\(h_\theta(x)\)</span> for the hypothesis function while computing linear and logistic regression algorithms. It is still valid if we consider <span class="math notranslate nohighlight">\(\theta = ( \boldsymbol{w}, b)\)</span>, where <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span> is a vector of weights <span class="math notranslate nohighlight">\(w_1, w_2, \cdots, w_n\)</span> and <span class="math notranslate nohighlight">\(b\)</span> the bias term (playing the role of <span class="math notranslate nohighlight">\(\theta_0\)</span>). To distinguish notations between regression and neural network, let’s prefer here the notation: <span class="math notranslate nohighlight">\(h_{\boldsymbol{w}, b}(x)\)</span> for the weighted sum.</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-aneq">
-<span class="eqno">(48)<a class="headerlink" href="#equation-aneq" title="Permalink to this equation">#</a></span>\[y = f\left(\sum_{j=1}^n w_j x_j + b \right)\]</div>
+<span class="eqno">(50)<a class="headerlink" href="#equation-aneq" title="Permalink to this equation">#</a></span>\[y = f\left(\sum_{j=1}^n w_j x_j + b \right)\]</div>
 <p>This operation is done for one sample row <span class="math notranslate nohighlight">\(x^{(i)}\)</span>, hence reserving the <span class="math notranslate nohighlight">\(i\)</span> index for the sample instances. The sum is done over the input features <span class="math notranslate nohighlight">\(j\)</span> (columns of the <span class="math notranslate nohighlight">\(X\)</span> input matrix). Here the sum starts at <span class="math notranslate nohighlight">\(j=1\)</span> and not zero as the intercept term is written outside of the sum as <span class="math notranslate nohighlight">\(b\)</span>.</p>
 <p>We haven’t seen the activation function. Here is its definition:</p>
 <div class="proof definition admonition" id="activfuncdef">
-<p class="admonition-title"><span class="caption-number">Definition 52 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 53 </span></p>
 <section class="definition-content" id="proof-content">
 <p>An <strong>Activation Function</strong>, also called Transfer Function, is a mathematical operation performed by an artificial neuron on the weighted summed of input nodes (plus the bias node).</p>
 <p>As the name indicates, it decides whether the neuron’s input to the network is important or not: returning a non-zero value means the <strong>neuron is “activated”</strong>, or “fired.”</p>
@@ -901,7 +901,7 @@ If you are curious to read the original paper marking the birth of the artificia
 <section id="the-perceptron">
 <h3>The Perceptron<a class="headerlink" href="#the-perceptron" title="Permalink to this headline">#</a></h3>
 <div class="proof definition admonition" id="perceptrondef">
-<p class="admonition-title"><span class="caption-number">Definition 53 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 54 </span></p>
 <section class="definition-content" id="proof-content">
 <p>A <strong>Perceptron</strong> is a neural network based on a single specific artificial neuron called a Threshold Logic Unit (TLU) or Linear Threshold Unit (LTU), where the activation function is a step function.</p>
 <p>It computes a weighted sum of real-valued inputs, has a bias term in the form of an extra node and yield the output:</p>
@@ -920,13 +920,13 @@ h_{\vec{w},b} = \text{step} \left( w^T x + b \right)
 </figure>
 <p>The step functions generally employed are the <em>Heaviside</em> or the <em>sign</em> functions:</p>
 <div class="math notranslate nohighlight" id="equation-heaviside">
-<span class="eqno">(49)<a class="headerlink" href="#equation-heaviside" title="Permalink to this equation">#</a></span>\[\begin{split}\forall \: z \in  \mathbb{R}, \: \: H(z) =
+<span class="eqno">(51)<a class="headerlink" href="#equation-heaviside" title="Permalink to this equation">#</a></span>\[\begin{split}\forall \: z \in  \mathbb{R}, \: \: H(z) =
 \begin{cases}
 \;\;  1 &amp; \text{ if } z \geq  0 \\
 \;\;  0 &amp; \text{ if } z &lt; 0
 \end{cases}\end{split}\]</div>
 <div class="math notranslate nohighlight" id="equation-sign">
-<span class="eqno">(50)<a class="headerlink" href="#equation-sign" title="Permalink to this equation">#</a></span>\[\begin{split}\forall \: z \in  \mathbb{R}, \: \: {sign}(z) = 
+<span class="eqno">(52)<a class="headerlink" href="#equation-sign" title="Permalink to this equation">#</a></span>\[\begin{split}\forall \: z \in  \mathbb{R}, \: \: {sign}(z) = 
  \begin{cases}
 \;\;  +1 &amp; \text{ if } z&gt;0 \\
 \;\;\;   0 &amp; \text{ if } z=0 \\
@@ -985,7 +985,7 @@ Possible answer:<br />
 <h3>Layers<a class="headerlink" href="#layers" title="Permalink to this headline">#</a></h3>
 <p>Now that we saw the artificial neuron, let’s see how they can model complex data patterns while connecting them. Like their organic counterparts where neurons are organized in consecutive layers, artificial neural networks are arranged in layers, where neurons in each layer receive input from the previous layer and pass their output to the subsequent layer.</p>
 <div class="proof definition admonition" id="nnlayerdef">
-<p class="admonition-title"><span class="caption-number">Definition 54 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 55 </span></p>
 <section class="definition-content" id="proof-content">
 <p>An artificial neural network is composed of:</p>
 <ul class="simple">
@@ -1000,7 +1000,7 @@ Possible answer:<br />
 <section id="deep-or-not-deep-is-that-a-question">
 <h3>Deep or not deep: is that a question?<a class="headerlink" href="#deep-or-not-deep-is-that-a-question" title="Permalink to this headline">#</a></h3>
 <div class="proof definition admonition" id="definition-4">
-<p class="admonition-title"><span class="caption-number">Definition 55 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 56 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The number of hidden layers is an indicator of the <strong>depth</strong> of a neural network.</p>
 </section>

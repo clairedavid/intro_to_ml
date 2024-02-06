@@ -29,16 +29,16 @@ A __decision tree__ is a flowchart mapping a decision making process. It is orga
 
 ````{prf:definition}
 :label: nodesdef
-A __node__ is a condition box evaluating one or more input features.  
+A tree consists of three types of nodes: 
+
+__Root node:__ The start of the decision process is the first test performed on the whole dataset.  
+__Internal nodes__: A "condition box" evaluating subset of the dataset on a given feature. The test has two possible outcomes: true or false.  
+__Leaf nodes or terminal nodes:__ Nodes that do not split further, indicating -- most of the time -- the final classification of data points 'landing' in them.  
 
 The outcomes of that evaluation (either boolean or numerical) is divided into __branches__, or edges.
-
 Each branch supports one outcome (usually True/False) on the condition from the previous node.
 
-A node at the end of a branch that is not divising further is called a __leaf__.
-
 ````
-A decision tree is drawn upside down with its root node at the top.
 
 ## Example
 Let's illustrate the terminology with an example. Let's have a dataset with two variables as input features, $x_1$ and $x_2$.
@@ -74,7 +74,7 @@ The first node at depth 0 creates a first decision boundary, splitting the datas
 We could see with an example and illustrative graphs how the decision tree splits the datasets. But how are these splits calculated? Why did the classifier chose the cut values $x_1$ = 2.45 and $x_2$ = 1.75? This is what we will cover in the following section.
 
 ## Algorithm
-There are metrics entering in the optimization algorithm of a decision tree. One is the Gini impurity:
+There are metrics entering in the optimization algorithm of a decision tree. The main one is the Gini impurity:
 
 ````{prf:definition}
 :label: ginidef
@@ -83,20 +83,43 @@ The __Gini's diversity index__ is a measure of a node's impurity.
 It is defined for each tree node $i$ as:
 
 \begin{equation}
-G_i = 1 - \sum_{k=1}^{N_\text{classes}} \left( \frac{N_{k, i}}{ N_i} \right)^2 
+G_i = 1 - \sum_{k=1}^{N_\text{classes}} \left( \frac{N_{k, i}}{ N_i} \right)^2 = 1 - \sum_{k=1}^{N_\text{classes}} \left( p_k \right)^2
 \end{equation}
 
-with $N_{k, i}$ the number of data samples of class $k$ in node $i$ and $N_{i}$ the total number of data samples in node $i$.
+with $N_{k, i}$ the number of data samples of class $k$ in node $i$ and $N_{i}$ the total number of data samples in node $i$. The terms $p_k$ in the sum are equivalent to the probibility of getting a sample of class $k$ in the node $i$.
 
 The Gini's impurity index ranges from 0 (100% pure node) to 1 (very impure node).
-
 ````
 
+If a node has an equal amount of data points from two classes, let's say 500 points each, the Gini index will be:
+
+\begin{equation}
+G_i = 1 - \left( \frac{500}{1000} \right)^2 - \left( \frac{500}{1000} \right)^2 = 0.5 
+\end{equation}
+
+With three classes present in equal quantities, it will be $\frac{2}{3}$, for four, $\frac{3}{4}$, etc. 
+
 The algorithm used for classification trees is called CART. It stands for Classification and Regression Tree. 
+Once again, we will need a cost function to minimize. This cost function will be defined at a given node containing $N_\text{node}$ data samples.
+
+````{prf:definition}
+:label: costCART
+The cost function for CART is defined as:
+
+\begin{equation}
+J(j, t_j) = \frac{N_\text{left}}{N_\text{node}} G_\text{left} + \frac{N_\text{right}}{N_\text{node}} G_\text{right}
+\end{equation}
+
+````
+It is a sum where the purity of each subset is weighted by the subset sizes. In the literature, you may see the terms left and right. They translate as:
+
+- left: all data points whose feature $x_j$ is such that $x_j < t_j$ 
+- right: all data points whose feature $x_j$ is such that $x_j \geq t_j$ 
+
+We will see the role of the hyperparameters later. This is for now the pseudocode:
 
 ````{prf:algorithm} Classification and Regression Tree
 :label: DTalgo
-
 
 __Inputs__  
 * Training data set $X$ of $m$ samples with each $n$ input features, associated with their targets $y$
@@ -128,24 +151,30 @@ __Hyperparameters__
 __Outputs__  
 A collection on decision boundaries segmenting the $k$ feature phase space.
 
-__Initialization__ at the root node
 
-__1 Threshold computation__:
-For each feature $k$, finds the threshold value $t_k$ maximizing purity of the two resulting subsets either lower (left) or higher (right) than the threshold $t_k$.
-The cost function is defined as:
+__Initialization:__ at the root node
 
+
+__STEP 1: THRESHOLD COMPUTATION__:  
+
+__For__ each feature $j$ from 1 to $n$:  
+&nbsp;  
+$\;\;\;$  __For__ a value of $t_j$ scanning the range $x^\text{min}_j$ to $x^\text{max}_j$:  
+&nbsp;  
+$\;\;\;\;\;\; \rightarrow$ Compute the cost function $J(j, t_j)$  
+&nbsp;  
+$\;\;\;\;\;\; \rightarrow$ Find the pair $(j, t_j)$ that produces the purest subsets, i.e. so that it minimizes:  
 \begin{equation}
-J(k, t_k) = \frac{n_\text{left}}{n_\text{node}} G_\text{left} + \frac{n_\text{right}}{n_\text{node}} G_\text{right}
+\min_{(j, \: t_j)} J(j, t_j)
 \end{equation}
 
-The purity is weighted by the subset sizes. The pair ($k$, $t_k$) producing the purest subsets is set for the node.   
+__STEP 2: BRANCHING__:  
+Split the dataset along the feature $j$ using the threshold $t_j$ into two subsequent new nodes.  
 
-__2 Branching__:  
-The dataset is split according to the threshold $t_k$ into two branches and subsequent new nodes.  
-Repeat Step 1 at the new nodes.
+Repeat Step 1 at each new node.
 
 __Exit conditions__
-* Once the condition on one of the hyperparameters is fullfilled 
+At least one condition on one of the hyperparameters is fullfilled 
 
 ````
 
