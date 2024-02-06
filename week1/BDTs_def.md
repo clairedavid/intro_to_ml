@@ -149,7 +149,7 @@ __Hyperparameters__
 
 
 __Outputs__  
-A collection on decision boundaries segmenting the $k$ feature phase space.
+A collection on decision boundaries segmenting the $j$ feature space.
 
 
 __Initialization:__ at the root node
