@@ -64,7 +64,7 @@ _Hint 1: recall that the $\boldsymbol{\theta}$ parameters are usually initialize
 _Hint 1.1: they are positive..._  
 _Hint 2: recall the shape of the sigmoid and what it would imply on the cost function, especially for background samples._  
 
-__2.2 Standarization__  
+__2.2 Standardization__  
 Create for each input feature an extra column in the dataframe to rescale it to a distribution of zero-mean and unit-variance. To see statistical information on a dataframe, a convenient method is:
 ```python
 df.describe()
