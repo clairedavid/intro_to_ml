@@ -34,10 +34,10 @@ Like this:
 
 ````{prf:definition}
 :label: costFLogRegDef
-The __cost function for logistic regression__ is a defined as:
+The __cost function for logistic regression__ is defined as:
 ```{math}
 :label: costFunctionLogReg
-J(\theta) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; {\color{RoyalBlue}y^{(i)} \log( h_\theta(x^{(i)} )) }\;\;+\;\; {\color{OliveGreen}(1- y^{(i)}) \log( 1 - h_\theta(x^{(i)} ))} \;\;\right]
+J(\theta) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; {\color{RoyalBlue}y^{(i)} \log\left( h_\theta(x^{(i)} ) \right) }\;\;+\;\; {\color{OliveGreen}(1- y^{(i)}) \log\left( 1 - h_\theta(x^{(i)} ) \right)} \;\;\right]
  ```
  This function is also called __cross-entropy loss function__ and is the standard cost function for binary classifiers.
 ````

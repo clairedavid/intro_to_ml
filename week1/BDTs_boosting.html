@@ -887,28 +887,28 @@ w^{(i)} = \frac{1}{m}
 <p><strong>Start</strong><br />
 <strong>For</strong> each predictor <span class="math notranslate nohighlight">\(j = 1 , \cdots , N^\text{pred}\)</span><br />
 a. Train on all samples and compute the weighted error rate <span class="math notranslate nohighlight">\(r_j\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-5aca6df0-afd5-48a2-8880-203c2752aca0">
-<span class="eqno">(33)<a class="headerlink" href="#equation-5aca6df0-afd5-48a2-8880-203c2752aca0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3f2fd382-8773-4b4a-b8bd-0e5b6a0f9bb5">
+<span class="eqno">(33)<a class="headerlink" href="#equation-3f2fd382-8773-4b4a-b8bd-0e5b6a0f9bb5" title="Permalink to this equation">#</a></span>\[\begin{equation}
    r_j = \frac{\sum_{i = 1}^m w^{(i)} [ \hat{y}_j^{(i)} \neq y^{(i)} ]   }{\sum_{i = 1}^m w^{(i)}}
    \end{equation}\]</div>
 <p>b. Give the predictor <span class="math notranslate nohighlight">\(j\)</span> a weight <span class="math notranslate nohighlight">\(W_j\)</span> measuring accuracy</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ad600c49-f20e-4fa0-bf47-f3bb51efa7d3">
-<span class="eqno">(34)<a class="headerlink" href="#equation-ad600c49-f20e-4fa0-bf47-f3bb51efa7d3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-de3f261c-b3d6-4495-b32e-bc318dfe8d74">
+<span class="eqno">(34)<a class="headerlink" href="#equation-de3f261c-b3d6-4495-b32e-bc318dfe8d74" title="Permalink to this equation">#</a></span>\[\begin{equation}
    W_j = \alpha \log \frac{1 - r_j}{r_j} 
    \end{equation}\]</div>
-<p><span class="math notranslate nohighlight">\(W_j\)</span> points to zero if the predictor is bad, or a high number if the predictor is good.<br />
+<p><span class="math notranslate nohighlight">\(W_j\)</span> points to a high number if the predictor is good, zero if the predictor is guessing randomly, negative if it is bad.
 <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate.</p>
 <p>c. Update the weights of all data samples:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9092991e-8410-4ac7-90b3-16030336546e">
-<span class="eqno">(35)<a class="headerlink" href="#equation-9092991e-8410-4ac7-90b3-16030336546e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-55116a47-00a6-4054-a2de-13fe9c04fb6e">
+<span class="eqno">(35)<a class="headerlink" href="#equation-55116a47-00a6-4054-a2de-13fe9c04fb6e" title="Permalink to this equation">#</a></span>\[\begin{equation}
    w^{(i)} = \left\{\begin{matrix}
    w^{(i)} \;\;\;\;  &amp;\text{if} \;\;\;\; \hat{y}_j^{(i)} = y_j^{(i)} \\[2ex]
    \;\;w^{(i)} \exp (-W_j)  \;\;\;\;  &amp;\text{if} \;\;\;\; \hat{y}_j^{(i)} \neq y_j^{(i)} \\
    \end{matrix}\right.
    \end{equation}\]</div>
 <p>d. Normalize the weights</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f38e510a-115c-4fe8-bf12-3ec4f60507ca">
-<span class="eqno">(36)<a class="headerlink" href="#equation-f38e510a-115c-4fe8-bf12-3ec4f60507ca" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-54e7d970-73cf-4f53-bd87-54eb0af7c07d">
+<span class="eqno">(36)<a class="headerlink" href="#equation-54e7d970-73cf-4f53-bd87-54eb0af7c07d" title="Permalink to this equation">#</a></span>\[\begin{equation}
     w^{(i)} \rightarrow \frac{w^{(i)}}{\sum_{i = 1}^m w^{(i)}}
    \end{equation}\]</div>
 <p><strong>Exit conditions</strong></p>
@@ -921,7 +921,7 @@ a. Train on all samples and compute the weighted error rate <span class="math no
 <figure class="align-default" id="lec04-3-adaboost">
 <a class="reference internal image-reference" href="../_images/lec04_3_adaboost.png"><img alt="../_images/lec04_3_adaboost.png" src="../_images/lec04_3_adaboost.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 34 </span><span class="caption-text">. Visual of AdaBoost.<br />
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">. Visual of AdaBoost.<br />
 Misclassified samples are given a higher weight for the next predictor.<br />
 Base classifiers are decision stumps (one-level tree).<br />
 <sub>Source: modified work by the author, originally from subscription.packtpub.com</sub></span><a class="headerlink" href="#lec04-3-adaboost" title="Permalink to this image">#</a></p>
@@ -1117,7 +1117,7 @@ Now let’s build a tree using the input features but to predict the residuals.<
 <figure class="align-default" id="lec04-3-treegboost">
 <a class="reference internal image-reference" href="../_images/lec04_3_treeGBoost.png"><img alt="../_images/lec04_3_treeGBoost.png" src="../_images/lec04_3_treeGBoost.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 35 </span><span class="caption-text">. First tree predicting the residuals.<br />
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text">. First tree predicting the residuals.<br />
 <sub>Image from the author</sub></span><a class="headerlink" href="#lec04-3-treegboost" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -1139,7 +1139,7 @@ The predictions are in terms of the log of the odds, whereas leaves are derived 
 <figure class="align-default" id="lec04-3-treegboost-outputs">
 <a class="reference internal image-reference" href="../_images/lec04_3_treeGBoost_outputs.png"><img alt="../_images/lec04_3_treeGBoost_outputs.png" src="../_images/lec04_3_treeGBoost_outputs.png" style="width: 75%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 36 </span><span class="caption-text">. First tree predicting the residuals with output values for each leaves as ‘predictions’ (log of odds).<br />
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text">. First tree predicting the residuals with output values for each leaves as ‘predictions’ (log of odds).<br />
 <sub>Image from the author</sub></span><a class="headerlink" href="#lec04-3-treegboost-outputs" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -1148,7 +1148,7 @@ The first tree targeting the residuals is combined with the initial guess:</p>
 <figure class="align-default" id="lec04-3-treegboost-combi1">
 <a class="reference internal image-reference" href="../_images/lec04_3_treeGBoost_combi1.png"><img alt="../_images/lec04_3_treeGBoost_combi1.png" src="../_images/lec04_3_treeGBoost_combi1.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 37 </span><span class="caption-text">. The initial guess and the first tree are combined. The tree is scaled by a learning rate <span class="math notranslate nohighlight">\(\alpha\)</span>.<br />
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">. The initial guess and the first tree are combined. The tree is scaled by a learning rate <span class="math notranslate nohighlight">\(\alpha\)</span>.<br />
 <sub>Image from the author</sub></span><a class="headerlink" href="#lec04-3-treegboost-combi1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -1248,7 +1248,7 @@ We go back to step 2 to compute the new pseudo residuals from the last set of pr
 <figure class="align-default" id="lec04-3-treegboost-combi-gen">
 <a class="reference internal image-reference" href="../_images/lec04_3_treeGBoost_combi_gen.png"><img alt="../_images/lec04_3_treeGBoost_combi_gen.png" src="../_images/lec04_3_treeGBoost_combi_gen.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 38 </span><span class="caption-text">. The Gradient Boosting sums the trees fitting the pseudo residuals from the previous predition.<br />
+<p><span class="caption-number">Fig. 39 </span><span class="caption-text">. The Gradient Boosting sums the trees fitting the pseudo residuals from the previous predition.<br />
 <sub>Image from the author</sub></span><a class="headerlink" href="#lec04-3-treegboost-combi-gen" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>

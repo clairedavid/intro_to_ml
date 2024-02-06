@@ -835,9 +835,9 @@ Like this:</p>
 <div class="proof definition admonition" id="costFLogRegDef">
 <p class="admonition-title"><span class="caption-number">Definition 19 </span></p>
 <section class="definition-content" id="proof-content">
-<p>The <strong>cost function for logistic regression</strong> is a defined as:</p>
+<p>The <strong>cost function for logistic regression</strong> is defined as:</p>
 <div class="math notranslate nohighlight" id="equation-costfunctionlogreg">
-<span class="eqno">(13)<a class="headerlink" href="#equation-costfunctionlogreg" title="Permalink to this equation">#</a></span>\[J(\theta) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; {\color{RoyalBlue}y^{(i)} \log( h_\theta(x^{(i)} )) }\;\;+\;\; {\color{OliveGreen}(1- y^{(i)}) \log( 1 - h_\theta(x^{(i)} ))} \;\;\right]\]</div>
+<span class="eqno">(13)<a class="headerlink" href="#equation-costfunctionlogreg" title="Permalink to this equation">#</a></span>\[J(\theta) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; {\color{RoyalBlue}y^{(i)} \log\left( h_\theta(x^{(i)} ) \right) }\;\;+\;\; {\color{OliveGreen}(1- y^{(i)}) \log\left( 1 - h_\theta(x^{(i)} ) \right)} \;\;\right]\]</div>
 <p>This function is also called <strong>cross-entropy loss function</strong> and is the standard cost function for binary classifiers.</p>
 </section>
 </div><p>Note the negative sign factorized at the beginning of the equation. The first and second term inside the sum are multiplied by <span class="math notranslate nohighlight">\({\color{RoyalBlue}y^{(i)}}\)</span> and <span class="math notranslate nohighlight">\({\color{OliveGreen}(1 - y^{(i)})}\)</span>. This acts as a “switch” between the two possible cases for the targets: <span class="math notranslate nohighlight">\({\color{RoyalBlue}y=1}\)</span> and <span class="math notranslate nohighlight">\({\color{OliveGreen}y=0}\)</span>. If <span class="math notranslate nohighlight">\({\color{RoyalBlue}y=1}\)</span>, the second term cancels out and the cost takes the value of the first. If <span class="math notranslate nohighlight">\({\color{OliveGreen}y=0}\)</span>, the first term vanishes. The two mutually exclusive cases are combined into one mathematical expression.</p>
@@ -906,8 +906,8 @@ There are two main approaches of such methods for multiclassification.</p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-One approach</strong> consists of applying a binary classification for each pair of classes, ignoring the other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of models to train, <span class="math notranslate nohighlight">\(N^\text{model}\)</span> is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-45498c1b-0e4e-4327-a8b5-15262b43721a">
-<span class="eqno">(15)<a class="headerlink" href="#equation-45498c1b-0e4e-4327-a8b5-15262b43721a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a6f3bdeb-1f0f-4079-a23b-72e74335f0ca">
+<span class="eqno">(15)<a class="headerlink" href="#equation-a6f3bdeb-1f0f-4079-a23b-72e74335f0ca" title="Permalink to this equation">#</a></span>\[\begin{equation}
 N^\text{model} = \frac{N^\text{class}(N^\text{class}-1)}{2}
 \end{equation}\]</div>
 <p>Each model predicts one class label. The final decision is the class label receiving the most votes, i.e. being predicted most of the time.</p>
@@ -921,8 +921,8 @@ The pairing makes the number of models to train large and thus computer intensiv
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-All or One-to-Rest approach</strong> consists of training each class against the collection of all other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of pairs to train is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-31b61440-2118-4396-bf1e-78b2e273dc8c">
-<span class="eqno">(16)<a class="headerlink" href="#equation-31b61440-2118-4396-bf1e-78b2e273dc8c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-082778ea-772e-4095-80fe-ceeb9baf95c0">
+<span class="eqno">(16)<a class="headerlink" href="#equation-082778ea-772e-4095-80fe-ceeb9baf95c0" title="Permalink to this equation">#</a></span>\[\begin{equation}
  N^\text{model} = N^\text{class}
 \end{equation}\]</div>
 <p>The final prediction is given by the highest value of the hypothesis function <span class="math notranslate nohighlight">\(h^{k}_\theta(x)\)</span>, <span class="math notranslate nohighlight">\(k \in [1, N^\text{model}]\)</span> among the <span class="math notranslate nohighlight">\(N^\text{model}\)</span> binary classifiers.</p>

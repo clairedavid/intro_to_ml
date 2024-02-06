@@ -822,7 +822,14 @@ title="Print to PDF"
 <li><p>Is a portion bigger or lower than 300 calories? Bigger? It’s not healthy, let’s go lower and see the next parameter:</p></li>
 <li><p>Is it crunchy? If yes, I take that one!</p></li>
 </ul>
-<p>Your decision protocol followed a tree process starting with a node (a decision to make), then evaluating a condition on a feature (number of flake type, calorie density, crunchiness factor) and, depending on the answer, another node evaluates another input feature. Such a decision-making process can be visualized like a tree whose branches are the different outcomes and leaves the final choices.</p>
+<p>Your decision protocol followed a tree process starting with a node (a decision to make), then evaluating a condition on a feature (number of flake type, calorie density, crunchiness factor) and, depending on the answer, another node evaluates another input feature. Such a decision-making process can be visualized like a tree whose branches are the different outcomes and leaves the final choices:</p>
+<figure class="align-default" id="decision-tree-claire-s-cereals">
+<a class="reference internal image-reference" href="../_images/lec04_DT_cereals.png"><img alt="../_images/lec04_DT_cereals.png" src="../_images/lec04_DT_cereals.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">. An example of decision tree for how to choose cereals.<br />
+<sub>Image by the author</sub></span><a class="headerlink" href="#decision-tree-claire-s-cereals" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Decision trees belong to the family of machine learning algorithms for both classification and regression (we will focus on classification here).</p>
 <section id="definition">
 <h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
@@ -855,7 +862,7 @@ title="Print to PDF"
 <figure class="align-default" id="lec04-bdts-viz-tree">
 <a class="reference internal image-reference" href="../_images/lec04_BDTs_viz_tree.png"><img alt="../_images/lec04_BDTs_viz_tree.png" src="../_images/lec04_BDTs_viz_tree.png" style="width: 50%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32 </span><span class="caption-text">. Example of a Decision Tree drawn from sklearn pre-loaded dataset <em>iris</em>. The root node is at the top, at depth zero. The tree stops at depth = 2 (final leaves).</span><a class="headerlink" href="#lec04-bdts-viz-tree" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">. Example of a Decision Tree drawn from sklearn pre-loaded dataset <em>iris</em>. The root node is at the top, at depth zero. The tree stops at depth = 2 (final leaves).</span><a class="headerlink" href="#lec04-bdts-viz-tree" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Such a flowchart above tells how future predictions are made. Predicting the class of a new data point (<span class="math notranslate nohighlight">\(x_1^\text{new}\)</span>, <span class="math notranslate nohighlight">\(x_2^\text{new}\)</span>), one simply follows the ‘route’ of the tree starting from the root node (on top) and ‘answering’ the conditions. Is <span class="math notranslate nohighlight">\(x_1\)</span> lower than 2.45? Yes, go to the left (and it corresponds to predicted class A). If not, go to the next node evaluating <span class="math notranslate nohighlight">\(x_2\)</span> feature, etc.</p>
@@ -876,8 +883,8 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p>The <strong>Gini’s diversity index</strong> is a measure of a node’s impurity.</p>
 <p>It is defined for each tree node <span class="math notranslate nohighlight">\(i\)</span> as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2426f871-3982-47c4-84e3-5996fa80782b">
-<span class="eqno">(31)<a class="headerlink" href="#equation-2426f871-3982-47c4-84e3-5996fa80782b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-31402e18-1f89-465b-84c1-3ee83e901fcf">
+<span class="eqno">(31)<a class="headerlink" href="#equation-31402e18-1f89-465b-84c1-3ee83e901fcf" title="Permalink to this equation">#</a></span>\[\begin{equation}
 G_i = 1 - \sum_{k=1}^{N_\text{classes}} \left( \frac{N_{k, i}}{ N_i} \right)^2 
 \end{equation}\]</div>
 <p>with <span class="math notranslate nohighlight">\(N_{k, i}\)</span> the number of data samples of class <span class="math notranslate nohighlight">\(k\)</span> in node <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(N_{i}\)</span> the total number of data samples in node <span class="math notranslate nohighlight">\(i\)</span>.</p>
@@ -922,8 +929,8 @@ A collection on decision boundaries segmenting the <span class="math notranslate
 <p><strong>1 Threshold computation</strong>:
 For each feature <span class="math notranslate nohighlight">\(k\)</span>, finds the threshold value <span class="math notranslate nohighlight">\(t_k\)</span> maximizing purity of the two resulting subsets either lower (left) or higher (right) than the threshold <span class="math notranslate nohighlight">\(t_k\)</span>.
 The cost function is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-25a26db0-66b6-47bd-83ac-8fc19c455719">
-<span class="eqno">(32)<a class="headerlink" href="#equation-25a26db0-66b6-47bd-83ac-8fc19c455719" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-675d397e-645c-4caa-8fba-c193387b1065">
+<span class="eqno">(32)<a class="headerlink" href="#equation-675d397e-645c-4caa-8fba-c193387b1065" title="Permalink to this equation">#</a></span>\[\begin{equation}
 J(k, t_k) = \frac{n_\text{left}}{n_\text{node}} G_\text{left} + \frac{n_\text{right}}{n_\text{node}} G_\text{right}
 \end{equation}\]</div>
 <p>The purity is weighted by the subset sizes. The pair (<span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(t_k\)</span>) producing the purest subsets is set for the node.</p>
@@ -932,8 +939,7 @@ The dataset is split according to the threshold <span class="math notranslate no
 Repeat Step 1 at the new nodes.</p>
 <p><strong>Exit conditions</strong></p>
 <ul class="simple">
-<li><p>After Max Depth is reach</p></li>
-<li><p>If one of the other hyperparameters - if set - is fullfilled</p></li>
+<li><p>Once the condition on one of the hyperparameters is fullfilled</p></li>
 </ul>
 </section>
 </div><p>One of the greatest strength of decision tree is the fact very few assumptions about the training data are made. It differs from linear or polynomial models where we need to know beforehand that the data can be fit with either linear or polynomial function.</p>

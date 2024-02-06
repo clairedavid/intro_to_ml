@@ -5,7 +5,16 @@ Without knowing, you may have already been implementing a 'decision tree' proces
 - Is a portion bigger or lower than 300 calories? Bigger? It's not healthy, let's go lower and see the next parameter:
 - Is it crunchy? If yes, I take that one!
 
-Your decision protocol followed a tree process starting with a node (a decision to make), then evaluating a condition on a feature (number of flake type, calorie density, crunchiness factor) and, depending on the answer, another node evaluates another input feature. Such a decision-making process can be visualized like a tree whose branches are the different outcomes and leaves the final choices.
+Your decision protocol followed a tree process starting with a node (a decision to make), then evaluating a condition on a feature (number of flake type, calorie density, crunchiness factor) and, depending on the answer, another node evaluates another input feature. Such a decision-making process can be visualized like a tree whose branches are the different outcomes and leaves the final choices:
+
+```{figure} ../images/lec04_DT_cereals.png
+---
+width: 80%
+name: Decision Tree Claire's Cereals
+---
+. An example of decision tree for how to choose cereals.  
+<sub>Image by the author</sub>
+```
 
 Decision trees belong to the family of machine learning algorithms for both classification and regression (we will focus on classification here).
 
@@ -136,8 +145,7 @@ The dataset is split according to the threshold $t_k$ into two branches and subs
 Repeat Step 1 at the new nodes.
 
 __Exit conditions__
-* After Max Depth is reach
-* If one of the other hyperparameters - if set - is fullfilled 
+* Once the condition on one of the hyperparameters is fullfilled 
 
 ````
 
