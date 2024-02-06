@@ -47,7 +47,7 @@ __For__ each predictor $j = 1 , \cdots , N^\text{pred}$
    \begin{equation}
    W_j = \alpha \log \frac{1 - r_j}{r_j} 
    \end{equation}
-   $W_j$ points to zero if the predictor is bad, or a high number if the predictor is good.  
+   $W_j$ points to a high number if the predictor is good, zero if the predictor is guessing randomly, negative if it is bad. 
    $\alpha$ is the learning rate.
    
   c. Update the weights of all data samples:
