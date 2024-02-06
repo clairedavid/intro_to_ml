@@ -13,9 +13,11 @@ G_i = 1 - \sum_{k=1}^{N_\text{classes}} \left( \frac{N_{k, i}}{ N_i} \right)^2
 \end{equation*}
 The cost function is
 \begin{equation*}
-J(k, t_k) = \frac{n_\text{left}}{n_\text{node}} G_\text{left} + \frac{n_\text{right}}{n_\text{node}} G_\text{right} \;,
+J(j, t_j) = \frac{N_\text{left}}{N_\text{node}} G_\text{left} + \frac{N_\text{right}}{N_\text{node}} G_\text{right} \;,
 \end{equation*}
-where $k$ is a given feature and $t_k$ the threshold on that feature. We will use $|\Delta\eta_{jj}|$ and $m_{jj}$ as our two input variables. The main function `decision_stumper` should return the optimized threshold and cost function values for a given feature. It should take as arguments:
+where $j$ is a given feature and $t_j$ the threshold on that feature.  
+
+We will use $|\Delta\eta_{jj}|$ and $m_{jj}$ as our two input variables (the $_{jj}$ here has nothing to do with the feature index but a pair of particle "jets" ). The main function `decision_stumper` should return the optimized threshold and cost function values for a given feature. It should take as arguments:
 * the dataframe
 * the variable name of the input feature 
 * the class name (column name where labels are stored)
