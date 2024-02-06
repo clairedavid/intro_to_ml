@@ -173,7 +173,7 @@ Split the dataset along the feature $j$ using the threshold $t_j$ into two subse
 
 Repeat Step 1 at each new node.
 
-__Exit conditions__
+__Exit conditions__  
 At least one condition on one of the hyperparameters is fullfilled 
 
 ````

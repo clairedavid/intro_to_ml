@@ -778,9 +778,10 @@ G_i = 1 - \sum_{k=1}^{N_\text{classes}} \left( \frac{N_{k, i}}{ N_i} \right)^2
 <p>The cost function is</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
-J(k, t_k) = \frac{n_\text{left}}{n_\text{node}} G_\text{left} + \frac{n_\text{right}}{n_\text{node}} G_\text{right} \;,
+J(j, t_j) = \frac{N_\text{left}}{N_\text{node}} G_\text{left} + \frac{N_\text{right}}{N_\text{node}} G_\text{right} \;,
 \end{equation*}\]</div>
-<p>where <span class="math notranslate nohighlight">\(k\)</span> is a given feature and <span class="math notranslate nohighlight">\(t_k\)</span> the threshold on that feature. We will use <span class="math notranslate nohighlight">\(|\Delta\eta_{jj}|\)</span> and <span class="math notranslate nohighlight">\(m_{jj}\)</span> as our two input variables. The main function <code class="docutils literal notranslate"><span class="pre">decision_stumper</span></code> should return the optimized threshold and cost function values for a given feature. It should take as arguments:</p>
+<p>where <span class="math notranslate nohighlight">\(j\)</span> is a given feature and <span class="math notranslate nohighlight">\(t_j\)</span> the threshold on that feature.</p>
+<p>We will use <span class="math notranslate nohighlight">\(|\Delta\eta_{jj}|\)</span> and <span class="math notranslate nohighlight">\(m_{jj}\)</span> as our two input variables (the <span class="math notranslate nohighlight">\(_{jj}\)</span> here has nothing to do with the feature index but a pair of particle “jets” ). The main function <code class="docutils literal notranslate"><span class="pre">decision_stumper</span></code> should return the optimized threshold and cost function values for a given feature. It should take as arguments:</p>
 <ul class="simple">
 <li><p>the dataframe</p></li>
 <li><p>the variable name of the input feature</p></li>
