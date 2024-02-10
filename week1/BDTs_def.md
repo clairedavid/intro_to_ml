@@ -86,7 +86,7 @@ It is defined for each tree node $i$ as:
 G_i = 1 - \sum_{k=1}^{N_\text{classes}} \left( \frac{N_{k, i}}{ N_i} \right)^2 = 1 - \sum_{k=1}^{N_\text{classes}} \left( p_k \right)^2
 \end{equation}
 
-with $N_{k, i}$ the number of data samples of class $k$ in node $i$ and $N_{i}$ the total number of data samples in node $i$. The terms $p_k$ in the sum are equivalent to the probibility of getting a sample of class $k$ in the node $i$.
+with $N_{k, i}$ the number of data samples of class $k$ in node $i$ and $N_{i}$ the total number of data samples in node $i$. The terms $p_k$ in the sum are equivalent to the probability of getting a sample of class $k$ in the node $i$.
 
 The Gini's impurity index ranges from 0 (100% pure node) to 1 (very impure node).
 ````

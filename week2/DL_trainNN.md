@@ -260,7 +260,7 @@ For binary classification, the output layer also has one node, but the activatio
 For multi-class classification problems: the output configuration of the final layer has one node for each class, using the softmax activation function. 
 
 __Example in Keras__  
-This is real code! "DL1" is a Deep Learning algorithm developed in for the ATLAS Experiment at CERN Large Hadron Collider. Elementary particles called quarks are never seen directly in the detector, they produce a spray called a 'jet.'  The jet-tagging is an algorithm determining, from a jet input features, which quark type produced it: either the bottom ($b$), charm ($c$) or lighter quarks ($s$, $u$, $d$).
+This is real code! "DL1" is a Deep Learning algorithm developed for the ATLAS Experiment at CERN Large Hadron Collider. Elementary particles called quarks are never seen directly in the detector, they produce a spray of visible other particles called a 'jet.'  The jet-tagging is an algorithm determining, from a jet input features, which quark type produced it: either the bottom ($b$), charm ($c$) or lighter quarks ($s$, $u$, $d$).
 
 The model is a deep network defined this way:
 
@@ -290,7 +290,8 @@ predictions = Dense(units=3,
 model = Model(inputs=inputs, outputs=predictions)
 model.summary()
 ```
-<sub>Credit: Manuel Guth</sub>
+<sub>Credit: Manuel Guth</sub>  
+
 The input layer contains the feature (recall that `.shape[1]` returns the number of columns, i.e. features). The `l_units` list was obtained by trials and errors. 'Dense' for the hidden layers means the regular deeply connected neural network layer. Their non-linear activation function is ReLU. The output layer contains 3 nodes as there are 3 classes: $b$-jets, $c$-jets and light-jets. The weight initialization is done via the Glorot-Uniform, as we saw in the Section {ref}`NN2_init:Xavier`. 
 
 __Example in PyTorch__  
