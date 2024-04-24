@@ -887,7 +887,7 @@ Read the dataset into a dataframe <code class="docutils literal notranslate"><sp
 <section id="feature-scaling">
 <h2>2. Feature Scaling<a class="headerlink" href="#feature-scaling" title="Permalink to this headline">#</a></h2>
 <p><strong>2.1 Explain</strong><br />
-Given model parameters initialized randomly between 0 and 1, why will the gradient descent diverge if the dataset is not zero-centered? (look at the data).</p>
+If the parameters are initialized randomly between 0 and 1 and the data are not zero-centered, what happens to the gradient descent? Explain the behaviour.</p>
 <p><strong>2.2 Standardization</strong><br />
 Create for each input feature an extra column in the dataframe to rescale it to a distribution of zero-mean and unit-variance. To see statistical information on a dataframe, a convenient method is:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -1284,16 +1284,9 @@ Recall the logistic function:</p>
 <p>Write the function <code class="docutils literal notranslate"><span class="pre">unscale_inputs</span></code> that does the contrary.</p>
 <p><strong>X.2 Equation</strong><br />
 For a given threshold <span class="math notranslate nohighlight">\(\hat{y}\)</span>, write the equation of the line boundary: <span class="math notranslate nohighlight">\(x_2 = f(\boldsymbol{\theta}, x_1, \hat{y})\)</span>.</p>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<div class="warning admonition">
-<p class="admonition-title">Caution with notations</p>
-<p>In our situation, the <span class="math notranslate nohighlight">\(x\)</span> axis corresponds to <span class="math notranslate nohighlight">\(x_1\)</span> and the <span class="math notranslate nohighlight">\(y\)</span> axis to <span class="math notranslate nohighlight">\(x_2\)</span>.</p>
-</div>
-</aside>
 <p><strong>X.3 Coordinate points</strong><br />
 To draw a line on a plot in Matplotlib, one needs to provide the coordinates as a set of two data points.</p>
-<p>Write a function that compute the coordinates <code class="docutils literal notranslate"><span class="pre">x2_left</span></code> and <code class="docutils literal notranslate"><span class="pre">x2_right</span></code> – associated to the values of<code class="docutils literal notranslate"><span class="pre">x1_min</span></code> and <code class="docutils literal notranslate"><span class="pre">x1_max</span></code>respectively – of a decision boundary line at a given threshold <span class="math notranslate nohighlight">\(\hat{y}\)</span>. (recall 0.5 is the standard one for logistic regression).</p>
+<p>Write a function that compute the coordinates <code class="docutils literal notranslate"><span class="pre">x2_left</span></code> and <code class="docutils literal notranslate"><span class="pre">x2_right</span></code> – associated with the values of <code class="docutils literal notranslate"><span class="pre">x1_min</span></code> and <code class="docutils literal notranslate"><span class="pre">x1_max</span></code> respectively – of a decision boundary line at a given threshold <span class="math notranslate nohighlight">\(\hat{y}\)</span>. (recall 0.5 is the standard one for logistic regression).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_boundary_line_x2</span><span class="p">(</span><span class="n">threshold</span><span class="p">,</span> <span class="n">thetas</span><span class="p">,</span> <span class="n">x1_min</span><span class="o">=</span><span class="n">X1MIN</span><span class="p">,</span> <span class="n">x1_max</span><span class="o">=</span><span class="n">X1MAX</span><span class="p">):</span>
 
   <span class="c1"># Your code here</span>
