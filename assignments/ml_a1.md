@@ -58,7 +58,7 @@ __1.2 How many samples are there?__
 ## 2. Feature Scaling
 
 __2.1 Explain__  
-Given model parameters initialized randomly between 0 and 1, why will the gradient descent diverge if the dataset is not zero-centered? (look at the data).
+If the parameters are initialized randomly between 0 and 1 and the data are not zero-centered, what happens to the gradient descent? Explain the behaviour.
 
 __2.2 Standardization__  
 Create for each input feature an extra column in the dataframe to rescale it to a distribution of zero-mean and unit-variance. To see statistical information on a dataframe, a convenient method is:
@@ -486,16 +486,11 @@ Write the function `unscale_inputs` that does the contrary.
 
 __X.2 Equation__  
 For a given threshold $\hat{y}$, write the equation of the line boundary: $x_2 = f(\boldsymbol{\theta}, x_1, \hat{y})$.
-````{margin}
-```{admonition} Caution with notations
-:class: warning
-In our situation, the $x$ axis corresponds to $x_1$ and the $y$ axis to $x_2$.
-```
-````
+
 __X.3 Coordinate points__  
 To draw a line on a plot in Matplotlib, one needs to provide the coordinates as a set of two data points. 
 
-Write a function that compute the coordinates `x2_left` and `x2_right` -- associated to the values of`x1_min` and `x1_max`respectively -- of a decision boundary line at a given threshold $\hat{y}$. (recall 0.5 is the standard one for logistic regression). 
+Write a function that compute the coordinates `x2_left` and `x2_right` -- associated with the values of `x1_min` and `x1_max` respectively -- of a decision boundary line at a given threshold $\hat{y}$. (recall 0.5 is the standard one for logistic regression). 
 ```python
 def get_boundary_line_x2(threshold, thetas, x1_min=X1MIN, x1_max=X1MAX):
 
