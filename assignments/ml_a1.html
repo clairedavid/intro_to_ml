@@ -886,11 +886,8 @@ Read the dataset into a dataframe <code class="docutils literal notranslate"><sp
 </section>
 <section id="feature-scaling">
 <h2>2. Feature Scaling<a class="headerlink" href="#feature-scaling" title="Permalink to this headline">#</a></h2>
-<p><strong>2.1 Explain with math</strong><br />
-Before coding, explain using the mathematical expressions seen in Lecture 3 on Logistic Regression why the gradient descent is likely to diverge if features are not rescaled.</p>
-<p><em>Hint 1: recall that the <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> parameters are usually initialized with random numbers from 0 and 1.</em><br />
-<em>Hint 1.1: they are positive…</em><br />
-<em>Hint 2: recall the shape of the sigmoid and what it would imply on the cost function, especially for background samples.</em></p>
+<p><strong>2.1 Explain</strong><br />
+Given model parameters initialized randomly between 0 and 1, why will the gradient descent diverge if the dataset is not zero-centered? (look at the data).</p>
 <p><strong>2.2 Standardization</strong><br />
 Create for each input feature an extra column in the dataframe to rescale it to a distribution of zero-mean and unit-variance. To see statistical information on a dataframe, a convenient method is:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -1294,10 +1291,10 @@ For a given threshold <span class="math notranslate nohighlight">\(\hat{y}\)</sp
 <p>In our situation, the <span class="math notranslate nohighlight">\(x\)</span> axis corresponds to <span class="math notranslate nohighlight">\(x_1\)</span> and the <span class="math notranslate nohighlight">\(y\)</span> axis to <span class="math notranslate nohighlight">\(x_2\)</span>.</p>
 </div>
 </aside>
-<p><strong>X.3 Boundary line coordinates</strong><br />
-To draw a line on a plot in Matplotlib, one needs to provide the coordinates as a set of two data points: <code class="docutils literal notranslate"><span class="pre">[x_min,</span> <span class="pre">x_max],</span> <span class="pre">[y_left,</span> <span class="pre">y_right]</span></code>. The <code class="docutils literal notranslate"><span class="pre">y_left</span></code> correspond to the <span class="math notranslate nohighlight">\(x\)</span> coordinate <code class="docutils literal notranslate"><span class="pre">x_min</span></code>, and <code class="docutils literal notranslate"><span class="pre">y_right</span></code> to <code class="docutils literal notranslate"><span class="pre">x_max</span></code>.</p>
-<p>Write a function that compute the coordinates <code class="docutils literal notranslate"><span class="pre">x2_left</span></code> and <code class="docutils literal notranslate"><span class="pre">x2_right</span></code> of a decision boundary line at a given threshold <span class="math notranslate nohighlight">\(\hat{y}\)</span>. (recall 0.5 is the standard one for logistic regression).</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_boundary_line_x2</span><span class="p">(</span><span class="n">threshold</span><span class="p">,</span> <span class="n">thetas</span><span class="p">,</span> <span class="n">x1min</span><span class="o">=</span><span class="n">X1MIN</span><span class="p">,</span> <span class="n">x1max</span><span class="o">=</span><span class="n">X1MAX</span><span class="p">):</span>
+<p><strong>X.3 Coordinate points</strong><br />
+To draw a line on a plot in Matplotlib, one needs to provide the coordinates as a set of two data points.</p>
+<p>Write a function that compute the coordinates <code class="docutils literal notranslate"><span class="pre">x2_left</span></code> and <code class="docutils literal notranslate"><span class="pre">x2_right</span></code> – associated to the values of<code class="docutils literal notranslate"><span class="pre">x1_min</span></code> and <code class="docutils literal notranslate"><span class="pre">x1_max</span></code>respectively – of a decision boundary line at a given threshold <span class="math notranslate nohighlight">\(\hat{y}\)</span>. (recall 0.5 is the standard one for logistic regression).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_boundary_line_x2</span><span class="p">(</span><span class="n">threshold</span><span class="p">,</span> <span class="n">thetas</span><span class="p">,</span> <span class="n">x1_min</span><span class="o">=</span><span class="n">X1MIN</span><span class="p">,</span> <span class="n">x1_max</span><span class="o">=</span><span class="n">X1MAX</span><span class="p">):</span>
 
   <span class="c1"># Your code here</span>
 
@@ -1324,7 +1321,7 @@ In the scatter plot code provided, uncomment the boundary section and draw the l
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p> <br />
-You are encouraged to work in groups, however submissions are individual.</p>
+You are encouraged to work in groups of two, however submissions are individual.</p>
 <p>If you have received help from your peers and/or have worked within a group, summarize in the header of your notebook the involved students, how they helped you and the contributions of each group member. This is to ensure fairness in the evaluation.</p>
 <p>You can use the internet such as the official pages of relevant libraries, forum websites to debug, etc. However, using an AI such as ChatGPT would be considered cheating (and not good for you anyway to develop your programming skills).</p>
 <p>The instructor and tutors are available throughout the week to answer your questions. Write an email with your well-articulated question(s). Put in CC your teammates if any.</p>

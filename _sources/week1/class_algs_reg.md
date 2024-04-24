@@ -88,7 +88,7 @@ The $\ell_1$ norm is the sum of the magnitudes of the vectors. It is also called
 Lasso stands for least absolute shrinkage and selection operator. Behind the long acronym is a regularization of the linear regression using the $\ell_1$ norm. We denote Cost($\theta$) the cost function, i.e. either the Mean Squared Error for linear regression or the cross-entropy loss function {eq}`costFunctionLogReg` for logistic regression. The lasso regression cost function is
 ```{math}
 :label: lassoCostF
-J(\theta) = \text{Cost(}{\theta}\text{)}  + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n \theta_j}
+J(\theta) = \text{Cost(}{\theta}\text{)}  + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n | \theta_j | }
 ```
 The regularizing term uses the $\ell_1$ norm of the weight vector: $\left\| \vec{w} \right\|_1$.
 

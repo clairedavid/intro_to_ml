@@ -862,7 +862,7 @@ The linear one on the left (Degree 1) is underfitting the data. The model on the
 </aside>
 <p>Lasso stands for least absolute shrinkage and selection operator. Behind the long acronym is a regularization of the linear regression using the <span class="math notranslate nohighlight">\(\ell_1\)</span> norm. We denote Cost(<span class="math notranslate nohighlight">\(\theta\)</span>) the cost function, i.e. either the Mean Squared Error for linear regression or the cross-entropy loss function <a class="reference internal" href="class_algs_costF.html#equation-costfunctionlogreg">(13)</a> for logistic regression. The lasso regression cost function is</p>
 <div class="math notranslate nohighlight" id="equation-lassocostf">
-<span class="eqno">(20)<a class="headerlink" href="#equation-lassocostf" title="Permalink to this equation">#</a></span>\[J(\theta) = \text{Cost(}{\theta}\text{)}  + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n \theta_j}\]</div>
+<span class="eqno">(20)<a class="headerlink" href="#equation-lassocostf" title="Permalink to this equation">#</a></span>\[J(\theta) = \text{Cost(}{\theta}\text{)}  + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n | \theta_j | }\]</div>
 <p>The regularizing term uses the <span class="math notranslate nohighlight">\(\ell_1\)</span> norm of the weight vector: <span class="math notranslate nohighlight">\(\left\| \vec{w} \right\|_1\)</span>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>

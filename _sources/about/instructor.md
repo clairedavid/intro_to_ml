@@ -1,6 +1,6 @@
 # Instructor & Schedule
 
-## Claire David, PhD
+## Claire David
 
 ```{image} ../images/about_instructor.png
 :alt: Claire David

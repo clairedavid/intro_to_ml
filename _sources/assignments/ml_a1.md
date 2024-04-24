@@ -57,12 +57,8 @@ __1.2 How many samples are there?__
 
 ## 2. Feature Scaling
 
-__2.1 Explain with math__  
-Before coding, explain using the mathematical expressions seen in Lecture 3 on Logistic Regression why the gradient descent is likely to diverge if features are not rescaled.
-
-_Hint 1: recall that the $\boldsymbol{\theta}$ parameters are usually initialized with random numbers from 0 and 1._  
-_Hint 1.1: they are positive..._  
-_Hint 2: recall the shape of the sigmoid and what it would imply on the cost function, especially for background samples._  
+__2.1 Explain__  
+Given model parameters initialized randomly between 0 and 1, why will the gradient descent diverge if the dataset is not zero-centered? (look at the data).
 
 __2.2 Standardization__  
 Create for each input feature an extra column in the dataframe to rescale it to a distribution of zero-mean and unit-variance. To see statistical information on a dataframe, a convenient method is:
@@ -496,12 +492,12 @@ For a given threshold $\hat{y}$, write the equation of the line boundary: $x_2 =
 In our situation, the $x$ axis corresponds to $x_1$ and the $y$ axis to $x_2$.
 ```
 ````
-__X.3 Boundary line coordinates__  
-To draw a line on a plot in Matplotlib, one needs to provide the coordinates as a set of two data points: `[x_min, x_max], [y_left, y_right]`. The `y_left` correspond to the $x$ coordinate `x_min`, and `y_right` to `x_max`. 
+__X.3 Coordinate points__  
+To draw a line on a plot in Matplotlib, one needs to provide the coordinates as a set of two data points. 
 
-Write a function that compute the coordinates `x2_left` and `x2_right` of a decision boundary line at a given threshold $\hat{y}$. (recall 0.5 is the standard one for logistic regression). 
+Write a function that compute the coordinates `x2_left` and `x2_right` -- associated to the values of`x1_min` and `x1_max`respectively -- of a decision boundary line at a given threshold $\hat{y}$. (recall 0.5 is the standard one for logistic regression). 
 ```python
-def get_boundary_line_x2(threshold, thetas, x1min=X1MIN, x1max=X1MAX):
+def get_boundary_line_x2(threshold, thetas, x1_min=X1MIN, x1_max=X1MAX):
 
   # Your code here
 
@@ -535,7 +531,7 @@ The higher the threshold, the more the boundary line shifts downwards in the ele
 
 ```{important}
 &nbsp;  
-You are encouraged to work in groups, however submissions are individual.
+You are encouraged to work in groups of two, however submissions are individual.
 
 If you have received help from your peers and/or have worked within a group, summarize in the header of your notebook the involved students, how they helped you and the contributions of each group member. This is to ensure fairness in the evaluation.
 
