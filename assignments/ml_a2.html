@@ -791,14 +791,27 @@ J(j, t_j) = \frac{N_\text{left}}{N_\text{node}} G_\text{left} + \frac{N_\text{ri
 </ul>
 <p><strong>1.1 Get and load the data</strong><br />
 Get the <code class="docutils literal notranslate"><span class="pre">train</span></code> dataset and load the relevant columns in a dataframe.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Comment on the results of the tests: are your values making sense?</p>
+</div>
+</aside>
 <p><strong>1.2 Compute the Gini index</strong><br />
 Write a function computing the Gini index value. Make your code as general as possible.<br />
-Add in the next cell a series of tests.<br />
+Add in the next cells a series of tests to make sure your function returns the correct answers.<br />
 <em>Bonus: secure your code to prevent a division by zero.</em></p>
 <p><strong>1.3 Calculate the cost</strong><br />
-Write a function computing the cost function in the CART algorithm.</p>
+Write a function computing the cost function in the CART algorithm.  Again test it with a dummy dataset/example and comment.
+<em>Bonus: secure your code to prevent a division by zero.</em></p>
 <p><strong>1.4 Main function: code a Decision Stump</strong><br />
-Write the main function <code class="docutils literal notranslate"><span class="pre">decision_stumper</span></code> that will call the functions defined above. Call your function on each input feature and conclude on the final cut for your decision stump.</p>
+Write the main function <code class="docutils literal notranslate"><span class="pre">decision_stumper</span></code> that will call the functions defined above.</p>
+<ol class="simple">
+<li><p>Call <code class="docutils literal notranslate"><span class="pre">decision_stumper</span></code> on each input feature</p></li>
+<li><p>Conclude on the final cut for your decision stump (explain your reasoning)</p></li>
+</ol>
+<p>Optional: if you want, you can enter a list of features and do the two steps above in the same function. Comment your code appropriately.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="admonition tip">
@@ -821,7 +834,8 @@ Use the <code class="docutils literal notranslate"><span class="pre">plot_scatte
 <sub>Image: root-forum, cern.ch</sub></span><a class="headerlink" href="#a02-overtrainingtmva2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The <span class="math notranslate nohighlight">\(x\)</span>-axis is an equivalent to the output scores of a classifier (here it is a Support Vector Machine, which are not covered in this course).</p>
+<p>The horizontal axis is an equivalent to the output scores of a classifier (here it is a Support Vector Machine, which are not covered in this course).<br />
+The vertical axis may be confusing, yet the plot is a sample-normalized distribution of the output scores.</p>
 <p>We will use the same dataset as for the tutorial 2 ‘Forestree.’ However as the validation set lacks statistics, you will use the training and <strong>testing</strong> sets, the latter having more samples than the validation set.</p>
 <p><strong>2.1 Understanding of the plot</strong><br />
 Describe the plot and explain why this is called an “overtraining check” plot. Importance will be given to the clarity of your answer.</p>
@@ -900,7 +914,7 @@ You are encouraged to work in groups, however submissions are individual.</p>
     <div class="extra_footer">
       <div>
 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png"></a>
-    All content on this site (unless otherwise specified) is licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 license</a>
+    &nbsp; All content on this site (unless otherwise specified) is licensed under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 license</a>
 </div>
 
     </div>

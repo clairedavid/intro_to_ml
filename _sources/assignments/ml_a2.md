@@ -27,16 +27,26 @@ We will use $|\Delta\eta_{jj}|$ and $m_{jj}$ as our two input variables (the $_{
 __1.1 Get and load the data__  
 Get the `train` dataset and load the relevant columns in a dataframe.
 
+````{margin}
+```{important}
+Comment on the results of the tests: are your values making sense?
+```
+````
 __1.2 Compute the Gini index__    
 Write a function computing the Gini index value. Make your code as general as possible.  
-Add in the next cell a series of tests.  
+Add in the next cells a series of tests to make sure your function returns the correct answers.  
 _Bonus: secure your code to prevent a division by zero._
 
 __1.3 Calculate the cost__  
-Write a function computing the cost function in the CART algorithm. 
+Write a function computing the cost function in the CART algorithm.  Again test it with a dummy dataset/example and comment.
+_Bonus: secure your code to prevent a division by zero._
 
 __1.4 Main function: code a Decision Stump__  
-Write the main function `decision_stumper` that will call the functions defined above. Call your function on each input feature and conclude on the final cut for your decision stump.
+Write the main function `decision_stumper` that will call the functions defined above. 
+1. Call `decision_stumper` on each input feature
+2. Conclude on the final cut for your decision stump (explain your reasoning)
+
+Optional: if you want, you can enter a list of features and do the two steps above in the same function. Comment your code appropriately.
 ````{margin}
 ```{tip}
 If you cannot complete the previous question, pick one of the two features and manually choose a threshold yourself to be able to draw a decision boundary.
@@ -60,7 +70,9 @@ The "overtraining check" plot from [TMVA](https://root.cern/manual/tmva/) (MVA s
  <sub>Image: root-forum, cern.ch</sub>
 ```
 
-The $x$-axis is an equivalent to the output scores of a classifier (here it is a Support Vector Machine, which are not covered in this course). 
+
+The horizontal axis is an equivalent to the output scores of a classifier (here it is a Support Vector Machine, which are not covered in this course).  
+The vertical axis may be confusing, yet the plot is a sample-normalized distribution of the output scores.  
 
 We will use the same dataset as for the tutorial 2 'Forestree.' However as the validation set lacks statistics, you will use the training and __testing__ sets, the latter having more samples than the validation set.
 
