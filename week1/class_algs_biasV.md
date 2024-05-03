@@ -163,14 +163,14 @@ Rate at which the model is able to predict the correct values of both classes.
 __Precision, or Positive Predictive Value (PPV)__  
 Measure of the fraction of true predictions among all __positive predictions__.
 \begin{equation}
-\text{Precision} = \frac{\text{True predictions}}{\text{All Positive Predictions}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Positive}}
+\text{Precision} = \frac{\text{True Positives}}{\text{All Positive Predictions}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}}
 \end{equation}
 
 &nbsp;  
 __Recall, or True Positive Rate (TPR)__  
 Measure of the fraction of true predictions among all __true observations__.
 \begin{equation}
-\text{Recall} = \frac{\text{True predictions}}{\text{Actual Positive}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}}
+\text{Recall} = \frac{\text{True Positives}}{\text{Actual Positives}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}
 \end{equation}
 
 &nbsp;  
@@ -209,10 +209,10 @@ Now let's recall (pun intended) the True Positive Rate that was defined above in
 ````{prf:definition}
 :label: tprfprdef
 &nbsp;  
-__True Positive Rate (TPR)__, also called _sensitivity_  
+__True Positive Rate (TPR)__, also called _recall_ and _sensitivity_  
 
 \begin{equation}
-\text{TPR} = \frac{\text{True predictions}}{\text{Actual Positive}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}}
+\text{TPR} = \frac{\text{True Positives}}{\text{Actual Positives}} = \frac{\text{True Positives}}{\text{True Positive} + \text{False Negative}}
 \end{equation}
 
 &nbsp;  
@@ -220,7 +220,7 @@ __True Negative Rate (TNR)__, also called _specificity_
 
 Ratio of negative instances correctly classified as negative. 
 \begin{equation}
-\text{TNR} = \frac{\text{False predictions}}{\text{Actual Negative}} = \frac{\text{True Negative}}{\text{True Negative} + \text{False Positive}}
+\text{TNR} = \frac{\text{True Negatives}}{\text{Actual Negatives}} = \frac{\text{True Negatives}}{\text{True Negatives} + \text{False Positives}}
 \end{equation}
 
 &nbsp;  
@@ -228,7 +228,7 @@ __False Positive Rate (FPR)__
 
 Ratio of negative instances that are incorrectly classified as positive.  
 \begin{equation}
-\text{FPR} = \frac{\text{Real False predicted Positive}}{\text{Actual Negative}} = \frac{\text{False Positive}}{\text{True Negative} + \text{False Positive}}
+\text{FPR} = \frac{\text{False Positives}}{\text{Actual Negatives}} = \frac{\text{False Positives}}{\text{True Negatives} + \text{False Positives}}
 \end{equation}
 
 &nbsp;  
