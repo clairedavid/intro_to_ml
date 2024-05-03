@@ -1026,8 +1026,8 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p class="admonition-title"><span class="caption-number">Definition 32 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>root mean squared error (RMSE)</strong> is the square root of the mean squared error:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f618c57a-3625-468f-9ca6-e2bf0c66bfa7">
-<span class="eqno">(21)<a class="headerlink" href="#equation-f618c57a-3625-468f-9ca6-e2bf0c66bfa7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9a5e366c-b263-4827-a8a7-4bb2fcebe097">
+<span class="eqno">(21)<a class="headerlink" href="#equation-9a5e366c-b263-4827-a8a7-4bb2fcebe097" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{RMSE} = \sqrt{ \frac{\sum_{i=1}^N (y^\text{pred} - y^\text{obs} )^2 }{ N } }
 \end{equation}\]</div>
 </section>
@@ -1043,29 +1043,29 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p> <br />
 <strong>Accuracy</strong><br />
 Rate at which the model is able to predict the correct values of both classes.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7148b31a-672f-4176-a28a-33a56c0d9bc5">
-<span class="eqno">(22)<a class="headerlink" href="#equation-7148b31a-672f-4176-a28a-33a56c0d9bc5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6e41d1d0-f174-432a-8518-4df09e1d1855">
+<span class="eqno">(22)<a class="headerlink" href="#equation-6e41d1d0-f174-432a-8518-4df09e1d1855" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Accuracy} = \frac{\text{True predictions}}{\text{All predictions}} = \frac{\text{TP + TN}}{\text{TP + TN + FP + FN}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Precision, or Positive Predictive Value (PPV)</strong><br />
 Measure of the fraction of true predictions among all <strong>positive predictions</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-83e954ee-9e79-4716-881c-73366a46fb6a">
-<span class="eqno">(23)<a class="headerlink" href="#equation-83e954ee-9e79-4716-881c-73366a46fb6a" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\text{Precision} = \frac{\text{True predictions}}{\text{All Positive Predictions}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Positive}}
+<div class="amsmath math notranslate nohighlight" id="equation-4981ed92-4be6-4f9d-a675-4da72693e8da">
+<span class="eqno">(23)<a class="headerlink" href="#equation-4981ed92-4be6-4f9d-a675-4da72693e8da" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\text{Precision} = \frac{\text{True Positives}}{\text{All Positive Predictions}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Recall, or True Positive Rate (TPR)</strong><br />
 Measure of the fraction of true predictions among all <strong>true observations</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8c800002-7230-47aa-a23f-36abc6c72ae4">
-<span class="eqno">(24)<a class="headerlink" href="#equation-8c800002-7230-47aa-a23f-36abc6c72ae4" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\text{Recall} = \frac{\text{True predictions}}{\text{Actual Positive}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}}
+<div class="amsmath math notranslate nohighlight" id="equation-70a1415c-4cc9-4623-a460-8508ba48a7fb">
+<span class="eqno">(24)<a class="headerlink" href="#equation-70a1415c-4cc9-4623-a460-8508ba48a7fb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\text{Recall} = \frac{\text{True Positives}}{\text{Actual Positives}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>F-Score, or F1</strong><br />
 Describes the balance between Precision and Recall. It is the harmonic mean of the two:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6493ab74-bec4-48bc-ab75-450a06c9fa87">
-<span class="eqno">(25)<a class="headerlink" href="#equation-6493ab74-bec4-48bc-ab75-450a06c9fa87" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-29499cd9-a522-4a66-8d67-7381e2cff070">
+<span class="eqno">(25)<a class="headerlink" href="#equation-29499cd9-a522-4a66-8d67-7381e2cff070" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{F1} =2 \; \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
 \end{equation}\]</div>
 </section>
@@ -1098,29 +1098,29 @@ In an unbalanced dataset, some classes will appear much more frequently that oth
 <p class="admonition-title"><span class="caption-number">Definition 35 </span></p>
 <section class="definition-content" id="proof-content">
 <p> <br />
-<strong>True Positive Rate (TPR)</strong>, also called <em>sensitivity</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-9149b278-0620-4ec3-9cda-3e4b8a22f5ce">
-<span class="eqno">(26)<a class="headerlink" href="#equation-9149b278-0620-4ec3-9cda-3e4b8a22f5ce" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\text{TPR} = \frac{\text{True predictions}}{\text{Actual Positive}} = \frac{\text{True Positive}}{\text{True Positive} + \text{False Negative}}
+<strong>True Positive Rate (TPR)</strong>, also called <em>recall</em> and <em>sensitivity</em></p>
+<div class="amsmath math notranslate nohighlight" id="equation-fcaa86e1-247d-491a-a2b5-68b5209e3469">
+<span class="eqno">(26)<a class="headerlink" href="#equation-fcaa86e1-247d-491a-a2b5-68b5209e3469" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\text{TPR} = \frac{\text{True Positives}}{\text{Actual Positives}} = \frac{\text{True Positives}}{\text{True Positive} + \text{False Negative}}
 \end{equation}\]</div>
 <p> <br />
 <strong>True Negative Rate (TNR)</strong>, also called <em>specificity</em></p>
 <p>Ratio of negative instances correctly classified as negative.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-44af831c-c5a0-4ee9-94e9-0ed9a5c7a6ce">
-<span class="eqno">(27)<a class="headerlink" href="#equation-44af831c-c5a0-4ee9-94e9-0ed9a5c7a6ce" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\text{TNR} = \frac{\text{False predictions}}{\text{Actual Negative}} = \frac{\text{True Negative}}{\text{True Negative} + \text{False Positive}}
+<div class="amsmath math notranslate nohighlight" id="equation-551a3a4e-0946-45a1-a8e3-6242c0cec0d2">
+<span class="eqno">(27)<a class="headerlink" href="#equation-551a3a4e-0946-45a1-a8e3-6242c0cec0d2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\text{TNR} = \frac{\text{True Negatives}}{\text{Actual Negatives}} = \frac{\text{True Negatives}}{\text{True Negatives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>False Positive Rate (FPR)</strong></p>
 <p>Ratio of negative instances that are incorrectly classified as positive.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2af116dd-7c18-4cea-8b80-1b424236a56d">
-<span class="eqno">(28)<a class="headerlink" href="#equation-2af116dd-7c18-4cea-8b80-1b424236a56d" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\text{FPR} = \frac{\text{Real False predicted Positive}}{\text{Actual Negative}} = \frac{\text{False Positive}}{\text{True Negative} + \text{False Positive}}
+<div class="amsmath math notranslate nohighlight" id="equation-c95691e4-aff7-46ec-9f5a-24bcf45d2522">
+<span class="eqno">(28)<a class="headerlink" href="#equation-c95691e4-aff7-46ec-9f5a-24bcf45d2522" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\text{FPR} = \frac{\text{False Positives}}{\text{Actual Negatives}} = \frac{\text{False Positives}}{\text{True Negatives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 The False Positive Rate (FPR) is equal to:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1840be9f-c9b8-4705-aae3-610c07516c12">
-<span class="eqno">(29)<a class="headerlink" href="#equation-1840be9f-c9b8-4705-aae3-610c07516c12" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-cc76e730-a27e-4ab5-951c-12d089e2b860">
+<span class="eqno">(29)<a class="headerlink" href="#equation-cc76e730-a27e-4ab5-951c-12d089e2b860" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = 1 - \text{TNR} = 1 - \textit{specificity}
 \end{equation}\]</div>
 </section>
