@@ -628,51 +628,6 @@ title="Fullscreen mode"
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftutorials/t01_linear_regression.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <div class="menu-dropdown menu-dropdown-download-buttons">
   <button class="headerbtn menu-dropdown__trigger"
       aria-label="Download this page">
@@ -936,6 +891,12 @@ title="Print to PDF"
 <li><p>How to structure and comment code</p></li>
 </ul>
 </div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Boring alert!
+You have coded before and you are done already?<br />
+Come talk to me, I will give you extra challenges.</p>
+</div>
 <p>Let’s now open a fresh Jupyter Notebook on Colaboratory and follow along! To create a blank Colaboratory document, go to your GDrive first. On the top left of the screen there is a “<code class="docutils literal notranslate"><span class="pre">+</span></code>” button. Click on it, the drop menu will show several options with “More” at the bottom: hover it and you will see another drop down menu where you can click on Colaboratory.</p>
 <section id="get-the-data">
 <h2><span class="section-number">1.1. </span>Get the data<a class="headerlink" href="#get-the-data" title="Permalink to this headline">#</a></h2>
@@ -1132,29 +1093,6 @@ And we also see the file has a header row. Let’s now load its content in a pyt
 <p class="admonition-title">Good Practice</p>
 <p>Before even starting to write code it is important to be very clear on what are the inputs, the main steps, the outputs. I recommend going back to the ‘pen and paper’ to first write the algorithm, list the different variables. Then it will make the coding much easier and less error-prone.</p>
 </div>
-<p>To help you code the function, the <code class="docutils literal notranslate"><span class="pre">itertool</span></code> library is handy to <code class="docutils literal notranslate"><span class="pre">zip</span></code> together two separate lists inside a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">chain</span>
-
-<span class="n">a_vals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>   <span class="c1"># vals stands for values in plural; good to distinguish &#39;list&#39; from &#39;scalar&#39; </span>
-<span class="n">b_vals</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9</span> <span class="p">,</span><span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
-
-<span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">a_vals</span><span class="p">,</span> <span class="n">b_vals</span><span class="p">):</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Adding a = </span><span class="si">%d</span><span class="s2"> and b = </span><span class="si">%d</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> c = </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Adding a = 1 and b = 9 	 c = 10
-Adding a = 2 and b = 8 	 c = 10
-Adding a = 3 and b = 7 	 c = 10
-Adding a = 4 and b = 6 	 c = 10
-</pre></div>
-</div>
-</div>
-</div>
 <p>There will be another handy function to code. Recall the derivative of the cost function. It contains the difference between the predicted value and the observed one, without them being squared. This difference has the technical name of “residual”. You will write another function <code class="docutils literal notranslate"><span class="pre">get_residuals()</span></code> computing the residuals, which is common in both partial derivatives <span class="math notranslate nohighlight">\(\frac{\partial J(\theta_0, \theta_1)}{\partial \theta_i}\)</span>.</p>
 <p>Questions are summarized at the end of the document for convenience. Hints will be given during the tutorial to guide you.</p>
 <p><strong>Test your code</strong><br />
@@ -1170,7 +1108,7 @@ Once you have your function computing the cost, it is always a good practice to 
 
 <span class="k">for</span> <span class="o">...</span> <span class="ow">in</span> <span class="o">...</span> <span class="p">:</span>
     <span class="n">cost</span> <span class="o">=</span> <span class="n">costFunctionLinRegression</span><span class="p">(</span> <span class="o">...</span> <span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;With theta 1 = </span><span class="si">%.1f</span><span class="se">\t</span><span class="s2">cost = </span><span class="si">%.2f</span><span class="s2">&quot;</span> <span class="o">%</span><span class="p">(</span> <span class="o">...</span><span class="p">,</span> <span class="n">cost</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;With theta 1 = </span><span class="si">{</span><span class="n">theta_1</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="se">\t</span><span class="s2">cost = </span><span class="si">{</span><span class="n">cost</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Let’s now get to the core of things: the regressor!</p>
@@ -1209,7 +1147,7 @@ Once you have your function computing the cost, it is always a good practice to 
 
     <span class="c1">#___________________________</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">End of gradient descent after </span><span class="si">%d</span><span class="s2"> iterations&quot;</span> <span class="o">%</span> <span class="n">n</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">End of gradient descent after </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> iterations&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -1221,7 +1159,7 @@ Once you have your function computing the cost, it is always a good practice to 
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">501</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="k">100</span> == 0:
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Iteration </span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">i</span>)
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Iteration </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1276,7 +1214,7 @@ Iteration 500
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/t01_linear_regression_17_0.png" src="../_images/t01_linear_regression_17_0.png" />
+<img alt="../_images/t01_linear_regression_16_0.png" src="../_images/t01_linear_regression_16_0.png" />
 </div>
 </div>
 <p>The 2D representation of this 3D plot above can be coded this way:</p>
@@ -1295,7 +1233,7 @@ Iteration 500
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/t01_linear_regression_19_0.png" src="../_images/t01_linear_regression_19_0.png" />
+<img alt="../_images/t01_linear_regression_18_0.png" src="../_images/t01_linear_regression_18_0.png" />
 </div>
 </div>
 </section>
