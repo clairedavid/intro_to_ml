@@ -2,6 +2,11 @@
 
 In this assignment, you will code a little neural network from scratch! Don't worry, it will be extremely guided. The two most important points being that you learn and you have fun.
 
+```{admonition} For programmers already fluent in Python
+:class: note
+If you have had some programming experience already, please stick to the code template below for grading purposes. Then, feel free to append to your notebook a more elaborate code. And check the bonuses at the end of this assignment!
+```
+
 We want our neural network to solve the XOR problem. This is how the data look like:
 ```{figure} ../images/a03_data.png
 ---
@@ -14,7 +19,7 @@ Scatter plot of data representing the XOR configuration: it is not linearly sepa
 In this question, you are asked to derive Equations {eq}`dCostfirstvectorouterprod`, {eq}`defdeltaL` -- {eq}`dCostlayerl` from the section on the {ref}`NN2:backprop`.
 
 * Remember that a matrix element $w_{jk}$ of a matrix $W$ becomes $w_{kj}$ once it is transposed as $W^\top$.   
-* The outer product of two vectors $a \otimes b$ can also be written as $a \; b^\top$
+* The outer product of two vectors $a \otimes b$ can also be written as: $a \; b^\top$ .
 * Refrain from using indices already taken in the course ($i$, $\ell$, $m$, $n$) to avoid confusion with sample index, layer number, total number of samples and number of features, respectively. Lots of other letters are available 😉.
 
 ## Part 2: Code it!
@@ -218,7 +223,7 @@ def feedforward(input_X, weights, biases):
 ```{admonition} Check Point
 :class: note
 At that point in the assignment, it is possible to ask for a checkup with the instructor before moving _forward_ to ...the _backward_ pass (pun intended).
-Send an email to the instructor with the exact title "[Machine Learning Course] Assignment 3 Check 1" where you paste the code of the function above (do not send any notebook).
+Send an email to the instructor with the exact title "[Intro to ML 2024] Assignment 3 Check 1" where you paste the code of the function above (do not send any notebook).
 ```
 
 __3.2: Predict__  
@@ -236,6 +241,7 @@ This function is given (at the Setup step), yet there is a question for you:
 * What type of values does the function `predict` return? 
 * After successfully executing the `feedforward` function, how would you call the function `predict`? 
 
+Make sure your explanations are concise yet clear.
 
 ## 4. Neural Network Training
 Time to train! The code below is a skeleton. You will have to complete it. To help you further, hyperparameters are given. You should replace the `#...` with your own code.
@@ -371,7 +377,7 @@ Scatter plot of data representing the XOR configuration and the neural network p
 
 ```{warning}
 &nbsp;  
-This assignment is individual. The instructor will be available to answer questions per email and/or during special session. If you are stuck, it is possible to get some elements of answer (at the cost of some mark, but not much) __from the instructor only__.
+This assignment is individual. The instructor will be available to answer questions per email and/or during special session. If you are stuck, it is possible to get some elements of answer __from the instructor only__.
 ```
 
 ```{important}
@@ -382,3 +388,13 @@ The instructor and tutors are available throughout the week to answer your quest
 
 Thank you and do not forget to have fun while coding!
 ```
+
+## Bonuses
+
+You are done already with time at hand? Great. There is more for you! You can make your network better:
+
+- Generalize the computations for any fully connected feedforward network.
+- Wrap your network in a class (keep it simple: we are not asking to recreate PyTorch here).
+- Test your network with fancier data, for instance the double spiral! Dataset provided upon request.
+- Experiment advanced techniques such as momentum and a moving exponential average on the gradients. Does it help? Illustrate with visuals.
+- Explore whatever you want with your new NN-animal. Have fun!
