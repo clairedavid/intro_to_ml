@@ -706,6 +706,11 @@ title="Print to PDF"
    5. Plots
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonuses">
+   Bonuses
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -767,6 +772,11 @@ title="Print to PDF"
    5. Plots
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonuses">
+   Bonuses
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -780,6 +790,10 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="assignment-3-neural-network-by-hand">
 <h1>Assignment 3: Neural Network By Hand!<a class="headerlink" href="#assignment-3-neural-network-by-hand" title="Permalink to this headline">#</a></h1>
 <p>In this assignment, you will code a little neural network from scratch! Don’t worry, it will be extremely guided. The two most important points being that you learn and you have fun.</p>
+<div class="note admonition">
+<p class="admonition-title">For programmers already fluent in Python</p>
+<p>If you have had some programming experience already, please stick to the code template below for grading purposes. Then, feel free to append to your notebook a more elaborate code. And check the bonuses at the end of this assignment!</p>
+</div>
 <p>We want our neural network to solve the XOR problem. This is how the data look like:</p>
 <figure class="align-default" id="a03-data">
 <a class="reference internal image-reference" href="../_images/a03_data.png"><img alt="../_images/a03_data.png" src="../_images/a03_data.png" style="width: 70%;" /></a>
@@ -792,7 +806,7 @@ title="Print to PDF"
 <p>In this question, you are asked to derive Equations <a class="reference internal" href="../week2/NN2_backprop.html#equation-dcostfirstvectorouterprod">(100)</a>, <a class="reference internal" href="../week2/NN2_backprop.html#equation-defdeltal">(108)</a> – <a class="reference internal" href="../week2/NN2_backprop.html#equation-dcostlayerl">(113)</a> from the section on the <a class="reference internal" href="../week2/NN2_backprop.html#nn2-backprop"><span class="std std-ref">Backpropagation Algorithm</span></a>.</p>
 <ul class="simple">
 <li><p>Remember that a matrix element <span class="math notranslate nohighlight">\(w_{jk}\)</span> of a matrix <span class="math notranslate nohighlight">\(W\)</span> becomes <span class="math notranslate nohighlight">\(w_{kj}\)</span> once it is transposed as <span class="math notranslate nohighlight">\(W^\top\)</span>.</p></li>
-<li><p>The outer product of two vectors <span class="math notranslate nohighlight">\(a \otimes b\)</span> can also be written as <span class="math notranslate nohighlight">\(a \; b^\top\)</span></p></li>
+<li><p>The outer product of two vectors <span class="math notranslate nohighlight">\(a \otimes b\)</span> can also be written as: <span class="math notranslate nohighlight">\(a \; b^\top\)</span> .</p></li>
 <li><p>Refrain from using indices already taken in the course (<span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(\ell\)</span>, <span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(n\)</span>) to avoid confusion with sample index, layer number, total number of samples and number of features, respectively. Lots of other letters are available 😉.</p></li>
 </ul>
 </section>
@@ -996,7 +1010,7 @@ We do not have to know the number of activation units in each layer as the code 
 <div class="note admonition">
 <p class="admonition-title">Check Point</p>
 <p>At that point in the assignment, it is possible to ask for a checkup with the instructor before moving <em>forward</em> to …the <em>backward</em> pass (pun intended).
-Send an email to the instructor with the exact title “[Machine Learning Course] Assignment 3 Check 1” where you paste the code of the function above (do not send any notebook).</p>
+Send an email to the instructor with the exact title “[Intro to ML 2024] Assignment 3 Check 1” where you paste the code of the function above (do not send any notebook).</p>
 </div>
 <p><strong>3.2: Predict</strong></p>
 <aside class="margin sidebar">
@@ -1015,6 +1029,7 @@ Send an email to the instructor with the exact title “[Machine Learning Course
 <li><p>What type of values does the function <code class="docutils literal notranslate"><span class="pre">predict</span></code> return?</p></li>
 <li><p>After successfully executing the <code class="docutils literal notranslate"><span class="pre">feedforward</span></code> function, how would you call the function <code class="docutils literal notranslate"><span class="pre">predict</span></code>?</p></li>
 </ul>
+<p>Make sure your explanations are concise yet clear.</p>
 </section>
 <section id="neural-network-training">
 <h2>4. Neural Network Training<a class="headerlink" href="#neural-network-training" title="Permalink to this headline">#</a></h2>
@@ -1145,7 +1160,7 @@ Use the <code class="docutils literal notranslate"><span class="pre">get_decisio
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p> <br />
-This assignment is individual. The instructor will be available to answer questions per email and/or during special session. If you are stuck, it is possible to get some elements of answer (at the cost of some mark, but not much) <strong>from the instructor only</strong>.</p>
+This assignment is individual. The instructor will be available to answer questions per email and/or during special session. If you are stuck, it is possible to get some elements of answer <strong>from the instructor only</strong>.</p>
 </div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -1154,6 +1169,17 @@ You can use the internet such as the official pages of relevant libraries, forum
 <p>The instructor and tutors are available throughout the week to answer your questions. Write an email with your well-articulated question(s). The more specific you are in your request, the best we can help you.</p>
 <p>Thank you and do not forget to have fun while coding!</p>
 </div>
+</section>
+<section id="bonuses">
+<h2>Bonuses<a class="headerlink" href="#bonuses" title="Permalink to this headline">#</a></h2>
+<p>You are done already with time at hand? Great. There is more for you! You can make your network better:</p>
+<ul class="simple">
+<li><p>Generalize the computations for any fully connected feedforward network.</p></li>
+<li><p>Wrap your network in a class (keep it simple: we are not asking to recreate PyTorch here).</p></li>
+<li><p>Test your network with fancier data, for instance the double spiral! Dataset provided upon request.</p></li>
+<li><p>Experiment advanced techniques such as momentum and a moving exponential average on the gradients. Does it help? Illustrate with visuals.</p></li>
+<li><p>Explore whatever you want with your new NN-animal. Have fun!</p></li>
+</ul>
 </section>
 </section>
 
