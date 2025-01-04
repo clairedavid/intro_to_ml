@@ -54,7 +54,7 @@ __For__ each predictor $j = 1 , \cdots , N^\text{pred}$
    \begin{equation}
    w^{(i)} = \left\{\begin{matrix}
    w^{(i)} \;\;\;\;  &\text{if} \;\;\;\; \hat{y}_j^{(i)} = y_j^{(i)} \\[2ex]
-   \;\;w^{(i)} \exp (-W_j)  \;\;\;\;  &\text{if} \;\;\;\; \hat{y}_j^{(i)} \neq y_j^{(i)} \\
+   \;\;w^{(i)} \exp (W_j)  \;\;\;\;  &\text{if} \;\;\;\; \hat{y}_j^{(i)} \neq y_j^{(i)} \\
    \end{matrix}\right.
    \end{equation}
   d. Normalize the weights

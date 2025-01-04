@@ -842,28 +842,28 @@ w^{(i)} = \frac{1}{m}
 <p><strong>Start</strong><br />
 <strong>For</strong> each predictor <span class="math notranslate nohighlight">\(j = 1 , \cdots , N^\text{pred}\)</span><br />
 a. Train on all samples and compute the weighted error rate <span class="math notranslate nohighlight">\(r_j\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-3f2fd382-8773-4b4a-b8bd-0e5b6a0f9bb5">
-<span class="eqno">(35)<a class="headerlink" href="#equation-3f2fd382-8773-4b4a-b8bd-0e5b6a0f9bb5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c3a4885d-10f8-468d-abd7-f3227fdd175c">
+<span class="eqno">(35)<a class="headerlink" href="#equation-c3a4885d-10f8-468d-abd7-f3227fdd175c" title="Permalink to this equation">#</a></span>\[\begin{equation}
    r_j = \frac{\sum_{i = 1}^m w^{(i)} [ \hat{y}_j^{(i)} \neq y^{(i)} ]   }{\sum_{i = 1}^m w^{(i)}}
    \end{equation}\]</div>
 <p>b. Give the predictor <span class="math notranslate nohighlight">\(j\)</span> a weight <span class="math notranslate nohighlight">\(W_j\)</span> measuring accuracy</p>
-<div class="amsmath math notranslate nohighlight" id="equation-de3f261c-b3d6-4495-b32e-bc318dfe8d74">
-<span class="eqno">(36)<a class="headerlink" href="#equation-de3f261c-b3d6-4495-b32e-bc318dfe8d74" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9d91d978-df10-4d6e-830c-b3a209666c1c">
+<span class="eqno">(36)<a class="headerlink" href="#equation-9d91d978-df10-4d6e-830c-b3a209666c1c" title="Permalink to this equation">#</a></span>\[\begin{equation}
    W_j = \alpha \log \frac{1 - r_j}{r_j} 
    \end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(W_j\)</span> points to a high number if the predictor is good, zero if the predictor is guessing randomly, negative if it is bad.
 <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate.</p>
 <p>c. Update the weights of all data samples:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-55116a47-00a6-4054-a2de-13fe9c04fb6e">
-<span class="eqno">(37)<a class="headerlink" href="#equation-55116a47-00a6-4054-a2de-13fe9c04fb6e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-07c5b8c9-4e8c-41d1-8393-c1b9e8e10185">
+<span class="eqno">(37)<a class="headerlink" href="#equation-07c5b8c9-4e8c-41d1-8393-c1b9e8e10185" title="Permalink to this equation">#</a></span>\[\begin{equation}
    w^{(i)} = \left\{\begin{matrix}
    w^{(i)} \;\;\;\;  &amp;\text{if} \;\;\;\; \hat{y}_j^{(i)} = y_j^{(i)} \\[2ex]
-   \;\;w^{(i)} \exp (-W_j)  \;\;\;\;  &amp;\text{if} \;\;\;\; \hat{y}_j^{(i)} \neq y_j^{(i)} \\
+   \;\;w^{(i)} \exp (W_j)  \;\;\;\;  &amp;\text{if} \;\;\;\; \hat{y}_j^{(i)} \neq y_j^{(i)} \\
    \end{matrix}\right.
    \end{equation}\]</div>
 <p>d. Normalize the weights</p>
-<div class="amsmath math notranslate nohighlight" id="equation-54e7d970-73cf-4f53-bd87-54eb0af7c07d">
-<span class="eqno">(38)<a class="headerlink" href="#equation-54e7d970-73cf-4f53-bd87-54eb0af7c07d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-432b2034-f703-48cc-a802-4fe997949fbb">
+<span class="eqno">(38)<a class="headerlink" href="#equation-432b2034-f703-48cc-a802-4fe997949fbb" title="Permalink to this equation">#</a></span>\[\begin{equation}
     w^{(i)} \rightarrow \frac{w^{(i)}}{\sum_{i = 1}^m w^{(i)}}
    \end{equation}\]</div>
 <p><strong>Exit conditions</strong></p>
