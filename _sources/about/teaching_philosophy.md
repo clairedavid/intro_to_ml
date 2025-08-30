@@ -1,0 +1,5 @@
+# Teaching philosophy
+
+This course introduces the key concepts of machine learning with an emphasis on intuition first. Then, the mathematical foundations are presented via practical exercises, allowing you to truly get a ‘feel’ for the equations. Finally, hands-on coding exercises translate the math into working algorithms. By the end of the course, the main ML algorithms will hold no secrets for you!
+
+Examples and tutorials are drawn from particle physics, though no background is required. It’s a bit of self-promotion 😉 but also a deliberate choice. Some of you might fall in love with the subatomic world and want to explore further (an awesome journey, I promise). Even if quarks and bosons aren’t your thing, you’ll build a valuable skill: learning how to enter an unfamiliar technical field and extract the essential information relevant to solve your beautiful ML problem.
