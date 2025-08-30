@@ -3,7 +3,20 @@
 
 format: jb-book
 root: intro
-chapters:
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
+options:
+  numbered: true
+  collapsible: true
+parts:
+  - caption: About this course
+    numbered: false
+    chapters:
+    - file: about/teaching_philosophy
+    - file: about/instructor
+    - file: about/schedule
+    - file: about/tools
+    - file: about/evaluation
+
+  - caption: The basics
+    numbered: true
+    chapters:
+    - file: basics/notations

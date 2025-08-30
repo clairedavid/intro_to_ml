@@ -1,14 +1,15 @@
 # Book settings
 # Learn more at https://jupyterbook.org/customize/config.html
 
-title: My sample book
-author: The Jupyter Book Community
+title: Introduction<br> to Machine Learning
+author: ""
 logo: logo.png
+exclude_patterns: ["README.md"]
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
+  execute_notebooks: auto
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -28,5 +29,35 @@ repository:
 # Add GitHub buttons to your book
 # See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
 html:
-  use_issues_button: true
-  use_repository_button: true
+  theme:
+    options:
+      collapse_navigation: true
+      show_toc_level: 1
+  use_issues_button: false
+  use_repository_button: false
+  home_page_in_navbar : true
+  extra_footer: |
+    <div style="display:flex; align-items:center; gap:10px;">
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+        <img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" alt="CC Logo">
+      </a>
+      <div>
+        By Claire David • © 2025<br>
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+      </div>
+    </div>
+
+sphinx:
+  config:
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    html_show_copyright: false
+    html_show_sphinx: false
+  extra_extensions:
+    - sphinx_proof
+
+parse:
+  myst_enable_extensions:
+    # don't forget to list any other extensions you want enabled,
+    # including those that are enabled by default!
+    - dollarmath
+    - amsmath
