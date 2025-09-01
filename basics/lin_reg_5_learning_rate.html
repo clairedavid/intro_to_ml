@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Tools &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    <title>Learning Rate &#8212; Introduction&lt;br&gt; to Machine Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,10 +51,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Evaluation" href="evaluation.html" />
-    <link rel="prev" title="Schedule" href="schedule.html" />
+    <link rel="next" title="Gradient Descent in Practice" href="lin_reg_6_gradient_descent_in_practice.html" />
+    <link rel="prev" title="Multivariate Linear Regression" href="lin_reg_4_gradient_descent_multiD.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -119,29 +121,29 @@ const thebe_selector_output = ".output, .cell_output"
   About this course
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="teaching_philosophy.html">
+  <a class="reference internal" href="../about/teaching_philosophy.html">
    Teaching philosophy
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="instructor.html">
+  <a class="reference internal" href="../about/instructor.html">
    Instructor &amp; Credits
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="schedule.html">
+  <a class="reference internal" href="../about/schedule.html">
    Schedule
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/tools.html">
    Tools
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="evaluation.html">
+  <a class="reference internal" href="../about/evaluation.html">
    Evaluation
   </a>
  </li>
@@ -151,44 +153,44 @@ const thebe_selector_output = ".output, .cell_output"
   The basics
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../basics/linear_regression.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="linear_regression.html">
    Warm-up: Linear Regression
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../basics/lin_reg_1_notations.html">
+    <a class="reference internal" href="lin_reg_1_notations.html">
      Notations
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basics/lin_reg_2_cost_function.html">
+    <a class="reference internal" href="lin_reg_2_cost_function.html">
      Cost Function in Linear Regression
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basics/lin_reg_3_gradient_descent_1d.html">
+    <a class="reference internal" href="lin_reg_3_gradient_descent_1d.html">
      Gradient Descent in 1D
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basics/lin_reg_4_gradient_descent_multiD.html">
+    <a class="reference internal" href="lin_reg_4_gradient_descent_multiD.html">
      Multivariate Linear Regression
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../basics/lin_reg_5_learning_rate.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Learning Rate
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basics/lin_reg_6_gradient_descent_in_practice.html">
+    <a class="reference internal" href="lin_reg_6_gradient_descent_in_practice.html">
      Gradient Descent in Practice
     </a>
    </li>
@@ -267,7 +269,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/about/tools.md"
+        <a href="../_sources/basics/lin_reg_5_learning_rate.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -327,13 +329,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#google-colab">
-   Google Colab
+  <a class="reference internal nav-link" href="#learning-rate-and-convergence">
+   Learning Rate and Convergence
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#large-language-models-ai-assistants">
-   Large Language Models &amp; AI assistants
+  <a class="reference internal nav-link" href="#learning-rate-and-divergence">
+   Learning Rate and Divergence
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
   </a>
  </li>
 </ul>
@@ -345,7 +352,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tools</h1>
+                <h1>Learning Rate</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -356,13 +363,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#google-colab">
-   Google Colab
+  <a class="reference internal nav-link" href="#learning-rate-and-convergence">
+   Learning Rate and Convergence
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#large-language-models-ai-assistants">
-   Large Language Models &amp; AI assistants
+  <a class="reference internal nav-link" href="#learning-rate-and-divergence">
+   Learning Rate and Divergence
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
   </a>
  </li>
 </ul>
@@ -375,27 +387,60 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tools">
-<h1>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">#</a></h1>
-<section id="google-colab">
-<h2>Google Colab<a class="headerlink" href="#google-colab" title="Permalink to this headline">#</a></h2>
-<p>For in-class exercises and tutorials we will be using Jupyter notebooks, an interactive web-based interface combining narrative text and live code you can tweak and run yourself.</p>
-<p>The backend to streamline this is called a JupyterHub, a multi-user server designed to support many users by managing singular Jupyter Notebook servers.</p>
-<p> </p>
-<a class="reference internal image-reference" href="../_images/jupyter_nb_df_demo.gif"><img alt="../_images/jupyter_nb_df_demo.gif" class="align-center" src="../_images/jupyter_nb_df_demo.gif" style="width: 100%;" /></a>
+  <section class="tex2jax_ignore mathjax_ignore" id="learning-rate">
+<span id="linreg-lr"></span><h1>Learning Rate<a class="headerlink" href="#learning-rate" title="Permalink to this headline">#</a></h1>
+<p>The learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> is a hyperparameter intervening in the calculation of the step size at which the parameters will be incremented or decremented. It controls the speed at which the algorithm ‘learns.’ Or said more mathematically, it sets how fast – or slow – we want the gradient descent to converge to the minimum cost.</p>
+<section id="learning-rate-and-convergence">
+<h2>Learning Rate and Convergence<a class="headerlink" href="#learning-rate-and-convergence" title="Permalink to this headline">#</a></h2>
+<p>The learning rate is not directly setting the step size. It is a coefficient. With a fixed <span class="math notranslate nohighlight">\(\alpha\)</span>, the gradient descent can converge as the steps will become smaller and smaller due to the fact that the derivatives <span class="math notranslate nohighlight">\(\frac{\partial }{\partial \theta_j} J(\boldsymbol{\theta})\)</span> will get smaller (caution: in absolute value!) as much as we approach the minimum:</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<a class="reference internal image-reference" href="../_images/colab_lg.png"><img alt="Google Colab" class="align-center" src="../_images/colab_lg.png" style="width: 100%;" /></a>
-<p>Click here for a <a class="reference external" href="https://colab.research.google.com/">Guided Tour of Colab</a>.</p>
+<p>Recall that the step size is given by <span class="math notranslate nohighlight">\(-\alpha \frac{d}{d \theta} J(\boldsymbol{\theta}) = -\alpha \times\)</span> <em>slope</em>. Here the magnitude of the slope is decreasing at each iteration.</p>
 </aside>
-<p> <br />
- </p>
-<p>The exercises and programming practice for this course will be done on <a class="reference external" href="https://research.google.com/colaboratory/faq.html">Colaboratory</a>, Google’s online front end interface from its cloud. Datasets on GDrive can be accessed via a Jupyter Notebook on Colab.</p>
+<figure class="align-default" id="linreg-smaller-steps">
+<a class="reference internal image-reference" href="../_images/linReg_smaller_steps.png"><img alt="../_images/linReg_smaller_steps.png" src="../_images/linReg_smaller_steps.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">. The step size is reduced at the next iteration of the gradient descent,<br />
+even if <span class="math notranslate nohighlight">\(\alpha\)</span> remains constant.<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#linreg-smaller-steps" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
-<section id="large-language-models-ai-assistants">
-<h2>Large Language Models &amp; AI assistants<a class="headerlink" href="#large-language-models-ai-assistants" title="Permalink to this headline">#</a></h2>
-<p>It can be very tempting to surrender too soon with those mindboggling Large Language Models! On the one hand, they can generate clean, well-structured code that follows best practices. On the other hand, they provide instant access to answers: the joy — usually after frustrations and confusion — of figuring things out on your own is completely missed, along with the true learning opportunity that comes with it.</p>
-<p>This course will give tips on how to get the best out of AI tools, avoiding the risk of becoming over-reliant while benefiting from their true educational power.</p>
+<section id="learning-rate-and-divergence">
+<h2>Learning Rate and Divergence<a class="headerlink" href="#learning-rate-and-divergence" title="Permalink to this headline">#</a></h2>
+<p>A learning rate too big will generate an updated parameter on the other side of the slope.<br />
+Two cases:</p>
+<ul class="simple">
+<li><p><strong>The zig-zag</strong>: if the next parameter <span class="math notranslate nohighlight">\(\theta'\)</span> is at a smaller distance to the <span class="math notranslate nohighlight">\(\theta^{\min J}\)</span> minimizing the cost function (<span class="math notranslate nohighlight">\( | \theta' - \theta^{\min J} |  &lt; | \theta - \theta^{\min J} |\)</span>), the gradient descent will generate parameters oscillating on each side of the slope until convergence. It will converge, but it will require a lot more steps.</p></li>
+<li><p><strong>Divergence</strong>: if the next paremeter is at a greater distance than the <span class="math notranslate nohighlight">\(\theta^{\min J}\)</span> minimizing the cost function (<span class="math notranslate nohighlight">\( | \theta' - \theta^{\min J} |  &gt; | \theta - \theta^{\min J} |\)</span>), the gradient descent will produce new parameters further and further away, escaping the parabola! It will diverge. We want to avoid this.</p></li>
+</ul>
+<p>The divergence is illustrated on the right in the figure below:</p>
+<figure class="align-default" id="linreg-learningrate-small-big">
+<a class="reference internal image-reference" href="../_images/linReg_learningRate_small_big.jpg"><img alt="../_images/linReg_learningRate_small_big.jpg" src="../_images/linReg_learningRate_small_big.jpg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">. The learning rate determines the step at which the parameters will be updated (left). Small enough: the gradient descent will converge (middle). If too large, the overshoot can lead to a diverging gradient, no more “descending” towards the minimum (right).<br />
+<sub>Image from <a class="reference external" href="https://www.kjronline.org/ViewImage.php?Type=F&amp;aid=658625&amp;id=F7&amp;afn=68_KJR_21_1_33&amp;fn=kjr-21-33-g007_0068KJR">kjronline.org</a></sub></span><a class="headerlink" href="#linreg-learningrate-small-big" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>The learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> is a hyperparameter intervening in the calculation of the step size at which the parameters will be incremented or decremented.</p></li>
+<li><p>The step size varies even with a constant <span class="math notranslate nohighlight">\(\alpha\)</span> as it is multiplied by the slope, i.e. the derivatives of the cost function.</p></li>
+<li><p>A small learning rate is safe as it likely leads to convergence, yet too small values will necessitates a high number of epochs.</p></li>
+<li><p>A large learning rate can make the next update of parameters overshoot the minimum of the cost function and lead to either</p>
+<ul>
+<li><p>an oscillating trajectory: the algorithm converges yet more iterations are needed</p></li>
+<li><p>a diverging path: the gradient descent fails to converge</p></li>
+</ul>
+</li>
+</ul>
+<div class="seealso admonition">
+<p class="admonition-title">Question</p>
+<p>How to choose the best value for the learning rate?</p>
+</div>
+<p>We will discuss your guesses. Then the next section will give you some tricks!</p>
 </section>
 </section>
 
@@ -412,7 +457,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./about"
+            path: "./basics"
         },
         predefinedOutput: true
     }
@@ -426,17 +471,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="schedule.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="lin_reg_4_gradient_descent_multiD.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Schedule</p>
+            <p class="prev-next-title">Multivariate Linear Regression</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="evaluation.html" title="next page">
+    <a class='right-next' id="next-link" href="lin_reg_6_gradient_descent_in_practice.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Evaluation</p>
+        <p class="prev-next-title">Gradient Descent in Practice</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

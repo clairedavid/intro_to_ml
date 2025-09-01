@@ -1,0 +1,684 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Gradient Descent in 1D &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Multivariate Linear Regression" href="lin_reg_4_gradient_descent_multiD.html" />
+    <link rel="prev" title="Cost Function in Linear Regression" href="lin_reg_2_cost_function.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction<br> to Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About this course
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/teaching_philosophy.html">
+   Teaching philosophy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/instructor.html">
+   Instructor &amp; Credits
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/tools.html">
+   Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/evaluation.html">
+   Evaluation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  The basics
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="linear_regression.html">
+   Warm-up: Linear Regression
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_1_notations.html">
+     Notations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_2_cost_function.html">
+     Cost Function in Linear Regression
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Gradient Descent in 1D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_4_gradient_descent_multiD.html">
+     Multivariate Linear Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_5_learning_rate.html">
+     Learning Rate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_6_gradient_descent_in_practice.html">
+     Gradient Descent in Practice
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/basics/lin_reg_3_gradient_descent_1d.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analytical-solution-normal-equation">
+   Analytical Solution: Normal Equation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#intuitive-story-line-of-the-gradient-descent">
+   Intuitive story-line of the gradient descent
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#terminology">
+   Terminology
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pseudo-code-of-gradient-descent-in-1d">
+   Pseudo-code of gradient descent in 1D
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-a-minus-sign-before-alpha">
+   Why a minus sign before alpha?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graphical-visualization">
+   Graphical Visualization
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Gradient Descent in 1D</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analytical-solution-normal-equation">
+   Analytical Solution: Normal Equation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#intuitive-story-line-of-the-gradient-descent">
+   Intuitive story-line of the gradient descent
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#terminology">
+   Terminology
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pseudo-code-of-gradient-descent-in-1d">
+   Pseudo-code of gradient descent in 1D
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-a-minus-sign-before-alpha">
+   Why a minus sign before alpha?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#graphical-visualization">
+   Graphical Visualization
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="gradient-descent-in-1d">
+<h1>Gradient Descent in 1D<a class="headerlink" href="#gradient-descent-in-1d" title="Permalink to this headline">#</a></h1>
+<p>This concept is key in machine learning. We will see the procedure with our example. Recall that our goal is to find values for the model parameters so as to minimize the errors.</p>
+<p>Before diving into the gradient descent, let’s ask ourselves: is there a way to solve this analytically? In the case of linear regression: yes. It is called the Normal Equation.</p>
+<section id="analytical-solution-normal-equation">
+<h2>Analytical Solution: Normal Equation<a class="headerlink" href="#analytical-solution-normal-equation" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="normalEquation">
+<p class="admonition-title"><span class="caption-number">Definition 6 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>Normal Equation</strong> gives the exact solution for the parameters that minimize the mean squared error in linear regression. For a dataset with input matrix <span class="math notranslate nohighlight">\(X\)</span> and output vector <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5c0576df-a88d-45e8-8b6b-24a97ff86f37">
+<span class="eqno">(5)<a class="headerlink" href="#equation-5c0576df-a88d-45e8-8b6b-24a97ff86f37" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\theta = (X^T X)^{-1} X^T \boldsymbol{y}
+\end{equation}\]</div>
+</section>
+</div><p>Here, <span class="math notranslate nohighlight">\(X\)</span> includes a column of ones for the intercept term. This formula computes the optimal parameters directly.</p>
+<p>In our 1D case with a single input feature, the parameters can also be written explicitly as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-fab7eefd-a564-4be5-af00-c56f28bee907">
+<span class="eqno">(6)<a class="headerlink" href="#equation-fab7eefd-a564-4be5-af00-c56f28bee907" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\theta_1 = \frac{\sum_i (x_i - \bar{x})(y_i - \bar{y})}{\sum_i (x_i - \bar{x})^2}, \quad
+\theta_0 = \bar{y} - \theta_1 \bar{x}
+\end{equation}\]</div>
+<p>While the Normal Equation is elegant and exact, it becomes computationally expensive for very large datasets and/or when the number of features grows. The gradient descent offers an iterative, approximate method that can scale to the enormous datasets typical in machine learning.</p>
+</section>
+<section id="intuitive-story-line-of-the-gradient-descent">
+<span id="warmup-linreggd-gradientdescent"></span><h2>Intuitive story-line of the gradient descent<a class="headerlink" href="#intuitive-story-line-of-the-gradient-descent" title="Permalink to this headline">#</a></h2>
+<div style="text-align: center;">
+<em>Going down a valley blanketed by thick fog</em>
+</div>
+<p>This poetical description may feel enigmatic, but it will make sense once you read the following.</p>
+<div class="proof definition admonition" id="GDesc">
+<p class="admonition-title"><span class="caption-number">Definition 7 </span></p>
+<section class="definition-content" id="proof-content">
+<p>Gradient descent is an iterative optimization algorithm to find the minimum of a function.</p>
+</section>
+</div><p><a class="reference internal" href="lin_reg_2_cost_function.html#plot-linreg-bowl"><span class="std std-ref">The 3D plot</span></a> from the <a class="reference internal" href="lin_reg_2_cost_function.html#linreg-cost-viscost"><span class="std std-ref">previous section on visualizing the cost function</span></a> is misleading, as we will see that once we add input features we cannot have any visual of how the data landscape looks like (we are stuck with 3D vision, rarely 4D and that’s it). In a way, we are blind. Think of yourself walking from a point of the bowl-shaped surface but in the dark. How to reach the ‘valley’ where the cost function is minimum?</p>
+<p>The idea behind gradient descent is to walk step by step following the <strong>slope</strong> of the cost function locally. In mathematical words: the partial derivatives of the cost function will give us the best direction to go towards the minimum. We don’t need to compute the cost for all point of the parameter space – it would require summing over all data samples for each possible value of the model parameters. This is not feasible. Instead, we will start at random. We pick a point in the vaste parameter space. That means a set of <span class="math notranslate nohighlight">\(\boldsymbol{\theta} = \theta_0, \theta_1\)</span> (in our 1D case). Then we get, for each <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> component, the slope via its partial derivative. The core of the gradient descent is the <strong>update rule</strong>: the model parameters are recomputed with a shift that goes, by construction, in the direction of the descending gradients. And we repeat, until we reach a certain number of iterations predefined or until the partial derivatives gets to zero. In our simple 1D case, we know the existence of a unique minimum, so the cancellation of both partial derivatives mean that we found the optimal set of <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> that minimize the cost!</p>
+<p>Before going over the pseudo-code, let’s define important terms that we will encounter very soon:</p>
+</section>
+<section id="terminology">
+<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">#</a></h2>
+<div class="admonition-definitions admonition">
+<p class="admonition-title">Definitions</p>
+<p><strong>Hyperparameter</strong><br />
+A model argument set before starting the machine learning algorithm.<br />
+Hyperparameters control the learning process.</p>
+<p><strong>Learning rate</strong> <span class="math notranslate nohighlight">\(\alpha\)</span><br />
+Hyperparameter in an optimization algorithm that determines the step size at each iteration while moving toward a minimum of a loss function.<br />
+The learning rate is always a strictly positive number.</p>
+<p><strong>Epoch</strong><br />
+In machine learning, an epoch is the number of passes of the entire training dataset the machine learning algorithm has completed.<br />
+The number of epochs is a hyperparameter controlling the number of passes of the algorithm.</p>
+</div>
+</section>
+<section id="pseudo-code-of-gradient-descent-in-1d">
+<h2>Pseudo-code of gradient descent in 1D<a class="headerlink" href="#pseudo-code-of-gradient-descent-in-1d" title="Permalink to this headline">#</a></h2>
+<p>The steps of the gradient descent algorithm for a linear regression with two parameters (i.e. in 1D) are written below in the form of pseudo-code.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>This definition will be generalized in the next section with more parameters, from <span class="math notranslate nohighlight">\(\theta_0\)</span> to <span class="math notranslate nohighlight">\(\theta_n\)</span>.</p>
+</aside>
+<div class="proof algorithm admonition" id="GD_algo_1D">
+<p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (Gradient Descent for Univariate Linear Regression)</p>
+<section class="algorithm-content" id="proof-content">
+<p> <br />
+<strong>Inputs</strong></p>
+<ul class="simple">
+<li><p>Training data set with input features <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> associated with their targets <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span>:</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+x  = \begin{pmatrix}
+x^{(1)} \\
+x^{(2)} \\
+\vdots \\
+ \\
+x^{(m)}
+\end{pmatrix}  \hspace{10ex}  y = \begin{pmatrix}
+y^{(1)} \\
+y^{(2)} \\
+\vdots \\
+ \\
+y^{(m)} \end{pmatrix}
+\end{equation*}\]</div>
+<p><strong>Hyperparameters</strong></p>
+<ul class="simple">
+<li><p>Learning rate <span class="math notranslate nohighlight">\(\alpha\)</span></p></li>
+<li><p>Number of epochs <span class="math notranslate nohighlight">\(N\)</span>
+ </p></li>
+</ul>
+<p><strong>Outputs</strong><br />
+The optimized values of the parameters: <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span>, minimizing <span class="math notranslate nohighlight">\(J(\theta_0 , \theta_1)\)</span>.
+ </p>
+<ol>
+<li><p><strong>Initialization</strong>: Set random values for <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span></p></li>
+<li><p><strong>While the exit conditions are not met</strong>:</p>
+<ol class="simple">
+<li><p><strong>Compute the partial derivatives of the cost function:</strong></p></li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-partialderiv1d">
+<span class="eqno">(7)<a class="headerlink" href="#equation-partialderiv1d" title="Permalink to this equation">#</a></span>\[\begin{split}    \begin{align*}
+        &amp; \frac{\partial }{\partial \theta_0} J(\theta_0 , \theta_1) \\
+        &amp; \frac{\partial }{\partial \theta_1} J(\theta_0 , \theta_1)
+    \end{align*}\end{split}\]</div>
+<ol class="simple">
+<li><p><strong>Apply the update rule to get the new parameters</strong>:</p></li>
+</ol>
+<div class="math notranslate nohighlight" id="equation-eqgdlincost">
+<span class="eqno">(8)<a class="headerlink" href="#equation-eqgdlincost" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+&amp;\\
+\theta'_0 &amp;= \theta_0-\alpha \frac{\partial}{\partial \theta_0} J\left(\theta_0, \theta_1\right) \\
+\\
+\theta'_1 &amp;= \theta_1-\alpha \frac{\partial}{\partial \theta_1} J\left(\theta_0, \theta_1\right) 
+\end{align*}\end{split}\]</div>
+<p>         Reassign the new <span class="math notranslate nohighlight">\(\theta\)</span> parameters to prepare for next iteration</p>
+<div class="math notranslate nohighlight" id="equation-equpdatetheta">
+<span class="eqno">(9)<a class="headerlink" href="#equation-equpdatetheta" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+\theta_0 &amp;= \theta'_0 \\
+\\
+\theta_1 &amp;= \theta'_1 \\
+\end{align*}\end{split}\]</div>
+</li>
+</ol>
+<p><strong>Exit conditions</strong></p>
+<ul class="simple">
+<li><p>After the maximum number of epochs <span class="math notranslate nohighlight">\(N\)</span> is reached</p></li>
+<li><p>If both partial derivatives of the cost function tend to zero</p></li>
+</ul>
+</section>
+</div><p>In linear regression, the partial derivatives can be simplified.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Exercise</p>
+<p>Knowing the form of the hypothesis function <span class="math notranslate nohighlight">\(h_\theta(x)\)</span> for linear regression and the definition of the cost function, rewrite the Equation <a class="reference internal" href="#equation-eqgdlincost">(8)</a> with the explicit partial derivatives.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Answer</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\theta'_0 &amp;= \theta_0-\alpha \frac{1}{m} \sum_{i = 1}^m \left(h_\theta(x^{(i)})-y^{(i)}\right) \\ 
+\\
+\theta'_1 &amp;= \theta_1-\alpha \frac{1}{m} \sum_{i = 1}^m \left(h_\theta(x^{(i)})-y^{(i)}\right) x^{(i)} 
+\end{align*}\]</div>
+<p>Details on demand during office hours.</p>
+</div>
+<p><strong>Important</strong><br />
+Note that at the step 2.1., there is an implicit loop over all training data samples, as it is required by the cost function.</p>
+</section>
+<section id="why-a-minus-sign-before-alpha">
+<h2>Why a minus sign before alpha?<a class="headerlink" href="#why-a-minus-sign-before-alpha" title="Permalink to this headline">#</a></h2>
+<p>This illustration helps see why the minus sign in Equation <a class="reference internal" href="#equation-eqgdlincost">(8)</a> is necessary.</p>
+<figure class="align-default" id="costsigndirection">
+<a class="reference internal image-reference" href="../_images/linReg_costSignDirection.png"><img alt="../_images/linReg_costSignDirection.png" src="../_images/linReg_costSignDirection.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">. The sign of the cost function’s derivative changes for two different parameter values either lower (left) or greater (right) than the parameter value for which the cost function is minimized.<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#costsigndirection" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>If our parameter is randomly picked on the left side of the U-shaped parabola, the partial derivatives will be negative. As the learning rate is always positive, the incremental update <span class="math notranslate nohighlight">\(-\alpha \frac{d}{d \theta} J(\theta)\)</span> will thus be positive. We will add an increment to our parameter. At the next iteration, we will have a new parameter <span class="math notranslate nohighlight">\(\theta\)</span> closer to the one we look for. The reverse goes with the other side of the curve: with a positive derivative, we will decrease our parameter and slide to the left. All the time we go ‘downhill’ towards the minimum.</p>
+</section>
+<section id="graphical-visualization">
+<span id="linreg-graphvisgd"></span><h2>Graphical Visualization<a class="headerlink" href="#graphical-visualization" title="Permalink to this headline">#</a></h2>
+<p>When computing the gradient descent for linear regression, we get new parameters so we can draw a candidate straight line to fit the data. With proper tuning (more on this later), we reach the ideal fit, minimizing the cost function.</p>
+<figure class="align-default" id="linreg-animated">
+<a class="reference internal image-reference" href="../_images/linReg_animated.gif"><img alt="../_images/linReg_animated.gif" src="../_images/linReg_animated.gif" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">. Animation of the gradient descent. At each generation a new set of parameters are computed. In this picture <span class="math notranslate nohighlight">\(m\)</span> corresponds to <span class="math notranslate nohighlight">\(\theta_1\)</span> and the constant <span class="math notranslate nohighlight">\(c\)</span> to <span class="math notranslate nohighlight">\(\theta_0\)</span>. Sometimes they are also referred to the <em>slope</em> and <em>intercept</em> respectively.<br />
+<sub>Source GIF: <a class="reference external" href="https://towardsdatascience.com/linear-regression-using-python-b136c91bf0a2">Medium</a></sub></span><a class="headerlink" href="#linreg-animated" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In our example, the best linear fit will be:</p>
+<figure class="align-default" id="plot-linreg-50pts-line">
+<div class="cell_output docutils container">
+<img alt="../_images/lin_reg_gd_plots_20_0.png" src="../_images/lin_reg_gd_plots_20_0.png" />
+</div>
+</figure>
+<p>How to picture this in the <span class="math notranslate nohighlight">\(\theta\)</span> parameter space? For this, contour and 3D plot are handy. Below, the new parameters’trajectory (red points) are “descending” towards the minimum of the cost function:</p>
+<figure class="align-default" id="plot-linreg-3d">
+<div class="cell_output docutils container">
+<img alt="../_images/lin_reg_gd_plots_22_0.png" src="../_images/lin_reg_gd_plots_22_0.png" />
+</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">. Contour plot (left) and 3D rendering (right) of the cost function with respect to the values of the <span class="math notranslate nohighlight">\(\theta\)</span> parameter. The red dots are the intermediary values of the parameters at a given iteration of the gradient descent. You can see that it converges toward the minimum of the cost function.</span><a class="headerlink" href="#plot-linreg-3d" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We will discuss the presence of the zig-zag behaviour in the later section <a class="reference internal" href="lin_reg_5_learning_rate.html#linreg-lr"><span class="std std-ref">Learning Rate</span></a>.</p>
+<p>This was the gradient descent in one dimension. How can we generalize to <span class="math notranslate nohighlight">\(n\)</span> dimensions? This is what the next section will (un)cover.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./basics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="lin_reg_2_cost_function.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Cost Function in Linear Regression</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lin_reg_4_gradient_descent_multiD.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Multivariate Linear Regression</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    <div class="extra_footer">
+      <div style="display:flex; align-items:center; gap:10px;">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+    <img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" alt="CC Logo">
+  </a>
+  <div>
+    By Claire David • © 2025<br>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+  </div>
+</div>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

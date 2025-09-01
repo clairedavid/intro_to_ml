@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Tools &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    <title>Warm-up: Linear Regression &#8212; Introduction&lt;br&gt; to Machine Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Evaluation" href="evaluation.html" />
-    <link rel="prev" title="Schedule" href="schedule.html" />
+    <link rel="next" title="Notations" href="lin_reg_1_notations.html" />
+    <link rel="prev" title="Evaluation" href="../about/evaluation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -119,29 +119,29 @@ const thebe_selector_output = ".output, .cell_output"
   About this course
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="teaching_philosophy.html">
+  <a class="reference internal" href="../about/teaching_philosophy.html">
    Teaching philosophy
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="instructor.html">
+  <a class="reference internal" href="../about/instructor.html">
    Instructor &amp; Credits
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="schedule.html">
+  <a class="reference internal" href="../about/schedule.html">
    Schedule
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/tools.html">
    Tools
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="evaluation.html">
+  <a class="reference internal" href="../about/evaluation.html">
    Evaluation
   </a>
  </li>
@@ -151,44 +151,44 @@ const thebe_selector_output = ".output, .cell_output"
   The basics
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../basics/linear_regression.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    Warm-up: Linear Regression
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basics/lin_reg_1_notations.html">
+    <a class="reference internal" href="lin_reg_1_notations.html">
      Notations
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basics/lin_reg_2_cost_function.html">
+    <a class="reference internal" href="lin_reg_2_cost_function.html">
      Cost Function in Linear Regression
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basics/lin_reg_3_gradient_descent_1d.html">
+    <a class="reference internal" href="lin_reg_3_gradient_descent_1d.html">
      Gradient Descent in 1D
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basics/lin_reg_4_gradient_descent_multiD.html">
+    <a class="reference internal" href="lin_reg_4_gradient_descent_multiD.html">
      Multivariate Linear Regression
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basics/lin_reg_5_learning_rate.html">
+    <a class="reference internal" href="lin_reg_5_learning_rate.html">
      Learning Rate
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basics/lin_reg_6_gradient_descent_in_practice.html">
+    <a class="reference internal" href="lin_reg_6_gradient_descent_in_practice.html">
      Gradient Descent in Practice
     </a>
    </li>
@@ -267,7 +267,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/about/tools.md"
+        <a href="../_sources/basics/linear_regression.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -304,70 +304,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#google-colab">
-   Google Colab
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#large-language-models-ai-assistants">
-   Large Language Models &amp; AI assistants
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Tools</h1>
+                <h1>Warm-up: Linear Regression</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#google-colab">
-   Google Colab
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#large-language-models-ai-assistants">
-   Large Language Models &amp; AI assistants
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -375,28 +328,19 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="tools">
-<h1>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">#</a></h1>
-<section id="google-colab">
-<h2>Google Colab<a class="headerlink" href="#google-colab" title="Permalink to this headline">#</a></h2>
-<p>For in-class exercises and tutorials we will be using Jupyter notebooks, an interactive web-based interface combining narrative text and live code you can tweak and run yourself.</p>
-<p>The backend to streamline this is called a JupyterHub, a multi-user server designed to support many users by managing singular Jupyter Notebook servers.</p>
-<p> </p>
-<a class="reference internal image-reference" href="../_images/jupyter_nb_df_demo.gif"><img alt="../_images/jupyter_nb_df_demo.gif" class="align-center" src="../_images/jupyter_nb_df_demo.gif" style="width: 100%;" /></a>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<a class="reference internal image-reference" href="../_images/colab_lg.png"><img alt="Google Colab" class="align-center" src="../_images/colab_lg.png" style="width: 100%;" /></a>
-<p>Click here for a <a class="reference external" href="https://colab.research.google.com/">Guided Tour of Colab</a>.</p>
-</aside>
-<p> <br />
- </p>
-<p>The exercises and programming practice for this course will be done on <a class="reference external" href="https://research.google.com/colaboratory/faq.html">Colaboratory</a>, Google’s online front end interface from its cloud. Datasets on GDrive can be accessed via a Jupyter Notebook on Colab.</p>
-</section>
-<section id="large-language-models-ai-assistants">
-<h2>Large Language Models &amp; AI assistants<a class="headerlink" href="#large-language-models-ai-assistants" title="Permalink to this headline">#</a></h2>
-<p>It can be very tempting to surrender too soon with those mindboggling Large Language Models! On the one hand, they can generate clean, well-structured code that follows best practices. On the other hand, they provide instant access to answers: the joy — usually after frustrations and confusion — of figuring things out on your own is completely missed, along with the true learning opportunity that comes with it.</p>
-<p>This course will give tips on how to get the best out of AI tools, avoiding the risk of becoming over-reliant while benefiting from their true educational power.</p>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="warm-up-linear-regression">
+<h1>Warm-up: Linear Regression<a class="headerlink" href="#warm-up-linear-regression" title="Permalink to this headline">#</a></h1>
+<p>The mathematics of machine learning are introduced through a simple situation that may be already familiar: ‘fitting a straight line’.</p>
+<p>Here are some of the objectives of this section:</p>
+<ul class="simple">
+<li><p>Become familiar with the terminology and notation commonly used in Machine Learning</p></li>
+<li><p>Understand the definition and purpose of a cost function</p></li>
+<li><p>Understand the concept of a learning rate and its role in optimization</p></li>
+<li><p>Gain intuition for gradient descent as an iterative method for minimizing the cost function</p></li>
+<li><p>Develop skill in interpreting Machine Learning algorithms presented as pseudo-code</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -412,7 +356,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./about"
+            path: "./basics"
         },
         predefinedOutput: true
     }
@@ -426,17 +370,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="schedule.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../about/evaluation.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Schedule</p>
+            <p class="prev-next-title">Evaluation</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="evaluation.html" title="next page">
+    <a class='right-next' id="next-link" href="lin_reg_1_notations.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Evaluation</p>
+        <p class="prev-next-title">Notations</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

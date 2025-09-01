@@ -1,0 +1,547 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Gradient Descent in Practice &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Learning Rate" href="lin_reg_5_learning_rate.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction<br> to Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About this course
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/teaching_philosophy.html">
+   Teaching philosophy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/instructor.html">
+   Instructor &amp; Credits
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/tools.html">
+   Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/evaluation.html">
+   Evaluation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  The basics
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="linear_regression.html">
+   Warm-up: Linear Regression
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_1_notations.html">
+     Notations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_2_cost_function.html">
+     Cost Function in Linear Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_3_gradient_descent_1d.html">
+     Gradient Descent in 1D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_4_gradient_descent_multiD.html">
+     Multivariate Linear Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_5_learning_rate.html">
+     Learning Rate
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Gradient Descent in Practice
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/basics/lin_reg_6_gradient_descent_in_practice.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adjusting-the-learning-rate">
+   Adjusting the learning rate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-graph-to-visualize-the-cost-s-evolution">
+   A graph to visualize the cost’s evolution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#knowing-when-to-stop">
+   Knowing when to stop
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-on-linear-regression">
+   Summary on Linear Regression
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Gradient Descent in Practice</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adjusting-the-learning-rate">
+   Adjusting the learning rate
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-graph-to-visualize-the-cost-s-evolution">
+   A graph to visualize the cost’s evolution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#knowing-when-to-stop">
+   Knowing when to stop
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary-on-linear-regression">
+   Summary on Linear Regression
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="gradient-descent-in-practice">
+<h1>Gradient Descent in Practice<a class="headerlink" href="#gradient-descent-in-practice" title="Permalink to this headline">#</a></h1>
+<p>How to choose a correct learning rate?</p>
+<p>Short answer: inspect your gradient descent cost function.</p>
+<p>Long answer:</p>
+<section id="adjusting-the-learning-rate">
+<h2>Adjusting the learning rate<a class="headerlink" href="#adjusting-the-learning-rate" title="Permalink to this headline">#</a></h2>
+<p>It is always a good programming practice to add in your code printouts, i.e. <code class="docutils literal notranslate"><span class="pre">print()</span></code> statements to inspect the current values of your variables.
+In gradient descent, it is advised to print the values of the parameters and the cost function after some iterations. Here is an example of printouts of simple linear regression showing the values of updated parameters <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> every 10 epochs until <span class="math notranslate nohighlight">\(N\)</span> = 100, then every 100 epochs:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>Starting gradient descent
+
+Iter    <span class="m">0</span>	<span class="nv">θ₀</span> <span class="o">=</span>  <span class="m">25</span>.130	∂J/∂θ₀ <span class="o">=</span>  -2.5948	<span class="nv">θ₁</span> <span class="o">=</span>   <span class="m">2</span>.146	∂J/∂θ₁ <span class="o">=</span> -42.9159	<span class="nv">Cost</span> <span class="o">=</span> <span class="m">56</span>.84502
+Iter   <span class="m">10</span>	<span class="nv">θ₀</span> <span class="o">=</span>  <span class="m">23</span>.260	∂J/∂θ₀ <span class="o">=</span>   <span class="m">1</span>.9969	<span class="nv">θ₁</span> <span class="o">=</span>   <span class="m">1</span>.640	∂J/∂θ₁ <span class="o">=</span>  -9.6267	<span class="nv">Cost</span> <span class="o">=</span> <span class="m">33</span>.25208
+Iter   <span class="m">20</span>	<span class="nv">θ₀</span> <span class="o">=</span>  <span class="m">21</span>.647	∂J/∂θ₀ <span class="o">=</span>   <span class="m">2</span>.7424	<span class="nv">θ₁</span> <span class="o">=</span>   <span class="m">1</span>.711	∂J/∂θ₁ <span class="o">=</span>  -2.4181	<span class="nv">Cost</span> <span class="o">=</span> <span class="m">27</span>.31331
+Iter   <span class="m">30</span>	<span class="nv">θ₀</span> <span class="o">=</span>  <span class="m">20</span>.205	∂J/∂θ₀ <span class="o">=</span>   <span class="m">2</span>.6824	<span class="nv">θ₁</span> <span class="o">=</span>   <span class="m">1</span>.889	∂J/∂θ₁ <span class="o">=</span>  -0.8322	<span class="nv">Cost</span> <span class="o">=</span> <span class="m">23</span>.07411
+Iter   <span class="m">40</span>	<span class="nv">θ₀</span> <span class="o">=</span>  <span class="m">18</span>.904	∂J/∂θ₀ <span class="o">=</span>   <span class="m">2</span>.4700	<span class="nv">θ₁</span> <span class="o">=</span>   <span class="m">2</span>.075	∂J/∂θ₁ <span class="o">=</span>  -0.4608	<span class="nv">Cost</span> <span class="o">=</span> <span class="m">19</span>.63395
+Iter   <span class="m">50</span>	<span class="nv">θ₀</span> <span class="o">=</span>  <span class="m">17</span>.729	∂J/∂θ₀ <span class="o">=</span>   <span class="m">2</span>.2437	<span class="nv">θ₁</span> <span class="o">=</span>   <span class="m">2</span>.248	∂J/∂θ₁ <span class="o">=</span>  -0.3540	<span class="nv">Cost</span> <span class="o">=</span> <span class="m">16</span>.82019
+Iter   <span class="m">60</span>	<span class="nv">θ₀</span> <span class="o">=</span>  <span class="m">16</span>.665	∂J/∂θ₀ <span class="o">=</span>   <span class="m">2</span>.0317	<span class="nv">θ₁</span> <span class="o">=</span>   <span class="m">2</span>.406	∂J/∂θ₁ <span class="o">=</span>  -0.3066	<span class="nv">Cost</span> <span class="o">=</span> <span class="m">14</span>.51773
+Iter   <span class="m">70</span>	<span class="nv">θ₀</span> <span class="o">=</span>  <span class="m">15</span>.703	∂J/∂θ₀ <span class="o">=</span>   <span class="m">1</span>.8383	<span class="nv">θ₁</span> <span class="o">=</span>   <span class="m">2</span>.549	∂J/∂θ₁ <span class="o">=</span>  -0.2745	<span class="nv">Cost</span> <span class="o">=</span> <span class="m">12</span>.63362
+Iter   <span class="m">80</span>	<span class="nv">θ₀</span> <span class="o">=</span>  <span class="m">14</span>.833	∂J/∂θ₀ <span class="o">=</span>   <span class="m">1</span>.6630	<span class="nv">θ₁</span> <span class="o">=</span>   <span class="m">2</span>.678	∂J/∂θ₁ <span class="o">=</span>  -0.2477	<span class="nv">Cost</span> <span class="o">=</span> <span class="m">11</span>.09184
+Iter   <span class="m">90</span>	<span class="nv">θ₀</span> <span class="o">=</span>  <span class="m">14</span>.045	∂J/∂θ₀ <span class="o">=</span>   <span class="m">1</span>.5044	<span class="nv">θ₁</span> <span class="o">=</span>   <span class="m">2</span>.795	∂J/∂θ₁ <span class="o">=</span>  -0.2239	<span class="nv">Cost</span> <span class="o">=</span>  <span class="m">9</span>.83019
+Iter  <span class="m">100</span>	<span class="nv">θ₀</span> <span class="o">=</span>  <span class="m">13</span>.333	∂J/∂θ₀ <span class="o">=</span>   <span class="m">1</span>.3609	<span class="nv">θ₁</span> <span class="o">=</span>   <span class="m">2</span>.901	∂J/∂θ₁ <span class="o">=</span>  -0.2025	<span class="nv">Cost</span> <span class="o">=</span>  <span class="m">8</span>.79778
+Iter  <span class="m">200</span>	<span class="nv">θ₀</span> <span class="o">=</span>   <span class="m">9</span>.058	∂J/∂θ₀ <span class="o">=</span>   <span class="m">0</span>.4993	<span class="nv">θ₁</span> <span class="o">=</span>   <span class="m">3</span>.538	∂J/∂θ₁ <span class="o">=</span>  -0.0743	<span class="nv">Cost</span> <span class="o">=</span>  <span class="m">4</span>.77406
+Iter  <span class="m">300</span>	<span class="nv">θ₀</span> <span class="o">=</span>   <span class="m">7</span>.490	∂J/∂θ₀ <span class="o">=</span>   <span class="m">0</span>.1832	<span class="nv">θ₁</span> <span class="o">=</span>   <span class="m">3</span>.771	∂J/∂θ₁ <span class="o">=</span>  -0.0273	<span class="nv">Cost</span> <span class="o">=</span>  <span class="m">4</span>.23233
+Iter  <span class="m">400</span>	<span class="nv">θ₀</span> <span class="o">=</span>   <span class="m">6</span>.914	∂J/∂θ₀ <span class="o">=</span>   <span class="m">0</span>.0672	<span class="nv">θ₁</span> <span class="o">=</span>   <span class="m">3</span>.857	∂J/∂θ₁ <span class="o">=</span>  -0.0100	<span class="nv">Cost</span> <span class="o">=</span>  <span class="m">4</span>.15940
+Iter  <span class="m">500</span>	<span class="nv">θ₀</span> <span class="o">=</span>   <span class="m">6</span>.703	∂J/∂θ₀ <span class="o">=</span>   <span class="m">0</span>.0247	<span class="nv">θ₁</span> <span class="o">=</span>   <span class="m">3</span>.888	∂J/∂θ₁ <span class="o">=</span>  -0.0037	<span class="nv">Cost</span> <span class="o">=</span>  <span class="m">4</span>.14958
+Iter  <span class="m">600</span>	<span class="nv">θ₀</span> <span class="o">=</span>   <span class="m">6</span>.625	∂J/∂θ₀ <span class="o">=</span>   <span class="m">0</span>.0091	<span class="nv">θ₁</span> <span class="o">=</span>   <span class="m">3</span>.900	∂J/∂θ₁ <span class="o">=</span>  -0.0013	<span class="nv">Cost</span> <span class="o">=</span>  <span class="m">4</span>.14825
+Iter  <span class="m">700</span>	<span class="nv">θ₀</span> <span class="o">=</span>   <span class="m">6</span>.597	∂J/∂θ₀ <span class="o">=</span>   <span class="m">0</span>.0033	<span class="nv">θ₁</span> <span class="o">=</span>   <span class="m">3</span>.904	∂J/∂θ₁ <span class="o">=</span>  -0.0005	<span class="nv">Cost</span> <span class="o">=</span>  <span class="m">4</span>.14808
+Iter  <span class="m">800</span>	<span class="nv">θ₀</span> <span class="o">=</span>   <span class="m">6</span>.587	∂J/∂θ₀ <span class="o">=</span>   <span class="m">0</span>.0012	<span class="nv">θ₁</span> <span class="o">=</span>   <span class="m">3</span>.905	∂J/∂θ₁ <span class="o">=</span>  -0.0002	<span class="nv">Cost</span> <span class="o">=</span>  <span class="m">4</span>.14805
+Iter  <span class="m">900</span>	<span class="nv">θ₀</span> <span class="o">=</span>   <span class="m">6</span>.583	∂J/∂θ₀ <span class="o">=</span>   <span class="m">0</span>.0004	<span class="nv">θ₁</span> <span class="o">=</span>   <span class="m">3</span>.906	∂J/∂θ₁ <span class="o">=</span>  -0.0001	<span class="nv">Cost</span> <span class="o">=</span>  <span class="m">4</span>.14805
+
+
+End of gradient descent after <span class="m">1000</span> iterations
+</pre></div>
+</div>
+<p>Picking a learning rate is a guess’n’check business.</p>
+<p>Typical learning rates range between <span class="math notranslate nohighlight">\(1\)</span> and <span class="math notranslate nohighlight">\(10^{-7}\)</span>. The common practice is to start with e.g. <span class="math notranslate nohighlight">\(\alpha = 0.01\)</span>, a reasonable number of epochs, e.g. <span class="math notranslate nohighlight">\(N = 100\)</span> or <span class="math notranslate nohighlight">\(1000\)</span> (depending on the size of the data set), and see how the gradient descent behaves.</p>
+<p><strong>The cost function should decrease after every iteration.</strong> If the printouts show that the cost function and parameter are taking very, very large values: <span class="math notranslate nohighlight">\(\alpha\)</span> is too big, the gradient descent is diverging! One should reduce the learning rate by e.g. a factor 10 and see how the gradient behaves.</p>
+<p>If the cost decreases after each iteration, this is a good sign that the gradient will converge. However it can converge very slowly if <span class="math notranslate nohighlight">\(\alpha\)</span> is too small, and as a consequence necessitate a large number of epoch before reaching the optimized parameter values. While tuning the hyperparameters, it is generally good to cap the number of epochs low and inspect the difference <span class="math notranslate nohighlight">\(\Delta \theta = \theta^\text{new} - \theta^\text{prev}\)</span> to see if the relative increment or decrement with respect to the <span class="math notranslate nohighlight">\(\theta\)</span> value is small. There is a bit of tweaking before finding a correct learning rate.</p>
+</section>
+<section id="a-graph-to-visualize-the-cost-s-evolution">
+<h2>A graph to visualize the cost’s evolution<a class="headerlink" href="#a-graph-to-visualize-the-cost-s-evolution" title="Permalink to this headline">#</a></h2>
+<p>To inspect the gradient descent algorithm, it is convenient to store the intermediary values of the cost function and plot them with the iteration number on the <span class="math notranslate nohighlight">\(x\)</span> axis. The resulting curve should be strictly decreasing. Below is an example with different learning rates being plotted:</p>
+<figure class="align-default" id="linreg-cost-vs-learning-rates">
+<a class="reference internal image-reference" href="../_images/linReg_Cost_vs_learning_rates.png"><img alt="../_images/linReg_Cost_vs_learning_rates.png" src="../_images/linReg_Cost_vs_learning_rates.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">. The learning rate plays a crucial role on the gradient’s speed towards convergence.<br />
+<sub>Credits: <a class="reference external" href="https://jonathan-hui.medium.com/debug-a-deep-learning-network-part-5-1123c20f960d">Jonathan Hui Medium</a></sub></span><a class="headerlink" href="#linreg-cost-vs-learning-rates" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="seealso admonition">
+<p class="admonition-title">Exercise</p>
+<p>For each learning rate situation above, illustrate with a plot (qualitative drawing) the corresponding evolution of the model parameters.</p>
+</div>
+</section>
+<section id="knowing-when-to-stop">
+<h2>Knowing when to stop<a class="headerlink" href="#knowing-when-to-stop" title="Permalink to this headline">#</a></h2>
+<p>In mathematics, zero is exactly zero. In computing, variables can store very small numbers considered zero but with trailing non-zero digits. A good cutoff to declare the gradient descent algorithm successful is to exit when e.g. the cost function’s relative decrease is lower than a given threshold, for instance <span class="math notranslate nohighlight">\(10^{-6}\)</span>.</p>
+</section>
+<section id="summary-on-linear-regression">
+<h2>Summary on Linear Regression<a class="headerlink" href="#summary-on-linear-regression" title="Permalink to this headline">#</a></h2>
+<div class="success admonition">
+<p class="admonition-title">Key concepts</p>
+<p><strong>Linear Regression</strong> is the procedure that estimate a real-valued dependent variable (target) from independent variables (input features) assuming a linear relationship between <span class="math notranslate nohighlight">\(n\)</span> input features and <span class="math notranslate nohighlight">\(n+1\)</span> coefficients (parameters, or weight). The extra one is the offset parameter.</p>
+<p><strong>The cost function</strong> computes the sum of errors between the predicted line and the data. It usually uses the least squared method (errors squared).</p>
+<p><strong>The Gradient Descent</strong> is an optimization algorithm consisting of an iterative procedure to update the parameters in the direction of ‘descending gradient’, i.e. dictated by the slope of the cost function’s partial derivatives for each parameter, until convergence to values for the parameters minimizing the cost function.</p>
+<p><strong>Hyperparameters</strong> are quantitative entities controlling the learning algorithm.</p>
+<p><strong>The learning rate</strong> for gradient descent is an important hyperparameter that should be tuned to avoid divergence or over-shooting (learning rate too large) or slow convergence (learning rate too small) necessitating a high number of iterations (epochs).</p>
+</div>
+<p> <br />
+The linear regression was our starting model. Nature and most dataset are far from being linear! Later in this course, we will see (slightly) more complex machine learning algorithms able to model non-linear behaviour. Linearity is an assumption that should be made with care.</p>
+<figure class="align-default" id="linreg-xkcd-sustainable">
+<a class="reference internal image-reference" href="../_images/linReg_xkcd_sustainable.png"><img alt="../_images/linReg_xkcd_sustainable.png" src="../_images/linReg_xkcd_sustainable.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">. A questionable linear extrapolation, from the great webcomic <a class="reference external" href="https://xkcd.com/1007/">xkcd</a>.</span><a class="headerlink" href="#linreg-xkcd-sustainable" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./basics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="lin_reg_5_learning_rate.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Learning Rate</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    <div class="extra_footer">
+      <div style="display:flex; align-items:center; gap:10px;">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+    <img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" alt="CC Logo">
+  </a>
+  <div>
+    By Claire David • © 2025<br>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+  </div>
+</div>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
