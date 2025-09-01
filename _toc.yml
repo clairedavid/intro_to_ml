@@ -3,9 +3,7 @@
 
 format: jb-book
 root: intro
-options:
-  numbered: true
-  collapsible: true
+
 parts:
   - caption: About this course
     numbered: false
@@ -17,6 +15,15 @@ parts:
     - file: about/evaluation
 
   - caption: The basics
-    numbered: true
+    numbered: false
     chapters:
-    - file: basics/notations
+    - file: basics/linear_regression
+      sections:
+      - file: basics/lin_reg_1_notations
+      - file: basics/lin_reg_2_cost_function
+      - file: basics/lin_reg_3_gradient_descent_1d
+      - file: basics/lin_reg_4_gradient_descent_multiD
+      - file: basics/lin_reg_5_learning_rate
+      - file: basics/lin_reg_6_gradient_descent_in_practice
+
+
