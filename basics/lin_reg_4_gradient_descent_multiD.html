@@ -196,6 +196,43 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="logistic_regression.html">
+   Logistic Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_1_intro.html">
+     Logistic Regression: introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_2_sigmoid.html">
+     What is the Sigmoid Function?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_3_cost_function.html">
+     Cost Function for Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_4_gradient_descent.html">
+     Gradient Descent for Logistic Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_5_multiclass.html">
+     Multiclassification
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </div>
@@ -446,45 +483,45 @@ Additional input features can be visualized in the form of a table:</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>51.525361</td>
-      <td>0.845784</td>
-      <td>1881.472888</td>
-      <td>0.049315</td>
+      <td>48.812292</td>
+      <td>1.865554</td>
+      <td>2029.502460</td>
+      <td>-0.012425</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>50.837098</td>
-      <td>1.433998</td>
-      <td>1963.667105</td>
-      <td>-0.078523</td>
+      <td>46.457542</td>
+      <td>-1.556460</td>
+      <td>2024.482855</td>
+      <td>0.109284</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>51.299685</td>
-      <td>-1.200450</td>
-      <td>1977.389050</td>
-      <td>-0.058057</td>
+      <td>50.917511</td>
+      <td>1.585751</td>
+      <td>2160.559049</td>
+      <td>-0.197473</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>47.233193</td>
-      <td>0.517154</td>
-      <td>1820.636724</td>
-      <td>-0.279953</td>
+      <td>52.207173</td>
+      <td>-2.623431</td>
+      <td>2103.733719</td>
+      <td>-0.013553</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>51.548398</td>
-      <td>-1.056581</td>
-      <td>2190.549365</td>
-      <td>0.026947</td>
+      <td>47.962244</td>
+      <td>-2.820481</td>
+      <td>1989.932997</td>
+      <td>0.041633</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>47.239671</td>
-      <td>2.174782</td>
-      <td>2055.892301</td>
-      <td>0.155863</td>
+      <td>58.023466</td>
+      <td>2.445620</td>
+      <td>1978.445141</td>
+      <td>0.116331</td>
     </tr>
   </tbody>
 </table>
@@ -548,7 +585,7 @@ h_\theta(\boldsymbol{x^{(i)}}) = \theta_0 + \theta_1 x^{(i)}_1 + \theta_2 x^{(i)
   \begin{pmatrix} \theta_0 \\\theta_1 \\ \\\vdots \\  \\\theta_n \\\end{pmatrix} = \; \boldsymbol{x^{(i)}} \cdot  \boldsymbol{\theta}
 \end{equation*}\]</div>
 <section id="gradient-descent-in-multilinear-regression">
-<span id="warmup-linregmulti-graddesc"></span><h2>Gradient Descent in Multilinear Regression<a class="headerlink" href="#gradient-descent-in-multilinear-regression" title="Permalink to this headline">#</a></h2>
+<span id="linregmulti-graddesc"></span><h2>Gradient Descent in Multilinear Regression<a class="headerlink" href="#gradient-descent-in-multilinear-regression" title="Permalink to this headline">#</a></h2>
 <p>We will revisit our algorithm to generalize it to <span class="math notranslate nohighlight">\(\theta_n\)</span> parameters:</p>
 <div class="proof algorithm admonition" id="GD_algo_multi">
 <p class="admonition-title"><span class="caption-number">Algorithm 2 </span> (Gradient Descent for Multivariate Linear Regression)</p>
@@ -582,7 +619,7 @@ y^{(m)}\end{pmatrix}
 <li><p>Number of epochs <span class="math notranslate nohighlight">\(N\)</span>
  <br />
 <strong>Outputs</strong><br />
-The optimized values of model parameters <span class="math notranslate nohighlight">\(\boldsymbol{\theta} = \theta_0, \theta_1, \cdot , \theta_n\)</span> minimizing <span class="math notranslate nohighlight">\(J(\boldsymbol{\theta})\)</span>.</p></li>
+The optimized values of model parameters <span class="math notranslate nohighlight">\(\boldsymbol{\theta} = \theta_0, \theta_1, \ldots , \theta_n\)</span> minimizing <span class="math notranslate nohighlight">\(J(\boldsymbol{\theta})\)</span>.</p></li>
 </ul>
 <ol>
 <li><p><strong>Initialization</strong>: Set random values for all model parameters <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span></p></li>
@@ -593,11 +630,11 @@ The optimized values of model parameters <span class="math notranslate nohighlig
 </ol>
 <div class="math notranslate nohighlight" id="equation-updatemulti">
 <span class="eqno">(11)<a class="headerlink" href="#equation-updatemulti" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{equation*} \\
-  \frac{\partial }{\partial \theta_j} J(\boldsymbol{\theta})$ for each $\theta_j
+  \frac{\partial }{\partial \theta_j} J(\boldsymbol{\theta}) \;   \;   \;  \;   \;   \;  \forall j \in [0..n]
 \end{equation*}\end{split}\]</div>
 <p> <br />
-2. <strong>Update all parameters</strong>:<br />
-Use the update rule:<br />
+      2. <strong>Update all parameters</strong>:<br />
+      Use the update rule:<br />
  </p>
 <div class="math notranslate nohighlight" id="equation-eqgdlincostmulti">
 <span class="eqno">(12)<a class="headerlink" href="#equation-eqgdlincostmulti" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{equation*} \\

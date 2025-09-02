@@ -1,3 +1,4 @@
+(linReg:Cost)=
 # Cost Function in Linear Regression
 
 ## Definitions

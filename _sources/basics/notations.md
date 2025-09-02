@@ -1,3 +1,0 @@
-# Notations & ML jargon
-
-TODO

@@ -196,6 +196,43 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="logistic_regression.html">
+   Logistic Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_1_intro.html">
+     Logistic Regression: introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_2_sigmoid.html">
+     What is the Sigmoid Function?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_3_cost_function.html">
+     Cost Function for Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_4_gradient_descent.html">
+     Gradient Descent for Logistic Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_5_multiclass.html">
+     Multiclassification
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </div>
@@ -427,15 +464,15 @@ title="Print to PDF"
 <p class="admonition-title"><span class="caption-number">Definition 6 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>Normal Equation</strong> gives the exact solution for the parameters that minimize the mean squared error in linear regression. For a dataset with input matrix <span class="math notranslate nohighlight">\(X\)</span> and output vector <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5c0576df-a88d-45e8-8b6b-24a97ff86f37">
-<span class="eqno">(5)<a class="headerlink" href="#equation-5c0576df-a88d-45e8-8b6b-24a97ff86f37" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e3a70ae9-3415-4ca5-9c32-9f82717b4310">
+<span class="eqno">(5)<a class="headerlink" href="#equation-e3a70ae9-3415-4ca5-9c32-9f82717b4310" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \theta = (X^T X)^{-1} X^T \boldsymbol{y}
 \end{equation}\]</div>
 </section>
 </div><p>Here, <span class="math notranslate nohighlight">\(X\)</span> includes a column of ones for the intercept term. This formula computes the optimal parameters directly.</p>
 <p>In our 1D case with a single input feature, the parameters can also be written explicitly as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fab7eefd-a564-4be5-af00-c56f28bee907">
-<span class="eqno">(6)<a class="headerlink" href="#equation-fab7eefd-a564-4be5-af00-c56f28bee907" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f5ee6bc6-cb15-47bb-aac4-7332e18897b9">
+<span class="eqno">(6)<a class="headerlink" href="#equation-f5ee6bc6-cb15-47bb-aac4-7332e18897b9" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \theta_1 = \frac{\sum_i (x_i - \bar{x})(y_i - \bar{y})}{\sum_i (x_i - \bar{x})^2}, \quad
 \theta_0 = \bar{y} - \theta_1 \bar{x}
 \end{equation}\]</div>

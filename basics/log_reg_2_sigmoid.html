@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Cost Function in Linear Regression &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    <title>What is the Sigmoid Function? &#8212; Introduction&lt;br&gt; to Machine Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Gradient Descent in 1D" href="lin_reg_3_gradient_descent_1d.html" />
-    <link rel="prev" title="Notations" href="lin_reg_1_notations.html" />
+    <link rel="next" title="Cost Function for Classification" href="log_reg_3_cost_function.html" />
+    <link rel="prev" title="Logistic Regression: introduction" href="log_reg_1_intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -154,23 +154,23 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="linear_regression.html">
    Warm-up: Linear Regression
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="lin_reg_1_notations.html">
      Notations
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_2_cost_function.html">
      Cost Function in Linear Regression
     </a>
    </li>
@@ -196,23 +196,23 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="logistic_regression.html">
    Logistic Regression
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="log_reg_1_intro.html">
      Logistic Regression: introduction
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="log_reg_2_sigmoid.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      What is the Sigmoid Function?
     </a>
    </li>
@@ -306,7 +306,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/basics/lin_reg_2_cost_function.md"
+        <a href="../_sources/basics/log_reg_2_sigmoid.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -366,18 +366,23 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definitions">
-   Definitions
+  <a class="reference internal nav-link" href="#general-definition">
+   General definition
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cooking-with-the-cost-function">
-   Cooking with the Cost Function
+  <a class="reference internal nav-link" href="#a-better-mapping">
+   A better mapping
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-the-cost">
-   Visualizing the cost
+  <a class="reference internal nav-link" href="#sigmoid-function-for-logistic-regression">
+   Sigmoid function for logistic regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decision-making">
+   Decision making
   </a>
  </li>
 </ul>
@@ -389,7 +394,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Cost Function in Linear Regression</h1>
+                <h1>What is the Sigmoid Function?</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -400,18 +405,23 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definitions">
-   Definitions
+  <a class="reference internal nav-link" href="#general-definition">
+   General definition
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cooking-with-the-cost-function">
-   Cooking with the Cost Function
+  <a class="reference internal nav-link" href="#a-better-mapping">
+   A better mapping
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-the-cost">
-   Visualizing the cost
+  <a class="reference internal nav-link" href="#sigmoid-function-for-logistic-regression">
+   Sigmoid function for logistic regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decision-making">
+   Decision making
   </a>
  </li>
 </ul>
@@ -424,78 +434,106 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="cost-function-in-linear-regression">
-<span id="linreg-cost"></span><h1>Cost Function in Linear Regression<a class="headerlink" href="#cost-function-in-linear-regression" title="Permalink to this headline">#</a></h1>
-<section id="definitions">
-<h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">#</a></h2>
-<p>The accuracy of the mapping function is measured by using a cost function.</p>
-<div class="proof definition admonition" id="costFunction">
-<p class="admonition-title"><span class="caption-number">Definition 4 </span></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="what-is-the-sigmoid-function">
+<span id="class-sigmoid"></span><h1>What is the Sigmoid Function?<a class="headerlink" href="#what-is-the-sigmoid-function" title="Permalink to this headline">#</a></h1>
+<section id="general-definition">
+<h2>General definition<a class="headerlink" href="#general-definition" title="Permalink to this headline">#</a></h2>
+<p>A sigmoid function refers in mathematics to a category of functions having a characteristic “S-shape” curve. Among numerous examples, the one commonly used in machine learning is the logistic function.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>To avoid confusion with the fact we already use <span class="math notranslate nohighlight">\(x\)</span> for the input features, the input variable in the definition opposite is written with another letter, <span class="math notranslate nohighlight">\(z\)</span>.</p>
+</aside>
+<div class="proof definition admonition" id="logFuncDef">
+<p class="admonition-title"><span class="caption-number">Definition 15 </span></p>
 <section class="definition-content" id="proof-content">
-<p>The <strong>cost function</strong> in linear regression returns a global error between the predicted values from a mapping function <span class="math notranslate nohighlight">\(h\)</span> (predictions) and all the target values (observations) of the training data set.</p>
+<p>The <strong>logistic function</strong> is defined for <span class="math notranslate nohighlight">\(z \in \mathbb{R}\)</span> as</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\sigma(z) = \frac{1}{1 + e^{-z}}
+\end{equation*}\]</div>
 </section>
-</div><div class="proof definition admonition" id="mseDef">
-<p class="admonition-title"><span class="caption-number">Definition 5 </span></p>
-<section class="definition-content" id="proof-content">
-<p>The <strong>Mean Squared Error (MSE)</strong>, also called <strong>squared error function</strong> is a commonly used cost function for linear regression. It is defined as:</p>
-<div class="math notranslate nohighlight" id="equation-costfunctionlinreg">
-<span class="eqno">(3)<a class="headerlink" href="#equation-costfunctionlinreg" title="Permalink to this equation">#</a></span>\[ J\left(\theta_0, \theta_1\right) =\frac{1}{2 m} \sum_{i=1}^m\left(h_\theta(x^{(i)})-y^{(i)}\right)^2\]</div>
-</section>
-</div><p>You can recognize the form of an average. The factor <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> makes it convenient when taking the derivative of this expression.
-In Equation <a class="reference internal" href="#equation-costfunctionlinreg">(3)</a>, each <span class="math notranslate nohighlight">\(h_\theta (x^{(i)})\)</span> is a prediction done by our mapping function <span class="math notranslate nohighlight">\(h_\theta\)</span>, whereas each <span class="math notranslate nohighlight">\(y_i\)</span> is an observed value in the data.</p>
-<p>The initial goal to “fit the data well” can now be formulated in a mathematical way: <strong>find the parameters <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> that minimize the cost function</strong>:</p>
-<div class="math notranslate nohighlight" id="equation-mincostfunction">
-<span class="eqno">(4)<a class="headerlink" href="#equation-mincostfunction" title="Permalink to this equation">#</a></span>\[\min_{\theta_0, \theta_1} J\left(\theta_0, \theta_1\right)\]</div>
-</section>
-<section id="cooking-with-the-cost-function">
-<h2>Cooking with the Cost Function<a class="headerlink" href="#cooking-with-the-cost-function" title="Permalink to this headline">#</a></h2>
-<p>Now comes an exercise to compute the cost function ‘by hand’ so you can get a feel for the equation above… and, by a huge extrapolation, the staggering number of computations that happen in any machine learning task.<br />
-We’ll use a super simple dataset with just four samples:</p>
-<figure class="align-default" id="plot-linreg-1234" style="width: 80%">
+</div><p>It looks like this:</p>
+<figure class="align-default" id="sigmoid-example">
 <div class="cell_output docutils container">
-<img alt="../_images/lin_reg_gd_plots_6_0.png" src="../_images/lin_reg_gd_plots_6_0.png" />
+<img alt="../_images/log_reg_plots_4_0.png" src="../_images/log_reg_plots_4_0.png" />
 </div>
 </figure>
-<p>This is an ideal case for pedagogical purposes. What are the values of <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> here?</p>
-<div class="tip dropdown admonition">
-<p class="admonition-title">Check your answers</p>
-<p>Recall the mapping function for linear regression: <span class="math notranslate nohighlight">\(h_\theta(x) = \theta_0 + \theta_1 x\)</span>. As we have a correspondance <span class="math notranslate nohighlight">\(y = 2x\)</span> for all points, so <span class="math notranslate nohighlight">\(h_\theta(x) = 2x\)</span>, so <span class="math notranslate nohighlight">\(\theta_0 = 0\)</span> and <span class="math notranslate nohighlight">\(\theta_1 = 2\)</span>.</p>
-</div>
-<p>You will appreciate the simplification, as we will calculate the cost by hand for different values of <span class="math notranslate nohighlight">\(\theta_1\)</span>. More complicated things await you in the tutorial, promised.</p>
-<div class="seealso admonition">
-<p class="admonition-title">Exercise</p>
-<ul class="simple">
-<li><p>Start with a value of <span class="math notranslate nohighlight">\(\theta_1\)</span> = 1 and calculate the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span>.</p></li>
-<li><p>Proceed the same for other values of <span class="math notranslate nohighlight">\(\theta_1\)</span> of 0.5, 1.5, 2, 2.5, 3.</p></li>
-<li><p>How would the graph of the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span> as a function of <span class="math notranslate nohighlight">\(\theta_1\)</span> look like?</p></li>
-<li><p>Are there maxima/minima? If yes how many?</p></li>
-</ul>
-</div>
-<div class="tip dropdown admonition">
-<p class="admonition-title">Solutions  ✋  Don’t look too soon! Give it a try first.</p>
-<p>The values of the cost function for each <span class="math notranslate nohighlight">\(\theta_1\)</span> are reported on the plot below:</p>
-<figure class="align-default" id="plot-linreg-costvstheta1">
-<div class="cell_output docutils container">
-<img alt="../_images/lin_reg_gd_plots_10_0.png" src="../_images/lin_reg_gd_plots_10_0.png" />
-</div>
-</figure>
-<p>We see that in this configuration, as we ‘swipe’ over the data points with ‘candidate’ straight lines, there will be a value for which we minimize our cost function. That is the value we look for (but you will learn to make such fancy plot during the tutorials).</p>
-</div>
-<p>This was with only one parameter. How do we proceed to minimize with two parameters?</p>
 </section>
-<section id="visualizing-the-cost">
-<span id="linreg-cost-viscost"></span><h2>Visualizing the cost<a class="headerlink" href="#visualizing-the-cost" title="Permalink to this headline">#</a></h2>
-<p>Let’s see a visual representation of our cost function as a function of our <span class="math notranslate nohighlight">\(\theta\)</span> parameters. We saw in the simple example above that the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span> with only one parameter is a U-shaped parabola. The same goes if we fix <span class="math notranslate nohighlight">\(\theta_1\)</span> and vary <span class="math notranslate nohighlight">\(\theta_0\)</span>. Combining the two, it will look like a bowl. The figure below is not made from the data above, just for illustration:</p>
-<figure class="align-default" id="plot-linreg-bowl">
-<div class="cell_output docutils container">
-<img alt="../_images/lin_reg_gd_plots_3_0.png" src="../_images/lin_reg_gd_plots_3_0.png" />
-</div>
+<section id="a-better-mapping">
+<span id="class-sigmoid-better"></span><h2>A better mapping<a class="headerlink" href="#a-better-mapping" title="Permalink to this headline">#</a></h2>
+<p>In our example with the energy of the electron, we could see from the data (easily because it is only in one dimension) that the bigger the energy of the electron, the more likely it is for the event to be classified as signal. If we overlay the S-curve on the data points, we start seeing interesting things.</p>
+<figure class="align-center" id="scattersigmoid">
+<a class="reference internal image-reference" href="../_images/logReg_scatter1D_sigmoid.png"><img alt="../_images/logReg_scatter1D_sigmoid.png" src="../_images/logReg_scatter1D_sigmoid.png" style="width: 672.0px; height: 378.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">. The cost function (vertical axis) as a function of the parameters <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span>.</span><a class="headerlink" href="#plot-linreg-bowl" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">. Data 1D distribution and sigmoid overlaid</span><a class="headerlink" href="#scattersigmoid" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>What does this represent? It shows the result of the cost function calculated for a range of <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> parameters. For each coordinate (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span>), there has been a loop over all the training data set to get the global error. The vertical value shows thus how ‘costly’ it is to pick up a given (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span>). The higher, the worse is the fit. The center of the bowl, where <span class="math notranslate nohighlight">\(J(\theta_0 , \theta_1)\)</span> is minimum, corresponds to the best choice of the <span class="math notranslate nohighlight">\(\theta\)</span> parameters. In other words: the best fit to the data.</p>
-<p>How do we proceed to find the <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> parameters minimizing the cost function?</p>
+<p>First of all, the curve is not overshooting below or above our discrete outcomes’ range. Second: for data points either far left or far right, instead of creating a large error with a straight line as previously, the S-curve actually takes the values of our target-variables (asymptotically). Consequence: the error between the prediction and observed values will be very small, even negligible. We will not have an unwanted shift and mis-classification like before.</p>
+</section>
+<section id="sigmoid-function-for-logistic-regression">
+<h2>Sigmoid function for logistic regression<a class="headerlink" href="#sigmoid-function-for-logistic-regression" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="mappingSigDef">
+<p class="admonition-title"><span class="caption-number">Definition 16 </span></p>
+<section class="definition-content" id="proof-content">
+<p>A <strong>mapping function</strong> <span class="math notranslate nohighlight">\(h_\theta(x)\)</span> used for logistic regression is of the form:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+h_\theta (\boldsymbol{x}^{(i)}) =  \sigma(\boldsymbol{x}^{(i)}\, \boldsymbol{\theta} ) = \frac{1}{1 + e^{- \boldsymbol{x}^{(i)}\, \boldsymbol{\theta} }}
+\end{equation*}\]</div>
+<p>where vector <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(i)}\)</span> are the input features and <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> the parameters to optimize.</p>
+</section>
+</div><p>The mapping function satisfies</p>
+<div class="math notranslate nohighlight" id="equation-hthetabounded">
+<span class="eqno">(15)<a class="headerlink" href="#equation-hthetabounded" title="Permalink to this equation">#</a></span>\[0 &lt; h_\boldsymbol{\theta} (\boldsymbol{x}^{(i)}) &lt; 1\]</div>
+<p>Those limits are reached asymptotically reaching 0 and 1 when <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(i)}\, \boldsymbol{\theta}  \rightarrow -\infty\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(i)}\, \boldsymbol{\theta}  \rightarrow +\infty\)</span> respectively.</p>
+<p>Intuitively, we see in our example that events with very low electron energy are most likely to be background whereas events with high electron energy are more likely to be signal. In the middle, there is a 50/50 chance to mis-classify an event.</p>
+<p><strong>The output of the sigmoid can be interpreted as a probability</strong>.</p>
+</section>
+<section id="decision-making">
+<h2>Decision making<a class="headerlink" href="#decision-making" title="Permalink to this headline">#</a></h2>
+<p>Imagine we have optimized our vector <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> parameters. How do we make a prediction?
+Previously with linear regression, we could predict the target <span class="math notranslate nohighlight">\(y^\text{pred}\)</span> from a new data variable <span class="math notranslate nohighlight">\(\boldsymbol{x}^\text{new}\)</span> (a row of all features) by directly using the hypothesis function:</p>
+<div class="math notranslate nohighlight" id="equation-ypredthetaxnew">
+<span class="eqno">(16)<a class="headerlink" href="#equation-ypredthetaxnew" title="Permalink to this equation">#</a></span>\[y^\text{pred} = h_\boldsymbol{\theta}(\boldsymbol{x}^\text{new}) =  \boldsymbol{x}^\text{new} \boldsymbol{\theta}\]</div>
+<p>With discrete outcomes, we need a new concept to map the input to a discrete class: the decision boundary.</p>
+<div class="proof definition admonition" id="decBoundDef">
+<p class="admonition-title"><span class="caption-number">Definition 17 </span></p>
+<section class="definition-content" id="proof-content">
+<p>A <strong>decision boundary</strong> is a defined threshold (line, or plane, or more dimensional set of values) created by classifiers to discriminate between the different classes.</p>
+</section>
+</div><p>In the section <a class="reference internal" href="#class-sigmoid-better"><span class="std std-ref">A better mapping</span></a> above, we can split the data sample using <span class="math notranslate nohighlight">\(\sigma (z) = 1/2\)</span> horizontal mark:</p>
+<ul class="simple">
+<li><p>if the logistic function outputs a value <span class="math notranslate nohighlight">\(y^\text{pred} &lt; 0.5\)</span>, the event is classified as background</p></li>
+<li><p>if the logistic function outputs a value <span class="math notranslate nohighlight">\(y^\text{pred} \geq 0.5\)</span>, the event is classified as signal</p></li>
+</ul>
+<p>This way and looking at the distribution on <a class="reference internal" href="#scattersigmoid"><span class="std std-numref">Fig. 11</span></a>, the majority of data points will be correctly classified with the <span class="math notranslate nohighlight">\(1/2\)</span> horizontal threshold.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Careful with how the logistic function is used. We are not computing it directly with <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(i)}\)</span> as argument but we calculate <span class="math notranslate nohighlight">\(\sigma(\boldsymbol{x}^{(i)}\, \boldsymbol{\theta})\)</span>.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Question</p>
+<p>How does this boundary translates for sigmoid’s input <span class="math notranslate nohighlight">\(z = \boldsymbol{x}^\text{new} \, \boldsymbol{\theta} \)</span>?</p>
+<p>Look at the first figure on top of this section. For which input values <span class="math notranslate nohighlight">\(z\)</span> is the sigmoid lower than 0.5? For which values is the sigmoid above?</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Answer</p>
+<p>The logistic function <span class="math notranslate nohighlight">\(\sigma(z)\)</span> verifies:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\sigma(z) &lt; 0.5\)</span> for <span class="math notranslate nohighlight">\(z &lt; 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma(z) \geq 0.5\)</span> for <span class="math notranslate nohighlight">\(z \geq 0\)</span></p></li>
+</ul>
+<p>Thus, to predict if a new data point <span class="math notranslate nohighlight">\(\boldsymbol{x}^\text{new}\)</span> (row vector of input features) is background of signal, the decision boundary is simply the sign of <span class="math notranslate nohighlight">\(\boldsymbol{x}^\text{new} \, \boldsymbol{\theta}\)</span></p>
+<ul class="simple">
+<li><p>if <span class="math notranslate nohighlight">\(\boldsymbol{x}^\text{new} \, \boldsymbol{\theta} &lt; 0 \Rightarrow\)</span> the event is classified as background</p></li>
+<li><p>if <span class="math notranslate nohighlight">\(\boldsymbol{x}^\text{new} \, \boldsymbol{\theta} \geq 0 \Rightarrow\)</span> the event is classified as signal</p></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here the input does not have to be linear. We can have any function of the <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> parameters and <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(i)}\)</span>. In this lecture, we keep the assumption of linearity.</p>
+</div>
+<p>With this new tool at hand, let’s now see how it is incorporated in a custom-made cost function for logistic regression.</p>
 </section>
 </section>
 
@@ -526,17 +564,17 @@ We’ll use a super simple dataset with just four samples:</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="lin_reg_1_notations.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="log_reg_1_intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Notations</p>
+            <p class="prev-next-title">Logistic Regression: introduction</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="lin_reg_3_gradient_descent_1d.html" title="next page">
+    <a class='right-next' id="next-link" href="log_reg_3_cost_function.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Gradient Descent in 1D</p>
+        <p class="prev-next-title">Cost Function for Classification</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

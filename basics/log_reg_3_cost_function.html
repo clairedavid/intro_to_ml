@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Cost Function in Linear Regression &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    <title>Cost Function for Classification &#8212; Introduction&lt;br&gt; to Machine Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Gradient Descent in 1D" href="lin_reg_3_gradient_descent_1d.html" />
-    <link rel="prev" title="Notations" href="lin_reg_1_notations.html" />
+    <link rel="next" title="Gradient Descent for Logistic Regression" href="log_reg_4_gradient_descent.html" />
+    <link rel="prev" title="What is the Sigmoid Function?" href="log_reg_2_sigmoid.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -154,23 +154,23 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="linear_regression.html">
    Warm-up: Linear Regression
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="lin_reg_1_notations.html">
      Notations
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_2_cost_function.html">
      Cost Function in Linear Regression
     </a>
    </li>
@@ -196,16 +196,16 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="logistic_regression.html">
    Logistic Regression
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="log_reg_1_intro.html">
      Logistic Regression: introduction
@@ -216,8 +216,8 @@ const thebe_selector_output = ".output, .cell_output"
      What is the Sigmoid Function?
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="log_reg_3_cost_function.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Cost Function for Classification
     </a>
    </li>
@@ -306,7 +306,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/basics/lin_reg_2_cost_function.md"
+        <a href="../_sources/basics/log_reg_3_cost_function.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -366,18 +366,13 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definitions">
-   Definitions
+  <a class="reference internal nav-link" href="#wavy-least-squares">
+   Wavy least squares
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cooking-with-the-cost-function">
-   Cooking with the Cost Function
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-the-cost">
-   Visualizing the cost
+  <a class="reference internal nav-link" href="#building-a-new-cost-function">
+   Building a new cost function
   </a>
  </li>
 </ul>
@@ -389,7 +384,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Cost Function in Linear Regression</h1>
+                <h1>Cost Function for Classification</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -400,18 +395,13 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definitions">
-   Definitions
+  <a class="reference internal nav-link" href="#wavy-least-squares">
+   Wavy least squares
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cooking-with-the-cost-function">
-   Cooking with the Cost Function
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-the-cost">
-   Visualizing the cost
+  <a class="reference internal nav-link" href="#building-a-new-cost-function">
+   Building a new cost function
   </a>
  </li>
 </ul>
@@ -424,78 +414,43 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="cost-function-in-linear-regression">
-<span id="linreg-cost"></span><h1>Cost Function in Linear Regression<a class="headerlink" href="#cost-function-in-linear-regression" title="Permalink to this headline">#</a></h1>
-<section id="definitions">
-<h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">#</a></h2>
-<p>The accuracy of the mapping function is measured by using a cost function.</p>
-<div class="proof definition admonition" id="costFunction">
-<p class="admonition-title"><span class="caption-number">Definition 4 </span></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="cost-function-for-classification">
+<h1>Cost Function for Classification<a class="headerlink" href="#cost-function-for-classification" title="Permalink to this headline">#</a></h1>
+<section id="wavy-least-squares">
+<h2>Wavy least squares<a class="headerlink" href="#wavy-least-squares" title="Permalink to this headline">#</a></h2>
+<p>If we plug our sigmoid hypothesis function <span class="math notranslate nohighlight">\(h_\boldsymbol{\theta}(x)\)</span> into the cost function defined for linear regression (Equation <a class="reference internal" href="lin_reg_2_cost_function.html#equation-costfunctionlinreg">(3)</a> from Lecture <a class="reference internal" href="lin_reg_2_cost_function.html#linreg-cost"><span class="std std-ref">Cost Function for Linear Regression</span></a>), we will have a complex non-linear function that could be non-convex. The cost function could take this form:</p>
+<figure class="align-default" id="poly3minima-example" style="width: 80%">
+<div class="cell_output docutils container">
+<img alt="../_images/log_reg_plots_10_0.png" src="../_images/log_reg_plots_10_0.png" />
+</div>
+</figure>
+<p>Imagine running a gradient descent procedue that starts from a randomly initialized <span class="math notranslate nohighlight">\(\theta_0\)</span> parameter around zero (or worse, lower than -2). It will fall into a local minima. Our cost function will not be at the global minimum! It is crucial to work with a cost function accepting one unique minimum.</p>
+</section>
+<section id="building-a-new-cost-function">
+<h2>Building a new cost function<a class="headerlink" href="#building-a-new-cost-function" title="Permalink to this headline">#</a></h2>
+<p>As we saw in the previous section, the sigmoid fits the 1D data distribution very well. Our cost function will use the hypothesis <span class="math notranslate nohighlight">\(h_\boldsymbol{\theta}(\boldsymbol{x})\)</span> function as input. Recall that the hypothesis <span class="math notranslate nohighlight">\(h_\boldsymbol{\theta}(\boldsymbol{x})\)</span> is bounded between 0 and 1. What we need is a cost function producing high values if we mis-classify events and values close to zero if we correctly label the data. Let’s examine what we want for the two cases:</p>
+<p><strong>Case of a signal event:</strong><br />
+A data point labelled signal verifies by our convention <span class="math notranslate nohighlight">\(y=1\)</span>. If our hypothesis <span class="math notranslate nohighlight">\(y^\text{pred} = h_\boldsymbol{\theta}(\boldsymbol{x})\)</span> is also 1, then we have a good prediction. The cost value should be zero. If however our signal sample has a wrong prediction <span class="math notranslate nohighlight">\(y^\text{pred} = h_\boldsymbol{\theta}(\boldsymbol{x}) = 0\)</span>, then the cost function should take large values to penalize this bad prediction. We need thus a strictly decreasing function, starting with high values and cancelling at the coordinate (1, 0).</p>
+<p><strong>Case of a background event:</strong><br />
+The sigmoid can be interpreted as a probability for a sample being signal or not (but note it is not a probability distribution function). As we have only two outcomes, the probability for a data point to be non-signal will be in the form of <span class="math notranslate nohighlight">\(1 - h_\boldsymbol{\theta}(\boldsymbol{x})\)</span>. We want to find a function with this time a zero cost if the prediction <span class="math notranslate nohighlight">\(y^\text{pred} = h_\boldsymbol{\theta}(\boldsymbol{x}) = 0\)</span> and a high cost for an erroneous prediction <span class="math notranslate nohighlight">\(y^\text{pred} = h_\boldsymbol{\theta}(\boldsymbol{x}) = 1\)</span>.</p>
+<p>Now let’s have a look at these two functions:</p>
+<figure class="align-default" id="log-h-x" style="width: 100%">
+<div class="cell_output docutils container">
+<img alt="../_images/log_reg_plots_12_1.png" src="../_images/log_reg_plots_12_1.png" />
+</div>
+</figure>
+<p>For each case, the cost function has only one minimum and harshly penalizes wrong prediction by blowing up at infinity.<br />
+How to combine these two into one cost function for logistic regression?<br />
+Like this:</p>
+<div class="proof definition admonition" id="costFLogRegDef">
+<p class="admonition-title"><span class="caption-number">Definition 18 </span></p>
 <section class="definition-content" id="proof-content">
-<p>The <strong>cost function</strong> in linear regression returns a global error between the predicted values from a mapping function <span class="math notranslate nohighlight">\(h\)</span> (predictions) and all the target values (observations) of the training data set.</p>
+<p>The <strong>cost function for logistic regression</strong> is defined as:</p>
+<div class="math notranslate nohighlight" id="equation-costfunctionlogreg">
+<span class="eqno">(17)<a class="headerlink" href="#equation-costfunctionlogreg" title="Permalink to this equation">#</a></span>\[J(\boldsymbol{\theta}) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; {\color{RoyalBlue}y^{(i)} \log\left( h_\boldsymbol{\theta}(\boldsymbol{x}^{(i)} ) \right) }\;\;+\;\; {\color{OliveGreen}(1- y^{(i)}) \log\left( 1 - h_\boldsymbol{\theta}(\boldsymbol{x}^{(i)} ) \right)} \;\;\right]\]</div>
+<p>This function is also called <strong>cross-entropy loss function</strong> and is the standard cost function for binary classifiers.</p>
 </section>
-</div><div class="proof definition admonition" id="mseDef">
-<p class="admonition-title"><span class="caption-number">Definition 5 </span></p>
-<section class="definition-content" id="proof-content">
-<p>The <strong>Mean Squared Error (MSE)</strong>, also called <strong>squared error function</strong> is a commonly used cost function for linear regression. It is defined as:</p>
-<div class="math notranslate nohighlight" id="equation-costfunctionlinreg">
-<span class="eqno">(3)<a class="headerlink" href="#equation-costfunctionlinreg" title="Permalink to this equation">#</a></span>\[ J\left(\theta_0, \theta_1\right) =\frac{1}{2 m} \sum_{i=1}^m\left(h_\theta(x^{(i)})-y^{(i)}\right)^2\]</div>
-</section>
-</div><p>You can recognize the form of an average. The factor <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> makes it convenient when taking the derivative of this expression.
-In Equation <a class="reference internal" href="#equation-costfunctionlinreg">(3)</a>, each <span class="math notranslate nohighlight">\(h_\theta (x^{(i)})\)</span> is a prediction done by our mapping function <span class="math notranslate nohighlight">\(h_\theta\)</span>, whereas each <span class="math notranslate nohighlight">\(y_i\)</span> is an observed value in the data.</p>
-<p>The initial goal to “fit the data well” can now be formulated in a mathematical way: <strong>find the parameters <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> that minimize the cost function</strong>:</p>
-<div class="math notranslate nohighlight" id="equation-mincostfunction">
-<span class="eqno">(4)<a class="headerlink" href="#equation-mincostfunction" title="Permalink to this equation">#</a></span>\[\min_{\theta_0, \theta_1} J\left(\theta_0, \theta_1\right)\]</div>
-</section>
-<section id="cooking-with-the-cost-function">
-<h2>Cooking with the Cost Function<a class="headerlink" href="#cooking-with-the-cost-function" title="Permalink to this headline">#</a></h2>
-<p>Now comes an exercise to compute the cost function ‘by hand’ so you can get a feel for the equation above… and, by a huge extrapolation, the staggering number of computations that happen in any machine learning task.<br />
-We’ll use a super simple dataset with just four samples:</p>
-<figure class="align-default" id="plot-linreg-1234" style="width: 80%">
-<div class="cell_output docutils container">
-<img alt="../_images/lin_reg_gd_plots_6_0.png" src="../_images/lin_reg_gd_plots_6_0.png" />
-</div>
-</figure>
-<p>This is an ideal case for pedagogical purposes. What are the values of <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> here?</p>
-<div class="tip dropdown admonition">
-<p class="admonition-title">Check your answers</p>
-<p>Recall the mapping function for linear regression: <span class="math notranslate nohighlight">\(h_\theta(x) = \theta_0 + \theta_1 x\)</span>. As we have a correspondance <span class="math notranslate nohighlight">\(y = 2x\)</span> for all points, so <span class="math notranslate nohighlight">\(h_\theta(x) = 2x\)</span>, so <span class="math notranslate nohighlight">\(\theta_0 = 0\)</span> and <span class="math notranslate nohighlight">\(\theta_1 = 2\)</span>.</p>
-</div>
-<p>You will appreciate the simplification, as we will calculate the cost by hand for different values of <span class="math notranslate nohighlight">\(\theta_1\)</span>. More complicated things await you in the tutorial, promised.</p>
-<div class="seealso admonition">
-<p class="admonition-title">Exercise</p>
-<ul class="simple">
-<li><p>Start with a value of <span class="math notranslate nohighlight">\(\theta_1\)</span> = 1 and calculate the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span>.</p></li>
-<li><p>Proceed the same for other values of <span class="math notranslate nohighlight">\(\theta_1\)</span> of 0.5, 1.5, 2, 2.5, 3.</p></li>
-<li><p>How would the graph of the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span> as a function of <span class="math notranslate nohighlight">\(\theta_1\)</span> look like?</p></li>
-<li><p>Are there maxima/minima? If yes how many?</p></li>
-</ul>
-</div>
-<div class="tip dropdown admonition">
-<p class="admonition-title">Solutions  ✋  Don’t look too soon! Give it a try first.</p>
-<p>The values of the cost function for each <span class="math notranslate nohighlight">\(\theta_1\)</span> are reported on the plot below:</p>
-<figure class="align-default" id="plot-linreg-costvstheta1">
-<div class="cell_output docutils container">
-<img alt="../_images/lin_reg_gd_plots_10_0.png" src="../_images/lin_reg_gd_plots_10_0.png" />
-</div>
-</figure>
-<p>We see that in this configuration, as we ‘swipe’ over the data points with ‘candidate’ straight lines, there will be a value for which we minimize our cost function. That is the value we look for (but you will learn to make such fancy plot during the tutorials).</p>
-</div>
-<p>This was with only one parameter. How do we proceed to minimize with two parameters?</p>
-</section>
-<section id="visualizing-the-cost">
-<span id="linreg-cost-viscost"></span><h2>Visualizing the cost<a class="headerlink" href="#visualizing-the-cost" title="Permalink to this headline">#</a></h2>
-<p>Let’s see a visual representation of our cost function as a function of our <span class="math notranslate nohighlight">\(\theta\)</span> parameters. We saw in the simple example above that the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span> with only one parameter is a U-shaped parabola. The same goes if we fix <span class="math notranslate nohighlight">\(\theta_1\)</span> and vary <span class="math notranslate nohighlight">\(\theta_0\)</span>. Combining the two, it will look like a bowl. The figure below is not made from the data above, just for illustration:</p>
-<figure class="align-default" id="plot-linreg-bowl">
-<div class="cell_output docutils container">
-<img alt="../_images/lin_reg_gd_plots_3_0.png" src="../_images/lin_reg_gd_plots_3_0.png" />
-</div>
-<figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">. The cost function (vertical axis) as a function of the parameters <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span>.</span><a class="headerlink" href="#plot-linreg-bowl" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>What does this represent? It shows the result of the cost function calculated for a range of <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> parameters. For each coordinate (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span>), there has been a loop over all the training data set to get the global error. The vertical value shows thus how ‘costly’ it is to pick up a given (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span>). The higher, the worse is the fit. The center of the bowl, where <span class="math notranslate nohighlight">\(J(\theta_0 , \theta_1)\)</span> is minimum, corresponds to the best choice of the <span class="math notranslate nohighlight">\(\theta\)</span> parameters. In other words: the best fit to the data.</p>
-<p>How do we proceed to find the <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> parameters minimizing the cost function?</p>
+</div><p>Note the negative sign factorized at the beginning of the equation. The first and second term inside the sum are multiplied by <span class="math notranslate nohighlight">\({\color{RoyalBlue}y^{(i)}}\)</span> and <span class="math notranslate nohighlight">\({\color{OliveGreen}(1 - y^{(i)})}\)</span>. This acts as a “switch” between the two possible cases for the targets: <span class="math notranslate nohighlight">\({\color{RoyalBlue}y=1}\)</span> and <span class="math notranslate nohighlight">\({\color{OliveGreen}y=0}\)</span>. If <span class="math notranslate nohighlight">\({\color{RoyalBlue}y=1}\)</span>, the second term cancels out and the cost takes the value of the first. If <span class="math notranslate nohighlight">\({\color{OliveGreen}y=0}\)</span>, the first term vanishes. The two mutually exclusive cases are combined into one mathematical expression.</p>
 </section>
 </section>
 
@@ -526,17 +481,17 @@ We’ll use a super simple dataset with just four samples:</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="lin_reg_1_notations.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="log_reg_2_sigmoid.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Notations</p>
+            <p class="prev-next-title">What is the Sigmoid Function?</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="lin_reg_3_gradient_descent_1d.html" title="next page">
+    <a class='right-next' id="next-link" href="log_reg_4_gradient_descent.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Gradient Descent in 1D</p>
+        <p class="prev-next-title">Gradient Descent for Logistic Regression</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

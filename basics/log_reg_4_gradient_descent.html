@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Cost Function in Linear Regression &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    <title>Gradient Descent for Logistic Regression &#8212; Introduction&lt;br&gt; to Machine Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Gradient Descent in 1D" href="lin_reg_3_gradient_descent_1d.html" />
-    <link rel="prev" title="Notations" href="lin_reg_1_notations.html" />
+    <link rel="next" title="Multiclassification" href="log_reg_5_multiclass.html" />
+    <link rel="prev" title="Cost Function for Classification" href="log_reg_3_cost_function.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -154,23 +154,23 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="linear_regression.html">
    Warm-up: Linear Regression
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="lin_reg_1_notations.html">
      Notations
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_2_cost_function.html">
      Cost Function in Linear Regression
     </a>
    </li>
@@ -196,16 +196,16 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="logistic_regression.html">
    Logistic Regression
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="log_reg_1_intro.html">
      Logistic Regression: introduction
@@ -221,8 +221,8 @@ const thebe_selector_output = ".output, .cell_output"
      Cost Function for Classification
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="log_reg_4_gradient_descent.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Gradient Descent for Logistic Regression
     </a>
    </li>
@@ -306,7 +306,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/basics/lin_reg_2_cost_function.md"
+        <a href="../_sources/basics/log_reg_4_gradient_descent.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -366,18 +366,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definitions">
-   Definitions
+  <a class="reference internal nav-link" href="#derivatives-in-the-linear-case">
+   Derivatives in the linear case
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cooking-with-the-cost-function">
-   Cooking with the Cost Function
+  <a class="reference internal nav-link" href="#gradient-descent-pseudo-code-for-logistic-regression">
+   Gradient descent: pseudo-code for logistic regression
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-the-cost">
-   Visualizing the cost
+  <a class="reference internal nav-link" href="#alternative-techniques">
+   Alternative techniques
   </a>
  </li>
 </ul>
@@ -389,7 +389,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Cost Function in Linear Regression</h1>
+                <h1>Gradient Descent for Logistic Regression</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -400,18 +400,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definitions">
-   Definitions
+  <a class="reference internal nav-link" href="#derivatives-in-the-linear-case">
+   Derivatives in the linear case
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cooking-with-the-cost-function">
-   Cooking with the Cost Function
+  <a class="reference internal nav-link" href="#gradient-descent-pseudo-code-for-logistic-regression">
+   Gradient descent: pseudo-code for logistic regression
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-the-cost">
-   Visualizing the cost
+  <a class="reference internal nav-link" href="#alternative-techniques">
+   Alternative techniques
   </a>
  </li>
 </ul>
@@ -424,78 +424,58 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="cost-function-in-linear-regression">
-<span id="linreg-cost"></span><h1>Cost Function in Linear Regression<a class="headerlink" href="#cost-function-in-linear-regression" title="Permalink to this headline">#</a></h1>
-<section id="definitions">
-<h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">#</a></h2>
-<p>The accuracy of the mapping function is measured by using a cost function.</p>
-<div class="proof definition admonition" id="costFunction">
-<p class="admonition-title"><span class="caption-number">Definition 4 </span></p>
-<section class="definition-content" id="proof-content">
-<p>The <strong>cost function</strong> in linear regression returns a global error between the predicted values from a mapping function <span class="math notranslate nohighlight">\(h\)</span> (predictions) and all the target values (observations) of the training data set.</p>
-</section>
-</div><div class="proof definition admonition" id="mseDef">
-<p class="admonition-title"><span class="caption-number">Definition 5 </span></p>
-<section class="definition-content" id="proof-content">
-<p>The <strong>Mean Squared Error (MSE)</strong>, also called <strong>squared error function</strong> is a commonly used cost function for linear regression. It is defined as:</p>
-<div class="math notranslate nohighlight" id="equation-costfunctionlinreg">
-<span class="eqno">(3)<a class="headerlink" href="#equation-costfunctionlinreg" title="Permalink to this equation">#</a></span>\[ J\left(\theta_0, \theta_1\right) =\frac{1}{2 m} \sum_{i=1}^m\left(h_\theta(x^{(i)})-y^{(i)}\right)^2\]</div>
-</section>
-</div><p>You can recognize the form of an average. The factor <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> makes it convenient when taking the derivative of this expression.
-In Equation <a class="reference internal" href="#equation-costfunctionlinreg">(3)</a>, each <span class="math notranslate nohighlight">\(h_\theta (x^{(i)})\)</span> is a prediction done by our mapping function <span class="math notranslate nohighlight">\(h_\theta\)</span>, whereas each <span class="math notranslate nohighlight">\(y_i\)</span> is an observed value in the data.</p>
-<p>The initial goal to “fit the data well” can now be formulated in a mathematical way: <strong>find the parameters <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> that minimize the cost function</strong>:</p>
-<div class="math notranslate nohighlight" id="equation-mincostfunction">
-<span class="eqno">(4)<a class="headerlink" href="#equation-mincostfunction" title="Permalink to this equation">#</a></span>\[\min_{\theta_0, \theta_1} J\left(\theta_0, \theta_1\right)\]</div>
-</section>
-<section id="cooking-with-the-cost-function">
-<h2>Cooking with the Cost Function<a class="headerlink" href="#cooking-with-the-cost-function" title="Permalink to this headline">#</a></h2>
-<p>Now comes an exercise to compute the cost function ‘by hand’ so you can get a feel for the equation above… and, by a huge extrapolation, the staggering number of computations that happen in any machine learning task.<br />
-We’ll use a super simple dataset with just four samples:</p>
-<figure class="align-default" id="plot-linreg-1234" style="width: 80%">
-<div class="cell_output docutils container">
-<img alt="../_images/lin_reg_gd_plots_6_0.png" src="../_images/lin_reg_gd_plots_6_0.png" />
-</div>
-</figure>
-<p>This is an ideal case for pedagogical purposes. What are the values of <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> here?</p>
-<div class="tip dropdown admonition">
-<p class="admonition-title">Check your answers</p>
-<p>Recall the mapping function for linear regression: <span class="math notranslate nohighlight">\(h_\theta(x) = \theta_0 + \theta_1 x\)</span>. As we have a correspondance <span class="math notranslate nohighlight">\(y = 2x\)</span> for all points, so <span class="math notranslate nohighlight">\(h_\theta(x) = 2x\)</span>, so <span class="math notranslate nohighlight">\(\theta_0 = 0\)</span> and <span class="math notranslate nohighlight">\(\theta_1 = 2\)</span>.</p>
-</div>
-<p>You will appreciate the simplification, as we will calculate the cost by hand for different values of <span class="math notranslate nohighlight">\(\theta_1\)</span>. More complicated things await you in the tutorial, promised.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="gradient-descent-for-logistic-regression">
+<h1>Gradient Descent for Logistic Regression<a class="headerlink" href="#gradient-descent-for-logistic-regression" title="Permalink to this headline">#</a></h1>
+<p>The gradient descent for classification follows the same procedure as described in <a class="reference internal" href="lin_reg_4_gradient_descent_multiD.html#GD_algo_multi">Algorithm 2</a> in Section <a class="reference internal" href="lin_reg_4_gradient_descent_multiD.html#linregmulti-graddesc"><span class="std std-ref">Gradient Descent in Multilinear Regression</span></a> with the definition of the cost function from Equation <a class="reference internal" href="log_reg_3_cost_function.html#equation-costfunctionlogreg">(17)</a> above.</p>
+<section id="derivatives-in-the-linear-case">
+<h2>Derivatives in the linear case<a class="headerlink" href="#derivatives-in-the-linear-case" title="Permalink to this headline">#</a></h2>
+<p>Consider the linear assumption <span class="math notranslate nohighlight">\(\boldsymbol{x} \cdot \boldsymbol{\theta}  = \theta_0 + \theta_1 x_1 +  \cdots  + \theta_n x_n\)</span> as input to the sigmoid function <span class="math notranslate nohighlight">\(\sigma\)</span>.
+The cost function derivatives will take the form:</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Recall that <span class="math notranslate nohighlight">\(h_\boldsymbol{\theta} (\boldsymbol{x}^{(i)}) =  \sigma( \boldsymbol{x}^{(i)} \, \boldsymbol{\theta}) = \frac{1}{1 + e^{-  \boldsymbol{x}^{(i)} \, \boldsymbol{\theta} }}\)</span></p>
+</aside>
+<div class="math notranslate nohighlight" id="equation-costfderivlin">
+<span class="eqno">(18)<a class="headerlink" href="#equation-costfderivlin" title="Permalink to this equation">#</a></span>\[\frac{\partial}{\partial \theta_j} J(\boldsymbol{\theta}) = \frac{1}{m} \sum_{i=1}^{m} \left( h_\boldsymbol{\theta}(\boldsymbol{x}^{(i)}) -  y^{(i)}\right) x_j^{(i)}\]</div>
+<p>Wait: we’ve seen this somewhere! This takes the same form as the derivatives for linear regression, see Equation <a class="reference internal" href="lin_reg_4_gradient_descent_multiD.html#equation-partialdevlinreg">(14)</a> in Section <a class="reference internal" href="lin_reg_4_gradient_descent_multiD.html#linregmulti-graddesc"><span class="std std-ref">Gradient Descent in Multilinear Regression</span></a>.</p>
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
+<p>To convince yourself, you can derive Equation <a class="reference internal" href="#equation-costfderivlin">(18)</a> starting from Equation <a class="reference internal" href="log_reg_3_cost_function.html#equation-costfunctionlogreg">(17)</a>.</p>
+<p>Hints and help available on demand after class.</p>
+</div>
+</section>
+<section id="gradient-descent-pseudo-code-for-logistic-regression">
+<h2>Gradient descent: pseudo-code for logistic regression<a class="headerlink" href="#gradient-descent-pseudo-code-for-logistic-regression" title="Permalink to this headline">#</a></h2>
+<p>This is left as an exercise 😉 to check your understanding and practice writing pseudo-code.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Exercise</p>
+<p>Based on the algorithm <a class="reference internal" href="lin_reg_4_gradient_descent_multiD.html#GD_algo_multi">Algorithm 2</a> in Section <a class="reference internal" href="lin_reg_4_gradient_descent_multiD.html#linregmulti-graddesc"><span class="std std-ref">Gradient Descent in Multilinear Regression</span></a>, adapt it for logistic regression and write the corresponding pseudo-code, highlighting the differences and including the elements specific to classification.</p>
+</div>
+<p>You will put this into practice in the second tutorial, where you’ll code a classifier by hand!</p>
+</section>
+<section id="alternative-techniques">
+<h2>Alternative techniques<a class="headerlink" href="#alternative-techniques" title="Permalink to this headline">#</a></h2>
+<p>Beside logistic regression, other algorithms are designed for binary classification.</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Perceptron">Perceptron</a>, which is a single layer neural network with, in its original form, a step function instead of a sigmoid function. This will be introduced in the lecture on neural networks.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Support-vector_machine">Support Vector Machines (SVMs)</a> are robust and widely used in classification problems. We will not cover them here but below are some links for further reading.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Learn more</p>
 <ul class="simple">
-<li><p>Start with a value of <span class="math notranslate nohighlight">\(\theta_1\)</span> = 1 and calculate the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span>.</p></li>
-<li><p>Proceed the same for other values of <span class="math notranslate nohighlight">\(\theta_1\)</span> of 0.5, 1.5, 2, 2.5, 3.</p></li>
-<li><p>How would the graph of the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span> as a function of <span class="math notranslate nohighlight">\(\theta_1\)</span> look like?</p></li>
-<li><p>Are there maxima/minima? If yes how many?</p></li>
+<li><p>R. Berwick, An Idiot’s guide to Support vector machines (SVMs) on <a class="reference external" href="https://web.mit.edu/6.034/wwwbob/svm.pdf">web.mit.edu</a></p></li>
+<li><p>Support Vector Machines: A Simple Explanation, on <a class="reference external" href="https://www.kdnuggets.com/2016/07/support-vector-machines-simple-explanation.html">KDNuggets</a></p></li>
+<li><p>Support Vector Machines: Main Ideas” by Josh Starmer, on <a class="reference external" href="https://www.youtube.com/watch?v=efR1C6CvhmE">StatQuest YouTube channel</a></p></li>
 </ul>
 </div>
-<div class="tip dropdown admonition">
-<p class="admonition-title">Solutions  ✋  Don’t look too soon! Give it a try first.</p>
-<p>The values of the cost function for each <span class="math notranslate nohighlight">\(\theta_1\)</span> are reported on the plot below:</p>
-<figure class="align-default" id="plot-linreg-costvstheta1">
-<div class="cell_output docutils container">
-<img alt="../_images/lin_reg_gd_plots_10_0.png" src="../_images/lin_reg_gd_plots_10_0.png" />
+<p>Numerous methods have been developed to find optimized model parameters more efficiently than gradient descent. These optimizers are beyond the scope of this course and usually available as libraries within python (or other languages). Below is a list of the most popular ones:</p>
+<div class="seealso admonition">
+<p class="admonition-title">Learn more</p>
+<ul class="simple">
+<li><p>The BFGS algorithm: <a class="reference external" href="https://en.wikipedia.org/wiki/Broyden%E2%80%93Fletcher%E2%80%93Goldfarb%E2%80%93Shanno_algorithm">Wikipedia article</a></p></li>
+<li><p>The Limited-memory BFGS, L-BFGS: <a class="reference external" href="https://en.wikipedia.org/wiki/Limited-memory_BFGS">Wikipedia article</a></p></li>
+<li><p>Conjugate gradient method: <a class="reference external" href="https://en.wikipedia.org/wiki/Conjugate_gradient_method">Wikipedia article</a></p></li>
+<li><p><a class="reference external" href="https://www.cs.cmu.edu/~quake-papers/painless-conjugate-gradient.pdf">An Introduction to the Conjugate Gradient Method Without the Agonizing Pain, Jonathan Richard Shewchuk (1994)</a></p></li>
+</ul>
 </div>
-</figure>
-<p>We see that in this configuration, as we ‘swipe’ over the data points with ‘candidate’ straight lines, there will be a value for which we minimize our cost function. That is the value we look for (but you will learn to make such fancy plot during the tutorials).</p>
-</div>
-<p>This was with only one parameter. How do we proceed to minimize with two parameters?</p>
-</section>
-<section id="visualizing-the-cost">
-<span id="linreg-cost-viscost"></span><h2>Visualizing the cost<a class="headerlink" href="#visualizing-the-cost" title="Permalink to this headline">#</a></h2>
-<p>Let’s see a visual representation of our cost function as a function of our <span class="math notranslate nohighlight">\(\theta\)</span> parameters. We saw in the simple example above that the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span> with only one parameter is a U-shaped parabola. The same goes if we fix <span class="math notranslate nohighlight">\(\theta_1\)</span> and vary <span class="math notranslate nohighlight">\(\theta_0\)</span>. Combining the two, it will look like a bowl. The figure below is not made from the data above, just for illustration:</p>
-<figure class="align-default" id="plot-linreg-bowl">
-<div class="cell_output docutils container">
-<img alt="../_images/lin_reg_gd_plots_3_0.png" src="../_images/lin_reg_gd_plots_3_0.png" />
-</div>
-<figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">. The cost function (vertical axis) as a function of the parameters <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span>.</span><a class="headerlink" href="#plot-linreg-bowl" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>What does this represent? It shows the result of the cost function calculated for a range of <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> parameters. For each coordinate (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span>), there has been a loop over all the training data set to get the global error. The vertical value shows thus how ‘costly’ it is to pick up a given (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span>). The higher, the worse is the fit. The center of the bowl, where <span class="math notranslate nohighlight">\(J(\theta_0 , \theta_1)\)</span> is minimum, corresponds to the best choice of the <span class="math notranslate nohighlight">\(\theta\)</span> parameters. In other words: the best fit to the data.</p>
-<p>How do we proceed to find the <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> parameters minimizing the cost function?</p>
 </section>
 </section>
 
@@ -526,17 +506,17 @@ We’ll use a super simple dataset with just four samples:</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="lin_reg_1_notations.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="log_reg_3_cost_function.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Notations</p>
+            <p class="prev-next-title">Cost Function for Classification</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="lin_reg_3_gradient_descent_1d.html" title="next page">
+    <a class='right-next' id="next-link" href="log_reg_5_multiclass.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Gradient Descent in 1D</p>
+        <p class="prev-next-title">Multiclassification</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

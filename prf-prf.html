@@ -198,6 +198,43 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="basics/logistic_regression.html">
+   Logistic Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="basics/log_reg_1_intro.html">
+     Logistic Regression: introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="basics/log_reg_2_sigmoid.html">
+     What is the Sigmoid Function?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="basics/log_reg_3_cost_function.html">
+     Cost Function for Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="basics/log_reg_4_gradient_descent.html">
+     Gradient Descent for Logistic Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="basics/log_reg_5_multiclass.html">
+     More than two categories: multiclassification
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </div>
@@ -293,15 +330,24 @@ title="Fullscreen mode"
    <a href="#cap-GD_algo_1D"><strong>GD_algo_1D</strong></a> | 
    <a href="#cap-GD_algo_multi"><strong>GD_algo_multi</strong></a> | 
    <a href="#cap-GDesc"><strong>GDesc</strong></a> | 
+   <a href="#cap-binaryDef"><strong>binaryDef</strong></a> | 
+   <a href="#cap-catVar"><strong>catVar</strong></a> | 
+   <a href="#cap-costFLogRegDef"><strong>costFLogRegDef</strong></a> | 
    <a href="#cap-costFunction"><strong>costFunction</strong></a> | 
+   <a href="#cap-decBoundDef"><strong>decBoundDef</strong></a> | 
    <a href="#cap-defFeatureScaling"><strong>defFeatureScaling</strong></a> | 
    <a href="#cap-defMeanNormalization"><strong>defMeanNormalization</strong></a> | 
    <a href="#cap-defStandardization"><strong>defStandardization</strong></a> | 
    <a href="#cap-hypothesisFunction"><strong>hypothesisFunction</strong></a> | 
    <a href="#cap-hypothesisFunctionMulti"><strong>hypothesisFunctionMulti</strong></a> | 
    <a href="#cap-linRegDef"><strong>linRegDef</strong></a> | 
+   <a href="#cap-logFuncDef"><strong>logFuncDef</strong></a> | 
+   <a href="#cap-logRegDef"><strong>logRegDef</strong></a> | 
+   <a href="#cap-mappingSigDef"><strong>mappingSigDef</strong></a> | 
    <a href="#cap-modelParameters"><strong>modelParameters</strong></a> | 
    <a href="#cap-mseDef"><strong>mseDef</strong></a> | 
+   <a href="#cap-multiclass1to1def"><strong>multiclass1to1def</strong></a> | 
+   <a href="#cap-multiclass1toalldef"><strong>multiclass1toalldef</strong></a> | 
    <a href="#cap-normalEquation"><strong>normalEquation</strong></a>
    </div>
 
@@ -331,12 +377,44 @@ title="Fullscreen mode"
        <a href="basics/lin_reg_3_gradient_descent_1d.html#GDesc"><code class="xref">GDesc</code></a> <em>(basics/lin_reg_3_gradient_descent_1d)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-binaryDef"><td></td><td>
+       <strong>binaryDef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basics/log_reg_1_intro.html#binaryDef"><code class="xref">binaryDef</code></a> <em>(basics/log_reg_1_intro)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-catVar"><td></td><td>
+       <strong>catVar</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basics/log_reg_1_intro.html#catVar"><code class="xref">catVar</code></a> <em>(basics/log_reg_1_intro)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-costFLogRegDef"><td></td><td>
+       <strong>costFLogRegDef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basics/log_reg_3_cost_function.html#costFLogRegDef"><code class="xref">costFLogRegDef</code></a> <em>(basics/log_reg_3_cost_function)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-costFunction"><td></td><td>
        <strong>costFunction</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
        <a href="basics/lin_reg_2_cost_function.html#costFunction"><code class="xref">costFunction</code></a> <em>(basics/lin_reg_2_cost_function)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-decBoundDef"><td></td><td>
+       <strong>decBoundDef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basics/log_reg_2_sigmoid.html#decBoundDef"><code class="xref">decBoundDef</code></a> <em>(basics/log_reg_2_sigmoid)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defFeatureScaling"><td></td><td>
@@ -387,6 +465,30 @@ title="Fullscreen mode"
        <a href="basics/lin_reg_1_notations.html#linRegDef"><code class="xref">linRegDef</code></a> <em>(basics/lin_reg_1_notations)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-logFuncDef"><td></td><td>
+       <strong>logFuncDef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basics/log_reg_2_sigmoid.html#logFuncDef"><code class="xref">logFuncDef</code></a> <em>(basics/log_reg_2_sigmoid)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-logRegDef"><td></td><td>
+       <strong>logRegDef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basics/log_reg_1_intro.html#logRegDef"><code class="xref">logRegDef</code></a> <em>(basics/log_reg_1_intro)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-mappingSigDef"><td></td><td>
+       <strong>mappingSigDef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basics/log_reg_2_sigmoid.html#mappingSigDef"><code class="xref">mappingSigDef</code></a> <em>(basics/log_reg_2_sigmoid)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-modelParameters"><td></td><td>
        <strong>modelParameters</strong></td><td></td></tr>
      <tr>
@@ -401,6 +503,22 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="basics/lin_reg_2_cost_function.html#mseDef"><code class="xref">mseDef</code></a> <em>(basics/lin_reg_2_cost_function)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-multiclass1to1def"><td></td><td>
+       <strong>multiclass1to1def</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basics/log_reg_5_multiclass.html#multiclass1to1def"><code class="xref">multiclass1to1def</code></a> <em>(basics/log_reg_5_multiclass)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-multiclass1toalldef"><td></td><td>
+       <strong>multiclass1toalldef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basics/log_reg_5_multiclass.html#multiclass1toalldef"><code class="xref">multiclass1toalldef</code></a> <em>(basics/log_reg_5_multiclass)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-normalEquation"><td></td><td>

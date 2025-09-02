@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1. Notations &amp; ML jargon &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    <title>Logistic Regression &#8212; Introduction&lt;br&gt; to Machine Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,7 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Tools and evaluation" href="../about/evaluation.html" />
+    <link rel="next" title="Logistic Regression: introduction" href="log_reg_1_intro.html" />
+    <link rel="prev" title="Gradient Descent in Practice" href="lin_reg_6_gradient_descent_in_practice.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -125,13 +126,23 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../about/instructor.html">
+   Instructor &amp; Credits
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../about/schedule.html">
-   Course schedule
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/tools.html">
+   Tools
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../about/evaluation.html">
-   Tools and evaluation
+   Evaluation
   </a>
  </li>
 </ul>
@@ -141,10 +152,84 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   1. Notations &amp; ML jargon
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="linear_regression.html">
+   Warm-up: Linear Regression
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_1_notations.html">
+     Notations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_2_cost_function.html">
+     Cost Function in Linear Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_3_gradient_descent_1d.html">
+     Gradient Descent in 1D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_4_gradient_descent_multiD.html">
+     Multivariate Linear Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_5_learning_rate.html">
+     Learning Rate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_6_gradient_descent_in_practice.html">
+     Gradient Descent in Practice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   Logistic Regression
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_1_intro.html">
+     Logistic Regression: introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_2_sigmoid.html">
+     What is the Sigmoid Function?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_3_cost_function.html">
+     Cost Function for Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_4_gradient_descent.html">
+     Gradient Descent for Logistic Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_5_multiclass.html">
+     More than two categories: multiclassification
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -219,7 +304,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/basics/notations.md"
+        <a href="../_sources/basics/logistic_regression.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -268,7 +353,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Notations & ML jargon</h1>
+                <h1>Logistic Regression</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -280,9 +365,21 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="notations-ml-jargon">
-<h1><span class="section-number">1. </span>Notations &amp; ML jargon<a class="headerlink" href="#notations-ml-jargon" title="Permalink to this headline">#</a></h1>
-<p>TODO</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="logistic-regression">
+<h1>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this headline">#</a></h1>
+<p>Let’s enter the vast world of classification algorithms in machine learning.</p>
+<p>In classification, the outcomes - the targets - are no more real-valued but <strong>class labels</strong> that can be associated with discrete numericals. While it could appear as a sub-case of the linear regression, we will see that we need to redefine our mathematical tools.</p>
+<p>In this lecture we will cover a method for classifying data called <strong>logistic regression</strong>. The learning objectives are:</p>
+<ul class="simple">
+<li><p>Understand the necessity of the sigmoid function</p></li>
+<li><p>Understand the requirements for the cost function in the context of logistic regression</p></li>
+<li><p>Understand the role and structure of the cross-entropy function</p></li>
+<li><p>Write the pseudo-code of the gradient descent algorithm for classification</p></li>
+<li><p>Understand strategies for multiclass classification, including one-vs-all and softmax (or one-vs-one) approaches</p></li>
+</ul>
+<p>Particle physics florishes of classification implementations. We will put the logistic regression in practice during a tutorial to classify collision data!</p>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -312,12 +409,19 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../about/evaluation.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="lin_reg_6_gradient_descent_in_practice.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Tools and evaluation</p>
+            <p class="prev-next-title">Gradient Descent in Practice</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="log_reg_1_intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Logistic Regression: introduction</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

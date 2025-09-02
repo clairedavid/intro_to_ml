@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Cost Function in Linear Regression &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    <title>More than two categories: multiclassification &#8212; Introduction&lt;br&gt; to Machine Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -55,8 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Gradient Descent in 1D" href="lin_reg_3_gradient_descent_1d.html" />
-    <link rel="prev" title="Notations" href="lin_reg_1_notations.html" />
+    <link rel="prev" title="Gradient Descent for Logistic Regression" href="log_reg_4_gradient_descent.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -154,23 +153,23 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="linear_regression.html">
    Warm-up: Linear Regression
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="lin_reg_1_notations.html">
      Notations
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_2_cost_function.html">
      Cost Function in Linear Regression
     </a>
    </li>
@@ -196,16 +195,16 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="logistic_regression.html">
    Logistic Regression
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="log_reg_1_intro.html">
      Logistic Regression: introduction
@@ -226,9 +225,9 @@ const thebe_selector_output = ".output, .cell_output"
      Gradient Descent for Logistic Regression
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="log_reg_5_multiclass.html">
-     Multiclassification
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     More than two categories: multiclassification
     </a>
    </li>
   </ul>
@@ -306,7 +305,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/basics/lin_reg_2_cost_function.md"
+        <a href="../_sources/basics/log_reg_5_multiclass.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -366,18 +365,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definitions">
-   Definitions
+  <a class="reference internal nav-link" href="#one-to-one-approach">
+   One-to-One approach
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cooking-with-the-cost-function">
-   Cooking with the Cost Function
+  <a class="reference internal nav-link" href="#one-to-all-approach">
+   One-to-All approach
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-the-cost">
-   Visualizing the cost
+  <a class="reference internal nav-link" href="#further-reading">
+   Further reading
   </a>
  </li>
 </ul>
@@ -389,7 +388,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Cost Function in Linear Regression</h1>
+                <h1>More than two categories: multiclassification</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -400,18 +399,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definitions">
-   Definitions
+  <a class="reference internal nav-link" href="#one-to-one-approach">
+   One-to-One approach
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cooking-with-the-cost-function">
-   Cooking with the Cost Function
+  <a class="reference internal nav-link" href="#one-to-all-approach">
+   One-to-All approach
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualizing-the-cost">
-   Visualizing the cost
+  <a class="reference internal nav-link" href="#further-reading">
+   Further reading
   </a>
  </li>
 </ul>
@@ -424,78 +423,82 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="cost-function-in-linear-regression">
-<span id="linreg-cost"></span><h1>Cost Function in Linear Regression<a class="headerlink" href="#cost-function-in-linear-regression" title="Permalink to this headline">#</a></h1>
-<section id="definitions">
-<h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">#</a></h2>
-<p>The accuracy of the mapping function is measured by using a cost function.</p>
-<div class="proof definition admonition" id="costFunction">
-<p class="admonition-title"><span class="caption-number">Definition 4 </span></p>
-<section class="definition-content" id="proof-content">
-<p>The <strong>cost function</strong> in linear regression returns a global error between the predicted values from a mapping function <span class="math notranslate nohighlight">\(h\)</span> (predictions) and all the target values (observations) of the training data set.</p>
-</section>
-</div><div class="proof definition admonition" id="mseDef">
-<p class="admonition-title"><span class="caption-number">Definition 5 </span></p>
-<section class="definition-content" id="proof-content">
-<p>The <strong>Mean Squared Error (MSE)</strong>, also called <strong>squared error function</strong> is a commonly used cost function for linear regression. It is defined as:</p>
-<div class="math notranslate nohighlight" id="equation-costfunctionlinreg">
-<span class="eqno">(3)<a class="headerlink" href="#equation-costfunctionlinreg" title="Permalink to this equation">#</a></span>\[ J\left(\theta_0, \theta_1\right) =\frac{1}{2 m} \sum_{i=1}^m\left(h_\theta(x^{(i)})-y^{(i)}\right)^2\]</div>
-</section>
-</div><p>You can recognize the form of an average. The factor <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> makes it convenient when taking the derivative of this expression.
-In Equation <a class="reference internal" href="#equation-costfunctionlinreg">(3)</a>, each <span class="math notranslate nohighlight">\(h_\theta (x^{(i)})\)</span> is a prediction done by our mapping function <span class="math notranslate nohighlight">\(h_\theta\)</span>, whereas each <span class="math notranslate nohighlight">\(y_i\)</span> is an observed value in the data.</p>
-<p>The initial goal to “fit the data well” can now be formulated in a mathematical way: <strong>find the parameters <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> that minimize the cost function</strong>:</p>
-<div class="math notranslate nohighlight" id="equation-mincostfunction">
-<span class="eqno">(4)<a class="headerlink" href="#equation-mincostfunction" title="Permalink to this equation">#</a></span>\[\min_{\theta_0, \theta_1} J\left(\theta_0, \theta_1\right)\]</div>
-</section>
-<section id="cooking-with-the-cost-function">
-<h2>Cooking with the Cost Function<a class="headerlink" href="#cooking-with-the-cost-function" title="Permalink to this headline">#</a></h2>
-<p>Now comes an exercise to compute the cost function ‘by hand’ so you can get a feel for the equation above… and, by a huge extrapolation, the staggering number of computations that happen in any machine learning task.<br />
-We’ll use a super simple dataset with just four samples:</p>
-<figure class="align-default" id="plot-linreg-1234" style="width: 80%">
-<div class="cell_output docutils container">
-<img alt="../_images/lin_reg_gd_plots_6_0.png" src="../_images/lin_reg_gd_plots_6_0.png" />
-</div>
-</figure>
-<p>This is an ideal case for pedagogical purposes. What are the values of <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> here?</p>
-<div class="tip dropdown admonition">
-<p class="admonition-title">Check your answers</p>
-<p>Recall the mapping function for linear regression: <span class="math notranslate nohighlight">\(h_\theta(x) = \theta_0 + \theta_1 x\)</span>. As we have a correspondance <span class="math notranslate nohighlight">\(y = 2x\)</span> for all points, so <span class="math notranslate nohighlight">\(h_\theta(x) = 2x\)</span>, so <span class="math notranslate nohighlight">\(\theta_0 = 0\)</span> and <span class="math notranslate nohighlight">\(\theta_1 = 2\)</span>.</p>
-</div>
-<p>You will appreciate the simplification, as we will calculate the cost by hand for different values of <span class="math notranslate nohighlight">\(\theta_1\)</span>. More complicated things await you in the tutorial, promised.</p>
-<div class="seealso admonition">
-<p class="admonition-title">Exercise</p>
-<ul class="simple">
-<li><p>Start with a value of <span class="math notranslate nohighlight">\(\theta_1\)</span> = 1 and calculate the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span>.</p></li>
-<li><p>Proceed the same for other values of <span class="math notranslate nohighlight">\(\theta_1\)</span> of 0.5, 1.5, 2, 2.5, 3.</p></li>
-<li><p>How would the graph of the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span> as a function of <span class="math notranslate nohighlight">\(\theta_1\)</span> look like?</p></li>
-<li><p>Are there maxima/minima? If yes how many?</p></li>
-</ul>
-</div>
-<div class="tip dropdown admonition">
-<p class="admonition-title">Solutions  ✋  Don’t look too soon! Give it a try first.</p>
-<p>The values of the cost function for each <span class="math notranslate nohighlight">\(\theta_1\)</span> are reported on the plot below:</p>
-<figure class="align-default" id="plot-linreg-costvstheta1">
-<div class="cell_output docutils container">
-<img alt="../_images/lin_reg_gd_plots_10_0.png" src="../_images/lin_reg_gd_plots_10_0.png" />
-</div>
-</figure>
-<p>We see that in this configuration, as we ‘swipe’ over the data points with ‘candidate’ straight lines, there will be a value for which we minimize our cost function. That is the value we look for (but you will learn to make such fancy plot during the tutorials).</p>
-</div>
-<p>This was with only one parameter. How do we proceed to minimize with two parameters?</p>
-</section>
-<section id="visualizing-the-cost">
-<span id="linreg-cost-viscost"></span><h2>Visualizing the cost<a class="headerlink" href="#visualizing-the-cost" title="Permalink to this headline">#</a></h2>
-<p>Let’s see a visual representation of our cost function as a function of our <span class="math notranslate nohighlight">\(\theta\)</span> parameters. We saw in the simple example above that the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span> with only one parameter is a U-shaped parabola. The same goes if we fix <span class="math notranslate nohighlight">\(\theta_1\)</span> and vary <span class="math notranslate nohighlight">\(\theta_0\)</span>. Combining the two, it will look like a bowl. The figure below is not made from the data above, just for illustration:</p>
-<figure class="align-default" id="plot-linreg-bowl">
-<div class="cell_output docutils container">
-<img alt="../_images/lin_reg_gd_plots_3_0.png" src="../_images/lin_reg_gd_plots_3_0.png" />
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="more-than-two-categories-multiclassification">
+<h1>More than two categories: multiclassification<a class="headerlink" href="#more-than-two-categories-multiclassification" title="Permalink to this headline">#</a></h1>
+<p>We treated the binary classification problem. How to adapt to a situation with more than two classes?</p>
+<p>Let’s for instance consider three classes, labelled with their colours and distributed in two dimensions (two input features) like this:</p>
+<figure class="align-default" id="logreg-multiclass-1">
+<a class="reference internal image-reference" href="../_images/logReg_multiclass-1.webp"><img alt="../_images/logReg_multiclass-1.webp" src="../_images/logReg_multiclass-1.webp" style="width: 60%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">. The cost function (vertical axis) as a function of the parameters <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span>.</span><a class="headerlink" href="#plot-linreg-bowl" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">. 2D distribution of three different classes.<br />
+<sub>Image: <a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/">analyticsvidhya.com</a></sub></span><a class="headerlink" href="#logreg-multiclass-1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>What does this represent? It shows the result of the cost function calculated for a range of <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> parameters. For each coordinate (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span>), there has been a loop over all the training data set to get the global error. The vertical value shows thus how ‘costly’ it is to pick up a given (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span>). The higher, the worse is the fit. The center of the bowl, where <span class="math notranslate nohighlight">\(J(\theta_0 , \theta_1)\)</span> is minimum, corresponds to the best choice of the <span class="math notranslate nohighlight">\(\theta\)</span> parameters. In other words: the best fit to the data.</p>
-<p>How do we proceed to find the <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> parameters minimizing the cost function?</p>
+<p>A multi-class classification problem can be split into multiple binary classification datasets and be trained as a binary classification model each.
+Such approach is a heuristic method, that is to say not optimal nor direct. But it eventually does the job.
+There are two main approaches of such methods for multiclassification.</p>
+<section id="one-to-one-approach">
+<h2>One-to-One approach<a class="headerlink" href="#one-to-one-approach" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="multiclass1to1def">
+<p class="admonition-title"><span class="caption-number">Definition 19 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>One-to-One approach</strong> consists of applying a binary classification for each pair of classes, ignoring the other classes.</p>
+<p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of models to train, <span class="math notranslate nohighlight">\(N^\text{model}\)</span> is given by</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8baf52e9-88f0-4c6f-b7fc-6b60a9b173da">
+<span class="eqno">(19)<a class="headerlink" href="#equation-8baf52e9-88f0-4c6f-b7fc-6b60a9b173da" title="Permalink to this equation">#</a></span>\[\begin{equation}
+N^\text{model} = \frac{N^\text{class}(N^\text{class}-1)}{2}
+\end{equation}\]</div>
+<p>Each model predicts one class label. The final decision is the class label receiving the most votes, i.e. being predicted most of the time.</p>
+</section>
+</div><p>The One-to-One method would create those hyperplanes (with two input features, D = 2 we will have a 1D line as separation):</p>
+<figure class="align-default" id="logreg-multiclass-2">
+<a class="reference internal image-reference" href="../_images/logReg_multiclass-2.webp"><img alt="../_images/logReg_multiclass-2.webp" src="../_images/logReg_multiclass-2.webp" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">. One-to-One approach splits paired datasets, ignoring the points of the other classes.<br />
+<sub>Image: <a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/">analyticsvidhya.com</a></sub></span><a class="headerlink" href="#logreg-multiclass-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Pro</strong><br />
+The sample size is more balanced between the two chosen classes than if datasets were split with one class against all others.</p>
+<p><strong>Con</strong><br />
+The pairing makes the number of models to train large and thus computer intensive.</p>
+</section>
+<section id="one-to-all-approach">
+<h2>One-to-All approach<a class="headerlink" href="#one-to-all-approach" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="multiclass1toalldef">
+<p class="admonition-title"><span class="caption-number">Definition 20 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>One-to-All or One-to-Rest approach</strong> consists of training each class against the collection of all other classes.</p>
+<p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of pairs to train is</p>
+<div class="amsmath math notranslate nohighlight" id="equation-496395b2-f55a-4afc-a445-87847a051d88">
+<span class="eqno">(20)<a class="headerlink" href="#equation-496395b2-f55a-4afc-a445-87847a051d88" title="Permalink to this equation">#</a></span>\[\begin{equation}
+ N^\text{model} = N^\text{class}
+\end{equation}\]</div>
+<p>The final prediction is given by the highest value of the hypothesis function <span class="math notranslate nohighlight">\(h^{k}_\theta(x)\)</span>, <span class="math notranslate nohighlight">\(k \in [1, N^\text{model}]\)</span> among the <span class="math notranslate nohighlight">\(N^\text{model}\)</span> binary classifiers.</p>
+</section>
+</div><figure class="align-default" id="logreg-multiclass-3">
+<a class="reference internal image-reference" href="../_images/logReg_multiclass-3.webp"><img alt="../_images/logReg_multiclass-3.webp" src="../_images/logReg_multiclass-3.webp" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">. One-to-All approach focuses on one class to discriminate from all other points<br />
+(i.e. all other classes are merged into a single ‘background’ class).<br />
+<sub>Image: <a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/">analyticsvidhya.com</a></sub></span><a class="headerlink" href="#logreg-multiclass-3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Pro</strong><br />
+Less binary classifiers to train.</p>
+<p><strong>Con</strong><br />
+The number of data points from the class to look for will be very small if the ‘background’ class is the merging of all other data points from the other classes.</p>
+</section>
+<section id="further-reading">
+<h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">#</a></h2>
+<p>Some further reading if you are curious:</p>
+<div class="seealso admonition">
+<p class="admonition-title">Learn more</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://machinelearningmastery.com/one-vs-rest-and-one-vs-one-for-multi-class-classification/">One-vs-Rest and One-vs-One for Multi-Class Classification, machinelearningmastery.com</a></p></li>
+<li><p><a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/">Multiclass Classification Using SVM, analyticsvidhya.com</a></p></li>
+</ul>
+</div>
 </section>
 </section>
 
@@ -526,19 +529,12 @@ We’ll use a super simple dataset with just four samples:</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="lin_reg_1_notations.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="log_reg_4_gradient_descent.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Notations</p>
+            <p class="prev-next-title">Gradient Descent for Logistic Regression</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="lin_reg_3_gradient_descent_1d.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Gradient Descent in 1D</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>

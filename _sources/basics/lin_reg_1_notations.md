@@ -56,9 +56,9 @@ This first step of supervised learning is called the __training__ and we will se
 
 ````{prf:definition}
 :label: hypothesisFunction
-The hypothesis function, denoted $h$, is a mapping function used to predict an output $y$ from an input $x$:  
+The hypothesis function, denoted $h$, is a mapping function used to predict an output $y^\text{pred}$ from an input $x$:  
 \begin{equation*}
-y = h(x)
+y^\text{pred} = h(x)
 \end{equation*}
 ````
 
