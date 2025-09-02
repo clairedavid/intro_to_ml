@@ -4,7 +4,8 @@
 title: Introduction<br> to Machine Learning
 author: ""
 logo: logo.png
-exclude_patterns: ["README.md"]
+exclude_patterns:
+  - "README.md"
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html

@@ -25,5 +25,12 @@ parts:
       - file: basics/lin_reg_4_gradient_descent_multiD
       - file: basics/lin_reg_5_learning_rate
       - file: basics/lin_reg_6_gradient_descent_in_practice
-
+    
+    - file: basics/logistic_regression
+      sections:
+      - file: basics/log_reg_1_intro
+      - file: basics/log_reg_2_sigmoid
+      - file: basics/log_reg_3_cost_function
+      - file: basics/log_reg_4_gradient_descent
+      - file: basics/log_reg_5_multiclass
 

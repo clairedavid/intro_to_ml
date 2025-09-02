@@ -70,7 +70,7 @@ where $\boldsymbol{x}^{(i)}$ an __row vector__ of $n+1$ elements, $x^{(i)} = (x^
   \begin{pmatrix} \theta_0 \\\theta_1 \\ \\\vdots \\  \\\theta_n \\\end{pmatrix} = \; \boldsymbol{x^{(i)}} \cdot  \boldsymbol{\theta}
 \end{equation*}
 
-(warmup:linregmulti:graddesc)=
+(linRegMulti:gradDesc)=
 ## Gradient Descent in Multilinear Regression
 We will revisit our algorithm to generalize it to $\theta_n$ parameters:
 
@@ -101,7 +101,7 @@ __Hyperparameters__
 * Number of epochs $N$
 &nbsp;  
 __Outputs__  
-The optimized values of model parameters $\boldsymbol{\theta} = \theta_0, \theta_1, \cdot , \theta_n$ minimizing $J(\boldsymbol{\theta})$.
+The optimized values of model parameters $\boldsymbol{\theta} = \theta_0, \theta_1, \ldots , \theta_n$ minimizing $J(\boldsymbol{\theta})$.
 
 1. __Initialization__: Set random values for all model parameters $\boldsymbol{\theta}$
 
@@ -111,12 +111,12 @@ The optimized values of model parameters $\boldsymbol{\theta} = \theta_0, \theta
     ```{math}
     :label: updateMulti
     \begin{equation*} \\
-      \frac{\partial }{\partial \theta_j} J(\boldsymbol{\theta})$ for each $\theta_j
+      \frac{\partial }{\partial \theta_j} J(\boldsymbol{\theta}) \;   \;   \;  \;   \;   \;  \forall j \in [0..n]
     \end{equation*}
     ```
    &nbsp;    
-   2. __Update all parameters__:  
-    Use the update rule:  
+    &nbsp; &nbsp; &nbsp; 2. __Update all parameters__:  
+    &nbsp; &nbsp; &nbsp; Use the update rule:  
     &nbsp;
     ```{math}
     :label: eqGDlinCostMulti
