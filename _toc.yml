@@ -33,4 +33,12 @@ parts:
       - file: basics/log_reg_3_cost_function
       - file: basics/log_reg_4_gradient_descent
       - file: basics/log_reg_5_multiclass
+    
+    - file: basics/model_evaluation
+      sections:
+      - file: basics/model_eval_1_train_test_split
+      - file: basics/model_eval_2_perf_metrics
+      - file: basics/model_eval_3_roc_curve
+      - file: basics/model_eval_4_bias_variance_tradeoff
 
+    

@@ -62,7 +62,7 @@ y^\text{pred} = h(x)
 \end{equation*}
 ````
 
-In our simple case of linear regression, our function $h$ will be of the form:
+In our simple case of linear regression in one dimension, our function $h$ will be of the form:
 ```{math}
 :label: h_theta_lin
   h_\theta(x) = \theta_0 + \theta_1 \; x
@@ -106,7 +106,7 @@ We want to find the values of $\theta_0$ and $\theta_1$ that fit the data well.
 We could pick one training example $(x^{(k)} , y^{(k)})$ and derive the coefficients from there. But will this be the 'best' straight line to draw?
 The mathematical phrasing for such a task is to think in terms of errors. How do we calculate the errors? That's a first question to ask. 
 From a given vector of $\theta$, how small are the errors?
-This picture below helps to visualize. From a given parameterization, that is to say a given tuple ($\theta_0$ , $\theta_1$ ), the mapping function will output continuous values of a predicted $y$ for a continuous range of $x$. That is the dashed line. The errors are the (vertical) intervals between the $y$ from the prediction and each data points. 
+This picture below helps to visualize. From a given parameterization, that is to say a given tuple ($\theta_0$ , $\theta_1$ ), the mapping function will output continuous values of a predicted $y^\text{pred}$ for a continuous range of $x$. That is the dashed line. The errors are the (vertical) intervals between the $y$ from the prediction and each data points. 
 ```{figure} ../images/linReg_square_err_graph.png
 ---
 width: 75%
