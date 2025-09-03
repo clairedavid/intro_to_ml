@@ -23,7 +23,7 @@ even if $\alpha$ remains constant.
 A learning rate too big will generate an updated parameter on the other side of the slope.  
 Two cases:
 * __The zig-zag__: if the next parameter $\theta'$ is at a smaller distance to the $\theta^{\min J}$ minimizing the cost function ($ | \theta' - \theta^{\min J} |  < | \theta - \theta^{\min J} |$), the gradient descent will generate parameters oscillating on each side of the slope until convergence. It will converge, but it will require a lot more steps. 
-* __Divergence__: if the next paremeter is at a greater distance than the $\theta^{\min J}$ minimizing the cost function ($ | \theta' - \theta^{\min J} |  > | \theta - \theta^{\min J} |$), the gradient descent will produce new parameters further and further away, escaping the parabola! It will diverge. We want to avoid this.
+* __Divergence__: if the next parameter is at a greater distance than the $\theta^{\min J}$ minimizing the cost function ($ | \theta' - \theta^{\min J} |  > | \theta - \theta^{\min J} |$), the gradient descent will produce new parameters further and further away, escaping the parabola! It will diverge. We want to avoid this.
 
 The divergence is illustrated on the right in the figure below: 
 ```{figure} ../images/linReg_learningRate_small_big.jpg
@@ -39,7 +39,7 @@ The divergence is illustrated on the right in the figure below:
 ## Summary
 * The learning rate $\alpha$ is a hyperparameter intervening in the calculation of the step size at which the parameters will be incremented or decremented.
 * The step size varies even with a constant $\alpha$ as it is multiplied by the slope, i.e. the derivatives of the cost function.
-* A small learning rate is safe as it likely leads to convergence, yet too small values will necessitates a high number of epochs.
+* A small learning rate is safe as it likely leads to convergence, yet too small values will necessitate a high number of epochs.
 * A large learning rate can make the next update of parameters overshoot the minimum of the cost function and lead to either 
   * an oscillating trajectory: the algorithm converges yet more iterations are needed
   * a diverging path: the gradient descent fails to converge

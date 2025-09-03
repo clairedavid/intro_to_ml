@@ -1,0 +1,658 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Let’s ROC! &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bias &amp; Variance: a Tradeoff" href="model_eval_4_bias_variance_tradeoff.html" />
+    <link rel="prev" title="Performance Metrics" href="model_eval_2_perf_metrics.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction<br> to Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About this course
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/teaching_philosophy.html">
+   Teaching philosophy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/instructor.html">
+   Instructor &amp; Credits
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/tools.html">
+   Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/evaluation.html">
+   Evaluation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  The basics
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="linear_regression.html">
+   Warm-up: Linear Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_1_notations.html">
+     Notations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_2_cost_function.html">
+     Cost Function in Linear Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_3_gradient_descent_1d.html">
+     Gradient Descent in 1D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_4_gradient_descent_multiD.html">
+     Multivariate Linear Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_5_learning_rate.html">
+     Learning Rate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_6_gradient_descent_in_practice.html">
+     Gradient Descent in Practice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="logistic_regression.html">
+   Logistic Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_1_intro.html">
+     Logistic Regression: introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_2_sigmoid.html">
+     What is the Sigmoid Function?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_3_cost_function.html">
+     Cost Function for Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_4_gradient_descent.html">
+     Gradient Descent for Logistic Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_5_multiclass.html">
+     More than two categories: multiclassification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="model_evaluation.html">
+   Model Evaluation
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_1_train_test_split.html">
+     Splitting Datasets for Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_2_perf_metrics.html">
+     Performance Metrics
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Let’s ROC!
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_4_bias_variance_tradeoff.html">
+     Bias &amp; Variance: a Tradeoff
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/basics/model_eval_3_roc_curve.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ingredients-to-roc">
+   Ingredients to ROC
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#building-the-roc-curve">
+   Building the ROC curve
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparing-classifiers">
+   Comparing Classifiers
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Let’s ROC!</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ingredients-to-roc">
+   Ingredients to ROC
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#building-the-roc-curve">
+   Building the ROC curve
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparing-classifiers">
+   Comparing Classifiers
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="let-s-roc">
+<h1>Let’s ROC!<a class="headerlink" href="#let-s-roc" title="Permalink to this headline">#</a></h1>
+<p>There is in machine learning a very convenient visual to not only see the performance of a binary classifier but also compare different classifiers between each others. It is the ROC curve (beloved by experimental particle physicists). Before explaining how to draw it, let’s first introduce key ingredients.</p>
+<section id="ingredients-to-roc">
+<h2>Ingredients to ROC<a class="headerlink" href="#ingredients-to-roc" title="Permalink to this headline">#</a></h2>
+<p>Those elements are concepts previously encountered, yet but baring other names: the <strong>score</strong> and <strong>decision threshold</strong>.</p>
+<p>We saw the classification is done using the output of the sigmoid function and a decision boundary of <span class="math notranslate nohighlight">\(y=0.5\)</span> (see <a class="reference internal" href="log_reg_2_sigmoid.html#decBoundDef">Definition 17</a> in section <a class="reference internal" href="log_reg_2_sigmoid.html#class-sigmoid"><span class="std std-ref">What is the Sigmoid Function?</span></a>). Sometimes the classifier’s output is also called <em>score</em>, aka an estimation of probability, and the decision boundary can be also referred to <em>decision threshold</em>. It’s a cut value above which a data sample is predicted as a signal event (<span class="math notranslate nohighlight">\(y=1\)</span>) and below which it is classified as background (<span class="math notranslate nohighlight">\(y=1\)</span>). We chose <span class="math notranslate nohighlight">\(y^\text{thres.}=0.5\)</span> to cut our sigmoid half way through its output range, but for building a ROC curve, we will vary this decision threshold.</p>
+<p>Now let’s recall (pun intended) the True Positive Rate that was defined above in <a class="reference internal" href="model_eval_2_perf_metrics.html#errormetricsclassdef">Definition 28</a>, but let’s write it again for convenience and add other metrics:</p>
+<div class="proof definition admonition" id="tprfprdef">
+<p class="admonition-title"><span class="caption-number">Definition 30 </span></p>
+<section class="definition-content" id="proof-content">
+<p> <br />
+<strong>True Positive Rate (TPR)</strong>, also called <strong>recall</strong> and <strong>sensitivity</strong></p>
+<div class="amsmath math notranslate nohighlight" id="equation-ff96d0ca-924b-411f-a0d0-2fb525eb34fe">
+<span class="eqno">(27)<a class="headerlink" href="#equation-ff96d0ca-924b-411f-a0d0-2fb525eb34fe" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\text{TPR} = \frac{\text{True Positives}}{\text{Actual Positives}} = \frac{\text{True Positives}}{\text{True Positive} + \text{False Negative}}
+\end{equation}\]</div>
+<p> <br />
+<strong>True Negative Rate (TNR)</strong>, also called <strong>specificity</strong></p>
+<p>Ratio of negative instances correctly classified as negative.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d06c5a57-15ea-4760-8471-b0e06b30b594">
+<span class="eqno">(28)<a class="headerlink" href="#equation-d06c5a57-15ea-4760-8471-b0e06b30b594" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\text{TNR} = \frac{\text{True Negatives}}{\text{Actual Negatives}} = \frac{\text{True Negatives}}{\text{True Negatives} + \text{False Positives}}
+\end{equation}\]</div>
+<p> <br />
+<strong>False Positive Rate (FPR)</strong></p>
+<p>Ratio of negative instances that are incorrectly classified as positive.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-2a618d3d-56a2-4417-9dd8-9fe2f2963027">
+<span class="eqno">(29)<a class="headerlink" href="#equation-2a618d3d-56a2-4417-9dd8-9fe2f2963027" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\text{FPR} = \frac{\text{False Positives}}{\text{Actual Negatives}} = \frac{\text{False Positives}}{\text{True Negatives} + \text{False Positives}}
+\end{equation}\]</div>
+<p> <br />
+The False Positive Rate (FPR) is equal to:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-fce2dea6-c4a2-4d89-b6d9-fc47075a81d1">
+<span class="eqno">(30)<a class="headerlink" href="#equation-fce2dea6-c4a2-4d89-b6d9-fc47075a81d1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\text{FPR} = 1 - \text{TNR} = 1 - \text{specificity}
+\end{equation}\]</div>
+</section>
+</div><p>We have our ingredients. So, what is a ROC curve?</p>
+</section>
+<section id="building-the-roc-curve">
+<h2>Building the ROC curve<a class="headerlink" href="#building-the-roc-curve" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="rocdef">
+<p class="admonition-title"><span class="caption-number">Definition 31 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>Receiver Operating Characteristic (ROC) curve</strong> is a graphical display that plot the True Positive Rate (TPR) against the False Positive Rate (FPR) for each value of the decision threshold <span class="math notranslate nohighlight">\(T\)</span> going over the classifier’s output score range.</p>
+</section>
+</div><p>Let’s unpack this. First, recall the logistic function in classification. As input, we have the mixture of the input features <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> with the model parameters <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> (in the linear case, it is a simple dot product, but let’s be general here: it can be any combination). The output of the sigmoid is the prediction, or score. After training our model, we can use the validation dataset that contains the true labels to collect for each class, signal (1) and background (0), the predicted scores. Then it is possible to draw two distributions from those scores, as seen in the schematics below on the left:</p>
+<figure class="align-default" id="modeval-score-distrib-roc">
+<a class="reference internal image-reference" href="../_images/modEval_score_distrib_roc.png"><img alt="../_images/modEval_score_distrib_roc.png" src="../_images/modEval_score_distrib_roc.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">.  The logistic function predicts scores for two classes, the background (in blue) and the signal (in red). The distributions of the scores are shown on the left as two normalized smooth curves.<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#modeval-score-distrib-roc" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In the previous lecture, the decision boundary is illustrated as an horizontal line on the sigmoid plot. In the distribution of the scores, it is now a vertical threshold. In other words: what is predicted signal, i.e. data points whose scores are above the decision boundary, is now the integral of the scores on the right of the threshold. And what is predicted background, scores below the decision boundary, correspond to the integral of the curves on the left of the threshold.</p>
+<p>As these score distributions overlap, there will be errors in the predictions!</p>
+<p>Let’s see it closer:</p>
+<figure class="align-default" id="modeval-distrib-nolabels">
+<a class="reference internal image-reference" href="../_images/modEval_distrib_nolabels.png"><img alt="../_images/modEval_distrib_nolabels.png" src="../_images/modEval_distrib_nolabels.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">.  Overlapping distributions of the scores between our two classes means prediction errors.<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#modeval-distrib-nolabels" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="seealso admonition">
+<p class="admonition-title">Exercise</p>
+<p>From the figure above, identify where are the True Positives, True Negatives, False Positives and False Negatives.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Check your answer</p>
+<figure class="align-default" id="modeval-distrib-alllabels">
+<a class="reference internal image-reference" href="../_images/modEval_distrib_alllabels.png"><img alt="../_images/modEval_distrib_alllabels.png" src="../_images/modEval_distrib_alllabels.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">.  Score distributions of background (blue) and signal (red) and the predictions from a given threshold (green vertical line). More explanation in the text below.<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#modeval-distrib-alllabels" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>True positives correspond to all the data points from the signal class integrated from the right of the threshold.<br />
+Inversely, true negatives correspond to all the data points from the background class integrated from the left of the threshold.<br />
+False positives are real background samples incorrectly predicted as signal (purple area from the background distribution).<br />
+False negatives are real signal samples incorrectly predicted as background (orange area from the signal distribution).</p>
+</div>
+<p>For a given threshold, it is possible to compute the True Positive Rate (TPR) and False Positive Rate (FPR). The ROC curve is the ensemble of the points (TPR, FPR) for all threshold values.</p>
+<figure class="align-default" id="modeval-roc">
+<a class="reference internal image-reference" href="../_images/modEval_ROC.png"><img alt="../_images/modEval_ROC.png" src="../_images/modEval_ROC.png" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">. ROC curve (dark orange) illustrating the relationship between true positive rate (TPR) and false positive rate (FPR). The dashed diagonal line represents a random classifier.<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#modeval-roc" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="seealso admonition">
+<p class="admonition-title">Exercise</p>
+<p>If we move the threshold to the right (<span class="math notranslate nohighlight">\(x \to +\infty\)</span>), in which direction would it corresponds to on the ROC curve? Right or left?</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Check your answer</p>
+<p>If we move the threshold <span class="math notranslate nohighlight">\(T\)</span> to the right, we will omit some signal samples (<span class="math notranslate nohighlight">\(y=1\)</span>) and thus decrease in signal efficiency, so the True Positive Rate will decrease (and if we exagerate to check this reasoning by pushing <span class="math notranslate nohighlight">\(T\)</span> to the very very right, we have no more signal sample on the right of the threshold, we miss out all signal and TPR = 0). So moving to the right decreases the signal efficiency/TRP.</p>
+<p>What about background (<span class="math notranslate nohighlight">\(y=0\)</span>)? It’s the contrary, if we shift the threshold <span class="math notranslate nohighlight">\(T\)</span> to the right, we will gain more background samples in the blue distribution and improve our background efficiency. Good for the background, but we want signal. That translates on the ROC curve in reducing the FPR (1 - background-efficiency). And we can check that if the threshold is all the way to the right, we have 100% background efficiency and a specificity of zero.</p>
+<p>Conclusion: increasing the decision threshold <span class="math notranslate nohighlight">\(T\)</span> moves us on the ROC curve to the left (and down eventually to 0,0).</p>
+</div>
+</section>
+<section id="comparing-classifiers">
+<h2>Comparing Classifiers<a class="headerlink" href="#comparing-classifiers" title="Permalink to this headline">#</a></h2>
+<p>The ROC has the great advantage to see how different classifiers compare through all the ranges of signal and background efficiencies.</p>
+<figure class="align-default" id="modeval-roc-wiki">
+<a class="reference internal image-reference" href="../_images/modEval_roc_wiki.png"><img alt="../_images/modEval_roc_wiki.png" src="../_images/modEval_roc_wiki.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">. Several ROC curves can be overlaid to then compare classifiers. A poor classifier will be near the random classifier line, which is the “random classifier” or in other words using pure luck (it will be right on average 50% of the time). The idea classifier correspond to the top left dot, where 100% of the signal sample are correctly classified so the False Positive Rate is zero.<br />
+<sub>Image: Modified work by the author, original by <a class="reference external" href="https://en.wikipedia.org/wiki/File:Roc_curve.svg">Wikipedia</a></sub></span><a class="headerlink" href="#modeval-roc-wiki" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We can see from the picture that the more the curve approaches the ideal classifier, the better it is. We can use the area under the ROC curve to have a single number to then quantitatively compare classifier on the whole.</p>
+<p>ROC curves can differ depending on the metrics used. In particle physics, the True Positive Rate is called signal efficiency. It is indeed how efficient the classifier is to correctly classify as signal (numerator) all the real signal (denominator). Zero is bad, TPR = 1 is ideal. The True Negative Rate is called background efficiency. Particle physics builds ROC curves slightly different than the ones you can see in data science; instead of using FPR it uses the background rejection, defined as the inverse of background efficiency. All of this to say that it’s important to read the graph axes first!</p>
+<div class="proof definition admonition" id="aucdef">
+<p class="admonition-title"><span class="caption-number">Definition 32 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>Area Under Curve (AUC)</strong> is the integral of the ROC curve, from FPR = 0 to FPR = 1.</p>
+<p>A perfect classifier will have AUC = 1.</p>
+</section>
+</div><p>While it is convenient to have a single number for comparing classifier, the AUC is not reflecting how classifiers perform for specific ranges of signal efficiencies. It is always important while optimizing or choosing a classifier to check its performance in the range relevant for the given problem.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./basics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="model_eval_2_perf_metrics.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Performance Metrics</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="model_eval_4_bias_variance_tradeoff.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bias &amp; Variance: a Tradeoff</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    <div class="extra_footer">
+      <div style="display:flex; align-items:center; gap:10px;">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+    <img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" alt="CC Logo">
+  </a>
+  <div>
+    By Claire David • © 2025<br>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+  </div>
+</div>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

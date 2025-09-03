@@ -228,7 +228,39 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="log_reg_5_multiclass.html">
-     Multiclassification
+     More than two categories: multiclassification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="model_evaluation.html">
+   Model Evaluation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_1_train_test_split.html">
+     Splitting Datasets for Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_2_perf_metrics.html">
+     Performance Metrics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_3_roc_curve.html">
+     Let’s ROC!
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_4_bias_variance_tradeoff.html">
+     Bias &amp; Variance: a Tradeoff
     </a>
    </li>
   </ul>
@@ -577,7 +609,7 @@ h_\theta(\boldsymbol{x^{(i)}}) = \theta_0 + \theta_1 x^{(i)}_1 + \theta_2 x^{(i)
 </div>
 <p>If we set <span class="math notranslate nohighlight">\(x_0^{(i)} = 1\)</span>, we can write the mapping function as a sum. For one training example <span class="math notranslate nohighlight">\(x^{(i)}\)</span>, i.e. a row in the data set:</p>
 <div class="math notranslate nohighlight" id="equation-h-theta-lin-sum">
-<span class="eqno">(10)<a class="headerlink" href="#equation-h-theta-lin-sum" title="Permalink to this equation">#</a></span>\[  h_\theta(\boldsymbol{x^{(i)}}) = \sum_{j=0}^n \theta_j x^{(i)}_j =  x^{(i)} \theta^{\; T}\]</div>
+<span class="eqno">(11)<a class="headerlink" href="#equation-h-theta-lin-sum" title="Permalink to this equation">#</a></span>\[  h_\theta(\boldsymbol{x^{(i)}}) = \sum_{j=0}^n \theta_j x^{(i)}_j =  x^{(i)} \theta^{\; T}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(i)}\)</span> an <strong>row vector</strong> of <span class="math notranslate nohighlight">\(n+1\)</span> elements, <span class="math notranslate nohighlight">\(x^{(i)} = (x^{(i)}_0, x^{(i)}_1, x^{(i)}_2, \cdots, x^{(i)}_n)\)</span> and <span class="math notranslate nohighlight">\(\theta\)</span> is a <strong>row vector</strong> too of <span class="math notranslate nohighlight">\(n+1\)</span> elements as well, <span class="math notranslate nohighlight">\(\boldsymbol{\theta} = (\theta_0, \theta_1, \cdots, \theta_n)\)</span>. Thus taking the transposed and multiplying by <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(i)}\)</span> is equivalent to a dot product:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
@@ -629,7 +661,7 @@ The optimized values of model parameters <span class="math notranslate nohighlig
  </p></li>
 </ol>
 <div class="math notranslate nohighlight" id="equation-updatemulti">
-<span class="eqno">(11)<a class="headerlink" href="#equation-updatemulti" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{equation*} \\
+<span class="eqno">(12)<a class="headerlink" href="#equation-updatemulti" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{equation*} \\
   \frac{\partial }{\partial \theta_j} J(\boldsymbol{\theta}) \;   \;   \;  \;   \;   \;  \forall j \in [0..n]
 \end{equation*}\end{split}\]</div>
 <p> <br />
@@ -637,14 +669,14 @@ The optimized values of model parameters <span class="math notranslate nohighlig
       Use the update rule:<br />
  </p>
 <div class="math notranslate nohighlight" id="equation-eqgdlincostmulti">
-<span class="eqno">(12)<a class="headerlink" href="#equation-eqgdlincostmulti" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{equation*} \\
+<span class="eqno">(13)<a class="headerlink" href="#equation-eqgdlincostmulti" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{equation*} \\
 \theta'_j = \theta_j-\alpha \frac{\partial}{\partial \theta_j} J\left(\boldsymbol{\theta}\right) \;   \;   \;  \;   \;   \; \forall j \in [0..n]\\
 \end{equation*}\end{split}\]</div>
 <p>         Reassign the new <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> parameters to prepare for next iteration</p>
 </li>
 </ol>
 <div class="math notranslate nohighlight" id="equation-equpdatethetamulti">
-<span class="eqno">(13)<a class="headerlink" href="#equation-equpdatethetamulti" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{equation*}
+<span class="eqno">(14)<a class="headerlink" href="#equation-equpdatethetamulti" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{equation*}
 \theta_j = \theta'_j \;   \;   \;  \;   \;   \; \forall j \in [0..n]\\
 \end{equation*}\end{split}\]</div>
 <p><strong>Exit conditions</strong></p>
@@ -659,7 +691,7 @@ The optimized values of model parameters <span class="math notranslate nohighlig
 </section>
 </div><p>With the linear hypothesis, the partial derivatives of <span class="math notranslate nohighlight">\(J(\boldsymbol{\theta})\)</span> for each parameter <span class="math notranslate nohighlight">\(\theta_j\)</span> will be of the form:</p>
 <div class="math notranslate nohighlight" id="equation-partialdevlinreg">
-<span class="eqno">(14)<a class="headerlink" href="#equation-partialdevlinreg" title="Permalink to this equation">#</a></span>\[\frac{\partial}{\partial \theta_j} J(\boldsymbol{\theta}) = \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) \; x_j^{(i)}\]</div>
+<span class="eqno">(15)<a class="headerlink" href="#equation-partialdevlinreg" title="Permalink to this equation">#</a></span>\[\frac{\partial}{\partial \theta_j} J(\boldsymbol{\theta}) = \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) \; x_j^{(i)}\]</div>
 </section>
 <section id="feature-scaling-normalization">
 <span id="warmup-linregmulti-featurescalnorm"></span><h2>Feature Scaling &amp; Normalization<a class="headerlink" href="#feature-scaling-normalization" title="Permalink to this headline">#</a></h2>

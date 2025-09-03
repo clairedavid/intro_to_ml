@@ -65,6 +65,8 @@ In machine learning, an epoch is the number of passes of the entire training dat
 The number of epochs is a hyperparameter controlling the number of passes of the algorithm.
 ```
 
+The version of Gradient Descent introduced here is called Batch Gradient Descent. Later, we will see variations where a subset of the dataset -- or even a single sample -- is used to compute the partial derivatives of the cost function. For now, we consider the full dataset -- one entire batch -- summed over while taking each partial derivative.
+
 
 ## Pseudo-code of gradient descent in 1D
 
@@ -138,6 +140,18 @@ __Exit conditions__
 * After the maximum number of epochs $N$ is reached
 * If both partial derivatives of the cost function tend to zero
 ````
+
+An important point: the parameters are updated simultaneously. In other words, we should not use an already updated $\theta_0$ when updating $\theta_1$. The equations above are kept simple, but we can write the update rule more precisely by introducing an iteration index $t$. The updated parameters at iteration $t+1$ are:
+
+```{math}
+:label: updateIterIndex
+    \theta_{0, \, t+1} &= \theta_{0, \, t}-\alpha \frac{\partial}{\partial \theta_0} J\left(\theta_{0, \, t}, \theta_{1, \, t}\right) \\
+    \\  
+    \theta_{1, \, t+1} &= \theta_{1, \, t}-\alpha \frac{\partial}{\partial \theta_1} J\left(\theta_{0, \, t}, \theta_{1, \, t}\right) 
+```
+
+Each model parameter are updated according to the 'state' at the previous iteration. 
+
 
 In linear regression, the partial derivatives can be simplified. 
 

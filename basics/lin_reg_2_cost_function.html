@@ -228,7 +228,39 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="log_reg_5_multiclass.html">
-     Multiclassification
+     More than two categories: multiclassification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="model_evaluation.html">
+   Model Evaluation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_1_train_test_split.html">
+     Splitting Datasets for Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_2_perf_metrics.html">
+     Performance Metrics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_3_roc_curve.html">
+     Let’s ROC!
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_4_bias_variance_tradeoff.html">
+     Bias &amp; Variance: a Tradeoff
     </a>
    </li>
   </ul>
@@ -439,10 +471,10 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p>The <strong>Mean Squared Error (MSE)</strong>, also called <strong>squared error function</strong> is a commonly used cost function for linear regression. It is defined as:</p>
 <div class="math notranslate nohighlight" id="equation-costfunctionlinreg">
-<span class="eqno">(3)<a class="headerlink" href="#equation-costfunctionlinreg" title="Permalink to this equation">#</a></span>\[ J\left(\theta_0, \theta_1\right) =\frac{1}{2 m} \sum_{i=1}^m\left(h_\theta(x^{(i)})-y^{(i)}\right)^2\]</div>
+<span class="eqno">(3)<a class="headerlink" href="#equation-costfunctionlinreg" title="Permalink to this equation">#</a></span>\[ J\left(\theta_0, \theta_1\right) =\frac{1}{m} \sum_{i=1}^m\left(h_\theta(x^{(i)})-y^{(i)}\right)^2\]</div>
 </section>
-</div><p>You can recognize the form of an average. The factor <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> makes it convenient when taking the derivative of this expression.
-In Equation <a class="reference internal" href="#equation-costfunctionlinreg">(3)</a>, each <span class="math notranslate nohighlight">\(h_\theta (x^{(i)})\)</span> is a prediction done by our mapping function <span class="math notranslate nohighlight">\(h_\theta\)</span>, whereas each <span class="math notranslate nohighlight">\(y_i\)</span> is an observed value in the data.</p>
+</div><p>You can recognize this expression as an average. In machine learning, an extra factor of <span class="math notranslate nohighlight">\(\tfrac{1}{2}\)</span> is sometimes included for convenience, since it cancels out when taking derivatives.
+In Equation <a class="reference internal" href="#equation-costfunctionlinreg">(3)</a>, each <span class="math notranslate nohighlight">\(h_\theta (x^{(i)})\)</span> is a prediction done by our mapping function <span class="math notranslate nohighlight">\(h_\theta\)</span>, whereas each <span class="math notranslate nohighlight">\(y^{(i)}\)</span> is an observed value in the data.</p>
 <p>The initial goal to “fit the data well” can now be formulated in a mathematical way: <strong>find the parameters <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> that minimize the cost function</strong>:</p>
 <div class="math notranslate nohighlight" id="equation-mincostfunction">
 <span class="eqno">(4)<a class="headerlink" href="#equation-mincostfunction" title="Permalink to this equation">#</a></span>\[\min_{\theta_0, \theta_1} J\left(\theta_0, \theta_1\right)\]</div>
@@ -464,6 +496,7 @@ We’ll use a super simple dataset with just four samples:</p>
 <p>You will appreciate the simplification, as we will calculate the cost by hand for different values of <span class="math notranslate nohighlight">\(\theta_1\)</span>. More complicated things await you in the tutorial, promised.</p>
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
+<p>We will set our intercept term to its optimized value: <span class="math notranslate nohighlight">\(\theta_0\)</span> = 0 and vary only the slope, that is <span class="math notranslate nohighlight">\(\theta_1\)</span>.</p>
 <ul class="simple">
 <li><p>Start with a value of <span class="math notranslate nohighlight">\(\theta_1\)</span> = 1 and calculate the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span>.</p></li>
 <li><p>Proceed the same for other values of <span class="math notranslate nohighlight">\(\theta_1\)</span> of 0.5, 1.5, 2, 2.5, 3.</p></li>

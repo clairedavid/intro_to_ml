@@ -224,7 +224,39 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="log_reg_5_multiclass.html">
-     Multiclassification
+     More than two categories: multiclassification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="model_evaluation.html">
+   Model Evaluation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_1_train_test_split.html">
+     Splitting Datasets for Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_2_perf_metrics.html">
+     Performance Metrics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_3_roc_curve.html">
+     Let’s ROC!
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_4_bias_variance_tradeoff.html">
+     Bias, Variance and their Tradeoff
     </a>
    </li>
   </ul>
@@ -553,7 +585,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x119a861c0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x11d30f340&gt;]
 </pre></div>
 </div>
 <img alt="../_images/log_reg_plots_8_1.png" src="../_images/log_reg_plots_8_1.png" />
@@ -629,9 +661,9 @@ Ok trying this:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/fv/74nv6gw915x5mgvq1t9sx__00000gn/T/ipykernel_20872/2124996633.py:2: RuntimeWarning: divide by zero encountered in log
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/fv/74nv6gw915x5mgvq1t9sx__00000gn/T/ipykernel_33424/2124996633.py:2: RuntimeWarning: divide by zero encountered in log
   y = - np.log(x)
-/var/folders/fv/74nv6gw915x5mgvq1t9sx__00000gn/T/ipykernel_20872/2124996633.py:3: RuntimeWarning: divide by zero encountered in log
+/var/folders/fv/74nv6gw915x5mgvq1t9sx__00000gn/T/ipykernel_33424/2124996633.py:3: RuntimeWarning: divide by zero encountered in log
   y2 = - np.log((1-x))
 </pre></div>
 </div>

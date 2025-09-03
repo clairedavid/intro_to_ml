@@ -228,7 +228,39 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="log_reg_5_multiclass.html">
-     Multiclassification
+     More than two categories: multiclassification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="model_evaluation.html">
+   Model Evaluation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_1_train_test_split.html">
+     Splitting Datasets for Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_2_perf_metrics.html">
+     Performance Metrics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_3_roc_curve.html">
+     Let’s ROC!
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_4_bias_variance_tradeoff.html">
+     Bias &amp; Variance: a Tradeoff
     </a>
    </li>
   </ul>
@@ -503,7 +535,7 @@ This first step of supervised learning is called the <strong>training</strong> a
 y^\text{pred} = h(x)
 \end{equation*}\]</div>
 </section>
-</div><p>In our simple case of linear regression, our function <span class="math notranslate nohighlight">\(h\)</span> will be of the form:</p>
+</div><p>In our simple case of linear regression in one dimension, our function <span class="math notranslate nohighlight">\(h\)</span> will be of the form:</p>
 <div class="math notranslate nohighlight" id="equation-h-theta-lin">
 <span class="eqno">(1)<a class="headerlink" href="#equation-h-theta-lin" title="Permalink to this equation">#</a></span>\[  h_\theta(x) = \theta_0 + \theta_1 \; x\]</div>
 <p>The subscript <span class="math notranslate nohighlight">\(\theta\)</span> means that the function depends on the values taken by <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span>.</p>
@@ -541,7 +573,7 @@ y^\text{pred} = h(x)
 We could pick one training example <span class="math notranslate nohighlight">\((x^{(k)} , y^{(k)})\)</span> and derive the coefficients from there. But will this be the ‘best’ straight line to draw?
 The mathematical phrasing for such a task is to think in terms of errors. How do we calculate the errors? That’s a first question to ask.
 From a given vector of <span class="math notranslate nohighlight">\(\theta\)</span>, how small are the errors?
-This picture below helps to visualize. From a given parameterization, that is to say a given tuple (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span> ), the mapping function will output continuous values of a predicted <span class="math notranslate nohighlight">\(y\)</span> for a continuous range of <span class="math notranslate nohighlight">\(x\)</span>. That is the dashed line. The errors are the (vertical) intervals between the <span class="math notranslate nohighlight">\(y\)</span> from the prediction and each data points.</p>
+This picture below helps to visualize. From a given parameterization, that is to say a given tuple (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span> ), the mapping function will output continuous values of a predicted <span class="math notranslate nohighlight">\(y^\text{pred}\)</span> for a continuous range of <span class="math notranslate nohighlight">\(x\)</span>. That is the dashed line. The errors are the (vertical) intervals between the <span class="math notranslate nohighlight">\(y\)</span> from the prediction and each data points.</p>
 <figure class="align-default" id="squareerrvisual">
 <a class="reference internal image-reference" href="../_images/linReg_square_err_graph.png"><img alt="../_images/linReg_square_err_graph.png" src="../_images/linReg_square_err_graph.png" style="width: 75%;" /></a>
 <figcaption>

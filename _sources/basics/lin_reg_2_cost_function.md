@@ -14,11 +14,11 @@ The __cost function__ in linear regression returns a global error between the pr
 The __Mean Squared Error (MSE)__, also called __squared error function__ is a commonly used cost function for linear regression. It is defined as:
 ```{math}
 :label: costFunctionLinReg
- J\left(\theta_0, \theta_1\right) =\frac{1}{2 m} \sum_{i=1}^m\left(h_\theta(x^{(i)})-y^{(i)}\right)^2
+ J\left(\theta_0, \theta_1\right) =\frac{1}{m} \sum_{i=1}^m\left(h_\theta(x^{(i)})-y^{(i)}\right)^2
 ```
 ````
-You can recognize the form of an average. The factor $\frac{1}{2}$ makes it convenient when taking the derivative of this expression.
-In Equation {eq}`costFunctionLinReg`, each $h_\theta (x^{(i)})$ is a prediction done by our mapping function $h_\theta$, whereas each $y_i$ is an observed value in the data. 
+You can recognize this expression as an average. In machine learning, an extra factor of $\tfrac{1}{2}$ is sometimes included for convenience, since it cancels out when taking derivatives.
+In Equation {eq}`costFunctionLinReg`, each $h_\theta (x^{(i)})$ is a prediction done by our mapping function $h_\theta$, whereas each $y^{(i)}$ is an observed value in the data. 
 
 The initial goal to "fit the data well" can now be formulated in a mathematical way: __find the parameters $\theta_0$ and $\theta_1$ that minimize the cost function__:
 ```{math}
@@ -44,6 +44,7 @@ You will appreciate the simplification, as we will calculate the cost by hand fo
 
 ```{admonition} Exercise
 :class: seealso
+We will set our intercept term to its optimized value: $\theta_0$ = 0 and vary only the slope, that is $\theta_1$.
 * Start with a value of $\theta_1$ = 1 and calculate the cost function $J(\theta_1)$.
 * Proceed the same for other values of $\theta_1$ of 0.5, 1.5, 2, 2.5, 3.
 * How would the graph of the cost function $J(\theta_1)$ as a function of $\theta_1$ look like?

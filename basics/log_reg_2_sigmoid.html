@@ -228,7 +228,39 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="log_reg_5_multiclass.html">
-     Multiclassification
+     More than two categories: multiclassification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="model_evaluation.html">
+   Model Evaluation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_1_train_test_split.html">
+     Splitting Datasets for Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_2_perf_metrics.html">
+     Performance Metrics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_3_roc_curve.html">
+     Let’s ROC!
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_4_bias_variance_tradeoff.html">
+     Bias &amp; Variance: a Tradeoff
     </a>
    </li>
   </ul>
@@ -484,7 +516,7 @@ h_\theta (\boldsymbol{x}^{(i)}) =  \sigma(\boldsymbol{x}^{(i)}\, \boldsymbol{\th
 </section>
 </div><p>The mapping function satisfies</p>
 <div class="math notranslate nohighlight" id="equation-hthetabounded">
-<span class="eqno">(15)<a class="headerlink" href="#equation-hthetabounded" title="Permalink to this equation">#</a></span>\[0 &lt; h_\boldsymbol{\theta} (\boldsymbol{x}^{(i)}) &lt; 1\]</div>
+<span class="eqno">(16)<a class="headerlink" href="#equation-hthetabounded" title="Permalink to this equation">#</a></span>\[0 &lt; h_\boldsymbol{\theta} (\boldsymbol{x}^{(i)}) &lt; 1\]</div>
 <p>Those limits are reached asymptotically reaching 0 and 1 when <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(i)}\, \boldsymbol{\theta}  \rightarrow -\infty\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(i)}\, \boldsymbol{\theta}  \rightarrow +\infty\)</span> respectively.</p>
 <p>Intuitively, we see in our example that events with very low electron energy are most likely to be background whereas events with high electron energy are more likely to be signal. In the middle, there is a 50/50 chance to mis-classify an event.</p>
 <p><strong>The output of the sigmoid can be interpreted as a probability</strong>.</p>
@@ -494,7 +526,7 @@ h_\theta (\boldsymbol{x}^{(i)}) =  \sigma(\boldsymbol{x}^{(i)}\, \boldsymbol{\th
 <p>Imagine we have optimized our vector <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> parameters. How do we make a prediction?
 Previously with linear regression, we could predict the target <span class="math notranslate nohighlight">\(y^\text{pred}\)</span> from a new data variable <span class="math notranslate nohighlight">\(\boldsymbol{x}^\text{new}\)</span> (a row of all features) by directly using the hypothesis function:</p>
 <div class="math notranslate nohighlight" id="equation-ypredthetaxnew">
-<span class="eqno">(16)<a class="headerlink" href="#equation-ypredthetaxnew" title="Permalink to this equation">#</a></span>\[y^\text{pred} = h_\boldsymbol{\theta}(\boldsymbol{x}^\text{new}) =  \boldsymbol{x}^\text{new} \boldsymbol{\theta}\]</div>
+<span class="eqno">(17)<a class="headerlink" href="#equation-ypredthetaxnew" title="Permalink to this equation">#</a></span>\[y^\text{pred} = h_\boldsymbol{\theta}(\boldsymbol{x}^\text{new}) =  \boldsymbol{x}^\text{new} \boldsymbol{\theta}\]</div>
 <p>With discrete outcomes, we need a new concept to map the input to a discrete class: the decision boundary.</p>
 <div class="proof definition admonition" id="decBoundDef">
 <p class="admonition-title"><span class="caption-number">Definition 17 </span></p>

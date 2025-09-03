@@ -1,0 +1,713 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Performance Metrics &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Let’s ROC!" href="model_eval_3_roc_curve.html" />
+    <link rel="prev" title="Splitting Datasets for Evaluation" href="model_eval_1_train_test_split.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction<br> to Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About this course
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/teaching_philosophy.html">
+   Teaching philosophy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/instructor.html">
+   Instructor &amp; Credits
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/tools.html">
+   Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/evaluation.html">
+   Evaluation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  The basics
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="linear_regression.html">
+   Warm-up: Linear Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_1_notations.html">
+     Notations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_2_cost_function.html">
+     Cost Function in Linear Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_3_gradient_descent_1d.html">
+     Gradient Descent in 1D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_4_gradient_descent_multiD.html">
+     Multivariate Linear Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_5_learning_rate.html">
+     Learning Rate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lin_reg_6_gradient_descent_in_practice.html">
+     Gradient Descent in Practice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="logistic_regression.html">
+   Logistic Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_1_intro.html">
+     Logistic Regression: introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_2_sigmoid.html">
+     What is the Sigmoid Function?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_3_cost_function.html">
+     Cost Function for Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_4_gradient_descent.html">
+     Gradient Descent for Logistic Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="log_reg_5_multiclass.html">
+     More than two categories: multiclassification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="model_evaluation.html">
+   Model Evaluation
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_1_train_test_split.html">
+     Splitting Datasets for Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Performance Metrics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_3_roc_curve.html">
+     Let’s ROC!
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_4_bias_variance_tradeoff.html">
+     Bias &amp; Variance: a Tradeoff
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/basics/model_eval_2_perf_metrics.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#types-of-errors">
+   Types of errors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#for-regression-algorithms">
+     For regression algorithms
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#for-classification-algorithms">
+     For classification algorithms
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#performance-measures">
+   Performance measures
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     For regression algorithms
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     For classification algorithms
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Performance Metrics</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#types-of-errors">
+   Types of errors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#for-regression-algorithms">
+     For regression algorithms
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#for-classification-algorithms">
+     For classification algorithms
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#performance-measures">
+   Performance measures
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     For regression algorithms
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     For classification algorithms
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="performance-metrics">
+<h1>Performance Metrics<a class="headerlink" href="#performance-metrics" title="Permalink to this headline">#</a></h1>
+<p>In supervised learning, assessing a model’s performance is about how close predictions are to the truth. Before digging into the metrics, let’s first define the types of errors properly.</p>
+<section id="types-of-errors">
+<h2>Types of errors<a class="headerlink" href="#types-of-errors" title="Permalink to this headline">#</a></h2>
+<p>Generally speaking, an error is the gap between the prediction and the true value. There are different terms depending on the algorithm and the set on which errors are computed.</p>
+<section id="for-regression-algorithms">
+<h3>For regression algorithms<a class="headerlink" href="#for-regression-algorithms" title="Permalink to this headline">#</a></h3>
+<div class="proof definition admonition" id="residualDef">
+<p class="admonition-title"><span class="caption-number">Definition 23 </span></p>
+<section class="definition-content" id="proof-content">
+<p>A <strong>residual</strong> is the difference between the actual and predicted value computed with respect to data samples used to train, validate and tune the model (i.e. <em>in-sample</em> error).</p>
+</section>
+</div><p>It is always a good practice to make a scatter plot of all the residuals with respect to the independent variable values; they should be randomly distributed on a band symmetrically centered at zero. If not, this means the chosen model is not appropriate to correctly fit the data.</p>
+<div class="proof definition admonition" id="errorDef">
+<p class="admonition-title"><span class="caption-number">Definition 24 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>generalized error</strong> is the error rate of the difference between the actual and predicted values computed with respect to test or new data (i.e. <em>out-of-sample</em> error).</p>
+</section>
+</div></section>
+<section id="for-classification-algorithms">
+<h3>For classification algorithms<a class="headerlink" href="#for-classification-algorithms" title="Permalink to this headline">#</a></h3>
+<p>In classification, the errors bear different names. As we saw that multiclassifiers are treated as a collection of binary classifiers, we will go over the two types of errors.
+The most common metric is the root mean squared error (RMSE).</p>
+<p>Recall than the labelling and numerical association (1 and 0) of classes is arbitrary. Signal can be the rare process we want to see in the detector and 0 the background we want to reject. But we could exchange the numbers with 0 and 1, provided we remain consistent. In medical diagnosis, the class labelled 1 can be the presence of cancer on a patient (it’s not what we want of course, but what we are looking to classify).</p>
+<div class="proof definition admonition" id="confusionMatrix def">
+<p class="admonition-title"><span class="caption-number">Definition 25 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>confusion matrix</strong> is a table used to visualize the prediction results (positive/negative) from a classification algorithm with respect to their correctness (true/false).<br />
+It is a <span class="math notranslate nohighlight">\(n^C \times n^C\)</span> matrix, with <span class="math notranslate nohighlight">\(n^C\)</span> the number of classes.</p>
+</section>
+</div><figure class="align-default" id="modeval-confusionmatrix">
+<a class="reference internal image-reference" href="../_images/modEval_confusionmatrix.png"><img alt="../_images/modEval_confusionmatrix.png" src="../_images/modEval_confusionmatrix.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">. The confusion matrix for a binary classifier.<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#modeval-confusionmatrix" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The quantity in each cell <span class="math notranslate nohighlight">\(C_{i,j}\)</span> corresponds to the number of observations known to be in group <span class="math notranslate nohighlight">\(i\)</span> and predicted to be in group <span class="math notranslate nohighlight">\(j\)</span>.
+The true cells are along the diagonal when <span class="math notranslate nohighlight">\(i=j\)</span>. Otherwise, if <span class="math notranslate nohighlight">\(i \neq j\)</span>, it is false. For <span class="math notranslate nohighlight">\(n^C =2\)</span> there are two ways to be right, two ways to be wrong. The counts are called:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(C_{0,0}\)</span>: true negatives</p></li>
+<li><p><span class="math notranslate nohighlight">\(C_{1,1}\)</span>: true positives</p></li>
+<li><p><span class="math notranslate nohighlight">\(C_{0,1}\)</span>: false positives</p></li>
+<li><p><span class="math notranslate nohighlight">\(C_{1,0}\)</span>: false negatives</p></li>
+</ul>
+<p>Here is a rephrase in the context of event classification: signal (1) versus background (0).</p>
+<p><strong>True positives</strong><br />
+We predict signal and the event is signal.</p>
+<p><strong>True negatives</strong><br />
+We predict background and the event is background.</p>
+<p><strong>False positives</strong><br />
+We predict signal but the event is background: our signal samples will have background contamination.</p>
+<p><strong>False negatives</strong><br />
+We predict background but the event is signal: we have signal contamination in the background but most importantly: we missed a signal event!</p>
+<p>The false positive and false negatives misclassifications are also referred to as type I and type II errors respectively. There are usually phrased using statistical jargon of null hypothesis (background) and alternative hypothesis (signal). The definitions below merge the statistical phrasing with our context above:</p>
+<div class="proof definition admonition" id="definition-3">
+<p class="admonition-title"><span class="caption-number">Definition 26 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Type I error - False Positive</strong><br />
+Error of rejecting the null hypothesis when the null hypothesis is true.<br />
+👉 Background is classified as signal (background contamination)</p>
+<p><strong>Type II error - False Negative</strong><br />
+Error of accepting the null hypothesis when the alternative one is actually true.<br />
+👉 Signal is classified as background (missing out on what we look for)</p>
+</section>
+</div><p>The type I error leads to signal samples not pure, as contaminated with background. But a type II error is a miss on a possible discovery! Or in medical diagnosis, it can be equivalent to state “you are not ill” to a sick patient. Type II errors are in some cases and contexts much worse than type I errors.</p>
+</section>
+</section>
+<section id="performance-measures">
+<h2>Performance measures<a class="headerlink" href="#performance-measures" title="Permalink to this headline">#</a></h2>
+<section id="id1">
+<h3>For regression algorithms<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>There are many metrics used to evaluate the performance of regression algorithms, each with theirs pros and cons.</p>
+<div class="proof definition admonition" id="rmseDef">
+<p class="admonition-title"><span class="caption-number">Definition 27 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>root mean squared error (RMSE)</strong> is the square root of the mean squared error:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d3c6b4be-9d0f-4e9c-a31e-f99069656d52">
+<span class="eqno">(22)<a class="headerlink" href="#equation-d3c6b4be-9d0f-4e9c-a31e-f99069656d52" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\text{RMSE} = \sqrt{ \frac{\sum_{i=1}^N (y^\text{pred} - y^\text{obs} )^2 }{ N } }
+\end{equation}\]</div>
+</section>
+</div><p>RMSE ranges from 0 to infinity. The lower the RMSE, the better. By taking the square root we have an error of the same unit that the target variable <span class="math notranslate nohighlight">\(y\)</span> we want to predict.</p>
+<p>You may have seen in a statistics course the coefficient of determination, called <span class="math notranslate nohighlight">\(R^2\)</span> or <span class="math notranslate nohighlight">\(r^2\)</span>. This is not really a measure of model performance, although it can be used as a proxy. What <span class="math notranslate nohighlight">\(r^2\)</span> does is to measure of the amount of variance explained by the model. It is more a detector of variance than a performance assessment. Ranging from 0 to 1, with 1 being ideal.</p>
+</section>
+<section id="id2">
+<h3>For classification algorithms<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<p>The total model error, i.e. the sum of all wrong predictions divided by the total number of predictions, is not a good metric as it mixes types I and II errors. There are other error measurements more appropriate to measure the performance for classification. The more popular ones associated with machine learning are defined below:</p>
+<div class="proof definition admonition" id="errormetricsclassdef">
+<p class="admonition-title"><span class="caption-number">Definition 28 </span></p>
+<section class="definition-content" id="proof-content">
+<p> <br />
+<strong>Accuracy</strong><br />
+Rate at which the model is able to predict the correct values of both classes.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-680ef80e-c271-4d46-9141-45810061e134">
+<span class="eqno">(23)<a class="headerlink" href="#equation-680ef80e-c271-4d46-9141-45810061e134" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\text{Accuracy} = \frac{\text{True predictions}}{\text{All predictions}} = \frac{\text{TP + TN}}{\text{TP + TN + FP + FN}}
+\end{equation}\]</div>
+<p> <br />
+<strong>Precision, or Positive Predictive Value (PPV)</strong><br />
+Measure of the fraction of true predictions among all <strong>positive predictions</strong>.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b9f59f8a-857b-4275-a46a-ad22618352af">
+<span class="eqno">(24)<a class="headerlink" href="#equation-b9f59f8a-857b-4275-a46a-ad22618352af" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\text{Precision} = \frac{\text{True Positives}}{\text{All Positive Predictions}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}}
+\end{equation}\]</div>
+<p> <br />
+<strong>Recall, or True Positive Rate (TPR)</strong><br />
+Measure of the fraction of true predictions among all <strong>true observations</strong>.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ed1d4b69-f472-4d33-8f08-c329febdfd6c">
+<span class="eqno">(25)<a class="headerlink" href="#equation-ed1d4b69-f472-4d33-8f08-c329febdfd6c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\text{Recall} = \frac{\text{True Positives}}{\text{Actual Positives}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}
+\end{equation}\]</div>
+<p> <br />
+<strong>F-Score, or F1</strong><br />
+Describes the balance between Precision and Recall. It is the harmonic mean of the two:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-075315e0-927e-4f60-aea4-d0a81f603913">
+<span class="eqno">(26)<a class="headerlink" href="#equation-075315e0-927e-4f60-aea4-d0a81f603913" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\text{F1} =2 \; \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
+\end{equation}\]</div>
+</section>
+</div><p>The F-Score is a single metric favouring classifiers with similar Precision and Recall. But in some contexts, it is preferrable to favour a model with either high precision and low recall, or vice versa. There is a known trade-off between precision and recall.</p>
+<p><strong>Case of unbalanced dataset</strong><br />
+In an unbalanced dataset, some classes will appear much more frequently that others. A specific metric called balanced accuracy is used to assess the performance in that case.</p>
+<div class="proof definition admonition" id="balancedaccdef">
+<p class="admonition-title"><span class="caption-number">Definition 29 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Balanced accuracy</strong> is calculated as the average of recall obtained on each class.</p>
+</section>
+</div><div class="seealso admonition">
+<p class="admonition-title">Exercise</p>
+<p>Find different examples of classification in which:</p>
+<ul class="simple">
+<li><p>a low recall but high precision is preferrable</p></li>
+<li><p>a low precision but high recall is preferrable</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./basics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="model_eval_1_train_test_split.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Splitting Datasets for Evaluation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="model_eval_3_roc_curve.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Let’s ROC!</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    <div class="extra_footer">
+      <div style="display:flex; align-items:center; gap:10px;">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+    <img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" alt="CC Logo">
+  </a>
+  <div>
+    By Claire David • © 2025<br>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+  </div>
+</div>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

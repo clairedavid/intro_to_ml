@@ -228,7 +228,39 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="log_reg_5_multiclass.html">
-     Multiclassification
+     More than two categories: multiclassification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="model_evaluation.html">
+   Model Evaluation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_1_train_test_split.html">
+     Splitting Datasets for Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_2_perf_metrics.html">
+     Performance Metrics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_3_roc_curve.html">
+     Let’s ROC!
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_eval_4_bias_variance_tradeoff.html">
+     Bias &amp; Variance: a Tradeoff
     </a>
    </li>
   </ul>
@@ -449,7 +481,7 @@ even if <span class="math notranslate nohighlight">\(\alpha\)</span> remains con
 Two cases:</p>
 <ul class="simple">
 <li><p><strong>The zig-zag</strong>: if the next parameter <span class="math notranslate nohighlight">\(\theta'\)</span> is at a smaller distance to the <span class="math notranslate nohighlight">\(\theta^{\min J}\)</span> minimizing the cost function (<span class="math notranslate nohighlight">\( | \theta' - \theta^{\min J} |  &lt; | \theta - \theta^{\min J} |\)</span>), the gradient descent will generate parameters oscillating on each side of the slope until convergence. It will converge, but it will require a lot more steps.</p></li>
-<li><p><strong>Divergence</strong>: if the next paremeter is at a greater distance than the <span class="math notranslate nohighlight">\(\theta^{\min J}\)</span> minimizing the cost function (<span class="math notranslate nohighlight">\( | \theta' - \theta^{\min J} |  &gt; | \theta - \theta^{\min J} |\)</span>), the gradient descent will produce new parameters further and further away, escaping the parabola! It will diverge. We want to avoid this.</p></li>
+<li><p><strong>Divergence</strong>: if the next parameter is at a greater distance than the <span class="math notranslate nohighlight">\(\theta^{\min J}\)</span> minimizing the cost function (<span class="math notranslate nohighlight">\( | \theta' - \theta^{\min J} |  &gt; | \theta - \theta^{\min J} |\)</span>), the gradient descent will produce new parameters further and further away, escaping the parabola! It will diverge. We want to avoid this.</p></li>
 </ul>
 <p>The divergence is illustrated on the right in the figure below:</p>
 <figure class="align-default" id="linreg-learningrate-small-big">
@@ -465,7 +497,7 @@ Two cases:</p>
 <ul class="simple">
 <li><p>The learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> is a hyperparameter intervening in the calculation of the step size at which the parameters will be incremented or decremented.</p></li>
 <li><p>The step size varies even with a constant <span class="math notranslate nohighlight">\(\alpha\)</span> as it is multiplied by the slope, i.e. the derivatives of the cost function.</p></li>
-<li><p>A small learning rate is safe as it likely leads to convergence, yet too small values will necessitates a high number of epochs.</p></li>
+<li><p>A small learning rate is safe as it likely leads to convergence, yet too small values will necessitate a high number of epochs.</p></li>
 <li><p>A large learning rate can make the next update of parameters overshoot the minimum of the cost function and lead to either</p>
 <ul>
 <li><p>an oscillating trajectory: the algorithm converges yet more iterations are needed</p></li>
