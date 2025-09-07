@@ -35,7 +35,7 @@ name: scattersigmoid
 scale: 70%
 align: center
 ---
-. Data 1D distribution and sigmoid overlaid
+: Data 1D distribution and sigmoid overlaid
 ```  
 First of all, the curve is not overshooting below or above our discrete outcomes' range. Second: for data points either far left or far right, instead of creating a large error with a straight line as previously, the S-curve actually takes the values of our target-variables (asymptotically). Consequence: the error between the prediction and observed values will be very small, even negligible. We will not have an unwanted shift and mis-classification like before. 
 

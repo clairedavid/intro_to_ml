@@ -466,12 +466,14 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p>The <strong>cost function</strong> in linear regression returns a global error between the predicted values from a mapping function <span class="math notranslate nohighlight">\(h\)</span> (predictions) and all the target values (observations) of the training data set.</p>
 </section>
-</div><div class="proof definition admonition" id="mseDef">
+</div><p>This is also called the average loss or empirical risk. The term empirical, meaning based on experience or experiment, indicates that this is a finite-sample average over the training dataset. Not an expectaction. The true risk, by contrast, is the expectation over the full data distribution, which is inaccessible because that distribution is unknown.</p>
+<p>Let’s introduce the most popular cost function (over)used in machine learning:</p>
+<div class="proof definition admonition" id="mseDef">
 <p class="admonition-title"><span class="caption-number">Definition 5 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>Mean Squared Error (MSE)</strong>, also called <strong>squared error function</strong> is a commonly used cost function for linear regression. It is defined as:</p>
 <div class="math notranslate nohighlight" id="equation-costfunctionlinreg">
-<span class="eqno">(3)<a class="headerlink" href="#equation-costfunctionlinreg" title="Permalink to this equation">#</a></span>\[ J\left(\theta_0, \theta_1\right) =\frac{1}{m} \sum_{i=1}^m\left(h_\theta(x^{(i)})-y^{(i)}\right)^2\]</div>
+<span class="eqno">(3)<a class="headerlink" href="#equation-costfunctionlinreg" title="Permalink to this equation">#</a></span>\[ \text{MSE} =\frac{1}{m} \sum_{i=1}^m\left(h_\theta(x^{(i)})-y^{(i)}\right)^2\]</div>
 </section>
 </div><p>You can recognize this expression as an average. In machine learning, an extra factor of <span class="math notranslate nohighlight">\(\tfrac{1}{2}\)</span> is sometimes included for convenience, since it cancels out when taking derivatives.
 In Equation <a class="reference internal" href="#equation-costfunctionlinreg">(3)</a>, each <span class="math notranslate nohighlight">\(h_\theta (x^{(i)})\)</span> is a prediction done by our mapping function <span class="math notranslate nohighlight">\(h_\theta\)</span>, whereas each <span class="math notranslate nohighlight">\(y^{(i)}\)</span> is an observed value in the data.</p>
@@ -498,9 +500,9 @@ We’ll use a super simple dataset with just four samples:</p>
 <p class="admonition-title">Exercise</p>
 <p>We will set our intercept term to its optimized value: <span class="math notranslate nohighlight">\(\theta_0\)</span> = 0 and vary only the slope, that is <span class="math notranslate nohighlight">\(\theta_1\)</span>.</p>
 <ul class="simple">
-<li><p>Start with a value of <span class="math notranslate nohighlight">\(\theta_1\)</span> = 1 and calculate the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span>.</p></li>
+<li><p>Start with a value of <span class="math notranslate nohighlight">\(\theta_1\)</span> = 1 and calculate the cost function <span class="math notranslate nohighlight">\(C(\theta_1)\)</span>.</p></li>
 <li><p>Proceed the same for other values of <span class="math notranslate nohighlight">\(\theta_1\)</span> of 0.5, 1.5, 2, 2.5, 3.</p></li>
-<li><p>How would the graph of the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span> as a function of <span class="math notranslate nohighlight">\(\theta_1\)</span> look like?</p></li>
+<li><p>How would the graph of the cost function <span class="math notranslate nohighlight">\(C(\theta_1)\)</span> as a function of <span class="math notranslate nohighlight">\(\theta_1\)</span> look like?</p></li>
 <li><p>Are there maxima/minima? If yes how many?</p></li>
 </ul>
 </div>
@@ -518,7 +520,7 @@ We’ll use a super simple dataset with just four samples:</p>
 </section>
 <section id="visualizing-the-cost">
 <span id="linreg-cost-viscost"></span><h2>Visualizing the cost<a class="headerlink" href="#visualizing-the-cost" title="Permalink to this headline">#</a></h2>
-<p>Let’s see a visual representation of our cost function as a function of our <span class="math notranslate nohighlight">\(\theta\)</span> parameters. We saw in the simple example above that the cost function <span class="math notranslate nohighlight">\(J(\theta_1)\)</span> with only one parameter is a U-shaped parabola. The same goes if we fix <span class="math notranslate nohighlight">\(\theta_1\)</span> and vary <span class="math notranslate nohighlight">\(\theta_0\)</span>. Combining the two, it will look like a bowl. The figure below is not made from the data above, just for illustration:</p>
+<p>Let’s see a visual representation of our cost function as a function of our <span class="math notranslate nohighlight">\(\theta\)</span> parameters. We saw in the simple example above that the cost function <span class="math notranslate nohighlight">\(C(\theta_1)\)</span> with only one parameter is a U-shaped parabola. The same goes if we fix <span class="math notranslate nohighlight">\(\theta_1\)</span> and vary <span class="math notranslate nohighlight">\(\theta_0\)</span>. Combining the two, it will look like a bowl. The figure below is not made from the data above, just for illustration:</p>
 <figure class="align-default" id="plot-linreg-bowl">
 <div class="cell_output docutils container">
 <img alt="../_images/lin_reg_gd_plots_3_0.png" src="../_images/lin_reg_gd_plots_3_0.png" />
@@ -527,7 +529,7 @@ We’ll use a super simple dataset with just four samples:</p>
 <p><span class="caption-number">Fig. 2 </span><span class="caption-text">. The cost function (vertical axis) as a function of the parameters <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span>.</span><a class="headerlink" href="#plot-linreg-bowl" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>What does this represent? It shows the result of the cost function calculated for a range of <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> parameters. For each coordinate (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span>), there has been a loop over all the training data set to get the global error. The vertical value shows thus how ‘costly’ it is to pick up a given (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span>). The higher, the worse is the fit. The center of the bowl, where <span class="math notranslate nohighlight">\(J(\theta_0 , \theta_1)\)</span> is minimum, corresponds to the best choice of the <span class="math notranslate nohighlight">\(\theta\)</span> parameters. In other words: the best fit to the data.</p>
+<p>What does this represent? It shows the result of the cost function calculated for a range of <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> parameters. For each coordinate (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span>), there has been a loop over all the training data set to get the global error. The vertical value shows thus how ‘costly’ it is to pick up a given (<span class="math notranslate nohighlight">\(\theta_0\)</span> , <span class="math notranslate nohighlight">\(\theta_1\)</span>). The higher, the worse is the fit. The center of the bowl, where <span class="math notranslate nohighlight">\(C(\theta_0 , \theta_1)\)</span> is minimum, corresponds to the best choice of the <span class="math notranslate nohighlight">\(\theta\)</span> parameters. In other words: the best fit to the data.</p>
 <p>How do we proceed to find the <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span> parameters minimizing the cost function?</p>
 </section>
 </section>

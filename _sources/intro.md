@@ -11,7 +11,7 @@ __<big>2. Learn the math behind Machine Learning’s basic algorithms</big>__
 Build a solid foundation by learning the key mathematics of ML's core algorithms.
 
 __<big>3. Learn how to write beautiful Python code</big>__  
-This course offers plenty of hands-on to (re)implement the algorithms yourself. No fancy ML library: it's about translating the equations and algorithmic steps into clear, self-explanatory code.
+In the tutorials, you will (re)implement the algorithms yourself, from scratch. No fancy ML library: it’s about translating the equations and algorithmic steps into clear, self-explanatory code. This is the ultimate hands-on passage to reach mastery. Then the backstage of machine learning algorithms will have no secrets for you!
 
 __<big>4. Learn how to ask for help</big>__  
 Requesting technical support is more than a skill: it’s an art! Experts can only help if they understand exactly where you’re stuck. You’ll learn how to narrow down an issue, keep the relevant context while stripping away unnecessary details, provide a minimal working example, and formulate your questions effectively.

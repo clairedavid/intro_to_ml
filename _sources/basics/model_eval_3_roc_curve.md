@@ -59,7 +59,7 @@ Let's unpack this. First, recall the logistic function in classification. As inp
   name: modEval_score_distrib_roc
   width: 100%
 ---
- .  The logistic function predicts scores for two classes, the background (in blue) and the signal (in red). The distributions of the scores are shown on the left as two normalized smooth curves.  
+: The logistic function predicts scores for two classes, the background (in blue) and the signal (in red). The distributions of the scores are shown on the left as two normalized smooth curves.  
 <sub>Image from the author</sub>
 ```
 
@@ -72,9 +72,9 @@ Let's see it closer:
 ```{figure} ../images/modEval_distrib_nolabels.png
 ---
   name: modEval_distrib_nolabels
-  width: 80%
+  width: 100%
 ---
- .  Overlapping distributions of the scores between our two classes means prediction errors.  
+: Overlapping distributions of the scores between our two classes means prediction errors.  
 <sub>Image from the author</sub>
 ```
 ```{admonition} Exercise
@@ -86,9 +86,9 @@ From the figure above, identify where are the True Positives, True Negatives, Fa
 ```{figure} ../images/modEval_distrib_alllabels.png
 ---
   name: modEval_distrib_alllabels
-  width: 80%
+  width: 100%
 ---
- .  Score distributions of background (blue) and signal (red) and the predictions from a given threshold (green vertical line). More explanation in the text below.  
+: Score distributions of background (blue) and signal (red) and the predictions from a given threshold (green vertical line). More explanation in the text below.  
 <sub>Image from the author</sub>
 ```
 
@@ -106,7 +106,7 @@ For a given threshold, it is possible to compute the True Positive Rate (TPR) an
   name: modEval_ROC
   width: 60%
 ---
- . ROC curve (dark orange) illustrating the relationship between true positive rate (TPR) and false positive rate (FPR). The dashed diagonal line represents a random classifier.  
+: ROC curve (dark orange) illustrating the relationship between true positive rate (TPR) and false positive rate (FPR). The dashed diagonal line represents a random classifier.  
 <sub>Image from the author</sub>
 ```
 
@@ -134,11 +134,11 @@ The ROC has the great advantage to see how different classifiers compare through
   name: modEval_roc_wiki
   width: 70%
 ---
- . Several ROC curves can be overlaid to then compare classifiers. A poor classifier will be near the random classifier line, which is the "random classifier" or in other words using pure luck (it will be right on average 50% of the time). The idea classifier correspond to the top left dot, where 100% of the signal sample are correctly classified so the False Positive Rate is zero.  
+: Several ROC curves can be overlaid to then compare classifiers. A poor classifier will be near the "random classifier" line or in other words using pure luck (it will be right on average 50% of the time). The ideal classifier corresponds to the top left dot, where 100% of the real signal samples are correctly classified as signal and thus the False Positive Rate is zero.  
 <sub>Image: Modified work by the author, original by [Wikipedia](https://en.wikipedia.org/wiki/File:Roc_curve.svg)</sub>
 ```
 
-We can see from the picture that the more the curve approaches the ideal classifier, the better it is. We can use the area under the ROC curve to have a single number to then quantitatively compare classifier on the whole.
+We can see from the picture that the more the curve approaches the ideal classifier, the better it is. We can use the area under the ROC curve to have a single number to then quantitatively compare classifiers on their overall performance.
 
 ROC curves can differ depending on the metrics used. In particle physics, the True Positive Rate is called signal efficiency. It is indeed how efficient the classifier is to correctly classify as signal (numerator) all the real signal (denominator). Zero is bad, TPR = 1 is ideal. The True Negative Rate is called background efficiency. Particle physics builds ROC curves slightly different than the ones you can see in data science; instead of using FPR it uses the background rejection, defined as the inverse of background efficiency. All of this to say that it's important to read the graph axes first!   
 
@@ -150,5 +150,5 @@ The __Area Under Curve (AUC)__ is the integral of the ROC curve, from FPR = 0 to
 A perfect classifier will have AUC = 1.
 ````
 
-While it is convenient to have a single number for comparing classifier, the AUC is not reflecting how classifiers perform for specific ranges of signal efficiencies. It is always important while optimizing or choosing a classifier to check its performance in the range relevant for the given problem.
+While it is convenient to have a single number for comparing classifiers, the AUC is not reflecting how classifiers perform for specific ranges of signal efficiencies. It is always important while optimizing or choosing a classifier to check its performance in the range relevant for the given problem.
 

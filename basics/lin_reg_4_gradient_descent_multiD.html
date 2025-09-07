@@ -662,7 +662,7 @@ The optimized values of model parameters <span class="math notranslate nohighlig
 </ol>
 <div class="math notranslate nohighlight" id="equation-updatemulti">
 <span class="eqno">(12)<a class="headerlink" href="#equation-updatemulti" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{equation*} \\
-  \frac{\partial }{\partial \theta_j} J(\boldsymbol{\theta}) \;   \;   \;  \;   \;   \;  \forall j \in [0..n]
+  \frac{\partial }{\partial \theta_j} C(\boldsymbol{\theta}) \;   \;   \;  \;   \;   \;  \forall j \in [0..n]
 \end{equation*}\end{split}\]</div>
 <p> <br />
       2. <strong>Update all parameters</strong>:<br />
@@ -689,9 +689,9 @@ The optimized values of model parameters <span class="math notranslate nohighlig
 \frac{\partial}{\partial \theta_j} J\left(\boldsymbol{\theta}\right) \rightarrow 0 \;   \;   \;  \;   \;   \;    \forall j \in [0..n]
 \end{equation*}\]</div>
 </section>
-</div><p>With the linear hypothesis, the partial derivatives of <span class="math notranslate nohighlight">\(J(\boldsymbol{\theta})\)</span> for each parameter <span class="math notranslate nohighlight">\(\theta_j\)</span> will be of the form:</p>
+</div><p>With the linear hypothesis, the partial derivatives of <span class="math notranslate nohighlight">\(C(\boldsymbol{\theta})\)</span> for each parameter <span class="math notranslate nohighlight">\(\theta_j\)</span> will be of the form:</p>
 <div class="math notranslate nohighlight" id="equation-partialdevlinreg">
-<span class="eqno">(15)<a class="headerlink" href="#equation-partialdevlinreg" title="Permalink to this equation">#</a></span>\[\frac{\partial}{\partial \theta_j} J(\boldsymbol{\theta}) = \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) \; x_j^{(i)}\]</div>
+<span class="eqno">(15)<a class="headerlink" href="#equation-partialdevlinreg" title="Permalink to this equation">#</a></span>\[\frac{\partial}{\partial \theta_j} C(\boldsymbol{\theta}) = \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) \; x_j^{(i)}\]</div>
 </section>
 <section id="feature-scaling-normalization">
 <span id="warmup-linregmulti-featurescalnorm"></span><h2>Feature Scaling &amp; Normalization<a class="headerlink" href="#feature-scaling-normalization" title="Permalink to this headline">#</a></h2>
@@ -711,7 +711,7 @@ The optimized values of model parameters <span class="math notranslate nohighlig
 <figure class="align-default" id="withandoutscaling">
 <a class="reference internal image-reference" href="../_images/linReg_withandoutScaling.png"><img alt="../_images/linReg_withandoutScaling.png" src="../_images/linReg_withandoutScaling.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6 </span><span class="caption-text">. The contour without feature scaling is skewed and takes up an oval shape. If normalized, the path towards the minimum is shorter.<br />
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">: The contour without feature scaling is skewed and takes up an oval shape. If normalized, the path towards the minimum is shorter.<br />
 <sub>Source: <a class="reference external" href="https://www.enjoyalgorithms.com/blog/need-of-feature-scaling-in-machine-learning">enjoyalgorithms.com</a> </sub></span><a class="headerlink" href="#withandoutscaling" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>

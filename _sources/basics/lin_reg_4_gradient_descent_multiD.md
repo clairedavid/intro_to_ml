@@ -111,7 +111,7 @@ The optimized values of model parameters $\boldsymbol{\theta} = \theta_0, \theta
     ```{math}
     :label: updateMulti
     \begin{equation*} \\
-      \frac{\partial }{\partial \theta_j} J(\boldsymbol{\theta}) \;   \;   \;  \;   \;   \;  \forall j \in [0..n]
+      \frac{\partial }{\partial \theta_j} C(\boldsymbol{\theta}) \;   \;   \;  \;   \;   \;  \forall j \in [0..n]
     \end{equation*}
     ```
    &nbsp;    
@@ -140,10 +140,10 @@ __Exit conditions__
 \end{equation*}
 ````
 
-With the linear hypothesis, the partial derivatives of $J(\boldsymbol{\theta})$ for each parameter $\theta_j$ will be of the form:
+With the linear hypothesis, the partial derivatives of $C(\boldsymbol{\theta})$ for each parameter $\theta_j$ will be of the form:
 ```{math}
 :label: partialDevLinReg
-\frac{\partial}{\partial \theta_j} J(\boldsymbol{\theta}) = \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) \; x_j^{(i)}
+\frac{\partial}{\partial \theta_j} C(\boldsymbol{\theta}) = \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) \; x_j^{(i)}
 ```
 (warmup:linregmulti:featurescalnorm)=
 ## Feature Scaling & Normalization
@@ -167,7 +167,7 @@ The $\theta$ parameters will descend (or converge) slowly on large ranges and qu
   name: withandoutScaling
   width: 100%
 ---
- . The contour without feature scaling is skewed and takes up an oval shape. If normalized, the path towards the minimum is shorter.  
+: The contour without feature scaling is skewed and takes up an oval shape. If normalized, the path towards the minimum is shorter.  
  <sub>Source: [enjoyalgorithms.com](https://www.enjoyalgorithms.com/blog/need-of-feature-scaling-in-machine-learning) </sub>
 ```
 

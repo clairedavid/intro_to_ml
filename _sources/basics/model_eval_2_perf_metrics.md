@@ -33,7 +33,7 @@ It is a $n^C \times n^C$ matrix, with $n^C$ the number of classes.
   name: modEval_confusionmatrix
   width: 100%
 ---
- . The confusion matrix for a binary classifier.  
+: The confusion matrix for a binary classifier.  
 <sub>Image from the author</sub>
  ```
 The quantity in each cell $C_{i,j}$ corresponds to the number of observations known to be in group $i$ and predicted to be in group $j$.

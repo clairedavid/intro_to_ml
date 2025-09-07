@@ -8,7 +8,7 @@ Let's for instance consider three classes, labelled with their colours and distr
   name: logReg_multiclass-1
   width: 60%
 ---
- . 2D distribution of three different classes.  
+: 2D distribution of three different classes.  
  <sub>Image: [analyticsvidhya.com](https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/)</sub>
 ```
 
@@ -39,7 +39,7 @@ The One-to-One method would create those hyperplanes (with two input features, D
   name: logReg_multiclass-2
   width: 60%
 ---
- . One-to-One approach splits paired datasets, ignoring the points of the other classes.  
+: One-to-One approach splits paired datasets, ignoring the points of the other classes.  
  <sub>Image: [analyticsvidhya.com](https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/)</sub>
 ```
 
@@ -73,7 +73,7 @@ The final prediction is given by the highest value of the hypothesis function $h
   name: logReg_multiclass-3
   width: 60%
 ---
- . One-to-All approach focuses on one class to discriminate from all other points  
+: One-to-All approach focuses on one class to discriminate from all other points  
  (i.e. all other classes are merged into a single 'background' class).  
  <sub>Image: [analyticsvidhya.com](https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/)</sub>
 ```

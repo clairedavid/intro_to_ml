@@ -496,15 +496,15 @@ title="Print to PDF"
 <p class="admonition-title"><span class="caption-number">Definition 6 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>Normal Equation</strong> gives the exact solution for the parameters that minimize the mean squared error in linear regression. For a dataset with input matrix <span class="math notranslate nohighlight">\(X\)</span> and output vector <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-645533f2-7057-4f09-884f-bf7708a1674d">
-<span class="eqno">(5)<a class="headerlink" href="#equation-645533f2-7057-4f09-884f-bf7708a1674d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0ecc332d-2270-4405-b251-c95c83711de4">
+<span class="eqno">(5)<a class="headerlink" href="#equation-0ecc332d-2270-4405-b251-c95c83711de4" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \theta = (X^T X)^{-1} X^T \boldsymbol{y}
 \end{equation}\]</div>
 </section>
 </div><p>Here, <span class="math notranslate nohighlight">\(X\)</span> includes a column of ones for the intercept term. This formula computes the optimal parameters directly.</p>
 <p>In our 1D case with a single input feature, the parameters can also be written explicitly as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8de5f1e7-2074-4f10-8557-719b281f295d">
-<span class="eqno">(6)<a class="headerlink" href="#equation-8de5f1e7-2074-4f10-8557-719b281f295d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a6b2434e-e743-4a97-a817-45caf9f05102">
+<span class="eqno">(6)<a class="headerlink" href="#equation-a6b2434e-e743-4a97-a817-45caf9f05102" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \theta_1 = \frac{\sum_i (x_i - \bar{x})(y_i - \bar{y})}{\sum_i (x_i - \bar{x})^2}, \quad
 \theta_0 = \bar{y} - \theta_1 \bar{x}
 \end{equation}\]</div>
@@ -578,7 +578,7 @@ y^{(m)} \end{pmatrix}
  </p></li>
 </ul>
 <p><strong>Outputs</strong><br />
-The optimized values of the parameters: <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span>, minimizing <span class="math notranslate nohighlight">\(J(\theta_0 , \theta_1)\)</span>.
+The optimized values of the parameters: <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span>, minimizing <span class="math notranslate nohighlight">\(C(\theta_0 , \theta_1)\)</span>.
  </p>
 <ol>
 <li><p><strong>Initialization</strong>: Set random values for <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta_1\)</span></p></li>
@@ -588,8 +588,8 @@ The optimized values of the parameters: <span class="math notranslate nohighligh
 </ol>
 <div class="math notranslate nohighlight" id="equation-partialderiv1d">
 <span class="eqno">(7)<a class="headerlink" href="#equation-partialderiv1d" title="Permalink to this equation">#</a></span>\[\begin{split}    \begin{align*}
-        &amp; \frac{\partial }{\partial \theta_0} J(\theta_0 , \theta_1) \\
-        &amp; \frac{\partial }{\partial \theta_1} J(\theta_0 , \theta_1)
+        &amp; \frac{\partial }{\partial \theta_0} C(\theta_0 , \theta_1) \\
+        &amp; \frac{\partial }{\partial \theta_1} C(\theta_0 , \theta_1)
     \end{align*}\end{split}\]</div>
 <ol class="simple">
 <li><p><strong>Apply the update rule to get the new parameters</strong>:</p></li>
@@ -646,11 +646,11 @@ Note that at the step 2.1., there is an implicit loop over all training data sam
 <figure class="align-default" id="costsigndirection">
 <a class="reference internal image-reference" href="../_images/linReg_costSignDirection.png"><img alt="../_images/linReg_costSignDirection.png" src="../_images/linReg_costSignDirection.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">. The sign of the cost function’s derivative changes for two different parameter values either lower (left) or greater (right) than the parameter value for which the cost function is minimized.<br />
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">: The sign of the cost function’s derivative changes for two different parameter values either lower (left) or greater (right) than the parameter value for which the cost function is minimized.<br />
 <sub>Image from the author</sub></span><a class="headerlink" href="#costsigndirection" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>If our parameter is randomly picked on the left side of the U-shaped parabola, the partial derivatives will be negative. As the learning rate is always positive, the incremental update <span class="math notranslate nohighlight">\(-\alpha \frac{d}{d \theta} J(\theta)\)</span> will thus be positive. We will add an increment to our parameter. At the next iteration, we will have a new parameter <span class="math notranslate nohighlight">\(\theta\)</span> closer to the one we look for. The reverse goes with the other side of the curve: with a positive derivative, we will decrease our parameter and slide to the left. All the time we go ‘downhill’ towards the minimum.</p>
+<p>If our parameter is randomly picked on the left side of the U-shaped parabola, the partial derivatives will be negative. As the learning rate is always positive, the incremental update <span class="math notranslate nohighlight">\(-\alpha \frac{d}{d \theta} C(\theta)\)</span> will thus be positive. We will add an increment to our parameter. At the next iteration, we will have a new parameter <span class="math notranslate nohighlight">\(\theta\)</span> closer to the one we look for. The reverse goes with the other side of the curve: with a positive derivative, we will decrease our parameter and slide to the left. All the time we go ‘downhill’ towards the minimum.</p>
 </section>
 <section id="graphical-visualization">
 <span id="linreg-graphvisgd"></span><h2>Graphical Visualization<a class="headerlink" href="#graphical-visualization" title="Permalink to this headline">#</a></h2>
@@ -658,7 +658,7 @@ Note that at the step 2.1., there is an implicit loop over all training data sam
 <figure class="align-default" id="linreg-animated">
 <a class="reference internal image-reference" href="../_images/linReg_animated.gif"><img alt="../_images/linReg_animated.gif" src="../_images/linReg_animated.gif" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">. Animation of the gradient descent. At each generation a new set of parameters are computed. In this picture <span class="math notranslate nohighlight">\(m\)</span> corresponds to <span class="math notranslate nohighlight">\(\theta_1\)</span> and the constant <span class="math notranslate nohighlight">\(c\)</span> to <span class="math notranslate nohighlight">\(\theta_0\)</span>. Sometimes they are also referred to the <em>slope</em> and <em>intercept</em> respectively.<br />
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Animation of the gradient descent. At each generation a new set of parameters are computed. In this picture <span class="math notranslate nohighlight">\(m\)</span> corresponds to <span class="math notranslate nohighlight">\(\theta_1\)</span> and the constant <span class="math notranslate nohighlight">\(c\)</span> to <span class="math notranslate nohighlight">\(\theta_0\)</span>. Sometimes they are also referred to the <em>slope</em> and <em>intercept</em> respectively.<br />
 <sub>Source GIF: <a class="reference external" href="https://towardsdatascience.com/linear-regression-using-python-b136c91bf0a2">Medium</a></sub></span><a class="headerlink" href="#linreg-animated" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -674,7 +674,7 @@ Note that at the step 2.1., there is an implicit loop over all training data sam
 <img alt="../_images/lin_reg_gd_plots_22_0.png" src="../_images/lin_reg_gd_plots_22_0.png" />
 </div>
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">. Contour plot (left) and 3D rendering (right) of the cost function with respect to the values of the <span class="math notranslate nohighlight">\(\theta\)</span> parameter. The red dots are the intermediary values of the parameters at a given iteration of the gradient descent. You can see that it converges toward the minimum of the cost function.</span><a class="headerlink" href="#plot-linreg-3d" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Contour plot (left) and 3D rendering (right) of the cost function with respect to the values of the <span class="math notranslate nohighlight">\(\theta\)</span> parameter. The red dots are the intermediary values of the parameters at a given iteration of the gradient descent. You can see that it converges toward the minimum of the cost function.</span><a class="headerlink" href="#plot-linreg-3d" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>We will discuss the presence of the zig-zag behaviour in the later section <a class="reference internal" href="lin_reg_5_learning_rate.html#linreg-lr"><span class="std std-ref">Learning Rate</span></a>.</p>

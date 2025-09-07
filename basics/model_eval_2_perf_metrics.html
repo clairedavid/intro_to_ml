@@ -528,7 +528,7 @@ It is a <span class="math notranslate nohighlight">\(n^C \times n^C\)</span> mat
 </div><figure class="align-default" id="modeval-confusionmatrix">
 <a class="reference internal image-reference" href="../_images/modEval_confusionmatrix.png"><img alt="../_images/modEval_confusionmatrix.png" src="../_images/modEval_confusionmatrix.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">. The confusion matrix for a binary classifier.<br />
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">: The confusion matrix for a binary classifier.<br />
 <sub>Image from the author</sub></span><a class="headerlink" href="#modeval-confusionmatrix" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -572,8 +572,8 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p class="admonition-title"><span class="caption-number">Definition 27 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>root mean squared error (RMSE)</strong> is the square root of the mean squared error:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d3c6b4be-9d0f-4e9c-a31e-f99069656d52">
-<span class="eqno">(22)<a class="headerlink" href="#equation-d3c6b4be-9d0f-4e9c-a31e-f99069656d52" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-600ca7c1-ac13-4b53-bad6-0081b5994cbd">
+<span class="eqno">(22)<a class="headerlink" href="#equation-600ca7c1-ac13-4b53-bad6-0081b5994cbd" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{RMSE} = \sqrt{ \frac{\sum_{i=1}^N (y^\text{pred} - y^\text{obs} )^2 }{ N } }
 \end{equation}\]</div>
 </section>
@@ -589,29 +589,29 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p> <br />
 <strong>Accuracy</strong><br />
 Rate at which the model is able to predict the correct values of both classes.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-680ef80e-c271-4d46-9141-45810061e134">
-<span class="eqno">(23)<a class="headerlink" href="#equation-680ef80e-c271-4d46-9141-45810061e134" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-020ba9d2-a410-4c71-a78b-27738adf4c68">
+<span class="eqno">(23)<a class="headerlink" href="#equation-020ba9d2-a410-4c71-a78b-27738adf4c68" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Accuracy} = \frac{\text{True predictions}}{\text{All predictions}} = \frac{\text{TP + TN}}{\text{TP + TN + FP + FN}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Precision, or Positive Predictive Value (PPV)</strong><br />
 Measure of the fraction of true predictions among all <strong>positive predictions</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b9f59f8a-857b-4275-a46a-ad22618352af">
-<span class="eqno">(24)<a class="headerlink" href="#equation-b9f59f8a-857b-4275-a46a-ad22618352af" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-522ed1fa-3905-4615-8aaf-3184daeaa011">
+<span class="eqno">(24)<a class="headerlink" href="#equation-522ed1fa-3905-4615-8aaf-3184daeaa011" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Precision} = \frac{\text{True Positives}}{\text{All Positive Predictions}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Recall, or True Positive Rate (TPR)</strong><br />
 Measure of the fraction of true predictions among all <strong>true observations</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ed1d4b69-f472-4d33-8f08-c329febdfd6c">
-<span class="eqno">(25)<a class="headerlink" href="#equation-ed1d4b69-f472-4d33-8f08-c329febdfd6c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8ad5ae55-e5f3-4b05-9adf-25765ac9a0b8">
+<span class="eqno">(25)<a class="headerlink" href="#equation-8ad5ae55-e5f3-4b05-9adf-25765ac9a0b8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Recall} = \frac{\text{True Positives}}{\text{Actual Positives}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>F-Score, or F1</strong><br />
 Describes the balance between Precision and Recall. It is the harmonic mean of the two:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-075315e0-927e-4f60-aea4-d0a81f603913">
-<span class="eqno">(26)<a class="headerlink" href="#equation-075315e0-927e-4f60-aea4-d0a81f603913" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6b5da5d4-20ee-4e9d-8abb-1e68412f2be0">
+<span class="eqno">(26)<a class="headerlink" href="#equation-6b5da5d4-20ee-4e9d-8abb-1e68412f2be0" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{F1} =2 \; \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
 \end{equation}\]</div>
 </section>

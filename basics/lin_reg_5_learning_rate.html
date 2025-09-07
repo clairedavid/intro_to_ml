@@ -461,15 +461,15 @@ title="Print to PDF"
 <p>The learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> is a hyperparameter intervening in the calculation of the step size at which the parameters will be incremented or decremented. It controls the speed at which the algorithm ‘learns.’ Or said more mathematically, it sets how fast – or slow – we want the gradient descent to converge to the minimum cost.</p>
 <section id="learning-rate-and-convergence">
 <h2>Learning Rate and Convergence<a class="headerlink" href="#learning-rate-and-convergence" title="Permalink to this headline">#</a></h2>
-<p>The learning rate is not directly setting the step size. It is a coefficient. With a fixed <span class="math notranslate nohighlight">\(\alpha\)</span>, the gradient descent can converge as the steps will become smaller and smaller due to the fact that the derivatives <span class="math notranslate nohighlight">\(\frac{\partial }{\partial \theta_j} J(\boldsymbol{\theta})\)</span> will get smaller (caution: in absolute value!) as much as we approach the minimum:</p>
+<p>The learning rate is not directly setting the step size. It is a coefficient. With a fixed <span class="math notranslate nohighlight">\(\alpha\)</span>, the gradient descent can converge as the steps will become smaller and smaller due to the fact that the derivatives <span class="math notranslate nohighlight">\(\frac{\partial }{\partial \theta_j} C(\boldsymbol{\theta})\)</span> will get smaller (caution: in absolute value!) as much as we approach the minimum:</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>Recall that the step size is given by <span class="math notranslate nohighlight">\(-\alpha \frac{d}{d \theta} J(\boldsymbol{\theta}) = -\alpha \times\)</span> <em>slope</em>. Here the magnitude of the slope is decreasing at each iteration.</p>
+<p>Recall that the step size is given by <span class="math notranslate nohighlight">\(-\alpha \frac{d}{d \theta} C(\boldsymbol{\theta}) = -\alpha \times\)</span> <em>slope</em>. Here the magnitude of the slope is decreasing at each iteration.</p>
 </aside>
 <figure class="align-default" id="linreg-smaller-steps">
 <a class="reference internal image-reference" href="../_images/linReg_smaller_steps.png"><img alt="../_images/linReg_smaller_steps.png" src="../_images/linReg_smaller_steps.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">. The step size is reduced at the next iteration of the gradient descent,<br />
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">: The step size is reduced at the next iteration of the gradient descent,<br />
 even if <span class="math notranslate nohighlight">\(\alpha\)</span> remains constant.<br />
 <sub>Image from the author</sub></span><a class="headerlink" href="#linreg-smaller-steps" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -480,14 +480,14 @@ even if <span class="math notranslate nohighlight">\(\alpha\)</span> remains con
 <p>A learning rate too big will generate an updated parameter on the other side of the slope.<br />
 Two cases:</p>
 <ul class="simple">
-<li><p><strong>The zig-zag</strong>: if the next parameter <span class="math notranslate nohighlight">\(\theta'\)</span> is at a smaller distance to the <span class="math notranslate nohighlight">\(\theta^{\min J}\)</span> minimizing the cost function (<span class="math notranslate nohighlight">\( | \theta' - \theta^{\min J} |  &lt; | \theta - \theta^{\min J} |\)</span>), the gradient descent will generate parameters oscillating on each side of the slope until convergence. It will converge, but it will require a lot more steps.</p></li>
-<li><p><strong>Divergence</strong>: if the next parameter is at a greater distance than the <span class="math notranslate nohighlight">\(\theta^{\min J}\)</span> minimizing the cost function (<span class="math notranslate nohighlight">\( | \theta' - \theta^{\min J} |  &gt; | \theta - \theta^{\min J} |\)</span>), the gradient descent will produce new parameters further and further away, escaping the parabola! It will diverge. We want to avoid this.</p></li>
+<li><p><strong>The zig-zag</strong>: if the next parameter <span class="math notranslate nohighlight">\(\theta'\)</span> is at a smaller distance to the <span class="math notranslate nohighlight">\(\theta^{\min C}\)</span> minimizing the cost function (<span class="math notranslate nohighlight">\( | \theta' - \theta^{\min C} |  &lt; | \theta - \theta^{\min C} |\)</span>), the gradient descent will generate parameters oscillating on each side of the slope until convergence. It will converge, but it will require a lot more steps.</p></li>
+<li><p><strong>Divergence</strong>: if the next parameter is at a greater distance than the <span class="math notranslate nohighlight">\(\theta^{\min C}\)</span> minimizing the cost function (<span class="math notranslate nohighlight">\( | \theta' - \theta^{\min C} |  &gt; | \theta - \theta^{\min C} |\)</span>), the gradient descent will produce new parameters further and further away, escaping the parabola! It will diverge. We want to avoid this.</p></li>
 </ul>
 <p>The divergence is illustrated on the right in the figure below:</p>
 <figure class="align-default" id="linreg-learningrate-small-big">
 <a class="reference internal image-reference" href="../_images/linReg_learningRate_small_big.jpg"><img alt="../_images/linReg_learningRate_small_big.jpg" src="../_images/linReg_learningRate_small_big.jpg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text">. The learning rate determines the step at which the parameters will be updated (left). Small enough: the gradient descent will converge (middle). If too large, the overshoot can lead to a diverging gradient, no more “descending” towards the minimum (right).<br />
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">: The learning rate determines the step at which the parameters will be updated (left). Small enough: the gradient descent will converge (middle). If too large, the overshoot can lead to a diverging gradient, no more “descending” towards the minimum (right).<br />
 <sub>Image from <a class="reference external" href="https://www.kjronline.org/ViewImage.php?Type=F&amp;aid=658625&amp;id=F7&amp;afn=68_KJR_21_1_33&amp;fn=kjr-21-33-g007_0068KJR">kjronline.org</a></sub></span><a class="headerlink" href="#linreg-learningrate-small-big" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>

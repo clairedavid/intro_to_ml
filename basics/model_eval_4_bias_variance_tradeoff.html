@@ -402,18 +402,59 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definitions">
-   Definitions
+  <a class="reference internal nav-link" href="#regularization-to-cope-with-overtraining">
+   Regularization to cope with overtraining
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ridge-regression">
+     Ridge Regression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lasso-regularization">
+     Lasso Regularization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bias-variance-definitions">
+   Bias &amp; Variance: definitions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bias">
+     Bias
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variance">
+     Variance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#illustratively">
+     Illustratively
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generalization-error">
+   Generalization error
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#graphically">
+     Graphically
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#identifying-the-case">
    Identifying the case
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#regularization-to-cope-with-overtraining">
-   Regularization to cope with overtraining
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -446,18 +487,59 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definitions">
-   Definitions
+  <a class="reference internal nav-link" href="#regularization-to-cope-with-overtraining">
+   Regularization to cope with overtraining
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ridge-regression">
+     Ridge Regression
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#lasso-regularization">
+     Lasso Regularization
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bias-variance-definitions">
+   Bias &amp; Variance: definitions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bias">
+     Bias
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variance">
+     Variance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#illustratively">
+     Illustratively
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generalization-error">
+   Generalization error
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#graphically">
+     Graphically
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#identifying-the-case">
    Identifying the case
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#regularization-to-cope-with-overtraining">
-   Regularization to cope with overtraining
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -484,14 +566,14 @@ title="Print to PDF"
 <figure class="align-default" id="modeval-underoverfit">
 <a class="reference internal image-reference" href="../_images/modEval_underoverfit.png"><img alt="../_images/modEval_underoverfit.png" src="../_images/modEval_underoverfit.png" style="width: 1200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">. Example of several regression models attempting to fit data points (blue dots) generated from a true function (orange curve). The fit is depicted in blue for a polynomial of degree 1 (left), degree 4 (middle) and degree 15 (right).</span><a class="headerlink" href="#modeval-underoverfit" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">: Example of several regression models attempting to fit data points (blue dots) generated from a true function (orange curve). A fitting attempt is depicted in blue for a polynomial of degree 1 (left), degree 4 (middle) and degree 15 (right).</span><a class="headerlink" href="#modeval-underoverfit" title="Permalink to this image">#</a></p>
 <div class="legend">
 <p><sub>Source: <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_underfitting_overfitting.html">scikit-learn.org (with associated python code)</a></sub></p>
 </div>
 </figcaption>
 </figure>
 <p>What can we say qualitatively about the quality of those fits? The linear one on the left (polynomial of degree 1) is clearly missing out the main pattern of the data. No matter the slope and the offset, a straight line will never fit a wavy curve decently. This is a case of underfitting. The model is too simple. On the other hand, the fit on the right (polynomial of degree 15) is perfectly passing through all datapoints. Technically, the performance is excellent! But the model is abusing its numerous degrees of freedom and has done more than fitting the data: it captured all the fluctuations and the noise specific to the given dataset. If we regenerate samples from the orange true function, the blue curve with large oscillations will definitely not pass through the newly generated points. There will be substantial errors. The excess of freedom with the high-degree polynomial is a bit of a curse here. This is a case of overfitting: the model is over-specific to the given random variations in the dataset. In the middle model, we seem to find a good compromise with a polynomial function of degree 4.</p>
-<p>Hope this gives you a feel of the under and overfitting (under and overtraining, synonym). Now let’s write the definitions!</p>
+<p>Hope this gives you a feel of the underfitting and overfitting (or undertraining and overtraining, synonyms). Now let’s write the definitions!</p>
 <div class="proof definition admonition" id="underfittingdef">
 <p class="admonition-title"><span class="caption-number">Definition 33 </span></p>
 <section class="definition-content" id="proof-content">
@@ -504,59 +586,144 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p><strong>Overfitting</strong> is a situation that occurs when a fitting procedure or machine learning algorithm matches too precisely a particular collection of a dataset.</p>
 </section>
-</div><p>Overfitting is synonym of overtuned, overtweaked. In other words: the model learns the detail and noise in the training dataset to the extent that it negatively impacts the performance of the model on a new dataset. This means that the noise or random fluctuations in the training dataset is picked up and learned as concepts by the model.
-In machine learning, we look for trends and compromises: a good algorithm may not be perfectly classifying a given data set; it needs to accommodate and ignore rare outliers so that future predictions, on average, will be accurate (we will see how to diagnose learners in the next section).</p>
-<p>The problem with overfitting is the future consequences once the machine learning algorithm receives additional data: it may lack flexibility.</p>
-<div class="proof definition admonition" id="flexibilitydef">
+</div><p>Overfitting is synonym of overtuned, overtweaked. In other words: the model learns the details and noise in the training dataset to the extent that it negatively impacts the performance of the model on a new dataset. This means that the noise or random fluctuations in the training dataset are picked up and learned as actual trends by the model.
+In machine learning, we look for general patterns and compromises: a good algorithm may not be perfectly classifying a given data set; it needs to accommodate and ignore rare outliers so that future predictions, on average, will be accurate.</p>
+<p>The problem with overfitting is the future consequences once the machine learning algorithm receives additional data: it will very likely fail to generalize to new data.</p>
+<div class="proof definition admonition" id="generalizationdef">
 <p class="admonition-title"><span class="caption-number">Definition 35 </span></p>
 <section class="definition-content" id="proof-content">
-<p>The <strong>flexibility</strong> of a model determines its ability to generalize to different characteristic of the data.</p>
+<p>In machine learning, generalization is the ability of a trained model to perform well on new, unseen data drawn from the same distribution as the training data.</p>
 </section>
-</div><p>In some definitions (it seems there is no standard definition of flexibility), the literature quotes “to increase the degrees of freedom available to the model to fit to the training data.” What are degrees of freedom in this context? Think of data points distributed along a parabola. A linear model will be underfitting the data as it is too simple to catch the parabolic trend with only two degrees of freedom (remember there are two parameters to optimize). A quadratic equation, however, will manage well with three degrees of freedom. A model with more degrees of freedom has margin to adapt well to different situations. This is the idea behind flexibility.</p>
-</section>
-<section id="definitions">
-<h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">#</a></h2>
-<p>The generalization error can be expressed as a sum of three errors:</p>
-<div class="math notranslate nohighlight" id="equation-basics-model-eval-4-bias-variance-tradeoff-0">
-<span class="eqno">(31)<a class="headerlink" href="#equation-basics-model-eval-4-bias-variance-tradeoff-0" title="Permalink to this equation">#</a></span>\[\text{Expected Test Error} =
-\underbrace{\text{Bias}^2}_{\text{systematic error}}
-+
-\underbrace{\text{Variance}}_{\text{sensitivity to data}}
-+
-\underbrace{\sigma^2}_{\text{irreducible noise}}\]</div>
-<p>The two first are <em>reducible</em>. In fact, we will see in the following how to reduce them as much as possible! The last one is due to the fact data is noisy itself. It can be minimized during data cleaning by removing outliers (or more upfront by improving the detector or device that collected the data).</p>
-<figure class="align-default" id="modeval-bias-var-ierrors">
-<a class="reference internal image-reference" href="../_images/modEval_bias_var_ierrors.png"><img alt="../_images/modEval_bias_var_ierrors.png" src="../_images/modEval_bias_var_ierrors.png" style="width: 90%;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">. Decomposition of the generalized error into the bias, variance and irreducible errors.<br />
-<sub>Image: <a class="reference external" href="https://towardsdatascience.com/the-bias-variance-tradeoff-8818f41e39e9">towardsdatascience.com</a></sub></span><a class="headerlink" href="#modeval-bias-var-ierrors" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Increasing the model complexity will reduce the bias but increase the variance. Reversely, simplifying a model to mitigate the variance comes at a risk of a higher bias. In the end, the lowest total error is a trade-off between bias and variance.</p>
-<div class="proof definition admonition" id="biasdef">
+</div><div class="proof definition admonition" id="capacitydef">
 <p class="admonition-title"><span class="caption-number">Definition 36 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>capacity</strong> of a model determines its ability to remember information about it’s training data.</p>
+</section>
+</div><p>Capacity is not a formal term, but it is linked to the number of degrees of freedom available to the model. A linear fit (two degrees of freedom) is limited to match a parabola. The model lacks capacity. However too much capacity can backfire! As in our example below, a model with many degrees of freedom will be so free that it is likely to fit some fluctuations. Problem.</p>
+<p>But there is a trick! Let’s have those degrees of freedom (you get that with low-degree polynomials, we are stuck) but let’s add a constraint so as to tame the overfitting. This is called regularization.</p>
+</section>
+<section id="regularization-to-cope-with-overtraining">
+<h2>Regularization to cope with overtraining<a class="headerlink" href="#regularization-to-cope-with-overtraining" title="Permalink to this headline">#</a></h2>
+<p>In <a class="reference internal" href="#modeval-underoverfit"><span class="std std-numref">Fig. 22</span></a>, the model on the right that overfits the data is extremely wiggly. To produce such sharp peaks, some of the polynomial’s coefficients (the model parameters) must take on very large values to “force” the curve through the points. What if we added the values of the model parameters (the <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> components) to the cost function? Since the cost is to be minimized, this could discourage the curve from becoming too wiggly. This is the idea behind the most common regularization techniques.</p>
+<div class="proof definition admonition" id="regularizationdef">
+<p class="admonition-title"><span class="caption-number">Definition 37 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Regularization</strong> in machine learning is a processus consisting of adding constraints on a model’s parameters.</p>
+</section>
+</div><p>The two main types of regularization techniques are the Ridge Regularization (also known as <a class="reference external" href="https://en.wikipedia.org/wiki/Tikhonov_regularization">Tikhonov regularization</a>, albeit the latter is more general) and the Lasso Regularization.</p>
+<section id="ridge-regression">
+<h3>Ridge Regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">#</a></h3>
+<p>The Ridge regression is a linear regression with an additional regularization term added to the cost function:</p>
+<div class="math notranslate nohighlight" id="equation-ridgeeq">
+<span class="eqno">(31)<a class="headerlink" href="#equation-ridgeeq" title="Permalink to this equation">#</a></span>\[ J(\theta) = \frac{1}{2m} \left[ \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right)^2 + {\color{Maroon}\lambda \sum_{j=1}^n \theta_j^2} \right]\]</div>
+<p>The hyperparameter <span class="math notranslate nohighlight">\(\lambda\)</span> controls the degree of regularization. If <span class="math notranslate nohighlight">\(\lambda = 0\)</span>, the regularization term vanishes and we have a non-regularized linear regression. You can see the penalty imposed by the term <span class="math notranslate nohighlight">\(\lambda\)</span> will force the parameters <span class="math notranslate nohighlight">\(\theta\)</span> to be as small as possible; this helps avoiding overfitting. If <span class="math notranslate nohighlight">\(\lambda\)</span> gets very large, the parameters can be so shrinked that the model becomes over-simplified to a straight line and thus underfit the data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The factor <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> is used in some derivations of the regularization. This makes it easier to calculate the gradient, however it is only a constant value that can be compensated by the choice of the parameter <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The offset parameter <span class="math notranslate nohighlight">\(\theta_0\)</span> is not entering in the regularization sum.</p>
+</div>
+<p>In the litterature, the parameters are denoted with <span class="math notranslate nohighlight">\(b\)</span> for the offset (bias) and a vector of weight <span class="math notranslate nohighlight">\(\vec{w}\)</span> for the other parameters <span class="math notranslate nohighlight">\(\theta_1, \theta_2, \cdots \theta_n\)</span>. Thus the regularization term is written:</p>
+<div class="math notranslate nohighlight" id="equation-regl2weq">
+<span class="eqno">(32)<a class="headerlink" href="#equation-regl2weq" title="Permalink to this equation">#</a></span>\[\lambda \left(\left\| \vec{w} \right\|_2\right)^2\]</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The <span class="math notranslate nohighlight">\(\ell_2\)</span> norm is the Euclidian norm <span class="math notranslate nohighlight">\(\left\| x \right\|_2 = \sqrt{x_0^2 + x_1^2 + \cdots + x_n^2}\)</span>.</p>
+</aside>
+<p>with <span class="math notranslate nohighlight">\(\left\| \vec{w} \right\|_2\)</span> the <span class="math notranslate nohighlight">\(\ell_2\)</span> norm of the weight vector.</p>
+<p>For logistic regression, the regularized cost function becomes:</p>
+<div class="math notranslate nohighlight" id="equation-ridgelogeq">
+<span class="eqno">(33)<a class="headerlink" href="#equation-ridgelogeq" title="Permalink to this equation">#</a></span>\[ J(\theta) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; y^{(i)} \log( h_\theta(x^{(i)} )) \;+\; (1- y^{(i)}) \log( 1 - h_\theta(x^{(i)} )) \;\;\right] + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n \theta_j^2}\]</div>
+</section>
+<section id="lasso-regularization">
+<span id="class-algs-reg-lasso"></span><h3>Lasso Regularization<a class="headerlink" href="#lasso-regularization" title="Permalink to this headline">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The <span class="math notranslate nohighlight">\(\ell_1\)</span> norm is the sum of the magnitudes of the vectors. It is also called Manhattan or <a class="reference external" href="https://en.wikipedia.org/wiki/Taxicab_geometry">Taxicab norm</a>.</p>
+</aside>
+<p>Lasso stands for least absolute shrinkage and selection operator. Behind the long acronym is a regularization of the linear regression using the <span class="math notranslate nohighlight">\(\ell_1\)</span> norm. We denote Cost(<span class="math notranslate nohighlight">\(\theta\)</span>) the cost function, i.e. either the Mean Squared Error for linear regression or the cross-entropy loss function <a class="reference internal" href="log_reg_3_cost_function.html#equation-costfunctionlogreg">(18)</a> for logistic regression. The lasso regression cost function is</p>
+<div class="math notranslate nohighlight" id="equation-lassocostf">
+<span class="eqno">(34)<a class="headerlink" href="#equation-lassocostf" title="Permalink to this equation">#</a></span>\[J(\theta) = \text{Cost(}{\theta}\text{)}  + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n | \theta_j | }\]</div>
+<p>The regularizing term uses the <span class="math notranslate nohighlight">\(\ell_1\)</span> norm of the weight vector: <span class="math notranslate nohighlight">\(\left\| \vec{w} \right\|_1\)</span>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>As regularization influences the parameters, it is important to first perform feature scaling before applying the regularization.</p>
+</div>
+<p><strong>Which regularization method to use?</strong></p>
+<p>Each one has its pros and cons. As <span class="math notranslate nohighlight">\(\ell_1\)</span> (lasso) is a sum of absolute values, it is not differentiable and thus more computationally expensive. Yet <span class="math notranslate nohighlight">\(\ell_1\)</span> better deals with outliers (extreme values in the data) by not squaring their values. It is said to be more robust, i.e. more resilient to outliers in a dataset.</p>
+<p>The <span class="math notranslate nohighlight">\(\ell_1\)</span> regularization, by shriking some parameters to zero (making them vanish and no more influencial), has <em>feature selection</em> built in by design. If this can be advantageous in some cases, it can mishandle highly correlated features by arbitrarily selecting one over the others.</p>
+<p>Additional reading are provided below to deepen your understanding in the different regularization methods. Take home message: both methods combat overfitting.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Learn more</p>
+<ul class="simple">
+<li><p>A comparison of the pros and cons of Ridge (<span class="math notranslate nohighlight">\(\ell_2\)</span> norm) and lasso (<span class="math notranslate nohighlight">\(\ell_1\)</span> norm) regularization: <a class="reference external" href="https://www.kaggle.com/code/residentmario/l1-norms-versus-l2-norms/notebook">“L1 Norms versus L2 Norms”, Kaggle</a></p></li>
+<li><p><a class="reference external" href="https://neptune.ai/blog/fighting-overfitting-with-l1-or-l2-regularization">Fighting overfitting with <span class="math notranslate nohighlight">\(\ell_1\)</span> or <span class="math notranslate nohighlight">\(\ell_2\)</span> regularization, neptune.ai</a></p></li>
+</ul>
+</div>
+</section>
+</section>
+<section id="bias-variance-definitions">
+<h2>Bias &amp; Variance: definitions<a class="headerlink" href="#bias-variance-definitions" title="Permalink to this headline">#</a></h2>
+<p>Underfitting and overfitting are symptoms of a fundamental modeling issue. This tension is captured by the notions of bias and variance. We will define them, see how they combine in the total error, and why it is not possible to reduce both simultaneously. This is the infamous dilemma of the bias–variance tradeoff.</p>
+<section id="bias">
+<h3>Bias<a class="headerlink" href="#bias" title="Permalink to this headline">#</a></h3>
+<div class="proof definition admonition" id="biasdef">
+<p class="admonition-title"><span class="caption-number">Definition 38 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>bias</strong> is an error coming from wrong assumptions on the model.</p>
 <p>A highly biased model will most likely underfit the data.</p>
 </section>
 </div><p>The bias implies not grasping the full complexity of the situation (think of a biased person making an irrelevant or indecent remark in a conversation).</p>
+</section>
+<section id="variance">
+<h3>Variance<a class="headerlink" href="#variance" title="Permalink to this headline">#</a></h3>
 <div class="proof definition admonition" id="variancedef">
-<p class="admonition-title"><span class="caption-number">Definition 37 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 39 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>variance</strong> is a measure of the model’s sensitivity to statistical fluctuations of the training data set.</p>
 <p>A model with high variance is likely to overfit the data.</p>
 </section>
 </div><p>As its name suggest, a model incorporating fluctuations in its design will change, aka <em>vary</em>, as soon as it is presented with new data (fluctuating differently).</p>
 <p>Using a larger training dataset will reduce the variance.</p>
+</section>
+<section id="illustratively">
+<h3>Illustratively<a class="headerlink" href="#illustratively" title="Permalink to this headline">#</a></h3>
 <p>Below is a good visualization of the two tendencies for both regression and classification:</p>
 <figure class="align-default" id="modeval-underoverfit-reg-class-table">
 <a class="reference internal image-reference" href="../_images/modEval_underoverfit_reg_class_table.jpg"><img alt="../_images/modEval_underoverfit_reg_class_table.jpg" src="../_images/modEval_underoverfit_reg_class_table.jpg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">. Illustration of the bias and variance trade-off for regression and classification.<br />
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">: Illustration of situations of high bias (left) and high variance (right) for regression and classification.<br />
 <sub>Image: LinkedIn Machine Learning India</sub></span><a class="headerlink" href="#modeval-underoverfit-reg-class-table" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+</section>
+<section id="generalization-error">
+<h2>Generalization error<a class="headerlink" href="#generalization-error" title="Permalink to this headline">#</a></h2>
+<section id="graphically">
+<h3>Graphically<a class="headerlink" href="#graphically" title="Permalink to this headline">#</a></h3>
+<p>If we plot the test error (reminder: on a dataset not used for training) with respect to the model’s complexity, we can easy see how the bias is the main driver of the error at low model’s compl</p>
+<figure class="align-default" id="modeval-bias-var-ierrors">
+<a class="reference internal image-reference" href="../_images/modEval_bias_var_ierrors.png"><img alt="../_images/modEval_bias_var_ierrors.png" src="../_images/modEval_bias_var_ierrors.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">: Decomposition of the generalized error into the bias, variance and irreducible errors.<br />
+<sub>Image: <a class="reference external" href="https://towardsdatascience.com/the-bias-variance-tradeoff-8818f41e39e9">towardsdatascience.com</a></sub></span><a class="headerlink" href="#modeval-bias-var-ierrors" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Increasing the model complexity will reduce the bias but increase the variance. Reversely, simplifying a model to mitigate the variance comes at a risk of a higher bias. In the end, the lowest total error is a trade-off between bias and variance.</p>
+<p>The generalization error can be expressed as a sum of three errors:</p>
+<div class="math notranslate nohighlight" id="equation-basics-model-eval-4-bias-variance-tradeoff-0">
+<span class="eqno">(35)<a class="headerlink" href="#equation-basics-model-eval-4-bias-variance-tradeoff-0" title="Permalink to this equation">#</a></span>\[\text{Expected Test Error} =
+\underbrace{\text{Bias}^2}_{\text{systematic error}}
++
+\underbrace{\text{Variance}}_{\text{sensitivity to data}}
++
+\underbrace{\sigma^2}_{\text{irreducible noise}}\]</div>
+<p>The two first are <em>reducible</em>. In fact, we will see in the following how to reduce them as much as possible! The last one is due to the fact data is noisy itself. It can be minimized during data cleaning by removing outliers (or more upfront by improving the detector or device that collected the data).</p>
 <p>Before learning on ways to cope with either bias or variance, we need first to assess the situation. How to know if our model has high bias or high variance?</p>
+</section>
 </section>
 <section id="identifying-the-case">
 <h2>Identifying the case<a class="headerlink" href="#identifying-the-case" title="Permalink to this headline">#</a></h2>
@@ -564,7 +731,7 @@ In machine learning, we look for trends and compromises: a good algorithm may no
 <figure class="align-default" id="modeval-bias-variance-train-val-complexity">
 <a class="reference internal image-reference" href="../_images/modEval_bias-variance-train-val-complexity.png"><img alt="../_images/modEval_bias-variance-train-val-complexity.png" src="../_images/modEval_bias-variance-train-val-complexity.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">. Visualization of the error (cost function) with respect to the model’s complexity for the training and validation sets. The ideal complexity is in the middle region where both the training and validation errors are low and close to one another.<br />
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">: Visualization of the error (cost function) with respect to the model’s complexity for the training and validation sets. The ideal complexity is in the middle region where both the training and validation errors are low and close to one another.<br />
 <sub>Image: <a class="reference external" href="https://dziganto.github.io/cross-validation/data%20science/machine%20learning/model%20tuning/python/Model-Tuning-with-Validation-and-Cross-Validation/">David Ziganto</a></sub></span><a class="headerlink" href="#modeval-bias-variance-train-val-complexity" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -575,16 +742,12 @@ In machine learning, we look for trends and compromises: a good algorithm may no
 <figure class="align-default" id="modeval-low-high-var">
 <a class="reference internal image-reference" href="../_images/modEval_low_high_var.webp"><img alt="../_images/modEval_low_high_var.webp" src="../_images/modEval_low_high_var.webp" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">.  Interpretation of the error plots as a function of the number of samples in the dataset for low and high bias/variance situations.<br />
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">: Interpretation of the error plots as a function of the number of samples in the dataset for low and high bias/variance situations.<br />
 <sub>Images: <a class="reference external" href="https://www.dataquest.io/blog/learning-curves-machine-learning/">dataquest.io</a></sub></span><a class="headerlink" href="#modeval-low-high-var" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The presence of a small gap between the train and test errors could appear like a good thing. But it important to quantify the training error and relate it to the desired accuracy: if the error is much higher than the irreducible error, chances are the algorithm is suffering from a high bias.</p>
 <p>The variance is usually spotted by the presence of a significant gap pertaining even if the dataset size <span class="math notranslate nohighlight">\(m\)</span> increases, yet closing itself for large <span class="math notranslate nohighlight">\(m\)</span> (hint for the following section on to cope with variance: getting more data).</p>
-</section>
-<section id="regularization-to-cope-with-overtraining">
-<h2>Regularization to cope with overtraining<a class="headerlink" href="#regularization-to-cope-with-overtraining" title="Permalink to this headline">#</a></h2>
-<p>…</p>
 </section>
 <section id="how-to-deal-with-bias-or-variance">
 <h2>How to deal with bias or variance<a class="headerlink" href="#how-to-deal-with-bias-or-variance" title="Permalink to this headline">#</a></h2>

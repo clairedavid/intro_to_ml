@@ -463,7 +463,7 @@ title="Print to PDF"
 <figure class="align-default" id="logreg-multiclass-1">
 <a class="reference internal image-reference" href="../_images/logReg_multiclass-1.webp"><img alt="../_images/logReg_multiclass-1.webp" src="../_images/logReg_multiclass-1.webp" style="width: 60%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">. 2D distribution of three different classes.<br />
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">: 2D distribution of three different classes.<br />
 <sub>Image: <a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/">analyticsvidhya.com</a></sub></span><a class="headerlink" href="#logreg-multiclass-1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -477,8 +477,8 @@ There are two main approaches of such methods for multiclassification.</p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-One approach</strong> consists of applying a binary classification for each pair of classes, ignoring the other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of models to train, <span class="math notranslate nohighlight">\(N^\text{model}\)</span> is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8baf52e9-88f0-4c6f-b7fc-6b60a9b173da">
-<span class="eqno">(20)<a class="headerlink" href="#equation-8baf52e9-88f0-4c6f-b7fc-6b60a9b173da" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-34702374-cb94-4103-8673-a93db5e2c5e7">
+<span class="eqno">(20)<a class="headerlink" href="#equation-34702374-cb94-4103-8673-a93db5e2c5e7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 N^\text{model} = \frac{N^\text{class}(N^\text{class}-1)}{2}
 \end{equation}\]</div>
 <p>Each model predicts one class label. The final decision is the class label receiving the most votes, i.e. being predicted most of the time.</p>
@@ -487,7 +487,7 @@ N^\text{model} = \frac{N^\text{class}(N^\text{class}-1)}{2}
 <figure class="align-default" id="logreg-multiclass-2">
 <a class="reference internal image-reference" href="../_images/logReg_multiclass-2.webp"><img alt="../_images/logReg_multiclass-2.webp" src="../_images/logReg_multiclass-2.webp" style="width: 60%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">. One-to-One approach splits paired datasets, ignoring the points of the other classes.<br />
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">: One-to-One approach splits paired datasets, ignoring the points of the other classes.<br />
 <sub>Image: <a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/">analyticsvidhya.com</a></sub></span><a class="headerlink" href="#logreg-multiclass-2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -503,8 +503,8 @@ The pairing makes the number of models to train large and thus computer intensiv
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-All or One-to-Rest approach</strong> consists of training each class against the collection of all other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of pairs to train is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-496395b2-f55a-4afc-a445-87847a051d88">
-<span class="eqno">(21)<a class="headerlink" href="#equation-496395b2-f55a-4afc-a445-87847a051d88" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-fe546a5f-3bc1-4c69-aca3-480e0d0c6af3">
+<span class="eqno">(21)<a class="headerlink" href="#equation-fe546a5f-3bc1-4c69-aca3-480e0d0c6af3" title="Permalink to this equation">#</a></span>\[\begin{equation}
  N^\text{model} = N^\text{class}
 \end{equation}\]</div>
 <p>The final prediction is given by the highest value of the hypothesis function <span class="math notranslate nohighlight">\(h^{k}_\theta(x)\)</span>, <span class="math notranslate nohighlight">\(k \in [1, N^\text{model}]\)</span> among the <span class="math notranslate nohighlight">\(N^\text{model}\)</span> binary classifiers.</p>
@@ -512,7 +512,7 @@ The pairing makes the number of models to train large and thus computer intensiv
 </div><figure class="align-default" id="logreg-multiclass-3">
 <a class="reference internal image-reference" href="../_images/logReg_multiclass-3.webp"><img alt="../_images/logReg_multiclass-3.webp" src="../_images/logReg_multiclass-3.webp" style="width: 60%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">. One-to-All approach focuses on one class to discriminate from all other points<br />
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">: One-to-All approach focuses on one class to discriminate from all other points<br />
 (i.e. all other classes are merged into a single ‘background’ class).<br />
 <sub>Image: <a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/">analyticsvidhya.com</a></sub></span><a class="headerlink" href="#logreg-multiclass-3" title="Permalink to this image">#</a></p>
 </figcaption>
