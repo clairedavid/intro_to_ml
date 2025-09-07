@@ -62,6 +62,9 @@ y^\text{pred} = h(x)
 \end{equation*}
 ````
 
+The hypothesis function is also known as decision function. It's the mathematical core of a machine learning model.
+
+
 In our simple case of linear regression in one dimension, our function $h$ will be of the form:
 ```{math}
 :label: h_theta_lin
@@ -112,7 +115,7 @@ This picture below helps to visualize. From a given parameterization, that is to
 width: 75%
 name: squareErrVisual
 ---
-. Visualization of errors (dotted vertical lines) between observed and predicted values.  
+: Visualization of errors (dotted vertical lines) between observed and predicted values.  
 Image: Don Cowan.
 ```
 To see how well the prediction fit the data, we want the sum of all these errors to be as small as possible. In other words, we want to solve a minimization problem. 

@@ -54,7 +54,7 @@ To inspect the gradient descent algorithm, it is convenient to store the interme
   name: linReg_Cost_vs_learning_rates
   width: 80%
 ---
-. The learning rate plays a crucial role on the gradient's speed towards convergence.  
+: The learning rate plays a crucial role on the gradient's speed towards convergence.  
 <sub>Credits: [Jonathan Hui Medium](https://jonathan-hui.medium.com/debug-a-deep-learning-network-part-5-1123c20f960d)</sub>
 ```
 
@@ -90,5 +90,5 @@ The linear regression was our starting model. Nature and most dataset are far fr
   name: linReg_xkcd_sustainable
   width: 90%
 ---
-. A questionable linear extrapolation, from the great webcomic [xkcd](https://xkcd.com/1007/).
+: A questionable linear extrapolation, from the great webcomic [xkcd](https://xkcd.com/1007/).
 

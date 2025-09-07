@@ -44,7 +44,7 @@ The $k$ validation results are combined to provide an estimate of the model's pr
   name: modEval_grid_search_cross_validation
   width: 90%
 ---
- .  Illustration of the $k$-fold cross-validation on the training dataset.  
+: Illustration of the $k$-fold cross-validation on the training dataset.  
  <sub>Source: Scikit-Learn</sub>
  ```
 

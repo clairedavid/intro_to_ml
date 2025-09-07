@@ -101,7 +101,7 @@ __Hyperparameters__
 &nbsp;  
 
 __Outputs__  
-The optimized values of the parameters: $\theta_0$ and $\theta_1$, minimizing $J(\theta_0 , \theta_1)$.
+The optimized values of the parameters: $\theta_0$ and $\theta_1$, minimizing $C(\theta_0 , \theta_1)$.
 &nbsp;  
 
 1. __Initialization__: Set random values for $\theta_0$ and $\theta_1$ 
@@ -111,8 +111,8 @@ The optimized values of the parameters: $\theta_0$ and $\theta_1$, minimizing $J
     ```{math}
     :label: partialDeriv1D
         \begin{align*}
-            & \frac{\partial }{\partial \theta_0} J(\theta_0 , \theta_1) \\
-            & \frac{\partial }{\partial \theta_1} J(\theta_0 , \theta_1)
+            & \frac{\partial }{\partial \theta_0} C(\theta_0 , \theta_1) \\
+            & \frac{\partial }{\partial \theta_1} C(\theta_0 , \theta_1)
         \end{align*}
     ```
    2. __Apply the update rule to get the new parameters__:  
@@ -121,9 +121,9 @@ The optimized values of the parameters: $\theta_0$ and $\theta_1$, minimizing $J
     :label: eqGDlinCost
     \begin{align*}
     &\\
-    \theta'_0 &= \theta_0-\alpha \frac{\partial}{\partial \theta_0} J\left(\theta_0, \theta_1\right) \\
+    \theta'_0 &= \theta_0-\alpha \frac{\partial}{\partial \theta_0} C\left(\theta_0, \theta_1\right) \\
     \\
-    \theta'_1 &= \theta_1-\alpha \frac{\partial}{\partial \theta_1} J\left(\theta_0, \theta_1\right) 
+    \theta'_1 &= \theta_1-\alpha \frac{\partial}{\partial \theta_1} C\left(\theta_0, \theta_1\right) 
     \end{align*}
     ```
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reassign the new $\theta$ parameters to prepare for next iteration
@@ -145,9 +145,9 @@ An important point: the parameters are updated simultaneously. In other words, w
 
 ```{math}
 :label: updateIterIndex
-    \theta_{0, \, t+1} &= \theta_{0, \, t}-\alpha \frac{\partial}{\partial \theta_0} J\left(\theta_{0, \, t}, \theta_{1, \, t}\right) \\
+    \theta_{0, \, t+1} &= \theta_{0, \, t}-\alpha \frac{\partial}{\partial \theta_0} C\left(\theta_{0, \, t}, \theta_{1, \, t}\right) \\
     \\  
-    \theta_{1, \, t+1} &= \theta_{1, \, t}-\alpha \frac{\partial}{\partial \theta_1} J\left(\theta_{0, \, t}, \theta_{1, \, t}\right) 
+    \theta_{1, \, t+1} &= \theta_{1, \, t}-\alpha \frac{\partial}{\partial \theta_1} C\left(\theta_{0, \, t}, \theta_{1, \, t}\right) 
 ```
 
 Each model parameter are updated according to the 'state' at the previous iteration. 
@@ -182,11 +182,11 @@ This illustration helps see why the minus sign in Equation {eq}`eqGDlinCost` is 
   name: costSignDirection
   width: 90%
 ---
- . The sign of the cost function's derivative changes for two different parameter values either lower (left) or greater (right) than the parameter value for which the cost function is minimized.  
+: The sign of the cost function's derivative changes for two different parameter values either lower (left) or greater (right) than the parameter value for which the cost function is minimized.  
  <sub>Image from the author</sub>
  ```
 
-If our parameter is randomly picked on the left side of the U-shaped parabola, the partial derivatives will be negative. As the learning rate is always positive, the incremental update $-\alpha \frac{d}{d \theta} J(\theta)$ will thus be positive. We will add an increment to our parameter. At the next iteration, we will have a new parameter $\theta$ closer to the one we look for. The reverse goes with the other side of the curve: with a positive derivative, we will decrease our parameter and slide to the left. All the time we go 'downhill' towards the minimum.
+If our parameter is randomly picked on the left side of the U-shaped parabola, the partial derivatives will be negative. As the learning rate is always positive, the incremental update $-\alpha \frac{d}{d \theta} C(\theta)$ will thus be positive. We will add an increment to our parameter. At the next iteration, we will have a new parameter $\theta$ closer to the one we look for. The reverse goes with the other side of the curve: with a positive derivative, we will decrease our parameter and slide to the left. All the time we go 'downhill' towards the minimum.
 
 (linReg:GraphVisGD)=
 ## Graphical Visualization
@@ -197,8 +197,9 @@ When computing the gradient descent for linear regression, we get new parameters
   name: linReg_animated
   width: 80%
 ---
-. Animation of the gradient descent. At each generation a new set of parameters are computed. In this picture $m$ corresponds to $\theta_1$ and the constant $c$ to $\theta_0$. Sometimes they are also referred to the _slope_ and _intercept_ respectively.  
+ Animation of the gradient descent. At each generation a new set of parameters are computed. In this picture $m$ corresponds to $\theta_1$ and the constant $c$ to $\theta_0$. Sometimes they are also referred to the _slope_ and _intercept_ respectively.  
 <sub>Source GIF: [Medium](https://towardsdatascience.com/linear-regression-using-python-b136c91bf0a2)</sub>
+
 ```
 
 In our example, the best linear fit will be:
@@ -210,7 +211,7 @@ How to picture this in the $\theta$ parameter space? For this, contour and 3D pl
 
 ```{glue:figure} plot_linReg_3D
 :name: "plot_linReg_3D"
-. Contour plot (left) and 3D rendering (right) of the cost function with respect to the values of the $\theta$ parameter. The red dots are the intermediary values of the parameters at a given iteration of the gradient descent. You can see that it converges toward the minimum of the cost function.
+Contour plot (left) and 3D rendering (right) of the cost function with respect to the values of the $\theta$ parameter. The red dots are the intermediary values of the parameters at a given iteration of the gradient descent. You can see that it converges toward the minimum of the cost function.
 ```
 
 We will discuss the presence of the zig-zag behaviour in the later section {ref}`linReg:lr`.
