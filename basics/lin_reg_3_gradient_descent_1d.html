@@ -496,15 +496,15 @@ title="Print to PDF"
 <p class="admonition-title"><span class="caption-number">Definition 6 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>Normal Equation</strong> gives the exact solution for the parameters that minimize the mean squared error in linear regression. For a dataset with input matrix <span class="math notranslate nohighlight">\(X\)</span> and output vector <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0ecc332d-2270-4405-b251-c95c83711de4">
-<span class="eqno">(5)<a class="headerlink" href="#equation-0ecc332d-2270-4405-b251-c95c83711de4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-67498a3f-d49d-425a-9979-0d5a4c4af193">
+<span class="eqno">(5)<a class="headerlink" href="#equation-67498a3f-d49d-425a-9979-0d5a4c4af193" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \theta = (X^T X)^{-1} X^T \boldsymbol{y}
 \end{equation}\]</div>
 </section>
 </div><p>Here, <span class="math notranslate nohighlight">\(X\)</span> includes a column of ones for the intercept term. This formula computes the optimal parameters directly.</p>
 <p>In our 1D case with a single input feature, the parameters can also be written explicitly as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a6b2434e-e743-4a97-a817-45caf9f05102">
-<span class="eqno">(6)<a class="headerlink" href="#equation-a6b2434e-e743-4a97-a817-45caf9f05102" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d824e4db-01a6-4b23-9bff-d83a1d636996">
+<span class="eqno">(6)<a class="headerlink" href="#equation-d824e4db-01a6-4b23-9bff-d83a1d636996" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \theta_1 = \frac{\sum_i (x_i - \bar{x})(y_i - \bar{y})}{\sum_i (x_i - \bar{x})^2}, \quad
 \theta_0 = \bar{y} - \theta_1 \bar{x}
 \end{equation}\]</div>
@@ -597,9 +597,9 @@ The optimized values of the parameters: <span class="math notranslate nohighligh
 <div class="math notranslate nohighlight" id="equation-eqgdlincost">
 <span class="eqno">(8)<a class="headerlink" href="#equation-eqgdlincost" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
 &amp;\\
-\theta'_0 &amp;= \theta_0-\alpha \frac{\partial}{\partial \theta_0} J\left(\theta_0, \theta_1\right) \\
+\theta'_0 &amp;= \theta_0-\alpha \frac{\partial}{\partial \theta_0} C\left(\theta_0, \theta_1\right) \\
 \\
-\theta'_1 &amp;= \theta_1-\alpha \frac{\partial}{\partial \theta_1} J\left(\theta_0, \theta_1\right) 
+\theta'_1 &amp;= \theta_1-\alpha \frac{\partial}{\partial \theta_1} C\left(\theta_0, \theta_1\right) 
 \end{align*}\end{split}\]</div>
 <p>         Reassign the new <span class="math notranslate nohighlight">\(\theta\)</span> parameters to prepare for next iteration</p>
 <div class="math notranslate nohighlight" id="equation-equpdatetheta">
@@ -618,9 +618,9 @@ The optimized values of the parameters: <span class="math notranslate nohighligh
 </section>
 </div><p>An important point: the parameters are updated simultaneously. In other words, we should not use an already updated <span class="math notranslate nohighlight">\(\theta_0\)</span> when updating <span class="math notranslate nohighlight">\(\theta_1\)</span>. The equations above are kept simple, but we can write the update rule more precisely by introducing an iteration index <span class="math notranslate nohighlight">\(t\)</span>. The updated parameters at iteration <span class="math notranslate nohighlight">\(t+1\)</span> are:</p>
 <div class="math notranslate nohighlight" id="equation-updateiterindex">
-<span class="eqno">(10)<a class="headerlink" href="#equation-updateiterindex" title="Permalink to this equation">#</a></span>\[\begin{split}    \theta_{0, \, t+1} &amp;= \theta_{0, \, t}-\alpha \frac{\partial}{\partial \theta_0} J\left(\theta_{0, \, t}, \theta_{1, \, t}\right) \\
+<span class="eqno">(10)<a class="headerlink" href="#equation-updateiterindex" title="Permalink to this equation">#</a></span>\[\begin{split}    \theta_{0, \, t+1} &amp;= \theta_{0, \, t}-\alpha \frac{\partial}{\partial \theta_0} C\left(\theta_{0, \, t}, \theta_{1, \, t}\right) \\
     \\  
-    \theta_{1, \, t+1} &amp;= \theta_{1, \, t}-\alpha \frac{\partial}{\partial \theta_1} J\left(\theta_{0, \, t}, \theta_{1, \, t}\right) \end{split}\]</div>
+    \theta_{1, \, t+1} &amp;= \theta_{1, \, t}-\alpha \frac{\partial}{\partial \theta_1} C\left(\theta_{0, \, t}, \theta_{1, \, t}\right) \end{split}\]</div>
 <p>Each model parameter are updated according to the ‘state’ at the previous iteration.</p>
 <p>In linear regression, the partial derivatives can be simplified.</p>
 <div class="seealso admonition">

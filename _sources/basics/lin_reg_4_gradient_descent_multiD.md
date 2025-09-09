@@ -121,7 +121,7 @@ The optimized values of model parameters $\boldsymbol{\theta} = \theta_0, \theta
     ```{math}
     :label: eqGDlinCostMulti
     \begin{equation*} \\
-    \theta'_j = \theta_j-\alpha \frac{\partial}{\partial \theta_j} J\left(\boldsymbol{\theta}\right) \;   \;   \;  \;   \;   \; \forall j \in [0..n]\\
+    \theta'_j = \theta_j-\alpha \frac{\partial}{\partial \theta_j} C\left(\boldsymbol{\theta}\right) \;   \;   \;  \;   \;   \; \forall j \in [0..n]\\
     \end{equation*}
     ```
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reassign the new $\boldsymbol{\theta}$ parameters to prepare for next iteration
@@ -136,7 +136,7 @@ __Exit conditions__
 * After the maximum number of epochs $N$ is reached
 * If all derivatives tends to zero:
 \begin{equation*}
-\frac{\partial}{\partial \theta_j} J\left(\boldsymbol{\theta}\right) \rightarrow 0 \;   \;   \;  \;   \;   \;    \forall j \in [0..n]
+\frac{\partial}{\partial \theta_j} C\left(\boldsymbol{\theta}\right) \rightarrow 0 \;   \;   \;  \;   \;   \;    \forall j \in [0..n]
 \end{equation*}
 ````
 

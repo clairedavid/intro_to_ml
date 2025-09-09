@@ -38,7 +38,7 @@ Like this:
 The __cost function for logistic regression__ is defined as:
 ```{math}
 :label: costFunctionLogReg
-J(\boldsymbol{\theta}) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; {\color{RoyalBlue}y^{(i)} \log\left( h_\boldsymbol{\theta}(\boldsymbol{x}^{(i)} ) \right) }\;\;+\;\; {\color{OliveGreen}(1- y^{(i)}) \log\left( 1 - h_\boldsymbol{\theta}(\boldsymbol{x}^{(i)} ) \right)} \;\;\right]
+C(\boldsymbol{\theta}) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; {\color{RoyalBlue}y^{(i)} \log\left( h_\boldsymbol{\theta}(\boldsymbol{x}^{(i)} ) \right) }\;\;+\;\; {\color{OliveGreen}(1- y^{(i)}) \log\left( 1 - h_\boldsymbol{\theta}(\boldsymbol{x}^{(i)} ) \right)} \;\;\right]
  ```
  This function is also called __cross-entropy loss function__ and is the standard cost function for binary classifiers.
 ````

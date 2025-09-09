@@ -27,7 +27,7 @@ In Equation {eq}`costFunctionLinReg`, each $h_\theta (x^{(i)})$ is a prediction 
 The initial goal to "fit the data well" can now be formulated in a mathematical way: __find the parameters $\theta_0$ and $\theta_1$ that minimize the cost function__:
 ```{math}
 :label: minCostFunction
-\min_{\theta_0, \theta_1} J\left(\theta_0, \theta_1\right)
+\min_{\theta_0, \theta_1} C\left(\theta_0, \theta_1\right)
 ```
 
 ## Cooking with the Cost Function 

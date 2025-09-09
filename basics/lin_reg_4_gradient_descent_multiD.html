@@ -670,7 +670,7 @@ The optimized values of model parameters <span class="math notranslate nohighlig
  </p>
 <div class="math notranslate nohighlight" id="equation-eqgdlincostmulti">
 <span class="eqno">(13)<a class="headerlink" href="#equation-eqgdlincostmulti" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{equation*} \\
-\theta'_j = \theta_j-\alpha \frac{\partial}{\partial \theta_j} J\left(\boldsymbol{\theta}\right) \;   \;   \;  \;   \;   \; \forall j \in [0..n]\\
+\theta'_j = \theta_j-\alpha \frac{\partial}{\partial \theta_j} C\left(\boldsymbol{\theta}\right) \;   \;   \;  \;   \;   \; \forall j \in [0..n]\\
 \end{equation*}\end{split}\]</div>
 <p>         Reassign the new <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> parameters to prepare for next iteration</p>
 </li>
@@ -686,7 +686,7 @@ The optimized values of model parameters <span class="math notranslate nohighlig
 </ul>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
-\frac{\partial}{\partial \theta_j} J\left(\boldsymbol{\theta}\right) \rightarrow 0 \;   \;   \;  \;   \;   \;    \forall j \in [0..n]
+\frac{\partial}{\partial \theta_j} C\left(\boldsymbol{\theta}\right) \rightarrow 0 \;   \;   \;  \;   \;   \;    \forall j \in [0..n]
 \end{equation*}\]</div>
 </section>
 </div><p>With the linear hypothesis, the partial derivatives of <span class="math notranslate nohighlight">\(C(\boldsymbol{\theta})\)</span> for each parameter <span class="math notranslate nohighlight">\(\theta_j\)</span> will be of the form:</p>

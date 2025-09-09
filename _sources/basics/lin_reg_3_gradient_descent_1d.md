@@ -121,9 +121,9 @@ The optimized values of the parameters: $\theta_0$ and $\theta_1$, minimizing $C
     :label: eqGDlinCost
     \begin{align*}
     &\\
-    \theta'_0 &= \theta_0-\alpha \frac{\partial}{\partial \theta_0} J\left(\theta_0, \theta_1\right) \\
+    \theta'_0 &= \theta_0-\alpha \frac{\partial}{\partial \theta_0} C\left(\theta_0, \theta_1\right) \\
     \\
-    \theta'_1 &= \theta_1-\alpha \frac{\partial}{\partial \theta_1} J\left(\theta_0, \theta_1\right) 
+    \theta'_1 &= \theta_1-\alpha \frac{\partial}{\partial \theta_1} C\left(\theta_0, \theta_1\right) 
     \end{align*}
     ```
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Reassign the new $\theta$ parameters to prepare for next iteration
@@ -145,9 +145,9 @@ An important point: the parameters are updated simultaneously. In other words, w
 
 ```{math}
 :label: updateIterIndex
-    \theta_{0, \, t+1} &= \theta_{0, \, t}-\alpha \frac{\partial}{\partial \theta_0} J\left(\theta_{0, \, t}, \theta_{1, \, t}\right) \\
+    \theta_{0, \, t+1} &= \theta_{0, \, t}-\alpha \frac{\partial}{\partial \theta_0} C\left(\theta_{0, \, t}, \theta_{1, \, t}\right) \\
     \\  
-    \theta_{1, \, t+1} &= \theta_{1, \, t}-\alpha \frac{\partial}{\partial \theta_1} J\left(\theta_{0, \, t}, \theta_{1, \, t}\right) 
+    \theta_{1, \, t+1} &= \theta_{1, \, t}-\alpha \frac{\partial}{\partial \theta_1} C\left(\theta_{0, \, t}, \theta_{1, \, t}\right) 
 ```
 
 Each model parameter are updated according to the 'state' at the previous iteration. 

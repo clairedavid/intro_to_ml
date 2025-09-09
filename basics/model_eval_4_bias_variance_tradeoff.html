@@ -433,12 +433,12 @@ title="Print to PDF"
      Variance
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#illustratively">
-     Illustratively
-    </a>
-   </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#illustratively">
+   Illustratively
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#generalization-error">
@@ -446,21 +446,21 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#graphically">
-     Graphically
+    <a class="reference internal nav-link" href="#decomposition">
+     Decomposition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#two-different-kinds-of-averages">
+     Two different kinds of “averages”
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mathematical-derivation">
+     Mathematical derivation
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#identifying-the-case">
-   Identifying the case
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#how-to-deal-with-bias-or-variance">
-   How to deal with bias or variance
-  </a>
  </li>
 </ul>
 
@@ -518,12 +518,12 @@ title="Print to PDF"
      Variance
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#illustratively">
-     Illustratively
-    </a>
-   </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#illustratively">
+   Illustratively
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#generalization-error">
@@ -531,21 +531,21 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#graphically">
-     Graphically
+    <a class="reference internal nav-link" href="#decomposition">
+     Decomposition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#two-different-kinds-of-averages">
+     Two different kinds of “averages”
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mathematical-derivation">
+     Mathematical derivation
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#identifying-the-case">
-   Identifying the case
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#how-to-deal-with-bias-or-variance">
-   How to deal with bias or variance
-  </a>
  </li>
 </ul>
 
@@ -592,7 +592,7 @@ In machine learning, we look for general patterns and compromises: a good algori
 <div class="proof definition admonition" id="generalizationdef">
 <p class="admonition-title"><span class="caption-number">Definition 35 </span></p>
 <section class="definition-content" id="proof-content">
-<p>In machine learning, generalization is the ability of a trained model to perform well on new, unseen data drawn from the same distribution as the training data.</p>
+<p>In machine learning, <strong>generalization</strong> is the ability of a trained model to perform well on new, unseen data drawn from the same distribution as the training data.</p>
 </section>
 </div><div class="proof definition admonition" id="capacitydef">
 <p class="admonition-title"><span class="caption-number">Definition 36 </span></p>
@@ -619,7 +619,7 @@ In machine learning, we look for general patterns and compromises: a good algori
 <p>The hyperparameter <span class="math notranslate nohighlight">\(\lambda\)</span> controls the degree of regularization. If <span class="math notranslate nohighlight">\(\lambda = 0\)</span>, the regularization term vanishes and we have a non-regularized linear regression. You can see the penalty imposed by the term <span class="math notranslate nohighlight">\(\lambda\)</span> will force the parameters <span class="math notranslate nohighlight">\(\theta\)</span> to be as small as possible; this helps avoiding overfitting. If <span class="math notranslate nohighlight">\(\lambda\)</span> gets very large, the parameters can be so shrinked that the model becomes over-simplified to a straight line and thus underfit the data.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>The factor <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> is used in some derivations of the regularization. This makes it easier to calculate the gradient, however it is only a constant value that can be compensated by the choice of the parameter <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<p>The factor <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> is used in some derivations of the regularization. This makes it easier to calculate the gradient, however it is only a constant value that can be compensated by the choice of the hyperparameter <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -635,7 +635,7 @@ In machine learning, we look for general patterns and compromises: a good algori
 <p>with <span class="math notranslate nohighlight">\(\left\| \vec{w} \right\|_2\)</span> the <span class="math notranslate nohighlight">\(\ell_2\)</span> norm of the weight vector.</p>
 <p>For logistic regression, the regularized cost function becomes:</p>
 <div class="math notranslate nohighlight" id="equation-ridgelogeq">
-<span class="eqno">(33)<a class="headerlink" href="#equation-ridgelogeq" title="Permalink to this equation">#</a></span>\[ J(\theta) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; y^{(i)} \log( h_\theta(x^{(i)} )) \;+\; (1- y^{(i)}) \log( 1 - h_\theta(x^{(i)} )) \;\;\right] + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n \theta_j^2}\]</div>
+<span class="eqno">(33)<a class="headerlink" href="#equation-ridgelogeq" title="Permalink to this equation">#</a></span>\[ C(\theta) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; y^{(i)} \log( h_\theta(x^{(i)} )) \;+\; (1- y^{(i)}) \log( 1 - h_\theta(x^{(i)} )) \;\;\right] + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n \theta_j^2}\]</div>
 </section>
 <section id="lasso-regularization">
 <span id="class-algs-reg-lasso"></span><h3>Lasso Regularization<a class="headerlink" href="#lasso-regularization" title="Permalink to this headline">#</a></h3>
@@ -645,7 +645,7 @@ In machine learning, we look for general patterns and compromises: a good algori
 </aside>
 <p>Lasso stands for least absolute shrinkage and selection operator. Behind the long acronym is a regularization of the linear regression using the <span class="math notranslate nohighlight">\(\ell_1\)</span> norm. We denote Cost(<span class="math notranslate nohighlight">\(\theta\)</span>) the cost function, i.e. either the Mean Squared Error for linear regression or the cross-entropy loss function <a class="reference internal" href="log_reg_3_cost_function.html#equation-costfunctionlogreg">(18)</a> for logistic regression. The lasso regression cost function is</p>
 <div class="math notranslate nohighlight" id="equation-lassocostf">
-<span class="eqno">(34)<a class="headerlink" href="#equation-lassocostf" title="Permalink to this equation">#</a></span>\[J(\theta) = \text{Cost(}{\theta}\text{)}  + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n | \theta_j | }\]</div>
+<span class="eqno">(34)<a class="headerlink" href="#equation-lassocostf" title="Permalink to this equation">#</a></span>\[C(\theta) = \text{Cost(}{\theta}\text{)}  + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n | \theta_j | }\]</div>
 <p>The regularizing term uses the <span class="math notranslate nohighlight">\(\ell_1\)</span> norm of the weight vector: <span class="math notranslate nohighlight">\(\left\| \vec{w} \right\|_1\)</span>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -669,27 +669,43 @@ In machine learning, we look for general patterns and compromises: a good algori
 <p>Underfitting and overfitting are symptoms of a fundamental modeling issue. This tension is captured by the notions of bias and variance. We will define them, see how they combine in the total error, and why it is not possible to reduce both simultaneously. This is the infamous dilemma of the bias–variance tradeoff.</p>
 <section id="bias">
 <h3>Bias<a class="headerlink" href="#bias" title="Permalink to this headline">#</a></h3>
+<p>The bias systematic error coming from wrong assumptions on the model.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="important admonition">
+<p class="admonition-title">Slight change of notations</p>
+<p>Earlier in this course, we used <span class="math notranslate nohighlight">\(h_\theta(x)\)</span> as our model’s hypothesis function. For coherence in the notation, we will use <span class="math notranslate nohighlight">\(\hat{f}_{\mathcal{D}}(x)\)</span>, which refers to the trained/fitted model, i.e., <span class="math notranslate nohighlight">\(h_\theta(x)\)</span> after training, with parameters <span class="math notranslate nohighlight">\(\boldsymbol{\hat{\theta}}\)</span> learned from the data <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>. So <span class="math notranslate nohighlight">\(\hat{f}_{\mathcal{D}}\)</span> is basically the post-training version of <span class="math notranslate nohighlight">\(h_\theta\)</span>.</p>
+</div>
+</aside>
 <div class="proof definition admonition" id="biasdef">
 <p class="admonition-title"><span class="caption-number">Definition 38 </span></p>
 <section class="definition-content" id="proof-content">
-<p>The <strong>bias</strong> is an error coming from wrong assumptions on the model.</p>
-<p>A highly biased model will most likely underfit the data.</p>
+<p>The <strong>bias</strong> measures how much, on average across different training sets <span class="math notranslate nohighlight">\(\mathcal{D} = \mathcal{D}_1, \cdots, \mathcal{D}_N\)</span>, the model’s predictions <span class="math notranslate nohighlight">\(\hat{f}_{\mathcal{D}_k}(x)\)</span> deviate from the true underlying function <span class="math notranslate nohighlight">\(f(x)\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-biaseq">
+<span class="eqno">(35)<a class="headerlink" href="#equation-biaseq" title="Permalink to this equation">#</a></span>\[\text{Bias}(x) = \mathbb{E}[\hat{f}_{\mathcal{D}}(x)] - f(x)\]</div>
 </section>
-</div><p>The bias implies not grasping the full complexity of the situation (think of a biased person making an irrelevant or indecent remark in a conversation).</p>
+</div><p>A highly biased model will most likely underfit the data.</p>
+<div class="important admonition">
+<p class="admonition-title">Important</p>
+<p>The true distribution <span class="math notranslate nohighlight">\(P(X,Y)\)</span> from which the data are drawn is unknown, so the true function <span class="math notranslate nohighlight">\(f(x)\)</span> cannot be observed directly. We can write it down, but we will never have direct access to it.</p>
+</div>
 </section>
 <section id="variance">
 <h3>Variance<a class="headerlink" href="#variance" title="Permalink to this headline">#</a></h3>
 <div class="proof definition admonition" id="variancedef">
 <p class="admonition-title"><span class="caption-number">Definition 39 </span></p>
 <section class="definition-content" id="proof-content">
-<p>The <strong>variance</strong> is a measure of the model’s sensitivity to statistical fluctuations of the training data set.</p>
-<p>A model with high variance is likely to overfit the data.</p>
+<p>The <strong>variance</strong> is a measure of how sensitive the model’s predictions are to random fluctuations in the training data.</p>
+<div class="math notranslate nohighlight" id="equation-vareq">
+<span class="eqno">(36)<a class="headerlink" href="#equation-vareq" title="Permalink to this equation">#</a></span>\[\text{Variance}(x) = \mathbb{E}\Big[(\hat{f}_{\mathcal{D}}(x) - \mathbb{E}[\hat{f}_{\mathcal{D}}(x)])^2\Big]\]</div>
 </section>
-</div><p>As its name suggest, a model incorporating fluctuations in its design will change, aka <em>vary</em>, as soon as it is presented with new data (fluctuating differently).</p>
-<p>Using a larger training dataset will reduce the variance.</p>
+</div><p>As its name suggest, a model incorporating fluctuations in its design will change, aka <em>vary</em>, as soon as it is presented with new data (fluctuating differently). Variance is about the instability of the model due to training data variability.</p>
+<p>A model with high variance is likely to overfit the data.</p>
+<p>Using a larger training dataset will reduce the variance. However, extremely high-variance models may still fluctuate, but in general, more data helps.</p>
+</section>
 </section>
 <section id="illustratively">
-<h3>Illustratively<a class="headerlink" href="#illustratively" title="Permalink to this headline">#</a></h3>
+<h2>Illustratively<a class="headerlink" href="#illustratively" title="Permalink to this headline">#</a></h2>
 <p>Below is a good visualization of the two tendencies for both regression and classification:</p>
 <figure class="align-default" id="modeval-underoverfit-reg-class-table">
 <a class="reference internal image-reference" href="../_images/modEval_underoverfit_reg_class_table.jpg"><img alt="../_images/modEval_underoverfit_reg_class_table.jpg" src="../_images/modEval_underoverfit_reg_class_table.jpg" style="width: 100%;" /></a>
@@ -698,95 +714,103 @@ In machine learning, we look for general patterns and compromises: a good algori
 <sub>Image: LinkedIn Machine Learning India</sub></span><a class="headerlink" href="#modeval-underoverfit-reg-class-table" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-</section>
+<p>We can see that the left column deals with models too simple, very low in capacity, so completely failing to get the main data patterns. As a result, we will have a high cost (or error) with data used during the training as well as new data points to test the generalization. No matter how many new data points we add. This is a high bias situation – model too simple – and it can be spotted with the fact that <strong>errors will be large on both the training and the testing datasets</strong>.</p>
+<p>Now, if the capacity is increased – with a higher degree polynomial or advanced model architecture – we can get a high variance situation. In that case, the error on the training dataset will be small. For a moment, we can think the model is great! However, if we test the model with new, unseen-during-training data, the fluctuations will differ and thus we will get a large testing error. This is a high variance situation. In that case, the errors will be low on the training dataset but large on the testing dataset.</p>
+<p>To see which situation we are in, we compare errors on the training and test sets.</p>
+<figure class="align-default" id="modeval-training-test-error">
+<a class="reference internal image-reference" href="../_images/modEval_training_test_error.png"><img alt="../_images/modEval_training_test_error.png" src="../_images/modEval_training_test_error.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Visualization of the error (cost function) with respect to the model’s complexity for the training and test sets. The ideal complexity is in the middle region where both the training and test errors are low and close to one another.<br />
+<sub>Image: from the author, inspired by <a class="reference external" href="https://dziganto.github.io/cross-validation/data%20science/machine%20learning/model%20tuning/python/Model-Tuning-with-Validation-and-Cross-Validation/">David Ziganto</a></sub></span><a class="headerlink" href="#modeval-training-test-error" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Two takeaways from this:</p>
+<ol class="simple">
+<li><p>The reduction of bias is done at the expend of an increase in variance. That’s unavoidable and we will soon see this both mathematically and practically</p></li>
+<li><p>There is a golden mean, a zone where the model is compromising both on the bias and variance. That corresponds to the bottom of the test error. In this zone, the model captures the main pattern of the data and the generalization to new data is minimized.</p></li>
+</ol>
 </section>
 <section id="generalization-error">
 <h2>Generalization error<a class="headerlink" href="#generalization-error" title="Permalink to this headline">#</a></h2>
-<section id="graphically">
-<h3>Graphically<a class="headerlink" href="#graphically" title="Permalink to this headline">#</a></h3>
-<p>If we plot the test error (reminder: on a dataset not used for training) with respect to the model’s complexity, we can easy see how the bias is the main driver of the error at low model’s compl</p>
-<figure class="align-default" id="modeval-bias-var-ierrors">
-<a class="reference internal image-reference" href="../_images/modEval_bias_var_ierrors.png"><img alt="../_images/modEval_bias_var_ierrors.png" src="../_images/modEval_bias_var_ierrors.png" style="width: 90%;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">: Decomposition of the generalized error into the bias, variance and irreducible errors.<br />
-<sub>Image: <a class="reference external" href="https://towardsdatascience.com/the-bias-variance-tradeoff-8818f41e39e9">towardsdatascience.com</a></sub></span><a class="headerlink" href="#modeval-bias-var-ierrors" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Increasing the model complexity will reduce the bias but increase the variance. Reversely, simplifying a model to mitigate the variance comes at a risk of a higher bias. In the end, the lowest total error is a trade-off between bias and variance.</p>
+<div class="proof definition admonition" id="generrordef">
+<p class="admonition-title"><span class="caption-number">Definition 40 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>generalization error</strong> of a model quantifies its expected loss on new data drawn from the same distribution as the training set.</p>
+</section>
+</div><p>In other words, the generalization error reflects how well the model captures essential patterns in the training data and transfers them to give accurate predictions on unseen data.</p>
+<section id="decomposition">
+<h3>Decomposition<a class="headerlink" href="#decomposition" title="Permalink to this headline">#</a></h3>
 <p>The generalization error can be expressed as a sum of three errors:</p>
-<div class="math notranslate nohighlight" id="equation-basics-model-eval-4-bias-variance-tradeoff-0">
-<span class="eqno">(35)<a class="headerlink" href="#equation-basics-model-eval-4-bias-variance-tradeoff-0" title="Permalink to this equation">#</a></span>\[\text{Expected Test Error} =
+<div class="math notranslate nohighlight" id="equation-decompeqenglish">
+<span class="eqno">(37)<a class="headerlink" href="#equation-decompeqenglish" title="Permalink to this equation">#</a></span>\[\text{Expected Test Error} =
 \underbrace{\text{Bias}^2}_{\text{systematic error}}
 +
 \underbrace{\text{Variance}}_{\text{sensitivity to data}}
 +
 \underbrace{\sigma^2}_{\text{irreducible noise}}\]</div>
-<p>The two first are <em>reducible</em>. In fact, we will see in the following how to reduce them as much as possible! The last one is due to the fact data is noisy itself. It can be minimized during data cleaning by removing outliers (or more upfront by improving the detector or device that collected the data).</p>
-<p>Before learning on ways to cope with either bias or variance, we need first to assess the situation. How to know if our model has high bias or high variance?</p>
+<p>This is the (infamous) bias-variance decomposition.</p>
+<p>As the equation shows, the generalization error is an “expectation” of the loss on the test dataset. Put differently, it is a theoretical average over all possible unseen samples.
+The first two terms in the sum are reducible with a smart choice of model complexity, as we saw before. The third term comes from the fact that data is noisy. Beyond careful data cleaning and smart preprocessing, there is little we can do: there will always be some noise. It’s irreducible.</p>
+<p>Some of you may wonder (or have forgotten): why is the bias squared?</p>
+<p>The best way to know is to derive yourself the bias-variance decomposition. But before, let’s note an important point on what is being averaged over here.</p>
 </section>
-</section>
-<section id="identifying-the-case">
-<h2>Identifying the case<a class="headerlink" href="#identifying-the-case" title="Permalink to this headline">#</a></h2>
-<p>By plotting the cost function with respect to the model’s complexity. Increasing complexity can be done by adding more features, higher degree polynomial terms, etc. This implies running the training and validation each time with a different model to collect enough points to make such a graph:</p>
-<figure class="align-default" id="modeval-bias-variance-train-val-complexity">
-<a class="reference internal image-reference" href="../_images/modEval_bias-variance-train-val-complexity.png"><img alt="../_images/modEval_bias-variance-train-val-complexity.png" src="../_images/modEval_bias-variance-train-val-complexity.png" style="width: 90%;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">: Visualization of the error (cost function) with respect to the model’s complexity for the training and validation sets. The ideal complexity is in the middle region where both the training and validation errors are low and close to one another.<br />
-<sub>Image: <a class="reference external" href="https://dziganto.github.io/cross-validation/data%20science/machine%20learning/model%20tuning/python/Model-Tuning-with-Validation-and-Cross-Validation/">David Ziganto</a></sub></span><a class="headerlink" href="#modeval-bias-variance-train-val-complexity" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>It can impractical to test several models with higher complexity. More achievable graphs would be to plot the error (cost function) with respect to the sample size <span class="math notranslate nohighlight">\(m\)</span> or the number of epochs <span class="math notranslate nohighlight">\(N\)</span>:</p>
-<figure class="align-default" id="modeval-low-high-bias">
-<a class="reference internal image-reference" href="../_images/modEval_low_high_bias.webp"><img alt="../_images/modEval_low_high_bias.webp" src="../_images/modEval_low_high_bias.webp" style="width: 100%;" /></a>
-</figure>
-<figure class="align-default" id="modeval-low-high-var">
-<a class="reference internal image-reference" href="../_images/modEval_low_high_var.webp"><img alt="../_images/modEval_low_high_var.webp" src="../_images/modEval_low_high_var.webp" style="width: 100%;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">: Interpretation of the error plots as a function of the number of samples in the dataset for low and high bias/variance situations.<br />
-<sub>Images: <a class="reference external" href="https://www.dataquest.io/blog/learning-curves-machine-learning/">dataquest.io</a></sub></span><a class="headerlink" href="#modeval-low-high-var" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>The presence of a small gap between the train and test errors could appear like a good thing. But it important to quantify the training error and relate it to the desired accuracy: if the error is much higher than the irreducible error, chances are the algorithm is suffering from a high bias.</p>
-<p>The variance is usually spotted by the presence of a significant gap pertaining even if the dataset size <span class="math notranslate nohighlight">\(m\)</span> increases, yet closing itself for large <span class="math notranslate nohighlight">\(m\)</span> (hint for the following section on to cope with variance: getting more data).</p>
-</section>
-<section id="how-to-deal-with-bias-or-variance">
-<h2>How to deal with bias or variance<a class="headerlink" href="#how-to-deal-with-bias-or-variance" title="Permalink to this headline">#</a></h2>
-<p>The actions to perform to mitigate either bias or variance once we have diagnosed the situation can be done on the dataset, on the model itself and on the regularization. The table below summarizes the relevant treatments to further optimize your machine learning algorithm in the good direction.</p>
-<table class="table">
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head"><p>Action categories</p></th>
-<th class="head"><p>Reducing Bias</p></th>
-<th class="head"><p>Reducing Variance</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>On the dataset</p></td>
-<td></td>
-<td><p>Adding more (cleaned) data</p></td>
-</tr>
-<tr class="row-odd"><td><p>On the model</p></td>
-<td><p>Adding new features and/or polynomial features</p></td>
-<td><p>Reducing the number of features</p></td>
-</tr>
-<tr class="row-even"><td><p>Regularization</p></td>
-<td><p>Decreasing parameter <span class="math notranslate nohighlight">\(\lambda\)</span></p></td>
-<td><p>Increasing parameter <span class="math notranslate nohighlight">\(\lambda\)</span></p></td>
-</tr>
-</tbody>
-</table>
-<p>The tutorials will offer a good training for you (and validation 😉) to diagnose and correctly optimize your machine learning algorithm.</p>
-<div class="seealso admonition">
-<p class="admonition-title">Learn more</p>
+<section id="two-different-kinds-of-averages">
+<h3>Two different kinds of “averages”<a class="headerlink" href="#two-different-kinds-of-averages" title="Permalink to this headline">#</a></h3>
+<p>An important point to note here in the bias–variance decomposition: the expectation is not over examples in the dataset! It’s over different possible training datasets.
+Bias and variance are defined <em>pointwise</em>.</p>
+<p>Let’s take one point <span class="math notranslate nohighlight">\(x^\text{test}\)</span> from our test data.</p>
+<p>To get the bias and variance on that point <span class="math notranslate nohighlight">\(x^\text{test}\)</span>, we need to:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html#confusion-matrix">Confusion Matrix, Scikit-Learn</a></p></li>
-<li><p><a class="reference external" href="https://www.linkedin.com/pulse/machine-learning-model-performance-error-analysis-payam-mokhtarian">Machine Learning Model Performance and Error Analysis, LinkedIn</a></p></li>
+<li><p>Train our model on dataset <span class="math notranslate nohighlight">\(\mathcal{D}_1\)</span> <span class="math notranslate nohighlight">\(\rightarrow\)</span> we get predictor <span class="math notranslate nohighlight">\(\hat{f}_{\mathcal{D}_1}(x^\text{test})\)</span></p></li>
+<li><p>Train our model on dataset <span class="math notranslate nohighlight">\(\mathcal{D}_2\)</span> <span class="math notranslate nohighlight">\(\rightarrow\)</span> we get predictor <span class="math notranslate nohighlight">\(\hat{f}_{\mathcal{D}_2}(x^\text{test})\)</span></p></li>
+<li><p>…</p></li>
+<li><p>Train our model on dataset <span class="math notranslate nohighlight">\(\mathcal{D}_N\)</span> <span class="math notranslate nohighlight">\(\rightarrow\)</span> we get predictor <span class="math notranslate nohighlight">\(\hat{f}_{\mathcal{D}_N}(x^\text{test})\)</span></p></li>
+</ul>
+<p>Now, we can define the following:</p>
+<div class="proof definition admonition" id="expmodeldef">
+<p class="admonition-title"><span class="caption-number">Definition 41 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>expectation of a model</strong> at a point <span class="math notranslate nohighlight">\(x\)</span> is the average of the predictions <span class="math notranslate nohighlight">\(\hat{f}_\mathcal{D}(x)\)</span> over many training datasets <span class="math notranslate nohighlight">\(\mathcal{D} = \mathcal{D}_1, \cdots, \mathcal{D}_N\)</span>.</p>
+<div class="math notranslate nohighlight" id="equation-expmodeleq">
+<span class="eqno">(38)<a class="headerlink" href="#equation-expmodeleq" title="Permalink to this equation">#</a></span>\[\mathbb{E}_\mathcal{D} [ \hat{f}_\mathcal{D}(x) ]\]</div>
+</section>
+</div></section>
+<section id="mathematical-derivation">
+<h3>Mathematical derivation<a class="headerlink" href="#mathematical-derivation" title="Permalink to this headline">#</a></h3>
+<p>There won’t be the answer here, but guidance is available on demand. Try it yourself first! (Guaranteed joy after solving it with your own brain.)</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Hint on the noise</p>
+<p>The true function <span class="math notranslate nohighlight">\(f(x)\)</span> defines the relationship between <span class="math notranslate nohighlight">\(X\)</span> and the targets <span class="math notranslate nohighlight">\(y\)</span>. But there will be some deviation due to noise. We can model this with an error term <span class="math notranslate nohighlight">\(\epsilon\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-yxerroreq">
+<span class="eqno">(39)<a class="headerlink" href="#equation-yxerroreq" title="Permalink to this equation">#</a></span>\[y = f(x) + \epsilon\]</div>
+<p>We assumed it is normally distributed and with a standard deviation of <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Hint on how to start</p>
+<p>Start by writing the expression of an expectation of the error:</p>
+<div class="math notranslate nohighlight" id="equation-errorstarteq">
+<span class="eqno">(40)<a class="headerlink" href="#equation-errorstarteq" title="Permalink to this equation">#</a></span>\[\text{Expected Test Error} = \mathbb{E} \Big[ y^\text{test} -  \hat{f}_\mathcal{D}(x^\text{test})\Big]\]</div>
+<p>For the derivation, you can omit the ‘test’ upperscript to lighten the equations a bit.</p>
+<p>Now? Expand this expression and use the properties you know about expectations and variances…</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Hint on a useful relation</p>
+<p>Recall that the variance of a random variable <span class="math notranslate nohighlight">\(X\)</span> can be written in two ways:</p>
+<div class="math notranslate nohighlight" id="equation-vareqs">
+<span class="eqno">(41)<a class="headerlink" href="#equation-vareqs" title="Permalink to this equation">#</a></span>\[\mathrm{Var}(X) = \mathbb{E} \big[ (X - \mathbb{E}[X])^2 \big] = \mathbb{E}[X^2] - \mathbb{E}[X]^2\]</div>
+<p>You will need this!</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Check it!    (after you tried hard)</p>
+<p>Below are two derivations:</p>
+<ul class="simple">
+<li><p>The very accessible and easy-to-follow format by Allen Akinkunle: <a class="reference external" href="https://allenkunle.me/bias-variance-decomposition">The Bias-Variance Decomposition Demystified</a></p></li>
+<li><p>The thorough <a class="reference external" href="https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote12.html">Lecture 12: Bias-Variance Tradeoff</a> by Kilian Weinberger, from the course Machine Learning for Intelligent Systems taught at Cornell University.</p></li>
 </ul>
 </div>
+<p><strong>Brain teaser</strong><br />
+Would the decomposition Bias<span class="math notranslate nohighlight">\(^2\)</span> + Variance still hold for a loss that is <strong>not</strong> the MSE? 🤔</p>
+</section>
 </section>
 </section>
 
