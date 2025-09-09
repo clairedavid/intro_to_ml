@@ -62,7 +62,7 @@ y^\text{pred} = h(x)
 \end{equation*}
 ````
 
-The hypothesis function is also known as decision function. It's the mathematical core of a machine learning model.
+The hypothesis function is also known as decision function. It's the mathematical core of a machine learning model.  
 
 
 In our simple case of linear regression in one dimension, our function $h$ will be of the form:

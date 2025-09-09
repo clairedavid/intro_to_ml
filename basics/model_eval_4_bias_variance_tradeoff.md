@@ -42,7 +42,7 @@ The problem with overfitting is the future consequences once the machine learnin
 
 ````{prf:definition}
 :label: generalizationdef
-In machine learning, generalization is the ability of a trained model to perform well on new, unseen data drawn from the same distribution as the training data.
+In machine learning, __generalization__ is the ability of a trained model to perform well on new, unseen data drawn from the same distribution as the training data.
 ````
 
 ````{prf:definition}
@@ -75,7 +75,7 @@ The Ridge regression is a linear regression with an additional regularization te
 The hyperparameter $\lambda$ controls the degree of regularization. If $\lambda = 0$, the regularization term vanishes and we have a non-regularized linear regression. You can see the penalty imposed by the term $\lambda$ will force the parameters $\theta$ to be as small as possible; this helps avoiding overfitting. If $\lambda$ gets very large, the parameters can be so shrinked that the model becomes over-simplified to a straight line and thus underfit the data.
 
 ```{note}
-The factor $\frac{1}{2}$ is used in some derivations of the regularization. This makes it easier to calculate the gradient, however it is only a constant value that can be compensated by the choice of the parameter $\lambda$.
+The factor $\frac{1}{2}$ is used in some derivations of the regularization. This makes it easier to calculate the gradient, however it is only a constant value that can be compensated by the choice of the hyperparameter $\lambda$.
 ```
 
 ```{warning}
@@ -95,7 +95,7 @@ with $\left\| \vec{w} \right\|_2$ the $\ell_2$ norm of the weight vector.
 For logistic regression, the regularized cost function becomes:
 ```{math}
 :label: ridgelogeq
- J(\theta) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; y^{(i)} \log( h_\theta(x^{(i)} )) \;+\; (1- y^{(i)}) \log( 1 - h_\theta(x^{(i)} )) \;\;\right] + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n \theta_j^2}
+ C(\theta) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; y^{(i)} \log( h_\theta(x^{(i)} )) \;+\; (1- y^{(i)}) \log( 1 - h_\theta(x^{(i)} )) \;\;\right] + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n \theta_j^2}
 ```
 (class:algs:reg:lasso)=
 ### Lasso Regularization
@@ -105,7 +105,7 @@ The $\ell_1$ norm is the sum of the magnitudes of the vectors. It is also called
 Lasso stands for least absolute shrinkage and selection operator. Behind the long acronym is a regularization of the linear regression using the $\ell_1$ norm. We denote Cost($\theta$) the cost function, i.e. either the Mean Squared Error for linear regression or the cross-entropy loss function {eq}`costFunctionLogReg` for logistic regression. The lasso regression cost function is
 ```{math}
 :label: lassoCostF
-J(\theta) = \text{Cost(}{\theta}\text{)}  + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n | \theta_j | }
+C(\theta) = \text{Cost(}{\theta}\text{)}  + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n | \theta_j | }
 ```
 The regularizing term uses the $\ell_1$ norm of the weight vector: $\left\| \vec{w} \right\|_1$.
 
@@ -133,31 +133,53 @@ Additional reading are provided below to deepen your understanding in the differ
 
 Underfitting and overfitting are symptoms of a fundamental modeling issue. This tension is captured by the notions of bias and variance. We will define them, see how they combine in the total error, and why it is not possible to reduce both simultaneously. This is the infamous dilemma of the bias–variance tradeoff.
 
+
 ### Bias
+The bias systematic error coming from wrong assumptions on the model. 
+
+
+````{margin}
+```{admonition} Slight change of notations
+:class: important
+Earlier in this course, we used $h_\theta(x)$ as our model's hypothesis function. For coherence in the notation, we will use $\hat{f}_{\mathcal{D}}(x)$, which refers to the trained/fitted model, i.e., $h_\theta(x)$ after training, with parameters $\boldsymbol{\hat{\theta}}$ learned from the data $\mathcal{D}$. So $\hat{f}_{\mathcal{D}}$ is basically the post-training version of $h_\theta$.
+```
+````
+
 ````{prf:definition}
 :label: biasdef
-The __bias__ is an error coming from wrong assumptions on the model. 
+The __bias__ measures how much, on average across different training sets $\mathcal{D} = \mathcal{D}_1, \cdots, \mathcal{D}_N$, the model’s predictions $\hat{f}_{\mathcal{D}_k}(x)$ deviate from the true underlying function $f(x)$:
 
+```{math}
+:label: biaseq
+\text{Bias}(x) = \mathbb{E}[\hat{f}_{\mathcal{D}}(x)] - f(x)
+```
+````
 A highly biased model will most likely underfit the data.
 
-````
-The bias implies not grasping the full complexity of the situation (think of a biased person making an irrelevant or indecent remark in a conversation).
+```{admonition} Important
+:class: important
+The true distribution $P(X,Y)$ from which the data are drawn is unknown, so the true function $f(x)$ cannot be observed directly. We can write it down, but we will never have direct access to it.
+```
 
 ### Variance
 
 ````{prf:definition}
 :label: variancedef
-The __variance__ is a measure of the model's sensitivity to statistical fluctuations of the training data set. 
+The __variance__ is a measure of how sensitive the model's predictions are to random fluctuations in the training data. 
+
+```{math}
+:label: vareq
+\text{Variance}(x) = \mathbb{E}\Big[(\hat{f}_{\mathcal{D}}(x) - \mathbb{E}[\hat{f}_{\mathcal{D}}(x)])^2\Big]
+```
+````
+
+As its name suggest, a model incorporating fluctuations in its design will change, aka _vary_, as soon as it is presented with new data (fluctuating differently). Variance is about the instability of the model due to training data variability. 
 
 A model with high variance is likely to overfit the data.
 
-````
+Using a larger training dataset will reduce the variance. However, extremely high-variance models may still fluctuate, but in general, more data helps.
 
-As its name suggest, a model incorporating fluctuations in its design will change, aka _vary_, as soon as it is presented with new data (fluctuating differently). 
-
-Using a larger training dataset will reduce the variance.
-
-### Illustratively
+## Illustratively
 
 Below is a good visualization of the two tendencies for both regression and classification:
 
@@ -170,35 +192,40 @@ Below is a good visualization of the two tendencies for both regression and clas
  <sub>Image: LinkedIn Machine Learning India</sub>
 ```
 
+We can see that the left column deals with models too simple, very low in capacity, so completely failing to get the main data patterns. As a result, we will have a high cost (or error) with data used during the training as well as new data points to test the generalization. No matter how many new data points we add. This is a high bias situation -- model too simple -- and it can be spotted with the fact that __errors will be large on both the training and the testing datasets__.
+
+Now, if the capacity is increased -- with a higher degree polynomial or advanced model architecture -- we can get a high variance situation. In that case, the error on the training dataset will be small. For a moment, we can think the model is great! However, if we test the model with new, unseen-during-training data, the fluctuations will differ and thus we will get a large testing error. This is a high variance situation. In that case, the errors will be low on the training dataset but large on the testing dataset. 
+
+To see which situation we are in, we compare errors on the training and test sets.
+
+```{figure} ../images/modEval_training_test_error.png
+---
+  name: modEval_training_test_error
+  width: 70%
+---
+ Visualization of the error (cost function) with respect to the model's complexity for the training and test sets. The ideal complexity is in the middle region where both the training and test errors are low and close to one another.  
+ <sub>Image: from the author, inspired by [David Ziganto](https://dziganto.github.io/cross-validation/data%20science/machine%20learning/model%20tuning/python/Model-Tuning-with-Validation-and-Cross-Validation/)</sub>   
+```
+
+Two takeaways from this: 
+1. The reduction of bias is done at the expend of an increase in variance. That's unavoidable and we will soon see this both mathematically and practically
+1. There is a golden mean, a zone where the model is compromising both on the bias and variance. That corresponds to the bottom of the test error. In this zone, the model captures the main pattern of the data and the generalization to new data is minimized.
+
 
 
 ## Generalization error
 
-### Graphically
+````{prf:definition}
+:label: generrordef
+The __generalization error__ of a model quantifies its expected loss on new data drawn from the same distribution as the training set.
+````
 
-If we plot the test error (reminder: on a dataset not used for training) with respect to the model's complexity, we can easy see how the bias is the main driver of the error at low model's compl
+In other words, the generalization error reflects how well the model captures essential patterns in the training data and transfers them to give accurate predictions on unseen data.
 
-
-
-```{figure} ../images/modEval_bias_var_ierrors.png
----
-  name: modEval_bias_var_ierrors
-  width: 90%
----
-: Decomposition of the generalized error into the bias, variance and irreducible errors.  
- <sub>Image: [towardsdatascience.com](https://towardsdatascience.com/the-bias-variance-tradeoff-8818f41e39e9)</sub>
-```
-Increasing the model complexity will reduce the bias but increase the variance. Reversely, simplifying a model to mitigate the variance comes at a risk of a higher bias. In the end, the lowest total error is a trade-off between bias and variance.
-
-
-
-
-
-
-
+### Decomposition
 The generalization error can be expressed as a sum of three errors:
 ```{math}
-:label:
+:label: decompeqenglish
 \text{Expected Test Error} =
 \underbrace{\text{Bias}^2}_{\text{systematic error}}
 +
@@ -207,72 +234,93 @@ The generalization error can be expressed as a sum of three errors:
 \underbrace{\sigma^2}_{\text{irreducible noise}}
 
 ```
-The two first are _reducible_. In fact, we will see in the following how to reduce them as much as possible! The last one is due to the fact data is noisy itself. It can be minimized during data cleaning by removing outliers (or more upfront by improving the detector or device that collected the data). 
 
+This is the (infamous) bias-variance decomposition. 
 
+As the equation shows, the generalization error is an "expectation" of the loss on the test dataset. Put differently, it is a theoretical average over all possible unseen samples. 
+The first two terms in the sum are reducible with a smart choice of model complexity, as we saw before. The third term comes from the fact that data is noisy. Beyond careful data cleaning and smart preprocessing, there is little we can do: there will always be some noise. It's irreducible. 
 
-Before learning on ways to cope with either bias or variance, we need first to assess the situation. How to know if our model has high bias or high variance?  
-## Identifying the case
-By plotting the cost function with respect to the model's complexity. Increasing complexity can be done by adding more features, higher degree polynomial terms, etc. This implies running the training and validation each time with a different model to collect enough points to make such a graph:
+Some of you may wonder (or have forgotten): why is the bias squared? 
 
-```{figure} ../images/modEval_bias-variance-train-val-complexity.png
----
-  name: modEval_bias-variance-train-val-complexity
-  width: 90%
----
-: Visualization of the error (cost function) with respect to the model's complexity for the training and validation sets. The ideal complexity is in the middle region where both the training and validation errors are low and close to one another.  
- <sub>Image: [David Ziganto](https://dziganto.github.io/cross-validation/data%20science/machine%20learning/model%20tuning/python/Model-Tuning-with-Validation-and-Cross-Validation/)</sub>   
- ```
+The best way to know is to derive yourself the bias-variance decomposition. But before, let's note an important point on what is being averaged over here.
 
-It can impractical to test several models with higher complexity. More achievable graphs would be to plot the error (cost function) with respect to the sample size $m$ or the number of epochs $N$:
+### Two different kinds of "averages"
+An important point to note here in the bias–variance decomposition: the expectation is not over examples in the dataset! It’s over different possible training datasets. 
+Bias and variance are defined _pointwise_. 
 
-```{figure} ../images/modEval_low_high_bias.webp
----
-  name: modEval_low_high_bias
-  width: 100%
----
+Let's take one point $x^\text{test}$ from our test data. 
+
+To get the bias and variance on that point $x^\text{test}$, we need to:
+- Train our model on dataset $\mathcal{D}_1$ $\rightarrow$ we get predictor $\hat{f}_{\mathcal{D}_1}(x^\text{test})$
+- Train our model on dataset $\mathcal{D}_2$ $\rightarrow$ we get predictor $\hat{f}_{\mathcal{D}_2}(x^\text{test})$
+- ...
+- Train our model on dataset $\mathcal{D}_N$ $\rightarrow$ we get predictor $\hat{f}_{\mathcal{D}_N}(x^\text{test})$
+
+Now, we can define the following: 
+
+````{prf:definition}
+:label: expmodeldef
+The __expectation of a model__ at a point $x$ is the average of the predictions $\hat{f}_\mathcal{D}(x)$ over many training datasets $\mathcal{D} = \mathcal{D}_1, \cdots, \mathcal{D}_N$.
+```{math}
+:label: expmodeleq
+\mathbb{E}_\mathcal{D} [ \hat{f}_\mathcal{D}(x) ]
 ```
-```{figure} ../images/modEval_low_high_var.webp
----
-  name: modEval_low_high_var
-  width: 100%
----
-: Interpretation of the error plots as a function of the number of samples in the dataset for low and high bias/variance situations.  
-<sub>Images: [dataquest.io](https://www.dataquest.io/blog/learning-curves-machine-learning/)</sub>
+````
+
+### Mathematical derivation
+
+There won't be the answer here, but guidance is available on demand. Try it yourself first! (Guaranteed joy after solving it with your own brain.)
+
+````{admonition} Hint on the noise
+:class: tip, dropdown
+The true function $f(x)$ defines the relationship between $X$ and the targets $y$. But there will be some deviation due to noise. We can model this with an error term $\epsilon$:
+```{math}
+:label: yxerroreq
+y = f(x) + \epsilon
 ```
 
-The presence of a small gap between the train and test errors could appear like a good thing. But it important to quantify the training error and relate it to the desired accuracy: if the error is much higher than the irreducible error, chances are the algorithm is suffering from a high bias. 
+We assumed it is normally distributed and with a standard deviation of $\sigma$.
+````
 
-The variance is usually spotted by the presence of a significant gap pertaining even if the dataset size $m$ increases, yet closing itself for large $m$ (hint for the following section on to cope with variance: getting more data). 
-
-
-## How to deal with bias or variance
-
-The actions to perform to mitigate either bias or variance once we have diagnosed the situation can be done on the dataset, on the model itself and on the regularization. The table below summarizes the relevant treatments to further optimize your machine learning algorithm in the good direction.
-
-```{list-table}
-:header-rows: 1
-
-* - Action categories
-  - Reducing Bias
-  - Reducing Variance
-* - On the dataset
-  - 
-  - Adding more (cleaned) data
-* - On the model
-  - Adding new features and/or polynomial features
-  - Reducing the number of features
-* - Regularization
-  - Decreasing parameter $\lambda$
-  - Increasing parameter $\lambda$
+````{admonition} Hint on how to start
+:class: tip, dropdown
+Start by writing the expression of an expectation of the error:
+```{math}
+:label: errorstarteq
+\text{Expected Test Error} = \mathbb{E} \Big[ y^\text{test} -  \hat{f}_\mathcal{D}(x^\text{test})\Big]
 ```
-  
+For the derivation, you can omit the 'test' upperscript to lighten the equations a bit. 
 
-The tutorials will offer a good training for you (and validation 😉) to diagnose and correctly optimize your machine learning algorithm. 
+Now? Expand this expression and use the properties you know about expectations and variances... 
 
-```{admonition} Learn more
+````
+
+````{admonition} Hint on a useful relation
+:class: tip, dropdown
+Recall that the variance of a random variable $X$ can be written in two ways:
+```{math}
+:label: vareqs
+\mathrm{Var}(X) = \mathbb{E} \big[ (X - \mathbb{E}[X])^2 \big] = \mathbb{E}[X^2] - \mathbb{E}[X]^2
+```
+
+You will need this!
+````
+
+
+
+
+
+
+
+
+
+```{admonition} Check it!    (after you tried hard)
 :class: seealso
-* [Confusion Matrix, Scikit-Learn](https://scikit-learn.org/stable/modules/model_evaluation.html#confusion-matrix) 
-* [Machine Learning Model Performance and Error Analysis, LinkedIn](https://www.linkedin.com/pulse/machine-learning-model-performance-error-analysis-payam-mokhtarian)
-
+Below are two derivations:
+- The very accessible and easy-to-follow format by Allen Akinkunle: [The Bias-Variance Decomposition Demystified](https://allenkunle.me/bias-variance-decomposition)
+- The thorough [Lecture 12: Bias-Variance Tradeoff](https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote12.html) by Kilian Weinberger, from the course Machine Learning for Intelligent Systems taught at Cornell University.
 ```
+
+
+__Brain teaser__  
+Would the decomposition Bias$^2$ + Variance still hold for a loss that is __not__ the MSE? 🤔 
