@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="More than two categories: multiclassification" href="log_reg_5_multiclass.html" />
+    <link rel="next" title="Multiclass Classification" href="log_reg_5_multiclass.html" />
     <link rel="prev" title="Cost Function for Classification" href="log_reg_3_cost_function.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -228,7 +228,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="log_reg_5_multiclass.html">
-     More than two categories: multiclassification
+     Multiclass Classification
     </a>
    </li>
   </ul>
@@ -458,7 +458,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="gradient-descent-for-logistic-regression">
 <h1>Gradient Descent for Logistic Regression<a class="headerlink" href="#gradient-descent-for-logistic-regression" title="Permalink to this headline">#</a></h1>
-<p>The gradient descent for classification follows the same procedure as described in <a class="reference internal" href="lin_reg_4_gradient_descent_multiD.html#GD_algo_multi">Algorithm 2</a> in Section <a class="reference internal" href="lin_reg_4_gradient_descent_multiD.html#linregmulti-graddesc"><span class="std std-ref">Gradient Descent in Multilinear Regression</span></a> with the definition of the cost function from Equation <a class="reference internal" href="log_reg_3_cost_function.html#equation-costfunctionlogreg">(18)</a> above.</p>
+<p>The gradient descent for classification follows the same procedure as described in <a class="reference internal" href="lin_reg_4_gradient_descent_multiD.html#GD_algo_multi">Algorithm 2</a> in Section <a class="reference internal" href="lin_reg_4_gradient_descent_multiD.html#linregmulti-graddesc"><span class="std std-ref">Gradient Descent in Multilinear Regression</span></a> with the definition of the cost function from Equation <a class="reference internal" href="log_reg_3_cost_function.html#equation-costfunctionlogreg">(19)</a> above.</p>
 <section id="derivatives-in-the-linear-case">
 <h2>Derivatives in the linear case<a class="headerlink" href="#derivatives-in-the-linear-case" title="Permalink to this headline">#</a></h2>
 <p>Consider the linear assumption <span class="math notranslate nohighlight">\(\boldsymbol{x} \cdot \boldsymbol{\theta}  = \theta_0 + \theta_1 x_1 +  \cdots  + \theta_n x_n\)</span> as input to the sigmoid function <span class="math notranslate nohighlight">\(\sigma\)</span>.
@@ -468,11 +468,11 @@ The cost function derivatives will take the form:</p>
 <p>Recall that <span class="math notranslate nohighlight">\(h_\boldsymbol{\theta} (\boldsymbol{x}^{(i)}) =  \sigma( \boldsymbol{x}^{(i)} \, \boldsymbol{\theta}) = \frac{1}{1 + e^{-  \boldsymbol{x}^{(i)} \, \boldsymbol{\theta} }}\)</span></p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-costfderivlin">
-<span class="eqno">(19)<a class="headerlink" href="#equation-costfderivlin" title="Permalink to this equation">#</a></span>\[\frac{\partial}{\partial \theta_j} J(\boldsymbol{\theta}) = \frac{1}{m} \sum_{i=1}^{m} \left( h_\boldsymbol{\theta}(\boldsymbol{x}^{(i)}) -  y^{(i)}\right) x_j^{(i)}\]</div>
+<span class="eqno">(27)<a class="headerlink" href="#equation-costfderivlin" title="Permalink to this equation">#</a></span>\[\frac{\partial}{\partial \theta_j} J(\boldsymbol{\theta}) = \frac{1}{m} \sum_{i=1}^{m} \left( h_\boldsymbol{\theta}(\boldsymbol{x}^{(i)}) -  y^{(i)}\right) x_j^{(i)}\]</div>
 <p>Wait: we’ve seen this somewhere! This takes the same form as the derivatives for linear regression, see Equation <a class="reference internal" href="lin_reg_4_gradient_descent_multiD.html#equation-partialdevlinreg">(15)</a> in Section <a class="reference internal" href="lin_reg_4_gradient_descent_multiD.html#linregmulti-graddesc"><span class="std std-ref">Gradient Descent in Multilinear Regression</span></a>.</p>
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
-<p>To convince yourself, you can derive Equation <a class="reference internal" href="#equation-costfderivlin">(19)</a> starting from Equation <a class="reference internal" href="log_reg_3_cost_function.html#equation-costfunctionlogreg">(18)</a>.</p>
+<p>To convince yourself, you can derive Equation <a class="reference internal" href="#equation-costfderivlin">(27)</a> starting from Equation <a class="reference internal" href="log_reg_3_cost_function.html#equation-costfunctionlogreg">(19)</a>.</p>
 <p>Hints and help available on demand after class.</p>
 </div>
 </section>
@@ -548,7 +548,7 @@ The cost function derivatives will take the form:</p>
     <a class='right-next' id="next-link" href="log_reg_5_multiclass.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">More than two categories: multiclassification</p>
+        <p class="prev-next-title">Multiclass Classification</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

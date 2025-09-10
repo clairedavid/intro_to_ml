@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Model Evaluation &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    <title>What is Boosting? &#8212; Introduction&lt;br&gt; to Machine Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Splitting Datasets for Evaluation" href="model_eval_1_train_test_split.html" />
-    <link rel="prev" title="Multiclass Classification" href="log_reg_5_multiclass.html" />
+    <link rel="next" title="AdaBoost" href="boost_2_adaboost.html" />
+    <link rel="prev" title="Boosting" href="boosting.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -151,9 +151,9 @@ const thebe_selector_output = ".output, .cell_output"
   The basics
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="linear_regression.html">
+  <a class="reference internal" href="../basics/linear_regression.html">
    Warm-up: Linear Regression
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -163,39 +163,39 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="lin_reg_1_notations.html">
+    <a class="reference internal" href="../basics/lin_reg_1_notations.html">
      Notations
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lin_reg_2_cost_function.html">
+    <a class="reference internal" href="../basics/lin_reg_2_cost_function.html">
      Cost Function in Linear Regression
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lin_reg_3_gradient_descent_1d.html">
+    <a class="reference internal" href="../basics/lin_reg_3_gradient_descent_1d.html">
      Gradient Descent in 1D
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lin_reg_4_gradient_descent_multiD.html">
+    <a class="reference internal" href="../basics/lin_reg_4_gradient_descent_multiD.html">
      Multivariate Linear Regression
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lin_reg_5_learning_rate.html">
+    <a class="reference internal" href="../basics/lin_reg_5_learning_rate.html">
      Learning Rate
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lin_reg_6_gradient_descent_in_practice.html">
+    <a class="reference internal" href="../basics/lin_reg_6_gradient_descent_in_practice.html">
      Gradient Descent in Practice
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="logistic_regression.html">
+  <a class="reference internal" href="../basics/logistic_regression.html">
    Logistic Regression
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -205,60 +205,143 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="log_reg_1_intro.html">
+    <a class="reference internal" href="../basics/log_reg_1_intro.html">
      Logistic Regression: introduction
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="log_reg_2_sigmoid.html">
+    <a class="reference internal" href="../basics/log_reg_2_sigmoid.html">
      What is the Sigmoid Function?
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="log_reg_3_cost_function.html">
+    <a class="reference internal" href="../basics/log_reg_3_cost_function.html">
      Cost Function for Classification
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="log_reg_4_gradient_descent.html">
+    <a class="reference internal" href="../basics/log_reg_4_gradient_descent.html">
      Gradient Descent for Logistic Regression
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="log_reg_5_multiclass.html">
+    <a class="reference internal" href="../basics/log_reg_5_multiclass.html">
      Multiclass Classification
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../basics/model_evaluation.html">
    Model Evaluation
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="model_eval_1_train_test_split.html">
+    <a class="reference internal" href="../basics/model_eval_1_train_test_split.html">
      Splitting Datasets for Evaluation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="model_eval_2_perf_metrics.html">
+    <a class="reference internal" href="../basics/model_eval_2_perf_metrics.html">
      Performance Metrics
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="model_eval_3_roc_curve.html">
+    <a class="reference internal" href="../basics/model_eval_3_roc_curve.html">
      Let’s ROC!
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="model_eval_4_bias_variance_tradeoff.html">
+    <a class="reference internal" href="../basics/model_eval_4_bias_variance_tradeoff.html">
      Bias &amp; Variance: a Tradeoff
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Decision trees and boosting
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="dt_and_boosting.html">
+   Decision Trees &amp; Boosting
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dt_1_what_are_trees.html">
+     What are Decision Trees?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dt_2_cart_algorithm.html">
+     The CART Algorithm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="dt_3_limitations.html">
+     Limitations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="ensemble_learning.html">
+   Ensemble Learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="el_1_what_is_ensemble.html">
+     What is Ensemble Learning?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="el_2_random_forests.html">
+     Random Forests
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="boosting.html">
+   Boosting
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     What is Boosting?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="boost_2_adaboost.html">
+     AdaBoost
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="boost_3_gradient_boosting.html">
+     Gradient Boosting
     </a>
    </li>
   </ul>
@@ -336,7 +419,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/basics/model_evaluation.md"
+        <a href="../_sources/trees/boost_1_what_is_boosting.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -385,7 +468,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Model Evaluation</h1>
+                <h1>What is Boosting?</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -397,24 +480,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="model-evaluation">
-<h1>Model Evaluation<a class="headerlink" href="#model-evaluation" title="Permalink to this headline">#</a></h1>
-<p>How can we assess the quality of a machine learning model?<br />
-How can we detect underfitting or overfitting?<br />
-How can we adjust the algorithm to achieve a good fit?</p>
-<p>This section will introduce key concepts and tools to evaluate and improve your model.</p>
-<p>Learning outcomes:</p>
-<ul class="simple">
-<li><p>Understand the purpose of splitting data into different sets (training, validation, test)</p></li>
-<li><p>Become familiar with cross-validation techniques</p></li>
-<li><p>Learn common metrics for regression and classification</p></li>
-<li><p>Understand how the ROC curve is constructed step by step</p></li>
-<li><p>Grasp the concepts of bias and variance and the tradeoff between them</p></li>
-<li><p>Define overfitting and underfitting and identify when they occur</p></li>
-<li><p>Know strategies to cope with high bias or high variance situations</p></li>
-</ul>
-<div class="toctree-wrapper compound">
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="what-is-boosting">
+<h1>What is Boosting?<a class="headerlink" href="#what-is-boosting" title="Permalink to this headline">#</a></h1>
+<p>COPY</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -430,7 +498,7 @@ How can we adjust the algorithm to achieve a good fit?</p>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./basics"
+            path: "./trees"
         },
         predefinedOutput: true
     }
@@ -444,17 +512,17 @@ How can we adjust the algorithm to achieve a good fit?</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="log_reg_5_multiclass.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="boosting.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Multiclass Classification</p>
+            <p class="prev-next-title">Boosting</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="model_eval_1_train_test_split.html" title="next page">
+    <a class='right-next' id="next-link" href="boost_2_adaboost.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Splitting Datasets for Evaluation</p>
+        <p class="prev-next-title">AdaBoost</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

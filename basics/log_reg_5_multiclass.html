@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>More than two categories: multiclassification &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    <title>Multiclass Classification &#8212; Introduction&lt;br&gt; to Machine Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -228,7 +228,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     More than two categories: multiclassification
+     Multiclass Classification
     </a>
    </li>
   </ul>
@@ -421,7 +421,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>More than two categories: multiclassification</h1>
+                <h1>Multiclass Classification</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -456,9 +456,9 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="more-than-two-categories-multiclassification">
-<h1>More than two categories: multiclassification<a class="headerlink" href="#more-than-two-categories-multiclassification" title="Permalink to this headline">#</a></h1>
-<p>We treated the binary classification problem. How to adapt to a situation with more than two classes?</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="multiclass-classification">
+<h1>Multiclass Classification<a class="headerlink" href="#multiclass-classification" title="Permalink to this headline">#</a></h1>
+<p>A multi-class classification problem can be split into multiple binary classification datasets and be trained as a binary classification model each. Such approach is a heuristic method, that is to say not optimal nor direct. But it eventually does the job.</p>
 <p>Let’s for instance consider three classes, labelled with their colours and distributed in two dimensions (two input features) like this:</p>
 <figure class="align-default" id="logreg-multiclass-1">
 <a class="reference internal image-reference" href="../_images/logReg_multiclass-1.webp"><img alt="../_images/logReg_multiclass-1.webp" src="../_images/logReg_multiclass-1.webp" style="width: 60%;" /></a>
@@ -467,18 +467,16 @@ title="Print to PDF"
 <sub>Image: <a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/">analyticsvidhya.com</a></sub></span><a class="headerlink" href="#logreg-multiclass-1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>A multi-class classification problem can be split into multiple binary classification datasets and be trained as a binary classification model each.
-Such approach is a heuristic method, that is to say not optimal nor direct. But it eventually does the job.
-There are two main approaches of such methods for multiclassification.</p>
+<p>There are two main approaches of such methods for multiclass classification.</p>
 <section id="one-to-one-approach">
 <h2>One-to-One approach<a class="headerlink" href="#one-to-one-approach" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="multiclass1to1def">
-<p class="admonition-title"><span class="caption-number">Definition 19 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 21 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-One approach</strong> consists of applying a binary classification for each pair of classes, ignoring the other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of models to train, <span class="math notranslate nohighlight">\(N^\text{model}\)</span> is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-34702374-cb94-4103-8673-a93db5e2c5e7">
-<span class="eqno">(20)<a class="headerlink" href="#equation-34702374-cb94-4103-8673-a93db5e2c5e7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-89ba106d-3db4-41a7-a757-ce1b6d96b3e3">
+<span class="eqno">(28)<a class="headerlink" href="#equation-89ba106d-3db4-41a7-a757-ce1b6d96b3e3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 N^\text{model} = \frac{N^\text{class}(N^\text{class}-1)}{2}
 \end{equation}\]</div>
 <p>Each model predicts one class label. The final decision is the class label receiving the most votes, i.e. being predicted most of the time.</p>
@@ -499,12 +497,12 @@ The pairing makes the number of models to train large and thus computer intensiv
 <section id="one-to-all-approach">
 <h2>One-to-All approach<a class="headerlink" href="#one-to-all-approach" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="multiclass1toalldef">
-<p class="admonition-title"><span class="caption-number">Definition 20 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 22 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-All or One-to-Rest approach</strong> consists of training each class against the collection of all other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of pairs to train is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fe546a5f-3bc1-4c69-aca3-480e0d0c6af3">
-<span class="eqno">(21)<a class="headerlink" href="#equation-fe546a5f-3bc1-4c69-aca3-480e0d0c6af3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4a99e13c-ea68-4cba-8371-1cf7b5b86710">
+<span class="eqno">(29)<a class="headerlink" href="#equation-4a99e13c-ea68-4cba-8371-1cf7b5b86710" title="Permalink to this equation">#</a></span>\[\begin{equation}
  N^\text{model} = N^\text{class}
 \end{equation}\]</div>
 <p>The final prediction is given by the highest value of the hypothesis function <span class="math notranslate nohighlight">\(h^{k}_\theta(x)\)</span>, <span class="math notranslate nohighlight">\(k \in [1, N^\text{model}]\)</span> among the <span class="math notranslate nohighlight">\(N^\text{model}\)</span> binary classifiers.</p>
@@ -520,7 +518,7 @@ The pairing makes the number of models to train large and thus computer intensiv
 <p><strong>Pro</strong><br />
 Less binary classifiers to train.</p>
 <p><strong>Con</strong><br />
-The number of data points from the class to look for will be very small if the ‘background’ class is the merging of all other data points from the other classes.</p>
+The number of data points from the positive/signal class will be very small if the negative/background class is the merging of all other data points from the other classes. The model may fail to learn the patterns that identify the rare positive class because it is penalized so little for misclassifying it.</p>
 </section>
 <section id="further-reading">
 <h2>Further reading<a class="headerlink" href="#further-reading" title="Permalink to this headline">#</a></h2>

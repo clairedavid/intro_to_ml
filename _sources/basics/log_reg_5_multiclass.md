@@ -1,5 +1,5 @@
-# More than two categories: multiclassification 
-We treated the binary classification problem. How to adapt to a situation with more than two classes?  
+# Multiclass Classification 
+A multi-class classification problem can be split into multiple binary classification datasets and be trained as a binary classification model each. Such approach is a heuristic method, that is to say not optimal nor direct. But it eventually does the job.
 
 Let's for instance consider three classes, labelled with their colours and distributed in two dimensions (two input features) like this:
 
@@ -12,9 +12,8 @@ Let's for instance consider three classes, labelled with their colours and distr
  <sub>Image: [analyticsvidhya.com](https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/)</sub>
 ```
 
-A multi-class classification problem can be split into multiple binary classification datasets and be trained as a binary classification model each.
-Such approach is a heuristic method, that is to say not optimal nor direct. But it eventually does the job.
-There are two main approaches of such methods for multiclassification.
+
+There are two main approaches of such methods for multiclass classification.
 
 ## One-to-One approach
 
@@ -82,7 +81,7 @@ __Pro__
 Less binary classifiers to train.
 
 __Con__  
-The number of data points from the class to look for will be very small if the 'background' class is the merging of all other data points from the other classes.
+The number of data points from the positive/signal class will be very small if the negative/background class is the merging of all other data points from the other classes. The model may fail to learn the patterns that identify the rare positive class because it is penalized so little for misclassifying it.
 
 
 ## Further reading

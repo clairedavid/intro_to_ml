@@ -228,7 +228,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="log_reg_5_multiclass.html">
-     More than two categories: multiclassification
+     Multiclass Classification
     </a>
    </li>
   </ul>
@@ -452,7 +452,7 @@ title="Print to PDF"
 <h2>Training, Validation, and Test Sets<a class="headerlink" href="#training-validation-and-test-sets" title="Permalink to this headline">#</a></h2>
 <p>In supervised machine learning, we have access to data containing labels, i.e. the input features have associated targets. Whether it is regression or classification, we know the answer. To assess how the model will deal with new cases, we need to compare its predictions with the answers. We cannot perform this comparison if we don’t have the labels! To cope, the input data set is split into different data subsets, each corresponding of a step in the optimization workflow:</p>
 <div class="proof definition admonition" id="trainvaltestsetsdef">
-<p class="admonition-title"><span class="caption-number">Definition 21 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 23 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>training set</strong> is a subset of the input data dedicated to the fitting procedure to find the model parameters minimizing the cost function (step 1).</p>
 <p>The <strong>validation set</strong> is used to assess the performance of the model and tune the model’s hyperparameters (step 2).</p>
@@ -477,7 +477,7 @@ title="Print to PDF"
 </ul>
 <p>In this example, we have a train/validate split of three sub-sets, we talk of a 3-fold cross-validation. The general name with <span class="math notranslate nohighlight">\(k\)</span> sub-sets is <span class="math notranslate nohighlight">\(k\)</span>-fold cross-validation.</p>
 <div class="proof definition admonition" id="kfoldxvalidation">
-<p class="admonition-title"><span class="caption-number">Definition 22 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 24 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <span class="math notranslate nohighlight">\(\mathbf{k}\)</span><strong>-fold cross-validation</strong> is a procedure consisting of using <span class="math notranslate nohighlight">\(k\)</span> subsets of the data used for the training and validation steps where each subset is rotationally used as the validation set, while the <span class="math notranslate nohighlight">\(k-1\)</span> other subsets are merged as one training set.</p>
 <p>The <span class="math notranslate nohighlight">\(k\)</span> validation results are combined to provide an estimate of the model’s predictive performance.</p>

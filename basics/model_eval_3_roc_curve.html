@@ -228,7 +228,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="log_reg_5_multiclass.html">
-     More than two categories: multiclassification
+     Multiclass Classification
     </a>
    </li>
   </ul>
@@ -463,34 +463,34 @@ title="Print to PDF"
 <h2>Ingredients to ROC<a class="headerlink" href="#ingredients-to-roc" title="Permalink to this headline">#</a></h2>
 <p>Those elements are concepts previously encountered, yet but baring other names: the <strong>score</strong> and <strong>decision threshold</strong>.</p>
 <p>We saw the classification is done using the output of the sigmoid function and a decision boundary of <span class="math notranslate nohighlight">\(y=0.5\)</span> (see <a class="reference internal" href="log_reg_2_sigmoid.html#decBoundDef">Definition 17</a> in section <a class="reference internal" href="log_reg_2_sigmoid.html#class-sigmoid"><span class="std std-ref">What is the Sigmoid Function?</span></a>). Sometimes the classifier’s output is also called <em>score</em>, aka an estimation of probability, and the decision boundary can be also referred to <em>decision threshold</em>. It’s a cut value above which a data sample is predicted as a signal event (<span class="math notranslate nohighlight">\(y=1\)</span>) and below which it is classified as background (<span class="math notranslate nohighlight">\(y=1\)</span>). We chose <span class="math notranslate nohighlight">\(y^\text{thres.}=0.5\)</span> to cut our sigmoid half way through its output range, but for building a ROC curve, we will vary this decision threshold.</p>
-<p>Now let’s recall (pun intended) the True Positive Rate that was defined above in <a class="reference internal" href="model_eval_2_perf_metrics.html#errormetricsclassdef">Definition 28</a>, but let’s write it again for convenience and add other metrics:</p>
+<p>Now let’s recall (pun intended) the True Positive Rate that was defined above in <a class="reference internal" href="model_eval_2_perf_metrics.html#errormetricsclassdef">Definition 30</a>, but let’s write it again for convenience and add other metrics:</p>
 <div class="proof definition admonition" id="tprfprdef">
-<p class="admonition-title"><span class="caption-number">Definition 30 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 32 </span></p>
 <section class="definition-content" id="proof-content">
 <p> <br />
 <strong>True Positive Rate (TPR)</strong>, also called <strong>recall</strong> and <strong>sensitivity</strong></p>
 <div class="amsmath math notranslate nohighlight" id="equation-bc0e0442-213b-4838-9074-2b52136fb1f0">
-<span class="eqno">(27)<a class="headerlink" href="#equation-bc0e0442-213b-4838-9074-2b52136fb1f0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<span class="eqno">(35)<a class="headerlink" href="#equation-bc0e0442-213b-4838-9074-2b52136fb1f0" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TPR} = \frac{\text{True Positives}}{\text{Actual Positives}} = \frac{\text{True Positives}}{\text{True Positive} + \text{False Negative}}
 \end{equation}\]</div>
 <p> <br />
 <strong>True Negative Rate (TNR)</strong>, also called <strong>specificity</strong></p>
 <p>Ratio of negative instances correctly classified as negative.</p>
 <div class="amsmath math notranslate nohighlight" id="equation-7df11e76-b89f-4c73-89bc-70fbe4b00b46">
-<span class="eqno">(28)<a class="headerlink" href="#equation-7df11e76-b89f-4c73-89bc-70fbe4b00b46" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<span class="eqno">(36)<a class="headerlink" href="#equation-7df11e76-b89f-4c73-89bc-70fbe4b00b46" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TNR} = \frac{\text{True Negatives}}{\text{Actual Negatives}} = \frac{\text{True Negatives}}{\text{True Negatives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>False Positive Rate (FPR)</strong></p>
 <p>Ratio of negative instances that are incorrectly classified as positive.</p>
 <div class="amsmath math notranslate nohighlight" id="equation-27819b76-7ccd-48c8-8d62-ebff8a7dbccd">
-<span class="eqno">(29)<a class="headerlink" href="#equation-27819b76-7ccd-48c8-8d62-ebff8a7dbccd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<span class="eqno">(37)<a class="headerlink" href="#equation-27819b76-7ccd-48c8-8d62-ebff8a7dbccd" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = \frac{\text{False Positives}}{\text{Actual Negatives}} = \frac{\text{False Positives}}{\text{True Negatives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 The False Positive Rate (FPR) is equal to:</p>
 <div class="amsmath math notranslate nohighlight" id="equation-e64fa30e-93d2-4c84-a509-faa843d9d105">
-<span class="eqno">(30)<a class="headerlink" href="#equation-e64fa30e-93d2-4c84-a509-faa843d9d105" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<span class="eqno">(38)<a class="headerlink" href="#equation-e64fa30e-93d2-4c84-a509-faa843d9d105" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = 1 - \text{TNR} = 1 - \text{specificity}
 \end{equation}\]</div>
 </section>
@@ -499,7 +499,7 @@ The False Positive Rate (FPR) is equal to:</p>
 <section id="building-the-roc-curve">
 <h2>Building the ROC curve<a class="headerlink" href="#building-the-roc-curve" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="rocdef">
-<p class="admonition-title"><span class="caption-number">Definition 31 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 33 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>Receiver Operating Characteristic (ROC) curve</strong> is a graphical display that plot the True Positive Rate (TPR) against the False Positive Rate (FPR) for each value of the decision threshold <span class="math notranslate nohighlight">\(T\)</span> going over the classifier’s output score range.</p>
 </section>
@@ -571,7 +571,7 @@ False negatives are real signal samples incorrectly predicted as background (ora
 <p>We can see from the picture that the more the curve approaches the ideal classifier, the better it is. We can use the area under the ROC curve to have a single number to then quantitatively compare classifiers on their overall performance.</p>
 <p>ROC curves can differ depending on the metrics used. In particle physics, the True Positive Rate is called signal efficiency. It is indeed how efficient the classifier is to correctly classify as signal (numerator) all the real signal (denominator). Zero is bad, TPR = 1 is ideal. The True Negative Rate is called background efficiency. Particle physics builds ROC curves slightly different than the ones you can see in data science; instead of using FPR it uses the background rejection, defined as the inverse of background efficiency. All of this to say that it’s important to read the graph axes first!</p>
 <div class="proof definition admonition" id="aucdef">
-<p class="admonition-title"><span class="caption-number">Definition 32 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 34 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>Area Under Curve (AUC)</strong> is the integral of the ROC curve, from FPR = 0 to FPR = 1.</p>
 <p>A perfect classifier will have AUC = 1.</p>

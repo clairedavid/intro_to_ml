@@ -230,7 +230,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="basics/log_reg_5_multiclass.html">
-     More than two categories: multiclassification
+     Multiclass Classification
     </a>
    </li>
   </ul>
@@ -263,6 +263,89 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="basics/model_eval_4_bias_variance_tradeoff.html">
      Bias &amp; Variance: a Tradeoff
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Decision trees and boosting
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="trees/dt_and_boosting.html">
+   Decision Trees
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="trees/dt_1_what_are_trees.html">
+     What are Decision Trees?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="trees/dt_2_cart_algorithm.html">
+     The CART Algorithm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="trees/dt_3_limitations.html">
+     Limitations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="trees/ensemble_learning.html">
+   Ensemble Learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="trees/el_1_what_is_ensemble.html">
+     What is Ensemble Learning?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="trees/el_2_random_forests.html">
+     Random Forests
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="trees/boosting.html">
+   Boosting
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="trees/boost_1_what_is_boosting.html">
+     What is Boosting?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="trees/boost_2_adaboost.html">
+     AdaBoost
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="trees/boost_3_gradient_boosting.html">
+     Gradient Boosting
     </a>
    </li>
   </ul>
@@ -368,6 +451,7 @@ title="Fullscreen mode"
    <a href="#cap-binaryDef"><strong>binaryDef</strong></a> | 
    <a href="#cap-capacitydef"><strong>capacitydef</strong></a> | 
    <a href="#cap-catVar"><strong>catVar</strong></a> | 
+   <a href="#cap-catxentropydef"><strong>catxentropydef</strong></a> | 
    <a href="#cap-confusionMatrix def"><strong>confusionMatrix def</strong></a> | 
    <a href="#cap-costFLogRegDef"><strong>costFLogRegDef</strong></a> | 
    <a href="#cap-costFunction"><strong>costFunction</strong></a> | 
@@ -398,6 +482,7 @@ title="Fullscreen mode"
    <a href="#cap-residualDef"><strong>residualDef</strong></a> | 
    <a href="#cap-rmseDef"><strong>rmseDef</strong></a> | 
    <a href="#cap-rocdef"><strong>rocdef</strong></a> | 
+   <a href="#cap-softmaxdef"><strong>softmaxdef</strong></a> | 
    <a href="#cap-tprfprdef"><strong>tprfprdef</strong></a> | 
    <a href="#cap-trainvaltestsetsdef"><strong>trainvaltestsetsdef</strong></a> | 
    <a href="#cap-underfittingdef"><strong>underfittingdef</strong></a> | 
@@ -476,6 +561,14 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="basics/log_reg_1_intro.html#catVar"><code class="xref">catVar</code></a> <em>(basics/log_reg_1_intro)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-catxentropydef"><td></td><td>
+       <strong>catxentropydef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basics/log_reg_3_cost_function.html#catxentropydef"><code class="xref">catxentropydef</code></a> <em>(basics/log_reg_3_cost_function)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-confusionMatrix def"><td></td><td>
@@ -716,6 +809,14 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="basics/model_eval_3_roc_curve.html#rocdef"><code class="xref">rocdef</code></a> <em>(basics/model_eval_3_roc_curve)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-softmaxdef"><td></td><td>
+       <strong>softmaxdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basics/log_reg_3_cost_function.html#softmaxdef"><code class="xref">softmaxdef</code></a> <em>(basics/log_reg_3_cost_function)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-tprfprdef"><td></td><td>

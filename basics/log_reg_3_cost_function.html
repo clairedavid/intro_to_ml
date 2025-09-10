@@ -228,7 +228,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="log_reg_5_multiclass.html">
-     More than two categories: multiclassification
+     Multiclass Classification
     </a>
    </li>
   </ul>
@@ -407,6 +407,32 @@ title="Print to PDF"
    Building a new cost function
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generalization-for-k-classes">
+   Generalization for
+   <span class="math notranslate nohighlight">
+    \(K\)
+   </span>
+   classes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notations">
+     Notations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-softmax">
+     The softmax
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#categorical-cross-entropy">
+     Categorical cross-entropy
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </nav>
@@ -436,6 +462,32 @@ title="Print to PDF"
    Building a new cost function
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generalization-for-k-classes">
+   Generalization for
+   <span class="math notranslate nohighlight">
+    \(K\)
+   </span>
+   classes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notations">
+     Notations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-softmax">
+     The softmax
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#categorical-cross-entropy">
+     Categorical cross-entropy
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
                         </nav>
@@ -450,7 +502,18 @@ title="Print to PDF"
 <h1>Cost Function for Classification<a class="headerlink" href="#cost-function-for-classification" title="Permalink to this headline">#</a></h1>
 <section id="wavy-least-squares">
 <h2>Wavy least squares<a class="headerlink" href="#wavy-least-squares" title="Permalink to this headline">#</a></h2>
-<p>If we plug our sigmoid hypothesis function <span class="math notranslate nohighlight">\(h_\boldsymbol{\theta}(x)\)</span> into the cost function defined for linear regression (Equation <a class="reference internal" href="lin_reg_2_cost_function.html#equation-costfunctionlinreg">(3)</a> from Lecture <a class="reference internal" href="lin_reg_2_cost_function.html#linreg-cost"><span class="std std-ref">Cost Function for Linear Regression</span></a>), we will have a complex non-linear function that could be non-convex. The cost function could take this form:</p>
+<p>If we plug our sigmoid hypothesis function <span class="math notranslate nohighlight">\(h_\boldsymbol{\theta}(x)\)</span> into the cost function defined for linear regression (Equation <a class="reference internal" href="lin_reg_2_cost_function.html#equation-costfunctionlinreg">(3)</a> from Lecture <a class="reference internal" href="lin_reg_2_cost_function.html#linreg-cost"><span class="std std-ref">Cost Function for Linear Regression</span></a>), we will have a complex non-linear function that could be non-convex.</p>
+<div class="note dropdown admonition">
+<p class="admonition-title">Refresher on convex functions</p>
+<p>A convex function has at least one global minimum, and if it is strictly convex, the minimum is unique.</p>
+<p><strong>Mathematically:</strong><br />
+A function <span class="math notranslate nohighlight">\(f: \mathbb{R}^n \to \mathbb{R}\)</span> is <strong>convex</strong> if, for all <span class="math notranslate nohighlight">\(x_1, x_2 \in \mathbb{R}^n\)</span> and for all <span class="math notranslate nohighlight">\(\lambda \in [0,1]\)</span>, we have:</p>
+<div class="math notranslate nohighlight" id="equation-convexeq">
+<span class="eqno">(18)<a class="headerlink" href="#equation-convexeq" title="Permalink to this equation">#</a></span>\[f\big(\lambda x_1 + (1-\lambda) x_2\big) \leq \lambda f(x_1) + (1-\lambda) f(x_2).\]</div>
+<p>Intuitively: a straight line between any two points on the graph of the function lies above the graph itself.</p>
+<p>In other words, the function “curves upwards” or is “bowl-shaped.”</p>
+</div>
+<p>Consider this function:</p>
 <figure class="align-default" id="poly3minima-example" style="width: 80%">
 <div class="cell_output docutils container">
 <img alt="../_images/log_reg_plots_10_0.png" src="../_images/log_reg_plots_10_0.png" />
@@ -479,10 +542,104 @@ Like this:</p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>cost function for logistic regression</strong> is defined as:</p>
 <div class="math notranslate nohighlight" id="equation-costfunctionlogreg">
-<span class="eqno">(18)<a class="headerlink" href="#equation-costfunctionlogreg" title="Permalink to this equation">#</a></span>\[C(\boldsymbol{\theta}) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; {\color{RoyalBlue}y^{(i)} \log\left( h_\boldsymbol{\theta}(\boldsymbol{x}^{(i)} ) \right) }\;\;+\;\; {\color{OliveGreen}(1- y^{(i)}) \log\left( 1 - h_\boldsymbol{\theta}(\boldsymbol{x}^{(i)} ) \right)} \;\;\right]\]</div>
+<span class="eqno">(19)<a class="headerlink" href="#equation-costfunctionlogreg" title="Permalink to this equation">#</a></span>\[C(\boldsymbol{\theta}) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; {\color{RoyalBlue}y^{(i)} \log\left( h_\boldsymbol{\theta}(\boldsymbol{x}^{(i)} ) \right) }\;\;+\;\; {\color{OliveGreen}(1- y^{(i)}) \log\left( 1 - h_\boldsymbol{\theta}(\boldsymbol{x}^{(i)} ) \right)} \;\;\right]\]</div>
 <p>This function is also called <strong>cross-entropy loss function</strong> and is the standard cost function for binary classifiers.</p>
 </section>
 </div><p>Note the negative sign factorized at the beginning of the equation. The first and second term inside the sum are multiplied by <span class="math notranslate nohighlight">\({\color{RoyalBlue}y^{(i)}}\)</span> and <span class="math notranslate nohighlight">\({\color{OliveGreen}(1 - y^{(i)})}\)</span>. This acts as a “switch” between the two possible cases for the targets: <span class="math notranslate nohighlight">\({\color{RoyalBlue}y=1}\)</span> and <span class="math notranslate nohighlight">\({\color{OliveGreen}y=0}\)</span>. If <span class="math notranslate nohighlight">\({\color{RoyalBlue}y=1}\)</span>, the second term cancels out and the cost takes the value of the first. If <span class="math notranslate nohighlight">\({\color{OliveGreen}y=0}\)</span>, the first term vanishes. The two mutually exclusive cases are combined into one mathematical expression.</p>
+</section>
+<section id="generalization-for-k-classes">
+<h2>Generalization for <span class="math notranslate nohighlight">\(K\)</span> classes<a class="headerlink" href="#generalization-for-k-classes" title="Permalink to this headline">#</a></h2>
+<p>The cross-entropy cost function we defined for binary classification can be naturally extended to handle <span class="math notranslate nohighlight">\(K\)</span> classes.</p>
+<section id="notations">
+<h3>Notations<a class="headerlink" href="#notations" title="Permalink to this headline">#</a></h3>
+<p>Recall the notations we use in binary classification. From an input vector <span class="math notranslate nohighlight">\(\boldsymbol{x} = (x_1, \cdots , x_n)\)</span> of <span class="math notranslate nohighlight">\(n\)</span> input features, we combine it with <span class="math notranslate nohighlight">\(n+1\)</span> model parameters <span class="math notranslate nohighlight">\(\boldsymbol{\theta} = (\theta_0, \theta_1, \cdots, \theta_n)\)</span> linearly:</p>
+<div class="math notranslate nohighlight" id="equation-sumfeaturerecalleq">
+<span class="eqno">(20)<a class="headerlink" href="#equation-sumfeaturerecalleq" title="Permalink to this equation">#</a></span>\[z^{(i)} = \sum_{j=1}^{n_\text{features}} \theta_{j} x_j^{(i)}  = \boldsymbol{\theta}^\top \boldsymbol{x}^{(i)}\]</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>In the following, we will write <span class="math notranslate nohighlight">\(\hat{y}\)</span> instead of <span class="math notranslate nohighlight">\(y^\text{pred}\)</span> to lighten the equations. Both refers to a prediction.</p>
+</aside>
+<p>So the pipeline for binary classification is:</p>
+<div class="math notranslate nohighlight" id="equation-pipelinebinregeq">
+<span class="eqno">(21)<a class="headerlink" href="#equation-pipelinebinregeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{x}^{(i)} \xrightarrow{ \text{linear map }\;\boldsymbol{\theta}^\top \boldsymbol{x}^{(i)}\;} z^{(i)}
+\xrightarrow{\;\text{logistic function }\sigma(z^{(i)})\;} \hat{y}^{(i)}\]</div>
+<p>At the end, the target for a given sample <span class="math notranslate nohighlight">\(i\)</span> is one value (a scalar).</p>
+<p>But now we have <span class="math notranslate nohighlight">\(K\)</span> classes. The prediction is no longer one value but our hypothesis should output a <span class="math notranslate nohighlight">\(K\)</span>-dimensional vector. As a consequence, we will not have a vector for our model parameters but a collection of vectors <span class="math notranslate nohighlight">\(\boldsymbol{\theta}^{(1)}, \boldsymbol{\theta}^{(2)}, \cdots,  \boldsymbol{\theta}^{(K)}\)</span>, each of <span class="math notranslate nohighlight">\(n+1\)</span> elements. It is commonly represented as a matrix <span class="math notranslate nohighlight">\(\Theta \in \mathbb{R}^{(n+1)\times K}\)</span>, where these vectors are placed in columns:</p>
+<div class="math notranslate nohighlight" id="equation-matrixthetas">
+<span class="eqno">(22)<a class="headerlink" href="#equation-matrixthetas" title="Permalink to this equation">#</a></span>\[\begin{split}\Theta \;=\;
+\begin{bmatrix}
+\,|  &amp; | &amp; &amp; | \\
+\boldsymbol{\theta}^{(1)} &amp; \boldsymbol{\theta}^{(2)} &amp; \cdots &amp; \boldsymbol{\theta}^{(K)} \\
+\,| &amp; | &amp; &amp; | 
+\end{bmatrix}\end{split}\]</div>
+<p>Now we need to modiy our logistic function (the sigmoid) to adapt to this.</p>
+</section>
+<section id="the-softmax">
+<h3>The softmax<a class="headerlink" href="#the-softmax" title="Permalink to this headline">#</a></h3>
+<p>Let’s define a generalized sigmoid, an extension of the logistic function for <span class="math notranslate nohighlight">\(K\)</span> classes. This is called the softmax function.</p>
+<div class="proof definition admonition" id="softmaxdef">
+<p class="admonition-title"><span class="caption-number">Definition 19 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>softmax</strong> function, also known as <strong>softargmax</strong>  or <strong>normalized exponential function</strong>, for a given class <span class="math notranslate nohighlight">\(k\)</span> among <span class="math notranslate nohighlight">\(K\)</span> classes, is defined as:</p>
+<div class="math notranslate nohighlight" id="equation-softmaxeq">
+<span class="eqno">(23)<a class="headerlink" href="#equation-softmaxeq" title="Permalink to this equation">#</a></span>\[\hat{y}_k^{(i)} = \frac{ \exp\!\big(z_k^{(i)}\big)}{\displaystyle \sum_{c=1}^K \exp\!\big(z_c^{(i)}\big)}, \quad k=1,\dots,K\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat{y}_k^{(i)}\)</span> is the output prediction for the data sample <span class="math notranslate nohighlight">\(i\)</span> for the class <span class="math notranslate nohighlight">\(k\)</span>.</p>
+</section>
+</div><p>In a matrix form, it looks like this:</p>
+<div class="math notranslate nohighlight" id="equation-softmaxmatrixeq">
+<span class="eqno">(24)<a class="headerlink" href="#equation-softmaxmatrixeq" title="Permalink to this equation">#</a></span>\[\begin{split}h_\boldsymbol{\Theta}(\boldsymbol{x}) =
+\begin{bmatrix}
+P(y=1 \mid \boldsymbol{x}; \boldsymbol{\theta}^{(1)}) \\
+P(y=2 \mid \boldsymbol{x}; \boldsymbol{\theta}^{(2)}) \\
+\vdots \\
+P(y=K \mid \boldsymbol{x}; \boldsymbol{\theta}^{(K)})
+\end{bmatrix}
+=
+\frac{1}{\displaystyle \sum_{c=1}^{K} \exp\!\big(\boldsymbol{\theta}^{(c)\top} \boldsymbol{x}\big)}
+\begin{bmatrix}
+\exp\!\big(\boldsymbol{\theta}^{(1)\top} \boldsymbol{x}\big) \\
+\exp\!\big(\boldsymbol{\theta}^{(2)\top} \boldsymbol{x}\big) \\
+\vdots \\
+\exp\!\big(\boldsymbol{\theta}^{(K)\top} \boldsymbol{x}\big)
+\end{bmatrix}\end{split}\]</div>
+<p>Note that the sum in the denominator normalizes the output.</p>
+<p>So the pipeline in multiclass classification is, for a given sample <span class="math notranslate nohighlight">\(i\)</span> and class <span class="math notranslate nohighlight">\(k\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-pipelinemultiregeq">
+<span class="eqno">(25)<a class="headerlink" href="#equation-pipelinemultiregeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{x}^{(i)} \xrightarrow{ \text{linear map }\;\boldsymbol{\Theta} \boldsymbol{x}^{(i)}\;} z_k^{(i)}
+\xrightarrow{\;\text{softmax }\;} \hat{y}_k^{(i)}\]</div>
+<p>Now let’s use this to revisit our cross-entropy cost function!</p>
+</section>
+<section id="categorical-cross-entropy">
+<h3>Categorical cross-entropy<a class="headerlink" href="#categorical-cross-entropy" title="Permalink to this headline">#</a></h3>
+<div class="proof definition admonition" id="catxentropydef">
+<p class="admonition-title"><span class="caption-number">Definition 20 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>categorical cross-entropy</strong> cost function for multiclass logistic regression is defined as:</p>
+<div class="math notranslate nohighlight" id="equation-catxentropyeq">
+<span class="eqno">(26)<a class="headerlink" href="#equation-catxentropyeq" title="Permalink to this equation">#</a></span>\[C(\Theta) \;=\; -\frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K  y_k^{(i)} \, \log \hat{y}_k^{(i)}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(m\)</span> is the number of training samples,</p></li>
+<li><p><span class="math notranslate nohighlight">\(K\)</span> is the number of classes,</p></li>
+<li><p><span class="math notranslate nohighlight">\(y_k^{(i)} \in \{0,1\}\)</span> is the indicator variable (1 if sample <span class="math notranslate nohighlight">\(i\)</span> belongs to class <span class="math notranslate nohighlight">\(k\)</span>, 0 otherwise),</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{y}_k^{(i)} = P(y=k \mid \boldsymbol{x}^{(i)}; \Theta)\)</span> is the predicted probability for class <span class="math notranslate nohighlight">\(k\)</span>.</p></li>
+</ul>
+</section>
+</div><p>💡 Intuition: Just like in the binary case, each term is switched on or off by the class indicator <span class="math notranslate nohighlight">\(y^{(i)}_k\)</span>.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Exercise</p>
+<p>Check that with <span class="math notranslate nohighlight">\(K=2\)</span>, you get back to the binary cross-entropy.</p>
+</div>
+<p><strong>Brain teaser</strong><br />
+The softmax has a sum over all classes at the denominator. How come the logistic function for the binary case does not?</p>
+<p>If this bugs you, have a look at the reference below.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Learn more</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://ufldl.stanford.edu/tutorial/supervised/SoftmaxRegression/">Softmax Regression</a> from the <a class="reference external" href="http://ufldl.stanford.edu/tutorial/">UFLDL (Unsupervised Feature Learning and Deep Learning) Tutorial</a> (Stanford)</p></li>
+</ul>
+</div>
+</section>
 </section>
 </section>
 

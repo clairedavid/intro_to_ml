@@ -227,7 +227,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="log_reg_5_multiclass.html">
-     More than two categories: multiclassification
+     Multiclass Classification
     </a>
    </li>
   </ul>
@@ -575,14 +575,14 @@ title="Print to PDF"
 <p>What can we say qualitatively about the quality of those fits? The linear one on the left (polynomial of degree 1) is clearly missing out the main pattern of the data. No matter the slope and the offset, a straight line will never fit a wavy curve decently. This is a case of underfitting. The model is too simple. On the other hand, the fit on the right (polynomial of degree 15) is perfectly passing through all datapoints. Technically, the performance is excellent! But the model is abusing its numerous degrees of freedom and has done more than fitting the data: it captured all the fluctuations and the noise specific to the given dataset. If we regenerate samples from the orange true function, the blue curve with large oscillations will definitely not pass through the newly generated points. There will be substantial errors. The excess of freedom with the high-degree polynomial is a bit of a curse here. This is a case of overfitting: the model is over-specific to the given random variations in the dataset. In the middle model, we seem to find a good compromise with a polynomial function of degree 4.</p>
 <p>Hope this gives you a feel of the underfitting and overfitting (or undertraining and overtraining, synonyms). Now let’s write the definitions!</p>
 <div class="proof definition admonition" id="underfittingdef">
-<p class="admonition-title"><span class="caption-number">Definition 33 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 35 </span></p>
 <section class="definition-content" id="proof-content">
 <p><strong>Underfitting</strong> is a situation that occurs when a fitting procedure or machine learning algorithm is not capturing the general trend of the dataset.</p>
 </section>
 </div><p>Another way to put it: an underfit algorithm lacks complexity.</p>
 <p>However, if we add too much complexity, we can fall in another trap: overfitting.</p>
 <div class="proof definition admonition" id="overfittingdef">
-<p class="admonition-title"><span class="caption-number">Definition 34 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 36 </span></p>
 <section class="definition-content" id="proof-content">
 <p><strong>Overfitting</strong> is a situation that occurs when a fitting procedure or machine learning algorithm matches too precisely a particular collection of a dataset.</p>
 </section>
@@ -590,12 +590,12 @@ title="Print to PDF"
 In machine learning, we look for general patterns and compromises: a good algorithm may not be perfectly classifying a given data set; it needs to accommodate and ignore rare outliers so that future predictions, on average, will be accurate.</p>
 <p>The problem with overfitting is the future consequences once the machine learning algorithm receives additional data: it will very likely fail to generalize to new data.</p>
 <div class="proof definition admonition" id="generalizationdef">
-<p class="admonition-title"><span class="caption-number">Definition 35 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 37 </span></p>
 <section class="definition-content" id="proof-content">
 <p>In machine learning, <strong>generalization</strong> is the ability of a trained model to perform well on new, unseen data drawn from the same distribution as the training data.</p>
 </section>
 </div><div class="proof definition admonition" id="capacitydef">
-<p class="admonition-title"><span class="caption-number">Definition 36 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 38 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>capacity</strong> of a model determines its ability to remember information about it’s training data.</p>
 </section>
@@ -606,7 +606,7 @@ In machine learning, we look for general patterns and compromises: a good algori
 <h2>Regularization to cope with overtraining<a class="headerlink" href="#regularization-to-cope-with-overtraining" title="Permalink to this headline">#</a></h2>
 <p>In <a class="reference internal" href="#modeval-underoverfit"><span class="std std-numref">Fig. 22</span></a>, the model on the right that overfits the data is extremely wiggly. To produce such sharp peaks, some of the polynomial’s coefficients (the model parameters) must take on very large values to “force” the curve through the points. What if we added the values of the model parameters (the <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> components) to the cost function? Since the cost is to be minimized, this could discourage the curve from becoming too wiggly. This is the idea behind the most common regularization techniques.</p>
 <div class="proof definition admonition" id="regularizationdef">
-<p class="admonition-title"><span class="caption-number">Definition 37 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 39 </span></p>
 <section class="definition-content" id="proof-content">
 <p><strong>Regularization</strong> in machine learning is a processus consisting of adding constraints on a model’s parameters.</p>
 </section>
@@ -615,7 +615,7 @@ In machine learning, we look for general patterns and compromises: a good algori
 <h3>Ridge Regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">#</a></h3>
 <p>The Ridge regression is a linear regression with an additional regularization term added to the cost function:</p>
 <div class="math notranslate nohighlight" id="equation-ridgeeq">
-<span class="eqno">(31)<a class="headerlink" href="#equation-ridgeeq" title="Permalink to this equation">#</a></span>\[ J(\theta) = \frac{1}{2m} \left[ \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right)^2 + {\color{Maroon}\lambda \sum_{j=1}^n \theta_j^2} \right]\]</div>
+<span class="eqno">(39)<a class="headerlink" href="#equation-ridgeeq" title="Permalink to this equation">#</a></span>\[ J(\theta) = \frac{1}{2m} \left[ \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right)^2 + {\color{Maroon}\lambda \sum_{j=1}^n \theta_j^2} \right]\]</div>
 <p>The hyperparameter <span class="math notranslate nohighlight">\(\lambda\)</span> controls the degree of regularization. If <span class="math notranslate nohighlight">\(\lambda = 0\)</span>, the regularization term vanishes and we have a non-regularized linear regression. You can see the penalty imposed by the term <span class="math notranslate nohighlight">\(\lambda\)</span> will force the parameters <span class="math notranslate nohighlight">\(\theta\)</span> to be as small as possible; this helps avoiding overfitting. If <span class="math notranslate nohighlight">\(\lambda\)</span> gets very large, the parameters can be so shrinked that the model becomes over-simplified to a straight line and thus underfit the data.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -627,7 +627,7 @@ In machine learning, we look for general patterns and compromises: a good algori
 </div>
 <p>In the litterature, the parameters are denoted with <span class="math notranslate nohighlight">\(b\)</span> for the offset (bias) and a vector of weight <span class="math notranslate nohighlight">\(\vec{w}\)</span> for the other parameters <span class="math notranslate nohighlight">\(\theta_1, \theta_2, \cdots \theta_n\)</span>. Thus the regularization term is written:</p>
 <div class="math notranslate nohighlight" id="equation-regl2weq">
-<span class="eqno">(32)<a class="headerlink" href="#equation-regl2weq" title="Permalink to this equation">#</a></span>\[\lambda \left(\left\| \vec{w} \right\|_2\right)^2\]</div>
+<span class="eqno">(40)<a class="headerlink" href="#equation-regl2weq" title="Permalink to this equation">#</a></span>\[\lambda \left(\left\| \vec{w} \right\|_2\right)^2\]</div>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>The <span class="math notranslate nohighlight">\(\ell_2\)</span> norm is the Euclidian norm <span class="math notranslate nohighlight">\(\left\| x \right\|_2 = \sqrt{x_0^2 + x_1^2 + \cdots + x_n^2}\)</span>.</p>
@@ -635,7 +635,7 @@ In machine learning, we look for general patterns and compromises: a good algori
 <p>with <span class="math notranslate nohighlight">\(\left\| \vec{w} \right\|_2\)</span> the <span class="math notranslate nohighlight">\(\ell_2\)</span> norm of the weight vector.</p>
 <p>For logistic regression, the regularized cost function becomes:</p>
 <div class="math notranslate nohighlight" id="equation-ridgelogeq">
-<span class="eqno">(33)<a class="headerlink" href="#equation-ridgelogeq" title="Permalink to this equation">#</a></span>\[ C(\theta) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; y^{(i)} \log( h_\theta(x^{(i)} )) \;+\; (1- y^{(i)}) \log( 1 - h_\theta(x^{(i)} )) \;\;\right] + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n \theta_j^2}\]</div>
+<span class="eqno">(41)<a class="headerlink" href="#equation-ridgelogeq" title="Permalink to this equation">#</a></span>\[ C(\theta) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; y^{(i)} \log( h_\theta(x^{(i)} )) \;+\; (1- y^{(i)}) \log( 1 - h_\theta(x^{(i)} )) \;\;\right] + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n \theta_j^2}\]</div>
 </section>
 <section id="lasso-regularization">
 <span id="class-algs-reg-lasso"></span><h3>Lasso Regularization<a class="headerlink" href="#lasso-regularization" title="Permalink to this headline">#</a></h3>
@@ -643,9 +643,9 @@ In machine learning, we look for general patterns and compromises: a good algori
 <p class="sidebar-title"></p>
 <p>The <span class="math notranslate nohighlight">\(\ell_1\)</span> norm is the sum of the magnitudes of the vectors. It is also called Manhattan or <a class="reference external" href="https://en.wikipedia.org/wiki/Taxicab_geometry">Taxicab norm</a>.</p>
 </aside>
-<p>Lasso stands for least absolute shrinkage and selection operator. Behind the long acronym is a regularization of the linear regression using the <span class="math notranslate nohighlight">\(\ell_1\)</span> norm. We denote Cost(<span class="math notranslate nohighlight">\(\theta\)</span>) the cost function, i.e. either the Mean Squared Error for linear regression or the cross-entropy loss function <a class="reference internal" href="log_reg_3_cost_function.html#equation-costfunctionlogreg">(18)</a> for logistic regression. The lasso regression cost function is</p>
+<p>Lasso stands for least absolute shrinkage and selection operator. Behind the long acronym is a regularization of the linear regression using the <span class="math notranslate nohighlight">\(\ell_1\)</span> norm. We denote Cost(<span class="math notranslate nohighlight">\(\theta\)</span>) the cost function, i.e. either the Mean Squared Error for linear regression or the cross-entropy loss function <a class="reference internal" href="log_reg_3_cost_function.html#equation-costfunctionlogreg">(19)</a> for logistic regression. The lasso regression cost function is</p>
 <div class="math notranslate nohighlight" id="equation-lassocostf">
-<span class="eqno">(34)<a class="headerlink" href="#equation-lassocostf" title="Permalink to this equation">#</a></span>\[C(\theta) = \text{Cost(}{\theta}\text{)}  + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n | \theta_j | }\]</div>
+<span class="eqno">(42)<a class="headerlink" href="#equation-lassocostf" title="Permalink to this equation">#</a></span>\[C(\theta) = \text{Cost(}{\theta}\text{)}  + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n | \theta_j | }\]</div>
 <p>The regularizing term uses the <span class="math notranslate nohighlight">\(\ell_1\)</span> norm of the weight vector: <span class="math notranslate nohighlight">\(\left\| \vec{w} \right\|_1\)</span>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -678,11 +678,11 @@ In machine learning, we look for general patterns and compromises: a good algori
 </div>
 </aside>
 <div class="proof definition admonition" id="biasdef">
-<p class="admonition-title"><span class="caption-number">Definition 38 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 40 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>bias</strong> measures how much, on average across different training sets <span class="math notranslate nohighlight">\(\mathcal{D} = \mathcal{D}_1, \cdots, \mathcal{D}_N\)</span>, the model’s predictions <span class="math notranslate nohighlight">\(\hat{f}_{\mathcal{D}_k}(x)\)</span> deviate from the true underlying function <span class="math notranslate nohighlight">\(f(x)\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-biaseq">
-<span class="eqno">(35)<a class="headerlink" href="#equation-biaseq" title="Permalink to this equation">#</a></span>\[\text{Bias}(x) = \mathbb{E}[\hat{f}_{\mathcal{D}}(x)] - f(x)\]</div>
+<span class="eqno">(43)<a class="headerlink" href="#equation-biaseq" title="Permalink to this equation">#</a></span>\[\text{Bias}(x) = \mathbb{E}[\hat{f}_{\mathcal{D}}(x)] - f(x)\]</div>
 </section>
 </div><p>A highly biased model will most likely underfit the data.</p>
 <div class="important admonition">
@@ -693,11 +693,11 @@ In machine learning, we look for general patterns and compromises: a good algori
 <section id="variance">
 <h3>Variance<a class="headerlink" href="#variance" title="Permalink to this headline">#</a></h3>
 <div class="proof definition admonition" id="variancedef">
-<p class="admonition-title"><span class="caption-number">Definition 39 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 41 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>variance</strong> is a measure of how sensitive the model’s predictions are to random fluctuations in the training data.</p>
 <div class="math notranslate nohighlight" id="equation-vareq">
-<span class="eqno">(36)<a class="headerlink" href="#equation-vareq" title="Permalink to this equation">#</a></span>\[\text{Variance}(x) = \mathbb{E}\Big[(\hat{f}_{\mathcal{D}}(x) - \mathbb{E}[\hat{f}_{\mathcal{D}}(x)])^2\Big]\]</div>
+<span class="eqno">(44)<a class="headerlink" href="#equation-vareq" title="Permalink to this equation">#</a></span>\[\text{Variance}(x) = \mathbb{E}\Big[(\hat{f}_{\mathcal{D}}(x) - \mathbb{E}[\hat{f}_{\mathcal{D}}(x)])^2\Big]\]</div>
 </section>
 </div><p>As its name suggest, a model incorporating fluctuations in its design will change, aka <em>vary</em>, as soon as it is presented with new data (fluctuating differently). Variance is about the instability of the model due to training data variability.</p>
 <p>A model with high variance is likely to overfit the data.</p>
@@ -733,7 +733,7 @@ In machine learning, we look for general patterns and compromises: a good algori
 <section id="generalization-error">
 <h2>Generalization error<a class="headerlink" href="#generalization-error" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="generrordef">
-<p class="admonition-title"><span class="caption-number">Definition 40 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 42 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>generalization error</strong> of a model quantifies its expected loss on new data drawn from the same distribution as the training set.</p>
 </section>
@@ -742,7 +742,7 @@ In machine learning, we look for general patterns and compromises: a good algori
 <h3>Decomposition<a class="headerlink" href="#decomposition" title="Permalink to this headline">#</a></h3>
 <p>The generalization error can be expressed as a sum of three errors:</p>
 <div class="math notranslate nohighlight" id="equation-decompeqenglish">
-<span class="eqno">(37)<a class="headerlink" href="#equation-decompeqenglish" title="Permalink to this equation">#</a></span>\[\text{Expected Test Error} =
+<span class="eqno">(45)<a class="headerlink" href="#equation-decompeqenglish" title="Permalink to this equation">#</a></span>\[\text{Expected Test Error} =
 \underbrace{\text{Bias}^2}_{\text{systematic error}}
 +
 \underbrace{\text{Variance}}_{\text{sensitivity to data}}
@@ -768,11 +768,11 @@ Bias and variance are defined <em>pointwise</em>.</p>
 </ul>
 <p>Now, we can define the following:</p>
 <div class="proof definition admonition" id="expmodeldef">
-<p class="admonition-title"><span class="caption-number">Definition 41 </span></p>
+<p class="admonition-title"><span class="caption-number">Definition 43 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>expectation of a model</strong> at a point <span class="math notranslate nohighlight">\(x\)</span> is the average of the predictions <span class="math notranslate nohighlight">\(\hat{f}_\mathcal{D}(x)\)</span> over many training datasets <span class="math notranslate nohighlight">\(\mathcal{D} = \mathcal{D}_1, \cdots, \mathcal{D}_N\)</span>.</p>
 <div class="math notranslate nohighlight" id="equation-expmodeleq">
-<span class="eqno">(38)<a class="headerlink" href="#equation-expmodeleq" title="Permalink to this equation">#</a></span>\[\mathbb{E}_\mathcal{D} [ \hat{f}_\mathcal{D}(x) ]\]</div>
+<span class="eqno">(46)<a class="headerlink" href="#equation-expmodeleq" title="Permalink to this equation">#</a></span>\[\mathbb{E}_\mathcal{D} [ \hat{f}_\mathcal{D}(x) ]\]</div>
 </section>
 </div></section>
 <section id="mathematical-derivation">
@@ -782,14 +782,14 @@ Bias and variance are defined <em>pointwise</em>.</p>
 <p class="admonition-title">Hint on the noise</p>
 <p>The true function <span class="math notranslate nohighlight">\(f(x)\)</span> defines the relationship between <span class="math notranslate nohighlight">\(X\)</span> and the targets <span class="math notranslate nohighlight">\(y\)</span>. But there will be some deviation due to noise. We can model this with an error term <span class="math notranslate nohighlight">\(\epsilon\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-yxerroreq">
-<span class="eqno">(39)<a class="headerlink" href="#equation-yxerroreq" title="Permalink to this equation">#</a></span>\[y = f(x) + \epsilon\]</div>
+<span class="eqno">(47)<a class="headerlink" href="#equation-yxerroreq" title="Permalink to this equation">#</a></span>\[y = f(x) + \epsilon\]</div>
 <p>We assumed it is normally distributed and with a standard deviation of <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Hint on how to start</p>
 <p>Start by writing the expression of an expectation of the error:</p>
 <div class="math notranslate nohighlight" id="equation-errorstarteq">
-<span class="eqno">(40)<a class="headerlink" href="#equation-errorstarteq" title="Permalink to this equation">#</a></span>\[\text{Expected Test Error} = \mathbb{E} \Big[ y^\text{test} -  \hat{f}_\mathcal{D}(x^\text{test})\Big]\]</div>
+<span class="eqno">(48)<a class="headerlink" href="#equation-errorstarteq" title="Permalink to this equation">#</a></span>\[\text{Expected Test Error} = \mathbb{E} \Big[ y^\text{test} -  \hat{f}_\mathcal{D}(x^\text{test})\Big]\]</div>
 <p>For the derivation, you can omit the ‘test’ upperscript to lighten the equations a bit.</p>
 <p>Now? Expand this expression and use the properties you know about expectations and variances…</p>
 </div>
@@ -797,14 +797,20 @@ Bias and variance are defined <em>pointwise</em>.</p>
 <p class="admonition-title">Hint on a useful relation</p>
 <p>Recall that the variance of a random variable <span class="math notranslate nohighlight">\(X\)</span> can be written in two ways:</p>
 <div class="math notranslate nohighlight" id="equation-vareqs">
-<span class="eqno">(41)<a class="headerlink" href="#equation-vareqs" title="Permalink to this equation">#</a></span>\[\mathrm{Var}(X) = \mathbb{E} \big[ (X - \mathbb{E}[X])^2 \big] = \mathbb{E}[X^2] - \mathbb{E}[X]^2\]</div>
+<span class="eqno">(49)<a class="headerlink" href="#equation-vareqs" title="Permalink to this equation">#</a></span>\[\mathrm{Var}(X) = \mathbb{E} \big[ (X - \mathbb{E}[X])^2 \big] = \mathbb{E}[X^2] - \mathbb{E}[X]^2\]</div>
 <p>You will need this!</p>
 </div>
+<p> <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ </p>
 <div class="seealso admonition">
 <p class="admonition-title">Check it!    (after you tried hard)</p>
 <p>Below are two derivations:</p>
 <ul class="simple">
-<li><p>The very accessible and easy-to-follow format by Allen Akinkunle: <a class="reference external" href="https://allenkunle.me/bias-variance-decomposition">The Bias-Variance Decomposition Demystified</a></p></li>
+<li><p>The very accessible and easy-to-follow format by Allen Akinkunle: <a class="reference external" href="https://allenkunle.me/bias-variance-decomposition">The Bias-Variance Decomposition Demystified</a>. The illustrations with simulated data are excellent to really grasp the tradeoff. I suggest opening a notebook and giving it a try!</p></li>
 <li><p>The thorough <a class="reference external" href="https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote12.html">Lecture 12: Bias-Variance Tradeoff</a> by Kilian Weinberger, from the course Machine Learning for Intelligent Systems taught at Cornell University.</p></li>
 </ul>
 </div>
