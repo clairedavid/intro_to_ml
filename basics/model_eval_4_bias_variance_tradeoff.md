@@ -306,18 +306,18 @@ Recall that the variance of a random variable $X$ can be written in two ways:
 You will need this!
 ````
 
-
-
-
-
-
-
+&nbsp;  
+&nbsp;  
+&nbsp;  
+&nbsp;  
+&nbsp;  
+&nbsp;  
 
 
 ```{admonition} Check it!    (after you tried hard)
 :class: seealso
 Below are two derivations:
-- The very accessible and easy-to-follow format by Allen Akinkunle: [The Bias-Variance Decomposition Demystified](https://allenkunle.me/bias-variance-decomposition)
+- The very accessible and easy-to-follow format by Allen Akinkunle: [The Bias-Variance Decomposition Demystified](https://allenkunle.me/bias-variance-decomposition). The illustrations with simulated data are excellent to really grasp the tradeoff. I suggest opening a notebook and giving it a try!
 - The thorough [Lecture 12: Bias-Variance Tradeoff](https://www.cs.cornell.edu/courses/cs4780/2018fa/lectures/lecturenote12.html) by Kilian Weinberger, from the course Machine Learning for Intelligent Systems taught at Cornell University.
 ```
 

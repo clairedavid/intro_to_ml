@@ -3,8 +3,28 @@
 
 
 ## Wavy least squares
-If we plug our sigmoid hypothesis function $h_\boldsymbol{\theta}(x)$ into the cost function defined for linear regression (Equation {eq}`costFunctionLinReg` from Lecture {ref}`Cost Function for Linear Regression<linReg:Cost>`), we will have a complex non-linear function that could be non-convex. The cost function could take this form: 
 
+If we plug our sigmoid hypothesis function $h_\boldsymbol{\theta}(x)$ into the cost function defined for linear regression (Equation {eq}`costFunctionLinReg` from Lecture {ref}`Cost Function for Linear Regression<linReg:Cost>`), we will have a complex non-linear function that could be non-convex.  
+
+````{admonition} Refresher on convex functions
+:class: note, dropdown
+
+A convex function has at least one global minimum, and if it is strictly convex, the minimum is unique.
+
+__Mathematically:__  
+A function $f: \mathbb{R}^n \to \mathbb{R}$ is __convex__ if, for all $x_1, x_2 \in \mathbb{R}^n$ and for all $\lambda \in [0,1]$, we have:
+
+```{math}
+:label: convexeq
+f\big(\lambda x_1 + (1-\lambda) x_2\big) \leq \lambda f(x_1) + (1-\lambda) f(x_2).
+```
+
+Intuitively: a straight line between any two points on the graph of the function lies above the graph itself.  
+
+In other words, the function “curves upwards” or is “bowl-shaped.”
+````
+
+Consider this function: 
 ```{glue:figure} poly3minima_example
 :name: "poly3minima_example"
 :figwidth: 80%
@@ -46,3 +66,127 @@ C(\boldsymbol{\theta}) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; {\color{RoyalBlu
 Note the negative sign factorized at the beginning of the equation. The first and second term inside the sum are multiplied by ${\color{RoyalBlue}y^{(i)}}$ and ${\color{OliveGreen}(1 - y^{(i)})}$. This acts as a "switch" between the two possible cases for the targets: ${\color{RoyalBlue}y=1}$ and ${\color{OliveGreen}y=0}$. If ${\color{RoyalBlue}y=1}$, the second term cancels out and the cost takes the value of the first. If ${\color{OliveGreen}y=0}$, the first term vanishes. The two mutually exclusive cases are combined into one mathematical expression. 
 
 
+
+## Generalization for $K$ classes
+The cross-entropy cost function we defined for binary classification can be naturally extended to handle $K$ classes. 
+
+### Notations
+Recall the notations we use in binary classification. From an input vector $\boldsymbol{x} = (x_1, \cdots , x_n)$ of $n$ input features, we combine it with $n+1$ model parameters $\boldsymbol{\theta} = (\theta_0, \theta_1, \cdots, \theta_n)$ linearly: 
+```{math}
+:label: sumfeaturerecalleq
+z^{(i)} = \sum_{j=1}^{n_\text{features}} \theta_{j} x_j^{(i)}  = \boldsymbol{\theta}^\top \boldsymbol{x}^{(i)}
+```
+
+````{margin}
+In the following, we will write $\hat{y}$ instead of $y^\text{pred}$ to lighten the equations. Both refers to a prediction.
+````
+
+So the pipeline for binary classification is:
+```{math}
+:label: pipelinebinregeq
+\boldsymbol{x}^{(i)} \xrightarrow{ \text{linear map }\;\boldsymbol{\theta}^\top \boldsymbol{x}^{(i)}\;} z^{(i)}
+\xrightarrow{\;\text{logistic function }\sigma(z^{(i)})\;} \hat{y}^{(i)}
+```
+
+At the end, the target for a given sample $i$ is one value (a scalar).
+
+But now we have $K$ classes. The prediction is no longer one value but our hypothesis should output a $K$-dimensional vector. As a consequence, we will not have a vector for our model parameters but a collection of vectors $\boldsymbol{\theta}^{(1)}, \boldsymbol{\theta}^{(2)}, \cdots,  \boldsymbol{\theta}^{(K)}$, each of $n+1$ elements. It is commonly represented as a matrix $\Theta \in \mathbb{R}^{(n+1)\times K}$, where these vectors are placed in columns:
+
+```{math}
+:label: matrixthetas
+\Theta \;=\;
+\begin{bmatrix}
+\,|  & | & & | \\
+\boldsymbol{\theta}^{(1)} & \boldsymbol{\theta}^{(2)} & \cdots & \boldsymbol{\theta}^{(K)} \\
+\,| & | & & | 
+\end{bmatrix}
+```
+
+Now we need to modiy our logistic function (the sigmoid) to adapt to this.
+
+### The softmax
+Let's define a generalized sigmoid, an extension of the logistic function for $K$ classes. This is called the softmax function. 
+
+````{prf:definition}
+:label: softmaxdef
+
+The __softmax__ function, also known as __softargmax__  or __normalized exponential function__, for a given class $k$ among $K$ classes, is defined as:
+
+```{math}
+:label: softmaxeq
+\hat{y}_k^{(i)} = \frac{ \exp\!\big(z_k^{(i)}\big)}{\displaystyle \sum_{c=1}^K \exp\!\big(z_c^{(i)}\big)}, \quad k=1,\dots,K
+```
+where $\hat{y}_k^{(i)}$ is the output prediction for the data sample $i$ for the class $k$.  
+
+````
+
+In a matrix form, it looks like this:
+
+```{math}
+:label: softmaxmatrixeq
+h_\boldsymbol{\Theta}(\boldsymbol{x}) =
+\begin{bmatrix}
+P(y=1 \mid \boldsymbol{x}; \boldsymbol{\theta}^{(1)}) \\
+P(y=2 \mid \boldsymbol{x}; \boldsymbol{\theta}^{(2)}) \\
+\vdots \\
+P(y=K \mid \boldsymbol{x}; \boldsymbol{\theta}^{(K)})
+\end{bmatrix}
+=
+\frac{1}{\displaystyle \sum_{c=1}^{K} \exp\!\big(\boldsymbol{\theta}^{(c)\top} \boldsymbol{x}\big)}
+\begin{bmatrix}
+\exp\!\big(\boldsymbol{\theta}^{(1)\top} \boldsymbol{x}\big) \\
+\exp\!\big(\boldsymbol{\theta}^{(2)\top} \boldsymbol{x}\big) \\
+\vdots \\
+\exp\!\big(\boldsymbol{\theta}^{(K)\top} \boldsymbol{x}\big)
+\end{bmatrix}
+```
+
+Note that the sum in the denominator normalizes the output. 
+
+So the pipeline in multiclass classification is, for a given sample $i$ and class $k$: 
+
+```{math}
+:label: pipelinemultiregeq
+\boldsymbol{x}^{(i)} \xrightarrow{ \text{linear map }\;\boldsymbol{\Theta} \boldsymbol{x}^{(i)}\;} z_k^{(i)}
+\xrightarrow{\;\text{softmax }\;} \hat{y}_k^{(i)}
+```
+
+Now let's use this to revisit our cross-entropy cost function!
+
+### Categorical cross-entropy
+
+
+````{prf:definition}
+:label: catxentropydef
+The __categorical cross-entropy__ cost function for multiclass logistic regression is defined as:
+```{math}
+:label: catxentropyeq
+C(\Theta) \;=\; -\frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K  y_k^{(i)} \, \log \hat{y}_k^{(i)}
+```
+where:
+
+* $m$ is the number of training samples,  
+* $K$ is the number of classes,  
+* $y_k^{(i)} \in \{0,1\}$ is the indicator variable (1 if sample $i$ belongs to class $k$, 0 otherwise),  
+* $\hat{y}_k^{(i)} = P(y=k \mid \boldsymbol{x}^{(i)}; \Theta)$ is the predicted probability for class $k$.  
+
+````
+💡 Intuition: Just like in the binary case, each term is switched on or off by the class indicator $y^{(i)}_k$.
+
+
+```{admonition} Exercise
+:class: seealso
+Check that with $K=2$, you get back to the binary cross-entropy.
+```
+
+__Brain teaser__  
+The softmax has a sum over all classes at the denominator. How come the logistic function for the binary case does not? 
+
+
+If this bugs you, have a look at the reference below.
+
+
+```{admonition} Learn more
+:class: seealso
+* [Softmax Regression](http://ufldl.stanford.edu/tutorial/supervised/SoftmaxRegression/) from the [UFLDL (Unsupervised Feature Learning and Deep Learning) Tutorial](http://ufldl.stanford.edu/tutorial/) (Stanford)
+```

@@ -21,7 +21,7 @@ In other words, logistic regression is about making predictions about a discrete
 :label: binaryDef
 __Binary classification__ refers to a classification task into two mutually exclusive categories. 
 
-__Multi-class classification__ refers to a classification task that has more than two categorical variables. 
+__Multi-class classification__ refers to a classification task with more than two classes (or class values). 
 ````
 
 
@@ -31,7 +31,7 @@ __Multi-class classification__ refers to a classification task that has more tha
 
 Let's start with a simple case with only one input variable. 
 
-Particle detectors are usually equiped with a trigger system. It is a program assessing raw data. Its mission is to quickly decide if a given interaction event is worth saving into disk for further analysis or not. Using previous data analyzed offline (i.e. with more complex software), it is possible to gather more information on the events and objects in it (objects are reconstructed particles with all associated properties). For instance, the energy of the electron can be a good hint to help predict if the event where the electron is produced will be selected for further physics study. The workflow is a bit more complex; we will simplify and label such "selected event" as "signal event" and those that are later discarded during the data analysis "background event". The signal events are associated with 1 and background events with 0. This is a binary classification problem.
+Particle detectors are usually equipped with a trigger system. It is a program assessing raw data. Its mission is to quickly decide if a given interaction event is worth saving into disk for further analysis or not. Using previous data analyzed offline (i.e. with more complex software), it is possible to gather more information on the events and objects in it (objects are reconstructed particles with all associated properties). For instance, the energy of the electron can be a good hint to help predict if the event where the electron is produced will be selected for further physics study. The workflow is a bit more complex; we will simplify and label such "selected event" as "signal event" and those that are later discarded during the data analysis "background event". The signal events are associated with 1 and background events with 0. This is a binary classification problem.
 
 ```{warning}
 The association of a given class to a discrete value is a __arbitrary__ and done as a __convention__. In some cases 1 can stand for what we want to look for in the data (i.e. signal electron in our example above). But in other fields, medical diagnosis for instance, 1 can code for a malign tumor and 0 a benign tumor. It is very important to define the bijection of your classes and the associated values and stick to your convention while building your machine learning program.
