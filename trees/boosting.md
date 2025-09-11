@@ -1,3 +1,0 @@
-# Boosting
-
-COPY

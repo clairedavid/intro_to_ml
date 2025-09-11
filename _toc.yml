@@ -44,18 +44,18 @@ parts:
   - caption: Decision trees and boosting
     numbered: false
     chapters:
-    - file: trees/dt_and_boosting
+    - file: trees/dt_0_and_boosting
       sections:
       - file: trees/dt_1_what_are_trees
       - file: trees/dt_2_cart_algorithm
       - file: trees/dt_3_limitations
 
-    - file: trees/ensemble_learning
+    - file: trees/el_0_intro
       sections:
       - file: trees/el_1_what_is_ensemble
       - file: trees/el_2_random_forests
 
-    - file: trees/boosting
+    - file: trees/boost_0_intro
       sections:
       - file: trees/boost_1_what_is_boosting
       - file: trees/boost_2_adaboost

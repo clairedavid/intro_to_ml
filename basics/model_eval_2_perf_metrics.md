@@ -1,3 +1,4 @@
+(basics:perf-metrics)=
 # Performance Metrics
 
 In supervised learning, assessing a model's performance is about how close predictions are to the truth. Before digging into the metrics, let's first define the types of errors properly.
