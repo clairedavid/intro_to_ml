@@ -266,6 +266,89 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Decision trees and boosting
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../trees/dt_0_and_boosting.html">
+   Decision Trees
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/dt_1_what_are_trees.html">
+     What are Decision Trees?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/dt_2_cart_algorithm.html">
+     The CART Algorithm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/dt_3_limitations.html">
+     Limitations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../trees/el_0_intro.html">
+   Ensemble Learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/el_1_what_is_ensemble.html">
+     What is Ensemble Learning?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/el_2_random_forests.html">
+     Random Forests
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../trees/boost_0_intro.html">
+   Boosting
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/boost_1_what_is_boosting.html">
+     What is Boosting?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/boost_2_adaboost.html">
+     AdaBoost
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/boost_3_gradient_boosting.html">
+     Gradient Boosting
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -495,7 +578,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="performance-metrics">
-<h1>Performance Metrics<a class="headerlink" href="#performance-metrics" title="Permalink to this headline">#</a></h1>
+<span id="basics-perf-metrics"></span><h1>Performance Metrics<a class="headerlink" href="#performance-metrics" title="Permalink to this headline">#</a></h1>
 <p>In supervised learning, assessing a model’s performance is about how close predictions are to the truth. Before digging into the metrics, let’s first define the types of errors properly.</p>
 <section id="types-of-errors">
 <h2>Types of errors<a class="headerlink" href="#types-of-errors" title="Permalink to this headline">#</a></h2>
@@ -572,8 +655,8 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p class="admonition-title"><span class="caption-number">Definition 29 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>root mean squared error (RMSE)</strong> is the square root of the mean squared error:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-600ca7c1-ac13-4b53-bad6-0081b5994cbd">
-<span class="eqno">(30)<a class="headerlink" href="#equation-600ca7c1-ac13-4b53-bad6-0081b5994cbd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-108145c3-2e1a-49d9-8d93-a6ce3b909b9a">
+<span class="eqno">(30)<a class="headerlink" href="#equation-108145c3-2e1a-49d9-8d93-a6ce3b909b9a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{RMSE} = \sqrt{ \frac{\sum_{i=1}^N (y^\text{pred} - y^\text{obs} )^2 }{ N } }
 \end{equation}\]</div>
 </section>
@@ -589,29 +672,29 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p> <br />
 <strong>Accuracy</strong><br />
 Rate at which the model is able to predict the correct values of both classes.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-020ba9d2-a410-4c71-a78b-27738adf4c68">
-<span class="eqno">(31)<a class="headerlink" href="#equation-020ba9d2-a410-4c71-a78b-27738adf4c68" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0a8c1f7b-726b-4426-9e2b-342334d91ebc">
+<span class="eqno">(31)<a class="headerlink" href="#equation-0a8c1f7b-726b-4426-9e2b-342334d91ebc" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Accuracy} = \frac{\text{True predictions}}{\text{All predictions}} = \frac{\text{TP + TN}}{\text{TP + TN + FP + FN}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Precision, or Positive Predictive Value (PPV)</strong><br />
 Measure of the fraction of true predictions among all <strong>positive predictions</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-522ed1fa-3905-4615-8aaf-3184daeaa011">
-<span class="eqno">(32)<a class="headerlink" href="#equation-522ed1fa-3905-4615-8aaf-3184daeaa011" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-94a6d7d1-78a5-4e95-a814-4843625b337f">
+<span class="eqno">(32)<a class="headerlink" href="#equation-94a6d7d1-78a5-4e95-a814-4843625b337f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Precision} = \frac{\text{True Positives}}{\text{All Positive Predictions}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Recall, or True Positive Rate (TPR)</strong><br />
 Measure of the fraction of true predictions among all <strong>true observations</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8ad5ae55-e5f3-4b05-9adf-25765ac9a0b8">
-<span class="eqno">(33)<a class="headerlink" href="#equation-8ad5ae55-e5f3-4b05-9adf-25765ac9a0b8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f5c271d1-e556-42cd-bec7-06d3d8bcf201">
+<span class="eqno">(33)<a class="headerlink" href="#equation-f5c271d1-e556-42cd-bec7-06d3d8bcf201" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Recall} = \frac{\text{True Positives}}{\text{Actual Positives}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>F-Score, or F1</strong><br />
 Describes the balance between Precision and Recall. It is the harmonic mean of the two:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6b5da5d4-20ee-4e9d-8abb-1e68412f2be0">
-<span class="eqno">(34)<a class="headerlink" href="#equation-6b5da5d4-20ee-4e9d-8abb-1e68412f2be0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9152b9b3-ab94-455c-8181-74b7319a4a29">
+<span class="eqno">(34)<a class="headerlink" href="#equation-9152b9b3-ab94-455c-8181-74b7319a4a29" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{F1} =2 \; \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
 \end{equation}\]</div>
 </section>

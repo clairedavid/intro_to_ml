@@ -51,10 +51,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="The CART Algorithm" href="dt_2_cart_algorithm.html" />
-    <link rel="prev" title="Decision Trees &amp; Boosting" href="dt_and_boosting.html" />
+    <link rel="prev" title="Decision Trees" href="dt_0_and_boosting.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -271,8 +273,8 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="dt_and_boosting.html">
-   Decision Trees &amp; Boosting
+  <a class="reference internal" href="dt_0_and_boosting.html">
+   Decision Trees
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -298,7 +300,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="ensemble_learning.html">
+  <a class="reference internal" href="el_0_intro.html">
    Ensemble Learning
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -320,7 +322,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="boosting.html">
+  <a class="reference internal" href="boost_0_intro.html">
    Boosting
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -456,12 +458,46 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definitions">
+   Definitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example">
+   Example
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -473,6 +509,29 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definitions">
+   Definitions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#example">
+   Example
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -482,7 +541,77 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="what-are-decision-trees">
 <h1>What are Decision Trees?<a class="headerlink" href="#what-are-decision-trees" title="Permalink to this headline">#</a></h1>
-<p>COPY</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p>Without knowing, you may have already been implementing a ‘decision tree’ process while making a choice in your life. For instance, which cereal box to buy at the store. There are so many brands and options (understand classes) that it can be overwhelming. Here is a tree-like reasoning example:</p>
+<ul class="simple">
+<li><p>Does it have more than three types of flakes? No? Too boring. Yes? Let’s move on:</p></li>
+<li><p>Is a portion bigger or lower than 300 calories? Bigger? It’s not healthy, let’s go lower and see the next parameter:</p></li>
+<li><p>Is it crunchy? If yes, I take that one!</p></li>
+</ul>
+<p>Your decision protocol followed a tree process starting with a node (a decision to make), then evaluating a condition on a feature (number of flake type, calorie density, crunchiness factor) and, depending on the answer, another node evaluates another input feature. Such a decision-making process can be visualized like a tree whose branches are the different outcomes and leaves the final choices:</p>
+<figure class="align-default" id="claire-s-decision-tree-for-choosing-cereals">
+<a class="reference internal image-reference" href="../_images/dt_1_cereals.png"><img alt="../_images/dt_1_cereals.png" src="../_images/dt_1_cereals.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">. An example of decision tree for choosing cereals.<br />
+<sub>Image by the author</sub></span><a class="headerlink" href="#claire-s-decision-tree-for-choosing-cereals" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Decision trees belong to the family of machine learning algorithms for both classification and regression (we will focus on classification here).</p>
+</section>
+<section id="definitions">
+<h2>Definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="dtdef">
+<p class="admonition-title"><span class="caption-number">Definition 44 </span></p>
+<section class="definition-content" id="proof-content">
+<p>A <strong>decision tree</strong> is a flowchart mapping a decision making process. It is organized into nodes, branches and leaves.</p>
+</section>
+</div><div class="proof definition admonition" id="nodesdef">
+<p class="admonition-title"><span class="caption-number">Definition 45 </span></p>
+<section class="definition-content" id="proof-content">
+<p>A tree consists of three types of nodes:</p>
+<ul class="simple">
+<li><p><strong>Root node:</strong> The start of the decision process is the first test performed on the whole dataset.</p></li>
+<li><p><strong>Internal nodes</strong>: A “condition box” evaluating subset of the dataset on a given feature. The test has two possible outcomes: true or false.</p></li>
+<li><p><strong>Leaf nodes or terminal nodes:</strong> Nodes that do not split further, indicating – most of the time – the final classification of data points ‘landing’ in them.</p></li>
+</ul>
+<p>The outcomes of that evaluation (either boolean or numerical) is divided into <strong>branches</strong>, or edges.
+Each branch supports one outcome (usually True/False) on the condition from the previous node.</p>
+</section>
+</div><p>A particular case of a decision tree, reduced to its bare minimum — just a single split — is called a decision stump.</p>
+<div class="proof definition admonition" id="decisionstumpdef">
+<p class="admonition-title"><span class="caption-number">Definition 46 </span></p>
+<section class="definition-content" id="proof-content">
+<p>A <strong>decision stump</strong> is a one-level decision tree. It has one root node evaluating only one input feature and the two resulting branches immediately connect to two terminal nodes, i.e. leaves.</p>
+</section>
+</div></section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h2>
+<p>Let’s illustrate the terminology with an example. Let’s have a dataset with two variables as input features, <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+
+    <span class="n">tree_clf</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">tree_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The code has been shortened for clarity, see the <a class="reference internal" href="BDTs_demo.html"><span class="doc std std-doc">notebook on trees</span></a> for completeness.</p>
+<p>To visualize the work of the decision tree classifier, the <code class="docutils literal notranslate"><span class="pre">graphviz</span></code> library creates an automated flowchart:</p>
+<figure class="align-default" id="dt-1-viz-tree">
+<a class="reference internal image-reference" href="../_images/dt_1_viz_tree.png"><img alt="../_images/dt_1_viz_tree.png" src="../_images/dt_1_viz_tree.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">. Example of a Decision Tree drawn from sklearn pre-loaded dataset <em>iris</em>. The root node is at the top, at depth zero. The tree stops at depth = 2 (final leaves).</span><a class="headerlink" href="#dt-1-viz-tree" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Such a flowchart above tells how future predictions are made. Predicting the class of a new data point (<span class="math notranslate nohighlight">\(x_1^\text{new}\)</span>, <span class="math notranslate nohighlight">\(x_2^\text{new}\)</span>), one simply follows the ‘route’ of the tree starting from the root node (on top) and ‘answering’ the conditions. Is <span class="math notranslate nohighlight">\(x_1\)</span> lower than 2.45? Yes, go to the left (and it corresponds to predicted class A). If not, go to the next node evaluating <span class="math notranslate nohighlight">\(x_2\)</span> feature, etc.</p>
+<p>The predictions can be visualized on a 2D scatter plot. The threshold values are the decision boundaries (see <a class="reference internal" href="../basics/log_reg_2_sigmoid.html#decBoundDef">Definition 17</a> in section <a class="reference internal" href="../basics/log_reg_2_sigmoid.html#class-sigmoid"><span class="std std-ref">What is the Sigmoid Function?</span></a>) and are materialized by either vertical or horizontal cuts. Instead of a straight line or polynomials fit, a decision tree rather makes an orthogonal segmentation of the phase space.</p>
+<figure class="align-default" id="dt-boundary-1" style="width: 100%">
+<div class="cell_output docutils container">
+<img alt="../_images/BDTs_demo_17_0.png" src="../_images/BDTs_demo_17_0.png" />
+</div>
+</figure>
+<p>The first node at depth 0 creates a first decision boundary, splitting the dataset into two parts (and luckily isolating class A in a pure subset). The second cut is at depth 1. As the tree was set to a max depth of 2, the splitting stops at depth 1 (as we start from zero). But it is possible to continue further with a max depth of 3 and the decision boundaries (several for each branch) would be the dotted vertical lines.</p>
+<p>We could see with an example and illustrative graphs how the decision tree splits the datasets. But how are these splits calculated? Why did the classifier chose the cut values <span class="math notranslate nohighlight">\(x_1\)</span> = 2.45 and <span class="math notranslate nohighlight">\(x_2\)</span> = 1.75? This is what we will cover in the following section.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -512,11 +641,11 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="dt_and_boosting.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="dt_0_and_boosting.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Decision Trees &amp; Boosting</p>
+            <p class="prev-next-title">Decision Trees</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="dt_2_cart_algorithm.html" title="next page">

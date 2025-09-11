@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Boosting" href="boosting.html" />
+    <link rel="next" title="Boosting" href="boost_0_intro.html" />
     <link rel="prev" title="What is Ensemble Learning?" href="el_1_what_is_ensemble.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -271,8 +271,8 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="dt_and_boosting.html">
-   Decision Trees &amp; Boosting
+  <a class="reference internal" href="dt_0_and_boosting.html">
+   Decision Trees
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -298,7 +298,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="ensemble_learning.html">
+  <a class="reference internal" href="el_0_intro.html">
    Ensemble Learning
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -320,7 +320,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="boosting.html">
+  <a class="reference internal" href="boost_0_intro.html">
    Boosting
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -456,12 +456,41 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#presentation">
+   Presentation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#advantages">
+   Advantages
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -473,6 +502,24 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#presentation">
+   Presentation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#advantages">
+   Advantages
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -482,7 +529,65 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="random-forests">
 <h1>Random Forests<a class="headerlink" href="#random-forests" title="Permalink to this headline">#</a></h1>
-<p>COPY</p>
+<section id="presentation">
+<h2>Presentation<a class="headerlink" href="#presentation" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="randomforestdef">
+<p class="admonition-title"><span class="caption-number">Definition 52 </span></p>
+<section class="definition-content" id="proof-content">
+<p>A <strong>random forest</strong> is an ensemble learning method made of solely decision trees.</p>
+<p>The predicted class is the one obtaining the majority of votes across all decision trees in the forest.</p>
+</section>
+</div><p>Random forest classifiers are implemented in Scikit-Learn from the <code class="docutils literal notranslate"><span class="pre">ensemble</span></code> library. Here is a minimal code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="n">rnd_clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">max_leaf_nodes</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">rnd_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">y_pred_rf</span> <span class="o">=</span> <span class="n">rnd_clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Only four lines. But there are obviously much more lines of code ‘backstage’ behind those calls. It’s important to understand what these methods do as well as their arguments.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n_estimators</span></code> refers to the number of trees in the forest</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_leaf_nodes</span></code> is a hyperparameter regularizing each tree</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_jobs</span></code> tells how many CPU cores to use (-1 tells Scikit-Learn to use all cores available)</p></li>
+</ul>
+<p>The Random Forest inherits all hyperparameters of the decision trees. There are other hyperparameters proper to Random Forest classifiers, for instance activating the bagging <code class="docutils literal notranslate"><span class="pre">bootstrap=True</span></code> with <code class="docutils literal notranslate"><span class="pre">max_samples</span></code> controlling the sample size of each subset.<br />
+More on <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">Scikit-Learn RandomForest page</a>.</p>
+</section>
+<section id="advantages">
+<h2>Advantages<a class="headerlink" href="#advantages" title="Permalink to this headline">#</a></h2>
+<p>Random forests are popular as they present numerous qualities:</p>
+<ul class="simple">
+<li><p>their results are among the most accurate compared with other machine learning algorithms</p></li>
+<li><p>they are less likely to overfit the data</p></li>
+<li><p>they run quickly, even with large datasets</p></li>
+<li><p>they require less data to train</p></li>
+<li><p>they are easy to interpret</p></li>
+<li><p>they can be scaled using parallel computing (multiple cores)</p></li>
+<li><p>they can rank features by their relative importance</p></li>
+</ul>
+<p>More about the last point: random forest classifiers not only classify the data, they can also measure the relative effect, or importance, each feature has with respect to the others. This is very handy while designing a machine learning algorithm to see which features matter. If for instance there are too many features, a random forest can help reduce this number while not removing key features. Scikit-Learn computes the feature importance automatically after training. It is expressed as a score, ranging from zero (useless feature) to 1 (most important). Here is a snippet showing how to access the feature importance scores:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dataset loading (not written): X and y dataframes</span>
+
+<span class="n">rnd_clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">rnd_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">rnd_clf</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">score</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will output something in the like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">x1</span>  <span class="mf">0.11323</span>
+    <span class="n">x2</span>  <span class="mf">0.54530</span>
+    <span class="n">x3</span>  <span class="mf">0.05961</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>The sum of all feature importance is 1.</p>
+<p>We have seen the advantage of decision trees working together in a beautiful forest to produce low variance predictions. Let’s go one step further: the boosting.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -519,7 +624,7 @@ title="Print to PDF"
             <p class="prev-next-title">What is Ensemble Learning?</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="boosting.html" title="next page">
+    <a class='right-next' id="next-link" href="boost_0_intro.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Boosting</p>

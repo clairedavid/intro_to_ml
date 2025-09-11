@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="AdaBoost" href="boost_2_adaboost.html" />
-    <link rel="prev" title="Boosting" href="boosting.html" />
+    <link rel="prev" title="Boosting" href="boost_0_intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -271,8 +271,8 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="dt_and_boosting.html">
-   Decision Trees &amp; Boosting
+  <a class="reference internal" href="dt_0_and_boosting.html">
+   Decision Trees
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -298,7 +298,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="ensemble_learning.html">
+  <a class="reference internal" href="el_0_intro.html">
    Ensemble Learning
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -320,7 +320,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="boosting.html">
+  <a class="reference internal" href="boost_0_intro.html">
    Boosting
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -482,7 +482,14 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="what-is-boosting">
 <h1>What is Boosting?<a class="headerlink" href="#what-is-boosting" title="Permalink to this headline">#</a></h1>
-<p>COPY</p>
+<p>The general idea behind boosting is a correction of previous learners by the next row of classifiers.</p>
+<div class="proof definition admonition" id="boostingdef">
+<p class="admonition-title"><span class="caption-number">Definition 53 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Boosting</strong> refers to ensemble methods that are tuning weak learners into a strong one, usually sequentially, with the next predictor correcting its predecessors.</p>
+</section>
+</div><p>Usually the predictors are really shallow trees, namely one root nodes and two final leaves, aka a decision stump (see <a class="reference internal" href="dt_1_what_are_trees.html#decisionstumpdef">Definition 46</a>).</p>
+<p>Many boosting methods are available. We will see two popular ones: AdaBoost and Gradient Boosting.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -512,7 +519,7 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="boosting.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="boost_0_intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>

@@ -266,6 +266,89 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Decision trees and boosting
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../trees/dt_0_and_boosting.html">
+   Decision Trees
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/dt_1_what_are_trees.html">
+     What are Decision Trees?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/dt_2_cart_algorithm.html">
+     The CART Algorithm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/dt_3_limitations.html">
+     Limitations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../trees/el_0_intro.html">
+   Ensemble Learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/el_1_what_is_ensemble.html">
+     What is Ensemble Learning?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/el_2_random_forests.html">
+     Random Forests
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../trees/boost_0_intro.html">
+   Boosting
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/boost_1_what_is_boosting.html">
+     What is Boosting?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/boost_2_adaboost.html">
+     AdaBoost
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/boost_3_gradient_boosting.html">
+     Gradient Boosting
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -469,28 +552,28 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p> <br />
 <strong>True Positive Rate (TPR)</strong>, also called <strong>recall</strong> and <strong>sensitivity</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-bc0e0442-213b-4838-9074-2b52136fb1f0">
-<span class="eqno">(35)<a class="headerlink" href="#equation-bc0e0442-213b-4838-9074-2b52136fb1f0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-fcc930c0-6c17-4483-b08e-782a10d283b8">
+<span class="eqno">(35)<a class="headerlink" href="#equation-fcc930c0-6c17-4483-b08e-782a10d283b8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TPR} = \frac{\text{True Positives}}{\text{Actual Positives}} = \frac{\text{True Positives}}{\text{True Positive} + \text{False Negative}}
 \end{equation}\]</div>
 <p> <br />
 <strong>True Negative Rate (TNR)</strong>, also called <strong>specificity</strong></p>
 <p>Ratio of negative instances correctly classified as negative.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7df11e76-b89f-4c73-89bc-70fbe4b00b46">
-<span class="eqno">(36)<a class="headerlink" href="#equation-7df11e76-b89f-4c73-89bc-70fbe4b00b46" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4dbcb879-9863-4422-bf2b-06fa0102494b">
+<span class="eqno">(36)<a class="headerlink" href="#equation-4dbcb879-9863-4422-bf2b-06fa0102494b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TNR} = \frac{\text{True Negatives}}{\text{Actual Negatives}} = \frac{\text{True Negatives}}{\text{True Negatives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>False Positive Rate (FPR)</strong></p>
 <p>Ratio of negative instances that are incorrectly classified as positive.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-27819b76-7ccd-48c8-8d62-ebff8a7dbccd">
-<span class="eqno">(37)<a class="headerlink" href="#equation-27819b76-7ccd-48c8-8d62-ebff8a7dbccd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-338cae74-8707-4cc8-95f9-14899b9f7460">
+<span class="eqno">(37)<a class="headerlink" href="#equation-338cae74-8707-4cc8-95f9-14899b9f7460" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = \frac{\text{False Positives}}{\text{Actual Negatives}} = \frac{\text{False Positives}}{\text{True Negatives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 The False Positive Rate (FPR) is equal to:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e64fa30e-93d2-4c84-a509-faa843d9d105">
-<span class="eqno">(38)<a class="headerlink" href="#equation-e64fa30e-93d2-4c84-a509-faa843d9d105" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1ca01ab6-cf63-494d-b557-7fcb18fd5193">
+<span class="eqno">(38)<a class="headerlink" href="#equation-1ca01ab6-cf63-494d-b557-7fcb18fd5193" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = 1 - \text{TNR} = 1 - \text{specificity}
 \end{equation}\]</div>
 </section>

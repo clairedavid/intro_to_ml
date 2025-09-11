@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Ensemble Learning" href="ensemble_learning.html" />
+    <link rel="next" title="Ensemble Learning" href="el_0_intro.html" />
     <link rel="prev" title="The CART Algorithm" href="dt_2_cart_algorithm.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -271,8 +271,8 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="dt_and_boosting.html">
-   Decision Trees &amp; Boosting
+  <a class="reference internal" href="dt_0_and_boosting.html">
+   Decision Trees
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -298,7 +298,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="ensemble_learning.html">
+  <a class="reference internal" href="el_0_intro.html">
    Ensemble Learning
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -320,7 +320,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="boosting.html">
+  <a class="reference internal" href="boost_0_intro.html">
    Boosting
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -456,12 +456,46 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cutting-down-on-overfitting">
+   Cutting down on overfitting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#orthogonal-cuts">
+   Orthogonal cuts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#instability">
+   Instability
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -473,6 +507,29 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cutting-down-on-overfitting">
+   Cutting down on overfitting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#orthogonal-cuts">
+   Orthogonal cuts
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#instability">
+   Instability
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -482,7 +539,53 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="limitations">
 <h1>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">#</a></h1>
-<p>COPY</p>
+<section id="cutting-down-on-overfitting">
+<h2>Cutting down on overfitting<a class="headerlink" href="#cutting-down-on-overfitting" title="Permalink to this headline">#</a></h2>
+<p>Decision trees are choosing the cut values solely on the available dataset. If let unconstrain, they will continue their way cutting through the data noise, ineluctably leading to overfitting. The way to regularize them is done through the hyperparameters, restricting their freedom:</p>
+<ul class="simple">
+<li><p><strong>maximum depth</strong> is stopping the algorithm after the node ‘depth - 1’ (as the starting node is zero)</p></li>
+<li><p><strong>minimum sample split</strong> is the minimum number of samples a node must have before it can be split</p></li>
+<li><p><strong>minimum sample leaf</strong> restricts the number of samples within a leaf, preventing an over-segmentation of the data into small square ‘islands’ with very few data samples in them</p></li>
+<li><p><strong>maximum leaf nodes</strong> is an upper bound on the amount of leaves (final nodes)</p></li>
+</ul>
+<div class="seealso admonition">
+<p class="admonition-title">Exercise</p>
+<p>How to  tweak (increase of decrease) the hyperparameters in order to relevantly perform a regularization?</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Check your answers</p>
+<p>Hyperparameters with <em>minimum</em> in their name regularize the tree when increased, while those with <em>maximum</em> in their name regularize it when decreased.</p>
+</div>
+</section>
+<section id="orthogonal-cuts">
+<h2>Orthogonal cuts<a class="headerlink" href="#orthogonal-cuts" title="Permalink to this headline">#</a></h2>
+<p>As the decision trees work with threshold values, the boundaries are always perpendicular to an axis. This works well if the data is ‘by chance’ aligned with the axes. This ‘feature’ makes decision trees sensitive to rotation.  If we rotate the dataset used in the example above, we can see it changes decision boundaries:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">180</span> <span class="o">*</span> <span class="mi">20</span>
+<span class="n">rotation_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)],</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)]])</span>
+<span class="n">Xr</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">rotation_matrix</span><span class="p">)</span>
+
+<span class="n">tree_clf_r</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">tree_clf_r</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xr</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">plot_decision_boundary</span><span class="p">(</span><span class="n">tree_clf_r</span><span class="p">,</span> <span class="n">Xr</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">axes</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<figure class="align-default" id="dt-boundary-r" style="width: 100%">
+<div class="cell_output docutils container">
+<img alt="../_images/BDTs_demo_18_0.png" src="../_images/BDTs_demo_18_0.png" />
+</div>
+</figure>
+</section>
+<section id="instability">
+<h2>Instability<a class="headerlink" href="#instability" title="Permalink to this headline">#</a></h2>
+<p>Not only rotated data samples, decision trees can also drastically change with only minimal modification in the data. Removing one data point in the dataset above can lead to very different decision boundaries:</p>
+<figure class="align-default" id="dt-boundary-tweaked" style="width: 100%">
+<div class="cell_output docutils container">
+<img alt="../_images/BDTs_demo_21_0.png" src="../_images/BDTs_demo_21_0.png" />
+</div>
+</figure>
+<p>Instability will change future predictions and is quite a bad feature (bug) from a machine learning algorithm. How to circumvent this intrinsic instability? This is what we will cover in the next section!</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -519,7 +622,7 @@ title="Print to PDF"
             <p class="prev-next-title">The CART Algorithm</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="ensemble_learning.html" title="next page">
+    <a class='right-next' id="next-link" href="el_0_intro.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Ensemble Learning</p>

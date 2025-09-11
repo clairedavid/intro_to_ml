@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Decision Trees &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    <title>Ensemble Learning &#8212; Introduction&lt;br&gt; to Machine Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="What are Decision Trees?" href="dt_1_what_are_trees.html" />
-    <link rel="prev" title="Bias &amp; Variance: a Tradeoff" href="../basics/model_eval_4_bias_variance_tradeoff.html" />
+    <link rel="next" title="What is Ensemble Learning?" href="el_1_what_is_ensemble.html" />
+    <link rel="prev" title="Limitations" href="dt_3_limitations.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -270,11 +270,11 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="dt_0_and_boosting.html">
    Decision Trees
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
@@ -297,11 +297,11 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="ensemble_learning.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    Ensemble Learning
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
@@ -320,7 +320,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="boosting.html">
+  <a class="reference internal" href="boost_0_intro.html">
    Boosting
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -419,7 +419,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/trees/dt_and_boosting.md"
+        <a href="../_sources/trees/el_0_intro.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -468,7 +468,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Decision Trees</h1>
+                <h1>Ensemble Learning</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -480,12 +480,29 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="decision-trees">
-<h1>Decision Trees<a class="headerlink" href="#decision-trees" title="Permalink to this headline">#</a></h1>
-<p>This lecture is about decision trees, root nodes, leaves and forests. No, we haven’t switched to a course on dendrology or xylology. We’re still in machine learning, just borrowing vocabulary from a (convenient) vegetation analogy.</p>
-<p>Decision trees are powerful algorithms. But also limited, as overfitting datasets by design. We will see how decision trees work and what restrictions they need.</p>
-<p>We will also see how a collection of simple decision trees, aka a random forest, can actually generate better predictions than each learner. Such a technique is called ensemble learning, popularily coined as the wisdom of crowds (trees can be wise too).</p>
-<p>Growing a forest is good, boosting it is better. The boosting exploits ensemble learning by sequentially correcting the previous predictions of simple learners at the next iterations, the decision trees receiving information on where predictions failed. We will cover two main boosting algorithms, AdaBoost and XGBoost, counting among the more popular methods in machine learning today.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="ensemble-learning">
+<h1>Ensemble Learning<a class="headerlink" href="#ensemble-learning" title="Permalink to this headline">#</a></h1>
+<p>Let’s start with a game.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Exercise</p>
+<p>In groups of 4 people, start by guessing individually, then collect your answers on the following questions:</p>
+<p><strong>Regression</strong>:</p>
+<center>What is the instructor's age?</center>
+<br>
+<p><strong>Classification</strong>:</p>
+<center>⚠️ <small> Skip it if you already know, otherwise the game will be rigged!</small>  
+<p>Which fundamental interaction is the strongest:<br />
+Electromagnetism, Weak Force, Strong Force or Gravity?</p>
+</center>
+<br>
+<p><strong>A question of your choice</strong></p>
+<center>⚠️ <small> Answer must be checkable online, but no peeking until after the game! </small></center>
+<br>  
+<p>For the regression, compute the average of your numerical guesses.<br />
+For the classification, count your votes and pick the class collecting most votes.</p>
+<p>Notice anything? Keep your team’s results: we’ll collect them across the class and see what emerges.</p>
+</div>
+<p>We attribute to Aristotle the old adage “the whole is greater than the sum of its parts.” The exercise above is an example of the so-called “wisdom of the crowd,” where the collective brings a better answer than the individual guesses. Such a technique of getting a prediction from aggregating a collection of predictors is called <em>Ensemble Learning</em>. We will see its formal definition in the next section.</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -517,17 +534,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../basics/model_eval_4_bias_variance_tradeoff.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="dt_3_limitations.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Bias &amp; Variance: a Tradeoff</p>
+            <p class="prev-next-title">Limitations</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="dt_1_what_are_trees.html" title="next page">
+    <a class='right-next' id="next-link" href="el_1_what_is_ensemble.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">What are Decision Trees?</p>
+        <p class="prev-next-title">What is Ensemble Learning?</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

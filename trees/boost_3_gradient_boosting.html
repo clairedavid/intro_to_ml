@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="AdaBoost" href="boost_2_adaboost.html" />
@@ -270,8 +272,8 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="dt_and_boosting.html">
-   Decision Trees &amp; Boosting
+  <a class="reference internal" href="dt_0_and_boosting.html">
+   Decision Trees
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -297,7 +299,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="ensemble_learning.html">
+  <a class="reference internal" href="el_0_intro.html">
    Ensemble Learning
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -319,7 +321,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="boosting.html">
+  <a class="reference internal" href="boost_0_intro.html">
    Boosting
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -455,12 +457,61 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#core-concept">
+   Core concept
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-minimal-example">
+   A minimal example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#predictions-on-test-samples">
+   Predictions on test samples
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-implementation">
+   Code implementation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#xgboost-the-warrior">
+   XGBoost the warrior
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modern-boosting-libraries-lightgbm-and-catboost">
+   Modern boosting libraries: LightGBM and CatBoost
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -472,6 +523,44 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#core-concept">
+   Core concept
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-minimal-example">
+   A minimal example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#predictions-on-test-samples">
+   Predictions on test samples
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-implementation">
+   Code implementation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#xgboost-the-warrior">
+   XGBoost the warrior
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modern-boosting-libraries-lightgbm-and-catboost">
+   Modern boosting libraries: LightGBM and CatBoost
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -481,7 +570,375 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="gradient-boosting">
 <h1>Gradient Boosting<a class="headerlink" href="#gradient-boosting" title="Permalink to this headline">#</a></h1>
-<p>COPY</p>
+<p>The gradient is back!</p>
+<section id="core-concept">
+<h2>Core concept<a class="headerlink" href="#core-concept" title="Permalink to this headline">#</a></h2>
+<p>Contrary to AdaBoost, which builds another decision stump based on the errors made by the previous decision stump, Gradient Boosting starts by making a single leaf. This leaf represents an initial guess (round 0). Next, a first tree is made, outputting a first round of predictions (round 1). Then the pseudo-residuals are calculated. They are residuals, in the sense that they are the difference, for each training sample, between the predicted class and the observed class. We will see how this is computed from a binary output to a probability soon. The key concept behind Gradient Boosting is that the next tree fits the residuals of the previous one. In this sense, Gradient Boosting is performing a gradient descent, the residuals giving the step direction to go to minimize the errors and thus improve the prediction’s accuracy. Final predictions are made by ‘summing the trees’ (times a learning rate) and converting the final number into a probability for a given class.</p>
+<p>We will go through an example with a very small dataset to understand the steps and calculations.</p>
+</section>
+<section id="a-minimal-example">
+<h2>A minimal example<a class="headerlink" href="#a-minimal-example" title="Permalink to this headline">#</a></h2>
+<p>Let’s say we have a dataset of simulated training samples of collisions and for each collision some features such as an invariant mass and missing transverse energy (these variables will be explained during tutorials). We want to use Gradient Boosting to search for new physics. This new physics process is simulated in signal samples (target <span class="math notranslate nohighlight">\(y=1\)</span>) and background processes, i.e. interactions from known physics processes but mimicking the signal outputs, are with <span class="math notranslate nohighlight">\(y=0\)</span>.</p>
+<table class="table">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Row</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(m_{bb}\)</span></p></th>
+<th class="head"><p>MET</p></th>
+<th class="head"><p>…</p></th>
+<th class="head"><p>Class</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>60</p></td>
+<td><p>35</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>110</p></td>
+<td><p>130</p></td>
+<td><p>…</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>45</p></td>
+<td><p>78</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>87</p></td>
+<td><p>93</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>135</p></td>
+<td><p>95</p></td>
+<td><p>…</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>67</p></td>
+<td><p>46</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 0: Initial Guess</strong><br />
+We start by an initial guess. In Gradient Boosting for classification, the initial prediction for every samples is the log of the odds. It is an equivalent of the average for logistic regression:</p>
+<div class="math notranslate nohighlight" id="equation-logodds">
+<span class="eqno">(59)<a class="headerlink" href="#equation-logodds" title="Permalink to this equation">#</a></span>\[\text{log(odds) } = \log \frac{N[y=1]}{N[y=0]} \]</div>
+<p>Here we have 2 signal events and 4 background ones, so log(odds) = <span class="math notranslate nohighlight">\(\log \frac{2}{4}\)</span> = -0.69</p>
+<p>How to proceed now with classification? If you recall logistic regression, the binary outcomes were converted as an equivalent of a probability with the logistic function (sigmoid). We will use it again here:</p>
+<div class="math notranslate nohighlight" id="equation-logoddsigmoid">
+<span class="eqno">(60)<a class="headerlink" href="#equation-logoddsigmoid" title="Permalink to this equation">#</a></span>\[\text{ Probability of signal } = \frac{1}{1 + e^{- \text{log(odds)}}} \]</div>
+<p>In our example, <span class="math notranslate nohighlight">\(\frac{1}{1 + e^{ - \log \frac{2}{4} }} = \frac{1}{3}\)</span>.</p>
+<p><strong>Step 1: pseudo residuals</strong><br />
+Now let’s calculate the pseudo residuals.</p>
+<div class="proof definition admonition" id="pseudodef">
+<p class="admonition-title"><span class="caption-number">Definition 54 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Pseudo residuals</strong> are intermediate errors terms measuring the difference between the observed values and an intermediate predicted value.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\text{Pseudo residuals} = ( \text{Observed} - \text{Prediction} ) 
+\end{equation*}\]</div>
+</section>
+</div><p>We will store pseudo residuals as an extra column. For the first row (index 0), the pseudo residual is <span class="math notranslate nohighlight">\(( 0 - \frac{1}{3}) = -\frac{1}{3}\)</span>. The second, with observed value 1, is <span class="math notranslate nohighlight">\(( 1 - \frac{1}{3}) = \frac{2}{3}\)</span>.</p>
+<table class="table">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Row</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(m_{bb}\)</span></p></th>
+<th class="head"><p>MET</p></th>
+<th class="head"><p>…</p></th>
+<th class="head"><p>Class</p></th>
+<th class="head"><p>Residuals</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>60</p></td>
+<td><p>35</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+<td><p>-0.33</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>110</p></td>
+<td><p>130</p></td>
+<td><p>…</p></td>
+<td><p>1</p></td>
+<td><p>0.67</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>45</p></td>
+<td><p>78</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+<td><p>-0.33</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>87</p></td>
+<td><p>93</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+<td><p>-0.33</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>135</p></td>
+<td><p>95</p></td>
+<td><p>…</p></td>
+<td><p>1</p></td>
+<td><p>0.67</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>67</p></td>
+<td><p>46</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+<td><p>-0.33</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2: tree targeting the pseudo residuals</strong><br />
+Now let’s build a tree using the input features but to predict the residuals.</p>
+<figure class="align-default" id="boost-2-treegboost">
+<a class="reference internal image-reference" href="../_images/boost_2_treeGBoost.png"><img alt="../_images/boost_2_treeGBoost.png" src="../_images/boost_2_treeGBoost.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">. First tree predicting the residuals.<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#boost-2-treegboost" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The tree is very minimal because we only have six samples in the dataset! Usually there can be up to 32 leaves in Gradient Boosting intermediary trees.</p>
+<p><strong>Step 3: leaves’ output values</strong><br />
+The predictions are in terms of the log of the odds, whereas leaves are derived from a probability. We will have to translate the residuals in the leaves above as “log of the odds” first. Only after getting the correct leave outputs can we combine trees together. When using Gradient Boost for classification, the most common transformation is the ratio:</p>
+<div class="math notranslate nohighlight" id="equation-residualtoodds">
+<span class="eqno">(61)<a class="headerlink" href="#equation-residualtoodds" title="Permalink to this equation">#</a></span>\[\frac{ \sum \text{Residuals}_i }{\sum [ \text{Previous Probability}_i \times ( 1 -  \text{Previous Probability}_i )]}\]</div>
+<p>The numerator is the sum of residuals in a given leaf <span class="math notranslate nohighlight">\(i\)</span>. The denominator is the product of the previously predicted probabilities for each residual in that same leaf <span class="math notranslate nohighlight">\(i\)</span>. Let’s illustrate with our example. For the leaf on the very left, there is only one residual (from sample row 4) of 0.67 with an associated probability of <span class="math notranslate nohighlight">\(\frac{1}{1 + \exp( - \log \frac{2}{4} )} = \frac{1}{3}\)</span>. So:</p>
+<div class="math notranslate nohighlight" id="equation-leafleft">
+<span class="eqno">(62)<a class="headerlink" href="#equation-leafleft" title="Permalink to this equation">#</a></span>\[\frac{\frac{2}{3}}{ \frac{1}{3} \times ( 1 - \frac{1}{3})} = 3\]</div>
+<p>The new output value for the leaf is 3. Now the second leaf from the left has two samples in it: rows 1 and 3. The former is signal, with a residual of <span class="math notranslate nohighlight">\(\frac{2}{3}\)</span> and an associated (previous) probability of <span class="math notranslate nohighlight">\(\frac{1}{3}\)</span>, whereas the latter is a background sample with a residual of <span class="math notranslate nohighlight">\(-\frac{1}{3}\)</span> and associated probability of <span class="math notranslate nohighlight">\(\frac{2}{3}\)</span>.</p>
+<div class="math notranslate nohighlight" id="equation-leafmiddle">
+<span class="eqno">(63)<a class="headerlink" href="#equation-leafmiddle" title="Permalink to this equation">#</a></span>\[\frac{ \frac{2}{3} -\frac{1}{3}}{ \frac{1}{3} \times ( 1 - \frac{1}{3}) + \frac{2}{3} \times ( 1 - \frac{2}{3})} = \frac{3}{4} = 0.75\]</div>
+<p>For the last leaf, we have:</p>
+<div class="math notranslate nohighlight" id="equation-leafright">
+<span class="eqno">(64)<a class="headerlink" href="#equation-leafright" title="Permalink to this equation">#</a></span>\[\frac{-\frac{1}{3} -\frac{1}{3} -\frac{1}{3}}{ \frac{2}{3} \times ( 1 - \frac{2}{3}) + \frac{2}{3} \times ( 1 - \frac{2}{3}) + \frac{2}{3} \times ( 1 - \frac{2}{3})} = -\frac{3}{2} = -1.5\]</div>
+<p>The tree has now output values:</p>
+<figure class="align-default" id="boost-2-treegboost-outputs">
+<a class="reference internal image-reference" href="../_images/boost_2_treeGBoost_outputs.png"><img alt="../_images/boost_2_treeGBoost_outputs.png" src="../_images/boost_2_treeGBoost_outputs.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">. First tree predicting the residuals with output values for each leaves as ‘predictions’ (log of odds).<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#boost-2-treegboost-outputs" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Step 4: update predictions</strong><br />
+The first tree targeting the residuals is combined with the initial guess:</p>
+<figure class="align-default" id="boost-2-treegboost-combi1">
+<a class="reference internal image-reference" href="../_images/boost_2_treeGBoost_combi1.png"><img alt="../_images/boost_2_treeGBoost_combi1.png" src="../_images/boost_2_treeGBoost_combi1.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">. The initial guess and the first tree are combined. The tree is scaled by a learning rate <span class="math notranslate nohighlight">\(\alpha\)</span>.<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#boost-2-treegboost-combi1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Usually the learning rate is around 0.1 but for simplicity here in our example, we will take a larger value of <span class="math notranslate nohighlight">\(\alpha = 0.5\)</span> (to get a more drastic change after only two rounds).
+The first row of index 0 falls into the right leaf. To calculate the new <em>log of the odds</em> prediction for row 0, we sum the initial guess with the learning rate times the leaf output (expressed as a <em>log of the odds</em> from the calculation above):</p>
+<div class="math notranslate nohighlight" id="equation-suminittree">
+<span class="eqno">(65)<a class="headerlink" href="#equation-suminittree" title="Permalink to this equation">#</a></span>\[\text{log(odds) Prediction row 0} = - 0.69 + {\color{Mahogany}\alpha} \times (-1.5) =  - 0.69 + {\color{Mahogany}0.5} \times (-1.5) = -1.44\]</div>
+<p>Now we convert the new <em>log of the odds</em> as a probability:</p>
+<div class="math notranslate nohighlight" id="equation-logoddsrow0">
+<span class="eqno">(66)<a class="headerlink" href="#equation-logoddsrow0" title="Permalink to this equation">#</a></span>\[\text{ Probability row 0 } = \frac{1}{1 + e^{- (-1.44) }} =  0.19\]</div>
+<p>As this row 0 is a background event, we went from an initial guess of probability <span class="math notranslate nohighlight">\(\frac{1}{3}\)</span> to now 0.20, which is closer to zero, so our first residual-fitted-tree added a correction in the right direction. Let’s take row 1 now. It lands in the middle leaf. Thus:</p>
+<div class="math notranslate nohighlight" id="equation-suminittree2">
+<span class="eqno">(67)<a class="headerlink" href="#equation-suminittree2" title="Permalink to this equation">#</a></span>\[\text{log(odds) Prediction row 1} = - 0.69 + {\color{Mahogany}\alpha} \times 0.75 =  - 0.69 + {\color{Mahogany}0.5} \times 0.75 = -0.315\]</div>
+<p>The probability is:</p>
+<div class="math notranslate nohighlight" id="equation-logoddsrow1">
+<span class="eqno">(68)<a class="headerlink" href="#equation-logoddsrow1" title="Permalink to this equation">#</a></span>\[\text{ Probability row 0 } = \frac{1}{1 + e^{- (-0.315) }} =  0.42\]</div>
+<p>The event is signal, so our prediction should be close to 1. We went from an initial guess probability of <span class="math notranslate nohighlight">\(\frac{1}{3}\)</span> to 0.42. We indeed go in the right direction! Smoothly, but surely.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It has been shown empirically that a slow learning rate is preferrable to reach a good accuracy. It comes at the price of having to build numerous intermediary trees incrementing the predictions in small steps. Without a learning rate scaling the trees, there is a high risk to stay too close to the data, which would bring a low bias but very high variance. Thanks to a small learning rate, taking lots of small steps in the right direction results in better predictions with a testing dataset. This technique is called <em>shrinkage</em>.</p>
+</div>
+<p>We can add an extra column with the predicted probabilities (pred prob) in our dataset table:</p>
+<table class="table">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Row</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(m_{bb}\)</span></p></th>
+<th class="head"><p>MET</p></th>
+<th class="head"><p>…</p></th>
+<th class="head"><p>Class</p></th>
+<th class="head"><p>Residuals</p></th>
+<th class="head"><p>Pred Prob</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>60</p></td>
+<td><p>35</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+<td><p>-0.33</p></td>
+<td><p>0.19</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>110</p></td>
+<td><p>130</p></td>
+<td><p>…</p></td>
+<td><p>1</p></td>
+<td><p>0.67</p></td>
+<td><p>0.42</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>45</p></td>
+<td><p>78</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+<td><p>-0.33</p></td>
+<td><p>0.19</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>87</p></td>
+<td><p>93</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+<td><p>-0.33</p></td>
+<td><p>0.42</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>135</p></td>
+<td><p>95</p></td>
+<td><p>…</p></td>
+<td><p>1</p></td>
+<td><p>0.67</p></td>
+<td><p>0.69</p></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td><p>67</p></td>
+<td><p>46</p></td>
+<td><p>…</p></td>
+<td><p>0</p></td>
+<td><p>-0.33</p></td>
+<td><p>0.19</p></td>
+</tr>
+</tbody>
+</table>
+<p>We can see that the predicted probabilities for background went towards zero, whereas those for signal got incremented towards 1.</p>
+<p><strong>Step 2bis: new pseudo residuals</strong>
+We go back to step 2 to compute the new pseudo residuals from the last set of predictions. Then the step 3 will consist of building a second tree targeting those new residuals. Finally, one we have all the output values for the resulting tree leaves, we can add the second tree to the initial guess and the first tree (also scaled with the learning rate).</p>
+<figure class="align-default" id="boost-2-treegboost-combi-gen">
+<a class="reference internal image-reference" href="../_images/boost_2_treeGBoost_combi_gen.png"><img alt="../_images/boost_2_treeGBoost_combi_gen.png" src="../_images/boost_2_treeGBoost_combi_gen.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">. The Gradient Boosting sums the trees fitting the pseudo residuals from the previous predition.<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#boost-2-treegboost-combi-gen" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The process repeats until the number of predictors is reached or the residuals get super small.</p>
+</section>
+<section id="predictions-on-test-samples">
+<h2>Predictions on test samples<a class="headerlink" href="#predictions-on-test-samples" title="Permalink to this headline">#</a></h2>
+<p>How are predictions made on new data? By simply using the sum above. We run the new sample in the first tree, get the output value of the leaf in which the sample ends up, then run it through the second tree, get the final leaf output value as well. The final prediction is done computing the sum with the initial prediction and each tree prediction scaled by the learning rate. If it is greater than 0.5, the class is signal: <span class="math notranslate nohighlight">\(y^\text{pred} = 1\)</span>. If lower, we predict the sample to be background.</p>
+</section>
+<section id="code-implementation">
+<h2>Code implementation<a class="headerlink" href="#code-implementation" title="Permalink to this headline">#</a></h2>
+<p>Scikit-Learn has two classes implementing Boosting: <code class="docutils literal notranslate"><span class="pre">GradientBoostingRegressor</span></code> (for regression, see below some links covering it if you are curious) and <code class="docutils literal notranslate"><span class="pre">GradientBoostingClassifier</span></code>. The latter supports multi-class classification. The main hyperparameters are the number of estimators <code class="docutils literal notranslate"><span class="pre">n_estimators</span></code> (how many intermediary trees are built) and the <code class="docutils literal notranslate"><span class="pre">learning_rate</span></code> <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingClassifier</span>
+
+<span class="c1"># Getting the dataset [sample loading not shown]</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Creating the Gradient Boosting (GB) classifier:</span>
+<span class="n">gb_clf</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">(</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> 
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="c1"># no shrinkage here, otherwise 0.1 is a common value</span>
+    <span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="c1"># here decision stumps</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">gb_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Printing score (accuracy by default)</span>
+<span class="n">gb_clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The size of each intermediate tree can be controlled by <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> (it is rarely a stump, rather a tree of depth 2 to 5) or <code class="docutils literal notranslate"><span class="pre">max_leaf_nodes</span></code>. There are different log functions available, the <code class="docutils literal notranslate"><span class="pre">log-loss</span></code> being the default.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The classes above have been superseeded by <code class="docutils literal notranslate"><span class="pre">HistGradientBoostingRegressor</span></code> and <code class="docutils literal notranslate"><span class="pre">HistGradientBoostingClassifier</span></code>. They are inspired by the framework <a class="reference external" href="https://papers.nips.cc/paper/2017/hash/6449f44a102fde848669bdd9eb6b76fa-Abstract.html">LightGBM</a> for Light Gradient Boosting Machine, developed by Microsoft. Histogram-based estimator will run orders of magnitude faster on dataset larger than 10,000 samples. More information on <a class="reference external" href="https://scikit-learn.org/stable/modules/ensemble.html#histogram-based-gradient-boosting">Scikit-Learn Historgram-Based Gradient Boosting</a>.</p>
+</div>
+</section>
+<section id="xgboost-the-warrior">
+<h2>XGBoost the warrior<a class="headerlink" href="#xgboost-the-warrior" title="Permalink to this headline">#</a></h2>
+<p>XGBoost, for eXtreme Gradient Boosting, is a software library offering a fully optimized implementation of gradient boosting machines, focused on computational speed and model performance. It was created in 2016 by Tianqi Chen, at the time Ph.D. student at the University of Washington. XGBoost gained significant popularity in the last few years as a result of helping individuals and teams win virtually every <a class="reference external" href="https://www.kaggle.com/">Kaggle</a> structured data competition, and in particular the first <a class="reference external" href="https://www.kaggle.com/c/higgs-boson">Higgs Boson Machine Learning Challenge</a>.</p>
+<p>In terms of model features, XGBoost has the standard Gradient Boosting, as well as a Stochastic Gradient Boosting (more on this in PUTREF) and a Regularized one (with both L1 and L2 regularization methods).</p>
+<p>It has also system features. Parallelization (to efficiently construct trees using all available CPU cores), Distributed Computing (if working with a cluster of machines), Out-of-Core Computing (when very large datasets can’t be loaded entirely in the memory), Cache Optimization (to minimize the need to access data in underlying slower storage layers).</p>
+<p>The algorithm features contains some technical jargon. Here is a selection of the main ones with some explanations:</p>
+<p><strong>Sparsity Awareness</strong><br />
+Data is considered sparse when certain expected values in a dataset are missing, or with mostly the same value, which is a common phenomenon in general large scaled data analysis. This can alter the performance of machine learning algorithms. XGBoost handles sparsities in data with the Sparsity-aware Split Finding algorithm that choose an optimal direction in the split, where only non-missing observations are visited.</p>
+<p><strong>Block Structure</strong><br />
+Data is sorted and stored in in-memory units called blocks, enabling the data layout to be reused by subsequent iterations instead of computing it again.</p>
+<p><strong>Continued Training</strong><br />
+XGBoost makes it possible to further boost an already fitted model on new data, without having to reload everything.</p>
+<p>Here is a <a class="reference external" href="https://xgboost.ai/about">minimal example of implementation in Python</a> as well as other languages.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>arXiv is a free distribution service and an open-access platform for more than two million scholarly articles in the fields of physics, mathematics and computer science among others. Some articles are submitted to journals (peered-review) but others are not peered-reviewed. It is possible to subscribe and receive a selection of newly submitted articles in your mailbox: <a class="reference external" href="https://arxiv.org/help/subscribe">To Subscribe to the E-Mail Alerting Service</a></p>
+</aside>
+<div class="seealso admonition">
+<p class="admonition-title">Exercise</p>
+<p>It is always good to ‘go to the source,’ i.e. the original papers. Yet this can be over-technical and daunting.</p>
+<p>Here is the paper of XGBoost on the arXiv platform:<br />
+<a class="reference external" href="https://arxiv.org/abs/1603.02754">Chen &amp; Guestrin, <em>XGBoost: A Scalable Tree Boosting System</em> (2016)</a></p>
+<p>To make it more enriching and fun, dive into the paper with a classmate. After each section, take turns to explain to your peer what you understand with your own words. This will train you to read the literature in the future, be confronted to different mathematical notations and digest the content (papers are usually dense in information, so don’t worry if it takes you time to go through one).</p>
+</div>
+<p>In the tutorial, we will classify collision data from the Large Hadron Collider using decision trees, then a random forest and finally boosted classifiers. We will compare their performance with the metrics introduced in Lecture <a class="reference internal" href="../basics/model_eval_2_perf_metrics.html#basics-perf-metrics"><span class="std std-ref">Performance Metrics</span></a>.</p>
+</section>
+<section id="modern-boosting-libraries-lightgbm-and-catboost">
+<h2>Modern boosting libraries: LightGBM and CatBoost<a class="headerlink" href="#modern-boosting-libraries-lightgbm-and-catboost" title="Permalink to this headline">#</a></h2>
+<p>After the success of XGBoost in the mid-2010s, new open-source libraries emerged to modernize and extend gradient boosting. The two most popular are LightGBM and CatBoost.</p>
+<p><strong>LightGBM</strong> was released in 2017 and initially developed by Microsoft. Its main difference lies in how trees are grown. In XGBoost, all nodes at a given depth are split before moving to the next level, producing balanced trees. This is called <em>level-wise growth</em>.
+LightGBM, however, looks for the single leaf that reduces the loss the most and splits only that one. This creates deeper trees in “important” regions of the feature space, which can capture more structure with fewer splits. This strategy is called <em>leaf-wise growth</em>. It tends to be more accurate but also more prone to overfitting if depth is not constrained.</p>
+<p>LightGBM was designed for efficiency and scalability. It uses histogram-based feature binning: instead of considering all possible split points in a continuous feature, it buckets values into bins (storing bin indices instead of raw values for extra speed). Combined with its leaf-wise growth strategy, the algorithm trains faster and uses less memory on large datasets.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The one-hot encoding is a way to represent categories using binary vectors where only one element is “hot” (1) and the rest are “cold” (0).  For example, categorical variables A, B, C and D would become 0001, 0010, 0100 and 1000 respectively. See the <a class="reference external" href="https://en.wikipedia.org/wiki/One-hot">Wikipedia article</a> for nice illustrative tables.</p>
+</aside>
+<p><strong>CatBoost</strong> is another widely used library, developed by Yandex and also released in 2017. Its focus is on handling categorical data with minimal preprocessing.
+Normally, boosting libraries require converting categorical variables into numbers (e.g. one-hot encoding), which can inflate dimensionality and sometimes leak information. CatBoost instead uses an approach called ordered target statistics: for each category, it computes statistics (like the mean label value) using only previous training examples, in a random order. This way, the encoding never “sees the future,” avoiding target leakage.</p>
+<p>Together with symmetric tree structures and an “ordered boosting” scheme, CatBoost often works very well out of the box, particularly for datasets with many categorical features.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Learn more</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://lightgbm.readthedocs.io/en/stable/">LightGBM official documentation</a></p></li>
+<li><p><a class="reference external" href="https://catboost.ai/">CatBoost official documentation</a></p></li>
+</ul>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

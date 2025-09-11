@@ -275,7 +275,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="trees/dt_and_boosting.html">
+  <a class="reference internal" href="trees/dt_0_and_boosting.html">
    Decision Trees
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
@@ -302,7 +302,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="trees/ensemble_learning.html">
+  <a class="reference internal" href="trees/el_0_intro.html">
    Ensemble Learning
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -324,7 +324,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="trees/boosting.html">
+  <a class="reference internal" href="trees/boost_0_intro.html">
    Boosting
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -442,29 +442,38 @@ title="Fullscreen mode"
    <h1>Proof Index</h1>
 
    <div class="modindex-jumpbox">
+   <a href="#cap-AdaBoostalgo"><strong>AdaBoostalgo</strong></a> | 
+   <a href="#cap-DTalgo"><strong>DTalgo</strong></a> | 
    <a href="#cap-GD_algo_1D"><strong>GD_algo_1D</strong></a> | 
    <a href="#cap-GD_algo_multi"><strong>GD_algo_multi</strong></a> | 
    <a href="#cap-GDesc"><strong>GDesc</strong></a> | 
    <a href="#cap-aucdef"><strong>aucdef</strong></a> | 
+   <a href="#cap-baggingdef"><strong>baggingdef</strong></a> | 
    <a href="#cap-balancedaccdef"><strong>balancedaccdef</strong></a> | 
    <a href="#cap-biasdef"><strong>biasdef</strong></a> | 
    <a href="#cap-binaryDef"><strong>binaryDef</strong></a> | 
+   <a href="#cap-boostingdef"><strong>boostingdef</strong></a> | 
    <a href="#cap-capacitydef"><strong>capacitydef</strong></a> | 
    <a href="#cap-catVar"><strong>catVar</strong></a> | 
    <a href="#cap-catxentropydef"><strong>catxentropydef</strong></a> | 
    <a href="#cap-confusionMatrix def"><strong>confusionMatrix def</strong></a> | 
+   <a href="#cap-costCART"><strong>costCART</strong></a> | 
    <a href="#cap-costFLogRegDef"><strong>costFLogRegDef</strong></a> | 
    <a href="#cap-costFunction"><strong>costFunction</strong></a> | 
    <a href="#cap-decBoundDef"><strong>decBoundDef</strong></a> | 
+   <a href="#cap-decisionstumpdef"><strong>decisionstumpdef</strong></a> | 
    <a href="#cap-defFeatureScaling"><strong>defFeatureScaling</strong></a> | 
    <a href="#cap-defMeanNormalization"><strong>defMeanNormalization</strong></a> | 
    <a href="#cap-defStandardization"><strong>defStandardization</strong></a> | 
    <a href="#cap-definition-3"><strong>definition-3</strong></a> | 
+   <a href="#cap-dtdef"><strong>dtdef</strong></a> | 
+   <a href="#cap-ensembledef"><strong>ensembledef</strong></a> | 
    <a href="#cap-errorDef"><strong>errorDef</strong></a> | 
    <a href="#cap-errormetricsclassdef"><strong>errormetricsclassdef</strong></a> | 
    <a href="#cap-expmodeldef"><strong>expmodeldef</strong></a> | 
    <a href="#cap-generalizationdef"><strong>generalizationdef</strong></a> | 
    <a href="#cap-generrordef"><strong>generrordef</strong></a> | 
+   <a href="#cap-ginidef"><strong>ginidef</strong></a> | 
    <a href="#cap-hypothesisFunction"><strong>hypothesisFunction</strong></a> | 
    <a href="#cap-hypothesisFunctionMulti"><strong>hypothesisFunctionMulti</strong></a> | 
    <a href="#cap-kfoldxvalidation"><strong>kfoldxvalidation</strong></a> | 
@@ -476,12 +485,16 @@ title="Fullscreen mode"
    <a href="#cap-mseDef"><strong>mseDef</strong></a> | 
    <a href="#cap-multiclass1to1def"><strong>multiclass1to1def</strong></a> | 
    <a href="#cap-multiclass1toalldef"><strong>multiclass1toalldef</strong></a> | 
+   <a href="#cap-nodesdef"><strong>nodesdef</strong></a> | 
    <a href="#cap-normalEquation"><strong>normalEquation</strong></a> | 
    <a href="#cap-overfittingdef"><strong>overfittingdef</strong></a> | 
+   <a href="#cap-pseudodef"><strong>pseudodef</strong></a> | 
+   <a href="#cap-randomforestdef"><strong>randomforestdef</strong></a> | 
    <a href="#cap-regularizationdef"><strong>regularizationdef</strong></a> | 
    <a href="#cap-residualDef"><strong>residualDef</strong></a> | 
    <a href="#cap-rmseDef"><strong>rmseDef</strong></a> | 
    <a href="#cap-rocdef"><strong>rocdef</strong></a> | 
+   <a href="#cap-softhardvoterdef"><strong>softhardvoterdef</strong></a> | 
    <a href="#cap-softmaxdef"><strong>softmaxdef</strong></a> | 
    <a href="#cap-tprfprdef"><strong>tprfprdef</strong></a> | 
    <a href="#cap-trainvaltestsetsdef"><strong>trainvaltestsetsdef</strong></a> | 
@@ -490,6 +503,22 @@ title="Fullscreen mode"
    </div>
 
    <table class="indextable modindextable">
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-AdaBoostalgo"><td></td><td>
+       <strong>AdaBoostalgo</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="trees/boost_2_adaboost.html#AdaBoostalgo"><code class="xref">AdaBoostalgo</code></a> <em>(trees/boost_2_adaboost)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-DTalgo"><td></td><td>
+       <strong>DTalgo</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="trees/dt_2_cart_algorithm.html#DTalgo"><code class="xref">DTalgo</code></a> <em>(trees/dt_2_cart_algorithm)</em></td><td>
+       <em>algorithm</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-GD_algo_1D"><td></td><td>
        <strong>GD_algo_1D</strong></td><td></td></tr>
@@ -523,6 +552,14 @@ title="Fullscreen mode"
        <a href="basics/model_eval_3_roc_curve.html#aucdef"><code class="xref">aucdef</code></a> <em>(basics/model_eval_3_roc_curve)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-baggingdef"><td></td><td>
+       <strong>baggingdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="trees/el_1_what_is_ensemble.html#baggingdef"><code class="xref">baggingdef</code></a> <em>(trees/el_1_what_is_ensemble)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-balancedaccdef"><td></td><td>
        <strong>balancedaccdef</strong></td><td></td></tr>
      <tr>
@@ -545,6 +582,14 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="basics/log_reg_1_intro.html#binaryDef"><code class="xref">binaryDef</code></a> <em>(basics/log_reg_1_intro)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-boostingdef"><td></td><td>
+       <strong>boostingdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="trees/boost_1_what_is_boosting.html#boostingdef"><code class="xref">boostingdef</code></a> <em>(trees/boost_1_what_is_boosting)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-capacitydef"><td></td><td>
@@ -579,6 +624,14 @@ title="Fullscreen mode"
        <a href="basics/model_eval_2_perf_metrics.html#confusionMatrix def"><code class="xref">confusionMatrix def</code></a> <em>(basics/model_eval_2_perf_metrics)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-costCART"><td></td><td>
+       <strong>costCART</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="trees/dt_2_cart_algorithm.html#costCART"><code class="xref">costCART</code></a> <em>(trees/dt_2_cart_algorithm)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-costFLogRegDef"><td></td><td>
        <strong>costFLogRegDef</strong></td><td></td></tr>
      <tr>
@@ -601,6 +654,14 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="basics/log_reg_2_sigmoid.html#decBoundDef"><code class="xref">decBoundDef</code></a> <em>(basics/log_reg_2_sigmoid)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-decisionstumpdef"><td></td><td>
+       <strong>decisionstumpdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="trees/dt_1_what_are_trees.html#decisionstumpdef"><code class="xref">decisionstumpdef</code></a> <em>(trees/dt_1_what_are_trees)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defFeatureScaling"><td></td><td>
@@ -633,6 +694,22 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="basics/model_eval_2_perf_metrics.html#definition-3"><code class="xref">definition-3</code></a> <em>(basics/model_eval_2_perf_metrics)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-dtdef"><td></td><td>
+       <strong>dtdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="trees/dt_1_what_are_trees.html#dtdef"><code class="xref">dtdef</code></a> <em>(trees/dt_1_what_are_trees)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ensembledef"><td></td><td>
+       <strong>ensembledef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="trees/el_1_what_is_ensemble.html#ensembledef"><code class="xref">ensembledef</code></a> <em>(trees/el_1_what_is_ensemble)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-errorDef"><td></td><td>
@@ -673,6 +750,14 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="basics/model_eval_4_bias_variance_tradeoff.html#generrordef"><code class="xref">generrordef</code></a> <em>(basics/model_eval_4_bias_variance_tradeoff)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-ginidef"><td></td><td>
+       <strong>ginidef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="trees/dt_2_cart_algorithm.html#ginidef"><code class="xref">ginidef</code></a> <em>(trees/dt_2_cart_algorithm)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-hypothesisFunction"><td></td><td>
@@ -763,6 +848,14 @@ title="Fullscreen mode"
        <a href="basics/log_reg_5_multiclass.html#multiclass1toalldef"><code class="xref">multiclass1toalldef</code></a> <em>(basics/log_reg_5_multiclass)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-nodesdef"><td></td><td>
+       <strong>nodesdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="trees/dt_1_what_are_trees.html#nodesdef"><code class="xref">nodesdef</code></a> <em>(trees/dt_1_what_are_trees)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-normalEquation"><td></td><td>
        <strong>normalEquation</strong></td><td></td></tr>
      <tr>
@@ -777,6 +870,22 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="basics/model_eval_4_bias_variance_tradeoff.html#overfittingdef"><code class="xref">overfittingdef</code></a> <em>(basics/model_eval_4_bias_variance_tradeoff)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-pseudodef"><td></td><td>
+       <strong>pseudodef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="trees/boost_3_gradient_boosting.html#pseudodef"><code class="xref">pseudodef</code></a> <em>(trees/boost_3_gradient_boosting)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-randomforestdef"><td></td><td>
+       <strong>randomforestdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="trees/el_2_random_forests.html#randomforestdef"><code class="xref">randomforestdef</code></a> <em>(trees/el_2_random_forests)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-regularizationdef"><td></td><td>
@@ -809,6 +918,14 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="basics/model_eval_3_roc_curve.html#rocdef"><code class="xref">rocdef</code></a> <em>(basics/model_eval_3_roc_curve)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-softhardvoterdef"><td></td><td>
+       <strong>softhardvoterdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="trees/el_1_what_is_ensemble.html#softhardvoterdef"><code class="xref">softhardvoterdef</code></a> <em>(trees/el_1_what_is_ensemble)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-softmaxdef"><td></td><td>

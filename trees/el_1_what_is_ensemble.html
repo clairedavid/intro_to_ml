@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Random Forests" href="el_2_random_forests.html" />
-    <link rel="prev" title="Ensemble Learning" href="ensemble_learning.html" />
+    <link rel="prev" title="Ensemble Learning" href="el_0_intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -271,8 +271,8 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="dt_and_boosting.html">
-   Decision Trees &amp; Boosting
+  <a class="reference internal" href="dt_0_and_boosting.html">
+   Decision Trees
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -298,7 +298,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="ensemble_learning.html">
+  <a class="reference internal" href="el_0_intro.html">
    Ensemble Learning
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -320,7 +320,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="boosting.html">
+  <a class="reference internal" href="boost_0_intro.html">
    Boosting
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -456,12 +456,46 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definition">
+   Definition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-results-are-combined">
+   How results are combined
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bagging-and-pasting">
+   Bagging and Pasting
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -473,6 +507,29 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definition">
+   Definition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-results-are-combined">
+   How results are combined
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bagging-and-pasting">
+   Bagging and Pasting
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -482,7 +539,57 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="what-is-ensemble-learning">
 <h1>What is Ensemble Learning?<a class="headerlink" href="#what-is-ensemble-learning" title="Permalink to this headline">#</a></h1>
-<p>COPY</p>
+<section id="definition">
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="ensembledef">
+<p class="admonition-title"><span class="caption-number">Definition 49 </span></p>
+<section class="definition-content" id="proof-content">
+<p>An <strong>Ensemble Learning</strong> is a technique consisting of aggregating the predictions of an Ensemble, i.e. a group of predictors.</p>
+<p>An Ensemble Learning algorithm is called an <strong>Ensemble method</strong>.</p>
+</section>
+</div><p>The more diverse the predictors within the ensemble, the better to obtain an accurate final prediction.
+The fascinating part: the global prediction not only outperforms each individual learners, but the predictors do not have to be that good for this to work. We refer to a not-so-good predictor as a <em>weak learner</em>. Once combined, the ensemble method can generate higher accuracy in the final prediction: it has become a <em>strong learner</em>.</p>
+<p>How are the individual results from the predictors combined?</p>
+</section>
+<section id="how-results-are-combined">
+<h2>How results are combined<a class="headerlink" href="#how-results-are-combined" title="Permalink to this headline">#</a></h2>
+<p>For regression, taking the average of the predicted values is the most natural way.</p>
+<p>For classification, the aggregation is done either through a counting of votes, i.e. which class receives the most predictions (each predictor produces one vote). Or via probability if the predictors provide this information along with the predicted class: the prediction associated with the highest probability wins.</p>
+<div class="proof definition admonition" id="softhardvoterdef">
+<p class="admonition-title"><span class="caption-number">Definition 50 </span></p>
+<section class="definition-content" id="proof-content">
+<p>When the combined result of an Ensemble method is done by:</p>
+<ul class="simple">
+<li><p>counting the class that gets the most votes among the predictors, i.e. a majority-vote aggregation, we call this is a <strong>hard voting</strong> classifier.</p></li>
+<li><p>choosing the class that comes with the highest associated probability (provided the information is available): this is a <strong>soft voting</strong> classifier.</p></li>
+</ul>
+</section>
+</div><p>The hard voting could appear advantageous, it is however impossible to know how confident each vote is, whereas the soft voting benefit from that information. Soft voting thus performs generally better.</p>
+<p>There is another concept important in ensemble learning: bagging.</p>
+</section>
+<section id="bagging-and-pasting">
+<h2>Bagging and Pasting<a class="headerlink" href="#bagging-and-pasting" title="Permalink to this headline">#</a></h2>
+<p>Remember that in ensemble learning, diversity is key. Yet it can be impractical to train very diverse learners, each having their own specificities and drawbacks to pay attention to. An alternative approach is to deal only with one algorithm but increase the diversity in the dataset. Like shuffling a deck of cards, bagging involves training predictors on randomized subsets of the dataset.</p>
+<div class="proof definition admonition" id="baggingdef">
+<p class="admonition-title"><span class="caption-number">Definition 51 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Bagging</strong>, short for <em>bootstrap aggregating</em>, is a method in ensemble learning consisting of resampling multiple times the dataset <em>with replacement</em>, i.e. the procedure can select a data point more than once in a resampled dataset.</p>
+<p><strong>Pasting</strong> refers to a similar protocol but <em>without replacement</em> (no repeated data points).</p>
+</section>
+</div><p>Recall the instability characteristic to decision trees. By varying the dataset multiple times, such instabilities are averaged out by all other predictions. In the end, even if each predictor is more biased (due to a given sampling), the aggregated results reduce both bias and variance.</p>
+<figure class="align-default" id="el-1-bagging">
+<a class="reference internal image-reference" href="../_images/el_1_bagging.png"><img alt="../_images/el_1_bagging.png" src="../_images/el_1_bagging.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">. Visual of bootstrap aggregating or bagging.<br />
+<sub>Source: Wikipedia</sub></span><a class="headerlink" href="#el-1-bagging" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="seealso admonition">
+<p class="admonition-title">Excercise</p>
+<p>How do we know from the picture above that it is bagging and not pasting?</p>
+</div>
+<p>So far we have said nothing from the type of predictors. Let’s see a particular example of ensemble method whose predictors are decision trees. The name follows naturally: it’s a forest.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -512,7 +619,7 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="ensemble_learning.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="el_0_intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>

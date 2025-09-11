@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Limitations" href="dt_3_limitations.html" />
@@ -271,8 +273,8 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="dt_and_boosting.html">
-   Decision Trees &amp; Boosting
+  <a class="reference internal" href="dt_0_and_boosting.html">
+   Decision Trees
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
@@ -298,7 +300,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="ensemble_learning.html">
+  <a class="reference internal" href="el_0_intro.html">
    Ensemble Learning
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -320,7 +322,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="boosting.html">
+  <a class="reference internal" href="boost_0_intro.html">
    Boosting
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -456,12 +458,46 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gini-the-metric">
+   Gini the metric
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-cost-function-in-cart">
+   The cost function in CART
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-cart-works">
+   How CART works
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -473,6 +509,29 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gini-the-metric">
+   Gini the metric
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-cost-function-in-cart">
+   The cost function in CART
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-cart-works">
+   How CART works
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -482,7 +541,108 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="the-cart-algorithm">
 <h1>The CART Algorithm<a class="headerlink" href="#the-cart-algorithm" title="Permalink to this headline">#</a></h1>
-<p>COPY</p>
+<p>The algorithm used for classification trees is called CART. It stands for Classification and Regression Tree.</p>
+<section id="gini-the-metric">
+<h2>Gini the metric<a class="headerlink" href="#gini-the-metric" title="Permalink to this headline">#</a></h2>
+<p>There are metrics entering in the optimization algorithm of a decision tree. The main one is the Gini impurity:</p>
+<div class="proof definition admonition" id="ginidef">
+<p class="admonition-title"><span class="caption-number">Definition 47 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>Gini’s diversity index</strong> is a measure of a node’s impurity.</p>
+<p>It is defined for each tree node <span class="math notranslate nohighlight">\(i\)</span> as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-7255fe37-dc12-427e-bfaf-1ee3c160bdbf">
+<span class="eqno">(50)<a class="headerlink" href="#equation-7255fe37-dc12-427e-bfaf-1ee3c160bdbf" title="Permalink to this equation">#</a></span>\[\begin{equation}
+G_i = 1 - \sum_{k=1}^{N_\text{classes}} \left( \frac{N_{k, i}}{ N_i} \right)^2 = 1 - \sum_{k=1}^{N_\text{classes}} \left( p_k \right)^2
+\end{equation}\]</div>
+<p>with <span class="math notranslate nohighlight">\(N_{k, i}\)</span> the number of data samples of class <span class="math notranslate nohighlight">\(k\)</span> in node <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(N_{i}\)</span> the total number of data samples in node <span class="math notranslate nohighlight">\(i\)</span>. The terms <span class="math notranslate nohighlight">\(p_k\)</span> in the sum are equivalent to the probability of getting a sample of class <span class="math notranslate nohighlight">\(k\)</span> in the node <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>The Gini’s impurity index ranges from 0 (100% pure node) to 1 (very impure node).</p>
+</section>
+</div><p>If a node has an equal amount of data points from two classes, let’s say 500 points each, the Gini index will be:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9aa96ef7-af32-450a-819f-bdcf8a0eb611">
+<span class="eqno">(51)<a class="headerlink" href="#equation-9aa96ef7-af32-450a-819f-bdcf8a0eb611" title="Permalink to this equation">#</a></span>\[\begin{equation}
+G_i = 1 - \left( \frac{500}{1000} \right)^2 - \left( \frac{500}{1000} \right)^2 = 0.5 
+\end{equation}\]</div>
+<p>With three classes present in equal quantities, it will be <span class="math notranslate nohighlight">\(\frac{2}{3}\)</span>, for four, <span class="math notranslate nohighlight">\(\frac{3}{4}\)</span>, etc.</p>
+</section>
+<section id="the-cost-function-in-cart">
+<h2>The cost function in CART<a class="headerlink" href="#the-cost-function-in-cart" title="Permalink to this headline">#</a></h2>
+<p>Once again, we will need a cost function to minimize. This cost function will be defined at a given node containing <span class="math notranslate nohighlight">\(N_\text{node}\)</span> data samples.</p>
+<div class="proof definition admonition" id="costCART">
+<p class="admonition-title"><span class="caption-number">Definition 48 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The cost function for CART is defined as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-60d3e28f-427c-4912-a38c-241eab9687b4">
+<span class="eqno">(52)<a class="headerlink" href="#equation-60d3e28f-427c-4912-a38c-241eab9687b4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+C(j, t_j) = \frac{N_\text{left}}{N_\text{node}} G_\text{left} + \frac{N_\text{right}}{N_\text{node}} G_\text{right}
+\end{equation}\]</div>
+</section>
+</div><p>It is a sum where the purity of each subset is weighted by the subset sizes. In the literature, you may see the terms left and right. They translate as:</p>
+<ul class="simple">
+<li><p>left: all data points whose feature <span class="math notranslate nohighlight">\(x_j\)</span> is such that <span class="math notranslate nohighlight">\(x_j &lt; t_j\)</span></p></li>
+<li><p>right: all data points whose feature <span class="math notranslate nohighlight">\(x_j\)</span> is such that <span class="math notranslate nohighlight">\(x_j \geq t_j\)</span></p></li>
+</ul>
+<p>We will see the role of the hyperparameters later. For now, let’s now go through the steps of the algorithm.</p>
+</section>
+<section id="how-cart-works">
+<h2>How CART works<a class="headerlink" href="#how-cart-works" title="Permalink to this headline">#</a></h2>
+<div class="proof algorithm admonition" id="DTalgo">
+<p class="admonition-title"><span class="caption-number">Algorithm 3 </span> (Classification and Regression Tree)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs</strong></p>
+<ul class="simple">
+<li><p>Training data set <span class="math notranslate nohighlight">\(X\)</span> of <span class="math notranslate nohighlight">\(m\)</span> samples with each <span class="math notranslate nohighlight">\(n\)</span> input features, associated with their targets <span class="math notranslate nohighlight">\(y\)</span></p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+X = \begin{pmatrix}
+x_1^{(1)} &amp; x_2^{(1)} &amp; \cdots  &amp; x_j^{(1)} &amp; \cdots &amp; x_n^{(1)} \\[2ex]
+x_1^{(2)} &amp; x_2^{(2)} &amp; \cdots &amp; x_j^{(2)} &amp; \cdots &amp; x_n^{(2)} \\
+\vdots  &amp; \vdots &amp; \ddots  &amp; \vdots &amp;  &amp; \vdots \\
+x_1^{(i)} &amp; x_2^{(i)} &amp; \cdots &amp; x_j^{(i)} &amp; \cdots &amp; x_n^{(i)} \\
+\vdots &amp; \vdots &amp;  &amp; \vdots &amp; \ddots  &amp; \vdots \\
+x_1^{(m)} &amp; x_2^{(m)} &amp; \cdots &amp; x_j^{(m)} &amp; \cdots &amp; x_n^{(m)} \\
+\end{pmatrix}  \hspace{10ex}  y = \begin{pmatrix}
+y^{(1)} \\[2ex]
+y^{(2)} \\[2ex]
+\vdots  \\
+y^{(i)}\\
+\vdots \\[2ex]
+y^{(m)}\end{pmatrix}
+\end{equation*}\]</div>
+<p><strong>Hyperparameters</strong></p>
+<ul class="simple">
+<li><p>Max Depth</p></li>
+<li><p>Minimum sample split</p></li>
+<li><p>Minimum samples per leaf,</p></li>
+<li><p>Maximum leaf nodes<br />
+(non-exhaustive list)</p></li>
+</ul>
+<p><strong>Outputs</strong><br />
+A collection on decision boundaries segmenting the <span class="math notranslate nohighlight">\(j\)</span> feature space.</p>
+<p><strong>Initialization:</strong> at the root node</p>
+<p><strong>STEP 1: THRESHOLD COMPUTATION</strong>:</p>
+<p><strong>For</strong> each feature <span class="math notranslate nohighlight">\(j\)</span> from 1 to <span class="math notranslate nohighlight">\(n\)</span>:<br />
+ <br />
+<span class="math notranslate nohighlight">\(\;\;\;\)</span>  <strong>For</strong> a value of <span class="math notranslate nohighlight">\(t_j\)</span> scanning the range <span class="math notranslate nohighlight">\(x^\text{min}_j\)</span> to <span class="math notranslate nohighlight">\(x^\text{max}_j\)</span>:<br />
+ <br />
+<span class="math notranslate nohighlight">\(\;\;\;\;\;\; \rightarrow\)</span> Compute the cost function <span class="math notranslate nohighlight">\(C(j, t_j)\)</span><br />
+ <br />
+<span class="math notranslate nohighlight">\(\;\;\;\;\;\; \rightarrow\)</span> Find the pair <span class="math notranslate nohighlight">\((j, t_j)\)</span> that produces the purest subsets, i.e. so that it minimizes:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-04ffb2dc-f694-441f-bc1d-52db883f5af7">
+<span class="eqno">(53)<a class="headerlink" href="#equation-04ffb2dc-f694-441f-bc1d-52db883f5af7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\min_{(j, \: t_j)} C(j, t_j)
+\end{equation}\]</div>
+<p><strong>STEP 2: BRANCHING</strong>:<br />
+Split the dataset along the feature <span class="math notranslate nohighlight">\(j\)</span> using the threshold <span class="math notranslate nohighlight">\(t_j\)</span> into two subsequent new nodes.</p>
+<p>Repeat Step 1 at each new node.</p>
+<p><strong>Exit conditions</strong><br />
+At least one condition on one of the hyperparameters is fullfilled</p>
+</section>
+</div><p>One of the greatest strength of decision tree is the fact very few assumptions about the training data are made. It differs from linear or polynomial models where we need to know beforehand that the data can be fit with either linear or polynomial function.</p>
+<p>Another advantage: feature scaling is not necessary. No need to standardize the dataset beforehand.</p>
+<p>Decision trees are also easy to interpret. It’s possible to check calculations and apply the classification rules even manually. Such clarity in the algorithm, often called <em>white box</em> models, contrasts with the <em>black boxes</em> that are for instance neural networks.</p>
+<p>Despite these advantages, decision trees have several limitations.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

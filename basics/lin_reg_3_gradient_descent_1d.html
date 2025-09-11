@@ -228,7 +228,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="log_reg_5_multiclass.html">
-     More than two categories: multiclassification
+     Multiclass Classification
     </a>
    </li>
   </ul>
@@ -261,6 +261,89 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="model_eval_4_bias_variance_tradeoff.html">
      Bias &amp; Variance: a Tradeoff
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Decision trees and boosting
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../trees/dt_0_and_boosting.html">
+   Decision Trees
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/dt_1_what_are_trees.html">
+     What are Decision Trees?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/dt_2_cart_algorithm.html">
+     The CART Algorithm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/dt_3_limitations.html">
+     Limitations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../trees/el_0_intro.html">
+   Ensemble Learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/el_1_what_is_ensemble.html">
+     What is Ensemble Learning?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/el_2_random_forests.html">
+     Random Forests
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../trees/boost_0_intro.html">
+   Boosting
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/boost_1_what_is_boosting.html">
+     What is Boosting?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/boost_2_adaboost.html">
+     AdaBoost
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/boost_3_gradient_boosting.html">
+     Gradient Boosting
     </a>
    </li>
   </ul>
@@ -496,15 +579,15 @@ title="Print to PDF"
 <p class="admonition-title"><span class="caption-number">Definition 6 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>Normal Equation</strong> gives the exact solution for the parameters that minimize the mean squared error in linear regression. For a dataset with input matrix <span class="math notranslate nohighlight">\(X\)</span> and output vector <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-67498a3f-d49d-425a-9979-0d5a4c4af193">
-<span class="eqno">(5)<a class="headerlink" href="#equation-67498a3f-d49d-425a-9979-0d5a4c4af193" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4eba0a32-33cb-49b4-9691-aaefeb87a5a9">
+<span class="eqno">(5)<a class="headerlink" href="#equation-4eba0a32-33cb-49b4-9691-aaefeb87a5a9" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \theta = (X^T X)^{-1} X^T \boldsymbol{y}
 \end{equation}\]</div>
 </section>
 </div><p>Here, <span class="math notranslate nohighlight">\(X\)</span> includes a column of ones for the intercept term. This formula computes the optimal parameters directly.</p>
 <p>In our 1D case with a single input feature, the parameters can also be written explicitly as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d824e4db-01a6-4b23-9bff-d83a1d636996">
-<span class="eqno">(6)<a class="headerlink" href="#equation-d824e4db-01a6-4b23-9bff-d83a1d636996" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6bac3fc6-b741-4078-9b88-d6dc286a28b1">
+<span class="eqno">(6)<a class="headerlink" href="#equation-6bac3fc6-b741-4078-9b88-d6dc286a28b1" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \theta_1 = \frac{\sum_i (x_i - \bar{x})(y_i - \bar{y})}{\sum_i (x_i - \bar{x})^2}, \quad
 \theta_0 = \bar{y} - \theta_1 \bar{x}
 \end{equation}\]</div>
