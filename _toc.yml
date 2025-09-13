@@ -61,4 +61,32 @@ parts:
       - file: trees/boost_2_adaboost
       - file: trees/boost_3_gradient_boosting
 
+  - caption: Neural Networks
+    numbered: false
+    chapters:
+    - file: nn/nn_0_intro
+
+    - file: nn/nn_1_motivations
+
+    - file: nn/model_rep
+      sections:
+      - file: nn/model_rep_1_neurons
+      - file: nn/model_rep_2_activation_functions
+      - file: nn/model_rep_3_loss_cost
+
+    - file: nn/training_0_intro
+      sections:
+      - file: nn/training_1_forward_prop
+      - file: nn/training_2_backprop
+      - file: nn/training_3_init
+
+    - file: nn/optim_0_intro
+      sections:
+      - file: nn/optim_1_sdg
+      - file: nn/optim_2_hyperparams
+      - file: nn/optim_3_lr_scheduling
+      - file: nn/optim_4_adaptive_methods
+    
+
+
 
