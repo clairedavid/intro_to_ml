@@ -1,4 +1,4 @@
-# Neural Networks: Introduction
+# Introduction
 
 The present and following lectures introduce artificial neural networks, computational models inspired by biological neural connections.
 
