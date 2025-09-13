@@ -349,6 +349,109 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Neural Networks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../nn/nn_0_intro.html">
+   Neural Networks: Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../nn/nn_1_motivations.html">
+   Motivations
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../nn/model_rep.html">
+   Model Representation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nn/model_rep_1_neurons.html">
+     The basic units: neurons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nn/model_rep_2_activation_functions.html">
+     Activation Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nn/model_rep_3_loss_cost.html">
+     Loss and Cost Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../nn/training_0_intro.html">
+   Training Neural Networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nn/training_1_forward_prop.html">
+     Forward Propagation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nn/training_2_backprop.html">
+     Backpropagation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nn/training_3_init.html">
+     Initialization schemes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../nn/optim_0_intro.html">
+   Optimizing Neural Networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nn/optim_1_sdg.html">
+     Stochastic Gradient Descent
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nn/optim_2_hyperparams.html">
+     Hyperparameter Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nn/optim_3_lr_scheduling.html">
+     Learning Rate Schedulers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nn/optim_4_adaptive_methods.html">
+     Adaptive Optimizers
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -687,7 +790,7 @@ In machine learning, we look for general patterns and compromises: a good algori
 <p>But there is a trick! Let’s have those degrees of freedom (you get that with low-degree polynomials, we are stuck) but let’s add a constraint so as to tame the overfitting. This is called regularization.</p>
 </section>
 <section id="regularization-to-cope-with-overtraining">
-<h2>Regularization to cope with overtraining<a class="headerlink" href="#regularization-to-cope-with-overtraining" title="Permalink to this headline">#</a></h2>
+<span id="modeval-reg"></span><h2>Regularization to cope with overtraining<a class="headerlink" href="#regularization-to-cope-with-overtraining" title="Permalink to this headline">#</a></h2>
 <p>In <a class="reference internal" href="#modeval-underoverfit"><span class="std std-numref">Fig. 22</span></a>, the model on the right that overfits the data is extremely wiggly. To produce such sharp peaks, some of the polynomial’s coefficients (the model parameters) must take on very large values to “force” the curve through the points. What if we added the values of the model parameters (the <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> components) to the cost function? Since the cost is to be minimized, this could discourage the curve from becoming too wiggly. This is the idea behind the most common regularization techniques.</p>
 <div class="proof definition admonition" id="regularizationdef">
 <p class="admonition-title"><span class="caption-number">Definition 39 </span></p>

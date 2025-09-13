@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Model Evaluation &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    <title>Neural Network Part I &#8212; Introduction&lt;br&gt; to Machine Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Splitting Datasets for Evaluation" href="model_eval_1_train_test_split.html" />
-    <link rel="prev" title="Multiclass Classification" href="log_reg_5_multiclass.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -151,9 +149,9 @@ const thebe_selector_output = ".output, .cell_output"
   The basics
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="linear_regression.html">
+  <a class="reference internal" href="../basics/linear_regression.html">
    Warm-up: Linear Regression
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -163,39 +161,39 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="lin_reg_1_notations.html">
+    <a class="reference internal" href="../basics/lin_reg_1_notations.html">
      Notations
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lin_reg_2_cost_function.html">
+    <a class="reference internal" href="../basics/lin_reg_2_cost_function.html">
      Cost Function in Linear Regression
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lin_reg_3_gradient_descent_1d.html">
+    <a class="reference internal" href="../basics/lin_reg_3_gradient_descent_1d.html">
      Gradient Descent in 1D
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lin_reg_4_gradient_descent_multiD.html">
+    <a class="reference internal" href="../basics/lin_reg_4_gradient_descent_multiD.html">
      Multivariate Linear Regression
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lin_reg_5_learning_rate.html">
+    <a class="reference internal" href="../basics/lin_reg_5_learning_rate.html">
      Learning Rate
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lin_reg_6_gradient_descent_in_practice.html">
+    <a class="reference internal" href="../basics/lin_reg_6_gradient_descent_in_practice.html">
      Gradient Descent in Practice
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="logistic_regression.html">
+  <a class="reference internal" href="../basics/logistic_regression.html">
    Logistic Regression
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -205,59 +203,59 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="log_reg_1_intro.html">
+    <a class="reference internal" href="../basics/log_reg_1_intro.html">
      Logistic Regression: introduction
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="log_reg_2_sigmoid.html">
+    <a class="reference internal" href="../basics/log_reg_2_sigmoid.html">
      What is the Sigmoid Function?
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="log_reg_3_cost_function.html">
+    <a class="reference internal" href="../basics/log_reg_3_cost_function.html">
      Cost Function for Classification
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="log_reg_4_gradient_descent.html">
+    <a class="reference internal" href="../basics/log_reg_4_gradient_descent.html">
      Gradient Descent for Logistic Regression
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="log_reg_5_multiclass.html">
+    <a class="reference internal" href="../basics/log_reg_5_multiclass.html">
      Multiclass Classification
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../basics/model_evaluation.html">
    Model Evaluation
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="model_eval_1_train_test_split.html">
+    <a class="reference internal" href="../basics/model_eval_1_train_test_split.html">
      Splitting Datasets for Evaluation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="model_eval_2_perf_metrics.html">
+    <a class="reference internal" href="../basics/model_eval_2_perf_metrics.html">
      Performance Metrics
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="model_eval_3_roc_curve.html">
+    <a class="reference internal" href="../basics/model_eval_3_roc_curve.html">
      Let’s ROC!
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="model_eval_4_bias_variance_tradeoff.html">
+    <a class="reference internal" href="../basics/model_eval_4_bias_variance_tradeoff.html">
      Bias &amp; Variance: a Tradeoff
     </a>
    </li>
@@ -354,17 +352,17 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../nn/nn_0_intro.html">
+  <a class="reference internal" href="nn_0_intro.html">
    Neural Networks: Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../nn/nn_1_motivations.html">
+  <a class="reference internal" href="nn_1_motivations.html">
    Motivations
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../nn/model_rep.html">
+  <a class="reference internal" href="model_rep.html">
    Model Representation
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
@@ -374,24 +372,24 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/model_rep_1_neurons.html">
+    <a class="reference internal" href="model_rep_1_neurons.html">
      The basic units: neurons
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/model_rep_2_activation_functions.html">
+    <a class="reference internal" href="model_rep_2_activation_functions.html">
      Activation Functions
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/model_rep_3_loss_cost.html">
+    <a class="reference internal" href="model_rep_3_loss_cost.html">
      Loss and Cost Functions
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../nn/training_0_intro.html">
+  <a class="reference internal" href="training_0_intro.html">
    Training Neural Networks
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
@@ -401,24 +399,24 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/training_1_forward_prop.html">
+    <a class="reference internal" href="training_1_forward_prop.html">
      Forward Propagation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/training_2_backprop.html">
+    <a class="reference internal" href="training_2_backprop.html">
      Backpropagation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/training_3_init.html">
+    <a class="reference internal" href="training_3_init.html">
      Initialization schemes
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../nn/optim_0_intro.html">
+  <a class="reference internal" href="optim_0_intro.html">
    Optimizing Neural Networks
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
@@ -428,22 +426,22 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_1_sdg.html">
+    <a class="reference internal" href="optim_1_sdg.html">
      Stochastic Gradient Descent
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_2_hyperparams.html">
+    <a class="reference internal" href="optim_2_hyperparams.html">
      Hyperparameter Search
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_3_lr_scheduling.html">
+    <a class="reference internal" href="optim_3_lr_scheduling.html">
      Learning Rate Schedulers
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_4_adaptive_methods.html">
+    <a class="reference internal" href="optim_4_adaptive_methods.html">
      Adaptive Optimizers
     </a>
    </li>
@@ -500,6 +498,35 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/nn/nn_1_plots.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -522,7 +549,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/basics/model_evaluation.md"
+        <a href="../_sources/nn/nn_1_plots.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -533,7 +560,7 @@ title="Download source file"
 <span class="headerbtn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="headerbtn__text-container">.md</span>
+<span class="headerbtn__text-container">.ipynb</span>
 </a>
 
       </li>
@@ -571,7 +598,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Model Evaluation</h1>
+                <h1>Neural Network Part I</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -583,23 +610,50 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="model-evaluation">
-<h1>Model Evaluation<a class="headerlink" href="#model-evaluation" title="Permalink to this headline">#</a></h1>
-<p>How can we assess the quality of a machine learning model?<br />
-How can we detect underfitting or overfitting?<br />
-How can we adjust the algorithm to achieve a good fit?</p>
-<p>This section will introduce key concepts and tools to evaluate and improve your model.</p>
-<p>Learning outcomes:</p>
-<ul class="simple">
-<li><p>Understand the purpose of splitting data into different sets (training, validation, test)</p></li>
-<li><p>Become familiar with cross-validation techniques</p></li>
-<li><p>Learn common metrics for regression and classification</p></li>
-<li><p>Understand how the ROC curve is constructed step by step</p></li>
-<li><p>Grasp the concepts of bias and variance and the tradeoff between them</p></li>
-<li><p>Define overfitting and underfitting and identify when they occur</p></li>
-<li><p>Know strategies to cope with high bias or high variance situations</p></li>
-</ul>
-<div class="toctree-wrapper compound">
+  <section class="tex2jax_ignore mathjax_ignore" id="neural-network-part-i">
+<h1>Neural Network Part I<a class="headerlink" href="#neural-network-part-i" title="Permalink to this headline">#</a></h1>
+<p>Recreating spiral dataset from <a class="reference external" href="https://gist.github.com/45deg/e731d9e7f478de134def5668324c44c5">source</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">pi</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">myst_nb</span> <span class="kn">import</span> <span class="n">glue</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">400</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">))</span><span class="o">*</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span> <span class="c1"># np.linspace(0,2*pi,100)</span>
+
+<span class="n">r_a</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">theta</span> <span class="o">+</span> <span class="n">pi</span>
+<span class="n">data_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">r_a</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">r_a</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">x_a</span> <span class="o">=</span> <span class="n">data_a</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">r_b</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">theta</span> <span class="o">-</span> <span class="n">pi</span>
+<span class="n">data_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">r_b</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">r_b</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">x_b</span> <span class="o">=</span> <span class="n">data_b</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">res_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_a</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">res_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_b</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">N</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">res_a</span><span class="p">,</span> <span class="n">res_b</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_a</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">x_a</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_b</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">x_b</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_1$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x_2$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">])</span>
+
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;spiral_data&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/nn_1_plots_1_1.png" src="../_images/nn_1_plots_1_1.png" />
+</div>
 </div>
 </section>
 
@@ -616,7 +670,7 @@ How can we adjust the algorithm to achieve a good fit?</p>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./basics"
+            path: "./nn"
         },
         predefinedOutput: true
     }
@@ -630,20 +684,6 @@ How can we adjust the algorithm to achieve a good fit?</p>
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="log_reg_5_multiclass.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Multiclass Classification</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="model_eval_1_train_test_split.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Splitting Datasets for Evaluation</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>

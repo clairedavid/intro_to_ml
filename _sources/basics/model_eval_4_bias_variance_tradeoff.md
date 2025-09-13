@@ -54,7 +54,7 @@ Capacity is not a formal term, but it is linked to the number of degrees of free
 
 But there is a trick! Let's have those degrees of freedom (you get that with low-degree polynomials, we are stuck) but let's add a constraint so as to tame the overfitting. This is called regularization. 
 
-
+(modEval:reg)=
 ## Regularization to cope with overtraining
 
 In {numref}`modEval_underoverfit`, the model on the right that overfits the data is extremely wiggly. To produce such sharp peaks, some of the polynomial’s coefficients (the model parameters) must take on very large values to “force” the curve through the points. What if we added the values of the model parameters (the $\boldsymbol{\theta}$ components) to the cost function? Since the cost is to be minimized, this could discourage the curve from becoming too wiggly. This is the idea behind the most common regularization techniques.

@@ -1,0 +1,983 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>The basic units: neurons &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Activation Functions" href="model_rep_2_activation_functions.html" />
+    <link rel="prev" title="Essential Concepts" href="model_rep.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction<br> to Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About this course
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/teaching_philosophy.html">
+   Teaching philosophy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/instructor.html">
+   Instructor &amp; Credits
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/tools.html">
+   Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/evaluation.html">
+   Evaluation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  The basics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../basics/linear_regression.html">
+   Warm-up: Linear Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lin_reg_1_notations.html">
+     Notations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lin_reg_2_cost_function.html">
+     Cost Function in Linear Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lin_reg_3_gradient_descent_1d.html">
+     Gradient Descent in 1D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lin_reg_4_gradient_descent_multiD.html">
+     Multivariate Linear Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lin_reg_5_learning_rate.html">
+     Learning Rate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lin_reg_6_gradient_descent_in_practice.html">
+     Gradient Descent in Practice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../basics/logistic_regression.html">
+   Logistic Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/log_reg_1_intro.html">
+     Logistic Regression: introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/log_reg_2_sigmoid.html">
+     What is the Sigmoid Function?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/log_reg_3_cost_function.html">
+     Cost Function for Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/log_reg_4_gradient_descent.html">
+     Gradient Descent for Logistic Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/log_reg_5_multiclass.html">
+     Multiclass Classification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../basics/model_evaluation.html">
+   Model Evaluation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/model_eval_1_train_test_split.html">
+     Splitting Datasets for Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/model_eval_2_perf_metrics.html">
+     Performance Metrics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/model_eval_3_roc_curve.html">
+     Let’s ROC!
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/model_eval_4_bias_variance_tradeoff.html">
+     Bias &amp; Variance: a Tradeoff
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Decision trees and boosting
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../trees/dt_0_and_boosting.html">
+   Decision Trees
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/dt_1_what_are_trees.html">
+     What are Decision Trees?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/dt_2_cart_algorithm.html">
+     The CART Algorithm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/dt_3_limitations.html">
+     Limitations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../trees/el_0_intro.html">
+   Ensemble Learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/el_1_what_is_ensemble.html">
+     What is Ensemble Learning?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/el_2_random_forests.html">
+     Random Forests
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../trees/boost_0_intro.html">
+   Boosting
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/boost_1_what_is_boosting.html">
+     What is Boosting?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/boost_2_adaboost.html">
+     AdaBoost
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/boost_3_gradient_boosting.html">
+     Gradient Boosting
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Neural Networks
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="nn_0_intro.html">
+   Neural Networks: Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nn_1_motivations.html">
+   Motivations
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="model_rep.html">
+   Essential Concepts
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     The basic units: neurons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_rep_2_activation_functions.html">
+     Activation Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_rep_3_loss_cost.html">
+     Loss and Cost Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="training_0_intro.html">
+   Training Neural Networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="training_1_forward_prop.html">
+     Feedforward Propagation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="training_2_backprop.html">
+     Backpropagation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="training_3_init.html">
+     Initialization schemes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="optim_0_intro.html">
+   Optimizing Neural Networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="optim_1_sdg.html">
+     Stochastic Gradient Descent
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="optim_2_hyperparams.html">
+     Hyperparameter Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="optim_3_lr_scheduling.html">
+     Learning Rate Schedulers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="optim_4_adaptive_methods.html">
+     Adaptive Optimizers
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/nn/model_rep_1_neurons.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#biological-neuron">
+   Biological neuron
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#artificial-neuron">
+   Artificial neuron
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-perceptron">
+   The Perceptron
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#presentation">
+     Presentation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#train-a-perceptron">
+     Train a perceptron!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#limitation-and-abandon">
+     Limitation and… abandon
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connecting-artificial-neurons">
+   Connecting artificial neurons
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#layers">
+     Layers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deep-or-not-deep-is-that-a-question">
+     Deep or not deep: is that a question?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>The basic units: neurons</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#biological-neuron">
+   Biological neuron
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#artificial-neuron">
+   Artificial neuron
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-perceptron">
+   The Perceptron
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#presentation">
+     Presentation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#train-a-perceptron">
+     Train a perceptron!
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#limitation-and-abandon">
+     Limitation and… abandon
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connecting-artificial-neurons">
+   Connecting artificial neurons
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#layers">
+     Layers
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#deep-or-not-deep-is-that-a-question">
+     Deep or not deep: is that a question?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="the-basic-units-neurons">
+<h1>The basic units: neurons<a class="headerlink" href="#the-basic-units-neurons" title="Permalink to this headline">#</a></h1>
+<section id="biological-neuron">
+<h2>Biological neuron<a class="headerlink" href="#biological-neuron" title="Permalink to this headline">#</a></h2>
+<figure class="align-default" id="model-rep-1-neuron-bio">
+<a class="reference internal image-reference" href="../_images/model_rep_1_neuron_bio.png"><img alt="../_images/model_rep_1_neuron_bio.png" src="../_images/model_rep_1_neuron_bio.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">. Anatomy of a brain cell, the neuron.<br />
+<sub>Source: <a class="reference external" href="https://en.wikipedia.org/wiki/Neuron#/media/File:Blausen_0657_MultipolarNeuron.png">Wikimedia - BruceBlaus</a> </sub></span><a class="headerlink" href="#model-rep-1-neuron-bio" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>As neural networks are inspired from biological brain cells, let’s start with an anatomical introduction. Neurons are each made of a cell body and one long extension called axon, which at the end has ramifications to connect to other neurons’ dentritic branches (around the next neuron cell’s body). The information propagates in the form an electric signal along the axon. At the end of the axon’s branches (telodendria) are synaptic terminals that are terminal structures releasing, depending on the electrical impulse, chemical messengers called neurotransmitters. Those transmitters propagate the information chemically to the next neuron.</p>
+</section>
+<section id="artificial-neuron">
+<span id="artif-neuron"></span><h2>Artificial neuron<a class="headerlink" href="#artificial-neuron" title="Permalink to this headline">#</a></h2>
+<p>The first scientists who started to model how biological neurons might work were the neurophysiologist Warren McCulloch and the mathematician Walter Pitts back in … 1943!</p>
+<div class="seealso admonition">
+<p class="admonition-title">Learn More</p>
+<p>Let’s go to the source!<br />
+If you are curious to read the original paper marking the birth of the artificial neuron:<br />
+<a class="reference external" href="https://link.springer.com/article/10.1007/BF02478259">Warren S. McCulloch and Walter Pitts, <em>A Logical Calculus of the Ideas Immanent in Nervous Activity</em> (1943)</a>
+pgsql
+Copy code</p>
+</div>
+<div class="proof definition admonition" id="andef">
+<p class="admonition-title"><span class="caption-number">Definition 55 </span></p>
+<section class="definition-content" id="proof-content">
+<p>An <strong>artificial neuron</strong> is an elementary computational unit of artificial neural networks.</p>
+<p>It receives inputs from the dataset or other artificial neurons, combine the information and provide output value(s).</p>
+<p>Each input values <span class="math notranslate nohighlight">\(x_j\)</span> is associated with a weight <span class="math notranslate nohighlight">\(w_j\)</span>. In terms of components and notations:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_j\)</span>: input values</p></li>
+<li><p><span class="math notranslate nohighlight">\(w_j\)</span>: weights</p></li>
+<li><p><span class="math notranslate nohighlight">\(b\)</span>: bias term</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sum\)</span>: weighted sum</p></li>
+<li><p><span class="math notranslate nohighlight">\(f\)</span>: activation function</p></li>
+</ul>
+</section>
+</div><figure class="align-default" id="model-rep-1-neuron-art">
+<a class="reference internal image-reference" href="../_images/model_rep_1_neuron_art.png"><img alt="../_images/model_rep_1_neuron_art.png" src="../_images/model_rep_1_neuron_art.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">. Schematics of an artificial neuron. The artificial neuron (center blue) receives <span class="math notranslate nohighlight">\(x_n\)</span> input features and a bias term <span class="math notranslate nohighlight">\(b\)</span>. It computes a weighted sum <span class="math notranslate nohighlight">\(\sum\)</span>. The activation function <span class="math notranslate nohighlight">\(f\)</span> decides if the neuron is activated, i.e. ‘fires’ the information to the output value <span class="math notranslate nohighlight">\(\hat{y}\)</span>.<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#model-rep-1-neuron-art" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The weights of an input node is indicative of the strength of this node.</p>
+<p>The bias gives the ability to shift the activation curve up and down. It does not depend on any input.</p>
+</div>
+<p>Now the maths behind a neuron. Recall the linear regression’s sum for the hypothesis function: <span class="math notranslate nohighlight">\(h_\boldsymbol{\theta}(\boldsymbol{x}^{(i)}) = \sum_{j=0}^n \theta_j x^{(i)}_j\)</span>. We had an intercept term <span class="math notranslate nohighlight">\(\theta_0\)</span> that was multiplied with <span class="math notranslate nohighlight">\(x_0\)</span>, where we assumed by convention that <span class="math notranslate nohighlight">\(x_0 = 1\)</span>. We could write it within the sum as we did previously, but in the literature of neural networks, it is usually explicitely written outside of the weighted sum from the input values (see the comment in the margin). The <span class="math notranslate nohighlight">\(f\)</span> represents the activation function, defined below. So the output of an artificial neuron is given by this key equation:</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>We used to write <span class="math notranslate nohighlight">\(h_\boldsymbol{\theta}(\boldsymbol{x})\)</span> for the hypothesis function while computing linear and logistic regression algorithms. It is still valid if we consider <span class="math notranslate nohighlight">\(\theta = ( \boldsymbol{w}, b)\)</span>, where <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span> is a vector of weights <span class="math notranslate nohighlight">\(w_1, w_2, \cdots, w_n\)</span> and <span class="math notranslate nohighlight">\(b\)</span> the bias term (playing the role of <span class="math notranslate nohighlight">\(\theta_0\)</span>). To distinguish notations between regression and neural network, let’s prefer here the notation: <span class="math notranslate nohighlight">\(h_{\boldsymbol{w}, b}(x)\)</span> for the weighted sum.</p>
+</aside>
+<div class="math notranslate nohighlight" id="equation-aneq">
+<span class="eqno">(69)<a class="headerlink" href="#equation-aneq" title="Permalink to this equation">#</a></span>\[\hat{y} = f\left(\sum_{j=1}^n w_j x_j + b \right)\]</div>
+<p>This operation is done for one sample row <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(i)}\)</span>, hence reserving the <span class="math notranslate nohighlight">\(i\)</span> index for the sample instances. The sum is done over the input features <span class="math notranslate nohighlight">\(j\)</span> (columns of the <span class="math notranslate nohighlight">\(X\)</span> input matrix). Here the sum starts at <span class="math notranslate nohighlight">\(j=1\)</span> and not zero as the intercept term is written outside of the sum as <span class="math notranslate nohighlight">\(b\)</span>.</p>
+<p>We will say more about activation functions soon, for now let’s write a simple definition:</p>
+<div class="proof definition admonition" id="activfuncdef">
+<p class="admonition-title"><span class="caption-number">Definition 56 </span></p>
+<section class="definition-content" id="proof-content">
+<p>An <strong>Activation Function</strong>, also called Transfer Function, is a mathematical operation performed by an artificial neuron on the weighted summed of input nodes (plus the bias node).</p>
+<p>As the name indicates, it decides whether the neuron’s input to the network is important or not: returning a non-zero value means the <strong>neuron is “activated”</strong>, or “fired.”</p>
+<p>The purpose of the activation function is to introduce <strong>non-linearity</strong> into the output of a neural network.</p>
+</section>
+</div><p>A catalogue of activation functions is coming in the next section.</p>
+<p>Now you may wonder how one can compute complex functions with such a simple operating unit. We will see this once we ‘chain’ neurons in different layers. But before that, can one single neuron still be considered a neural network?</p>
+<p>Yes it can! And it has a name: it is called the perceptron.</p>
+</section>
+<section id="the-perceptron">
+<h2>The Perceptron<a class="headerlink" href="#the-perceptron" title="Permalink to this headline">#</a></h2>
+<section id="presentation">
+<h3>Presentation<a class="headerlink" href="#presentation" title="Permalink to this headline">#</a></h3>
+<div class="proof definition admonition" id="perceptrondef">
+<p class="admonition-title"><span class="caption-number">Definition 57 </span></p>
+<section class="definition-content" id="proof-content">
+<p>A <strong>Perceptron</strong> is a neural network based on a single specific artificial neuron called a Threshold Logic Unit (TLU) or Linear Threshold Unit (LTU), where the activation function is a step function.</p>
+<p>It computes a weighted sum of real-valued inputs, has a bias term in the form of an extra node and yield the output:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+h_{\boldsymbol{w},b} = \text{step} \left( \boldsymbol{w}^T x + b \right)
+\end{equation*}\]</div>
+<p>A perceptron is thus a linear binary classifier.</p>
+</section>
+</div><figure class="align-default" id="model-rep-1-perceptron">
+<a class="reference internal image-reference" href="../_images/model_rep_1_perceptron.png"><img alt="../_images/model_rep_1_perceptron.png" src="../_images/model_rep_1_perceptron.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">. Schematics of a perceptron.<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#model-rep-1-perceptron" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The step functions generally employed are the <em>Heaviside</em> or the <em>sign</em> functions:</p>
+<div class="math notranslate nohighlight" id="equation-heaviside">
+<span class="eqno">(70)<a class="headerlink" href="#equation-heaviside" title="Permalink to this equation">#</a></span>\[\begin{split}\forall \: z \in  \mathbb{R}, \: \: H(z) =
+\begin{cases}
+\;\;  1 &amp; \text{ if } z \geq  0 \\
+\;\;  0 &amp; \text{ if } z &lt; 0
+\end{cases}\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-sign">
+<span class="eqno">(71)<a class="headerlink" href="#equation-sign" title="Permalink to this equation">#</a></span>\[\begin{split}\forall \: z \in  \mathbb{R}, \: \: \operatorname{sign}(z) = 
+ \begin{cases}
+\;\;  +1 &amp; \text{ if } z&gt;0 \\
+\;\;\;   0 &amp; \text{ if } z=0 \\
+\;\;  -1 &amp; \text{ if } z&lt;0 
+\end{cases}\end{split}\]</div>
+<p>If a perceptron would use the sigmoid as activation function, it would be specified as <em>sigmoid perceptron</em>.</p>
+<p>The linear and logistic regression can be achieved by this neuronal animal presented just above. Yet there are core differences between the regression algorithms and the perceptron.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>While linear and logistic regression outputs results that directly be converted to a probability value, the perceptron does not output a probability!<br />
+It makes predictions based on a hard threshold.</p>
+</div>
+<p>The perceptron with one logic threshold neuron can, using the step function, split the data into 2 classes depending on its output value exceeding the threshold (predicted class <span class="math notranslate nohighlight">\(y=1\)</span>) or not (<span class="math notranslate nohighlight">\(y=0\)</span>). Think of the perceptron as more a ‘yes’ or ‘no’ system, and logistic regression as “I think it is 67% probable to be the class <span class="math notranslate nohighlight">\(y=1\)</span>.”</p>
+<p>With one output node, a perceptron can classify from two classes. A perceptron with <span class="math notranslate nohighlight">\(k\)</span> output nodes can classify from <span class="math notranslate nohighlight">\(k+1\)</span> classes. The extra class being encoded as “all outputs not activated,” i.e. <span class="math notranslate nohighlight">\(y_1 = y_2 = y_k = y_n = 0\)</span>, would mean the event belongs to class <span class="math notranslate nohighlight">\((k+1)^\text{th}\)</span>. It is similar in probabilities when we take:</p>
+<div class="math notranslate nohighlight">
+\[p(N) = 1 - \sum_{i=1}^{N-1} p_i\]</div>
+<p>to get the remaining probability in the last outcome possible (but bear in mind that perceptrons do not output probabilities).</p>
+</section>
+<section id="train-a-perceptron">
+<h3>Train a perceptron!<a class="headerlink" href="#train-a-perceptron" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="model-rep-1-andorxor">
+<a class="reference internal image-reference" href="../_images/model_rep_1_andorxor.png"><img alt="../_images/model_rep_1_andorxor.png" src="../_images/model_rep_1_andorxor.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text">. The XOR is an exclusive OR (true if only the two logical inputs are different). As the data is not linearly separable, a perceptron is unable to solve it.<br />
+<sub>Image: extsdd.tistory.com</sub></span><a class="headerlink" href="#model-rep-1-andorxor" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="seealso admonition">
+<p class="admonition-title">Exercises</p>
+<ol class="simple">
+<li><p>What would be the weights <span class="math notranslate nohighlight">\(\boldsymbol{w}= (w_1, w_2)\)</span> and bias <span class="math notranslate nohighlight">\(b\)</span> to encode the <strong>AND</strong> function above? (using the Heaviside step function)</p></li>
+<li><p>Same question for the <strong>OR</strong> function.</p></li>
+<li><p>Compare your answers with your peers. Are they the same?</p></li>
+</ol>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Check your answers</p>
+<p><strong>Answer 1.</strong><br />
+Possible answer:<br />
+<span class="math notranslate nohighlight">\(b = -1\)</span><br />
+<span class="math notranslate nohighlight">\(w_1 = 0.5\)</span><br />
+<span class="math notranslate nohighlight">\(w_2 = 0.5\)</span></p>
+<p><strong>Answer 2.</strong><br />
+Possible answer:<br />
+<span class="math notranslate nohighlight">\(b = -0.5\)</span><br />
+<span class="math notranslate nohighlight">\(w_1 = 1\)</span><br />
+<span class="math notranslate nohighlight">\(w_2 = 1\)</span></p>
+</div>
+</section>
+<section id="limitation-and-abandon">
+<h3>Limitation and… abandon<a class="headerlink" href="#limitation-and-abandon" title="Permalink to this headline">#</a></h3>
+<p>It turned out that perceptrons disappointed researchers. The main limitation: perceptrons can only solve linearly separable data. In other words, it can classify the data if only one can draw a line (or plane with 3 inputs) separating the two classes. While perceptrons can successfully perform the basic logical computations (also called ‘gates’) <strong>AND</strong>, <strong>OR</strong> and <strong>NOT</strong>, it is incapable of solving the trivial <strong>XOR</strong> problem.</p>
+<p>Moreover, the perceptron doesn’t scale well with massive datasets. Other weaknesses of Perceptrons were highlighted in the monograph <a class="reference external" href="https://en.wikipedia.org/wiki/Perceptrons_(book)"><em>Perceptrons</em></a> by computer scientists Marvin Minsky and Seymour Papert in 1969. The book sparked a wave of pessimism and long-standing controversy in the Artificial Intelligence community (barely born), to the point that some researchers were so disappointed that they dropped neural networks altogether. This is known as the <a class="reference external" href="https://en.wikipedia.org/wiki/AI_winter">AI Winter</a>. Interest in neural networks was revived only in the mid 80s.</p>
+</section>
+</section>
+<section id="connecting-artificial-neurons">
+<h2>Connecting artificial neurons<a class="headerlink" href="#connecting-artificial-neurons" title="Permalink to this headline">#</a></h2>
+<section id="layers">
+<h3>Layers<a class="headerlink" href="#layers" title="Permalink to this headline">#</a></h3>
+<p>While the computation in each artificial neuron is simple, the interconnections of the network allow for complex patterns to be modelled. Like their organic counterparts where neurons are organized in consecutive layers, artificial neural networks are also arranged in layers. Meurons in each layer receive input from the previous layer and pass their output to the subsequent layer.</p>
+<div class="proof definition admonition" id="nnlayerdef">
+<p class="admonition-title"><span class="caption-number">Definition 58 </span></p>
+<section class="definition-content" id="proof-content">
+<p>An artificial neural network is composed of:</p>
+<ul class="simple">
+<li><p><strong>input layer</strong>: one entry layer of input nodes, i.e. input features from the dataset</p></li>
+<li><p><strong>output layer</strong>: one final layer of output nodes</p></li>
+<li><p><strong>hidden layer(s)</strong>: one of more layers of nodes called “activation units”</p></li>
+</ul>
+<p>Every layer except the output layer include a bias neuron and is fully connected to the next layer.</p>
+</section>
+</div><p>Each neuron (or node) performs a linear transformation on the inputs (weighted sum) followed by a non-linearity (the activation function).</p>
+</section>
+<section id="deep-or-not-deep-is-that-a-question">
+<h3>Deep or not deep: is that a question?<a class="headerlink" href="#deep-or-not-deep-is-that-a-question" title="Permalink to this headline">#</a></h3>
+<div class="proof definition admonition" id="definition-4">
+<p class="admonition-title"><span class="caption-number">Definition 59 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The number of hidden layers is an indicator of the <strong>depth</strong> of a neural network.</p>
+</section>
+</div><p>A ‘minimal’ multilayer neural network would have one input, one hidden and one output layers. The term used is shallow, by opposition to deep. Stricly speaking , or rather historically from the first development in the 1990s, neural networks containing more than one hidden layers are considered deep. Deep Neural Networks (DNN) are also called Deep Nets for short. There is a bit of fuzziness when it comes to what we can consider deep, as nowadays it is common to see dozens of hidden layers.</p>
+<figure class="align-default" id="model-rep-1-nn-layers">
+<a class="reference internal image-reference" href="../_images/model_rep_1_nn_layers.png"><img alt="../_images/model_rep_1_nn_layers.png" src="../_images/model_rep_1_nn_layers.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text">. Example of a fully connected, feedforward neural network with 2 hidden layers and output size of 2. Bias neurons are represented in yellow circles with +1.<br />
+<sub>Image from the author</sub></span><a class="headerlink" href="#model-rep-1-nn-layers" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The example of network depicted above is one of the earliest types of neural network and is called a Multilayer Perceptron (MLP). It belongs to a class of neural networks known as feed-forward neural networks, where the information flows only from inputs to outputs (without any loops).</p>
+<p>We will see soon how the ouputs of nodes from a given layer is calculated knowing the nodes’output of the previous layer (feedforward propagation). But let’s first have a look of the different activation functions in the next section.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./nn"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="model_rep.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Essential Concepts</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="model_rep_2_activation_functions.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Activation Functions</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    <div class="extra_footer">
+      <div style="display:flex; align-items:center; gap:10px;">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+    <img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" alt="CC Logo">
+  </a>
+  <div>
+    By Claire David • © 2025<br>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+  </div>
+</div>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

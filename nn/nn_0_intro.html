@@ -6,54 +6,55 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Introduction to Machine Learning &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    <title>Neural Networks: Introduction &#8212; Introduction&lt;br&gt; to Machine Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Teaching philosophy" href="about/teaching_philosophy.html" />
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Motivations" href="nn_1_motivations.html" />
+    <link rel="prev" title="Gradient Boosting" href="../trees/boost_3_gradient_boosting.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -88,27 +89,27 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="bd-sidebar noprint" id="site-navigation">
     <div class="bd-sidebar__content">
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+    <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
       
       
-      <img src="_static/logo.png" class="logo" alt="logo">
+      <img src="../_static/logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Introduction<br> to Machine Learning</h1>
       
     </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1 current active">
-                <a class="reference internal" href="#">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
                     Introduction to Machine Learning
                 </a>
             </li>
@@ -120,27 +121,27 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="about/teaching_philosophy.html">
+  <a class="reference internal" href="../about/teaching_philosophy.html">
    Teaching philosophy
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="about/instructor.html">
+  <a class="reference internal" href="../about/instructor.html">
    Instructor &amp; Credits
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="about/schedule.html">
+  <a class="reference internal" href="../about/schedule.html">
    Schedule
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="about/tools.html">
+  <a class="reference internal" href="../about/tools.html">
    Tools
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="about/evaluation.html">
+  <a class="reference internal" href="../about/evaluation.html">
    Evaluation
   </a>
  </li>
@@ -152,7 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="basics/linear_regression.html">
+  <a class="reference internal" href="../basics/linear_regression.html">
    Warm-up: Linear Regression
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -162,39 +163,39 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/lin_reg_1_notations.html">
+    <a class="reference internal" href="../basics/lin_reg_1_notations.html">
      Notations
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/lin_reg_2_cost_function.html">
+    <a class="reference internal" href="../basics/lin_reg_2_cost_function.html">
      Cost Function in Linear Regression
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/lin_reg_3_gradient_descent_1d.html">
+    <a class="reference internal" href="../basics/lin_reg_3_gradient_descent_1d.html">
      Gradient Descent in 1D
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/lin_reg_4_gradient_descent_multiD.html">
+    <a class="reference internal" href="../basics/lin_reg_4_gradient_descent_multiD.html">
      Multivariate Linear Regression
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/lin_reg_5_learning_rate.html">
+    <a class="reference internal" href="../basics/lin_reg_5_learning_rate.html">
      Learning Rate
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/lin_reg_6_gradient_descent_in_practice.html">
+    <a class="reference internal" href="../basics/lin_reg_6_gradient_descent_in_practice.html">
      Gradient Descent in Practice
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="basics/logistic_regression.html">
+  <a class="reference internal" href="../basics/logistic_regression.html">
    Logistic Regression
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -204,34 +205,34 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/log_reg_1_intro.html">
+    <a class="reference internal" href="../basics/log_reg_1_intro.html">
      Logistic Regression: introduction
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/log_reg_2_sigmoid.html">
+    <a class="reference internal" href="../basics/log_reg_2_sigmoid.html">
      What is the Sigmoid Function?
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/log_reg_3_cost_function.html">
+    <a class="reference internal" href="../basics/log_reg_3_cost_function.html">
      Cost Function for Classification
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/log_reg_4_gradient_descent.html">
+    <a class="reference internal" href="../basics/log_reg_4_gradient_descent.html">
      Gradient Descent for Logistic Regression
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/log_reg_5_multiclass.html">
+    <a class="reference internal" href="../basics/log_reg_5_multiclass.html">
      Multiclass Classification
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="basics/model_evaluation.html">
+  <a class="reference internal" href="../basics/model_evaluation.html">
    Model Evaluation
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -241,22 +242,22 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/model_eval_1_train_test_split.html">
+    <a class="reference internal" href="../basics/model_eval_1_train_test_split.html">
      Splitting Datasets for Evaluation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/model_eval_2_perf_metrics.html">
+    <a class="reference internal" href="../basics/model_eval_2_perf_metrics.html">
      Performance Metrics
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/model_eval_3_roc_curve.html">
+    <a class="reference internal" href="../basics/model_eval_3_roc_curve.html">
      Let’s ROC!
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/model_eval_4_bias_variance_tradeoff.html">
+    <a class="reference internal" href="../basics/model_eval_4_bias_variance_tradeoff.html">
      Bias &amp; Variance: a Tradeoff
     </a>
    </li>
@@ -270,7 +271,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="trees/dt_0_and_boosting.html">
+  <a class="reference internal" href="../trees/dt_0_and_boosting.html">
    Decision Trees
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
@@ -280,24 +281,24 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="trees/dt_1_what_are_trees.html">
+    <a class="reference internal" href="../trees/dt_1_what_are_trees.html">
      What are Decision Trees?
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="trees/dt_2_cart_algorithm.html">
+    <a class="reference internal" href="../trees/dt_2_cart_algorithm.html">
      The CART Algorithm
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="trees/dt_3_limitations.html">
+    <a class="reference internal" href="../trees/dt_3_limitations.html">
      Limitations
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="trees/el_0_intro.html">
+  <a class="reference internal" href="../trees/el_0_intro.html">
    Ensemble Learning
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -307,19 +308,19 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="trees/el_1_what_is_ensemble.html">
+    <a class="reference internal" href="../trees/el_1_what_is_ensemble.html">
      What is Ensemble Learning?
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="trees/el_2_random_forests.html">
+    <a class="reference internal" href="../trees/el_2_random_forests.html">
      Random Forests
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="trees/boost_0_intro.html">
+  <a class="reference internal" href="../trees/boost_0_intro.html">
    Boosting
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -329,17 +330,17 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="trees/boost_1_what_is_boosting.html">
+    <a class="reference internal" href="../trees/boost_1_what_is_boosting.html">
      What is Boosting?
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="trees/boost_2_adaboost.html">
+    <a class="reference internal" href="../trees/boost_2_adaboost.html">
      AdaBoost
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="trees/boost_3_gradient_boosting.html">
+    <a class="reference internal" href="../trees/boost_3_gradient_boosting.html">
      Gradient Boosting
     </a>
    </li>
@@ -351,19 +352,19 @@ const thebe_selector_output = ".output, .cell_output"
   Neural Networks
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="nn/nn_0_intro.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Neural Networks: Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="nn/nn_1_motivations.html">
+  <a class="reference internal" href="nn_1_motivations.html">
    Motivations
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="nn/model_rep.html">
+  <a class="reference internal" href="model_rep.html">
    Essential Concepts
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
@@ -373,24 +374,24 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="nn/model_rep_1_neurons.html">
+    <a class="reference internal" href="model_rep_1_neurons.html">
      The basic units: neurons
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="nn/model_rep_2_activation_functions.html">
+    <a class="reference internal" href="model_rep_2_activation_functions.html">
      Activation Functions
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="nn/model_rep_3_loss_cost.html">
+    <a class="reference internal" href="model_rep_3_loss_cost.html">
      Loss and Cost Functions
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="nn/training_0_intro.html">
+  <a class="reference internal" href="training_0_intro.html">
    Training Neural Networks
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
@@ -400,24 +401,24 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="nn/training_1_forward_prop.html">
+    <a class="reference internal" href="training_1_forward_prop.html">
      Feedforward Propagation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="nn/training_2_backprop.html">
-     Backpropagation Algorithm
+    <a class="reference internal" href="training_2_backprop.html">
+     Backpropagation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="nn/training_3_init.html">
-     Initialization Schemes
+    <a class="reference internal" href="training_3_init.html">
+     Initialization schemes
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="nn/optim_0_intro.html">
+  <a class="reference internal" href="optim_0_intro.html">
    Optimizing Neural Networks
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
@@ -427,22 +428,22 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="nn/optim_1_sdg.html">
+    <a class="reference internal" href="optim_1_sdg.html">
      Stochastic Gradient Descent
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="nn/optim_2_hyperparams.html">
+    <a class="reference internal" href="optim_2_hyperparams.html">
      Hyperparameter Search
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="nn/optim_3_lr_scheduling.html">
+    <a class="reference internal" href="optim_3_lr_scheduling.html">
      Learning Rate Schedulers
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="nn/optim_4_adaptive_methods.html">
+    <a class="reference internal" href="optim_4_adaptive_methods.html">
      Adaptive Optimizers
     </a>
    </li>
@@ -521,7 +522,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/intro.md"
+        <a href="../_sources/nn/nn_0_intro.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -558,60 +559,23 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals-of-this-course">
-   Goals of this course
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Introduction to Machine Learning</h1>
+                <h1>Neural Networks: Introduction</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#goals-of-this-course">
-   Goals of this course
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -619,31 +583,36 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-machine-learning">
-<h1>Introduction to Machine Learning<a class="headerlink" href="#introduction-to-machine-learning" title="Permalink to this headline">#</a></h1>
-<p>Learn the math behind the basic machine learning algorithms and code them yourself in Python.</p>
-<section id="goals-of-this-course">
-<h2>Goals of this course<a class="headerlink" href="#goals-of-this-course" title="Permalink to this headline">#</a></h2>
-<p><strong><big>1. Have fun</big></strong><br />
-It may come as a surprise, but this is the most important. Beyond the stressful deadlines and exams, it’s essential to approach the material with a playful mindset. Make it a game! The more fun you have, the more you keep at it and the better you become.</p>
-<p><strong><big>2. Learn the math behind Machine Learning’s basic algorithms</big></strong><br />
-Build a solid foundation by learning the key mathematics of ML’s core algorithms.</p>
-<p><strong><big>3. Learn how to write beautiful Python code</big></strong><br />
-In the tutorials, you will (re)implement the algorithms yourself, from scratch. No fancy ML library: it’s about translating the equations and algorithmic steps into clear, self-explanatory code. This is the ultimate hands-on passage to reach mastery. Then the backstage of machine learning algorithms will have no secrets for you!</p>
-<p><strong><big>4. Learn how to ask for help</big></strong><br />
-Requesting technical support is more than a skill: it’s an art! Experts can only help if they understand exactly where you’re stuck. You’ll learn how to narrow down an issue, keep the relevant context while stripping away unnecessary details, provide a minimal working example, and formulate your questions effectively.</p>
-<p><strong><big>5. Learn how to learn (on your own)</big></strong><br />
-How do you become an independent learner? By asking yourself the right questions! This course ends with a STEP (Study Through Exploration and Presentation): a mini-project focusing on an aspect of Machine Learning you want to really master. Get your curiosity to guide you, enjoy the deep dive, and share your findings with crystal-clear explanations. The best way to learn is to teach! On the last day of the course, you’ll present your study and code to your peers, who will learn from it, challenge your understanding with their questions, and help you learn even more.</p>
-</section>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="neural-networks-introduction">
+<h1>Neural Networks: Introduction<a class="headerlink" href="#neural-networks-introduction" title="Permalink to this headline">#</a></h1>
+<p>The present and following lectures introduce artificial neural networks, computational models inspired by biological neural connections.</p>
+<p>Why are they so popular?</p>
+<p>Because neural networks have great qualities. They are:</p>
+<ul class="simple">
+<li><p><strong>versatile</strong>: they deliver for various ranges of problems and modeling situations</p></li>
+<li><p><strong>powerful</strong>: they show amazing performance</p></li>
+<li><p><strong>scalable</strong>: they can handle very large datasets</p></li>
+</ul>
+<p>From classifying particle collisions in high-energy physics experiments to powering AI assistants with well over a trillion parameters, neural networks are now firmly established, and you probably don’t even realize how often they touch your daily life.</p>
+<p>Neural networks start from the simplest unit, the perceptron, and span a wide range of architectures with distinctive names: Convolutional Neural Networks (CNNs) for images, Recurrent Neural Networks (RNNs) for sequences, Generative Adversarial Networks (GANs) for data synthesis, Graph Neural Networks (GNNs) for relational data, Autoencoders and Variational Autoencoders (VAEs) for representation learning, and Transformers for large-scale language and vision tasks. It is a vast and evolving family in machine learning, constantly expanding as new ideas emerge.</p>
+<p>In this chapter, we focus on the foundations: the model representation of a neural network and the equations that govern its training. We will walk through the core steps of forward propagation and backpropagation. You will do the math and then implement it by hand during the tutorial.</p>
+<br>
+<p><strong>Learning outcomes:</strong></p>
+<ul class="simple">
+<li><p>Understand the model representation of a neural network</p></li>
+<li><p>Understand activation functions, their properties, and their role</p></li>
+<li><p>Recognize common loss and cost functions and their purpose</p></li>
+<li><p>Write the equations of feedforward propagation</p></li>
+<li><p>Derive the equations of backpropagation</p></li>
+<li><p>Understand the constraints imposed by weight initialization</p></li>
+<li><p>Compare batch, stochastic, and mini-batch gradient descent</p></li>
+<li><p>Grasp the concept of momentum in optimization</p></li>
+<li><p>Understand learning rate schedulers</p></li>
+<li><p>Be familiar with adaptive optimizers such as RMSProp and Adam</p></li>
+</ul>
+<br>
+<p>Let’s go!</p>
+<br></section>
 
     <script type="text/x-thebe-config">
     {
@@ -658,7 +627,7 @@ How do you become an independent learner? By asking yourself the right questions
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./."
+            path: "./nn"
         },
         predefinedOutput: true
     }
@@ -672,10 +641,17 @@ How do you become an independent learner? By asking yourself the right questions
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="about/teaching_philosophy.html" title="next page">
+    <a class='left-prev' id="prev-link" href="../trees/boost_3_gradient_boosting.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Gradient Boosting</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="nn_1_motivations.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Teaching philosophy</p>
+        <p class="prev-next-title">Motivations</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -709,7 +685,7 @@ How do you become an independent learner? By asking yourself the right questions
     </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
 
   </body>

@@ -351,6 +351,109 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Neural Networks
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="nn/nn_0_intro.html">
+   Neural Networks: Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nn/nn_1_motivations.html">
+   Motivations
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="nn/model_rep.html">
+   Essential Concepts
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nn/model_rep_1_neurons.html">
+     The basic units: neurons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nn/model_rep_2_activation_functions.html">
+     Activation Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nn/model_rep_3_loss_cost.html">
+     Loss and Cost Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="nn/training_0_intro.html">
+   Training Neural Networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nn/training_1_forward_prop.html">
+     Feedforward Propagation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nn/training_2_backprop.html">
+     Backpropagation Algorithm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nn/training_3_init.html">
+     Initialization Schemes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="nn/optim_0_intro.html">
+   Optimizing Neural Networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nn/optim_1_sdg.html">
+     Stochastic Gradient Descent
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nn/optim_2_hyperparams.html">
+     Hyperparameter Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nn/optim_3_lr_scheduling.html">
+     Learning Rate Schedulers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nn/optim_4_adaptive_methods.html">
+     Adaptive Optimizers
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
 
     </div>
 </nav></div>
@@ -447,7 +550,12 @@ title="Fullscreen mode"
    <a href="#cap-GD_algo_1D"><strong>GD_algo_1D</strong></a> | 
    <a href="#cap-GD_algo_multi"><strong>GD_algo_multi</strong></a> | 
    <a href="#cap-GDesc"><strong>GDesc</strong></a> | 
+   <a href="#cap-activfuncdef"><strong>activfuncdef</strong></a> | 
+   <a href="#cap-andef"><strong>andef</strong></a> | 
    <a href="#cap-aucdef"><strong>aucdef</strong></a> | 
+   <a href="#cap-backpropalgo"><strong>backpropalgo</strong></a> | 
+   <a href="#cap-backpropalgosummary"><strong>backpropalgosummary</strong></a> | 
+   <a href="#cap-backpropdef"><strong>backpropdef</strong></a> | 
    <a href="#cap-baggingdef"><strong>baggingdef</strong></a> | 
    <a href="#cap-balancedaccdef"><strong>balancedaccdef</strong></a> | 
    <a href="#cap-biasdef"><strong>biasdef</strong></a> | 
@@ -456,27 +564,35 @@ title="Fullscreen mode"
    <a href="#cap-capacitydef"><strong>capacitydef</strong></a> | 
    <a href="#cap-catVar"><strong>catVar</strong></a> | 
    <a href="#cap-catxentropydef"><strong>catxentropydef</strong></a> | 
+   <a href="#cap-chainruledef"><strong>chainruledef</strong></a> | 
    <a href="#cap-confusionMatrix def"><strong>confusionMatrix def</strong></a> | 
    <a href="#cap-costCART"><strong>costCART</strong></a> | 
    <a href="#cap-costFLogRegDef"><strong>costFLogRegDef</strong></a> | 
    <a href="#cap-costFunction"><strong>costFunction</strong></a> | 
+   <a href="#cap-costnndef"><strong>costnndef</strong></a> | 
    <a href="#cap-decBoundDef"><strong>decBoundDef</strong></a> | 
    <a href="#cap-decisionstumpdef"><strong>decisionstumpdef</strong></a> | 
    <a href="#cap-defFeatureScaling"><strong>defFeatureScaling</strong></a> | 
    <a href="#cap-defMeanNormalization"><strong>defMeanNormalization</strong></a> | 
    <a href="#cap-defStandardization"><strong>defStandardization</strong></a> | 
    <a href="#cap-definition-3"><strong>definition-3</strong></a> | 
+   <a href="#cap-definition-4"><strong>definition-4</strong></a> | 
    <a href="#cap-dtdef"><strong>dtdef</strong></a> | 
    <a href="#cap-ensembledef"><strong>ensembledef</strong></a> | 
    <a href="#cap-errorDef"><strong>errorDef</strong></a> | 
    <a href="#cap-errormetricsclassdef"><strong>errormetricsclassdef</strong></a> | 
    <a href="#cap-expmodeldef"><strong>expmodeldef</strong></a> | 
+   <a href="#cap-fanindef"><strong>fanindef</strong></a> | 
+   <a href="#cap-feedforwardpropdef"><strong>feedforwardpropdef</strong></a> | 
    <a href="#cap-generalizationdef"><strong>generalizationdef</strong></a> | 
    <a href="#cap-generrordef"><strong>generrordef</strong></a> | 
    <a href="#cap-ginidef"><strong>ginidef</strong></a> | 
+   <a href="#cap-gradientsinitxavier"><strong>gradientsinitxavier</strong></a> | 
+   <a href="#cap-heinitdef"><strong>heinitdef</strong></a> | 
    <a href="#cap-hypothesisFunction"><strong>hypothesisFunction</strong></a> | 
    <a href="#cap-hypothesisFunctionMulti"><strong>hypothesisFunctionMulti</strong></a> | 
    <a href="#cap-kfoldxvalidation"><strong>kfoldxvalidation</strong></a> | 
+   <a href="#cap-lecuninitdef"><strong>lecuninitdef</strong></a> | 
    <a href="#cap-linRegDef"><strong>linRegDef</strong></a> | 
    <a href="#cap-logFuncDef"><strong>logFuncDef</strong></a> | 
    <a href="#cap-logRegDef"><strong>logRegDef</strong></a> | 
@@ -485,9 +601,11 @@ title="Fullscreen mode"
    <a href="#cap-mseDef"><strong>mseDef</strong></a> | 
    <a href="#cap-multiclass1to1def"><strong>multiclass1to1def</strong></a> | 
    <a href="#cap-multiclass1toalldef"><strong>multiclass1toalldef</strong></a> | 
+   <a href="#cap-nnlayerdef"><strong>nnlayerdef</strong></a> | 
    <a href="#cap-nodesdef"><strong>nodesdef</strong></a> | 
    <a href="#cap-normalEquation"><strong>normalEquation</strong></a> | 
    <a href="#cap-overfittingdef"><strong>overfittingdef</strong></a> | 
+   <a href="#cap-perceptrondef"><strong>perceptrondef</strong></a> | 
    <a href="#cap-pseudodef"><strong>pseudodef</strong></a> | 
    <a href="#cap-randomforestdef"><strong>randomforestdef</strong></a> | 
    <a href="#cap-regularizationdef"><strong>regularizationdef</strong></a> | 
@@ -499,7 +617,11 @@ title="Fullscreen mode"
    <a href="#cap-tprfprdef"><strong>tprfprdef</strong></a> | 
    <a href="#cap-trainvaltestsetsdef"><strong>trainvaltestsetsdef</strong></a> | 
    <a href="#cap-underfittingdef"><strong>underfittingdef</strong></a> | 
-   <a href="#cap-variancedef"><strong>variancedef</strong></a>
+   <a href="#cap-unitheodef"><strong>unitheodef</strong></a> | 
+   <a href="#cap-variancedef"><strong>variancedef</strong></a> | 
+   <a href="#cap-varianceinitxavier"><strong>varianceinitxavier</strong></a> | 
+   <a href="#cap-xaviernormaldef"><strong>xaviernormaldef</strong></a> | 
+   <a href="#cap-xavieruniformdef"><strong>xavieruniformdef</strong></a>
    </div>
 
    <table class="indextable modindextable">
@@ -544,12 +666,52 @@ title="Fullscreen mode"
        <a href="basics/lin_reg_3_gradient_descent_1d.html#GDesc"><code class="xref">GDesc</code></a> <em>(basics/lin_reg_3_gradient_descent_1d)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-activfuncdef"><td></td><td>
+       <strong>activfuncdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/model_rep_1_neurons.html#activfuncdef"><code class="xref">activfuncdef</code></a> <em>(nn/model_rep_1_neurons)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-andef"><td></td><td>
+       <strong>andef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/model_rep_1_neurons.html#andef"><code class="xref">andef</code></a> <em>(nn/model_rep_1_neurons)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-aucdef"><td></td><td>
        <strong>aucdef</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
        <a href="basics/model_eval_3_roc_curve.html#aucdef"><code class="xref">aucdef</code></a> <em>(basics/model_eval_3_roc_curve)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-backpropalgo"><td></td><td>
+       <strong>backpropalgo</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/training_2_backprop.html#backpropalgo"><code class="xref">backpropalgo</code></a> <em>(nn/training_2_backprop)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-backpropalgosummary"><td></td><td>
+       <strong>backpropalgosummary</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/training_2_backprop.html#backpropalgosummary"><code class="xref">backpropalgosummary</code></a> <em>(nn/training_2_backprop)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-backpropdef"><td></td><td>
+       <strong>backpropdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/training_2_backprop.html#backpropdef"><code class="xref">backpropdef</code></a> <em>(nn/training_2_backprop)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-baggingdef"><td></td><td>
@@ -616,6 +778,14 @@ title="Fullscreen mode"
        <a href="basics/log_reg_3_cost_function.html#catxentropydef"><code class="xref">catxentropydef</code></a> <em>(basics/log_reg_3_cost_function)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-chainruledef"><td></td><td>
+       <strong>chainruledef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/training_2_backprop.html#chainruledef"><code class="xref">chainruledef</code></a> <em>(nn/training_2_backprop)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-confusionMatrix def"><td></td><td>
        <strong>confusionMatrix def</strong></td><td></td></tr>
      <tr>
@@ -646,6 +816,14 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="basics/lin_reg_2_cost_function.html#costFunction"><code class="xref">costFunction</code></a> <em>(basics/lin_reg_2_cost_function)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-costnndef"><td></td><td>
+       <strong>costnndef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/model_rep_3_loss_cost.html#costnndef"><code class="xref">costnndef</code></a> <em>(nn/model_rep_3_loss_cost)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-decBoundDef"><td></td><td>
@@ -696,6 +874,14 @@ title="Fullscreen mode"
        <a href="basics/model_eval_2_perf_metrics.html#definition-3"><code class="xref">definition-3</code></a> <em>(basics/model_eval_2_perf_metrics)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-4"><td></td><td>
+       <strong>definition-4</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/model_rep_1_neurons.html#definition-4"><code class="xref">definition-4</code></a> <em>(nn/model_rep_1_neurons)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-dtdef"><td></td><td>
        <strong>dtdef</strong></td><td></td></tr>
      <tr>
@@ -736,6 +922,22 @@ title="Fullscreen mode"
        <a href="basics/model_eval_4_bias_variance_tradeoff.html#expmodeldef"><code class="xref">expmodeldef</code></a> <em>(basics/model_eval_4_bias_variance_tradeoff)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-fanindef"><td></td><td>
+       <strong>fanindef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/training_3_init.html#fanindef"><code class="xref">fanindef</code></a> <em>(nn/training_3_init)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-feedforwardpropdef"><td></td><td>
+       <strong>feedforwardpropdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/training_1_forward_prop.html#feedforwardpropdef"><code class="xref">feedforwardpropdef</code></a> <em>(nn/training_1_forward_prop)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-generalizationdef"><td></td><td>
        <strong>generalizationdef</strong></td><td></td></tr>
      <tr>
@@ -760,6 +962,22 @@ title="Fullscreen mode"
        <a href="trees/dt_2_cart_algorithm.html#ginidef"><code class="xref">ginidef</code></a> <em>(trees/dt_2_cart_algorithm)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-gradientsinitxavier"><td></td><td>
+       <strong>gradientsinitxavier</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/training_3_init.html#gradientsinitxavier"><code class="xref">gradientsinitxavier</code></a> <em>(nn/training_3_init)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-heinitdef"><td></td><td>
+       <strong>heinitdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/training_3_init.html#heinitdef"><code class="xref">heinitdef</code></a> <em>(nn/training_3_init)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-hypothesisFunction"><td></td><td>
        <strong>hypothesisFunction</strong></td><td></td></tr>
      <tr>
@@ -782,6 +1000,14 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="basics/model_eval_1_train_test_split.html#kfoldxvalidation"><code class="xref">kfoldxvalidation</code></a> <em>(basics/model_eval_1_train_test_split)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-lecuninitdef"><td></td><td>
+       <strong>lecuninitdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/training_3_init.html#lecuninitdef"><code class="xref">lecuninitdef</code></a> <em>(nn/training_3_init)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-linRegDef"><td></td><td>
@@ -848,6 +1074,14 @@ title="Fullscreen mode"
        <a href="basics/log_reg_5_multiclass.html#multiclass1toalldef"><code class="xref">multiclass1toalldef</code></a> <em>(basics/log_reg_5_multiclass)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-nnlayerdef"><td></td><td>
+       <strong>nnlayerdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/model_rep_1_neurons.html#nnlayerdef"><code class="xref">nnlayerdef</code></a> <em>(nn/model_rep_1_neurons)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-nodesdef"><td></td><td>
        <strong>nodesdef</strong></td><td></td></tr>
      <tr>
@@ -870,6 +1104,14 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="basics/model_eval_4_bias_variance_tradeoff.html#overfittingdef"><code class="xref">overfittingdef</code></a> <em>(basics/model_eval_4_bias_variance_tradeoff)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-perceptrondef"><td></td><td>
+       <strong>perceptrondef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/model_rep_1_neurons.html#perceptrondef"><code class="xref">perceptrondef</code></a> <em>(nn/model_rep_1_neurons)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-pseudodef"><td></td><td>
@@ -960,12 +1202,44 @@ title="Fullscreen mode"
        <a href="basics/model_eval_4_bias_variance_tradeoff.html#underfittingdef"><code class="xref">underfittingdef</code></a> <em>(basics/model_eval_4_bias_variance_tradeoff)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-unitheodef"><td></td><td>
+       <strong>unitheodef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/model_rep_2_activation_functions.html#unitheodef"><code class="xref">unitheodef</code></a> <em>(nn/model_rep_2_activation_functions)</em></td><td>
+       <em>theorem</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-variancedef"><td></td><td>
        <strong>variancedef</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
        <a href="basics/model_eval_4_bias_variance_tradeoff.html#variancedef"><code class="xref">variancedef</code></a> <em>(basics/model_eval_4_bias_variance_tradeoff)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-varianceinitxavier"><td></td><td>
+       <strong>varianceinitxavier</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/training_3_init.html#varianceinitxavier"><code class="xref">varianceinitxavier</code></a> <em>(nn/training_3_init)</em></td><td>
+       <em>property</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-xaviernormaldef"><td></td><td>
+       <strong>xaviernormaldef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/training_3_init.html#xaviernormaldef"><code class="xref">xaviernormaldef</code></a> <em>(nn/training_3_init)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-xavieruniformdef"><td></td><td>
+       <strong>xavieruniformdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/training_3_init.html#xavieruniformdef"><code class="xref">xavieruniformdef</code></a> <em>(nn/training_3_init)</em></td><td>
        <em>definition</em></td></tr>
    </table>
 
