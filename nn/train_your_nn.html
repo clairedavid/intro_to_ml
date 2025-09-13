@@ -1,0 +1,1296 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Train Your Neural Net! &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Adaptive Optimizers" href="optim_4_adaptive_methods.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Introduction<br> to Machine Learning</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction to Machine Learning
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  About this course
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/teaching_philosophy.html">
+   Teaching philosophy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/instructor.html">
+   Instructor &amp; Credits
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/schedule.html">
+   Schedule
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/tools.html">
+   Tools
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../about/evaluation.html">
+   Evaluation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  The basics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../basics/linear_regression.html">
+   Warm-up: Linear Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lin_reg_1_notations.html">
+     Notations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lin_reg_2_cost_function.html">
+     Cost Function in Linear Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lin_reg_3_gradient_descent_1d.html">
+     Gradient Descent in 1D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lin_reg_4_gradient_descent_multiD.html">
+     Multivariate Linear Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lin_reg_5_learning_rate.html">
+     Learning Rate
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/lin_reg_6_gradient_descent_in_practice.html">
+     Gradient Descent in Practice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../basics/logistic_regression.html">
+   Logistic Regression
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/log_reg_1_intro.html">
+     Logistic Regression: introduction
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/log_reg_2_sigmoid.html">
+     What is the Sigmoid Function?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/log_reg_3_cost_function.html">
+     Cost Function for Classification
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/log_reg_4_gradient_descent.html">
+     Gradient Descent for Logistic Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/log_reg_5_multiclass.html">
+     Multiclass Classification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../basics/model_evaluation.html">
+   Model Evaluation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/model_eval_1_train_test_split.html">
+     Splitting Datasets for Evaluation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/model_eval_2_perf_metrics.html">
+     Performance Metrics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/model_eval_3_roc_curve.html">
+     Let’s ROC!
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/model_eval_4_bias_variance_tradeoff.html">
+     Bias &amp; Variance: a Tradeoff
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Decision trees and boosting
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../trees/dt_0_and_boosting.html">
+   Decision Trees
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/dt_1_what_are_trees.html">
+     What are Decision Trees?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/dt_2_cart_algorithm.html">
+     The CART Algorithm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/dt_3_limitations.html">
+     Limitations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../trees/el_0_intro.html">
+   Ensemble Learning
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/el_1_what_is_ensemble.html">
+     What is Ensemble Learning?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/el_2_random_forests.html">
+     Random Forests
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../trees/boost_0_intro.html">
+   Boosting
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/boost_1_what_is_boosting.html">
+     What is Boosting?
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/boost_2_adaboost.html">
+     AdaBoost
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../trees/boost_3_gradient_boosting.html">
+     Gradient Boosting
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Neural Networks
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="nn_0_intro.html">
+   Neural Networks: Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nn_1_motivations.html">
+   Motivations
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="model_rep.html">
+   Essential Concepts
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_rep_1_neurons.html">
+     The basic units: neurons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_rep_2_activation_functions.html">
+     Activation Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_rep_3_loss_cost.html">
+     Loss and Cost Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="training_0_intro.html">
+   Training Neural Networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="training_1_forward_prop.html">
+     Feedforward Propagation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="training_2_backprop.html">
+     Backpropagation Algorithm
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="training_3_init.html">
+     Initialization Schemes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="optim_0_intro.html">
+   Optimizing Neural Networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="optim_1_sdg.html">
+     Stochastic Gradient Descent
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="optim_2_hyperparams.html">
+     Hyperparameter Search
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="optim_3_lr_scheduling.html">
+     Learning Rate Schedulers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="optim_4_adaptive_methods.html">
+     Adaptive Optimizers
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Train Your Neural Net!
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/nn/train_your_nn.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Train Your Neural Net!
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-train-our-nn">
+   Let’s train our NN!
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ml-frameworks">
+     ML Frameworks
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#keras">
+       Keras
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pytorch">
+       PyTorch
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tensorflow">
+       TensorFlow
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#steps-in-building-your-nn">
+     Steps in Building your NN
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-0-frame-the-problem">
+       Step 0. Frame the problem
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-1-get-the-data">
+       Step 1. Get the Data
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-2-visualize-the-data">
+       Step 2. Visualize the Data
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-3-prepare-the-data">
+       Step 3. Prepare the Data
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-4-define-the-model">
+       Step 4. Define the Model
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-5-train-the-model">
+       Step 5. Train the Model
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-6-tune-the-model">
+       Step 6. Tune the Model
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-7-evaluate-the-model">
+       Step 7. Evaluate the Model
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-8-make-predictions">
+       Step 8. Make Predictions
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary-practice-practice-practice">
+     Summary: Practice Practice Practice
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Train Your Neural Net!</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Train Your Neural Net!
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#let-s-train-our-nn">
+   Let’s train our NN!
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ml-frameworks">
+     ML Frameworks
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#keras">
+       Keras
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pytorch">
+       PyTorch
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#tensorflow">
+       TensorFlow
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#steps-in-building-your-nn">
+     Steps in Building your NN
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-0-frame-the-problem">
+       Step 0. Frame the problem
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-1-get-the-data">
+       Step 1. Get the Data
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-2-visualize-the-data">
+       Step 2. Visualize the Data
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-3-prepare-the-data">
+       Step 3. Prepare the Data
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-4-define-the-model">
+       Step 4. Define the Model
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-5-train-the-model">
+       Step 5. Train the Model
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-6-tune-the-model">
+       Step 6. Tune the Model
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-7-evaluate-the-model">
+       Step 7. Evaluate the Model
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#step-8-make-predictions">
+       Step 8. Make Predictions
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#summary-practice-practice-practice">
+     Summary: Practice Practice Practice
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="train-your-neural-net">
+<h1>Train Your Neural Net!<a class="headerlink" href="#train-your-neural-net" title="Permalink to this headline">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="let-s-train-our-nn">
+<span id="nn-train"></span><h1>Let’s train our NN!<a class="headerlink" href="#let-s-train-our-nn" title="Permalink to this headline">#</a></h1>
+<p>Time to gather all the notions covered in this lecture and learn how to build a deep learning model.</p>
+<section id="ml-frameworks">
+<h2>ML Frameworks<a class="headerlink" href="#ml-frameworks" title="Permalink to this headline">#</a></h2>
+<p>One could code a deep neural network from scratch in python, declaring all the functions, classes etc… That would be very tedious and likely not computationally optimized for speed. Most importantly: it’s been already done. There are indeed dedicated libraries for designing and developing neural networks and deep learning technology.</p>
+<p>The most powerful and popular open-source machine learning frameworks are Keras, PyTorch and TensorFlow. They are used by both researchers and developers because they provide fast and flexible implementation. Here is a very short comparison; more links are listed at the bottom of this page for further reading.</p>
+<section id="keras">
+<h3>Keras<a class="headerlink" href="#keras" title="Permalink to this headline">#</a></h3>
+<p>Keras is a high-level neural network Application Programming Interface (API) developed by Google engineer François Chollet.
+Keras is easily readable and concise, renown for its user-friendliness and modularity. It is slower in comparison with PyTorch, thus more suited for small datasets. As it is a high-level API, it runs on top of a ‘backend’, which handles the low-level computations. In 2017 Keras was adopted and integrated into TensorFlow via the <code class="docutils literal notranslate"><span class="pre">tf.keras</span></code> module (it is still possible to use Keras standalone).</p>
+</section>
+<section id="pytorch">
+<h3>PyTorch<a class="headerlink" href="#pytorch" title="Permalink to this headline">#</a></h3>
+<p>Pytorch is developed and maintained by Facebook. It is built to use the power of GPUs for faster training and is deeply integrated into python, making it easy to get started. While being less readable than Keras because it exposes programmers to low-level operations, it offers more debugging capabilities than Keras, as well as an enhanced experimence for mathematically inclined users willing to dig deep in the framework of deep learning. Most importantly, PyTorch is developed for optimal performance thanks to its most fundamental concept: the PyTorch Tensor.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The term Tensor in PyTorch is not the algebraic tensor used in mathematics or physics.</p>
+</div>
+</aside>
+<p>A PyTorch Tensor is a data structure that is conceptually identical to a NumPy array. Yet, on top of many functions operating on these n-dimensional arrays, the PyTorch tensors are designed to take advantage of parallel computation capabilities of a GPU.</p>
+<p>The other strong feature of PyTorch is its powerful paradigm of computational graphs encompassed in its AutoGrad module. AutoGrad performs automatic differentiation for building and training neural networks. When using AutoGrad, the forward pass of your network will define a computational graph; nodes in the graph will be Tensors, and edges will be functions that produce output Tensors from input Tensors. Backpropagating through this graph then allows you to easily compute gradients. In other words, the logic of a neural net architecture are defined by a graph whose components can be added dynamically.</p>
+<p>While AutoGrad is powerful, it is a bit too low-level for building large and complex networks. The higher end <code class="docutils literal notranslate"><span class="pre">nn</span></code> package can define Modules, equivalent to neural network layers, with also predefined ready-to-use loss functions. We will see some of it in the Section <a class="reference internal" href="#dl-trainnn-stepdefine"><span class="std std-ref">Step 4. Define the Model</span></a>.</p>
+</section>
+<section id="tensorflow">
+<h3>TensorFlow<a class="headerlink" href="#tensorflow" title="Permalink to this headline">#</a></h3>
+<p>Born in GoogleBrain as an internal project at first, TensorFlow is a very popular deep learning frameworks. The APIs offered by TensorFlow can be both low and high level. Computations are expressed as dataflow graphs, picturing how the tensor “flows” through the layers of a neural net.
+It supports various programming languages besides python (JavaSCript, C++, Java) and can run on CPUs, GPUs as well as Tensor Processing Units (TPUs), which are AI accelerator application-specific integrated circuits (ASIC) developed by Google.</p>
+<p>TensorFlow offers excellent <a class="reference external" href="https://www.tensorflow.org/resources/tools">visualization tools</a>. In particular, the <a class="reference external" href="https://playground.tensorflow.org">PlayGround</a> is a brilliant interface to gain intuition in deep learning by changing graphically the neural network architecture and properties.</p>
+</section>
+</section>
+<section id="steps-in-building-your-nn">
+<h2>Steps in Building your NN<a class="headerlink" href="#steps-in-building-your-nn" title="Permalink to this headline">#</a></h2>
+<p>Designing a machine learning algorithm has a particular workflow.</p>
+<p>The usual steps are:</p>
+<ol class="simple">
+<li><p>Get the Data</p></li>
+<li><p>Visualize the Data</p></li>
+<li><p>Prepare the Data</p></li>
+<li><p>Define the Model</p></li>
+<li><p>Train the Model</p></li>
+<li><p>Tune the Model</p></li>
+<li><p>Evaluate the Model</p></li>
+<li><p>Make Predictions</p></li>
+</ol>
+<p>These steps may be coinced in a different way in industry, with e.g. the last one called “deployment”. We will stay in the academic realm with prediction making, as this is all that is about.</p>
+<p>But the most important step is missing. It’s the very first one:</p>
+<section id="step-0-frame-the-problem">
+<h3>Step 0. Frame the problem<a class="headerlink" href="#step-0-frame-the-problem" title="Permalink to this headline">#</a></h3>
+<p><strong>The big picture</strong><br />
+Before even starting to code anything, it is crucial to get a big picture on the challenge and ask oneself: what is the objective? What exactly do I want to predict?</p>
+<p><strong>What is before and after</strong><br />
+Framing implies to think of what comes before and after the optimization procedure. The learning algorithm to build is likely to insert itself into an analysis or quantitative study. Documenting oneself on what is done before, likely the data taking procedure, is important to gather… more data on the data. Can the dataset be trusted, partially or entirely? Same regarding what comes after the predictions. Are these predictions final? Or rather, are the outputs become the inputs to another study? Thinking of the inputs and outputs can provide already a good guidance on how you may solve the problem. It could even drastically change the way you may proceed. In a data analysis in experimental particle physics involving a BDT (Boosted Decision Trees), it was found that an increase in performance of some percent would be completely absorbed at the next stage of the analysis, the test statistics, due to very large uncertainties associated with them. Knowing this allows for redefining goals and focus efforts on where significant gain could be made.</p>
+<p><strong>How would solution(s) look like</strong><br />
+The next investigation is on the solution(s). Perhaps previous attempts in the past have been done to solve the problem. Or solutions exist but they are not reaching the desired precision. In this case it is always a good idea to collect and read some papers to get the achieved ballparks regarding accuracy, sensitivity, specificity. If solutions are inexistant, it is still possible to think of the consequences of the possible solution(s). Will it bring novelty into the field? Will it help solve similar problems?</p>
+<p><strong>Which type of ML is it</strong><br />
+Anticipating Step 4 (defining the Model), the framing of the problem requires identifying the type of machine learning: is it a regression task, a classification task, or something else? In case of a multi-class classification task, are the categories well-defined and entirely partitioning the target space?</p>
+<p><strong>How to evaluate the performance</strong><br />
+The next step is to think of the proper metrics to evaluate your future solution. A bad metric will inevitably lead to a bad performance assessment; or at least not optimal. Ask yourself among the errors types I and II what is more problematic: is it missing a (possibly rare) signal point? Is it picking a sample that should be actually not picked (signal contamination)? Should you worry about outliers in the data?</p>
+<p><strong>Checking assumptions</strong><br />
+Finally, it is a good practice to review assumptions. Are all input features correctly presented? If some are binary or categorical, wouldn’t it be relevant to investigate their classification scheme, to possibly convert in continuous probability? As a researcher, you can raise some flags regarding the task at hand if you have logical arguments to do so. Perhaps the problem is unclear or ill-defined; better to catch these issues as early as possible.</p>
+<p>Once these questions have been thought of, it is time to start cooking with the data!</p>
+</section>
+<section id="step-1-get-the-data">
+<h3>Step 1. Get the Data<a class="headerlink" href="#step-1-get-the-data" title="Permalink to this headline">#</a></h3>
+<p>Dataset formats are plentiful and at times field-related. In experimental particle physics for instance, the common format is <code class="docutils literal notranslate"><span class="pre">.root</span></code>. In this lecture, we will deal with <code class="docutils literal notranslate"><span class="pre">.csv</span></code> textfiles.</p>
+<p>The majority of machine learning programs are using DataFrames, a pythonic data structure from the Pandas python package.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;the_dataset_file.csv&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+<p>The variable name can be <code class="docutils literal notranslate"><span class="pre">data</span></code> but it is often called <code class="docutils literal notranslate"><span class="pre">df</span></code> like DataFrame.</p>
+<p>A DataFrame organizes data into a 2-dimensional table of rows and columns, like a spreadsheet. It is very visual and intuitive, hence its adoption by the majority of data scientists.</p>
+<p>There are other data handlers, e.g. in PyTorch the <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> and <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> classes, that are specific to the machine learning framework and used to efficiently train a model. A tutorial link is available at the end of this page.</p>
+</section>
+<section id="step-2-visualize-the-data">
+<h3>Step 2. Visualize the Data<a class="headerlink" href="#step-2-visualize-the-data" title="Permalink to this headline">#</a></h3>
+<p>Before even starting to prepare the data for machine learning purposes, it is recommended to see how the data look like.</p>
+<p>As the dataset can be big, so it is cautious to first know the number of columns (features) and rows (data instances).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Counting the number of rows</span>
+<span class="n">nb_rows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="c1"># Another way:</span>
+<span class="n">nb_rows</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Counting the number of columns</span>
+<span class="n">nb_cols</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="c1"># Another way:</span>
+<span class="n">nb_cols</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># To list the columns:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or more directly:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>which will show the memory usage, number of rows, a list the columns with the associated data type.</p>
+<p>Dataframes in Jupyter-Notebook neatly display as a human readable table with the columns highlighted and rows indexed. As the dataset can be big, you can print only the 5 first rows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This will work on Jupyter-Notebook but in a regular python script, you may need to insert it into a print statement such as <code class="docutils literal notranslate"><span class="pre">print(df.head(5))</span></code>. If the data is sorted, you may not have a correct glimpse of values. For instance if the signal samples are first, the target column <span class="math notranslate nohighlight">\(y\)</span> would display the signal labels. Once you know the number of instances, you can display several rows picked randomly. If you have 10,000 instances, you can explore:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5000</span><span class="p">,</span> <span class="mi">9000</span><span class="p">]</span> <span class="p">,</span> <span class="p">:</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>This will show you three instances, one at the start, one around the middle and one toward the end of the dataset.</p>
+<p>It is also good to check how balanced your dataset is in terms of signal vs background samples. If the DataFrame containing the training dataset is <code class="docutils literal notranslate"><span class="pre">train_data</span></code> and the labels are stored in the column <code class="docutils literal notranslate"><span class="pre">target</span></code> with values 1 for signal and 0 for background, then one can see their relative quantities:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sig</span> <span class="o">=</span> <span class="n">train_data</span><span class="p">[</span><span class="n">train_data</span><span class="p">[</span><span class="n">target</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">]</span>
+<span class="n">bkg</span> <span class="o">=</span> <span class="n">train_data</span><span class="p">[</span><span class="n">train_data</span><span class="p">[</span><span class="n">target</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of signal samples = </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">sig</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Number of background samples = </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">bkg</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Of course the best way to visualize the dataset is to make some plots. There are several ways to do this.</p>
+<p>The DataFrame provides the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> method with the <code class="docutils literal notranslate"><span class="pre">kind</span></code> argument to choose the type of plot. What is relevant for exploring a dataset would be the <code class="docutils literal notranslate"><span class="pre">kind='hist'</span></code> or <code class="docutils literal notranslate"><span class="pre">kind='scatter'</span></code> plots.</p>
+<p>Making histograms is straightforward:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;feature_1&#39;</span><span class="p">,</span> <span class="s1">&#39;feature_2&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;hist&#39;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p>It’s also good to tweak the number of bins, starting with 200 will ensure you get the shape of the distributions. The transparency <code class="docutils literal notranslate"><span class="pre">alpha</span></code> is useful if your plotted distributions overlay with each other. You can use the <code class="docutils literal notranslate"><span class="pre">y</span></code> argument to specify the columns:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;feature_1&#39;</span><span class="p">,</span> <span class="s1">&#39;feature_2&#39;</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;hist&#39;</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The KDE is worth mentioning. It will convert the distributions as a probability density function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It can be slow so better to select first some input features with <code class="docutils literal notranslate"><span class="pre">y=['feature_1',</span> <span class="pre">'feature_2']</span></code>.</p>
+<p>To see the relationship between two variables, the scatter plot is the way to go.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;feature_1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;feature_2&#39;</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">color</span></code> argument is required. It is a good practice to set the size of the dots small to not have overlapping data points in regions of high density. Another trick is to set the transparency <code class="docutils literal notranslate"><span class="pre">alpha</span></code> argument close to 0 (transparent). See in the example below how it better highlights the zones of highest density of the data.</p>
+<figure class="align-default" id="train-your-nn-scatter-alpha">
+<a class="reference internal image-reference" href="../_images/train_your_nn_scatter_alpha.png"><img alt="../_images/train_your_nn_scatter_alpha.png" src="../_images/train_your_nn_scatter_alpha.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 54 </span><span class="caption-text">. A scatter plot with full opacity (left) and <code class="docutils literal notranslate"><span class="pre">alpha=0.1</span></code> (right). The transparency brings out the areas of high data density.<br />
+<sub>Images: Aurélien Géron, <em>Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, Second Edition</em></sub></span><a class="headerlink" href="#train-your-nn-scatter-alpha" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>However it does not tell you which points are signal and which are background samples. Overall, the DataFrame <code class="docutils literal notranslate"><span class="pre">plot()</span></code> is a quick way to examine your data samples.</p>
+<p>For more specific plots relevant to your optimization goals, you may have to write your own plotting macro. The reigning library for plotting in python is Matplotlib. We have started to use it in previous examples and will continue to use it in neural network training and evaluation. More will be covered during the tutorials.</p>
+<p>Another library that is extremely convenient to get a quick glimpse at the data is <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>. In very few lines of code, this library generates very esthetically pleasing plots. Let’s see how it looks with Scikit-Learn’s own penguin dataset:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">()</span> <span class="c1"># apply the default theme</span>
+
+<span class="n">penguins</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;penguins&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">jointplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;flipper_length_mm&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;bill_length_mm&quot;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">hue</span></code> argument will produce as many series (seaborn will colour them automatically) specified.</p>
+<figure class="align-default" id="train-your-nn-pen-jointplot">
+<a class="reference internal image-reference" href="../_images/train_your_nn_pen_jointplot.png"><img alt="../_images/train_your_nn_pen_jointplot.png" src="../_images/train_your_nn_pen_jointplot.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 55 </span><span class="caption-text">. The <code class="docutils literal notranslate"><span class="pre">jointplot()</span></code> method in Seaborn.<br />
+<sub>Source: <a class="reference external" href="https://seaborn.pydata.org/tutorial/introduction#multivariate-views-on-complex-datasets">seaborn.pydata.org</a></sub></span><a class="headerlink" href="#train-your-nn-pen-jointplot" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Another method to explore some input featuresis the <code class="docutils literal notranslate"><span class="pre">pairplot()</span></code>, which will draw what is called a “scatter matrix”:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It looks magnificent:</p>
+<figure class="align-default" id="train-your-nn-pen-pairplot">
+<a class="reference internal image-reference" href="../_images/train_your_nn_pen_pairplot.png"><img alt="../_images/train_your_nn_pen_pairplot.png" src="../_images/train_your_nn_pen_pairplot.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 56 </span><span class="caption-text">. The <code class="docutils literal notranslate"><span class="pre">pairplot()</span></code> method in Seaborn.<br />
+<sub>Source: <a class="reference external" href="https://seaborn.pydata.org/tutorial/introduction#multivariate-views-on-complex-datasets">seaborn.pydata.org</a></sub></span><a class="headerlink" href="#train-your-nn-pen-pairplot" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>If you have lots of input features, you will have to select some so as to not overload the figure. Don’t forget the column storing the targets!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">columns_sel</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;flipper_length_mm&#39;</span><span class="p">,</span><span class="s1">&#39;bill_length_mm&#39;</span><span class="p">,</span> <span class="s1">&#39;species&#39;</span><span class="p">]</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">penguins</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">columns_sel</span><span class="p">],</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;species&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-prepare-the-data">
+<h3>Step 3. Prepare the Data<a class="headerlink" href="#step-3-prepare-the-data" title="Permalink to this headline">#</a></h3>
+<p><strong>Data Cleaning</strong></p>
+<div class="proof definition admonition" id="datacleaning">
+<p class="admonition-title"><span class="caption-number">Definition 76 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Data cleaning</strong>, also called data cleansing or data scrubbing, is the process of removing incorrect, duplicate, corrupted or incomplete data within a dataset.</p>
+</section>
+</div><p>The visualization step before would have helped you identify possible outliers (data points with values significantly away from the rest of the data). Should they be removed? Caution! It all depends on your situation. We will see in later lectures that outliers could actually be the signal (in anomaly detection for instance). The removal of outlier should be done after gathering sufficient strong arguments about their incorrectness.<br />
+The data cleaning includes a check for duplicates, wrong or incoherent formatting, e.g. if a label is present with different spelling for instance). And also missing data. If there is a <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (not a number) in a particular row and column, a decision should be made as most of algorithms will generate an error. A possibility is to drop the entire row, but there will be information lost on the other input features. Another way would consist of replacing the <code class="docutils literal notranslate"><span class="pre">NaN</span></code> with a safe value after inspecting the associated input feature.</p>
+<p><strong>Splitting the Datasets</strong><br />
+As seen in Lecture 3, the data is split in three sets: training, validation and test. It can be coded manually with a cut on row indices, but one should make sure the entire dataset is shuffled before to get relatively equal representation of each class in each set. Scikit-Learn has a convenient tool to split data between a training and a testing set: the <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> function. To make sure the same test set is generated once the program is run again, the <code class="docutils literal notranslate"><span class="pre">random_state</span></code> argument ensures reproducibility:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># Not shown: X and y contains input features and targets respectively</span>
+
+<span class="n">train_set</span><span class="p">,</span> <span class="n">test_set</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Feature Scaling</strong><br />
+As seen in Lecture 2, it is recommended to scale features to prevent the gradient descent from zig-zaging along slopes differing drastically depending on the direction. This can be done manually (always a good training). Scikit-Learn has methods such as <code class="docutils literal notranslate"><span class="pre">MinMaxScaler</span></code> and <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Exercise</p>
+<p>On which dataset(s) the feature scaling should be applied?<br />
+The training, the validation, and/or the test set(s)?</p>
+</div>
+</section>
+<section id="step-4-define-the-model">
+<span id="dl-trainnn-stepdefine"></span><h3>Step 4. Define the Model<a class="headerlink" href="#step-4-define-the-model" title="Permalink to this headline">#</a></h3>
+<p>Here is the fun part of building the neural network, layers by layers (like a layered dessert).</p>
+<p>In the model definition, there will be constraints in the input and output layers imposed by the given problem to solve:</p>
+<ul class="simple">
+<li><p>the first layer should have as many nodes as input features</p></li>
+<li><p>the output layer should have as many nodes as the number of expected predictions</p></li>
+</ul>
+<p>For a regression problem, the output layer is one node dotted with a linear activation unit.<br />
+For binary classification, the output layer also has one node, but the activation function is the sigmoid.
+For multi-class classification problems: the output configuration of the final layer has one node for each class, using the softmax activation function.</p>
+<p><strong>Example in Keras</strong><br />
+This is real code! “DL1” is a Deep Learning algorithm developed for the ATLAS Experiment at CERN Large Hadron Collider. Elementary particles called quarks are never seen directly in the detector, they produce a spray of visible other particles called a ‘jet.’  The jet-tagging is an algorithm determining, from a jet input features, which quark type produced it: either the bottom (<span class="math notranslate nohighlight">\(b\)</span>), charm (<span class="math notranslate nohighlight">\(c\)</span>) or lighter quarks (<span class="math notranslate nohighlight">\(s\)</span>, <span class="math notranslate nohighlight">\(u\)</span>, <span class="math notranslate nohighlight">\(d\)</span>).</p>
+<p>The model is a deep network defined this way:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">BatchNormalization</span>
+<span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">add</span>
+<span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">Model</span>
+
+<span class="c1"># Input layer</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],))</span>   <span class="c1"># </span>
+
+<span class="c1"># Hidden layers</span>
+<span class="n">l_units</span> <span class="o">=</span> <span class="p">[</span><span class="mi">72</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>   <span class="c1"># nunber of nodes in each hidden layer</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">inputs</span>
+<span class="c1"># loop to initialise the hidden layers</span>
+<span class="k">for</span> <span class="n">unit</span> <span class="ow">in</span> <span class="n">l_units</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="n">unit</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span> <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">BatchNormalization</span><span class="p">()(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">Activation</span><span class="p">(</span><span class="s1">&#39;relu&#39;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Output layer</span>
+<span class="c1"># Using softmax which will return a probability for each jet to be either light, c- or b-jet</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">Dense</span><span class="p">(</span><span class="n">units</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> 
+                    <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;softmax&#39;</span><span class="p">,</span>
+                    <span class="n">kernel_initializer</span><span class="o">=</span><span class="s1">&#39;glorot_uniform&#39;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Model</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="n">predictions</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><sub>Credit: Manuel Guth</sub></p>
+<p>The input layer contains the feature (recall that <code class="docutils literal notranslate"><span class="pre">.shape[1]</span></code> returns the number of columns, i.e. features). The <code class="docutils literal notranslate"><span class="pre">l_units</span></code> list was obtained by trials and errors. ‘Dense’ for the hidden layers means the regular deeply connected neural network layer. Their non-linear activation function is ReLU. The output layer contains 3 nodes as there are 3 classes: <span class="math notranslate nohighlight">\(b\)</span>-jets, <span class="math notranslate nohighlight">\(c\)</span>-jets and light-jets. The weight initialization is done via the Glorot-Uniform, as we saw in the Section <a class="reference internal" href="training_3_init.html#nn2-init-xavier"><span class="std std-ref">Xavier Weight Initialization</span></a>.</p>
+<p><strong>Example in PyTorch</strong><br />
+PyTorch is less intuitive than Keras but working at a lower level (that is to say the user has to do more coding, e.g. wrapping the methods into a loop, etc). Yet it is beneficial in terms of learning experience, as well of flexibility once the model is more complex.</p>
+<p>Let’s see how to define a fully-connected model in PyTorch. For this we create an instance of the PyTorch base class <code class="docutils literal notranslate"><span class="pre">torch.nn.Module</span></code>. The <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method defines the layers and other components of a model, and the <code class="docutils literal notranslate"><span class="pre">forward()</span></code> method where the computation gets done.</p>
+<p>Note: only the first, fourth and last hidden layers of the code above are written for conciseness.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="k">class</span> <span class="nc">my_model</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_inputs</span><span class="p">,</span> <span class="n">n_outputs</span><span class="p">):</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">my_model</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        
+        <span class="c1"># Hidden layers:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">n_inputs</span><span class="p">,</span> <span class="mi">72</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activ1</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">72</span><span class="p">,</span> <span class="mi">48</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activ2</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden3</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">48</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activ3</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden4</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">n_outputs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">activ4</span>  <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Softmax</span><span class="p">()</span>
+
+    <span class="c1"># forward propagate input</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># input to first hidden layer</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden1</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activ1</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="c1"># second hidden layer</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden2</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activ2</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="c1"># third hidden layer</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden3</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activ3</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="c1"># fourth hidden layer and output</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden4</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">X</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">activ4</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">X</span>
+
+<span class="c1"># [...]</span>
+
+<span class="c1"># Instanciation</span>
+<span class="n">my_model</span> <span class="o">=</span> <span class="n">my_model</span><span class="p">(</span><span class="mi">44</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The Glorot initalization can be done with the method <code class="docutils literal notranslate"><span class="pre">torch.nn.init.xavier_uniform_(tensor,</span> <span class="pre">gain=1.0)</span></code>.
+The gain is provided by <code class="docutils literal notranslate"><span class="pre">nn.init.calculate_gain('relu')</span></code>, here for the ReLU function. It needs to be inputted as gains are specific of the activation functions. More on <a class="reference external" href="https://pytorch.org/docs/stable/nn.init.html">PyTorch nn.init page</a>.</p>
+</section>
+<section id="step-5-train-the-model">
+<h3>Step 5. Train the Model<a class="headerlink" href="#step-5-train-the-model" title="Permalink to this headline">#</a></h3>
+<p>Once we have a model, we need two things to train it: a loss function and an optimization algorithm.</p>
+<p><strong>Loss function</strong><br />
+PyTorch <code class="docutils literal notranslate"><span class="pre">torch.nn</span></code> package has <a class="reference external" href="https://pytorch.org/docs/stable/nn.html#loss-functions">predefined loss functions</a>. The most common ones being</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MSELoss</span></code>: Mean squared loss for regression.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BCELoss</span></code>: Binary cross-entropy loss for binary classification.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CrossEntropyLoss</span></code>: Categorical cross-entropy loss for multi-class classification.</p></li>
+</ul>
+<p><strong>Optimization algorithm</strong><br />
+PyTorch has optimizers of the shelf thanks to its <code class="docutils literal notranslate"><span class="pre">torch.optim</span></code> package. Among the plethora of optimizers, some such as <code class="docutils literal notranslate"><span class="pre">optim.SGD</span></code> or <code class="docutils literal notranslate"><span class="pre">optim.Adam</span></code> should sound familiar to you. Find more on <a class="reference external" href="https://pytorch.org/docs/stable/optim.html">PyTorch <code class="docutils literal notranslate"><span class="pre">optim</span></code> page</a>.</p>
+<p>Let’s put things together. The <code class="docutils literal notranslate"><span class="pre">train</span></code> variable is a PyTorch tensor from a <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> instance.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+
+<span class="c1"># Prepare data loaders</span>
+<span class="n">train_dl</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># [...] definition of the model my_model (above)</span>
+
+<span class="c1"># Set the loss and optimization</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">my_model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+<span class="n">N_epochs</span> <span class="o">=</span> <span class="mi">1000</span> 
+
+<span class="c1"># enumerate epochs</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_epochs</span><span class="p">):</span>
+
+    <span class="c1"># enumerate mini batches</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">train_dl</span><span class="p">):</span>
+
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>    <span class="c1"># clear the gradients</span>
+        <span class="n">yhat</span> <span class="o">=</span> <span class="n">my_model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>  <span class="c1"># compute the model output</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">yhat</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span> <span class="c1"># calculate loss</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>          <span class="c1"># compute gradients</span>
+        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>         <span class="c1"># update model weights</span>
+</pre></div>
+</div>
+<p>It is usually more convenient to wrap this inside a user-defined function with the model and other relevant parameters as arguments. This function can then be called several times with different models.</p>
+</section>
+<section id="step-6-tune-the-model">
+<h3>Step 6. Tune the Model<a class="headerlink" href="#step-6-tune-the-model" title="Permalink to this headline">#</a></h3>
+<p>We saw the <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> and <code class="docutils literal notranslate"><span class="pre">RandomSearchCV</span></code> tools from Scikit-Learn. For neural networks, a popular library is <code class="docutils literal notranslate"><span class="pre">RayTune</span></code> (<a class="reference external" href="https://docs.ray.io/en/latest/tune/index.html">link to official website</a>), which integrates with numerous machine learning frameworks. A good illustrative example is provided in <a class="reference external" href="https://docs.ray.io/en/latest/tune/examples/tune-pytorch-cifar.html#tune-pytorch-cifar-ref">Ray’s official documentation</a>.</p>
+</section>
+<section id="step-7-evaluate-the-model">
+<h3>Step 7. Evaluate the Model<a class="headerlink" href="#step-7-evaluate-the-model" title="Permalink to this headline">#</a></h3>
+<p>As we saw in Step 0, the evaluation will be dictacted by the specifics of the optimization problem. It should be performed on the test set, untouched during the training. The little trick here is to ‘unconvert’ PyTorch tensors into NumPy arrays before calling the method that computes the performance metrics.
+A minimal implementation of a binary classifier using the accuracy would look like this:</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">detach()</span></code> method in PyTorch is used to separate a tensor from the computational graph by returning a new tensor that doesn’t require a gradient.</p>
+</div>
+</aside>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="kn">from</span> <span class="nn">torch.utils.data</span> <span class="kn">import</span> <span class="n">DataLoader</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">vstack</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="n">all_preds</span><span class="p">,</span> <span class="n">all_obss</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(),</span> <span class="nb">list</span><span class="p">()</span>
+
+<span class="c1"># Loop over batches</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">test_dl</span><span class="p">):</span>
+    
+    <span class="c1"># Evaluate batch on test set</span>
+    <span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span> 
+
+    <span class="c1"># Convert to numpy arrays</span>
+    <span class="n">preds</span> <span class="o">=</span> <span class="n">preds</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">obss</span>  <span class="o">=</span> <span class="n">targets</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">obss</span>  <span class="o">=</span> <span class="n">obss</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">obss</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="c1"># Store</span>
+    <span class="n">all_preds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">preds</span><span class="p">)</span>
+    <span class="n">all_obss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obss</span><span class="p">)</span>
+
+<span class="n">all_preds</span><span class="p">,</span> <span class="n">all_obss</span> <span class="o">=</span> <span class="n">vstack</span><span class="p">(</span><span class="n">all_preds</span><span class="p">),</span> <span class="n">vstack</span><span class="p">(</span><span class="n">all_preds</span><span class="p">)</span>
+<span class="c1"># calculate accuracy</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">all_yobss</span><span class="p">,</span> <span class="n">all_ypreds</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>From the list of all observations <code class="docutils literal notranslate"><span class="pre">all_obss</span></code> and their associated predictions <code class="docutils literal notranslate"><span class="pre">all_preds</span></code>, it is possible to plot ROC curves and compare different models.</p>
+</section>
+<section id="step-8-make-predictions">
+<h3>Step 8. Make Predictions<a class="headerlink" href="#step-8-make-predictions" title="Permalink to this headline">#</a></h3>
+<p>Now it is time to use the model to make a prediction!</p>
+<p>The input will be a data row of input features (but no target). A first step for PyTorch is to convert this data row into a Tensor. If <code class="docutils literal notranslate"><span class="pre">row</span></code> is a list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert row to data</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">([</span><span class="n">row</span><span class="p">])</span>
+
+<span class="c1"># Make prediction</span>
+<span class="n">ypred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+<span class="c1"># retrieve numpy array</span>
+<span class="n">ypred</span> <span class="o">=</span> <span class="n">ypred</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Predicted: </span><span class="si">%.3f</span><span class="s1"> (class: </span><span class="si">%d</span><span class="s1">)&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ypred</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">ypred</span><span class="p">)))</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="summary-practice-practice-practice">
+<h2>Summary: Practice Practice Practice<a class="headerlink" href="#summary-practice-practice-practice" title="Permalink to this headline">#</a></h2>
+<p>You reached the end of this long page. Good. You now know the steps and building coding blocks to start your deep learning journey. But most important is practice. This will be done during tutorials and assignments. A great way to learn is to join ML competition websites such as Kaggle.com (<a class="reference external" href="https://www.kaggle.com/">website</a>). Another opportunity to become better: your own project! If you are curious about a given scientific field and can find a dataset, play around driven by your own questions!</p>
+<div class="seealso admonition">
+<p class="admonition-title">Learn More</p>
+<p><strong>Visualization</strong><br />
+<a class="reference external" href="https://www.kaggle.com/">Matplotlib</a><br />
+<a class="reference external" href="https://seaborn.pydata.org/tutorial/introduction">Introduction to Seaborn</a></p>
+<p><strong>ML Framework Comparison</strong><br />
+Tensorflow, PyTorch or Keras for Deep Learning on <a class="reference external" href="https://www.dominodatalab.com/blog/tensorflow-pytorch-or-keras-for-deep-learning">dominodatalab.com</a></p>
+<p><strong>PyTorch</strong><br />
+<a class="reference external" href="https://pytorch.org/tutorials/beginner/introyt/tensors_deeper_tutorial.html">Introduction to PyTorch Tensors - official documentation</a><br />
+“PyTorch Tutorial: How to Develop Deep Learning Models with Python” on <a class="reference external" href="https://machinelearningmastery.com/pytorch-tutorial-develop-deep-learning-models/">machinelearningmastery.com</a>.<br />
+<a class="reference external" href="https://pytorch.org/tutorials/beginner/basics/data_tutorial.html">Datasets &amp; DataLoader - official documentation</a></p>
+<p><strong>TensorFlow</strong><br />
+<a class="reference external" href="https://www.tensorflow.org/">Official Website</a><br />
+<a class="reference external" href="https://playground.tensorflow.org">TensorFlow Playground!</a></p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./nn"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="optim_4_adaptive_methods.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Adaptive Optimizers</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    <div class="extra_footer">
+      <div style="display:flex; align-items:center; gap:10px;">
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+    <img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" alt="CC Logo">
+  </a>
+  <div>
+    By Claire David • © 2025<br>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
+  </div>
+</div>
+
+    </div>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

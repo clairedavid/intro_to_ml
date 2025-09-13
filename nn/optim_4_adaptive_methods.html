@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Learning Rate Schedulers" href="optim_3_lr_scheduling.html" />
@@ -363,8 +365,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="training_0_intro.html">
-   Training Neural Networks
+  <a class="reference internal" href="model_rep.html">
+   Essential Concepts
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
@@ -373,18 +375,45 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="model_rep_1_neurons.html">
+     The basic units: neurons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_rep_2_activation_functions.html">
+     Activation Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_rep_3_loss_cost.html">
+     Loss and Cost Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="training_0_intro.html">
+   Training Neural Networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
     <a class="reference internal" href="training_1_forward_prop.html">
-     Forward Propagation
+     Feedforward Propagation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="training_2_backprop.html">
-     Backpropagation
+     Backpropagation Algorithm
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="training_3_init.html">
-     Initialization schemes
+     Initialization Schemes
     </a>
    </li>
   </ul>
@@ -393,8 +422,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="optim_0_intro.html">
    Optimizing Neural Networks
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -531,12 +560,51 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adagrad">
+   AdaGrad
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rmsprop">
+   RMSProp
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#momentum-optimization">
+   Momentum Optimization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adam">
+   Adam
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -548,6 +616,34 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adagrad">
+   AdaGrad
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rmsprop">
+   RMSProp
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#momentum-optimization">
+   Momentum Optimization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adam">
+   Adam
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -557,6 +653,96 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="adaptive-optimizers">
 <h1>Adaptive Optimizers<a class="headerlink" href="#adaptive-optimizers" title="Permalink to this headline">#</a></h1>
+<p>Before the arrival of faster methods, combining Stochastic Gradient Descent with a learning rate schedule was considered close to state-of-the-art. Adaptive optimizers changed this by embedding the learning rate adjustment directly into the optimization process. Instead of relying on a separate scheduler, they use feedback from the model to adjust updates based on past gradients. The key advantage: they require little to no manual tuning.</p>
+<div class="proof definition admonition" id="definition-0">
+<p class="admonition-title"><span class="caption-number">Definition 75 </span></p>
+<section class="definition-content" id="proof-content">
+<p>An <strong>Adaptative Learning Rate</strong> is a technique that varies the learning rate using feedback from the model itself.</p>
+</section>
+</div><p>As the variation of the learning rate is done by the optimizer, the terms adaptive learning rate and adaptive optimizer are often used interchangeably.</p>
+<p>Below are brief descriptions of the most popular adaptative optimizers.</p>
+<section id="adagrad">
+<h2>AdaGrad<a class="headerlink" href="#adagrad" title="Permalink to this headline">#</a></h2>
+<p>This first adaptative algorithm was published in 2011. Compared to the classical Gradient Descent, AdaGrad points more directly toward the global optimum by decaying the learning rate more on the steepest dimension.</p>
+<figure class="align-default" id="optim-4-adagrad">
+<a class="reference internal image-reference" href="../_images/optim_4_adagrad.png"><img alt="../_images/optim_4_adagrad.png" src="../_images/optim_4_adagrad.png" style="width: 80%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 53 </span><span class="caption-text">. The Gradient Descent (blue) vs AdaGrad (orange).<br />
+<sub>Image: Aurélien Géron, <em>Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, Second Edition</em></sub></span><a class="headerlink" href="#optim-4-adagrad" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In the figure above, the AdaGrad takes a more direct thus shorter path than Gradient Descent, as AdaGrad has its learning rate reduced in the direction of steepest descent. This is done by squaring each gradient component into a vector <span class="math notranslate nohighlight">\(\boldsymbol{s}\)</span>. The steepest a gradient component, the larger the square of this component <span class="math notranslate nohighlight">\(s_j\)</span>. The weights are updated in almost the same way as with Gradient Descent, yet each component is divided by <span class="math notranslate nohighlight">\(\boldsymbol{s} + \epsilon\)</span>. The added term <span class="math notranslate nohighlight">\(\epsilon\)</span> is to prevent a division by zero (typically 10<span class="math notranslate nohighlight">\(^{-10}\)</span>). As a result, the algorithm detects how to change the learning rate dynamically and specifically on the large gradient components to adapt to their steep slope.</p>
+<p>Mathematically:</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The <span class="math notranslate nohighlight">\(\otimes\)</span> symbol is the element-wise multiplication, while the <span class="math notranslate nohighlight">\(\oslash\)</span> is the element-wise division.</p>
+</aside>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+\boldsymbol{s} \; &amp;\leftarrow \; \boldsymbol{s}  \;+\;  \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \;\otimes \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \\[2ex]
+\boldsymbol{W} \; &amp;\leftarrow \; \boldsymbol{W} - \alpha \; \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \oslash \sqrt{\boldsymbol{s} + \epsilon}
+\end{align*}\end{split}\]</div>
+<p><strong>The con</strong><br />
+AdaGrad performs well on simple problem, like linear regression. With neural networks, it tends to stop too soon, before reaching the global minimum. Luckily, other adaptative algorithms fix this.</p>
+</section>
+<section id="rmsprop">
+<h2>RMSProp<a class="headerlink" href="#rmsprop" title="Permalink to this headline">#</a></h2>
+<p>RMSProp stands for Root Mean Square Propagation. It works the same as AdaGrad except that it keeps track of an exponentially decaying average of past squared gradients:</p>
+<div class="math notranslate nohighlight" id="equation-rmspropeq">
+<span class="eqno">(138)<a class="headerlink" href="#equation-rmspropeq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+\boldsymbol{s} \; &amp;\leftarrow \; \beta\boldsymbol{s}  \;+\;  (1 - \beta) \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \;\otimes \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \\[2ex]
+\boldsymbol{W} \; &amp;\leftarrow \; \boldsymbol{W} - \alpha \; \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \oslash \sqrt{\boldsymbol{s} + \epsilon}
+\end{align*}\end{split}\]</div>
+<p>with the decay rate <span class="math notranslate nohighlight">\(\beta\)</span>, between 0 and 1, yet typically set to 0.9. One might ask: what is the point to introduce an extra hyparameter? It turns out the default value works well in most cases and does not require tuning. What the update in the expressions <a class="reference internal" href="#equation-rmspropeq">(138)</a> shows is a recursive way of computing a so-called Exponential Moving Average (EMA). In other words, <span class="math notranslate nohighlight">\(\beta\)</span> acts as a constant smoothing factor, representing the degree of weighting increase. A lower <span class="math notranslate nohighlight">\(\beta\)</span> discounts older observations faster. A higher <span class="math notranslate nohighlight">\(\beta\)</span> gives more weight to the previous gradient, a bit less weight to the previous previous gradient, etc.</p>
+<p>For more elaborated tasks than the simple linear case, RMSProp is robust. It reigned until dethrowned by a newcomer called Adam. Before introducing Adam, let’s first cover the notion of momentum optimization.</p>
+</section>
+<section id="momentum-optimization">
+<h2>Momentum Optimization<a class="headerlink" href="#momentum-optimization" title="Permalink to this headline">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The algorithm name borrows the momentum concept from physics, yet it is a only metaphor.</p>
+</div>
+</aside>
+<p>In physics, the momentum <span class="math notranslate nohighlight">\(\boldsymbol{p}\)</span> is a vector obtained by taking the product of the mass and velocity of an object. It quantifies motion. In computing science, momentum refers to the direction and speed at which the parameters move - via iterative updates - through the parameter space. With momentum optimization, inertia is added to the system by updating the weights using the momenta from past iterations. This keeps the update in the same direction. The common analogy is a ball rolling down on a curved surface. It will start slowly but soon “gain momentum”, thus can go through flat gradient surface much faster than with the classic Gradient Descent. Adding momentum considerably speeds the Gradient Descent process. It also helps roll beside local minimum.</p>
+<p>The momentum optimization algorithm is as follow:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+\boldsymbol{m} \; &amp;\leftarrow \; \beta \boldsymbol{m} \; - \; \alpha \; \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \\[2ex]
+\boldsymbol{W} \; &amp;\leftarrow \; \boldsymbol{W} + \boldsymbol{m} 
+\end{align*}\end{split}\]</div>
+<p>Here the <span class="math notranslate nohighlight">\(\beta\)</span> parameter controls the momentum from becoming too large. It could be analogous to introducing friction; <span class="math notranslate nohighlight">\(\beta\)</span> ranges from 0 to 1, with 0 meaning high friction and 1 no friction at all. In the literature you will see a common default value of <span class="math notranslate nohighlight">\(\beta\)</span> = 0.9.</p>
+</section>
+<section id="adam">
+<h2>Adam<a class="headerlink" href="#adam" title="Permalink to this headline">#</a></h2>
+<p>Adam stands for <em>Adaptative moment estimation</em>. It merges RMSProp with momentum optimization. Recall that RMSProp uses an exponentially decaying average of past squared gradients, while momentum does the same except with gradients (not squared).</p>
+<p>Mathematically:</p>
+<div class="math notranslate nohighlight" id="equation-adameq">
+<span class="eqno">(139)<a class="headerlink" href="#equation-adameq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+\boldsymbol{m} \; &amp;\leftarrow \; \beta_1 \boldsymbol{m} \; - \; (1 - \beta_1) \; \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}}\\[1ex]
+\boldsymbol{s} \; &amp;\leftarrow \; \; \beta_2\boldsymbol{s}  \;+\;  (1 - \beta_2) \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \otimes  \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \\[1ex]
+\boldsymbol{\widehat{m}} &amp;\leftarrow \frac{\boldsymbol{m}}{1 - \beta_1^t} \\[1ex]
+\boldsymbol{\widehat{s}} &amp;\leftarrow \frac{\boldsymbol{s}}{1 - \beta_2^t} \\[1ex]
+\boldsymbol{W} \; &amp;\leftarrow \; \boldsymbol{W} + \alpha \; \boldsymbol{\widehat{m}} \oslash \sqrt{\boldsymbol{\widehat{s}} + \epsilon}
+\end{align*} \end{split}\]</div>
+<p>with <span class="math notranslate nohighlight">\(t\)</span> the iteration number.</p>
+<p>The first step is not exactly the momentum; instead of an exponentially decaying sum, Adam computes an exponentially decaying average.</p>
+<p>The algorithm seems complicated at first glance, especially steps including the averages of <span class="math notranslate nohighlight">\(\boldsymbol{\widehat{m}}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{\widehat{s}}\)</span>. The division with the betas is to boost at the start of the training the values or <span class="math notranslate nohighlight">\(\boldsymbol{m}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{s}\)</span>, which are initialized at zero, in order to not stay at zero.</p>
+<p>“Many extra parameters on top of the learning rate, so what is the point?” will you say. Actually the momentum decay <span class="math notranslate nohighlight">\(\beta_1\)</span> is set to 0.9, the scaling one <span class="math notranslate nohighlight">\(\beta_2\)</span> to 0.999 and <span class="math notranslate nohighlight">\(\epsilon\)</span> to 10<span class="math notranslate nohighlight">\(^{-7}\)</span>. And if the learning rate is still a hyperparameter (usually set at 0.001 at start), it will be adapted to the optimiziation problem at hand by the algorithm. In that sense, the Adam optimizer is almost parameter free.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Learn More</p>
+<ul class="simple">
+<li><p>Article: <a class="reference external" href="https://machinelearningmastery.com/learning-rate-for-deep-learning-neural-networks/">How to Configure the Learning Rate When Training Deep Learning Neural Networks</a> (machinelearningmastery.com)</p></li>
+<li><p>Article: <a class="reference external" href="https://machinelearningmastery.com/gradient-descent-with-momentum-from-scratch/">Gradient Descent With Momentum from Scratch</a> (machinelearningmastery.com)</p></li>
+<li><p>Paper: <a class="reference external" href="https://jmlr.org/papers/v12/duchi11a.html">Adaptive Subgradient Methods for Online Learning and Stochastic Optimization</a> (JMLR)</p></li>
+<li><p>There is no paper for RMSProp as it was never officially published! One of the authors Geoffrey Hinton presented it in a Coursera lecture. As a consequence, it is amusingly referenced by researchers as: <a class="reference external" href="https://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf">Slide 29 in Lecture 6</a> (Hinton, Coursera, 2012)</p></li>
+<li><p>Article: <a class="reference external" href="https://towardsdatascience.com/gradient-descent-with-momentum-59420f626c8f">Gradient Descent with Momentum</a> (towardsdatascience.com)<br />
+👉 helps understand the Exponential Moving Average (EMA).</p></li>
+<li><p>Paper: <a class="reference external" href="https://arxiv.org/abs/1412.6980">Adam: A Method for Stochastic Optimization (2015)</a> (arXiv)</p></li>
+</ul>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

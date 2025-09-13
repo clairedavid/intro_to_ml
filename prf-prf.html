@@ -453,6 +453,11 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nn/train_your_nn.html">
+   Train Your Neural Net!
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -548,8 +553,8 @@ title="Fullscreen mode"
    <a href="#cap-AdaBoostalgo"><strong>AdaBoostalgo</strong></a> | 
    <a href="#cap-DTalgo"><strong>DTalgo</strong></a> | 
    <a href="#cap-GD_algo_1D"><strong>GD_algo_1D</strong></a> | 
-   <a href="#cap-GD_algo_multi"><strong>GD_algo_multi</strong></a> | 
    <a href="#cap-GDesc"><strong>GDesc</strong></a> | 
+   <a href="#cap-SGDdef"><strong>SGDdef</strong></a> | 
    <a href="#cap-activfuncdef"><strong>activfuncdef</strong></a> | 
    <a href="#cap-andef"><strong>andef</strong></a> | 
    <a href="#cap-aucdef"><strong>aucdef</strong></a> | 
@@ -558,6 +563,7 @@ title="Fullscreen mode"
    <a href="#cap-backpropdef"><strong>backpropdef</strong></a> | 
    <a href="#cap-baggingdef"><strong>baggingdef</strong></a> | 
    <a href="#cap-balancedaccdef"><strong>balancedaccdef</strong></a> | 
+   <a href="#cap-batchsizedef"><strong>batchsizedef</strong></a> | 
    <a href="#cap-biasdef"><strong>biasdef</strong></a> | 
    <a href="#cap-binaryDef"><strong>binaryDef</strong></a> | 
    <a href="#cap-boostingdef"><strong>boostingdef</strong></a> | 
@@ -570,11 +576,13 @@ title="Fullscreen mode"
    <a href="#cap-costFLogRegDef"><strong>costFLogRegDef</strong></a> | 
    <a href="#cap-costFunction"><strong>costFunction</strong></a> | 
    <a href="#cap-costnndef"><strong>costnndef</strong></a> | 
+   <a href="#cap-datacleaning"><strong>datacleaning</strong></a> | 
    <a href="#cap-decBoundDef"><strong>decBoundDef</strong></a> | 
    <a href="#cap-decisionstumpdef"><strong>decisionstumpdef</strong></a> | 
    <a href="#cap-defFeatureScaling"><strong>defFeatureScaling</strong></a> | 
    <a href="#cap-defMeanNormalization"><strong>defMeanNormalization</strong></a> | 
    <a href="#cap-defStandardization"><strong>defStandardization</strong></a> | 
+   <a href="#cap-definition-0"><strong>definition-0</strong></a> | 
    <a href="#cap-definition-3"><strong>definition-3</strong></a> | 
    <a href="#cap-definition-4"><strong>definition-4</strong></a> | 
    <a href="#cap-dtdef"><strong>dtdef</strong></a> | 
@@ -584,14 +592,17 @@ title="Fullscreen mode"
    <a href="#cap-expmodeldef"><strong>expmodeldef</strong></a> | 
    <a href="#cap-fanindef"><strong>fanindef</strong></a> | 
    <a href="#cap-feedforwardpropdef"><strong>feedforwardpropdef</strong></a> | 
+   <a href="#cap-gd_algo_multi"><strong>gd_algo_multi</strong></a> | 
    <a href="#cap-generalizationdef"><strong>generalizationdef</strong></a> | 
    <a href="#cap-generrordef"><strong>generrordef</strong></a> | 
    <a href="#cap-ginidef"><strong>ginidef</strong></a> | 
    <a href="#cap-gradientsinitxavier"><strong>gradientsinitxavier</strong></a> | 
+   <a href="#cap-gridsearchdef"><strong>gridsearchdef</strong></a> | 
    <a href="#cap-heinitdef"><strong>heinitdef</strong></a> | 
    <a href="#cap-hypothesisFunction"><strong>hypothesisFunction</strong></a> | 
    <a href="#cap-hypothesisFunctionMulti"><strong>hypothesisFunctionMulti</strong></a> | 
    <a href="#cap-kfoldxvalidation"><strong>kfoldxvalidation</strong></a> | 
+   <a href="#cap-learningratescheduledef"><strong>learningratescheduledef</strong></a> | 
    <a href="#cap-lecuninitdef"><strong>lecuninitdef</strong></a> | 
    <a href="#cap-linRegDef"><strong>linRegDef</strong></a> | 
    <a href="#cap-logFuncDef"><strong>logFuncDef</strong></a> | 
@@ -608,12 +619,14 @@ title="Fullscreen mode"
    <a href="#cap-perceptrondef"><strong>perceptrondef</strong></a> | 
    <a href="#cap-pseudodef"><strong>pseudodef</strong></a> | 
    <a href="#cap-randomforestdef"><strong>randomforestdef</strong></a> | 
+   <a href="#cap-randomsearchdef"><strong>randomsearchdef</strong></a> | 
    <a href="#cap-regularizationdef"><strong>regularizationdef</strong></a> | 
    <a href="#cap-residualDef"><strong>residualDef</strong></a> | 
    <a href="#cap-rmseDef"><strong>rmseDef</strong></a> | 
    <a href="#cap-rocdef"><strong>rocdef</strong></a> | 
    <a href="#cap-softhardvoterdef"><strong>softhardvoterdef</strong></a> | 
    <a href="#cap-softmaxdef"><strong>softmaxdef</strong></a> | 
+   <a href="#cap-stochasticdef"><strong>stochasticdef</strong></a> | 
    <a href="#cap-tprfprdef"><strong>tprfprdef</strong></a> | 
    <a href="#cap-trainvaltestsetsdef"><strong>trainvaltestsetsdef</strong></a> | 
    <a href="#cap-underfittingdef"><strong>underfittingdef</strong></a> | 
@@ -650,20 +663,20 @@ title="Fullscreen mode"
        <a href="basics/lin_reg_3_gradient_descent_1d.html#GD_algo_1D"><code class="xref">GD_algo_1D</code></a> <em>(basics/lin_reg_3_gradient_descent_1d)</em></td><td>
        <em>algorithm</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-GD_algo_multi"><td></td><td>
-       <strong>GD_algo_multi</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="basics/lin_reg_4_gradient_descent_multiD.html#GD_algo_multi"><code class="xref">GD_algo_multi</code></a> <em>(basics/lin_reg_4_gradient_descent_multiD)</em></td><td>
-       <em>algorithm</em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-GDesc"><td></td><td>
        <strong>GDesc</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
        <a href="basics/lin_reg_3_gradient_descent_1d.html#GDesc"><code class="xref">GDesc</code></a> <em>(basics/lin_reg_3_gradient_descent_1d)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-SGDdef"><td></td><td>
+       <strong>SGDdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/optim_1_sdg.html#SGDdef"><code class="xref">SGDdef</code></a> <em>(nn/optim_1_sdg)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-activfuncdef"><td></td><td>
@@ -728,6 +741,14 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="basics/model_eval_2_perf_metrics.html#balancedaccdef"><code class="xref">balancedaccdef</code></a> <em>(basics/model_eval_2_perf_metrics)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-batchsizedef"><td></td><td>
+       <strong>batchsizedef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/optim_1_sdg.html#batchsizedef"><code class="xref">batchsizedef</code></a> <em>(nn/optim_1_sdg)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-biasdef"><td></td><td>
@@ -826,6 +847,14 @@ title="Fullscreen mode"
        <a href="nn/model_rep_3_loss_cost.html#costnndef"><code class="xref">costnndef</code></a> <em>(nn/model_rep_3_loss_cost)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-datacleaning"><td></td><td>
+       <strong>datacleaning</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/train_your_nn.html#datacleaning"><code class="xref">datacleaning</code></a> <em>(nn/train_your_nn)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-decBoundDef"><td></td><td>
        <strong>decBoundDef</strong></td><td></td></tr>
      <tr>
@@ -864,6 +893,14 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="basics/lin_reg_4_gradient_descent_multiD.html#defStandardization"><code class="xref">defStandardization</code></a> <em>(basics/lin_reg_4_gradient_descent_multiD)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-0"><td></td><td>
+       <strong>definition-0</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/optim_4_adaptive_methods.html#definition-0"><code class="xref">definition-0</code></a> <em>(nn/optim_4_adaptive_methods)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-definition-3"><td></td><td>
@@ -938,6 +975,14 @@ title="Fullscreen mode"
        <a href="nn/training_1_forward_prop.html#feedforwardpropdef"><code class="xref">feedforwardpropdef</code></a> <em>(nn/training_1_forward_prop)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-gd_algo_multi"><td></td><td>
+       <strong>gd_algo_multi</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="basics/lin_reg_4_gradient_descent_multiD.html#gd_algo_multi"><code class="xref">gd_algo_multi</code></a> <em>(basics/lin_reg_4_gradient_descent_multiD)</em></td><td>
+       <em>algorithm</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-generalizationdef"><td></td><td>
        <strong>generalizationdef</strong></td><td></td></tr>
      <tr>
@@ -970,6 +1015,14 @@ title="Fullscreen mode"
        <a href="nn/training_3_init.html#gradientsinitxavier"><code class="xref">gradientsinitxavier</code></a> <em>(nn/training_3_init)</em></td><td>
        <em>property</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-gridsearchdef"><td></td><td>
+       <strong>gridsearchdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/optim_2_hyperparams.html#gridsearchdef"><code class="xref">gridsearchdef</code></a> <em>(nn/optim_2_hyperparams)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-heinitdef"><td></td><td>
        <strong>heinitdef</strong></td><td></td></tr>
      <tr>
@@ -1000,6 +1053,14 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="basics/model_eval_1_train_test_split.html#kfoldxvalidation"><code class="xref">kfoldxvalidation</code></a> <em>(basics/model_eval_1_train_test_split)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-learningratescheduledef"><td></td><td>
+       <strong>learningratescheduledef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/optim_3_lr_scheduling.html#learningratescheduledef"><code class="xref">learningratescheduledef</code></a> <em>(nn/optim_3_lr_scheduling)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-lecuninitdef"><td></td><td>
@@ -1130,6 +1191,14 @@ title="Fullscreen mode"
        <a href="trees/el_2_random_forests.html#randomforestdef"><code class="xref">randomforestdef</code></a> <em>(trees/el_2_random_forests)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-randomsearchdef"><td></td><td>
+       <strong>randomsearchdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/optim_2_hyperparams.html#randomsearchdef"><code class="xref">randomsearchdef</code></a> <em>(nn/optim_2_hyperparams)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-regularizationdef"><td></td><td>
        <strong>regularizationdef</strong></td><td></td></tr>
      <tr>
@@ -1176,6 +1245,14 @@ title="Fullscreen mode"
        <td></td>
        <td>
        <a href="basics/log_reg_3_cost_function.html#softmaxdef"><code class="xref">softmaxdef</code></a> <em>(basics/log_reg_3_cost_function)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-stochasticdef"><td></td><td>
+       <strong>stochasticdef</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="nn/optim_1_sdg.html#stochasticdef"><code class="xref">stochasticdef</code></a> <em>(nn/optim_1_sdg)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-tprfprdef"><td></td><td>

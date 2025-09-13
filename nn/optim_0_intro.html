@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Stochastic Gradient Descent" href="optim_1_sdg.html" />
-    <link rel="prev" title="Initialization schemes" href="training_3_init.html" />
+    <link rel="prev" title="Initialization Schemes" href="training_3_init.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -364,8 +364,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="training_0_intro.html">
-   Training Neural Networks
+  <a class="reference internal" href="model_rep.html">
+   Essential Concepts
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
@@ -374,18 +374,45 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="model_rep_1_neurons.html">
+     The basic units: neurons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_rep_2_activation_functions.html">
+     Activation Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_rep_3_loss_cost.html">
+     Loss and Cost Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="training_0_intro.html">
+   Training Neural Networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
     <a class="reference internal" href="training_1_forward_prop.html">
-     Forward Propagation
+     Feedforward Propagation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="training_2_backprop.html">
-     Backpropagation
+     Backpropagation Algorithm
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="training_3_init.html">
-     Initialization schemes
+     Initialization Schemes
     </a>
    </li>
   </ul>
@@ -394,8 +421,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="current reference internal" href="#">
    Optimizing Neural Networks
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -421,6 +448,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="train_your_nn.html">
+   Train Your Neural Net!
+  </a>
  </li>
 </ul>
 
@@ -558,6 +590,17 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="optimizing-neural-networks">
 <h1>Optimizing Neural Networks<a class="headerlink" href="#optimizing-neural-networks" title="Permalink to this headline">#</a></h1>
+<br>
+<p>In this lecture, we dive deeper (pun intended) into training deep neural networks. We’ll explore key techniques for optimizing their performance.</p>
+<br>
+<br>
+<p><strong>Learning outcomes:</strong></p>
+<ul class="simple">
+<li><p>Understand Stochastic Gradient Descent (SGD)</p></li>
+<li><p>Be familiar with hyperparameter search methods</p></li>
+<li><p>Understand learning rate schedulers and their role in training</p></li>
+<li><p>Understand adaptive learning algorithms</p></li>
+</ul>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -593,7 +636,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Initialization schemes</p>
+            <p class="prev-next-title">Initialization Schemes</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="optim_1_sdg.html" title="next page">

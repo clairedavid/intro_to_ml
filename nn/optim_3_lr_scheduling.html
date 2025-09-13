@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Adaptive Optimizers" href="optim_4_adaptive_methods.html" />
@@ -364,8 +366,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="training_0_intro.html">
-   Training Neural Networks
+  <a class="reference internal" href="model_rep.html">
+   Essential Concepts
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
@@ -374,18 +376,45 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="model_rep_1_neurons.html">
+     The basic units: neurons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_rep_2_activation_functions.html">
+     Activation Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_rep_3_loss_cost.html">
+     Loss and Cost Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="training_0_intro.html">
+   Training Neural Networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
     <a class="reference internal" href="training_1_forward_prop.html">
-     Forward Propagation
+     Feedforward Propagation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="training_2_backprop.html">
-     Backpropagation
+     Backpropagation Algorithm
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="training_3_init.html">
-     Initialization schemes
+     Initialization Schemes
     </a>
    </li>
   </ul>
@@ -394,8 +423,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="optim_0_intro.html">
    Optimizing Neural Networks
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -532,12 +561,63 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motivations">
+   Motivations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Learning Rate Schedulers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#power-scheduling">
+     Power Scheduling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-based-decay-scheduling">
+     Time-Based Decay Scheduling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exponential-decay-scheduling">
+     Exponential Decay Scheduling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-based-decay-scheduling">
+     Step-based Decay Scheduling
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -549,6 +629,46 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motivations">
+   Motivations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Learning Rate Schedulers
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#power-scheduling">
+     Power Scheduling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-based-decay-scheduling">
+     Time-Based Decay Scheduling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exponential-decay-scheduling">
+     Exponential Decay Scheduling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-based-decay-scheduling">
+     Step-based Decay Scheduling
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -558,6 +678,96 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="learning-rate-schedulers">
 <h1>Learning Rate Schedulers<a class="headerlink" href="#learning-rate-schedulers" title="Permalink to this headline">#</a></h1>
+<section id="motivations">
+<h2>Motivations<a class="headerlink" href="#motivations" title="Permalink to this headline">#</a></h2>
+<p>We saw in previous lectures that the Gradient Descent algorithm updates the parameters, or weights, in the form:</p>
+<div class="math notranslate nohighlight" id="equation-paramupdate">
+<span class="eqno">(135)<a class="headerlink" href="#equation-paramupdate" title="Permalink to this equation">#</a></span>\[W_j \quad \leftarrow \quad W_j -\alpha \frac{\partial}{\partial W_j} C\left(\boldsymbol{W}\right) \;   \;   \;  \;   \;   \; \forall j \in [0..n]\]</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Recall that the learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> is the hyperparameter defining the step size on the parameters at each update.</p>
+</aside>
+<p>The learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> is kept constant through the whole process of Gradient Descent.</p>
+<p>But we saw that the model’s performance could be drastrically affected by the learning rate value; if too small the descent would take ages to converge, too big it could explode and not converge at all. How to properly choose this crucial hyperparameter?</p>
+<p>In the florishing epoch (pun intended) of deep learning, new optimization techniques have emerged. The two most influencial families are <strong>Learning Rate Schedulers</strong> and <strong>Adaptative Learning Rates</strong>.</p>
+</section>
+<section id="id1">
+<h2>Learning Rate Schedulers<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="learningratescheduledef">
+<p class="admonition-title"><span class="caption-number">Definition 74 </span></p>
+<section class="definition-content" id="proof-content">
+<p>In a training procedure involving a learning rate, a <strong>learning rate scheduler</strong> is a method consisting of modifying the learning rate at the beginning of each iteration.</p>
+<p>It uses a <strong>schedule function</strong>, which takes the current learning rate as input, along with a ‘time’ parameter linked with the increasing number of iterations, to output a new learning rate.</p>
+<p>The updated learning rate is used in the optimizer.</p>
+</section>
+</div><p>Schedule refers to a timing; here it is the index number of the epoch, or iteration, that is incremented over time, i.e. the duration of the training.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>What is the difference between epoch, batches and iteration?</strong></p>
+<p>As we saw in Section <a class="reference internal" href="../basics/lin_reg_3_gradient_descent_1d.html#warmup-linreggd-gradientdescent"><span class="std std-ref">Intuitive story-line of the gradient descent</span></a>, an epoch is equivalent to the number of times the algorithm scans the entire data. It is a pass seeing the entire dataset. The batch size being the number of training samples, an iteration will be the number of batches needed to complete one epoch.
+Example: if we have 1000 training samples splits in batches of size 250 each, then it will take 4 iterations to complete one epoch.</p>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Question</p>
+<p>How should the learning rate vary? Should it increase? Decrease? Both?</p>
+</div>
+<p>Below are common learning schedules.</p>
+<section id="power-scheduling">
+<h3>Power Scheduling<a class="headerlink" href="#power-scheduling" title="Permalink to this headline">#</a></h3>
+<p>The learning rate is modified according to:</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The <span class="math notranslate nohighlight">\(t\)</span> argument is the iteration integer, akin to a time yet the value are usually the iteration and/or epoch indices.</p>
+</aside>
+<div class="math notranslate nohighlight" id="equation-powerscheduleeq">
+<span class="eqno">(136)<a class="headerlink" href="#equation-powerscheduleeq" title="Permalink to this equation">#</a></span>\[\alpha(t) = \frac{\alpha_0}{\left(1 + \frac{t}{s}\right)^c} \; ,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha_0\)</span> is the initial learning rate. The steps <span class="math notranslate nohighlight">\(s\)</span> and power <span class="math notranslate nohighlight">\(c\)</span> (usually 1) are hyperparameters. The learning rate drops at each step; e.g. after <span class="math notranslate nohighlight">\(s\)</span> steps it is divided by 2 (assuming <span class="math notranslate nohighlight">\(c\)</span> = 1).</p>
+</section>
+<section id="time-based-decay-scheduling">
+<h3>Time-Based Decay Scheduling<a class="headerlink" href="#time-based-decay-scheduling" title="Permalink to this headline">#</a></h3>
+<p>The time-based learning rate scheduler is often the standard (e.g. the default implementation in Keras library). It is controlled by a decay parameter <span class="math notranslate nohighlight">\(d = \frac{\alpha_0}{N}\)</span>, where <span class="math notranslate nohighlight">\(N\)</span> is the number of epochs. It is similar (a particular case even) to the power scheduling:</p>
+<div class="math notranslate nohighlight" id="equation-timebaseddecayeq">
+<span class="eqno">(137)<a class="headerlink" href="#equation-timebaseddecayeq" title="Permalink to this equation">#</a></span>\[\alpha(t) = \alpha_0 \times \frac{1}{1 + d \times t} \]</div>
+<p>As compared to a linear decrease, time-based decay causes learning rate to decrease faster upon training start, and much slower later (see graph below).</p>
+</section>
+<section id="exponential-decay-scheduling">
+<h3>Exponential Decay Scheduling<a class="headerlink" href="#exponential-decay-scheduling" title="Permalink to this headline">#</a></h3>
+<p>The exponential decay is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\alpha(t) = \alpha_0 \times 0.1^{-t/s} \; ,\]</div>
+<p>which will get the learning rate to decrease faster upon training start, and much slower later.</p>
+<figure class="align-default" id="optim-3-lr-decays">
+<a class="reference internal image-reference" href="../_images/optim_3_lr_decays.png"><img alt="../_images/optim_3_lr_decays.png" src="../_images/optim_3_lr_decays.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 51 </span><span class="caption-text">. Evolution of the learning rate vs ‘time’ as the number of epochs for three schedulers: linear decrease, time-based decay and exponential decay.<br />
+<sub>Image: neptune.ai</sub></span><a class="headerlink" href="#optim-3-lr-decays" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="step-based-decay-scheduling">
+<h3>Step-based Decay Scheduling<a class="headerlink" href="#step-based-decay-scheduling" title="Permalink to this headline">#</a></h3>
+<p>Also called piecewise constant scheduling, this approach first uses of a constant learning rate for a given number of epochs and then the learning rate is reduced:</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The floor function <code class="docutils literal notranslate"><span class="pre">floor(x)</span></code> or <span class="math notranslate nohighlight">\(\lfloor x \rfloor\)</span> returns the greatest integer less than or equal to <span class="math notranslate nohighlight">\(x\)</span>.</p>
+</aside>
+<div class="math notranslate nohighlight">
+\[\alpha(t) = \alpha_0 \times e^{ \left \lfloor - \frac{t}{s} \right \rfloor }\]</div>
+<figure class="align-default" id="optim-3-lr-step">
+<a class="reference internal image-reference" href="../_images/optim_3_lr_step.png"><img alt="../_images/optim_3_lr_step.png" src="../_images/optim_3_lr_step.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 52 </span><span class="caption-text">. Step-based learning rate decay.<br />
+<sub>Image: neptune.ai</sub></span><a class="headerlink" href="#optim-3-lr-step" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="seealso admonition">
+<p class="admonition-title">Learn More</p>
+<ul class="simple">
+<li><p>Guide to Pytorch Learning Rate Scheduling on <a class="reference external" href="https://www.kaggle.com/code/isbhargav/guide-to-pytorch-learning-rate-scheduling/notebook">Kaggle</a></p></li>
+</ul>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

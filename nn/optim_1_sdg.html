@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Hyperparameter Search" href="optim_2_hyperparams.html" />
@@ -364,8 +366,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="training_0_intro.html">
-   Training Neural Networks
+  <a class="reference internal" href="model_rep.html">
+   Essential Concepts
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
@@ -374,18 +376,45 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="model_rep_1_neurons.html">
+     The basic units: neurons
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_rep_2_activation_functions.html">
+     Activation Functions
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model_rep_3_loss_cost.html">
+     Loss and Cost Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="training_0_intro.html">
+   Training Neural Networks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
     <a class="reference internal" href="training_1_forward_prop.html">
-     Forward Propagation
+     Feedforward Propagation
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="training_2_backprop.html">
-     Backpropagation
+     Backpropagation Algorithm
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="training_3_init.html">
-     Initialization schemes
+     Initialization Schemes
     </a>
    </li>
   </ul>
@@ -394,8 +423,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="optim_0_intro.html">
    Optimizing Neural Networks
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -421,6 +450,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="train_your_nn.html">
+   Train Your Neural Net!
+  </a>
  </li>
 </ul>
 
@@ -532,12 +566,51 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limitations-of-batch-gradient-descent">
+   Limitations of Batch Gradient Descent
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stochastic">
+   Stochastic?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stochastic-gradient-descent-definition">
+   Stochastic Gradient Descent Definition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#improving-stochastic-gradient-descent">
+   Improving  Stochastic Gradient Descent
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -549,6 +622,34 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limitations-of-batch-gradient-descent">
+   Limitations of Batch Gradient Descent
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stochastic">
+   Stochastic?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stochastic-gradient-descent-definition">
+   Stochastic Gradient Descent Definition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#improving-stochastic-gradient-descent">
+   Improving  Stochastic Gradient Descent
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -557,7 +658,99 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="stochastic-gradient-descent">
-<h1>Stochastic Gradient Descent<a class="headerlink" href="#stochastic-gradient-descent" title="Permalink to this headline">#</a></h1>
+<span id="nn-sdg"></span><h1>Stochastic Gradient Descent<a class="headerlink" href="#stochastic-gradient-descent" title="Permalink to this headline">#</a></h1>
+<p>Introduced in the previous lectures, Gradient Descent is a powerful algorithm to find the minimum of a function. Yet it has limitations, which are circumvented by alternative approaches, the most popular one being Stochastic Gradient Descent.</p>
+<section id="limitations-of-batch-gradient-descent">
+<h2>Limitations of Batch Gradient Descent<a class="headerlink" href="#limitations-of-batch-gradient-descent" title="Permalink to this headline">#</a></h2>
+<p>The Gradient Descent algorithm computes the cost and its derivatives using all training instances within a batch. We refer to this as <strong>Batch Gradient Descent</strong>.</p>
+<div class="proof definition admonition" id="batchsizedef">
+<p class="admonition-title"><span class="caption-number">Definition 69 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>batch size</strong> refers to the number of training examples utilized for calculating the gradient at each iteration (epoch).</p>
+<p>In Batch Gradient Descent, the entire training dataset is used at each step.</p>
+</section>
+</div><aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>A convex function has a unique minimum. If the cost function is more complex, it can exhibits several minima.</p>
+</aside>
+<p>There are two major drawbacks here:</p>
+<ul class="simple">
+<li><p>The algorithm is very slow when the training set is large</p></li>
+<li><p>Depending on the initial parameter values, the Gradient Descent can converge to a local minimum instead of the global minimum</p></li>
+</ul>
+<figure class="align-default" id="optim-1-gd-minima">
+<a class="reference internal image-reference" href="../_images/optim_1_gd_minima.png"><img alt="../_images/optim_1_gd_minima.png" src="../_images/optim_1_gd_minima.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 49 </span><span class="caption-text">. 3D representation of a cost function (height) with respect to the <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> parameters with two gradient descent paths, one towards a local minimum (right) and the other towards the global minimum (left).<br />
+<sub>Source: Stanford Lecture Collection</sub></span><a class="headerlink" href="#optim-1-gd-minima" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Depending on the initial values for the <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> parameters, the gradient descent (black line) can converge to a local minimum and the associated <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> parameters will not be the most optimal ones.</p>
+</section>
+<section id="stochastic">
+<h2>Stochastic?<a class="headerlink" href="#stochastic" title="Permalink to this headline">#</a></h2>
+<p>This term is important, let’s define it properly. It is mostly used as an adjective. Etymologically, “stochastic” comes from Greek for “guess” or “conjecture.”</p>
+<div class="proof definition admonition" id="stochasticdef">
+<p class="admonition-title"><span class="caption-number">Definition 70 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Stochastic</strong> describes a modelling approach, or modeling techniques, involving the use of one or more random variables and probability distributions.</p>
+</section>
+</div><p>Stochastic is the opposite to deterministic. In determinisstic models, randomness is absent.</p>
+<p>In some of the literature, it is said that stochastic and randomness are synonymous. There is however a difference. Randomness is used to characterize a phenomenon; nuclear decays of atom or quantum state tran are examples from nature. Stochastic refers to the modeling approach.</p>
+<p>Actually, it is possible to apply stochastic modeling to a non-random phenomenon. For instance one can use a <a class="reference external" href="https://en.wikipedia.org/wiki/Monte_Carlo_method#Overview">Monte Carlo method to approximate the value of <span class="math notranslate nohighlight">\(\pi\)</span></a>.</p>
+</section>
+<section id="stochastic-gradient-descent-definition">
+<h2>Stochastic Gradient Descent Definition<a class="headerlink" href="#stochastic-gradient-descent-definition" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="SGDdef">
+<p class="admonition-title"><span class="caption-number">Definition 71 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Stochastic Gradient Descent</strong> is an optimization technique that performs Gradient Descent using one randomly picked training sample from the dataset.</p>
+</section>
+</div><div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Stochastic Gradient Descent is very sensitive to feature scaling; it is important to properly scale the feature to avoid having a stretched cost function. That would make the learning rate too small in one direction and - more problematic - too big in another direction (see Section <a class="reference internal" href="../basics/lin_reg_4_gradient_descent_multiD.html#warmup-linregmulti-featurescalnorm"><span class="std std-ref">Feature Scaling &amp; Normalization</span></a>).</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Stochastic Gradient Descent demands the training instances to be independent and identically distributed (IID). If a datafile has one feature in ascending or descending values, the algorithm may ‘miss out’ the global minimum. To ensure that training instances are picked randomly, it is important to
+shuffle the training set.</p>
+</div>
+<p><strong>Pros</strong></p>
+<ul class="simple">
+<li><p>The obvious advantage of Stochastic Gradient Descent (SGD) is that it is considerably faster as there is very little data to manipulate at each epoch compared to summing over the entire dataset with Batch Gradient Descent.</p></li>
+<li><p>When the cost function is not convex, the SGD has a better chance to jump out of local minima.</p></li>
+</ul>
+<p><strong>Cons</strong><br />
+This approach is not without drawbacks.</p>
+<ul class="simple">
+<li><p>The algorithm is much less smooth due to its random nature. The path (ensemble of intermediate parameter values) towards the minimum will be zigzaggy. As a consequence the cost function may go up at times; it should however decrease on average.</p></li>
+<li><p>The same ‘bumpy’ nature of Stochastic Gradient Descent will, once approaching the minimum, bounce around it. Therefore after the algorithm ends, the final parameter values will be closed to the optimal ones so good enough, but not the ones corresponding to the minimum.</p></li>
+</ul>
+<p>As you see from the pros and cons above, there is a dilemma by voluntary adding randomness in the algorithm. On the one hand, it can escape local minima, i.e. getting parameter values not minimizing the cost function. But on the other hand, it never converges precisely to the optimal parameter values.</p>
+</section>
+<section id="improving-stochastic-gradient-descent">
+<h2>Improving  Stochastic Gradient Descent<a class="headerlink" href="#improving-stochastic-gradient-descent" title="Permalink to this headline">#</a></h2>
+<p>There are solutions to help the algorithm settle at the global minimum.</p>
+<p>One of them is a compromise between Batch and Stochastic Gradient Descent called <strong>Mini-Batch Gradient Descent</strong>. Instead of picking only one training instance, a small subset of examples from the dataset are used to compute the cost derivatives. This offers a good middle ground: it is still much faster and less memory intensive than Batch Gradient Descent, will zigzag less and get closer to the read minimum than with the fully stochastic method. However the reduced noise (by summing over more samples) presents a higher risk to get stuck into a local minimum.</p>
+<p>The other solution involves <strong>changing the learning rate <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span></strong>, which will be covered in the next section.</p>
+<figure class="align-default" id="optim-1-sgd-vs-bgd">
+<a class="reference internal image-reference" href="../_images/optim_1_sgd_vs_bgd.png"><img alt="../_images/optim_1_sgd_vs_bgd.png" src="../_images/optim_1_sgd_vs_bgd.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">. The difference in the trajectories of parameters between Batch, Mini-Batch and Stochastic Gradient Descents.<br />
+<sub>Image: Medium</sub></span><a class="headerlink" href="#optim-1-sgd-vs-bgd" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="seealso admonition">
+<p class="admonition-title">Exercise</p>
+<p>Write the Stochastic Gradient Descent in pseudocode.</p>
+<p>For reference (and inspiration), you can go back to the Gradient Descent algorithm (<a class="reference internal" href="../basics/lin_reg_4_gradient_descent_multiD.html#gd_algo_multi">Algorithm 2</a>) from Section <a class="reference internal" href="../basics/lin_reg_4_gradient_descent_multiD.html#linregmulti-graddesc"><span class="std std-ref">Gradient Descent in Multilinear Regression</span></a>.</p>
+</div>
+<p>As we saw earlier how many computations there are in the feedforward and backpropagation algorithms in neural networks, the Stochastic Gradient Descent is the most common and popular algorithm used for training neural networks.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Learn More</p>
+<p>Stochastic Gradient Descent on <a class="reference external" href="https://scikit-learn.org/stable/modules/sgd.html">Scikit-Learn</a></p>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
