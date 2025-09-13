@@ -87,6 +87,8 @@ parts:
       - file: nn/optim_3_lr_scheduling
       - file: nn/optim_4_adaptive_methods
     
+    - file: nn/train_your_nn 
+    
 
 
 

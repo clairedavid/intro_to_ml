@@ -340,7 +340,7 @@ The classes above have been superseeded by `HistGradientBoostingRegressor` and `
 ## XGBoost the warrior
 XGBoost, for eXtreme Gradient Boosting, is a software library offering a fully optimized implementation of gradient boosting machines, focused on computational speed and model performance. It was created in 2016 by Tianqi Chen, at the time Ph.D. student at the University of Washington. XGBoost gained significant popularity in the last few years as a result of helping individuals and teams win virtually every [Kaggle](https://www.kaggle.com/) structured data competition, and in particular the first [Higgs Boson Machine Learning Challenge](https://www.kaggle.com/c/higgs-boson).
 
-In terms of model features, XGBoost has the standard Gradient Boosting, as well as a Stochastic Gradient Boosting (more on this in PUTREF) and a Regularized one (with both L1 and L2 regularization methods). 
+In terms of model features, XGBoost has the standard Gradient Boosting, as well as a Stochastic Gradient Boosting (more on this in Section {ref}`nn:sdg`) and a Regularized one (with both L1 and L2 regularization methods). 
 
 It has also system features. Parallelization (to efficiently construct trees using all available CPU cores), Distributed Computing (if working with a cluster of machines), Out-of-Core Computing (when very large datasets can't be loaded entirely in the memory), Cache Optimization (to minimize the need to access data in underlying slower storage layers).
 

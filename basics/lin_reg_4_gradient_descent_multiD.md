@@ -75,7 +75,7 @@ where $\boldsymbol{x}^{(i)}$ an __row vector__ of $n+1$ elements, $x^{(i)} = (x^
 We will revisit our algorithm to generalize it to $\theta_n$ parameters:
 
 ````{prf:algorithm} Gradient Descent for Multivariate Linear Regression
-:label: GD_algo_multi
+:label: gd_algo_multi
 &nbsp;  
 __Inputs__  
 * Training data set $X$ of $m$ samples with each $n$ input features, associated with their targets $y$:
