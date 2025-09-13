@@ -4,54 +4,57 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>T3. Decision Stump &#8212; Introduction&lt;br&gt; to Machine Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <link rel="index" title="Index" href="#" />
-    <link rel="search" title="Search" href="search.html" />
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="T4. Forestry" href="t04_forestry.html" />
+    <link rel="prev" title="T2. Classifier" href="t02_classifier.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -86,19 +89,19 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="bd-sidebar noprint" id="site-navigation">
     <div class="bd-sidebar__content">
         <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+    <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
       
       
-      <img src="_static/logo.png" class="logo" alt="logo">
+      <img src="../_static/logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">Introduction<br> to Machine Learning</h1>
       
     </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
@@ -106,7 +109,7 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="intro.html">
+                <a class="reference internal" href="../intro.html">
                     Introduction to Machine Learning
                 </a>
             </li>
@@ -118,27 +121,27 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="about/teaching_philosophy.html">
+  <a class="reference internal" href="../about/teaching_philosophy.html">
    Teaching philosophy
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="about/instructor.html">
+  <a class="reference internal" href="../about/instructor.html">
    Instructor &amp; Credits
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="about/schedule.html">
+  <a class="reference internal" href="../about/schedule.html">
    Schedule
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="about/tools.html">
+  <a class="reference internal" href="../about/tools.html">
    Tools
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="about/evaluation.html">
+  <a class="reference internal" href="../about/evaluation.html">
    Evaluation
   </a>
  </li>
@@ -150,7 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="basics/linear_regression.html">
+  <a class="reference internal" href="../basics/linear_regression.html">
    Warm-up: Linear Regression
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -160,39 +163,39 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/lin_reg_1_notations.html">
+    <a class="reference internal" href="../basics/lin_reg_1_notations.html">
      Notations
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/lin_reg_2_cost_function.html">
+    <a class="reference internal" href="../basics/lin_reg_2_cost_function.html">
      Cost Function in Linear Regression
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/lin_reg_3_gradient_descent_1d.html">
+    <a class="reference internal" href="../basics/lin_reg_3_gradient_descent_1d.html">
      Gradient Descent in 1D
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/lin_reg_4_gradient_descent_multiD.html">
+    <a class="reference internal" href="../basics/lin_reg_4_gradient_descent_multiD.html">
      Multivariate Linear Regression
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/lin_reg_5_learning_rate.html">
+    <a class="reference internal" href="../basics/lin_reg_5_learning_rate.html">
      Learning Rate
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/lin_reg_6_gradient_descent_in_practice.html">
+    <a class="reference internal" href="../basics/lin_reg_6_gradient_descent_in_practice.html">
      Gradient Descent in Practice
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="basics/logistic_regression.html">
+  <a class="reference internal" href="../basics/logistic_regression.html">
    Logistic Regression
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -202,34 +205,34 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/log_reg_1_intro.html">
+    <a class="reference internal" href="../basics/log_reg_1_intro.html">
      Logistic Regression: introduction
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/log_reg_2_sigmoid.html">
+    <a class="reference internal" href="../basics/log_reg_2_sigmoid.html">
      What is the Sigmoid Function?
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/log_reg_3_cost_function.html">
+    <a class="reference internal" href="../basics/log_reg_3_cost_function.html">
      Cost Function for Classification
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/log_reg_4_gradient_descent.html">
+    <a class="reference internal" href="../basics/log_reg_4_gradient_descent.html">
      Gradient Descent for Logistic Regression
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/log_reg_5_multiclass.html">
+    <a class="reference internal" href="../basics/log_reg_5_multiclass.html">
      Multiclass Classification
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="basics/model_evaluation.html">
+  <a class="reference internal" href="../basics/model_evaluation.html">
    Model Evaluation
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -239,22 +242,22 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/model_eval_1_train_test_split.html">
+    <a class="reference internal" href="../basics/model_eval_1_train_test_split.html">
      Splitting Datasets for Evaluation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/model_eval_2_perf_metrics.html">
+    <a class="reference internal" href="../basics/model_eval_2_perf_metrics.html">
      Performance Metrics
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/model_eval_3_roc_curve.html">
+    <a class="reference internal" href="../basics/model_eval_3_roc_curve.html">
      Let’s ROC!
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="basics/model_eval_4_bias_variance_tradeoff.html">
+    <a class="reference internal" href="../basics/model_eval_4_bias_variance_tradeoff.html">
      Bias &amp; Variance: a Tradeoff
     </a>
    </li>
@@ -268,7 +271,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="trees/dt_0_and_boosting.html">
+  <a class="reference internal" href="../trees/dt_0_and_boosting.html">
    Decision Trees
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
@@ -278,24 +281,24 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="trees/dt_1_what_are_trees.html">
+    <a class="reference internal" href="../trees/dt_1_what_are_trees.html">
      What are Decision Trees?
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="trees/dt_2_cart_algorithm.html">
+    <a class="reference internal" href="../trees/dt_2_cart_algorithm.html">
      The CART Algorithm
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="trees/dt_3_limitations.html">
+    <a class="reference internal" href="../trees/dt_3_limitations.html">
      Limitations
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="trees/el_0_intro.html">
+  <a class="reference internal" href="../trees/el_0_intro.html">
    Ensemble Learning
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -305,19 +308,19 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="trees/el_1_what_is_ensemble.html">
+    <a class="reference internal" href="../trees/el_1_what_is_ensemble.html">
      What is Ensemble Learning?
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="trees/el_2_random_forests.html">
+    <a class="reference internal" href="../trees/el_2_random_forests.html">
      Random Forests
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="trees/boost_0_intro.html">
+  <a class="reference internal" href="../trees/boost_0_intro.html">
    Boosting
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -327,17 +330,17 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="trees/boost_1_what_is_boosting.html">
+    <a class="reference internal" href="../trees/boost_1_what_is_boosting.html">
      What is Boosting?
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="trees/boost_2_adaboost.html">
+    <a class="reference internal" href="../trees/boost_2_adaboost.html">
      AdaBoost
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="trees/boost_3_gradient_boosting.html">
+    <a class="reference internal" href="../trees/boost_3_gradient_boosting.html">
      Gradient Boosting
     </a>
    </li>
@@ -351,17 +354,17 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="nn/nn_0_intro.html">
+  <a class="reference internal" href="../nn/nn_0_intro.html">
    Introduction
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="nn/nn_1_motivations.html">
+  <a class="reference internal" href="../nn/nn_1_motivations.html">
    Motivations
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="nn/model_rep.html">
+  <a class="reference internal" href="../nn/model_rep.html">
    Essential Concepts
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
@@ -371,24 +374,24 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="nn/model_rep_1_neurons.html">
+    <a class="reference internal" href="../nn/model_rep_1_neurons.html">
      The basic units: neurons
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="nn/model_rep_2_activation_functions.html">
+    <a class="reference internal" href="../nn/model_rep_2_activation_functions.html">
      Activation Functions
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="nn/model_rep_3_loss_cost.html">
+    <a class="reference internal" href="../nn/model_rep_3_loss_cost.html">
      Loss and Cost Functions
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="nn/training_0_intro.html">
+  <a class="reference internal" href="../nn/training_0_intro.html">
    Training Neural Networks
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
@@ -398,24 +401,24 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="nn/training_1_forward_prop.html">
+    <a class="reference internal" href="../nn/training_1_forward_prop.html">
      Feedforward Propagation
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="nn/training_2_backprop.html">
+    <a class="reference internal" href="../nn/training_2_backprop.html">
      Backpropagation Algorithm
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="nn/training_3_init.html">
+    <a class="reference internal" href="../nn/training_3_init.html">
      Initialization Schemes
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="nn/optim_0_intro.html">
+  <a class="reference internal" href="../nn/optim_0_intro.html">
    Optimizing Neural Networks
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
@@ -425,29 +428,29 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="nn/optim_1_sdg.html">
+    <a class="reference internal" href="../nn/optim_1_sdg.html">
      Stochastic Gradient Descent
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="nn/optim_2_hyperparams.html">
+    <a class="reference internal" href="../nn/optim_2_hyperparams.html">
      Hyperparameter Search
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="nn/optim_3_lr_scheduling.html">
+    <a class="reference internal" href="../nn/optim_3_lr_scheduling.html">
      Learning Rate Schedulers
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="nn/optim_4_adaptive_methods.html">
+    <a class="reference internal" href="../nn/optim_4_adaptive_methods.html">
      Adaptive Optimizers
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="nn/train_your_nn.html">
+  <a class="reference internal" href="../nn/train_your_nn.html">
    Train Your Neural Net!
   </a>
  </li>
@@ -459,22 +462,22 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="unsupervised/ul_0_intro.html">
+  <a class="reference internal" href="../unsupervised/ul_0_intro.html">
    Learning Without Labels?
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="unsupervised/ul_1_kmeans.html">
+  <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="unsupervised/ul_2_pca.html">
+  <a class="reference internal" href="../unsupervised/ul_2_pca.html">
    Principal Component Analysis (PCA)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="unsupervised/ul_3_autoencoders.html">
+  <a class="reference internal" href="../unsupervised/ul_3_autoencoders.html">
    Autoencoders
   </a>
  </li>
@@ -486,7 +489,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="studies/list_of_studies.html">
+  <a class="reference internal" href="../studies/list_of_studies.html">
    Study Through Exploration &amp; Presentation (STEP)
   </a>
  </li>
@@ -498,7 +501,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="ethics_outlook/ethics_0_intro.html">
+  <a class="reference internal" href="../ethics_outlook/ethics_0_intro.html">
    AI Ethics: What is it?
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
@@ -508,24 +511,24 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="ethics_outlook/ethics_1_definitions.html">
+    <a class="reference internal" href="../ethics_outlook/ethics_1_definitions.html">
      Definitions
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="ethics_outlook/ethics_2_why_matters.html">
+    <a class="reference internal" href="../ethics_outlook/ethics_2_why_matters.html">
      Why Does It Matter?
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="ethics_outlook/ethics_3_resources.html">
+    <a class="reference internal" href="../ethics_outlook/ethics_3_resources.html">
      Resources
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="ethics_outlook/outlook.html">
+  <a class="reference internal" href="../ethics_outlook/outlook.html">
    Outlook
   </a>
  </li>
@@ -535,39 +538,39 @@ const thebe_selector_output = ".output, .cell_output"
   Tutorial area
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="tutorials/t00_setup.html">
+  <a class="reference internal" href="t00_setup.html">
    Setup
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="tutorials/t01_linear_regressor.html">
+  <a class="reference internal" href="t01_linear_regressor.html">
    T1. Linear Regressor
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="tutorials/t02_classifier.html">
+  <a class="reference internal" href="t02_classifier.html">
    T2. Classifier
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tutorials/t03_decision_stump.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    T3. Decision Stump
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="tutorials/t04_forestry.html">
+  <a class="reference internal" href="t04_forestry.html">
    T4. Forestry
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="tutorials/t05_nn_by_hand.html">
+  <a class="reference internal" href="t05_nn_by_hand.html">
    T5. Neural Network by Hand!
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="tutorials/t06_unsupervised.html">
+  <a class="reference internal" href="t06_unsupervised.html">
    T6. Unsupervised algorithms
   </a>
  </li>
@@ -636,6 +639,52 @@ title="Fullscreen mode"
 
 </button>
 
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/tutorials/t03_decision_stump.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
     </div>
 </div>
 
@@ -647,7 +696,7 @@ title="Fullscreen mode"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1></h1>
+                <h1>T3. Decision Stump</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -659,13 +708,29 @@ title="Fullscreen mode"
                 
               <div>
                 
+  <section class="tex2jax_ignore mathjax_ignore" id="t3-decision-stump">
+<h1>T3. Decision Stump<a class="headerlink" href="#t3-decision-stump" title="Permalink to this headline">#</a></h1>
+</section>
 
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
-</div>
-
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorials"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
@@ -674,6 +739,20 @@ title="Fullscreen mode"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="t02_classifier.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">T2. Classifier</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="t04_forestry.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">T4. Forestry</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
@@ -704,7 +783,7 @@ title="Fullscreen mode"
     </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
 
   </body>
