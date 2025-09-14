@@ -6,7 +6,9 @@
 The accuracy of the mapping function is measured by using a cost function. 
 ````{prf:definition}
 :label: costFunction
-The __cost function__ in linear regression returns a global error between the predicted values from a mapping function $h$ (predictions) and all the target values (observations) of the training data set.
+The __cost function__ returns the global error between the predicted values from a mapping function $h$ (predictions) and all the target values (observations) of the data set.
+
+
 ````
 
 This is also called the average loss or empirical risk. The term empirical, meaning based on experience or experiment, indicates that this is a finite-sample average over the training dataset. Not an expectaction. The true risk, by contrast, is the expectation over the full data distribution, which is inaccessible because that distribution is unknown.

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Study Through Exploration &amp; Presentation (STEP) &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    <title>List of STEPs &#8212; Introduction&lt;br&gt; to Machine Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="AI Ethics: What is it?" href="../ethics_outlook/ethics_0_intro.html" />
-    <link rel="prev" title="Autoencoders" href="../unsupervised/ul_3_autoencoders.html" />
+    <link rel="next" title="Submit Your Own STEP!" href="studies_submit_yours.html" />
+    <link rel="prev" title="What is STEP?" href="studies_what_is_it.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -488,10 +488,27 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Study Through Exploration &amp; Presentation (STEP)
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="studies_what_is_it.html">
+   What is STEP?
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     List of STEPs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="studies_submit_yours.html">
+     Submit Your Own STEP!
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -504,8 +521,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../ethics_outlook/ethics_0_intro.html">
    AI Ethics: What is it?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -647,7 +664,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/studies/list_of_studies.md"
+        <a href="../_sources/studies/studies_list.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -707,8 +724,58 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-it">
-   What is it?
+  <a class="reference internal nav-link" href="#linear-regressors-stability">
+   Linear Regressor’s Stability
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-ranking-with-different-classifiers">
+   Feature Ranking with Different Classifiers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#support-vector-machine">
+   Support Vector Machine
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adaboost-by-hand">
+   AdaBoost by Hand 🧠
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradientboost-by-hand">
+   GradientBoost by Hand 🧠🧠
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manual-cnn-vs-pytorch-cnn">
+   Manual CNN vs PyTorch CNN 🧠
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#padding-vs-not-padding">
+   Padding vs Not Padding
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manual-implementation-of-momentum">
+   Manual implementation of momentum
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#neural-network-initialization">
+   Neural Network Initialization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stochastic-vs-batch">
+   Stochastic vs Batch
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clustering">
+   Clustering++
   </a>
  </li>
 </ul>
@@ -720,7 +787,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Study Through Exploration & Presentation (STEP)</h1>
+                <h1>List of STEPs</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -731,8 +798,58 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#what-is-it">
-   What is it?
+  <a class="reference internal nav-link" href="#linear-regressors-stability">
+   Linear Regressor’s Stability
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-ranking-with-different-classifiers">
+   Feature Ranking with Different Classifiers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#support-vector-machine">
+   Support Vector Machine
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adaboost-by-hand">
+   AdaBoost by Hand 🧠
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradientboost-by-hand">
+   GradientBoost by Hand 🧠🧠
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manual-cnn-vs-pytorch-cnn">
+   Manual CNN vs PyTorch CNN 🧠
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#padding-vs-not-padding">
+   Padding vs Not Padding
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manual-implementation-of-momentum">
+   Manual implementation of momentum
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#neural-network-initialization">
+   Neural Network Initialization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stochastic-vs-batch">
+   Stochastic vs Batch
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clustering">
+   Clustering++
   </a>
  </li>
 </ul>
@@ -745,28 +862,58 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="study-through-exploration-presentation-step">
-<h1>Study Through Exploration &amp; Presentation (STEP)<a class="headerlink" href="#study-through-exploration-presentation-step" title="Permalink to this headline">#</a></h1>
-<section id="what-is-it">
-<h2>What is it?<a class="headerlink" href="#what-is-it" title="Permalink to this headline">#</a></h2>
-<p>Halfway through the course, you’ll choose an aspect of machine learning that sparks your curiosity and investigate it.</p>
-<p>The STEP has three goals:</p>
-<ol class="simple">
-<li><p><strong>Deepen your knowledge</strong>
-<br> Your own questions will be your guidance. Choose what you most want to grasp and build intuition around.</p></li>
-<li><p><strong>Test</strong></p></li>
-</ol>
-<p>Half way through the course, you will pick an aspect of machine learning of your choice and perform a little investigation around it. The goal is threefold:</p>
-<ol class="simple">
-<li><p>Dive into an aspect of ml you are curious about and increase your knowledge, purely guided by [you need to ask yourself the questions and that’s the guidance]</p></li>
-<li><p>Design yourself some hands-on with code to illustrate [that new knowledge/your results]. The most adapted [fantastically pedagogical] format is a Jupyter-notebook, but the format is totally free, from the moment you check the last goal (3)</p></li>
-<li><p>You turn into teacher and prepare a presentation about your findings, teaching your peers. This STEP is a pretext to train you to extract and structure the information so as to [be a great teacher –&gt; but it’s not the school scheme here, just very general, no matter what the students will do later] and oral skills. –&gt; I Like ‘outstanding’ but it can put pressur. I want to say that this little mission will help students gain confidence in their didactical potential and speaker… as in life, a lot of convincing/negotiation/people-marketing goes with great speaker ‘skills’ or profile… yep.</p></li>
-</ol>
-<p>I give you two constraints with the STEP:</p>
-<ul class="simple">
-<li><p>the presentation should be 10 minute long.</p></li>
-<li><p>through the entire process, you have to maximize the ‘fun’<sup>*</sup> function</p></li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="list-of-steps">
+<h1>List of STEPs<a class="headerlink" href="#list-of-steps" title="Permalink to this headline">#</a></h1>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Difficult STEP are highlighted with a 🧠 emoji.</p>
+</aside>
+<section id="linear-regressors-stability">
+<h2>Linear Regressor’s Stability<a class="headerlink" href="#linear-regressors-stability" title="Permalink to this headline">#</a></h2>
+<p>Find visuals to depict the zones of divergence of the linear regressor (in 1D) with respect to the choice of initial random parameters and learning rate.</p>
+</section>
+<section id="feature-ranking-with-different-classifiers">
+<h2>Feature Ranking with Different Classifiers<a class="headerlink" href="#feature-ranking-with-different-classifiers" title="Permalink to this headline">#</a></h2>
+<p>Is feature importance absolute, or relative to a given classifier? Explore this by comparing how different classifiers or regressors rank features.</p>
+</section>
+<section id="support-vector-machine">
+<h2>Support Vector Machine<a class="headerlink" href="#support-vector-machine" title="Permalink to this headline">#</a></h2>
+<p>For several datasets, compare the performance of an SVM vs a Random Forest classifiers (if time, add a neural network).</p>
+</section>
+<section id="adaboost-by-hand">
+<h2>AdaBoost by Hand 🧠<a class="headerlink" href="#adaboost-by-hand" title="Permalink to this headline">#</a></h2>
+<p>Implement a version of the AdaBoost algorithm by hand and compare it with Scikit-Learn. Choose the relevant metrics and visuals.
+Bonus: find the error in Scikit-Learn in the calculation of the probability!</p>
+</section>
+<section id="gradientboost-by-hand">
+<h2>GradientBoost by Hand 🧠🧠<a class="headerlink" href="#gradientboost-by-hand" title="Permalink to this headline">#</a></h2>
+<p>Implement a version of the Gradient Boosting algorithm and compare it with the state-of-the-art XGBoost.</p>
+</section>
+<section id="manual-cnn-vs-pytorch-cnn">
+<h2>Manual CNN vs PyTorch CNN 🧠<a class="headerlink" href="#manual-cnn-vs-pytorch-cnn" title="Permalink to this headline">#</a></h2>
+<p>Build a Convolutional Neural Network by hand. Build the same with PyTorch. Work out the exact number of trainable parameters in your manual CNN. Compare with the one on PyTorch. They should match.
+Bonus: initialize the same both networks and check the computations are identical. Good luck.</p>
+</section>
+<section id="padding-vs-not-padding">
+<h2>Padding vs Not Padding<a class="headerlink" href="#padding-vs-not-padding" title="Permalink to this headline">#</a></h2>
+<p>Is a neural network performing the same (accuracy &amp; speed) if the computations are split between weights and biases or if the weight matrix is padded with an extra row/column to include the biases?</p>
+</section>
+<section id="manual-implementation-of-momentum">
+<h2>Manual implementation of momentum<a class="headerlink" href="#manual-implementation-of-momentum" title="Permalink to this headline">#</a></h2>
+<p>Showcase the effect of adding momentum in a neural network. Pick a relevant dataset and, as much as possible, illustrate it with clear visuals.</p>
+</section>
+<section id="neural-network-initialization">
+<h2>Neural Network Initialization<a class="headerlink" href="#neural-network-initialization" title="Permalink to this headline">#</a></h2>
+<p>Compare the performance (and possible cases of divergence) of a neural network with different initialization schemes.
+Extension: display the variance at each layer and ideally, how the variance evolves during training.</p>
+</section>
+<section id="stochastic-vs-batch">
+<h2>Stochastic vs Batch<a class="headerlink" href="#stochastic-vs-batch" title="Permalink to this headline">#</a></h2>
+<p>Showcase the pros &amp; cons of the Stochastic Gradient Descent vs Batch Gradient Descent by varying the number of features, sample size and complexity of the data set.</p>
+</section>
+<section id="clustering">
+<h2>Clustering++<a class="headerlink" href="#clustering" title="Permalink to this headline">#</a></h2>
+<p>There are so many clustering algorithms. Pick your favourite and explain their pros &amp; cons. With a code.</p>
 </section>
 </section>
 
@@ -797,17 +944,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../unsupervised/ul_3_autoencoders.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="studies_what_is_it.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Autoencoders</p>
+            <p class="prev-next-title">What is STEP?</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../ethics_outlook/ethics_0_intro.html" title="next page">
+    <a class='right-next' id="next-link" href="studies_submit_yours.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">AI Ethics: What is it?</p>
+        <p class="prev-next-title">Submit Your Own STEP!</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
