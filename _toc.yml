@@ -100,10 +100,13 @@ parts:
 
     - file: unsupervised/ul_3_autoencoders
 
-  - caption: STEP!
+  - caption: STEP UP!
     numbered: false
     chapters:
-    - file: studies/list_of_studies
+    - file: studies/studies_what_is_it
+      sections:
+      - file: studies/studies_list
+      - file: studies/studies_submit_yours
 
   - caption: AI Ethics & Outlook
     numbered: false

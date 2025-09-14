@@ -100,8 +100,9 @@ __Hyperparameters__
 * Learning rate $\alpha$
 * Number of epochs $N$
 &nbsp;  
+
 __Outputs__  
-The optimized values of model parameters $\boldsymbol{\theta} = \theta_0, \theta_1, \ldots , \theta_n$ minimizing $J(\boldsymbol{\theta})$.
+The optimized values of model parameters $\boldsymbol{\theta} = \theta_0, \theta_1, \ldots , \theta_n$ minimizing $C(\boldsymbol{\theta})$.
 
 1. __Initialization__: Set random values for all model parameters $\boldsymbol{\theta}$
 
