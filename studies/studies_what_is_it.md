@@ -49,4 +49,4 @@ The presentations will happen during the last lecture (with double the time to f
 
 ## The list
 
-The next section has a list of STEPs for you perusal. If you want to submit your own idea, please go to the Section {ref}`submit_own_step`
+The next section lists some STEPs for you perusal. If you want to submit your own idea, please go to the Section {ref}`submit_own_step`

@@ -1,7 +1,7 @@
 # Splitting Datasets for Evaluation
 
 ## Training, Validation, and Test Sets
-In supervised machine learning, we have access to data containing labels, i.e. the input features have associated targets. Whether it is regression or classification, we know the answer. To assess how the model will deal with new cases, we need to compare its predictions with the answers. We cannot perform this comparison if we don't have the labels! To cope, the input data set is split into different data subsets, each corresponding of a step in the optimization workflow:
+In supervised machine learning, we have access to data containing labels, i.e. the input features have associated targets. Whether it is regression or classification, we know the answer. To assess how the model will deal with new cases, we need to compare its predictions with the answers. We cannot perform this comparison if we don't have the labels! To cope, the input data set is split into different data subsets, each corresponding to a step in the optimization workflow:
 
 ````{prf:definition}
 :label: trainvaltestsetsdef
@@ -10,7 +10,7 @@ The __training set__ is a subset of the input data dedicated to the fitting proc
 
 The __validation set__ is used to assess the performance of the model and tune the model's hyperparameters (step 2).
 
-_The model is iteratively trained using __only__ the training set, then validated using __only__ the validation test until a given satisfying performance is achieved._
+_The model is iteratively trained using __only__ the training set, then validated using __only__ the validation set until a given satisfying performance is achieved._
 
 The __test set__ is the final assessment done on the model; the resulting error rate on the test set is called __generalization error__, an estimate on the errors for future predictions with new data samples (step 3).
 ````
@@ -22,7 +22,7 @@ The terms _validation_ and _test_ are sometimes interchangeably used both in ind
 TL;DR: Never use the final test data for tuning.
 ```
 
-Data sets are split randomly, by shuffling the data rows and cutting and taking the table indices corresponding to the relative split between the three sub-collections. But precious information is lost by not training on the entire data samples available. Moreoever, one of the subset could pick more random outliers or noisy features that will deteriorate either the training or validation outcomes. To cope with this, we use "cross-validation."
+Data sets are split randomly, by shuffling the data rows and cutting and taking the table indices corresponding to the relative split between the three sub-collections. But precious information is lost by not training on the entire data samples available. Moreover, one of the subset could pick more random outliers or noisy features that will deteriorate either the training or validation outcomes. To cope with this, we use "cross-validation."
 
 ## Cross-validation
 
