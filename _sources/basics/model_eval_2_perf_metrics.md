@@ -19,9 +19,8 @@ The __generalized error__ is the error rate of the difference between the actual
 ````
 ### For classification algorithms
 In classification, the errors bear different names. As we saw that multiclassifiers are treated as a collection of binary classifiers, we will go over the two types of errors. 
-The most common metric is the root mean squared error (RMSE).
 
-Recall than the labelling and numerical association (1 and 0) of classes is arbitrary. Signal can be the rare process we want to see in the detector and 0 the background we want to reject. But we could exchange the numbers with 0 and 1, provided we remain consistent. In medical diagnosis, the class labelled 1 can be the presence of cancer on a patient (it's not what we want of course, but what we are looking to classify). 
+Recall that the labelling and numerical association (1 and 0) of classes is arbitrary. Signal can be the rare process we want to see in the detector and 0 the background we want to reject. But we could exchange the numbers with 0 and 1, provided we remain consistent. In medical diagnosis, the class labelled 1 can be the presence of cancer on a patient (it's not what we want of course, but what we are looking to classify). 
 
 ````{prf:definition}
 :label: confusionMatrix def
@@ -59,7 +58,7 @@ We predict signal but the event is background: our signal samples will have back
 __False negatives__  
 We predict background but the event is signal: we have signal contamination in the background but most importantly: we missed a signal event!
 
-The false positive and false negatives misclassifications are also referred to as type I and type II errors respectively. There are usually phrased using statistical jargon of null hypothesis (background) and alternative hypothesis (signal). The definitions below merge the statistical phrasing with our context above:
+The false positive and false negative misclassifications are also referred to as type I and type II errors respectively. They are usually phrased using statistical jargon of null hypothesis (background) and alternative hypothesis (signal). The definitions below merge the statistical phrasing with our context above:
 
 
 ````{prf:definition}
@@ -80,7 +79,9 @@ The type I error leads to signal samples not pure, as contaminated with backgrou
 ## Performance measures
 
 ### For regression algorithms
-There are many metrics used to evaluate the performance of regression algorithms, each with theirs pros and cons. 
+There are many metrics used to evaluate the performance of regression algorithms, each with their pros and cons. 
+
+The most common metric is the root mean squared error (RMSE).
 
 ````{prf:definition}
 :label: rmseDef
@@ -89,35 +90,36 @@ The __root mean squared error (RMSE)__ is the square root of the mean squared er
 \text{RMSE} = \sqrt{ \frac{\sum_{i=1}^N (y^\text{pred} - y^\text{obs} )^2 }{ N } }
 \end{equation}
 ````
-RMSE ranges from 0 to infinity. The lower the RMSE, the better. By taking the square root we have an error of the same unit that the target variable $y$ we want to predict.
+RMSE ranges from 0 to infinity. The lower the RMSE, the better. By taking the square root we have an error of the same unit as the target variable $y$ we want to predict.
 
-You may have seen in a statistics course the coefficient of determination, called $R^2$ or $r^2$. This is not really a measure of model performance, although it can be used as a proxy. What $r^2$ does is to measure of the amount of variance explained by the model. It is more a detector of variance than a performance assessment. Ranging from 0 to 1, with 1 being ideal. 
+You may have seen in a statistics course the coefficient of determination, called $R^2$ or $r^2$. This is not really a measure of model performance, although it can be used as a proxy. What $r^2$ does is to measure the amount of variance explained by the model. It is more of a detector of variance than a performance assessment. Ranging from 0 to 1, with 1 being ideal. 
 
 
 ### For classification algorithms
+The more popular error measurements associated with machine learning are defined below:
 
-The total model error, i.e. the sum of all wrong predictions divided by the total number of predictions, is not a good metric as it mixes types I and II errors. There are other error measurements more appropriate to measure the performance for classification. The more popular ones associated with machine learning are defined below:
+
 
 ````{prf:definition}
 :label: errormetricsclassdef
 
 &nbsp;  
 __Accuracy__  
-Rate at which the model is able to predict the correct values of both classes.
+Measures the fraction of correct predictions among all predictions
 \begin{equation}
 \text{Accuracy} = \frac{\text{True predictions}}{\text{All predictions}} = \frac{\text{TP + TN}}{\text{TP + TN + FP + FN}}
 \end{equation}
 
 &nbsp;  
 __Precision, or Positive Predictive Value (PPV)__  
-Measure of the fraction of true predictions among all __positive predictions__.
+Measures the fraction of true predictions among all __positive predictions__.
 \begin{equation}
 \text{Precision} = \frac{\text{True Positives}}{\text{All Positive Predictions}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}}
 \end{equation}
 
 &nbsp;  
 __Recall, or True Positive Rate (TPR)__  
-Measure of the fraction of true predictions among all __true observations__.
+Measures the fraction of true predictions among all __true observations__.
 \begin{equation}
 \text{Recall} = \frac{\text{True Positives}}{\text{Actual Positives}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}
 \end{equation}
@@ -130,19 +132,21 @@ Describes the balance between Precision and Recall. It is the harmonic mean of t
 \end{equation}
 ````
 
-The F-Score is a single metric favouring classifiers with similar Precision and Recall. But in some contexts, it is preferrable to favour a model with either high precision and low recall, or vice versa. There is a known trade-off between precision and recall. 
+The accuracy has the limitation of mixing types I and II errors: it may not reflect the model performance on minority classes in case of an unbalanced dataset. The Precision and Recall allow evaluation that distinguishes between false positives and false negatives.
+
+The F-Score is a single metric favouring classifiers with similar Precision and Recall. But in some contexts, it is preferable to favour a model with either high precision and low recall, or vice versa. There is a known trade-off between precision and recall. 
 
 
 __Case of unbalanced dataset__  
-In an unbalanced dataset, some classes will appear much more frequently that others. A specific metric called balanced accuracy is used to assess the performance in that case. 
+In an unbalanced dataset, some classes will appear much more frequently than others. A specific metric called balanced accuracy is used to assess the performance in that case. 
 ````{prf:definition}
 :label: balancedaccdef
-__Balanced accuracy__ is calculated as the average of recall obtained on each class.
+__Balanced accuracy__ is calculated as the average of recalls obtained on each class.
 ````
 
 ```{admonition} Exercise
 :class: seealso
 Find different examples of classification in which:
-* a low recall but high precision is preferrable
-* a low precision but high recall is preferrable 
+* a low recall but high precision is preferable
+* a low precision but high recall is preferable 
 ```

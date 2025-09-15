@@ -484,7 +484,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  STEP!
+  STEP UP!
  </span>
 </p>
 <ul class="current nav bd-sidenav">
@@ -749,11 +749,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#manual-cnn-vs-pytorch-cnn">
-   Manual CNN vs PyTorch CNN 🧠
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#padding-vs-not-padding">
    Padding vs Not Padding
   </a>
@@ -761,6 +756,16 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#manual-implementation-of-momentum">
    Manual implementation of momentum
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimizers-by-hand">
+   Optimizers by Hand 🧠
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compare-adam-with-l-bfgs-method">
+   Compare Adam with L-BFGS Method
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -776,6 +781,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#clustering">
    Clustering++
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manual-cnn-vs-pytorch-cnn">
+   Manual CNN vs PyTorch CNN 🧠
   </a>
  </li>
 </ul>
@@ -823,11 +833,6 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#manual-cnn-vs-pytorch-cnn">
-   Manual CNN vs PyTorch CNN 🧠
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#padding-vs-not-padding">
    Padding vs Not Padding
   </a>
@@ -835,6 +840,16 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#manual-implementation-of-momentum">
    Manual implementation of momentum
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#optimizers-by-hand">
+   Optimizers by Hand 🧠
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compare-adam-with-l-bfgs-method">
+   Compare Adam with L-BFGS Method
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -850,6 +865,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#clustering">
    Clustering++
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manual-cnn-vs-pytorch-cnn">
+   Manual CNN vs PyTorch CNN 🧠
   </a>
  </li>
 </ul>
@@ -889,11 +909,6 @@ Bonus: find the error in Scikit-Learn in the calculation of the probability!</p>
 <h2>GradientBoost by Hand 🧠🧠<a class="headerlink" href="#gradientboost-by-hand" title="Permalink to this headline">#</a></h2>
 <p>Implement a version of the Gradient Boosting algorithm and compare it with the state-of-the-art XGBoost.</p>
 </section>
-<section id="manual-cnn-vs-pytorch-cnn">
-<h2>Manual CNN vs PyTorch CNN 🧠<a class="headerlink" href="#manual-cnn-vs-pytorch-cnn" title="Permalink to this headline">#</a></h2>
-<p>Build a Convolutional Neural Network by hand. Build the same with PyTorch. Work out the exact number of trainable parameters in your manual CNN. Compare with the one on PyTorch. They should match.
-Bonus: initialize the same both networks and check the computations are identical. Good luck.</p>
-</section>
 <section id="padding-vs-not-padding">
 <h2>Padding vs Not Padding<a class="headerlink" href="#padding-vs-not-padding" title="Permalink to this headline">#</a></h2>
 <p>Is a neural network performing the same (accuracy &amp; speed) if the computations are split between weights and biases or if the weight matrix is padded with an extra row/column to include the biases?</p>
@@ -901,6 +916,16 @@ Bonus: initialize the same both networks and check the computations are identica
 <section id="manual-implementation-of-momentum">
 <h2>Manual implementation of momentum<a class="headerlink" href="#manual-implementation-of-momentum" title="Permalink to this headline">#</a></h2>
 <p>Showcase the effect of adding momentum in a neural network. Pick a relevant dataset and, as much as possible, illustrate it with clear visuals.</p>
+</section>
+<section id="optimizers-by-hand">
+<h2>Optimizers by Hand 🧠<a class="headerlink" href="#optimizers-by-hand" title="Permalink to this headline">#</a></h2>
+<p>Implement the update rules of RMSProp and/or Adam, and illustrate how they differ from vanilla SGD.
+Extension: visualize the trajectory of parameters on a simple loss surface to highlight the differences.</p>
+</section>
+<section id="compare-adam-with-l-bfgs-method">
+<h2>Compare Adam with L-BFGS Method<a class="headerlink" href="#compare-adam-with-l-bfgs-method" title="Permalink to this headline">#</a></h2>
+<p>Study the rate of convergence of Adam vs L-BFGS. Is there some virtue of starting off with a second order method and switch to a first order one?
+Note: you are not required to implement them manually.</p>
 </section>
 <section id="neural-network-initialization">
 <h2>Neural Network Initialization<a class="headerlink" href="#neural-network-initialization" title="Permalink to this headline">#</a></h2>
@@ -914,6 +939,11 @@ Extension: display the variance at each layer and ideally, how the variance evol
 <section id="clustering">
 <h2>Clustering++<a class="headerlink" href="#clustering" title="Permalink to this headline">#</a></h2>
 <p>There are so many clustering algorithms. Pick your favourite and explain their pros &amp; cons. With a code.</p>
+</section>
+<section id="manual-cnn-vs-pytorch-cnn">
+<h2>Manual CNN vs PyTorch CNN 🧠<a class="headerlink" href="#manual-cnn-vs-pytorch-cnn" title="Permalink to this headline">#</a></h2>
+<p>Build a Convolutional Neural Network by hand. Build the same with PyTorch. Work out the exact number of trainable parameters in your manual CNN. Compare with the one on PyTorch. They should match.
+Bonus: initialize the same both networks and check the computations are identical. Good luck.</p>
 </section>
 </section>
 

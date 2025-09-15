@@ -177,7 +177,7 @@ With one output node, it is actually simpler than for the hidden layers above. W
 ```
 using $\boldsymbol{a}^{(i, \: 2)}$ that we calculated above. In our case $\boldsymbol{a}^{(i, \: 3)}$ has only one element: $a^{(i, \: 3)}_1 = \hat{y}^{(i)}$. Thus the matrix $W^{(3)}$ has only one column. The bias 'vector' is actually a scalar: $b^{(3)}$. 
 
-We have computed a value for each activation unit for a given data sample $\boldsymbol{x}^{(i)}$. That is the end of the forward propagation process! As you can see, it contains lots of calculations. And now you may understand why activation functions that are simple and fast to compute are preferrable, as they intervene each time we compute the output of an activation unit.
+We have computed a value for each activation unit for a given data sample $\boldsymbol{x}^{(i)}$. That is the end of the forward propagation process! As you can see, it contains lots of calculations. And now you may understand why activation functions that are simple and fast to compute are preferable, as they intervene each time we compute the output of an activation unit.
 
 Let's now get a general formula.
 

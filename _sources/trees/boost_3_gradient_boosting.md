@@ -227,7 +227,7 @@ The probability is:
 The event is signal, so our prediction should be close to 1. We went from an initial guess probability of $\frac{1}{3}$ to 0.42. We indeed go in the right direction! Smoothly, but surely.
 
 ```{note}
-It has been shown empirically that a slow learning rate is preferrable to reach a good accuracy. It comes at the price of having to build numerous intermediary trees incrementing the predictions in small steps. Without a learning rate scaling the trees, there is a high risk to stay too close to the data, which would bring a low bias but very high variance. Thanks to a small learning rate, taking lots of small steps in the right direction results in better predictions with a testing dataset. This technique is called _shrinkage_.
+It has been shown empirically that a slow learning rate is preferable to reach a good accuracy. It comes at the price of having to build numerous intermediary trees incrementing the predictions in small steps. Without a learning rate scaling the trees, there is a high risk to stay too close to the data, which would bring a low bias but very high variance. Thanks to a small learning rate, taking lots of small steps in the right direction results in better predictions with a testing dataset. This technique is called _shrinkage_.
 ```
 
 
