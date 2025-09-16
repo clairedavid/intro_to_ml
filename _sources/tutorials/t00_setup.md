@@ -1,8 +1,9 @@
 # Setup
 
-In the tutorials, you will be given data files. How can you read them in Colab? This section will guide you on how to get data from your Google Drive to Google Colab.
+The tutorials will be done on Google Colab, a remote Python server running in the cloud. Although you access it from your account, Colab runs on Google’s servers and does not automatically have access to the files on your local computer or Google Drive.
 
-Google Colab is a remote Python server running in the cloud. Although you access it from your account, it is not aware of what you have on your drive.
+You will be given data files to download and upload to your Google Drive. Storing files in Drive is the easiest way to make them accessible to Colab without extra setup. But how do you access them from Colab? This section will guide you through the steps.
+
 
 (bash:refresher)=
 ## Bash (re)fresher
@@ -60,7 +61,7 @@ Here is a cute little dataset:  (you will understand later)
 Start by uploading the dataset to your Google Drive. It can help to keep things organized in a folder like `data/intro_to_ml`, but feel free to place it wherever works best for you.
 
 ### 3. Mount your Google Drive in Colab
-In your Google Drive, click on `+ New` and then `More` and `Google Colaboratory`. 
+In your Google Drive, click on &nbsp; `+ New`&nbsp;  and then &nbsp; `More`&nbsp;  and click on &nbsp; `Google Colaboratory`. 
 
 To access your Google Drive files, you need to create a 'bridge' from the Colab server to your Drive. This is done by first importing a special library and then entering this command:
 ```python
@@ -91,7 +92,7 @@ Once you locate your data file in Google Drive, it’s a good practice to store 
 ```
 
 __Let's inspect the file!__  
-In the section {ref}`bash:refresher` above, you can see the commands `cat`, `head` and `tail`. The first one will display in the terminal the entire file. What if there are many many lines? This will saturate your output window. Instead, you can use `head` or `tail` to display a portion of the file. For instance, `head -n 10` shows the first 10 lines, `tail -n 3` will give you the three last lines. 
+In the section {ref}`bash:refresher` above, you can see the commands `cat`, `head` and `tail`. The first one will display in the terminal the entire file. What if there are many many lines? This will saturate your output window. Instead, you can use `head` or `tail` to display a portion of the file. For instance, `head -n 10` shows the first 10 lines, `tail -n 3` will give you the last three lines. 
 
 In my Colab setup with Drive mounted, it looks like this:
 
