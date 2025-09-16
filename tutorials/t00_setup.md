@@ -68,7 +68,7 @@ To access your Google Drive files, you need to create a 'bridge' from the Colab 
 from google.colab import drive
 drive.mount('/content/gdrive')
 ```
-Copy and paste the above in your blank Colab file. 
+Copy and paste the above in your blank Colab file. A popup will appear asking you to grant Colab access to your Google Drive: click "accept" to proceed.
 
 ### 4. Read your file
 Now let's navigate with bash commands to find that file.
