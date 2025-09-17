@@ -48,7 +48,7 @@ C \left(\;\boldsymbol{\hat{y}}, \boldsymbol{y}\;\right)= \frac{1}{m} \sum_{i=1}^
 
 
 ### Absolute Loss
-If there are lots of outliers in the training set, aka samples associated with a large error between the prediction and the observed values, the Mean Squared Errror will make the loss (and cost) very big. A preferrable choice would be to take the absolute loss:
+If there are lots of outliers in the training set, aka samples associated with a large error between the prediction and the observed values, the Mean Squared Errror will make the loss (and cost) very big. A preferable choice would be to take the absolute loss:
 ```{math}
 :label: lossabseq
 L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= \left| \;\hat{y}_k^{(i)} - y_k^{(i)} \; \right|

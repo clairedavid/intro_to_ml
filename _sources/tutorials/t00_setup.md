@@ -1,3 +1,4 @@
+(tuto:setup)=
 # Setup
 
 The tutorials will be done on Google Colab, a remote Python server running in the cloud. Although you access it from your account, Colab runs on Google’s servers and does not automatically have access to the files on your local computer or Google Drive.

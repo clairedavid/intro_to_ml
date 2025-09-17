@@ -64,7 +64,7 @@ If we set $x_0^{(i)} = 1$, we can write the mapping function as a sum. For one t
 :label: h_theta_lin_sum
   h_\theta(\boldsymbol{x^{(i)}}) = \sum_{j=0}^n \theta_j x^{(i)}_j =  x^{(i)} \theta^{\; T}
 ```
-where $\boldsymbol{x}^{(i)}$ an __row vector__ of $n+1$ elements, $x^{(i)} = (x^{(i)}_0, x^{(i)}_1, x^{(i)}_2, \cdots, x^{(i)}_n)$ and $\theta$ is a __row vector__ too of $n+1$ elements as well, $\boldsymbol{\theta} = (\theta_0, \theta_1, \cdots, \theta_n)$. Thus taking the transposed and multiplying by $\boldsymbol{x}^{(i)}$ is equivalent to a dot product:
+where $\boldsymbol{x}^{(i)}$ a __row vector__ of $n+1$ elements, $x^{(i)} = (x^{(i)}_0, x^{(i)}_1, x^{(i)}_2, \cdots, x^{(i)}_n)$ and $\theta$ is a __row vector__ too of $n+1$ elements as well, $\boldsymbol{\theta} = (\theta_0, \theta_1, \cdots, \theta_n)$. Thus taking the transposed and multiplying by $\boldsymbol{x}^{(i)}$ is equivalent to a dot product:
 \begin{equation*}
 \boldsymbol{x^{(i)}} \boldsymbol{\theta^{\; T}} =  \begin{pmatrix} x^{(i)}_0, x^{(i)}_1, x^{(i)}_2, \cdots, x^{(i)}_n\\\end{pmatrix} 
   \begin{pmatrix} \theta_0 \\\theta_1 \\ \\\vdots \\  \\\theta_n \\\end{pmatrix} = \; \boldsymbol{x^{(i)}} \cdot  \boldsymbol{\theta}

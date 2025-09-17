@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="T2. Classifier" href="t02_classifier.html" />
@@ -701,12 +703,114 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-i-linear-regressor-by-hand-guided">
+   Part I: Linear Regressor By Hand (guided)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-the-data">
+     1.1 Get the data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plot-the-data">
+     1.2 Plot the data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     1.3 Functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linear-regressor-loop">
+     1.4 Linear Regressor Loop
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualize-the-gradient-descent">
+     1.5 Visualize the gradient descent
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#let-s-check-with-numpy">
+     1.6 Let’s check with NumPy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-ii-generalizing-to-n-features-with-vectorized-gradient-descent">
+   Part II: Generalizing to
+   <span class="math notranslate nohighlight">
+    \(n\)
+   </span>
+   features with vectorized gradient descent
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-iii-let-s-get-classy-with-oop">
+   Part III: Let’s get classy with OOP
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus">
+   Bonus
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix-snippet-zone">
+   Appendix: Snippet Zone
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-the-data">
+     Plotting the Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pretty-printing">
+     Pretty Printing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizing-gradient-descent">
+     Visualizing Gradient Descent
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#print-table-to-compare-manual-vs-numpy-fits">
+     Print Table to Compare Manual vs NumPy Fits
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -718,6 +822,97 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-i-linear-regressor-by-hand-guided">
+   Part I: Linear Regressor By Hand (guided)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-the-data">
+     1.1 Get the data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plot-the-data">
+     1.2 Plot the data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     1.3 Functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linear-regressor-loop">
+     1.4 Linear Regressor Loop
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualize-the-gradient-descent">
+     1.5 Visualize the gradient descent
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#let-s-check-with-numpy">
+     1.6 Let’s check with NumPy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-ii-generalizing-to-n-features-with-vectorized-gradient-descent">
+   Part II: Generalizing to
+   <span class="math notranslate nohighlight">
+    \(n\)
+   </span>
+   features with vectorized gradient descent
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-iii-let-s-get-classy-with-oop">
+   Part III: Let’s get classy with OOP
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus">
+   Bonus
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix-snippet-zone">
+   Appendix: Snippet Zone
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-the-data">
+     Plotting the Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pretty-printing">
+     Pretty Printing
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizing-gradient-descent">
+     Visualizing Gradient Descent
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#print-table-to-compare-manual-vs-numpy-fits">
+     Print Table to Compare Manual vs NumPy Fits
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -727,11 +922,390 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="t1-linear-regressor">
 <h1>T1. Linear Regressor<a class="headerlink" href="#t1-linear-regressor" title="Permalink to this headline">#</a></h1>
-<br>
-<br>
-<center> Coming soon! </center>
-<br>
-<br>
+<p>In this tutorial, you will learn how to code a linear regressor in Python. Part I will be very guided, Part II a bit less and Part III even less.</p>
+<div class="warning admonition">
+<p class="admonition-title">Important note</p>
+<p>All of you are coming with different backgrounds and programming proficiencies. Even if you are an experienced coder, this in-depth tutorial can  give you some insights you did not have before if you are mostly used to handling advanced, automated libraries. Do all parts and if you are done and start getting bored, come talk to the instructor. I will give you extra challenges 😉.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Learning Objectives</p>
+<ul class="simple">
+<li><p>Read a data file and manipulate data in pandas dataframes and NumPy arrays</p></li>
+<li><p>Write functions relevant to linear regression</p></li>
+<li><p>Write unit tests to check the correct behaviour of those functions</p></li>
+<li><p>Code a linear regressor with one input feature “by hand,” i.e. implementing the equations explicitly</p></li>
+<li><p>Generalize the code to handle <span class="math notranslate nohighlight">\(n\)</span> input features</p></li>
+<li><p>Rewrite the code using an OOP approach by defining a class</p></li>
+<li><p>Test the class with datasets of different dimensionalities</p></li>
+<li><p>Compare the results of your linear regressor with NumPy tools such as <code class="docutils literal notranslate"><span class="pre">polyfit</span></code> or the least-square method <code class="docutils literal notranslate"><span class="pre">lstsq</span></code></p></li>
+</ul>
+</div>
+<p>Open a fresh Colaboratory file or a local Jupyter Notebook and let’s go!</p>
+<section id="part-i-linear-regressor-by-hand-guided">
+<h2>Part I: Linear Regressor By Hand (guided)<a class="headerlink" href="#part-i-linear-regressor-by-hand-guided" title="Permalink to this headline">#</a></h2>
+<section id="get-the-data">
+<h3>1.1 Get the data<a class="headerlink" href="#get-the-data" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=19CPweswe31ifoYxdl88XCZDprC3F6md9">Download dataset</a></p>
+<p>Mount your Drive according to the <a class="reference internal" href="t00_setup.html#tuto-setup"><span class="std std-ref">Setup</span></a> section, or retrieve it from your local folders if you are using Jupyter Notebook on your device.</p>
+<p>Import your classic:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<p>Load your dataset from the CSV file into a Pandas DataFrame. This will allow you to inspect the data, handle missing values, and manipulate columns easily before turning it into numerical arrays.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">your_data_file</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Dataframes are very handy to visualize the dataset. Feel free to practice on this. Now we want fast computations: we will create a Numpy array for each column.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="plot-the-data">
+<h3>1.2 Plot the data<a class="headerlink" href="#plot-the-data" title="Permalink to this headline">#</a></h3>
+<p>Use the first plotting macro from the <a class="reference internal" href="#app-t1-snippet-zone"><span class="std std-ref">Appendix: Snippet Zone</span></a> to plot the data. What is the trend?</p>
+</section>
+<section id="functions">
+<h3>1.3 Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h3>
+<p>We will have to make the same computations several times, for instance while calculating the hypothesis function. Thus it is better to define proper functions for that. Functions in programming are making a code reusable, versatile and easier to read.</p>
+<p><strong>Hypothesis function</strong><br />
+This one is given for a single input feature:</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>If you want to anticipate the next section, you can write a more versatile function <code class="docutils literal notranslate"><span class="pre">h_linear(thetas,</span> <span class="pre">X)</span></code> that would be general for <span class="math notranslate nohighlight">\(n\)</span> input features. But for this part, the provided function on the left will do the job.</p>
+</aside>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Single feature linear hypothesis</span>
+<span class="k">def</span> <span class="nf">h_linear_single_feature</span><span class="p">(</span><span class="n">thetas</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Simple linear model for a single feature.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    thetas : array-like</span>
+<span class="sd">        [theta_0, theta_1] where theta_0 is the intercept and theta_1 is the slope.</span>
+<span class="sd">    x : array-like</span>
+<span class="sd">        Input feature, shape (m_samples,).</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    predictions : array</span>
+<span class="sd">        Predicted values, shape (m_samples,).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">thetas</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">thetas</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p><strong>Cost function</strong><br />
+Your first mission is to write a function calculating the cost (Mean Square Error).</p>
+<div class="important admonition">
+<p class="admonition-title">Good Practice</p>
+<p>Before even starting to write code it is important to be very clear on what are the inputs, the main steps, the outputs. I recommend going back to the ‘pen and paper’ to first write the algorithm, list the different variables. Then it will make the coding much easier and less error-prone.</p>
+</div>
+<p>☝️ Once you have your function computing the cost, it is always a good practice to test it.</p>
+<p>Let’s take the values seen in class from the ideal dataset. We know the numbers already, so it will be handy.
+Complete the following, filling out the <code class="docutils literal notranslate"><span class="pre">...</span></code> placeholders:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+
+<span class="c1"># Set intercept term to zero</span>
+<span class="n">theta_0</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># List of values for theta_1 (the slope)</span>
+<span class="n">theta_1_candidates</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="o">...</span> <span class="ow">in</span> <span class="o">...</span><span class="p">:</span>
+    <span class="c1"># Call your cost function</span>
+    <span class="o">...</span> 
+</pre></div>
+</div>
+<p>You should be able to print a list of costs with values identical to the ones you calculated during class.</p>
+<p><strong>Residuals</strong><br />
+There will be another handy function to code. Recall the derivative of the cost function. It contains the difference between the predicted value and the observed one, without squaring them. This difference has the technical name of “residual”.<br />
+Write another function <code class="docutils literal notranslate"><span class="pre">get_residuals(...)</span></code> computing the residuals, which is common term in both partial derivatives of the cost, <span class="math notranslate nohighlight">\(\frac{\partial C(\boldsymbol{\theta})}{\partial \theta_0}\)</span> and <span class="math notranslate nohighlight">\(\frac{\partial C(\boldsymbol{\theta})}{\partial \theta_1}\)</span>.</p>
+<p>☝️ Test it! Try to write some code to make sure your function works and compute the right things.</p>
+</section>
+<section id="linear-regressor-loop">
+<h3>1.4 Linear Regressor Loop<a class="headerlink" href="#linear-regressor-loop" title="Permalink to this headline">#</a></h3>
+<p>Let’s now get to the core of things: the regressor!</p>
+<p>Some guidance:</p>
+<ul class="simple">
+<li><p>In the <a class="reference internal" href="#app-t1-snippet-zone"><span class="std std-ref">Appendix: Snippet Zone</span></a>, the function <code class="docutils literal notranslate"><span class="pre">should_print_iteration</span></code> can help you mitigate long terminal output while printing variables in your gradient descent loop. Take it! 🎁</p></li>
+<li><p>If you struggle with the convergence, get your instructor to give you hyperparameters and initial model parameters that definitely work.</p></li>
+<li><p>Last but not least, skeleton of the code is given below to help you get started.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hyperparameters</span>
+<span class="n">alpha</span>   <span class="o">=</span> 
+<span class="n">N</span>       <span class="o">=</span> 
+<span class="n">epsilon</span> <span class="o">=</span>   <span class="c1"># tolerance threshold on gradients; exit if abs(gradients) &lt; epsilon </span>
+
+<span class="c1"># Initialization</span>
+<span class="n">theta_0</span> <span class="o">=</span> 
+<span class="n">theta_1</span> <span class="o">=</span> 
+
+<span class="c1"># Check lists of x and y are of same length:</span>
+<span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># sample size</span>
+<span class="k">if</span> <span class="n">m</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The lists of x and y values are not the same length!&quot;</span><span class="p">)</span>
+
+<span class="c1"># Store parameter values for gradient descent visualizations</span>
+<span class="n">theta_0_grad_history</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">theta_0</span><span class="p">])</span>
+<span class="n">theta_1_grad_history</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">theta_1</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting gradient descent</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># -------------------</span>
+<span class="c1">#  Start iterations</span>
+<span class="c1"># -------------------</span>
+<span class="k">for</span> <span class="n">iter_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+
+    <span class="c1">#___________________________</span>
+
+    <span class="c1"># Your code here</span>
+
+
+    <span class="c1">#___________________________</span>
+
+    <span class="c1"># Store thetas (for plotting)</span>
+    <span class="n">theta_0_grad_history</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">theta_0_grad_history</span><span class="p">,</span> <span class="n">theta_0_new</span><span class="p">)</span>
+    <span class="n">theta_1_grad_history</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">theta_1_grad_history</span><span class="p">,</span> <span class="n">theta_1_new</span><span class="p">)</span>
+
+    <span class="c1"># Pretty print: every 10 iters until 100, then every 100 iters</span>
+    <span class="k">if</span> <span class="n">should_print_iteration</span><span class="p">(</span><span class="n">iter_idx</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Iter </span><span class="si">{</span><span class="n">iter_idx</span><span class="si">:</span><span class="s2">&gt;4</span><span class="si">}</span><span class="se">\t</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;θ₀ = </span><span class="si">{</span><span class="n">theta_0_new</span><span class="si">:</span><span class="s2">&gt;7.3f</span><span class="si">}</span><span class="se">\t</span><span class="s2">∂J/∂θ₀ = </span><span class="si">{</span><span class="n">grad_theta_0</span><span class="si">:</span><span class="s2">&gt;8.4f</span><span class="si">}</span><span class="se">\t</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;θ₁ = </span><span class="si">{</span><span class="n">theta_1_new</span><span class="si">:</span><span class="s2">&gt;7.3f</span><span class="si">}</span><span class="se">\t</span><span class="s2">∂J/∂θ₁ = </span><span class="si">{</span><span class="n">grad_theta_1</span><span class="si">:</span><span class="s2">&gt;8.4f</span><span class="si">}</span><span class="se">\t</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Cost = </span><span class="si">{</span><span class="n">cost</span><span class="si">:</span><span class="s2">&gt;8.5f</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+    <span class="c1">#___________________________</span>
+
+    <span class="c1"># Your code here</span>
+
+
+    <span class="c1">#___________________________</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">End of gradient descent after </span><span class="si">{</span><span class="n">iter_idx</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2"> iterations&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="visualize-the-gradient-descent">
+<h3>1.5 Visualize the gradient descent<a class="headerlink" href="#visualize-the-gradient-descent" title="Permalink to this headline">#</a></h3>
+<p>We will reproduce the plots from <a class="reference internal" href="../basics/lin_reg_3_gradient_descent_1d.html#plot-linreg-3d"><span class="std std-numref">Fig. 5</span></a> seen in class. The plotting macros are given in the <a class="reference internal" href="#app-t1-snippet-zone"><span class="std std-ref">Appendix: Snippet Zone</span></a>.  Copy paste 🎁 and see!</p>
+</section>
+<section id="let-s-check-with-numpy">
+<h3>1.6 Let’s check with NumPy<a class="headerlink" href="#let-s-check-with-numpy" title="Permalink to this headline">#</a></h3>
+<p>Let’s compare with NumPy <code class="docutils literal notranslate"><span class="pre">polyfit</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">deg</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Print the parameters of your manual linear regressor and the ones from NumPy <code class="docutils literal notranslate"><span class="pre">polyfit</span></code>. Are they the same?</p>
+</section>
+</section>
+<section id="part-ii-generalizing-to-n-features-with-vectorized-gradient-descent">
+<h2>Part II: Generalizing to <span class="math notranslate nohighlight">\(n\)</span> features with vectorized gradient descent<a class="headerlink" href="#part-ii-generalizing-to-n-features-with-vectorized-gradient-descent" title="Permalink to this headline">#</a></h2>
+<p>We wrote our linear regressor for a single input feature, with two scalar parameters: the intercept and the slope. Let’s generalize the code to handle multiple features by representing the parameters as a vector.</p>
+<p>Adapt your linear regressor to use a parameter vector, enabling vectorized gradient descent.</p>
+<p>Tips:</p>
+<ul class="simple">
+<li><p>You can either adapt your <code class="docutils literal notranslate"><span class="pre">get_residuals</span></code> function for the vectorized case, or drop it entirely and compute the residuals directly in your loop when calculating the gradients.</p></li>
+<li><p>Print the shape of your variables to check that all operations have compatible dimensions.</p></li>
+<li><p>You may have to rewrite the hypothesis and cost functions to make sure it works with your vectors and matrices (in particular if you change the dimension of your input feature matrix to accommodate the intercept term)</p></li>
+</ul>
+<p>Have fun!</p>
+</section>
+<section id="part-iii-let-s-get-classy-with-oop">
+<h2>Part III: Let’s get classy with OOP<a class="headerlink" href="#part-iii-let-s-get-classy-with-oop" title="Permalink to this headline">#</a></h2>
+<p>The goal of this section is to give an initial example for Object-Oriented Programming (OOP) and show how it can be very convenient.</p>
+<p>We just coded a linear regressor in a generalized fashion with <span class="math notranslate nohighlight">\(n\)</span> input features. However, we fitted our model by explicitly writing step-by-step code, and if we want to use this code again, we have to copy-paste the previous blocks. We want to have a more efficient way, an implementation of a regressor that we can use again and again on different datasets - with different parameters. This is when OOP comes in. We need to turn our linear regressor into a class.</p>
+<p>If you are new to OOP, find a teammate knowledgeable in the topic. If you are proficient in OOP, use this as an opportunity to improve your teaching skills by helping peers.</p>
+<p>You will design a class LinearRegressor.</p>
+<p>Before even writing a line of code, take a piece of paper and think about the following:</p>
+<ul class="simple">
+<li><p>What would be the attributes?</p></li>
+<li><p>What would be the methods?</p></li>
+<li><p>For each method, what would be the arguments?</p></li>
+</ul>
+<p>Once you have this in place, discuss with your peers on your design strategy. When you are all good, get into the coding and don’t forget to test it along the way. Then have fun with the dataset we worked on. There is another dataset to explore here:<br />
+<a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1E-anZ2OcfsHyAHvcYXgqbn7FmaZkYgKG">Download dataset 2 </a></p>
+<p>If you successfully fit this one, you can do the bonus or ask the instructor to give you a higher dimensionality dataset.</p>
+<p>Then to compare your fitted parameters with NumPy, call the least-square meethod:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare with Numpy least-square solution</span>
+<span class="n">params_numpy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">X_aug</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>You can see in the Snippet Zone at the end a function to print a neat table of parameters from both your linear regressor class and NumPy, so you can compare them easily.</p>
+<p>Enjoy building your own linear regressor class and exploring with it!</p>
+</section>
+<section id="bonus">
+<h2>Bonus<a class="headerlink" href="#bonus" title="Permalink to this headline">#</a></h2>
+<p>With the second data file, how could we visualize the data and the fit?<br />
+This part is intentionally left open-ended. Bring your ideas 💡 and try them out 💻</p>
+</section>
+<section id="appendix-snippet-zone">
+<span id="app-t1-snippet-zone"></span><h2>Appendix: Snippet Zone<a class="headerlink" href="#appendix-snippet-zone" title="Permalink to this headline">#</a></h2>
+<section id="plotting-the-data">
+<h3>Plotting the Data<a class="headerlink" href="#plotting-the-data" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="pretty-printing">
+<h3>Pretty Printing<a class="headerlink" href="#pretty-printing" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">should_print_iteration</span><span class="p">(</span><span class="n">iter_index</span><span class="p">,</span> <span class="n">first_step</span><span class="p">,</span> <span class="n">second_step</span><span class="p">,</span> <span class="n">index_changing_step</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Trigger a print if iter_index matches step rules:</span>
+<span class="sd">    print every `first_step` iterations before `index_changing_step`,</span>
+<span class="sd">    then every `second_step` iterations afterwards.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">first_step</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">second_step</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Steps must be positive integers.&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">iter_index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>  <span class="c1"># Always print at the first iteration</span>
+
+    <span class="k">if</span> <span class="n">iter_index</span> <span class="o">&lt;=</span> <span class="n">index_changing_step</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">iter_index</span> <span class="o">%</span> <span class="n">first_step</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">iter_index</span> <span class="o">%</span> <span class="n">second_step</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+<section id="visualizing-gradient-descent">
+<h3>Visualizing Gradient Descent<a class="headerlink" href="#visualizing-gradient-descent" title="Permalink to this headline">#</a></h3>
+<p>You can use as is or wrap it in a function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Grid for 2D parameter space:</span>
+<span class="n">theta_0_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">theta_1_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># Z values of costs for the surface:</span>
+<span class="n">meshed_theta_0</span><span class="p">,</span> <span class="n">meshed_theta_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">theta_0_grid</span><span class="p">,</span> <span class="n">theta_1_grid</span><span class="p">)</span>
+<span class="n">meshed_costs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">meshed_theta_0</span><span class="p">)</span>  <span class="c1"># Costs array</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">meshed_theta_0</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">meshed_theta_0</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="n">meshed_costs</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">cost_function_linear_regression</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">meshed_theta_0</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">meshed_theta_1</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]],</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+        <span class="p">)</span>
+
+<span class="c1"># Gradient descent: 5 first params then every 10 epochs</span>
+<span class="n">intermediary_theta_0_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">theta_0_grad_history</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">],</span> <span class="n">theta_0_grad_history</span><span class="p">[</span><span class="mi">5</span><span class="p">::</span><span class="mi">5</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">)</span>
+<span class="n">intermediary_theta_1_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">theta_1_grad_history</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">],</span> <span class="n">theta_1_grad_history</span><span class="p">[</span><span class="mi">5</span><span class="p">::</span><span class="mi">5</span><span class="p">]),</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">)</span>
+
+<span class="c1"># Cost for selected intermediary weights (one per GD step)</span>
+<span class="n">intermediary_grad_cost_history</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">cost_function_linear_regression</span><span class="p">([</span><span class="n">t0</span><span class="p">,</span> <span class="n">t1</span><span class="p">],</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">t0</span><span class="p">,</span> <span class="n">t1</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">intermediary_theta_0_vals</span><span class="p">,</span> <span class="n">intermediary_theta_1_vals</span><span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">rcParamsDefault</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figaspect</span><span class="p">(</span><span class="mf">0.45</span><span class="p">))</span>  <span class="c1"># 16,4</span>
+
+<span class="c1"># ==========================</span>
+<span class="c1">#     Contour plot</span>
+<span class="c1"># ==========================</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">rcParamsDefault</span><span class="p">)</span>
+
+<span class="c1"># Custom cost levels, from 5, step of 5, 200</span>
+<span class="n">levs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Contour of theta parameter space:</span>
+<span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">meshed_theta_0</span><span class="p">,</span> <span class="n">meshed_theta_1</span><span class="p">,</span> <span class="n">meshed_costs</span><span class="p">,</span> <span class="n">levs</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">CS</span><span class="o">.</span><span class="n">levels</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">],</span> <span class="n">inline</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add the intermediary thetas from gradient descent:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">intermediary_theta_0_vals</span><span class="p">,</span> <span class="n">intermediary_theta_1_vals</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$</span><span class="se">\\</span><span class="s2">theta_0$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$</span><span class="se">\\</span><span class="s2">theta_1$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cost Function $J(</span><span class="se">\\</span><span class="s2">theta_0, </span><span class="se">\\</span><span class="s2">theta_1)$&quot;</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># ==========================</span>
+<span class="c1">#     3D plot</span>
+<span class="c1"># ==========================</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">&quot;3d&quot;</span><span class="p">)</span>
+
+<span class="c1"># 3D surface of cost vs (theta  0, theta 1):</span>
+<span class="n">surf</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span>
+    <span class="n">meshed_theta_0</span><span class="p">,</span>
+    <span class="n">meshed_theta_1</span><span class="p">,</span>
+    <span class="n">meshed_costs</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis_r&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Path of intermediary thetas from gradient descent:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">intermediary_theta_0_vals</span><span class="p">,</span>
+    <span class="n">intermediary_theta_1_vals</span><span class="p">,</span>
+    <span class="n">intermediary_grad_cost_history</span><span class="p">,</span>
+    <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$</span><span class="se">\\</span><span class="s2">theta_0$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$</span><span class="se">\\</span><span class="s2">theta_1$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;$J(</span><span class="se">\\</span><span class="s2">theta_0, </span><span class="se">\\</span><span class="s2">theta_1)$&quot;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">azim</span> <span class="o">=</span> <span class="mi">170</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">elev</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_rotate_label</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_pane_color</span><span class="p">((</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_rotate_label</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_pane_color</span><span class="p">((</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">zaxis</span><span class="o">.</span><span class="n">set_rotate_label</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">zaxis</span><span class="o">.</span><span class="n">set_pane_color</span><span class="p">((</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="print-table-to-compare-manual-vs-numpy-fits">
+<h3>Print Table to Compare Manual vs NumPy Fits<a class="headerlink" href="#print-table-to-compare-manual-vs-numpy-fits" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">method_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Manual gradient descent&quot;</span><span class="p">,</span> <span class="s2">&quot;NumPy least-squares&quot;</span><span class="p">]</span>
+<span class="n">parameters_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">MyLinReg2Features</span><span class="o">.</span><span class="n">parameters</span><span class="p">,</span> <span class="n">params_numpy</span><span class="p">]</span>
+
+<span class="n">num_decimals</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1"># Dynamic width for method column</span>
+<span class="n">method_col_width</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>  <span class="c1"># +2 for padding</span>
+<span class="n">num_col_width</span> <span class="o">=</span> <span class="mi">12</span>  <span class="c1"># width for numeric columns</span>
+
+<span class="c1"># Header</span>
+<span class="n">header</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Method&quot;</span><span class="p">,</span> <span class="s2">&quot;Intercept&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;W</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">parameters_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]))]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">header</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;</span><span class="si">{</span><span class="n">method_col_width</span><span class="si">}}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">header</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; | </span><span class="si">{</span><span class="n">h</span><span class="si">:</span><span class="s2">&gt;</span><span class="si">{</span><span class="n">num_col_width</span><span class="si">}}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Separator</span>
+<span class="n">total_width</span> <span class="o">=</span> <span class="n">method_col_width</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">header</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">*</span> <span class="p">(</span><span class="n">num_col_width</span> <span class="o">+</span> <span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="n">total_width</span><span class="p">)</span>
+
+<span class="c1"># Rows</span>
+<span class="k">for</span> <span class="n">method</span><span class="p">,</span> <span class="n">params</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">method_names</span><span class="p">,</span> <span class="n">parameters_list</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">method</span><span class="si">:</span><span class="s2">&lt;</span><span class="si">{</span><span class="n">method_col_width</span><span class="si">}}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; | </span><span class="si">{</span><span class="n">p</span><span class="si">:</span><span class="s2">&gt;</span><span class="si">{</span><span class="n">num_col_width</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">num_decimals</span><span class="si">}</span><span class="s2">f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
