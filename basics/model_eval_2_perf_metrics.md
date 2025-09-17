@@ -9,13 +9,17 @@ Generally speaking, an error is the gap between the prediction and the true valu
 ### For regression algorithms
 ````{prf:definition}
 :label: residualDef
-A __residual__ is the difference between the actual and predicted value computed with respect to data samples used to train, validate and tune the model (i.e. _in-sample_ error).
+A __residual__ is the difference between the actual and predicted value computed with respect to data samples used to train, validate and tune the model.
+
+$\rightarrow$ _in-sample_ error
 ````
 It is always a good practice to make a scatter plot of all the residuals with respect to the independent variable values; they should be randomly distributed on a band symmetrically centered at zero. If not, this means the chosen model is not appropriate to correctly fit the data.
 
 ````{prf:definition}
 :label: errorDef
-The __generalized error__ is the error rate of the difference between the actual and predicted values computed with respect to test or new data (i.e. _out-of-sample_ error).
+The __generalized error__ is the difference between the actual and predicted values, averaged over test or new data samples.  
+
+$\rightarrow$  _out-of-sample_ error
 ````
 ### For classification algorithms
 In classification, the errors bear different names. As we saw that multiclassifiers are treated as a collection of binary classifiers, we will go over the two types of errors. 
