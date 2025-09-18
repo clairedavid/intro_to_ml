@@ -6,6 +6,7 @@ author: ""
 logo: logo.png
 exclude_patterns:
   - "README.md"
+  - ".venv*"
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -51,8 +52,14 @@ html:
 sphinx:
   config:
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    mathjax3_config:
+      tex:
+        macros:
+          expt: "\\mathbb{E}"
+          argmin: "\\DeclareMathOperator*{\\argmin}{argmin}"
+          argmax: "\\DeclareMathOperator*{\\argmax}{argmax}"
     html_show_copyright: false
-    html_show_sphinx: false
+    html_show_sphinx: false 
   extra_extensions:
     - sphinx_proof
 
