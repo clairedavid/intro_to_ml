@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="T3. Decision Stump" href="t03_decision_stump.html" />
@@ -701,12 +703,220 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-calorimeter-showers">
+   Introduction: calorimeter showers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-i-linear-classifier-by-hand-guided">
+   Part I: Linear Classifier By Hand (Guided)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-the-data">
+     1.1 Get the data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-pre-processing">
+     1.2 Data pre-processing
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#explore-the-data">
+       1.2.1 Explore the Data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#labels-to-binary">
+       1.2.2 Labels to Binary
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#create-feature-matrix-x">
+       1.2.3 Create Feature Matrix
+       <span class="math notranslate nohighlight">
+        \(X\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#train-test-split">
+       1.2.4 Train/Test Split
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#feature-scaling">
+       1.2.5 Feature Scaling
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#feature-matrix-augmentation">
+       1.2.6 Feature Matrix Augmentation
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     1.3 Functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#hypothesis-function">
+       1.3.1 Hypothesis Function
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#logistic-function">
+       1.3.2 Logistic Function
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#partial-derivatives-of-cross-entropy-cost-function">
+       1.3.3 Partial Derivatives of Cross-Entropy Cost Function
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cross-entropy-cost-function">
+       1.3.4 Cross-Entropy Cost Function
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classifier-loop">
+     1.4 Classifier Loop
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plot-cost-versus-epochs">
+     1.5 Plot cost versus epochs
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plot-interpretation">
+       1.5.1 Plot Interpretation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cost-gap">
+       1.5.2 Cost gap?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#performance-measures">
+     1.6 Performance Measures
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#binary-predictions">
+       1.6.1 Binary Predictions
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#accuracy">
+       1.6.2 Accuracy
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#recall">
+       1.6.3 Recall
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-ii-draw-decision-boundaries">
+   Part II: Draw Decision Boundaries
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scatter-plot">
+     2.1 Scatter plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#useful-functions">
+     2.2 Useful Functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boundary-line-coordinates">
+     2.3 Boundary Line Coordinates
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#line-equation">
+       2.3.1 Line Equation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#coordinate-points">
+       2.3.2 Coordinate points
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#let-s-plot-the-boundary">
+     2.4 Let’s Plot the Boundary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-iii-oop">
+   Part III: OOP
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix-t2-snippet-zone">
+   Appendix: T2 Snippet Zone
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-macro-cost-vs-iteration">
+     Plotting Macro: Cost vs Iteration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scatter-plot-part-ii">
+     Scatter Plot (Part II)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -718,6 +928,203 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction-calorimeter-showers">
+   Introduction: calorimeter showers
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-i-linear-classifier-by-hand-guided">
+   Part I: Linear Classifier By Hand (Guided)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-the-data">
+     1.1 Get the data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-pre-processing">
+     1.2 Data pre-processing
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#explore-the-data">
+       1.2.1 Explore the Data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#labels-to-binary">
+       1.2.2 Labels to Binary
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#create-feature-matrix-x">
+       1.2.3 Create Feature Matrix
+       <span class="math notranslate nohighlight">
+        \(X\)
+       </span>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#train-test-split">
+       1.2.4 Train/Test Split
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#feature-scaling">
+       1.2.5 Feature Scaling
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#feature-matrix-augmentation">
+       1.2.6 Feature Matrix Augmentation
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     1.3 Functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#hypothesis-function">
+       1.3.1 Hypothesis Function
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#logistic-function">
+       1.3.2 Logistic Function
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#partial-derivatives-of-cross-entropy-cost-function">
+       1.3.3 Partial Derivatives of Cross-Entropy Cost Function
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cross-entropy-cost-function">
+       1.3.4 Cross-Entropy Cost Function
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#classifier-loop">
+     1.4 Classifier Loop
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plot-cost-versus-epochs">
+     1.5 Plot cost versus epochs
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plot-interpretation">
+       1.5.1 Plot Interpretation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cost-gap">
+       1.5.2 Cost gap?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#performance-measures">
+     1.6 Performance Measures
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#binary-predictions">
+       1.6.1 Binary Predictions
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#accuracy">
+       1.6.2 Accuracy
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#recall">
+       1.6.3 Recall
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-ii-draw-decision-boundaries">
+   Part II: Draw Decision Boundaries
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scatter-plot">
+     2.1 Scatter plot
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#useful-functions">
+     2.2 Useful Functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#boundary-line-coordinates">
+     2.3 Boundary Line Coordinates
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#line-equation">
+       2.3.1 Line Equation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#coordinate-points">
+       2.3.2 Coordinate points
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#let-s-plot-the-boundary">
+     2.4 Let’s Plot the Boundary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-iii-oop">
+   Part III: OOP
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix-t2-snippet-zone">
+   Appendix: T2 Snippet Zone
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plotting-macro-cost-vs-iteration">
+     Plotting Macro: Cost vs Iteration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scatter-plot-part-ii">
+     Scatter Plot (Part II)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -727,11 +1134,523 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="t2-classifier">
 <h1>T2. Classifier<a class="headerlink" href="#t2-classifier" title="Permalink to this headline">#</a></h1>
-<br>
-<br>
-<center> Coming soon! </center>
-<br>
-<br>
+<p>In this tutorial, you learn step by step how to code a binary classifier by hand!</p>
+<p>Don’t worry, the process will be guided.</p>
+<div class="tip admonition">
+<p class="admonition-title">Learning Objectives</p>
+<ul class="simple">
+<li><p>Retrieve and pre-process a dataset for binary classification</p></li>
+<li><p>Implement logistic regression in Python</p></li>
+<li><p>Plot training and testing costs against iterations</p></li>
+<li><p>Compute performance metrics and verify them with standard libraries</p></li>
+<li><p>[Bonus] From the model parameters, derive the equations of straight lines representing different decision boundaries, and draw them on a scatter plot</p></li>
+</ul>
+</div>
+<section id="introduction-calorimeter-showers">
+<h2>Introduction: calorimeter showers<a class="headerlink" href="#introduction-calorimeter-showers" title="Permalink to this headline">#</a></h2>
+<p>A calorimeter in the context of experimental particle physics is a sub-detector aiming at measuring the energy of incoming particles. At CERN Large Hadron Collider, the giant multipurpose detectors <a class="reference external" href="https://atlas.cern/Discover/Detector/Calorimeter">ATLAS</a> and CMS are both equipped with electromagnetic and hadronic calorimeters. The electronic calorimeter, as its name indicates, is measuring the energy of incoming electrons. It is a destructive method: the energetic electron entering the calorimeter will interact with its dense material via the electromagnetic force. It eventually results in the generation of a shower of particles (electromagnetic shower), with a characteristic average depth and width. The depth is along the direction of the incoming particle and the width is the dimension perpendicular to it.</p>
+<p>Problem? There can be noisy signals in electromagnetic calorimeters that are generated by hadrons, not electrons.</p>
+<p>Your mission is to help physicists by coding a classifier to select electron-showers (signal) from hadron-showers (background).</p>
+<p>To this end, you are given a dataset of shower characterists from previous measurements where the incoming particle was known. The main features are the depth and the width.</p>
+<figure class="align-default" id="t02-showers">
+<a class="reference internal image-reference" href="../_images/t02_showers.png"><img alt="../_images/t02_showers.png" src="../_images/t02_showers.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 57 </span><span class="caption-text">Visualization of an electron shower (left) and hadron shower (right).<br />
+<sub>From <a class="reference external" href="https://www.researchgate.net/figure/The-different-character-of-electromagneticgamma-and-hadronic-showers-19_fig2_270824497">ResearchGate</a></sub></span><a class="headerlink" href="#t02-showers" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Hadron showers are on average longer in the direction of the incoming hadron (depth) and large in the transverse direction (width).</p>
+<figure class="align-default" id="t02-showers-distribs">
+<a class="reference internal image-reference" href="../_images/t02_showers_distribs.png"><img alt="../_images/t02_showers_distribs.png" src="../_images/t02_showers_distribs.png" style="width: 100%;" /></a>
+</figure>
+</section>
+<section id="part-i-linear-classifier-by-hand-guided">
+<h2>Part I: Linear Classifier By Hand (Guided)<a class="headerlink" href="#part-i-linear-classifier-by-hand-guided" title="Permalink to this headline">#</a></h2>
+<section id="get-the-data">
+<h3>1.1 Get the data<a class="headerlink" href="#get-the-data" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=1F1C8cQxnUonMrmxEPAfoFEQZannfxpNJ">Download dataset</a></p>
+<p>Mount your Drive according to the <a class="reference internal" href="t00_setup.html#tuto-setup"><span class="std std-ref">Setup</span></a> section, or retrieve it from your local folders if you are using Jupyter Notebook on your device.</p>
+<p>Open a new Colaboratory and import the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</section>
+<section id="data-pre-processing">
+<h3>1.2 Data pre-processing<a class="headerlink" href="#data-pre-processing" title="Permalink to this headline">#</a></h3>
+<section id="explore-the-data">
+<h4>1.2.1 Explore the Data<a class="headerlink" href="#explore-the-data" title="Permalink to this headline">#</a></h4>
+<p>Read the dataset into a dataframe <code class="docutils literal notranslate"><span class="pre">df</span></code>. What are the columns? Which column stores the labels (targets)? How many samples are there?</p>
+</section>
+<section id="labels-to-binary">
+<h4>1.2.2 Labels to Binary<a class="headerlink" href="#labels-to-binary" title="Permalink to this headline">#</a></h4>
+<p>The target column contains alphabetical labels. Create an extra column in your dataframe called <code class="docutils literal notranslate"><span class="pre">y</span></code> containing 1 if the sample is an electron shower and 0 if it is a hadron one.</p>
+<p><em>Hint: you can first create an extra column full of 0, then apply a filter using the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> property from DataFrame. It can be in the form:</em></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span> <span class="n">CONDITION</span><span class="p">,</span> <span class="n">COLUMN_TO_UPDATE</span><span class="p">]</span> <span class="o">=</span> <span class="n">VALUE</span>
+</pre></div>
+</div>
+<p>Read the <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.loc.html">pandas documentation on <code class="docutils literal notranslate"><span class="pre">.loc</span></code></a>.</p>
+</section>
+<section id="create-feature-matrix-x">
+<h4>1.2.3 Create Feature Matrix <span class="math notranslate nohighlight">\(X\)</span><a class="headerlink" href="#create-feature-matrix-x" title="Permalink to this headline">#</a></h4>
+<p>Select the input feature columns and create the feature matrix <span class="math notranslate nohighlight">\(X\)</span> of shape <span class="math notranslate nohighlight">\((m, n)\)</span>, and extract the target vector <span class="math notranslate nohighlight">\(y\)</span> of shape <span class="math notranslate nohighlight">\((m,)\)</span>. Call the method <code class="docutils literal notranslate"><span class="pre">.to_numpy()</span></code> like you did in Tutorial 1. Check if you have the correct shapes:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="o">...</span> 
+<span class="n">y</span> <span class="o">=</span> <span class="o">...</span> 
+
+<span class="c1"># Check shapes</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X shape:&quot;</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;y shape:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="train-test-split">
+<h4>1.2.4 Train/Test Split<a class="headerlink" href="#train-test-split" title="Permalink to this headline">#</a></h4>
+<p>Split the dataset into training and testing sets using 80/20 proportion. For this, copy paste the following in your code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">)</span>
+
+<span class="c1"># Check shapes</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;X_train: </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, y_train: </span><span class="si">{</span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;X_test:  </span><span class="si">{</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">,  y_test: </span><span class="si">{</span><span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Do the shape make sense?</p>
+</section>
+<section id="feature-scaling">
+<h4>1.2.5 Feature Scaling<a class="headerlink" href="#feature-scaling" title="Permalink to this headline">#</a></h4>
+<p>Let’s scale our input features using the standardization method. Which dataset(s) should be scaled and why?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get mean and std from training data</span>
+<span class="n">mean_train</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">std_train</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># Standardize training</span>
+<span class="n">X_train_scaled</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># Standardize test data</span>
+<span class="n">X_test_scaled</span>  <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># Check</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X_train_scaled mean:&quot;</span><span class="p">,</span> <span class="n">X_train_scaled</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;X_train_scaled std:&quot;</span><span class="p">,</span> <span class="n">X_train_scaled</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="feature-matrix-augmentation">
+<h4>1.2.6 Feature Matrix Augmentation<a class="headerlink" href="#feature-matrix-augmentation" title="Permalink to this headline">#</a></h4>
+<p>We will add a column of ones to our matrix <span class="math notranslate nohighlight">\(X\)</span> to simplify the vectorized computations with the bias term (<span class="math notranslate nohighlight">\(\theta_0\)</span> in our notations). For this, use NumPy’s <code class="docutils literal notranslate"><span class="pre">hstack</span></code> method:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_aug</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="n">X_test_aug</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Try to predict the resulting shapes first, then check them and see if they make sense.</p>
+</section>
+</section>
+<section id="functions">
+<h3>1.3 Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Test your functions with small dummy arrays to ensure correct outputs.</p>
+</div>
+</aside>
+<p>We saw a lot of functions in the lectures: hypothesis, logistic, cost, etc. We will code these functions in Python to make the code more modular and easier to read.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In the following you will work with <strong>two dimensional</strong> NumPy arrays. Make sure the objects you declare in the code have the correct dimension (number of rows and number of columns).</p>
+</div>
+<section id="hypothesis-function">
+<h4>1.3.1 Hypothesis Function<a class="headerlink" href="#hypothesis-function" title="Permalink to this headline">#</a></h4>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><sup>*</sup> docstring, short for “documentation string,” is a commented paragraph of code at the top of a file or of the definition of a function. It explains the arguments, their types, what the function should return, etc. Think of it as a mini manual. Writing docstring is a common practice to make code readable.</p>
+</aside>
+<p>Write a function computing the linear sum of the features <span class="math notranslate nohighlight">\(X\)</span> with the <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> parameters for each input sample. Caution here: <span class="math notranslate nohighlight">\(X\)</span> is the augmented matrix of input features. To help you, the docstring<sup>*</sup> is provided:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lin_sum</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">thetas</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the linear combination of input features and parameters.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    X : array-like, shape (m_samples, n_features+1)</span>
+<span class="sd">        Input features (already augmented with a column of ones for bias).</span>
+<span class="sd">    thetas : array-like, shape (n_features+1,)</span>
+<span class="sd">        Parameter vector including bias term.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ndarray, shape (m_samples, 1)</span>
+<span class="sd">        Linear sum for each sample.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Your code here</span>
+
+</pre></div>
+</div>
+<p>What should be the dimensions of the returned object? Make sure your function returns a 2D array with the correct shape.</p>
+</section>
+<section id="logistic-function">
+<h4>1.3.2 Logistic Function<a class="headerlink" href="#logistic-function" title="Permalink to this headline">#</a></h4>
+<p>Write a function computing the logistic function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+
+    <span class="c1"># Your code here </span>
+
+</pre></div>
+</div>
+<p>Be careful to call the correct library so that your function works with arrays both as inputs and outputs.</p>
+</section>
+<section id="partial-derivatives-of-cross-entropy-cost-function">
+<h4>1.3.3 Partial Derivatives of Cross-Entropy Cost Function<a class="headerlink" href="#partial-derivatives-of-cross-entropy-cost-function" title="Permalink to this headline">#</a></h4>
+<p>In the linear assumption, the partial derivatives of the cross-entropy cost function are (amazingly) the same as with the Mean Square Error:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial}{\partial \theta_j} \text{Cost}(\boldsymbol{\theta}) = \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) x_j^{(i)}\]</div>
+<p>Write a function that computes the gradient vector for all features at once. The provided docstring should help you translate the mathematical formulation into clean, vectorized code.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gradient_cross_entropy</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute the gradient vector of the cross-entropy cost function.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    y_true : array-like, shape (m,) or (m,1)</span>
+<span class="sd">        Binary target (0 or 1) for each sample.</span>
+<span class="sd">    y_pred : array-like, shape (m,) or (m,1)</span>
+<span class="sd">        Predicted score for each sample.</span>
+<span class="sd">    X : array-like, shape (m, n_features+1)</span>
+<span class="sd">        Input features, already augmented with a column of ones for bias.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ndarray, shape (n_features+1, 1)</span>
+<span class="sd">        Column vector of partial derivatives with respect to each model parameter.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+  <span class="c1"># Your code here</span>
+
+</pre></div>
+</div>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">reshape(-1,</span> <span class="pre">1)</span></code> on the relevant variable(s) to ensure they have the correct dimension.</p>
+<p>The output is the vector of partial derivatives with respect to each parameter (<span class="math notranslate nohighlight">\(\theta_j\)</span> in our notations). Remember to test your function with small dummy arrays of the correct shape!</p>
+</section>
+<section id="cross-entropy-cost-function">
+<h4>1.3.4 Cross-Entropy Cost Function<a class="headerlink" href="#cross-entropy-cost-function" title="Permalink to this headline">#</a></h4>
+<p>Write a function computing the total cost from the vectors of predicted and true values. Reminder of the cross-entropy cost:</p>
+<div class="math notranslate nohighlight">
+\[C(\boldsymbol{\theta}) = - \frac{1}{m} \sum_{i=1}^{m} \Big[ y^{(i)} \log(h_\theta(x^{(i)})) + (1 - y^{(i)}) \log(1 - h_\theta(x^{(i)})) \Big]\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cross_entropy_cost</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+
+    <span class="c1"># Your code here</span>
+
+</pre></div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">A hint</p>
+<p>You should use <code class="docutils literal notranslate"><span class="pre">np.log</span></code>, which computes the <strong>natural logarithm</strong> (base <em>e</em>).</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">A good trick</p>
+<p>For numerical stability, you can clip your vector of scores <code class="docutils literal notranslate"><span class="pre">y_pred</span></code> to a small range, e.g.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="mf">1e-15</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mf">1e-15</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This prevents taking <span class="math notranslate nohighlight">\(\log(0)\)</span>.</p>
+<p>Why clip values close to 1 as well? Look at the cross-entropy cost: you’ll see why clipping on both ends is necessary.</p>
+</div>
+</section>
+</section>
+<section id="classifier-loop">
+<h3>1.4 Classifier Loop<a class="headerlink" href="#classifier-loop" title="Permalink to this headline">#</a></h3>
+<p>The core of the action.</p>
+<p>Luckily a skeleton is provided. You will have to replace the statments <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">...</span> </code> by proper code. It will mostly consist of calling the functions you defined in the previous section.</p>
+<p>Test your code frequently. To do so, you can assign dummy temporary values for the variables you do not use yet, so that python knows they are defined and your code can run.</p>
+<p>You can use again the <code class="docutils literal notranslate"><span class="pre">should_print_iteration</span></code> from the Snippet Zone sub-section <a class="reference internal" href="t01_linear_regressor.html#t1-app-pretty-print"><span class="std std-ref">Pretty Printing</span></a> in Tutorial 1.</p>
+<div class="warning admonition">
+<p class="admonition-title">Subtlety with 2D arrays</p>
+<p>You may compute some dot products resulting in a scalar. With 2D arrays, the single component of a “scalar” <code class="docutils literal notranslate"><span class="pre">(1,1)</span></code> NumPy array is still treated as a 2D array, and Python cannot access its value directly. To retrieve the actual number — for example, for printing — you need to call <code class="docutils literal notranslate"><span class="pre">.item()</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">my_1_x_1_array2d.item()</span></code>.</p>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Note on Exit Conditions</p>
+<p>We saw earlier that we ought to stop the gradient descent loop if the partial derivatives of the cost get close to zero. This can be implemented by checking the norm of the gradient and stopping once this magnitude (always positive, by construction) falls below a predefined threshold. This provides a good measure of convergence.</p>
+<p>However, the cost function may continue to decrease even when the gradients are small, potentially missing a better local minimum. To address this, you can perform another check at the end of each loop: stop when the change in cost between iterations drops below a threshold, for example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">cost_train_current_iteration</span> <span class="o">-</span> <span class="n">cost_previous_iteration</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-8</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>This is just an example; you’ll need to adapt it to your own variables and, instead of hardcoding the value, define a tolerance parameter (e.g. <code class="docutils literal notranslate"><span class="pre">cost_tol</span></code>) before starting the loop. Such a condition is less sensitive to feature scaling and ensures you don’t stop too early just because the gradient is small while the cost is still decreasing.</p>
+<p>You can implement this dual stopping criterion:</p>
+<ul class="simple">
+<li><p>gradient norm</p></li>
+<li><p>cost change
+and observe the effect on convergence.</p></li>
+</ul>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hyperparameters</span>
+<span class="n">alpha</span>       <span class="o">=</span> <span class="o">...</span>    <span class="c1"># learning rate</span>
+<span class="n">N</span>           <span class="o">=</span> <span class="o">...</span>    <span class="c1"># maximum number of iterations</span>
+<span class="n">epsilon</span>     <span class="o">=</span> <span class="mf">1e-6</span>   <span class="c1"># tolerance threshold for gradient norm (stopping criterion)</span>
+<span class="n">cost_tol</span>    <span class="o">=</span> <span class="mf">1e-8</span>   <span class="c1"># tolerance threshold for cost drop (stop. criterion)</span>
+<span class="n">cost_change</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span> <span class="c1"># initialize cost change for first iteration</span>
+
+<span class="c1"># Number of features + 1 (number of columns in X)</span>
+<span class="n">n_param</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># Initialization of theta vector</span>
+<span class="n">thetas</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># Storing cost values for train and test datasets</span>
+<span class="n">costs_train</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">costs_test</span>  <span class="o">=</span> <span class="p">[]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting gradient descent</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># -------------------</span>
+<span class="c1">#   Start iterations</span>
+<span class="c1"># -------------------</span>
+<span class="k">for</span> <span class="n">iter_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="c1"># Get predictions (hypothesis function)</span>
+    <span class="c1"># ... your code here ...</span>
+
+    <span class="c1"># Calculate and store costs with train and test datasets</span>
+    <span class="n">cost_train</span> <span class="o">=</span> <span class="n">cross_entropy_cost</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">)</span>
+    <span class="n">cost_test</span>  <span class="o">=</span> <span class="n">cross_entropy_cost</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">)</span>
+    <span class="n">costs_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cost_train</span><span class="p">)</span>
+    <span class="n">costs_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cost_test</span><span class="p">)</span>
+
+    <span class="c1"># ... your code here for gradient computation &amp; parameter update</span>
+
+
+    <span class="c1"># Cost change (for early stopping &amp; printing)</span>
+    <span class="k">if</span> <span class="n">iter_idx</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">cost_change</span> <span class="o">=</span> <span class="n">cost_train</span> <span class="o">-</span> <span class="n">costs_train</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+
+    <span class="c1"># Print selected iterations</span>
+    <span class="k">if</span> <span class="n">should_print_iteration</span><span class="p">(</span><span class="n">iter_idx</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Iter </span><span class="si">{</span><span class="n">iter_idx</span><span class="si">:</span><span class="s2">&gt;4</span><span class="si">}</span><span class="se">\t</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;‖grad‖ = </span><span class="si">{</span><span class="n">grad_cost_norm</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s2">.4e</span><span class="si">}</span><span class="se">\t</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Train cost = </span><span class="si">{</span><span class="n">cost_train</span><span class="si">:</span><span class="s2">.5e</span><span class="si">}</span><span class="se">\t</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Cost change = </span><span class="si">{</span><span class="n">cost_change</span><span class="si">:</span><span class="s2">&gt;+10.2e</span><span class="si">}</span><span class="se">\t</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Test cost = </span><span class="si">{</span><span class="n">cost_test</span><span class="si">:</span><span class="s2">.5e</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Exit conditions</span>
+    <span class="c1"># ... your code here ...</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">End of gradient descent after </span><span class="si">{</span><span class="n">iter_idx</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> iterations&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Optimized parameters:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">thetas</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">Parameter </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">thetas</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you’re stuck, call the instructor or the teaching assistants and we will be happy to help you.</p>
+</section>
+<section id="plot-cost-versus-epochs">
+<h3>1.5 Plot cost versus epochs<a class="headerlink" href="#plot-cost-versus-epochs" title="Permalink to this headline">#</a></h3>
+<p>Use the macro given in the section <a class="reference internal" href="#snippet-cost-iter"><span class="std std-ref">Plotting Macro: Cost vs Iteration</span></a> from the <a class="reference internal" href="#app-t2-snippet-zone"><span class="std std-ref">Appendix: T2 Snippet Zone</span></a> below to plot the variation of the total cost vs the iteration number. Call this macro:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plot_cost_vs_iter</span><span class="p">(</span><span class="n">costs_train</span><span class="p">,</span> <span class="n">costs_test</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You should get something like this:</p>
+<figure class="align-default" id="t02-costs-vs-iter">
+<a class="reference internal image-reference" href="../_images/t02_costs_vs_iter.png"><img alt="../_images/t02_costs_vs_iter.png" src="../_images/t02_costs_vs_iter.png" style="width: 90%;" /></a>
+</figure>
+<section id="plot-interpretation">
+<h4>1.5.1 Plot Interpretation<a class="headerlink" href="#plot-interpretation" title="Permalink to this headline">#</a></h4>
+<p>Describe the plot; what is the fundamental difference between the two series train and test?</p>
+</section>
+<section id="cost-gap">
+<h4>1.5.2 Cost gap?<a class="headerlink" href="#cost-gap" title="Permalink to this headline">#</a></h4>
+<p>What would it mean if there were a larger gap between the training and test cost values?</p>
+</section>
+</section>
+<section id="performance-measures">
+<h3>1.6 Performance Measures<a class="headerlink" href="#performance-measures" title="Permalink to this headline">#</a></h3>
+<p>We will write our own functions to quantitatively assess the performance of the classifier.</p>
+<section id="binary-predictions">
+<h4>1.6.1 Binary Predictions<a class="headerlink" href="#binary-predictions" title="Permalink to this headline">#</a></h4>
+<p>Before counting the true and false predictions, we need… predictions! We already wrote functions outputting a prediction as a <strong>continuous variable between 0 and 1</strong>, which can be interpreted as a probabilitiy. The function below is calling and then fills a flatten array of binary predictions, so either 0 or 1. For the boundary, let’s work with 0.5 for now. Copy this to your notebook:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_predictions</span><span class="p">(</span><span class="n">thetas</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">boundary</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+    <span class="n">scores</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">lin_sum</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">thetas</span><span class="p">))</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="c1"># shape (m,)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">scores</span> <span class="o">&gt;=</span> <span class="n">boundary</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Your task here: try to write a nice docstring for this function.</p>
+<p>Now we are ready to compute some performance metrics!</p>
+</section>
+<section id="accuracy">
+<h4>1.6.2 Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this headline">#</a></h4>
+<p>Write a function to compute the classifier’s accuracy manually. By manually, we mean explicitly retrieving the numerator and denominator. It’s about coding more pedagogically than professionally to check your understanding.</p>
+</section>
+<section id="recall">
+<h4>1.6.3 Recall<a class="headerlink" href="#recall" title="Permalink to this headline">#</a></h4>
+<p>Do the same for the recall and compare your values with your peers!</p>
+</section>
+</section>
+</section>
+<section id="part-ii-draw-decision-boundaries">
+<h2>Part II: Draw Decision Boundaries<a class="headerlink" href="#part-ii-draw-decision-boundaries" title="Permalink to this headline">#</a></h2>
+<p>By drawing a decision boundary, you will grasp how the hypothesis formulation translates into a graphical separation in the feature space. We will work out the math behind this parametrization.</p>
+<p><strong>The goal</strong><br />
+We want to draw on a scatter plot of the input features the lines corresponding to different decision boundaries.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Scroll down at the very end to see where we are heading to.</p>
+</div>
+<section id="scatter-plot">
+<h3>2.1 Scatter plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">#</a></h3>
+<p>The first step is to split the signal and background into two different dataframes. Using the general dataframe <code class="docutils literal notranslate"><span class="pre">df</span></code> defined at the beginning:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">all_sig</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;electron&#39;</span><span class="p">][[</span><span class="s1">&#39;shower_depth&#39;</span><span class="p">,</span> <span class="s1">&#39;shower_width&#39;</span><span class="p">]]</span>
+<span class="n">all_bkg</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span>  <span class="s1">&#39;hadron&#39;</span> <span class="p">][[</span><span class="s1">&#39;shower_depth&#39;</span><span class="p">,</span> <span class="s1">&#39;shower_width&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>Then use the plotting macro in <a class="reference internal" href="#snippet-cost-scatter"><span class="std std-ref">Scatter Plot (Part II)</span></a> from the <a class="reference internal" href="#app-t2-snippet-zone"><span class="std std-ref">Appendix: T2 Snippet Zone</span></a> to see a nice scatter plot.
+To call it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plot_scatter</span><span class="p">(</span><span class="n">all_sig</span><span class="p">,</span> <span class="n">all_bkg</span><span class="p">,</span>
+             <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Calorimeter Showers&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="useful-functions">
+<h3>2.2 Useful Functions<a class="headerlink" href="#useful-functions" title="Permalink to this headline">#</a></h3>
+<p>Recall the logistic function:</p>
+<div class="math notranslate nohighlight">
+\[\hat{y} = \frac{1}{1 + e^{-z}}\]</div>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">rev_sigmoid</span></code> that outputs the value <span class="math notranslate nohighlight">\(z = f(\hat{y})\)</span>.</p>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">scale_inputs</span></code> that scales a list of raw input features, either <span class="math notranslate nohighlight">\(x_1\)</span> or <span class="math notranslate nohighlight">\(x_2\)</span>, according to the standardization procedure.</p>
+<p>Write the function <code class="docutils literal notranslate"><span class="pre">unscale_inputs</span></code> that does the contrary.</p>
+</section>
+<section id="boundary-line-coordinates">
+<h3>2.3 Boundary Line Coordinates<a class="headerlink" href="#boundary-line-coordinates" title="Permalink to this headline">#</a></h3>
+<section id="line-equation">
+<h4>2.3.1 Line Equation<a class="headerlink" href="#line-equation" title="Permalink to this headline">#</a></h4>
+<p>For a given threshold <span class="math notranslate nohighlight">\(\hat{y}\)</span>, write the equation of the line boundary: <span class="math notranslate nohighlight">\(x_2 = f(\boldsymbol{\theta}, x_1, \widehat{y})\)</span>.</p>
+</section>
+<section id="coordinate-points">
+<h4>2.3.2 Coordinate points<a class="headerlink" href="#coordinate-points" title="Permalink to this headline">#</a></h4>
+<p>To draw a line on a plot in Matplotlib, one needs to provide the coordinates as a set of two data points.</p>
+<p>Write a function that compute the coordinates <code class="docutils literal notranslate"><span class="pre">x2_left</span></code> and <code class="docutils literal notranslate"><span class="pre">x2_right</span></code> – associated with the values of <code class="docutils literal notranslate"><span class="pre">x1_min</span></code> and <code class="docutils literal notranslate"><span class="pre">x1_max</span></code> respectively – of a decision boundary line at a given threshold <span class="math notranslate nohighlight">\(\hat{y}\)</span>. (recall 0.5 is the standard one for logistic regression).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_boundary_line_x2</span><span class="p">(</span><span class="n">thresholds</span><span class="p">,</span> <span class="n">thetas</span><span class="p">,</span> 
+                         <span class="n">x1min</span><span class="o">=</span><span class="n">X1MIN</span><span class="p">,</span> <span class="n">x1max</span><span class="o">=</span><span class="n">X1MAX</span><span class="p">,</span>
+                         <span class="n">train_mean</span><span class="o">=</span><span class="n">MEAN_TRAIN</span><span class="p">,</span> <span class="n">train_std</span><span class="o">=</span><span class="n">STD_TRAIN</span><span class="p">):</span>
+  <span class="c1"># Your code here</span>
+
+</pre></div>
+</div>
+<p>Extra challenge? Compute this for several thresholds, i.e. the function returns a list of line properties. Tip: it’s convenient to store the result in a dictionary. For instance you can have keys <code class="docutils literal notranslate"><span class="pre">threshold</span></code>, <code class="docutils literal notranslate"><span class="pre">x2_left</span></code>, <code class="docutils literal notranslate"><span class="pre">x2_right</span></code>.</p>
+</section>
+</section>
+<section id="let-s-plot-the-boundary">
+<h3>2.4 Let’s Plot the Boundary<a class="headerlink" href="#let-s-plot-the-boundary" title="Permalink to this headline">#</a></h3>
+<p>In the scatter plot code provided, uncomment the boundary section and draw the line(s) using the Matplotlib <code class="docutils literal notranslate"><span class="pre">plot</span></code> function. It will have this form:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="c1">#... </span>
+   <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x1min</span><span class="p">,</span> <span class="n">x1max</span><span class="p">],</span> <span class="p">[</span><span class="n">x2_left</span><span class="p">,</span> <span class="n">x2_right</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+   <span class="c1">#... </span>
+</pre></div>
+</div>
+<p>In the very end, this is how it would render:</p>
+<figure class="align-default" id="t02-scatter-with-boundaries">
+<a class="reference internal image-reference" href="../_images/t02_scatter_with_boundaries.png"><img alt="../_images/t02_scatter_with_boundaries.png" src="../_images/t02_scatter_with_boundaries.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 58 </span><span class="caption-text">Scatter plot of electron and hadron showers with decision boundary lines for various thresholds.</span><a class="headerlink" href="#t02-scatter-with-boundaries" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The higher the threshold, the more the boundary line shifts downwards in the electron-dense area. Why is that the case?</p>
+</section>
+</section>
+<section id="part-iii-oop">
+<h2>Part III: OOP<a class="headerlink" href="#part-iii-oop" title="Permalink to this headline">#</a></h2>
+<p>Turn your classifier into a class!</p>
+<p>This is less guided, yet can be done in groups with an OOP-Jedi.</p>
+<div class="tip admonition">
+<p class="admonition-title">Tips</p>
+<ul class="simple">
+<li><p>Give it a try without any assistance first, just listing the attributes and methods.</p></li>
+<li><p>For scaling the features, a separate class <code class="docutils literal notranslate"><span class="pre">FeatureScaler</span></code> can be handy.</p></li>
+</ul>
+</div>
+</section>
+<section id="appendix-t2-snippet-zone">
+<span id="app-t2-snippet-zone"></span><h2>Appendix: T2 Snippet Zone<a class="headerlink" href="#appendix-t2-snippet-zone" title="Permalink to this headline">#</a></h2>
+<section id="plotting-macro-cost-vs-iteration">
+<span id="snippet-cost-iter"></span><h3>Plotting Macro: Cost vs Iteration<a class="headerlink" href="#plotting-macro-cost-vs-iteration" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_cost_vs_iter</span><span class="p">(</span><span class="n">train_costs</span><span class="p">,</span> <span class="n">test_costs</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Gradient Descent: Cost evolution&quot;</span><span class="p">):</span>
+  
+  <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+  <span class="n">iters</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">train_costs</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">iters</span><span class="p">,</span> <span class="n">train_costs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Training set&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">iters</span><span class="p">,</span> <span class="n">test_costs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Testing set&#39;</span><span class="p">)</span>
+
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Number of iterations&quot;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Cost $J(\theta)$&quot;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s2">&quot;horizontal&quot;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_label_coords</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+
+  <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="scatter-plot-part-ii">
+<span id="snippet-cost-scatter"></span><h3>Scatter Plot (Part II)<a class="headerlink" href="#scatter-plot-part-ii" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X1NAME</span> <span class="o">=</span> <span class="s1">&#39;shower_depth&#39;</span><span class="p">;</span> <span class="n">X1LABEL</span> <span class="o">=</span> <span class="s1">&#39;Shower depth [mm]&#39;</span>
+<span class="n">X2NAME</span> <span class="o">=</span> <span class="s1">&#39;shower_width&#39;</span><span class="p">;</span> <span class="n">X2LABEL</span> <span class="o">=</span> <span class="s1">&#39;Shower width [mm]&#39;</span>
+<span class="n">X1MIN</span>  <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">X1MAX</span> <span class="o">=</span> <span class="mi">200</span> 
+<span class="n">X2MIN</span>  <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="n">X2MAX</span> <span class="o">=</span>  <span class="mi">60</span> 
+
+<span class="c1"># Raw scatter plot</span>
+<span class="k">def</span> <span class="nf">plot_scatter</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">bkg</span><span class="p">,</span> <span class="n">boundaries</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">x1name</span><span class="o">=</span><span class="n">X1NAME</span><span class="p">,</span> <span class="n">x1label</span><span class="o">=</span><span class="n">X1LABEL</span><span class="p">,</span> <span class="n">x1min</span><span class="o">=</span><span class="n">X1MIN</span><span class="p">,</span> <span class="n">x1max</span><span class="o">=</span><span class="n">X1MAX</span><span class="p">,</span>
+                 <span class="n">x2name</span><span class="o">=</span><span class="n">X2NAME</span><span class="p">,</span> <span class="n">x2label</span><span class="o">=</span><span class="n">X2LABEL</span><span class="p">,</span> <span class="n">x2min</span><span class="o">=</span><span class="n">X2MIN</span><span class="p">,</span> <span class="n">x2max</span><span class="o">=</span><span class="n">X2MAX</span><span class="p">,</span>
+                 <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Scatter plot&quot;</span><span class="p">):</span>
+
+  <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+
+  <span class="c1"># ------------------</span>
+  <span class="c1">#      A X E S  </span>
+  <span class="c1"># ------------------</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="n">x1min</span><span class="p">,</span> <span class="n">x1max</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="n">x2min</span><span class="p">,</span> <span class="n">x2max</span><span class="p">))</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">x1label</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">x2label</span><span class="p">)</span>
+
+  <span class="c1"># ------------------</span>
+  <span class="c1">#   S C A T T E R   </span>
+  <span class="c1"># ------------------</span>
+  <span class="n">scat_el</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sig</span><span class="p">[</span><span class="n">x1name</span><span class="p">],</span> <span class="n">sig</span><span class="p">[</span><span class="n">x2name</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
+  <span class="n">scat_had</span><span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">bkg</span><span class="p">[</span><span class="n">x1name</span><span class="p">],</span> <span class="n">bkg</span><span class="p">[</span><span class="n">x2name</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)</span>
+  
+  <span class="c1"># ----------------------</span>
+  <span class="c1">#  B O U N D A R I E S</span>
+  <span class="c1"># ----------------------</span>
+  <span class="c1"># if boundaries: </span>
+    <span class="c1"># ... your code here ...</span>
+
+  <span class="c1"># ------------------</span>
+  <span class="c1">#   L E G E N D S </span>
+  <span class="c1"># ------------------</span>
+  <span class="c1"># Legend scatter</span>
+  <span class="n">h</span> <span class="o">=</span> <span class="p">[</span><span class="n">scat_el</span><span class="p">,</span> <span class="n">scat_had</span><span class="p">]</span>
+  <span class="n">legScatter</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">h</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;electron&#39;</span><span class="p">,</span> <span class="s1">&#39;hadron&#39;</span><span class="p">],</span>
+                         <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Shower type</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">title_fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span> <span class="n">markerscale</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+                         <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.06</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center left&quot;</span> <span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+  
+  <span class="c1"># Legend boundary</span>
+  <span class="k">if</span> <span class="n">boundaries</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">legScatter</span><span class="p">)</span>
+    <span class="n">legLines</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Decision boundaries&quot;</span><span class="p">,</span> 
+                       <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.06</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center left&quot;</span><span class="p">,</span> 
+                       <span class="n">title_fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="n">fontsize</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="p">;</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
