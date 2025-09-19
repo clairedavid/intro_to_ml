@@ -2,7 +2,7 @@
 
 In this tutorial, you will learn how to code a linear regressor in Python. Part I will be very guided, Part II a bit less and Part III even less.
 
-```{admonition} Important note
+```{admonition} Important Note
 :class: warning
 All of you are coming with different backgrounds and programming proficiencies. Even if you are an experienced coder, this in-depth tutorial can  give you some insights you did not have before if you are mostly used to handling advanced, automated libraries. Do all parts and if you are done and start getting bored, come talk to the instructor. I will give you extra challenges 😉.
 ```
@@ -265,6 +265,7 @@ ax.set_ylabel('$y$')
 plt.tight_layout()
 ```
 
+(t1:app:pretty:print)=
 ### Pretty Printing
 
 ```python 
