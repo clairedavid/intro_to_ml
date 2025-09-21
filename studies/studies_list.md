@@ -10,6 +10,9 @@ Find visuals to depict the zones of divergence of the linear regressor (in 1D) w
 ## Feature Ranking with Different Classifiers
 Is feature importance absolute, or relative to a given classifier? Explore this by comparing how different classifiers or regressors rank features.
 
+## Gradient Double Descent (GDD)
+Train a simple model with enough flexibility to fit the training data exactly, and let it run for a long time. Track both training and test performance over the course of optimization. You should be able to observe the phenomenon known as _Gradient Double Descent_. Think of a general visual that could encompass all your relevant parameters of the study.
+
 ## Support Vector Machine  
 For several datasets, compare the performance of an SVM vs a Random Forest classifiers (if time, add a neural network).
 
@@ -37,6 +40,10 @@ Note: you are not required to implement them manually.
 ## Neural Network Initialization  
 Compare the performance (and possible cases of divergence) of a neural network with different initialization schemes. 
 Extension: display the variance at each layer and ideally, how the variance evolves during training.
+
+## Loss Landscape Visualization
+In linear regression, we could see the exact loss landscape because the parameter space was only two-dimensional. With neural networks, this is no longer directly possible due to the high dimensionality of the parameter space.
+Are there tools, metrics, or tricks that can still provide a visual representation of such complex loss landscapes?
 
 ## Stochastic vs Batch 
 Showcase the pros & cons of the Stochastic Gradient Descent vs Batch Gradient Descent by varying the number of features, sample size and complexity of the data set.
