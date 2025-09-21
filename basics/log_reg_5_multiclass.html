@@ -803,8 +803,8 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-One approach</strong> consists of applying a binary classification for each pair of classes, ignoring the other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of models to train, <span class="math notranslate nohighlight">\(N^\text{model}\)</span> is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7785ae8e-84a0-4a10-acef-c73c7b3b70c3">
-<span class="eqno">(28)<a class="headerlink" href="#equation-7785ae8e-84a0-4a10-acef-c73c7b3b70c3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2d690158-1ddf-498e-98b4-2c9cad68e625">
+<span class="eqno">(28)<a class="headerlink" href="#equation-2d690158-1ddf-498e-98b4-2c9cad68e625" title="Permalink to this equation">#</a></span>\[\begin{equation}
 N^\text{model} = \frac{N^\text{class}(N^\text{class}-1)}{2}
 \end{equation}\]</div>
 <p>Each model predicts one class label. The final decision is the class label receiving the most votes, i.e. being predicted most of the time.</p>
@@ -829,8 +829,8 @@ The pairing makes the number of models to train large and thus computer intensiv
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-All or One-to-Rest approach</strong> consists of training each class against the collection of all other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of pairs to train is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-138fd790-51df-4146-9897-01c7f1fbfcb0">
-<span class="eqno">(29)<a class="headerlink" href="#equation-138fd790-51df-4146-9897-01c7f1fbfcb0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-713194cb-28c4-4f8e-81d3-d8558def7530">
+<span class="eqno">(29)<a class="headerlink" href="#equation-713194cb-28c4-4f8e-81d3-d8558def7530" title="Permalink to this equation">#</a></span>\[\begin{equation}
  N^\text{model} = N^\text{class}
 \end{equation}\]</div>
 <p>The final prediction is given by the highest value of the hypothesis function <span class="math notranslate nohighlight">\(h^{k}_\theta(x)\)</span>, <span class="math notranslate nohighlight">\(k \in [1, N^\text{model}]\)</span> among the <span class="math notranslate nohighlight">\(N^\text{model}\)</span> binary classifiers.</p>
@@ -857,6 +857,16 @@ The number of data points from the positive/signal class will be very small if t
 <li><p><a class="reference external" href="https://machinelearningmastery.com/one-vs-rest-and-one-vs-one-for-multi-class-classification/">One-vs-Rest and One-vs-One for Multi-Class Classification, machinelearningmastery.com</a></p></li>
 <li><p><a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/">Multiclass Classification Using SVM, analyticsvidhya.com</a></p></li>
 </ul>
+</div>
+<div class="seealso admonition">
+<p class="admonition-title">Exercise</p>
+<p>The scatter plots above show the data points in the feature space with the decision boundaries.</p>
+<p>Where is the sigmoid function?</p>
+<p>Try to find a visual making the sigmoid function more visible.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Hint</p>
+<p>Perhaps a 3D plot can help you here…</p>
 </div>
 </section>
 </section>

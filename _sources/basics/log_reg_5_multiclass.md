@@ -94,3 +94,17 @@ Some further reading if you are curious:
 * [Multiclass Classification Using SVM, analyticsvidhya.com](https://www.analyticsvidhya.com/blog/2021/05/multiclass-classification-using-svm/)
 ```
 
+
+```{admonition} Exercise
+:class: seealso
+The scatter plots above show the data points in the feature space with the decision boundaries. 
+
+Where is the sigmoid function? 
+
+Try to find a visual making the sigmoid function more visible.
+```
+
+````{admonition} Hint
+:class: tip, dropdown
+Perhaps a 3D plot can help you here...
+````

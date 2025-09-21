@@ -20,7 +20,7 @@ and include details of your proposal. If you already have a team, cc your peers.
 
 ```{admonition} Deadline
 :class: warning
-Submissions will close on the Friday 23:59 of the first week of the course block.
+Submissions will close on the Tuesday of the second week of the course block.
 ```
 
 <br>

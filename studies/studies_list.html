@@ -734,6 +734,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradient-double-descent-gdd">
+   Gradient Double Descent (GDD)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#support-vector-machine">
    Support Vector Machine
   </a>
@@ -771,6 +776,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#neural-network-initialization">
    Neural Network Initialization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loss-landscape-visualization">
+   Loss Landscape Visualization
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -818,6 +828,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradient-double-descent-gdd">
+   Gradient Double Descent (GDD)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#support-vector-machine">
    Support Vector Machine
   </a>
@@ -855,6 +870,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#neural-network-initialization">
    Neural Network Initialization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loss-landscape-visualization">
+   Loss Landscape Visualization
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -896,6 +916,10 @@ title="Print to PDF"
 <h2>Feature Ranking with Different Classifiers<a class="headerlink" href="#feature-ranking-with-different-classifiers" title="Permalink to this headline">#</a></h2>
 <p>Is feature importance absolute, or relative to a given classifier? Explore this by comparing how different classifiers or regressors rank features.</p>
 </section>
+<section id="gradient-double-descent-gdd">
+<h2>Gradient Double Descent (GDD)<a class="headerlink" href="#gradient-double-descent-gdd" title="Permalink to this headline">#</a></h2>
+<p>Train a simple model with enough flexibility to fit the training data exactly, and let it run for a long time. Track both training and test performance over the course of optimization. You should be able to observe the phenomenon known as <em>Gradient Double Descent</em>. Think of a general visual that could encompass all your relevant parameters of the study.</p>
+</section>
 <section id="support-vector-machine">
 <h2>Support Vector Machine<a class="headerlink" href="#support-vector-machine" title="Permalink to this headline">#</a></h2>
 <p>For several datasets, compare the performance of an SVM vs a Random Forest classifiers (if time, add a neural network).</p>
@@ -931,6 +955,11 @@ Note: you are not required to implement them manually.</p>
 <h2>Neural Network Initialization<a class="headerlink" href="#neural-network-initialization" title="Permalink to this headline">#</a></h2>
 <p>Compare the performance (and possible cases of divergence) of a neural network with different initialization schemes.
 Extension: display the variance at each layer and ideally, how the variance evolves during training.</p>
+</section>
+<section id="loss-landscape-visualization">
+<h2>Loss Landscape Visualization<a class="headerlink" href="#loss-landscape-visualization" title="Permalink to this headline">#</a></h2>
+<p>In linear regression, we could see the exact loss landscape because the parameter space was only two-dimensional. With neural networks, this is no longer directly possible due to the high dimensionality of the parameter space.
+Are there tools, metrics, or tricks that can still provide a visual representation of such complex loss landscapes?</p>
 </section>
 <section id="stochastic-vs-batch">
 <h2>Stochastic vs Batch<a class="headerlink" href="#stochastic-vs-batch" title="Permalink to this headline">#</a></h2>

@@ -1329,7 +1329,7 @@ title="Print to PDF"
 <span class="sd">        Column vector of partial derivatives with respect to each model parameter.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-  <span class="c1"># Your code here</span>
+    <span class="c1"># Your code here</span>
 
 </pre></div>
 </div>
@@ -1472,7 +1472,7 @@ and observe the effect on convergence.</p></li>
 <p>We will write our own functions to quantitatively assess the performance of the classifier.</p>
 <section id="binary-predictions">
 <h4>1.6.1 Binary Predictions<a class="headerlink" href="#binary-predictions" title="Permalink to this headline">#</a></h4>
-<p>Before counting the true and false predictions, we need… predictions! We already wrote functions outputting a prediction as a <strong>continuous variable between 0 and 1</strong>, which can be interpreted as a probabilitiy. The function below is calling and then fills a flatten array of binary predictions, so either 0 or 1. For the boundary, let’s work with 0.5 for now. Copy this to your notebook:</p>
+<p>Before counting the true and false predictions, we need… predictions! So far, we have written functions that output a continuous value between 0 and 1, which can be interpreted as a probability. The function below converts these values into binary predictions (0 or 1). For the decision boundary, we will use 0.5 for now. Copy this to your notebook:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_predictions</span><span class="p">(</span><span class="n">thetas</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">boundary</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
     <span class="n">scores</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">lin_sum</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">thetas</span><span class="p">))</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="c1"># shape (m,)</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">scores</span> <span class="o">&gt;=</span> <span class="n">boundary</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
@@ -1483,11 +1483,11 @@ and observe the effect on convergence.</p></li>
 </section>
 <section id="accuracy">
 <h4>1.6.2 Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this headline">#</a></h4>
-<p>Write a function to compute the classifier’s accuracy manually. By manually, we mean explicitly retrieving the numerator and denominator. It’s about coding more pedagogically than professionally to check your understanding.</p>
+<p>Write a function to compute the classifier’s accuracy manually. By “manually” we mean: explicitly compute the numerator and denominator. It’s more about coding pedagogically than efficiently, so as to improve your understanding.</p>
 </section>
 <section id="recall">
 <h4>1.6.3 Recall<a class="headerlink" href="#recall" title="Permalink to this headline">#</a></h4>
-<p>Do the same for the recall and compare your values with your peers!</p>
+<p>Do the same for the recall. Compute it step by step, and then compare your results with those of your peers!</p>
 </section>
 </section>
 </section>
@@ -1540,7 +1540,11 @@ To call it:</p>
 
 </pre></div>
 </div>
-<p>Extra challenge? Compute this for several thresholds, i.e. the function returns a list of line properties. Tip: it’s convenient to store the result in a dictionary. For instance you can have keys <code class="docutils literal notranslate"><span class="pre">threshold</span></code>, <code class="docutils literal notranslate"><span class="pre">x2_left</span></code>, <code class="docutils literal notranslate"><span class="pre">x2_right</span></code>.</p>
+<p>Extra challenge? Compute this for several thresholds, i.e. the function returns a list of line coordinates for each thresholds.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It’s convenient to store the result in a dictionary. For instance you can have keys <code class="docutils literal notranslate"><span class="pre">threshold</span></code>, <code class="docutils literal notranslate"><span class="pre">x2_left</span></code>, <code class="docutils literal notranslate"><span class="pre">x2_right</span></code>.</p>
+</div>
 </section>
 </section>
 <section id="let-s-plot-the-boundary">

@@ -209,7 +209,7 @@ def gradient_cross_entropy(y_true, y_pred, X):
         Column vector of partial derivatives with respect to each model parameter.
     """
 
-  # Your code here
+    # Your code here
 
 ```
 You can use `reshape(-1, 1)` on the relevant variable(s) to ensure they have the correct dimension. 
@@ -365,7 +365,7 @@ What would it mean if there were a larger gap between the training and test cost
 We will write our own functions to quantitatively assess the performance of the classifier.
 
 #### 1.6.1 Binary Predictions
-Before counting the true and false predictions, we need... predictions! We already wrote functions outputting a prediction as a __continuous variable between 0 and 1__, which can be interpreted as a probabilitiy. The function below is calling and then fills a flatten array of binary predictions, so either 0 or 1. For the boundary, let's work with 0.5 for now. Copy this to your notebook:
+Before counting the true and false predictions, we need... predictions! So far, we have written functions that output a continuous value between 0 and 1, which can be interpreted as a probability. The function below converts these values into binary predictions (0 or 1). For the decision boundary, we will use 0.5 for now. Copy this to your notebook:
 
 ```python
 def make_predictions(thetas, X, boundary=0.5):
@@ -377,10 +377,10 @@ Your task here: try to write a nice docstring for this function.
 Now we are ready to compute some performance metrics!
 
 #### 1.6.2 Accuracy
-Write a function to compute the classifier’s accuracy manually. By manually, we mean explicitly retrieving the numerator and denominator. It's about coding more pedagogically than professionally to check your understanding.
+Write a function to compute the classifier’s accuracy manually. By "manually" we mean: explicitly compute the numerator and denominator. It's more about coding pedagogically than efficiently, so as to improve your understanding.
 
 #### 1.6.3 Recall
-Do the same for the recall and compare your values with your peers!
+Do the same for the recall. Compute it step by step, and then compare your results with those of your peers!
 
 
 ## Part II: Draw Decision Boundaries
@@ -433,7 +433,11 @@ def get_boundary_line_x2(thresholds, thetas,
   # Your code here
 
 ```
-Extra challenge? Compute this for several thresholds, i.e. the function returns a list of line properties. Tip: it's convenient to store the result in a dictionary. For instance you can have keys `threshold`, `x2_left`, `x2_right`. 
+Extra challenge? Compute this for several thresholds, i.e. the function returns a list of line coordinates for each thresholds.
+
+```{tip}
+It's convenient to store the result in a dictionary. For instance you can have keys `threshold`, `x2_left`, `x2_right`. 
+```
 
 
 ### 2.4 Let's Plot the Boundary
