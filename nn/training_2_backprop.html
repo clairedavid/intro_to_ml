@@ -919,13 +919,13 @@ title="Print to PDF"
 <p class="admonition-title"><span class="caption-number">Definition 63 </span></p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> be functions. For all <span class="math notranslate nohighlight">\(𝑥\)</span> in the domain of <span class="math notranslate nohighlight">\(g\)</span> for which <span class="math notranslate nohighlight">\(g\)</span> is differentiable at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is differentiable at <span class="math notranslate nohighlight">\(g(x)\)</span>, the derivative of the composite function:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a34f6d78-e9bd-41bb-8003-77fd37e59faf">
-<span class="eqno">(98)<a class="headerlink" href="#equation-a34f6d78-e9bd-41bb-8003-77fd37e59faf" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-67e3219d-a416-4b56-a97f-9e83ba9a1139">
+<span class="eqno">(98)<a class="headerlink" href="#equation-67e3219d-a416-4b56-a97f-9e83ba9a1139" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h(x) = f(g(x)) 
 \end{equation}\]</div>
 <p>is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1d5954a9-db19-4919-9981-562f4bbb8be9">
-<span class="eqno">(99)<a class="headerlink" href="#equation-1d5954a9-db19-4919-9981-562f4bbb8be9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8607f02e-b03a-470b-b8e7-ab936c76272f">
+<span class="eqno">(99)<a class="headerlink" href="#equation-8607f02e-b03a-470b-b8e7-ab936c76272f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}} \;\cdot \;  \frac{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}}{\mathrm{d} \; x} = f'\left(g(x)\right) \;\cdot \; g'(x)
 \end{equation}\]</div>
 </section>
@@ -941,8 +941,8 @@ h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maro
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
 <p>What would be the chain rule for three functions?</p>
-<div class="amsmath math notranslate nohighlight" id="equation-95d33675-26fe-41c3-90dc-47c4fbe68780">
-<span class="eqno">(100)<a class="headerlink" href="#equation-95d33675-26fe-41c3-90dc-47c4fbe68780" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f6c9857e-56e2-4cf1-b742-ca0c7d9f9167">
+<span class="eqno">(100)<a class="headerlink" href="#equation-f6c9857e-56e2-4cf1-b742-ca0c7d9f9167" title="Permalink to this equation">#</a></span>\[\begin{equation}
 k(x) = h(f(g(x))) 
 \end{equation}\]</div>
 </div>
@@ -1172,7 +1172,7 @@ Let’s define <span class="math notranslate nohighlight">\(\boldsymbol{\delta}^
 <a class="reference internal image-reference" href="../_images/training_2_tetris_deltaLayerL.png"><img alt="tetrominoDeltaL" class="align-center" src="../_images/training_2_tetris_deltaLayerL.png" style="width: 90%;" /></a>
 <p>The schematic above illustrate the element-wise product done on the right hand side, where each term is a column vector of <span class="math notranslate nohighlight">\(n_L\)</span> elements. As we already use the left/right and up/down directions for matrix and vector operations, the sample index <span class="math notranslate nohighlight">\(i\)</span> is here the ‘depth’, represented by several piled up sheets, aka data samples (and only four for illustration purpose).</p>
 <p><strong>Derivative of the cost at the last layer</strong><br />
-Looking at Equation <a class="reference internal" href="#equation-dcostfirstvectorouterprod">(116)</a>), we will have:</p>
+Looking at Equation <a class="reference internal" href="#equation-dcostfirstvectorouterprod">(116)</a>, we will have:</p>
 <div class="math notranslate nohighlight" id="equation-costwldeltal">
 <span class="eqno">(125)<a class="headerlink" href="#equation-costwldeltal" title="Permalink to this equation">#</a></span>\[\frac{\partial \text { Cost }}{\partial \; W^{(L)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: L-1)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; L)} \: \right]\]</div>
 <p>In terms of dimensions, the outer product creates a <span class="math notranslate nohighlight">\(n_{L-1} \times n_L\)</span> matrix; this is what we want to get the correct dimensionality on the left hand side:</p>
@@ -1252,14 +1252,14 @@ Training data set <span class="math notranslate nohighlight">\(X\)</span> of <sp
 <p><strong>Step 0: Weight initialization</strong></p>
 <p><strong>Step 1: Forward propagation</strong><br />
 <span class="math notranslate nohighlight">\(\qquad \quad \bullet\)</span> get list of <span class="math notranslate nohighlight">\(m\)</span> predictions <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}}^{(i)}\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-82049323-1bc3-40f1-87fe-a48fa34495f2">
-<span class="eqno">(131)<a class="headerlink" href="#equation-82049323-1bc3-40f1-87fe-a48fa34495f2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-eaca9c9b-5bb1-4d92-ab5c-62e86ae7c11c">
+<span class="eqno">(131)<a class="headerlink" href="#equation-eaca9c9b-5bb1-4d92-ab5c-62e86ae7c11c" title="Permalink to this equation">#</a></span>\[\begin{equation}
  f(\boldsymbol{z}^{(i, \; L)}) = \boldsymbol{a}^{(i, \;L)} = \boldsymbol{\hat{y}}^{(i)}
 \end{equation}\]</div>
 <p><strong>Step 2: Backpropagation</strong><br />
 <span class="math notranslate nohighlight">\(\qquad \quad \bullet\)</span> get the cost:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5c49ef3b-ef88-4ebf-951a-7c85c273c2fe">
-<span class="eqno">(132)<a class="headerlink" href="#equation-5c49ef3b-ef88-4ebf-951a-7c85c273c2fe" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a3d8da7f-a440-4d61-b363-ae9c55dc48e5">
+<span class="eqno">(132)<a class="headerlink" href="#equation-a3d8da7f-a440-4d61-b363-ae9c55dc48e5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Cost} =  \; \frac{1}{m} \; \sum_{i=1}^m \; L \biggl(\;f \Bigl( \;\boldsymbol{z}^{(i, \; L)}\Bigl), \boldsymbol{y}^{(i)} \biggl)\end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(\qquad \quad \bullet\)</span> get all errors:</p>
 <div class="math notranslate nohighlight" id="equation-summarybackproperrors">

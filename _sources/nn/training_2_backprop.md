@@ -381,7 +381,7 @@ Let's define $\boldsymbol{\delta}^{(i, \; L)}$ as the product of the derivative 
 The schematic above illustrate the element-wise product done on the right hand side, where each term is a column vector of $n_L$ elements. As we already use the left/right and up/down directions for matrix and vector operations, the sample index $i$ is here the ‘depth’, represented by several piled up sheets, aka data samples (and only four for illustration purpose).
 
 __Derivative of the cost at the last layer__  
-Looking at Equation {eq}`dCostfirstvectorouterprod`), we will have:
+Looking at Equation {eq}`dCostfirstvectorouterprod`, we will have:
 ```{math}
 :label: costWLdeltaL
 \frac{\partial \text { Cost }}{\partial \; W^{(L)}} = \frac{1}{m} \sum_{i=1}^m \; \boldsymbol{a}^{(i, \: L-1)} \otimes \left[ \: \boldsymbol{\delta}^{(i, \; L)} \: \right]

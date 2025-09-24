@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="T4. Forestry" href="t04_forestry.html" />
@@ -701,12 +703,124 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#higgs-boson-production-modes">
+     Higgs boson production modes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inside-the-data">
+     Inside the Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-i-decision-stump-by-hand">
+   Part I: Decision Stump By Hand
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-the-data">
+     1.1 Get the data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#explore">
+       1.1.1 Explore
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#visualize-the-training-data">
+       1.1.2 Visualize the Training Data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#prepare-dataset-features-labels">
+       1.1.3 Prepare Dataset (Features &amp; Labels)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#compute-the-gini-index">
+     1.2 Compute the Gini Index
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#compute-the-cost-function">
+     1.3 Compute the Cost Function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decision-stump-core-of-the-action">
+     1.4 Decision Stump: Core of the Action
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-best-split">
+     1.5 What Is the Best Split?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plot-the-cut">
+     1.6 Plot the Cut
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-ii-smarter-threshold-search">
+   Part II: Smarter Threshold Search
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-iii-chain-it-recursively-from-stump-to-tree">
+   Part III: Chain It Recursively: From Stump to Tree
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix-t3-snippet-zone">
+   Appendix: T3 Snippet Zone
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scatter-plot">
+     Scatter Plot
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -718,6 +832,107 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#higgs-boson-production-modes">
+     Higgs boson production modes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inside-the-data">
+     Inside the Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-i-decision-stump-by-hand">
+   Part I: Decision Stump By Hand
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-the-data">
+     1.1 Get the data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#explore">
+       1.1.1 Explore
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#visualize-the-training-data">
+       1.1.2 Visualize the Training Data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#prepare-dataset-features-labels">
+       1.1.3 Prepare Dataset (Features &amp; Labels)
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#compute-the-gini-index">
+     1.2 Compute the Gini Index
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#compute-the-cost-function">
+     1.3 Compute the Cost Function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#decision-stump-core-of-the-action">
+     1.4 Decision Stump: Core of the Action
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-best-split">
+     1.5 What Is the Best Split?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plot-the-cut">
+     1.6 Plot the Cut
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-ii-smarter-threshold-search">
+   Part II: Smarter Threshold Search
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-iii-chain-it-recursively-from-stump-to-tree">
+   Part III: Chain It Recursively: From Stump to Tree
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix-t3-snippet-zone">
+   Appendix: T3 Snippet Zone
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scatter-plot">
+     Scatter Plot
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -727,11 +942,282 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="t3-decision-stump">
 <h1>T3. Decision Stump<a class="headerlink" href="#t3-decision-stump" title="Permalink to this headline">#</a></h1>
+<p>In this tutorial, you will code a decision stump by hand to classify toy collision data that mimics what’s done at the Large Hadron Collider.</p>
+<div class="tip admonition">
+<p class="admonition-title">Learning Objectives</p>
+<ul class="simple">
+<li><p>Handle NumPy arrays, with a focus on boolean indexing</p></li>
+<li><p>Translate the Gini index into a Python function</p></li>
+<li><p>Implement a decision stump for a single feature</p></li>
+<li><p>Modify a provided plotting macro to visualize the decision stump</p></li>
+</ul>
+</div>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<section id="higgs-boson-production-modes">
+<h3>Higgs boson production modes<a class="headerlink" href="#higgs-boson-production-modes" title="Permalink to this headline">#</a></h3>
+<p>In particle physics, the Higgs boson plays an essential role, in particular (pun intended) it gives massive particles their observed mass. The Higgs boson can be produced in different ways - we call this “Higgs boson production mechanism.” The main two production processes are:</p>
+<ul class="simple">
+<li><p>gluon-gluon Fusion (ggF): two gluons, one from each of the incoming LHC protons, interact or “fuse” to create a Higgs boson.</p></li>
+<li><p>Vector Boson Fusion (VBF): a quark from each of the incoming LHC protons radiates off a heavy vector boson (<span class="math notranslate nohighlight">\(W\)</span> or <span class="math notranslate nohighlight">\(Z\)</span>). These bosons interact or “fuse” to produce a Higgs boson.</p></li>
+</ul>
+<figure class="align-default" id="t03-higgsfeyn">
+<a class="reference internal image-reference" href="../_images/t03_higgsfeyn.png"><img alt="../_images/t03_higgsfeyn.png" src="../_images/t03_higgsfeyn.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 59 </span><span class="caption-text">.  Feynman diagrams for the gluon-gluon Fusion (ggF) process on the left and Vector Boson Fusion (VBF) on the right.<br />
+<sub>Image: ATLAS, CERN</sub></span><a class="headerlink" href="#t03-higgsfeyn" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The latter process, VBF, is very interesting to study as it probes the coupling between the Higgs boson and the two other vector bosons. This is seen on the Feynman diagram with the vertex between the two departing wavy branches of each vector boson V and the dashed line H representing the Higgs boson. Such configuration is said to be “sensitive to new physics”, because there can be processes that are not part of the current theory, the Standard Model, arising there. Hence the importance to measure the rates of VBF collisions (how frequent does it happen). But before, how to select the Higgs boson VBF production from the other one, gluon-gluon Fusion?</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>You will be guided, don’t worry.</p>
+</aside>
+<p><strong><center>This is your mission!</center></strong></p>
+</section>
+<section id="inside-the-data">
+<h3>Inside the Data<a class="headerlink" href="#inside-the-data" title="Permalink to this headline">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="seealso admonition">
+<p class="admonition-title">Learn more</p>
+<p>Curious about CERN ATLAS Open Data initiative? Explore <a href="https://atlas.cern/Resources/Opendata" target="_blank">CERN ATLAS Open Data</a>.</p>
+</div>
+</aside>
+<p>This tutorial will use toy samples inspired by ATLAS Open Data, which makes proton–proton collision data from the LHC openly available for education.</p>
+<p>In the VBF process, the initial quarks that first radiated the vector bosons are deflected only slightly and travel roughly along their initial directions. They are then detected as particle “jets” in the different hemispheres of the detector. Jets are reconstructed as objects. Although they are more of a conical shape, they are stored in the data as a four-vector entity, with a norm, two angles and an energy.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><sup>*</sup> A lepton is a family of particles comprising the electron, the muon (about 200 times heavier), and the tau (about 3,500 times heavier). The tau is unstable, so only electrons and muons are considered in this dataset.</p>
+</aside>
+<p>The collisions have been filtered to select those containing each a Higgs boson, four leptons<sup>*</sup> and at least two jets.</p>
+<p>We will focus on two variable for now:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(|\Delta\eta_{jj}|\)</span>: it corresponds to the angle between the two jets (<span class="math notranslate nohighlight">\(\eta\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Pseudorapidity">pseudorapidity</a>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(m_{jj}\)</span>:   the invariant mass of the two jets</p></li>
+</ul>
+<p>These variable are already calculated in the data samples.</p>
+</section>
+</section>
+<section id="part-i-decision-stump-by-hand">
+<h2>Part I: Decision Stump By Hand<a class="headerlink" href="#part-i-decision-stump-by-hand" title="Permalink to this headline">#</a></h2>
+<section id="get-the-data">
+<h3>1.1 Get the data<a class="headerlink" href="#get-the-data" title="Permalink to this headline">#</a></h3>
+<p>Consider the three datasets:</p>
+<div style="display: flex; justify-content: space-between;">
+  <a href="https://drive.google.com/uc?export=download&id=1CZonCaiyRDa7FMAEjWp4f4NyDCq2zVgJ">lhc_atlas_higgs_train.csv</a>
+  <a href="https://drive.google.com/uc?export=download&id=1xxNIWoLxjdZU-hTREBvBtgPIh41YMVll">lhc_atlas_higgs_valid.csv</a>
+  <a href="https://drive.google.com/uc?export=download&id=16tZkvTGZxWpX2jOgh_oun0r25zIGGeh8">lhc_atlas_higgs_test.csv</a>
+</div>
 <br>
+<p>For this tutorial, we will only need the training dataset.</p>
+<p>Mount your Drive according to the <a class="reference internal" href="t00_setup.html#tuto-setup"><span class="std std-ref">Setup</span></a> section, or retrieve it from your local folders if you are using Jupyter Notebook on your device.</p>
+<p>Open a new Colaboratory and import the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+<section id="explore">
+<h4>1.1.1 Explore<a class="headerlink" href="#explore" title="Permalink to this headline">#</a></h4>
+<p>Use <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code> to store the dataset into a dataframe. Explore the variables by printing the first five rows.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">sample</span></code> column stores the labels of the collisions: +1 corresponds to VFB and -1 to ggF.</p>
+<p><strong>Tasks:</strong></p>
+<ol class="simple">
+<li><p>How many events does the file contain?</p></li>
+<li><p>How many events of each process (VBF and ggF) does the file contain?</p></li>
+</ol>
+<p>Write down the proper commands for neat printing of your results.</p>
+</section>
+<section id="visualize-the-training-data">
+<h4>1.1.2 Visualize the Training Data<a class="headerlink" href="#visualize-the-training-data" title="Permalink to this headline">#</a></h4>
+<p>Let’s see a nice scatter plot of the training data, with <span class="math notranslate nohighlight">\(|\Delta\eta_{jj}|\)</span> on the <span class="math notranslate nohighlight">\(x\)</span>-axis and <span class="math notranslate nohighlight">\(m_{jj}\)</span> on the <span class="math notranslate nohighlight">\(y\)</span>-axis. The plotting macro is given in the <a class="reference internal" href="#app-t3-snippet-zone"><span class="std std-ref">Appendix: T3 Snippet Zone</span></a>. Before using it, you will need to split your dataset into signal and background (if you have a look at the code snippet, you will understand why):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Variables of interest</span>
+<span class="n">XNAME</span> <span class="o">=</span> <span class="s1">&#39;detajj&#39;</span><span class="p">;</span> <span class="n">XLABEL</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$|\Delta\eta_</span><span class="si">{jj}</span><span class="s1">|$&#39;</span>
+<span class="n">YNAME</span> <span class="o">=</span> <span class="s1">&#39;massjj&#39;</span><span class="p">;</span> <span class="n">YLABEL</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$m_</span><span class="si">{jj}</span><span class="s1">$ (GeV)&#39;</span>
+
+<span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">XNAME</span><span class="p">,</span> <span class="n">YNAME</span><span class="p">]</span>
+
+<span class="c1"># Binning ranges</span>
+<span class="n">XBINS</span><span class="p">,</span> <span class="n">XMIN</span><span class="p">,</span> <span class="n">XMAX</span><span class="p">,</span> <span class="n">XSTEP</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">YBINS</span><span class="p">,</span> <span class="n">YMIN</span><span class="p">,</span> <span class="n">YMAX</span><span class="p">,</span> <span class="n">YSTEP</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">200</span>
+
+<span class="c1"># Split training data into signal and background</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">bkg</span> <span class="o">=</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>Then pass <code class="docutils literal notranslate"><span class="pre">sig</span></code> and <code class="docutils literal notranslate"><span class="pre">bkg</span></code> to the plotting macro.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Hint</p>
+<p><code class="docutils literal notranslate"><span class="pre">df.loc[rows,</span> <span class="pre">columns]</span></code> lets you filter both rows and columns at the same time.</p>
+</div>
+<p>Call the macro and look at your data!</p>
+</section>
+<section id="prepare-dataset-features-labels">
+<h4>1.1.3 Prepare Dataset (Features &amp; Labels)<a class="headerlink" href="#prepare-dataset-features-labels" title="Permalink to this headline">#</a></h4>
+<p>In this step, we will select the variables of interest (<code class="docutils literal notranslate"><span class="pre">detajj</span></code> and <code class="docutils literal notranslate"><span class="pre">massjj</span></code>) from the training dataset, and convert both the features and labels into NumPy arrays. Copy the following into your notebook and fill in the missing pieces (<code class="docutils literal notranslate"><span class="pre">...</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract detajj &amp; massjj and convert to NumPy</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="o">...</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="compute-the-gini-index">
+<h3>1.2 Compute the Gini Index<a class="headerlink" href="#compute-the-gini-index" title="Permalink to this headline">#</a></h3>
+<p>Recall the Gini’s index is defined as:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+G_i = 1 - \sum_{k=1}^{N_\text{classes}} \left( \frac{N_{k, i}}{ N_i} \right)^2 
+\end{equation*}\]</div>
+<p>Write a function computing the Gini index value. Make your code as general as possible. It should work for any array of labels and list of classes.</p>
+<p><strong>Bonus:</strong> Ensure your function handles empty nodes gracefully (i.e., avoid division by zero).</p>
+<p>Use the following function signature:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_gini_index</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">classes</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    y       : NumPy array of labels in the node</span>
+<span class="sd">    classes : list of possible class values (e.g., [-1, 1])</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># ... your code here... </span>
+
+</pre></div>
+</div>
+<p>In the following cells, add a series of tests to make sure your function returns the correct answers.</p>
+</section>
+<section id="compute-the-cost-function">
+<h3>1.3 Compute the Cost Function<a class="headerlink" href="#compute-the-cost-function" title="Permalink to this headline">#</a></h3>
+<p>Write a simple function that returns the cost in relative impurity of dividing a node into two sub-nodes, defined as:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+J(j, t_j) = \frac{N_\text{left}}{N_\text{node}} G_\text{left} + \frac{N_\text{right}}{N_\text{node}} G_\text{right} \;,
+\end{equation*}\]</div>
+<p>where <span class="math notranslate nohighlight">\(j\)</span> is a given feature and <span class="math notranslate nohighlight">\(t_j\)</span> the associated threshold for that feature.</p>
+<p>For now, we will not vectorize, so you can use this signature:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_cost</span><span class="p">(</span><span class="n">n_left</span><span class="p">,</span> <span class="n">gini_left</span><span class="p">,</span> <span class="n">n_right</span><span class="p">,</span> <span class="n">gini_right</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        ... write the docstring</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># ... your code here</span>
+
+</pre></div>
+</div>
+</section>
+<section id="decision-stump-core-of-the-action">
+<h3>1.4 Decision Stump: Core of the Action<a class="headerlink" href="#decision-stump-core-of-the-action" title="Permalink to this headline">#</a></h3>
+<p>Write the key function <code class="docutils literal notranslate"><span class="pre">get_threshold_min_cost</span></code> that will find the threshold on a given feature which minimizes the weighted Gini index, i.e., the value that maximizes the purity of the two resulting sub-nodes.</p>
+<p>The function should return both the best threshold and the associated minimum cost. You can use the functions defined above (<code class="docutils literal notranslate"><span class="pre">get_gini_index</span></code>, <code class="docutils literal notranslate"><span class="pre">get_cost</span></code>) to help with the computation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_threshold_min_cost</span><span class="p">(</span><span class="n">feature_values</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Find the threshold that minimizes the weighted Gini index.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ... </span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ...</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># ... your code here</span>
+
+</pre></div>
+</div>
+<p>Complete the docstring and write the function.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Hint 1</p>
+<p>For a NumPy array <code class="docutils literal notranslate"><span class="pre">a</span></code>, you can select elements satisfying a condition using <strong>boolean indexing</strong>:<br />
+Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select values smaller than 5</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">5</span>       <span class="c1"># this creates a boolean array</span>
+<span class="n">selected_values</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">indices</span></code> is a boolean array of the same shape as a.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">selected_values</span></code> contains the elements in <code class="docutils literal notranslate"><span class="pre">a</span></code> whose numerical value is less than 5.</p></li>
+</ul>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Hint 2</p>
+<p>A precision on the <code class="docutils literal notranslate"><span class="pre">precision</span></code> option:
+The <code class="docutils literal notranslate"><span class="pre">precision</span></code> is the fraction of the feature range to use as step size for the threshold scanning. For example, <code class="docutils literal notranslate"><span class="pre">precision=0.01</span></code> means thresholds will be tested every 1% of (max(feature) - min(feature)).</p>
+</div>
+</section>
+<section id="what-is-the-best-split">
+<h3>1.5 What Is the Best Split?<a class="headerlink" href="#what-is-the-best-split" title="Permalink to this headline">#</a></h3>
+<p>Call <code class="docutils literal notranslate"><span class="pre">get_threshold_min_cost</span></code> on each of the two input features we are considering here. Conclude on the final cut for your decision stump.</p>
+</section>
+<section id="plot-the-cut">
+<h3>1.6 Plot the Cut<a class="headerlink" href="#plot-the-cut" title="Permalink to this headline">#</a></h3>
+<p>Adapt the <code class="docutils literal notranslate"><span class="pre">plot_scatter</span></code> macro so that it can also draw the decision boundary from the stump. You can use Matplotlib’s <code class="docutils literal notranslate"><span class="pre">axhline</span></code> or <code class="docutils literal notranslate"><span class="pre">axvline</span></code> methods for drawing a horizontal or vertical line respectively. Try to be as general as possible in the input arguments.</p>
 <br>
-<center> Coming soon! </center>
-<br>
-<br>
+You just coded a decision stump by hand!
+</section>
+</section>
+<section id="part-ii-smarter-threshold-search">
+<h2>Part II: Smarter Threshold Search<a class="headerlink" href="#part-ii-smarter-threshold-search" title="Permalink to this headline">#</a></h2>
+<p>In Part I, we scanned all possible thresholds for each feature, counting left/right labels at every step. This brute-force approach has quadratic complexity with respect to the number of samples: for <span class="math notranslate nohighlight">\(m\)</span> samples, each threshold requires <span class="math notranslate nohighlight">\(\mathcal{O}(m)\)</span> operations, and there are roughly <span class="math notranslate nohighlight">\(m\)</span> thresholds, giving <span class="math notranslate nohighlight">\(\mathcal{O}(m^2)\)</span> per feature. That is, in total, <span class="math notranslate nohighlight">\(\mathcal{O}(n m^2)\)</span> for <span class="math notranslate nohighlight">\(n\)</span> features.</p>
+<p>Can we do better? What about sorting each feature first?</p>
+<p>You can have a look at Scikit-Learn’s <code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code> on the user guide, chapter <a href="https://scikit-learn.org/stable/modules/tree.html#complexity" target="_blank">Decision Trees</a> to learn more about its efficient implementation.</p>
+</section>
+<section id="part-iii-chain-it-recursively-from-stump-to-tree">
+<h2>Part III: Chain It Recursively: From Stump to Tree<a class="headerlink" href="#part-iii-chain-it-recursively-from-stump-to-tree" title="Permalink to this headline">#</a></h2>
+<p>Now that you’ve coded a decision stump, how can you grow a full decision tree? Start by writing the pseudo-code first.</p>
+<p>Decide on an exit condition: it could be reaching a maximum depth, a Gini index below a chosen threshold, or a minimum number of samples in a leaf.</p>
+<p>Think about the output format: how will you record the sequence of splits in the feature space in a simple, readable way?</p>
+<p>Have fun taking the best decisions and growing your tree!</p>
+</section>
+<section id="appendix-t3-snippet-zone">
+<span id="app-t3-snippet-zone"></span><h2>Appendix: T3 Snippet Zone<a class="headerlink" href="#appendix-t3-snippet-zone" title="Permalink to this headline">#</a></h2>
+<section id="scatter-plot">
+<h3>Scatter Plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">#</a></h3>
+<p>To make titles, labels and legend entries big enough:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">FONTSIZE</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="n">FONTSIZE</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span> <span class="n">FONTSIZE</span><span class="p">,</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span><span class="n">FONTSIZE</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="n">FONTSIZE</span><span class="p">,</span>
+         <span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span><span class="n">FONTSIZE</span><span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_scatter</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">bkg</span><span class="p">,</span> 
+              <span class="n">xname</span><span class="o">=</span><span class="n">XNAME</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="n">XLABEL</span><span class="p">,</span> <span class="n">xmin</span><span class="o">=</span><span class="n">XMIN</span><span class="p">,</span> <span class="n">xmax</span><span class="o">=</span><span class="n">XMAX</span><span class="p">,</span> <span class="n">xstep</span><span class="o">=</span><span class="n">XSTEP</span><span class="p">,</span>
+              <span class="n">yname</span><span class="o">=</span><span class="n">YNAME</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">YLABEL</span><span class="p">,</span> <span class="n">ymin</span><span class="o">=</span><span class="n">YMIN</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">YMAX</span><span class="p">,</span> <span class="n">ystep</span><span class="o">=</span><span class="n">YSTEP</span><span class="p">,</span>
+              <span class="n">fgsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">ftsize</span><span class="o">=</span><span class="n">FONTSIZE</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Scatter plot&quot;</span><span class="p">):</span>
+  
+  <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">fgsize</span><span class="p">)</span>
+
+  <span class="c1"># Annotate x-axis</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="o">+</span><span class="n">xstep</span><span class="p">,</span> <span class="n">xstep</span><span class="p">))</span>
+
+  <span class="c1"># Annotate y-axis</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="o">+</span><span class="n">ystep</span><span class="p">,</span> <span class="n">ystep</span><span class="p">))</span>
+
+  <span class="c1"># Scatter signal and background:</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sig</span><span class="p">[</span><span class="n">xname</span><span class="p">],</span> <span class="n">sig</span><span class="p">[</span><span class="n">yname</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;VBF&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">bkg</span><span class="p">[</span><span class="n">xname</span><span class="p">],</span> <span class="n">bkg</span><span class="p">[</span><span class="n">yname</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ggf&#39;</span><span class="p">)</span>
+
+  <span class="c1"># Legend and plot:</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="n">ftsize</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.04</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center left&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> 
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
