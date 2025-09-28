@@ -1,3 +1,4 @@
+(t03)=
 # T3. Decision Stump
 
 In this tutorial, you will code a decision stump by hand to classify toy collision data that mimics what’s done at the Large Hadron Collider.
@@ -211,8 +212,8 @@ selected_values = a[indices]
 
 ````{admonition} Hint 2
 :class: tip, dropdown
-A precision on the `precision` option: 
-The `precision` is the fraction of the feature range to use as step size for the threshold scanning. For example, `precision=0.01` means thresholds will be tested every 1% of (max(feature) - min(feature)).
+A precision on the `precision` option 😉:
+It is the fraction of the feature range to use as step size for the threshold scanning. For example, `precision=0.01` means thresholds will be tested every 1% of (max(feature) - min(feature)).
 ````
 
 ### 1.5 What Is the Best Split?
