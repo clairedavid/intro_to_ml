@@ -121,7 +121,7 @@ If we move the threshold to the right ($x \to +\infty$), in which direction woul
 :class: tip, dropdown
 If we move the threshold $T$ to the right, we will omit some signal samples ($y=1$) and thus decrease in signal efficiency, so the True Positive Rate will decrease (and if we exagerate to check this reasoning by pushing $T$ to the very very right, we have no more signal sample on the right of the threshold, we miss out all signal and TPR = 0). So moving to the right decreases the signal efficiency/TRP.  
 
-What about background ($y=0$)? It's the contrary, if we shift the threshold $T$ to the right, we will gain more background samples in the blue distribution and improve our background efficiency. Good for the background, but we want signal. That translates on the ROC curve in reducing the FPR (1 - background-efficiency). And we can check that if the threshold is all the way to the right, we have 100% background efficiency and a specificity of zero.
+What about the background ($y=0$)? It's the contrary, if we shift the threshold $T$ to the right, we will gain more background samples in the blue distribution and improve our background efficiency. Good for the background, but we want signal. That translates on the ROC curve in reducing the FPR (1 - background-efficiency). And we can check that if the threshold is all the way to the right, we have 100% background efficiency (all samples we take on the left are real background and predicted as background, aka TNR = 1) and a specificity of 100%.
 
 Conclusion: increasing the decision threshold $T$ moves us on the ROC curve to the left (and down eventually to 0,0). 
 ````

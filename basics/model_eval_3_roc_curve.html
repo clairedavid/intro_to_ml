@@ -797,28 +797,28 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p> <br />
 <strong>True Positive Rate (TPR)</strong>, also called <strong>recall</strong> and <strong>sensitivity</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-97e90f9b-7ad7-4254-b199-32fc60dc5cbd">
-<span class="eqno">(35)<a class="headerlink" href="#equation-97e90f9b-7ad7-4254-b199-32fc60dc5cbd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ab0fda1f-ff9c-46ac-b57a-2c9b5980859f">
+<span class="eqno">(35)<a class="headerlink" href="#equation-ab0fda1f-ff9c-46ac-b57a-2c9b5980859f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TPR} = \frac{\text{True Positives}}{\text{Actual Positives}} = \frac{\text{True Positives}}{\text{True Positive} + \text{False Negative}}
 \end{equation}\]</div>
 <p> <br />
 <strong>True Negative Rate (TNR)</strong>, also called <strong>specificity</strong></p>
 <p>Ratio of negative instances correctly classified as negative.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bead5a48-4e22-4727-bd31-12d736ce47f0">
-<span class="eqno">(36)<a class="headerlink" href="#equation-bead5a48-4e22-4727-bd31-12d736ce47f0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6d27b455-aa15-4e2a-b165-083c49ed6a0d">
+<span class="eqno">(36)<a class="headerlink" href="#equation-6d27b455-aa15-4e2a-b165-083c49ed6a0d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TNR} = \frac{\text{True Negatives}}{\text{Actual Negatives}} = \frac{\text{True Negatives}}{\text{True Negatives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>False Positive Rate (FPR)</strong></p>
 <p>Ratio of negative instances that are incorrectly classified as positive.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2e4dc953-05cd-4ebd-9687-fc9b556fd25e">
-<span class="eqno">(37)<a class="headerlink" href="#equation-2e4dc953-05cd-4ebd-9687-fc9b556fd25e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d937ffbc-0e3e-4020-94b8-04df05d9d230">
+<span class="eqno">(37)<a class="headerlink" href="#equation-d937ffbc-0e3e-4020-94b8-04df05d9d230" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = \frac{\text{False Positives}}{\text{Actual Negatives}} = \frac{\text{False Positives}}{\text{True Negatives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 The False Positive Rate (FPR) is equal to:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-999db8e3-6961-4ff9-a4e8-d79ce615b3ee">
-<span class="eqno">(38)<a class="headerlink" href="#equation-999db8e3-6961-4ff9-a4e8-d79ce615b3ee" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-aeab9c9c-2ec4-4d50-ab7b-8683c9079ecc">
+<span class="eqno">(38)<a class="headerlink" href="#equation-aeab9c9c-2ec4-4d50-ab7b-8683c9079ecc" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = 1 - \text{TNR} = 1 - \text{specificity}
 \end{equation}\]</div>
 </section>
@@ -882,7 +882,7 @@ False negatives are real signal samples incorrectly predicted as background (ora
 <div class="tip dropdown admonition">
 <p class="admonition-title">Check your answer</p>
 <p>If we move the threshold <span class="math notranslate nohighlight">\(T\)</span> to the right, we will omit some signal samples (<span class="math notranslate nohighlight">\(y=1\)</span>) and thus decrease in signal efficiency, so the True Positive Rate will decrease (and if we exagerate to check this reasoning by pushing <span class="math notranslate nohighlight">\(T\)</span> to the very very right, we have no more signal sample on the right of the threshold, we miss out all signal and TPR = 0). So moving to the right decreases the signal efficiency/TRP.</p>
-<p>What about background (<span class="math notranslate nohighlight">\(y=0\)</span>)? It’s the contrary, if we shift the threshold <span class="math notranslate nohighlight">\(T\)</span> to the right, we will gain more background samples in the blue distribution and improve our background efficiency. Good for the background, but we want signal. That translates on the ROC curve in reducing the FPR (1 - background-efficiency). And we can check that if the threshold is all the way to the right, we have 100% background efficiency and a specificity of zero.</p>
+<p>What about the background (<span class="math notranslate nohighlight">\(y=0\)</span>)? It’s the contrary, if we shift the threshold <span class="math notranslate nohighlight">\(T\)</span> to the right, we will gain more background samples in the blue distribution and improve our background efficiency. Good for the background, but we want signal. That translates on the ROC curve in reducing the FPR (1 - background-efficiency). And we can check that if the threshold is all the way to the right, we have 100% background efficiency (all samples we take on the left are real background and predicted as background, aka TNR = 1) and a specificity of 100%.</p>
 <p>Conclusion: increasing the decision threshold <span class="math notranslate nohighlight">\(T\)</span> moves us on the ROC curve to the left (and down eventually to 0,0).</p>
 </div>
 </section>

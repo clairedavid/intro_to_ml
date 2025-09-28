@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="T5. Neural Network by Hand!" href="t05_nn_by_hand.html" />
@@ -701,12 +703,200 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-the-data">
+   1. Get the data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inspect-the-data">
+     1.1 Inspect the Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualize-the-data">
+     1.2 Visualize the Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decision-tree">
+   2. Decision Tree
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grow-a-tree">
+     2.1 Grow a Tree
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#see-your-tree">
+     2.2 See your Tree
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comment-your-tree">
+     2.3 Comment your Tree
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#accuracy">
+     2.4 Accuracy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#performance-metrics">
+   3. Performance metrics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#confusion-matrix">
+     3.1 Confusion Matrix
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#write-your-metrics-and-compare">
+     3.2 Write Your Metrics (and compare)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comment">
+     3.3 Comment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#roc-the-tree">
+   4. ROC The Tree
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probabilities">
+     4.1 Probabilities
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#check-scikit-learn-s-scores">
+     4.2 Check: Scikit-Learn’s Scores
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shallow-vs-deep-comment">
+     4.3 Shallow vs Deep: Comment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decision-surface">
+   5. Decision Surface
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#draw-the-decision-surface">
+     5.1 Draw the Decision Surface
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     5.2 Comment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-forest">
+   6. The Forest
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#default-random-forest">
+     6.1 Default Random Forest
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#number-of-estimators">
+     6.2 Number of Estimators
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plot-the-decision-surfacee">
+     6.3 Plot the Decision Surfacee
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forest-with-max-depth-of-5">
+     6.4 Forest with Max Depth of 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#green-boost">
+   7. Green Boost
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus-overlay-roc-curves">
+   8. Bonus: overlay ROC curves
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus-of-the-bonus">
+   ∞. Bonus of the Bonus
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix-t4-snippet-zone">
+   Appendix: T4 Snippet Zone
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#roc-curve">
+     ROC Curve
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Decision Surface
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -718,6 +908,183 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-the-data">
+   1. Get the data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inspect-the-data">
+     1.1 Inspect the Data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualize-the-data">
+     1.2 Visualize the Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decision-tree">
+   2. Decision Tree
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grow-a-tree">
+     2.1 Grow a Tree
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#see-your-tree">
+     2.2 See your Tree
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comment-your-tree">
+     2.3 Comment your Tree
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#accuracy">
+     2.4 Accuracy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#performance-metrics">
+   3. Performance metrics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#confusion-matrix">
+     3.1 Confusion Matrix
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#write-your-metrics-and-compare">
+     3.2 Write Your Metrics (and compare)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comment">
+     3.3 Comment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#roc-the-tree">
+   4. ROC The Tree
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probabilities">
+     4.1 Probabilities
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#check-scikit-learn-s-scores">
+     4.2 Check: Scikit-Learn’s Scores
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shallow-vs-deep-comment">
+     4.3 Shallow vs Deep: Comment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decision-surface">
+   5. Decision Surface
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#draw-the-decision-surface">
+     5.1 Draw the Decision Surface
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     5.2 Comment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-forest">
+   6. The Forest
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#default-random-forest">
+     6.1 Default Random Forest
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#number-of-estimators">
+     6.2 Number of Estimators
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plot-the-decision-surfacee">
+     6.3 Plot the Decision Surfacee
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forest-with-max-depth-of-5">
+     6.4 Forest with Max Depth of 5
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#green-boost">
+   7. Green Boost
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus-overlay-roc-curves">
+   8. Bonus: overlay ROC curves
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bonus-of-the-bonus">
+   ∞. Bonus of the Bonus
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix-t4-snippet-zone">
+   Appendix: T4 Snippet Zone
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#roc-curve">
+     ROC Curve
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Decision Surface
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -727,7 +1094,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="t4-forestry">
 <h1>T4. Forestry<a class="headerlink" href="#t4-forestry" title="Permalink to this headline">#</a></h1>
-<p>Using the data from Tutorial 3, you will learn how to classify collisions from the Large Hadron Collider using tree-based models.</p>
+<p>In this tutorial, you will get a hands-on feel for tree-based models, from single decision trees to ensembles like Random Forests and boosting methods. You will see how their performance compares across metrics and visualizations.</p>
 <div class="tip admonition">
 <p class="admonition-title">Learning Objectives</p>
 <ul class="simple">
@@ -738,6 +1105,368 @@ title="Print to PDF"
 <li><p>Plot a ROC curve and compare different classifiers’ performance</p></li>
 </ul>
 </div>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p>This tutorial is a follow-up to <a class="reference internal" href="t03_decision_stump.html#t03"><span class="std std-ref">Tutorial 3</span></a>. We use toy collision data inspired by the Large Hadron Collider, with the goal of selecting events corresponding to a particular Higgs boson production mode.</p>
+</section>
+<section id="get-the-data">
+<h2>1. Get the data<a class="headerlink" href="#get-the-data" title="Permalink to this headline">#</a></h2>
+<p>Here are the three datasets (again for convenience):</p>
+<div style="display: flex; justify-content: space-between;">
+  <a href="https://drive.google.com/uc?export=download&id=1CZonCaiyRDa7FMAEjWp4f4NyDCq2zVgJ">lhc_atlas_higgs_train.csv</a>
+  <a href="https://drive.google.com/uc?export=download&id=1xxNIWoLxjdZU-hTREBvBtgPIh41YMVll">lhc_atlas_higgs_valid.csv</a>
+  <a href="https://drive.google.com/uc?export=download&id=16tZkvTGZxWpX2jOgh_oun0r25zIGGeh8">lhc_atlas_higgs_test.csv</a>
+</div>
+<br>
+<p>Use <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code> to store each dataset into a dataframe. Name them <code class="docutils literal notranslate"><span class="pre">train</span></code>, <code class="docutils literal notranslate"><span class="pre">valid</span></code> and <code class="docutils literal notranslate"><span class="pre">test</span></code> respectively.
+Explore the variables by printing the first five rows.</p>
+<p>Reminder: the <code class="docutils literal notranslate"><span class="pre">sample</span></code> column stores the labels of the collisions: +1 corresponds to VFB and -1 to ggF.</p>
+<section id="inspect-the-data">
+<h3>1.1 Inspect the Data<a class="headerlink" href="#inspect-the-data" title="Permalink to this headline">#</a></h3>
+<p>How many events (rows) does each file contain?<br />
+How many events of each process (VFB and ggF) does each file contain?</p>
+</section>
+<section id="visualize-the-data">
+<h3>1.2 Visualize the Data<a class="headerlink" href="#visualize-the-data" title="Permalink to this headline">#</a></h3>
+<p>Let’s draw a scatter plot to see how the data look like. Like in the previous tutorial, we will focus on two variables for now: <span class="math notranslate nohighlight">\(|\Delta\eta_{jj}|\)</span> on the <span class="math notranslate nohighlight">\(x\)</span>-axis and <span class="math notranslate nohighlight">\(m_{jj}\)</span> on the <span class="math notranslate nohighlight">\(y\)</span>-axis.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Variables of interest</span>
+<span class="n">XNAME</span> <span class="o">=</span> <span class="s1">&#39;detajj&#39;</span><span class="p">;</span> <span class="n">XLABEL</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$|\Delta\eta_</span><span class="si">{jj}</span><span class="s1">|$&#39;</span>
+<span class="n">YNAME</span> <span class="o">=</span> <span class="s1">&#39;massjj&#39;</span><span class="p">;</span> <span class="n">YLABEL</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$m_</span><span class="si">{jj}</span><span class="s1">$ (GeV)&#39;</span>
+
+<span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">XNAME</span><span class="p">,</span> <span class="n">YNAME</span><span class="p">]</span>
+
+<span class="c1"># Binning ranges</span>
+<span class="n">XBINS</span><span class="p">,</span> <span class="n">XMIN</span><span class="p">,</span> <span class="n">XMAX</span><span class="p">,</span> <span class="n">XSTEP</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">YBINS</span><span class="p">,</span> <span class="n">YMIN</span><span class="p">,</span> <span class="n">YMAX</span><span class="p">,</span> <span class="n">YSTEP</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">200</span>
+
+<span class="c1"># Split training data into signal and background</span>
+<span class="n">sig</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">bkg</span> <span class="o">=</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>Then pass <code class="docutils literal notranslate"><span class="pre">sig</span></code> and <code class="docutils literal notranslate"><span class="pre">bkg</span></code> to the plotting macro.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Hint</p>
+<p><code class="docutils literal notranslate"><span class="pre">df.loc[rows,</span> <span class="pre">columns]</span></code> lets you filter both rows and columns at the same time.</p>
+</div>
+<p>Call the macro from <a class="reference internal" href="t03_decision_stump.html#app-t3-snippet-zone"><span class="std std-ref">Appendix: T3 Snippet Zone</span></a> and look at your data!</p>
+</section>
+</section>
+<section id="decision-tree">
+<h2>2. Decision Tree<a class="headerlink" href="#decision-tree" title="Permalink to this headline">#</a></h2>
+<p>Let’s use Scikit-Learn to make a first shallow decision tree.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">export_text</span>
+</pre></div>
+</div>
+<section id="grow-a-tree">
+<h3>2.1 Grow a Tree<a class="headerlink" href="#grow-a-tree" title="Permalink to this headline">#</a></h3>
+<p>Make a decision tree with a maximum depth of 2.</p>
+</section>
+<section id="see-your-tree">
+<h3>2.2 See your Tree<a class="headerlink" href="#see-your-tree" title="Permalink to this headline">#</a></h3>
+<p>Using the function <code class="docutils literal notranslate"><span class="pre">tree.plot_tree</span></code> from Scikit-Learn, visualize your trained tree. Call it with the <code class="docutils literal notranslate"><span class="pre">filled</span></code> option activated. You should see something like this:</p>
+<figure class="align-default" id="t04-shallowtree">
+<a class="reference internal image-reference" href="../_images/t04_shallowtree.png"><img alt="../_images/t04_shallowtree.png" src="../_images/t04_shallowtree.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 60 </span><span class="caption-text">.  Representation of the Decision Tree.<br />
+<sub>Image: from Scikit-Learn <code class="docutils literal notranslate"><span class="pre">tree</span></code> library</sub></span><a class="headerlink" href="#t04-shallowtree" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="comment-your-tree">
+<h3>2.3 Comment your Tree<a class="headerlink" href="#comment-your-tree" title="Permalink to this headline">#</a></h3>
+<p>Describe what is this representation about. How are the variables encoded in Scikit-Learn? Which direction (left/right) chosen if the condition is true/false? What does the colouring in some nodes correspond to? Where goes the signal, where goes the background? Which leaves are the purest? For which category?</p>
+</section>
+<section id="accuracy">
+<h3>2.4 Accuracy<a class="headerlink" href="#accuracy" title="Permalink to this headline">#</a></h3>
+<p>In the next section, you will write functions to compute performance metrics. For now, let’s warm up: calculate (no code, just pen and paper) the accuracy from the numbers displayed in the leaves. For simplicity, keep using the training dataset.</p>
+</section>
+</section>
+<section id="performance-metrics">
+<h2>3. Performance metrics<a class="headerlink" href="#performance-metrics" title="Permalink to this headline">#</a></h2>
+<p>We will now write functions that compute performance metrics by hand and compare them with Scikit-Learn’s predefined methods. As a start, the Confusion Matrix from Scikit-Learn will help us. Let’s first import the library:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+</pre></div>
+</div>
+<p>The way the confusion matrix is called is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cm</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_obs</span><span class="p">,</span> <span class="n">y_preds</span><span class="p">)</span>
+<span class="n">disp</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">)</span>
+<span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<section id="confusion-matrix">
+<h3>3.1 Confusion Matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">#</a></h3>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">predict()</span></code> method on your classifier, write the code to show the confusion matrix.</p>
+<p>How is the confusion matrix encoded in Scikit-Learn? Is it the same as in the lecture? Find and explain in which cells are the True Positives (TP), True Negatives (TN), False Positive (FP) and False Negatives (FN).</p>
+</section>
+<section id="write-your-metrics-and-compare">
+<h3>3.2 Write Your Metrics (and compare)<a class="headerlink" href="#write-your-metrics-and-compare" title="Permalink to this headline">#</a></h3>
+<p>Let’s code it by hand here and then compare with Scikit-Learn.</p>
+<p>You will write a function <code class="docutils literal notranslate"><span class="pre">print_metrics</span></code> that extract the TP, TN, FP, FN from the confusion matrix. Then calculate and print the following:</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The confusion matrix <code class="docutils literal notranslate"><span class="pre">cm</span></code> is a 2 <span class="math notranslate nohighlight">\(\times\)</span> 2 array. Thus the content of the first cell can be accessed via <code class="docutils literal notranslate"><span class="pre">cm[0,</span> <span class="pre">0]</span></code>.</p>
+</div>
+</aside>
+<ul class="simple">
+<li><p>The accuracy</p></li>
+<li><p>The True Positive Rate (TPR)</p></li>
+<li><p>The True Negative Rate (TNR)</p></li>
+<li><p>The False Positive Rate (FPR)</p></li>
+</ul>
+<p>A skeleton is provided below. Complete it according to the instructions above. Choose the proper labels for <code class="docutils literal notranslate"><span class="pre">LABEL1</span></code> and <code class="docutils literal notranslate"><span class="pre">LABEL2</span></code> at the end of the provided code.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_metrics</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y_obs</span><span class="p">,</span> <span class="n">printCM</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Classifier Performance&quot;</span><span class="p">):</span>
+    
+    <span class="c1">#____________________</span>
+
+    <span class="c1"># Your code here</span>
+
+    <span class="c1">#____________________</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy: </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;     TPR: </span><span class="si">{</span><span class="n">TPR</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;     TNR: </span><span class="si">{</span><span class="n">TNR</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;     FPR: </span><span class="si">{</span><span class="n">FPR</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Check Scikit-Learn (SL)</span>
+    <span class="n">acc_SL</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_obs</span><span class="p">,</span> <span class="n">y_preds</span><span class="p">)</span>
+    <span class="n">TPR_SL</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">recall_score</span><span class="p">(</span><span class="n">y_obs</span><span class="p">,</span> <span class="n">y_preds</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Check: Scikit-Learn accuracy: </span><span class="si">{</span><span class="n">acc_SL</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> Recall (TPR): </span><span class="si">{</span><span class="n">TPR_SL</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>   
+
+    <span class="k">if</span> <span class="n">printCM</span><span class="p">:</span>
+        <span class="n">disp</span> <span class="o">=</span> <span class="n">metrics</span><span class="o">.</span><span class="n">ConfusionMatrixDisplay</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="o">=</span><span class="n">cm</span><span class="p">,</span> <span class="n">display_labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;LABEL1&#39;</span><span class="p">,</span> <span class="s1">&#39;LABEL2&#39;</span><span class="p">])</span>
+        <span class="n">disp</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Call your function with the train and test datasets (change the title accordingly).</p>
+</section>
+<section id="comment">
+<h3>3.3 Comment<a class="headerlink" href="#comment" title="Permalink to this headline">#</a></h3>
+<p>How does the performance change when assessed on the test dataset? Which error type is the highest?</p>
+</section>
+</section>
+<section id="roc-the-tree">
+<h2>4. ROC The Tree<a class="headerlink" href="#roc-the-tree" title="Permalink to this headline">#</a></h2>
+<p>Let’s use Scikit-Learn <code class="docutils literal notranslate"><span class="pre">metrics</span></code> to get the ingredients to plot a ROC curve. We need continuous probabilities.  How are probabilities calculated? Let’s show the first 5 entries of <code class="docutils literal notranslate"><span class="pre">X_train</span></code>. Recall the decision tree (Figure <a class="reference internal" href="#t04-shallowtree"><span class="std std-numref">Fig. 60</span></a>) we plotted above.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>The probability is defined as “the fraction of samples of the same class in a leaf”. (source: <a class="reference external" href="https://github.com/scikit-learn/scikit-learn/blob/f3f51f9b6/sklearn/tree/_classes.py#L977">Scikit-Learn predict_proba function</a>).</p>
+<section id="probabilities">
+<h3>4.1 Probabilities<a class="headerlink" href="#probabilities" title="Permalink to this headline">#</a></h3>
+<p>What are the signal probabilities for the first five entries?</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Hint</p>
+<p>First, find for each event in which leaf it falls according to the input values.</p>
+</div>
+</section>
+<section id="check-scikit-learn-s-scores">
+<h3>4.2 Check: Scikit-Learn’s Scores<a class="headerlink" href="#check-scikit-learn-s-scores" title="Permalink to this headline">#</a></h3>
+<p>Check your answers with <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> and explain the output array__</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y_scores_train</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">y_scores_train</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>ROC Curve</strong><br />
+A macro to plot the ROC curve is provided in the <a class="reference internal" href="#app-t4-snippet-zone"><span class="std std-ref">Appendix: T4 Snippet Zone</span></a>. You will have to complete it on your notebook. Look in the documentation of Scikit-Learn to see which function to call and how to use it.</p>
+<div class="admonition-note admonition">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">classindex</span></code> is the index of the positive class on the score array (first position is index 0, second is 1, etc).</p>
+</div>
+<p>Call the function with your classifier. For the legend, you can write “Decision Tree Depth 2” (we will increase the depth soon).</p>
+<p>Let’s now make a decision tree very deep, of depth 20. Create a new classifier:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tree_clf_depth20</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">tree_clf_depth20</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Use your function <code class="docutils literal notranslate"><span class="pre">print_metrics</span></code> to see the performance and plot its ROC curve.</p>
+</section>
+<section id="shallow-vs-deep-comment">
+<h3>4.3 Shallow vs Deep: Comment<a class="headerlink" href="#shallow-vs-deep-comment" title="Permalink to this headline">#</a></h3>
+<p>How does the performance of this tree compare with the shallow tree of depth 2? What is likely to happen here?</p>
+</section>
+</section>
+<section id="decision-surface">
+<h2>5. Decision Surface<a class="headerlink" href="#decision-surface" title="Permalink to this headline">#</a></h2>
+<p>We can create a graphical display to showcase the prediction for each point in the feature space. If we stick to two inputs like in this tutorial, we can easily visualize how well the model performs at grasping the main patterns in the data.</p>
+<section id="draw-the-decision-surface">
+<h3>5.1 Draw the Decision Surface<a class="headerlink" href="#draw-the-decision-surface" title="Permalink to this headline">#</a></h3>
+<p>A macro is provided in the <a class="reference internal" href="#app-t4-snippet-zone"><span class="std std-ref">Appendix: T4 Snippet Zone</span></a>. Copy-paste it to your notebook. Then, modify the <code class="docutils literal notranslate"><span class="pre">plot_scatter</span></code> function with these two additions:</p>
+<ul class="simple">
+<li><p>add an optional argument <code class="docutils literal notranslate"><span class="pre">ds=None</span></code></p></li>
+<li><p>add before the legend the following:</p></li>
+</ul>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure you keep the correct indentation!</p>
+</div>
+</aside>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>  <span class="c1"># Decision surface</span>
+  <span class="k">if</span> <span class="n">ds</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span> <span class="o">=</span> <span class="n">ds</span>
+    <span class="n">cs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="s1">&#39;blue&#39;</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+</pre></div>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>My first classifier was called <code class="docutils literal notranslate"><span class="pre">tree_clf_depth2</span></code>. Make sure you adapt your code with the relevant variable you declared for your first classifier.</p>
+</div>
+</aside>
+<p>Call your function with your first classifier.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get values x,y,z of decision surface for classifier:</span>
+<span class="n">DS_xyz</span> <span class="o">=</span> <span class="n">get_decision_surface_xyz</span><span class="p">(</span><span class="n">tree_clf_depth2</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="p">[</span><span class="n">XMIN</span><span class="p">,</span> <span class="n">XMAX</span><span class="p">],</span> <span class="p">[</span><span class="n">YMIN</span><span class="p">,</span> <span class="n">YMAX</span><span class="p">],</span> <span class="mf">0.05</span><span class="p">)</span>
+<span class="c1"># Plot scatter with decision surface:</span>
+<span class="n">plot_scatter</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">bkg</span><span class="p">,</span> <span class="n">DS_xyz</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Decision Surface for DT Depth 2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You should see something like that:</p>
+<figure class="align-default" id="t04-decisionsurfaced2">
+<a class="reference internal image-reference" href="../_images/t04_decisionsurfaced2.png"><img alt="../_images/t04_decisionsurfaced2.png" src="../_images/t04_decisionsurfaced2.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 61 </span><span class="caption-text">. Decision Surface of a decision tree of depth 2.<br />
+<sub>Scikit-Learn</sub></span><a class="headerlink" href="#t04-decisionsurfaced2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Call it again with the tree of depth 20.</p>
+</section>
+<section id="id1">
+<h3>5.2 Comment<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p>Comment on the decision surface with the deep tree: what is happening? How to cope?</p>
+</section>
+</section>
+<section id="the-forest">
+<h2>6. The Forest<a class="headerlink" href="#the-forest" title="Permalink to this headline">#</a></h2>
+<p>Let’s plant a forest now. We need the following imports:</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">pprint</span></code> for a better rendering of the list of parameters.</p>
+</div>
+</aside>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span> <span class="c1"># &#39;pretty printing&#39;, for listing the parameters</span>
+</pre></div>
+</div>
+<section id="default-random-forest">
+<h3>6.1 Default Random Forest<a class="headerlink" href="#default-random-forest" title="Permalink to this headline">#</a></h3>
+<p>Create a random forest with the defaults Scikit-Learn settings and print the parameters.</p>
+</section>
+<section id="number-of-estimators">
+<h3>6.2 Number of Estimators<a class="headerlink" href="#number-of-estimators" title="Permalink to this headline">#</a></h3>
+<p>How many estimators is the random forest made of?</p>
+</section>
+<section id="plot-the-decision-surfacee">
+<h3>6.3 Plot the Decision Surfacee<a class="headerlink" href="#plot-the-decision-surfacee" title="Permalink to this headline">#</a></h3>
+<p>Call your macros to plot the decision surface. How does it compare with one tree of depth 20?</p>
+<p>Optional: you can plot the ROC curve of your forest classifier and compare with the tree ones. More on ROC curves at the end.</p>
+</section>
+<section id="forest-with-max-depth-of-5">
+<h3>6.4 Forest with Max Depth of 5<a class="headerlink" href="#forest-with-max-depth-of-5" title="Permalink to this headline">#</a></h3>
+<p>Create and plot the decision surface of a forest with 100 estimators and a max depth of 5 for each. Does this show some improvement?</p>
+</section>
+</section>
+<section id="green-boost">
+<h2>7. Green Boost<a class="headerlink" href="#green-boost" title="Permalink to this headline">#</a></h2>
+<p>Let’s now boost! Recall the demo in Lecture 4. We will take 10 estimators of maximum depth 2:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">AdaBoostClassifier</span>
+
+<span class="n">ada_clf</span> <span class="o">=</span> <span class="n">AdaBoostClassifier</span><span class="p">(</span> 
+    <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;SAMME.R&quot;</span><span class="p">,</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">ada_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Comparison With Other Classifiers</strong><br />
+How does it compare with the other classifiers? See it on the decision surface!</p>
+</section>
+<section id="bonus-overlay-roc-curves">
+<h2>8. Bonus: overlay ROC curves<a class="headerlink" href="#bonus-overlay-roc-curves" title="Permalink to this headline">#</a></h2>
+<p>We plotted a ROC curve for each tree and random forest. It is convenient to overlay the ROC curves on the same graph to easily compare classifiers. For this, you can modify your ROC curve macro to loop over a dictionary of classifiers. Such a dictionary can look this way (example, you can code it differently of course):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">clfs</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;clf&#39;</span><span class="p">:</span> <span class="n">tree_clf_depth2</span><span class="p">,</span>  <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Decision Tree Depth 2&#39;</span> <span class="p">,</span>                   <span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;brown&#39;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;clf&#39;</span><span class="p">:</span> <span class="n">tree_clf_depth20</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Decision Tree Depth 20&#39;</span><span class="p">,</span>                   <span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;coral&#39;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;clf&#39;</span><span class="p">:</span> <span class="n">RF_100est</span><span class="p">,</span>        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Random Forest 100 estimators&#39;</span><span class="p">,</span>             <span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;greenyellow&#39;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;clf&#39;</span><span class="p">:</span> <span class="n">RF_100e_d5</span><span class="p">,</span>       <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Random Forest 100 estimators, max depth 5&#39;</span><span class="p">,</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;yellowgreen&#39;</span><span class="p">},</span>
+        <span class="p">{</span><span class="s1">&#39;clf&#39;</span><span class="p">:</span> <span class="n">ada_clf</span><span class="p">,</span>          <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;AdaBoost 10 estimators, max depth 2&#39;</span><span class="p">,</span>      <span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;green&#39;</span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="bonus-of-the-bonus">
+<h2>∞. Bonus of the Bonus<a class="headerlink" href="#bonus-of-the-bonus" title="Permalink to this headline">#</a></h2>
+<p>If you manage to do everything above and are starting to get bored, come to me, I will give you a challenge.</p>
+</section>
+<section id="appendix-t4-snippet-zone">
+<span id="app-t4-snippet-zone"></span><h2>Appendix: T4 Snippet Zone<a class="headerlink" href="#appendix-t4-snippet-zone" title="Permalink to this headline">#</a></h2>
+<section id="roc-curve">
+<h3>ROC Curve<a class="headerlink" href="#roc-curve" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_ROC_curve</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">label_leg</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y_obs</span><span class="p">,</span> <span class="n">class_index</span><span class="p">):</span>
+  
+  <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+  <span class="c1"># Luck line</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;navy&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+  <span class="c1"># Get proba predictions:</span>
+  <span class="n">y_scores</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+  <span class="c1"># Getting the ROC curve values</span>
+  <span class="n">fpr</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span> <span class="p">;</span> <span class="n">tpr</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+  <span class="c1">#_____________________________</span>
+
+  <span class="c1"># Your code here (2 lines)</span>
+
+  <span class="c1">#_____________________________</span>
+
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="p">;</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;False Positive Rate&quot;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;True Positive Rate&quot;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;ROC Trees&quot;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+  <span class="c1"># Legend and plot:</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="n">FONTSIZE</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.04</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center left&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> 
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Decision Surface<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_decision_surface_xyz</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">x_lims</span><span class="p">,</span> <span class="n">y_lims</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+  
+  <span class="c1"># Create all of the lines and rows of the grid</span>
+  <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x_lims</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">x_lims</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">step</span><span class="p">,</span> <span class="n">step</span><span class="p">),</span>
+                         <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">y_lims</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_lims</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">step</span><span class="p">))</span>
+  
+  <span class="c1"># Creat dataframe with flattened (ravel) vectors:</span>
+  <span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">xx</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">yy</span><span class="o">.</span><span class="n">ravel</span><span class="p">()})</span>
+
+  <span class="c1"># Get Z value vectors (ravel = flatten grid in vector)</span>
+  <span class="n">Z</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+  <span class="c1"># Reshape Z as grid for exporting </span>
+  <span class="n">zz</span> <span class="o">=</span> <span class="n">Z</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">xx</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+  <span class="c1"># Return grid + surface values:</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">zz</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
