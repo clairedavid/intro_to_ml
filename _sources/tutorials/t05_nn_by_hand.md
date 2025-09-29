@@ -215,8 +215,7 @@ Element-wise multiplication is done using `*`.
   ```python
   M.T
   ```
-
-
+&nbsp;
 * To transpose 3D arrays, reorder indices:  
   ```python
   np.transpose(my3Darray, (0, 2, 1))
@@ -229,12 +228,12 @@ Element-wise multiplication is done using `*`.
   ```python
   np.sum(my_array)
   ```
-
+&nbsp;
 * To sum a 3D array on the first index:  
   ```python
   np.sum(my3Darray, axis=0)
   ```
-
+&nbsp;
 * In general, use the `axis` argument to choose which dimension(s) to reduce.
 ````
 
@@ -339,12 +338,13 @@ def plot_cost_vs_iter(train_costs, test_costs, title="Cost evolution"):
     ax.set_title(title)
     plt.show()
 
-  def get_decision_surface(weights, biases, boundary=0.5, range=RANGE, step=STEP):
+def get_decision_surface(weights, biases, boundary=0.5, range=RANGE, step=STEP):
 
     # Create a grid of points spanning the parameter space:
     x1v, x2v = np.meshgrid(np.arange(range[0], range[1]+step, step),
-                            np.arange(range[0], range[1]+step, step))
-    
+                           np.arange(range[0], range[1]+step, step)
+    )
+
     # Stack it so that it is shaped like X_train: (m,2)
     X_grid = np.c_[x1v.ravel(), x2v.ravel()].reshape(-1,2)
 
@@ -352,29 +352,32 @@ def plot_cost_vs_iter(train_costs, test_costs, title="Cost evolution"):
     output = feedforward(X_grid, weights, biases)[-1] # getting only output node
     Ypred_grid = predict(output, boundary)
 
-  return (x1v, x2v, Ypred_grid.reshape(x1v.shape))
+    return (x1v, x2v, Ypred_grid.reshape(x1v.shape))
 
 
-def plot_scatter(sig, bkg, ds=None, xname=XNAME, xlabel=XLABEL, yname=YNAME, ylabel=YLABEL, range=RANGE, step=STEP, title="Scatter plot"):
+def plot_scatter(sig, bkg, ds=None, 
+                 xname=XNAME, xlabel=XLABEL, 
+                 yname=YNAME, ylabel=YLABEL, 
+                 range=RANGE, step=STEP, title="Scatter plot"):
 
-  fig, ax = plt.subplots()
+    fig, ax = plt.subplots()
 
-  # Decision surface
-  if ds:
-    (xx, yy, Z) = ds # unpack contour data
-    cs = plt.contourf(xx, yy, Z, levels=[0,0.5,1], colors=['orange','dodgerblue'], alpha=0.3)
+    # Decision surface
+    if ds:
+        (xx, yy, Z) = ds # unpack contour data
+        cs = plt.contourf(xx, yy, Z, levels=[0,0.5,1], colors=['orange','dodgerblue'], alpha=0.3)
 
-  # Scatter signal and background:
-  ax.scatter(sig[xname], sig[yname], marker='o', s=10, c='dodgerblue', alpha=1, label='Positive class')
-  ax.scatter(bkg[xname], bkg[yname], marker='o', s=10, c='orange',     alpha=1, label='Negative class')
+    # Scatter signal and background:
+    ax.scatter(sig[xname], sig[yname], marker='o', s=10, c='dodgerblue', alpha=1, label='Positive class')
+    ax.scatter(bkg[xname], bkg[yname], marker='o', s=10, c='orange',     alpha=1, label='Negative class')
 
-  # Axes, legend and plot:
-  ax.set_xlim(range); ax.set_xlabel(xlabel)
-  ax.set_ylim(range); ax.set_ylabel(ylabel)
+    # Axes, legend and plot:
+    ax.set_xlim(range); ax.set_xlabel(xlabel)
+    ax.set_ylim(range); ax.set_ylabel(ylabel)
 
-  ax.legend(bbox_to_anchor=(1.04, 0.5), loc="center left", frameon=False) 
-  ax.set_title(title)
-  plt.show()
+    ax.legend(bbox_to_anchor=(1.04, 0.5), loc="center left", frameon=False) 
+    ax.set_title(title)
+    plt.show()
 ```
 
 (app:t5:snippet:zone:train)=
