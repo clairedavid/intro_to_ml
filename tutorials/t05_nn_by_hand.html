@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="T6. Unsupervised algorithms" href="t06_unsupervised.html" />
@@ -701,12 +703,216 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-0-the-math">
+   Part 0: The Math
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-i-code-your-neural-network">
+   Part I: Code Your Neural Network!
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     1.0 Setup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-the-data">
+     1.1 Get the Data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#file-download">
+       1.1.1 File Download
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#split-signal-vs-background">
+       1.1.2 Split Signal vs Background
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dataframe-to-numpy">
+       1.1.3 Dataframe to NumPy
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     1.2 Functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#weighted-sum">
+       1.2.1 Weighted Sum
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#activation-functions-and-derivatives">
+       1.2.2 Activation Functions and Derivatives
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cross-entropy-cost-function">
+       1.2.3: Cross-entropy cost function
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#derivative-of-the-loss">
+       1.2.4 Derivative of the Loss
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feedforward-propagation">
+     1.3 Feedforward Propagation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#implementing-the-feedforward-function">
+       1.3.1 Implementing the Feedforward Function
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#predict">
+       1.3.2 Predict
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#neural-network-training">
+     1.4 Neural Network Training
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plots">
+     1.5 Plots
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cost-evolution">
+       1.5.1 Cost evolution
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#scatter-plot">
+       1.5.2 Scatter Plot
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-ii-vectorize-your-neural-network">
+   Part II: Vectorize Your Neural Network
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dynamic-depth">
+     2.1 Dynamic Depth
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#several-output-nodes">
+     2.2 Several Output Nodes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-iii-play">
+   Part III: Play!
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#momentum-et-all">
+     3.1 Momentum et all
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#double-spiral-challenge">
+     3.2 Double Spiral Challenge
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix-t5-snippet-zone">
+   Appendix: T5 Snippet Zone
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#app-t5-snippet-zone-setup">
+     Setup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#train-skeleton">
+     Train: Skeleton
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pretty-printing">
+       Pretty Printing
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#training-loop">
+       Training Loop
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spiral-fun">
+     Double Spiral Challenge
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dataset-generation">
+       Dataset Generation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plotting-the-double-spiral">
+       Plotting the Double Spiral
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -718,6 +924,199 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-0-the-math">
+   Part 0: The Math
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-i-code-your-neural-network">
+   Part I: Code Your Neural Network!
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setup">
+     1.0 Setup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-the-data">
+     1.1 Get the Data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#file-download">
+       1.1.1 File Download
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#split-signal-vs-background">
+       1.1.2 Split Signal vs Background
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dataframe-to-numpy">
+       1.1.3 Dataframe to NumPy
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#functions">
+     1.2 Functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#weighted-sum">
+       1.2.1 Weighted Sum
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#activation-functions-and-derivatives">
+       1.2.2 Activation Functions and Derivatives
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cross-entropy-cost-function">
+       1.2.3: Cross-entropy cost function
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#derivative-of-the-loss">
+       1.2.4 Derivative of the Loss
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feedforward-propagation">
+     1.3 Feedforward Propagation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#implementing-the-feedforward-function">
+       1.3.1 Implementing the Feedforward Function
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#predict">
+       1.3.2 Predict
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#neural-network-training">
+     1.4 Neural Network Training
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plots">
+     1.5 Plots
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cost-evolution">
+       1.5.1 Cost evolution
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#scatter-plot">
+       1.5.2 Scatter Plot
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-ii-vectorize-your-neural-network">
+   Part II: Vectorize Your Neural Network
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dynamic-depth">
+     2.1 Dynamic Depth
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#several-output-nodes">
+     2.2 Several Output Nodes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#part-iii-play">
+   Part III: Play!
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#momentum-et-all">
+     3.1 Momentum et all
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#double-spiral-challenge">
+     3.2 Double Spiral Challenge
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#appendix-t5-snippet-zone">
+   Appendix: T5 Snippet Zone
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#app-t5-snippet-zone-setup">
+     Setup
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#train-skeleton">
+     Train: Skeleton
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pretty-printing">
+       Pretty Printing
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#training-loop">
+       Training Loop
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spiral-fun">
+     Double Spiral Challenge
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dataset-generation">
+       Dataset Generation
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plotting-the-double-spiral">
+       Plotting the Double Spiral
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -727,11 +1126,602 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="t5-neural-network-by-hand">
 <h1>T5. Neural Network by Hand!<a class="headerlink" href="#t5-neural-network-by-hand" title="Permalink to this headline">#</a></h1>
+<p>In this tutorial, you will code a little neural network from scratch. Don’t worry, it will be extremely guided. The two most important points being that you learn and you have fun.</p>
+<div class="note admonition">
+<p class="admonition-title">For programmers already fluent in Python</p>
+<p>If you have had some programming experience already, please stick to the code template below for evaluation purposes. Afterwards, feel free to append to your notebook a more elaborate code (see Parts II and III).</p>
+</div>
+<p>We’ll use the network to solve the classic XOR problem. This is how the data look like:</p>
+<figure class="align-default" id="t05-data">
+<a class="reference internal image-reference" href="../_images/t05_data.png"><img alt="../_images/t05_data.png" src="../_images/t05_data.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Scatter plot of data representing the XOR configuration: it is not linearly separable.</span><a class="headerlink" href="#t05-data" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="part-0-the-math">
+<h2>Part 0: The Math<a class="headerlink" href="#part-0-the-math" title="Permalink to this headline">#</a></h2>
+<p>As a warm-up, you are asked to derive Equations <a class="reference internal" href="../nn/training_2_backprop.html#equation-dcostfirstvectorouterprod">(116)</a>, <a class="reference internal" href="../nn/training_2_backprop.html#equation-defdeltal">(124)</a> – <a class="reference internal" href="../nn/training_2_backprop.html#equation-dcostlayerl">(129)</a> from the section on the <a class="reference internal" href="../nn/training_2_backprop.html#nn-backprop"><span class="std std-ref">Backpropagation Algorithm</span></a>. In class, you saw the main blocks. Here, it is about working out the indices to see which exact tensor operations are being used.</p>
+<ul class="simple">
+<li><p>Remember that a matrix element <span class="math notranslate nohighlight">\(w_{jk}\)</span> of a matrix <span class="math notranslate nohighlight">\(W\)</span> becomes <span class="math notranslate nohighlight">\(w_{kj}\)</span> once it is transposed as <span class="math notranslate nohighlight">\(W^\top\)</span>.</p></li>
+<li><p>The outer product of two vectors <span class="math notranslate nohighlight">\(a \otimes b\)</span> can also be written as: <span class="math notranslate nohighlight">\(a \; b^\top\)</span> .</p></li>
+<li><p>Refrain from using indices already taken in the course (<span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\(\ell\)</span>, <span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(n\)</span>) to avoid confusion with sample index, layer number, total number of samples and number of features, respectively. Lots of other letters are available 😉.</p></li>
+</ul>
+</section>
+<section id="part-i-code-your-neural-network">
+<h2>Part I: Code Your Neural Network!<a class="headerlink" href="#part-i-code-your-neural-network" title="Permalink to this headline">#</a></h2>
+<section id="setup">
+<h3>1.0 Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h3>
+<p>Copy the code from the <a class="reference internal" href="#app-t5-snippet-zone-setup"><span class="std std-ref">Setup</span></a> in <a class="reference internal" href="#app-t5-snippet-zone"><span class="std std-ref">Appendix: T5 Snippet Zone</span></a> into a fresh Colaboratory notebook.</p>
+<div class="tip admonition">
+<p class="admonition-title">Advice</p>
+<p>Read everything first before starting</p>
+</div>
+</section>
+<section id="get-the-data">
+<h3>1.1 Get the Data<a class="headerlink" href="#get-the-data" title="Permalink to this headline">#</a></h3>
+<section id="file-download">
+<h4>1.1.1 File Download<a class="headerlink" href="#file-download" title="Permalink to this headline">#</a></h4>
+<p>Retrieve the files:</p>
+<p><a href="https://drive.google.com/uc?export=download&id=1oyWJCdJ7LrHN_1xUMkiED8FR-TV8qlFn">ml_tutorial_5_data_train.csv</a><br />
+<a href="https://drive.google.com/uc?export=download&id=1g7DVcMQMGfce2fQ8x3FeZqXHbdrrcbQP">ml_tutorial_5_data_test.csv</a></p>
 <br>
-<br>
-<center> Coming soon! </center>
-<br>
-<br>
+</section>
+<section id="split-signal-vs-background">
+<h4>1.1.2 Split Signal vs Background<a class="headerlink" href="#split-signal-vs-background" title="Permalink to this headline">#</a></h4>
+<p>Create a <code class="docutils literal notranslate"><span class="pre">sig</span></code> and <code class="docutils literal notranslate"><span class="pre">bkg</span></code> dataframes that collect the real signal and value samples.  We will need this later on.<br />
+Hint: we did this already in <a class="reference internal" href="t03_decision_stump.html#t03"><span class="std std-ref">Tutorial 3</span></a>.</p>
+</section>
+<section id="dataframe-to-numpy">
+<h4>1.1.3 Dataframe to NumPy<a class="headerlink" href="#dataframe-to-numpy" title="Permalink to this headline">#</a></h4>
+<p>Declare the following variables to store the dataset into NumPy arrays:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">]</span>
+<span class="n">X_train</span> <span class="o">=</span> 
+<span class="n">y_train</span> <span class="o">=</span> 
+
+<span class="n">X_test</span> <span class="o">=</span> 
+<span class="n">y_test</span> <span class="o">=</span> 
+</pre></div>
+</div>
+</section>
+</section>
+<section id="functions">
+<h3>1.2 Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h3>
+<section id="weighted-sum">
+<h4>1.2.1 Weighted Sum<a class="headerlink" href="#weighted-sum" title="Permalink to this headline">#</a></h4>
+<p>Create the function <code class="docutils literal notranslate"><span class="pre">z</span></code> that compute the weighted sum of a given activation unit, as seen in class. You do not have to worry about the dimensions of objects here, this will come later. Make sure the names of the arguments are self-explanatory:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">z</span><span class="p">(</span> <span class="o">...</span> <span class="p">,</span> <span class="o">...</span> <span class="p">,</span> <span class="o">...</span> <span class="p">):</span>
+    <span class="c1">#...</span>
+    <span class="k">return</span> <span class="c1">#...</span>
+</pre></div>
+</div>
+</section>
+<section id="activation-functions-and-derivatives">
+<h4>1.2.2 Activation Functions and Derivatives<a class="headerlink" href="#activation-functions-and-derivatives" title="Permalink to this headline">#</a></h4>
+<p>Write the hyperbolic tangent and sigmoid activation functions, followed by their derivatives:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tanh</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="c1">#... </span>
+
+<span class="k">def</span> <span class="nf">sigmoid</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="c1">#... </span>
+
+<span class="k">def</span> <span class="nf">sigmoid_prime</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="c1">#... </span>
+
+<span class="k">def</span> <span class="nf">tanh_prime</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="c1">#... </span>
+</pre></div>
+</div>
+</section>
+<section id="cross-entropy-cost-function">
+<h4>1.2.3: Cross-entropy cost function<a class="headerlink" href="#cross-entropy-cost-function" title="Permalink to this headline">#</a></h4>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="tip admonition">
+<p class="admonition-title">Hint</p>
+<p>This was done in Tutorial 2.</p>
+</div>
+</aside>
+<p>Write the cross-entropy cost function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cross_entropy_cost</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">):</span>
+    <span class="c1">#... </span>
+    <span class="k">return</span> <span class="c1">#... </span>
+</pre></div>
+</div>
+</section>
+<section id="derivative-of-the-loss">
+<h4>1.2.4 Derivative of the Loss<a class="headerlink" href="#derivative-of-the-loss" title="Permalink to this headline">#</a></h4>
+<p>As seen in class, the loss function for classification is defined as:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+L\left( \hat{y}^{(i)}, y^{(i)}\right) = - \left[ \;\; y^{(i)} \log\left( \hat{y}^{(i)} \right) \;\;+\;\; \left(1- y^{(i)}\right) \log\left( 1 - \hat{y}^{(i)} \right) \;\;\right]
+\end{equation*}\]</div>
+<p>Find the expression of:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+\frac{\mathrm{d} }{\mathrm{d} \hat{y}^{(i)}} L\left( \hat{y}^{(i)}, y^{(i)}\right) = \cdots
+\end{equation*}\]</div>
+<p>Use a text cell and LaTeX. If you are new to LaTeX, this <a href="https://editor.codecogs.com/" target="_blank">application</a> will help. Once you have an expression for the derivative of the loss, code it in python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">L_prime</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_true</span><span class="p">):</span>
+    <span class="c1">#...</span>
+    <span class="k">return</span> <span class="c1">#...</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="feedforward-propagation">
+<h3>1.3 Feedforward Propagation<a class="headerlink" href="#feedforward-propagation" title="Permalink to this headline">#</a></h3>
+<p>It is time to write the feedforward function!</p>
+<p>We will start with the following network for now:</p>
+<ul class="simple">
+<li><p>The network has two hidden layers</p></li>
+<li><p>The nodes of the hidden layers use the hyperbolic tangent as activation function</p></li>
+<li><p>The output layer uses the sigmoid function</p></li>
+</ul>
+<section id="implementing-the-feedforward-function">
+<h4>1.3.1 Implementing the Feedforward Function<a class="headerlink" href="#implementing-the-feedforward-function" title="Permalink to this headline">#</a></h4>
+<p>The number of activation units in each layer is dynamic. Your code should work with tensors <span class="math notranslate nohighlight">\((i, j, k)\)</span> with <span class="math notranslate nohighlight">\(i\)</span> the index referring to the  <span class="math notranslate nohighlight">\(i\)</span><sup>th</sup> sample, <span class="math notranslate nohighlight">\(j\)</span> the index of the activation unit and <span class="math notranslate nohighlight">\(k\)</span> here should be 1, as we consider a column vector. The weights and biases are given as input, stored in lists. The input data has been reshaped for your convenience (and a bit less of debugging time 😉).</p>
+<p>Complete the function below that does the feedforward propagation of the network, using the equations shown in class. Look at the output to see how to name your variables!</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">feedforward</span><span class="p">(</span><span class="n">input_X</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">biases</span><span class="p">):</span>
+    <span class="n">W1</span><span class="p">,</span> <span class="n">W2</span><span class="p">,</span> <span class="n">W3</span> <span class="o">=</span> <span class="n">weights</span>
+    <span class="n">b1</span><span class="p">,</span> <span class="n">b2</span><span class="p">,</span> <span class="n">b3</span> <span class="o">=</span> <span class="n">biases</span>
+
+    <span class="n">m</span>  <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_X</span><span class="p">)</span>
+    <span class="n">a0</span> <span class="o">=</span> <span class="n">input_X</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">m</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="c1"># First layer</span>
+    <span class="n">z1</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="n">a1</span> <span class="o">=</span> <span class="o">...</span>
+
+    <span class="c1"># Second layer</span>
+    <span class="n">z2</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="n">a2</span> <span class="o">=</span> <span class="o">...</span>
+
+    <span class="c1"># Third layer</span>
+    <span class="n">z3</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="n">a3</span> <span class="o">=</span> <span class="o">...</span>
+
+    <span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">a0</span><span class="p">,</span> <span class="n">z1</span><span class="p">,</span> <span class="n">a1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">z3</span><span class="p">,</span> <span class="n">a3</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">nodes</span>
+</pre></div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Check Point</p>
+<p>At this point in the assignment, it is possible to ask for a checkup with the instructor before moving forward to …the backward pass (pun intended).
+Send an email to the instructor with the exact title <code class="docutils literal notranslate"><span class="pre">[Intro</span> <span class="pre">to</span> <span class="pre">ML</span> <span class="pre">2025]</span> <span class="pre">Tutorial</span> <span class="pre">5</span> <span class="pre">Check</span> <span class="pre">1</span></code>, where you paste your completed code of the function above. Do not send any notebook!</p>
+</div>
+</section>
+<section id="predict">
+<h4>1.3.2 Predict<a class="headerlink" href="#predict" title="Permalink to this headline">#</a></h4>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>To insert a code block within a text cell in Jupyter notebook, write:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   ```python
+   # your code here
+
+   ```
+</pre></div>
+</div>
+</aside>
+<p>The <code class="docutils literal notranslate"><span class="pre">predict</span></code> function is already provided in the setup. Your task is to think about how it works:</p>
+<ul class="simple">
+<li><p>What is the <code class="docutils literal notranslate"><span class="pre">output_node</span></code> in our 2-hidden-layer neural network?</p></li>
+<li><p>What kind of values does <code class="docutils literal notranslate"><span class="pre">predict</span></code> return?</p></li>
+<li><p>After running <code class="docutils literal notranslate"><span class="pre">feedforward</span></code>, how would you call <code class="docutils literal notranslate"><span class="pre">predict</span></code> to get predictions?</p></li>
+</ul>
+<p>Keep your answers short and clear.</p>
+</section>
+</section>
+<section id="neural-network-training">
+<h3>1.4 Neural Network Training<a class="headerlink" href="#neural-network-training" title="Permalink to this headline">#</a></h3>
+<p>Time to train! Copy paste the code in <a class="reference internal" href="#app-t5-snippet-zone-train"><span class="std std-ref">Train: Skeleton</span></a> as your starting point. To help you further, hyperparameters are given. Replace the <code class="docutils literal notranslate"><span class="pre">#...</span></code> with your own code.</p>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Weight Initialization</p>
+<p>The weight matrices and bias vectors can be simply initialized with a random number between 0 and 1. Use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">an_i_by_j_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span> <span class="n">i</span> <span class="p">,</span> <span class="n">j</span> <span class="p">))</span>
+</pre></div>
+</div>
+<p>The double parenthesis is important to get the correct shape. To make your code modular, use the variables encoding the number of activation nodes on the first and second hidden layers.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Feedforward and Predict</p>
+<p>To return the last element of a list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Matrix / Vector Operations</p>
+<p>In Python, matrix multiplication is done using <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>.<br />
+Element-wise multiplication is done using <code class="docutils literal notranslate"><span class="pre">*</span></code>.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Transposing Tensors</p>
+<ul>
+<li><p>To transpose a matrix <code class="docutils literal notranslate"><span class="pre">M</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">M</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</li>
+<li><p>To transpose 3D arrays, reorder indices:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">my3Darray</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Summing Tensors</p>
+<ul>
+<li><p>To sum all elements:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">my_array</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>To sum a 3D array on the first index:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">my3Darray</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>In general, use the <code class="docutils literal notranslate"><span class="pre">axis</span></code> argument to choose which dimension(s) to reduce.</p></li>
+</ul>
+</div>
+</section>
+<section id="plots">
+<h3>1.5 Plots<a class="headerlink" href="#plots" title="Permalink to this headline">#</a></h3>
+<section id="cost-evolution">
+<h4>1.5.1 Cost evolution<a class="headerlink" href="#cost-evolution" title="Permalink to this headline">#</a></h4>
+<p>Call the provided function <code class="docutils literal notranslate"><span class="pre">plot_cost_vs_iter</span></code> in the <a class="reference internal" href="#app-t5-snippet-zone-setup"><span class="std std-ref">Setup</span></a> to plot the cost evolution of both the training and testing datasets.</p>
+</section>
+<section id="scatter-plot">
+<h4>1.5.2 Scatter Plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">#</a></h4>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">get_decision_surface</span></code> and <code class="docutils literal notranslate"><span class="pre">plot_scatter</span></code> functions (in <a class="reference internal" href="#app-t5-snippet-zone-setup"><span class="std std-ref">Setup</span></a>) to visualize the decision boundaries of your trained neural network. Did your neural network successfully learn the XOR function?</p>
+<p>If all goes well, you should obtain something like this:</p>
+<figure class="align-default" id="t05-data-nn">
+<a class="reference internal image-reference" href="../_images/t05_data_NN.png"><img alt="../_images/t05_data_NN.png" src="../_images/t05_data_NN.png" style="width: 90%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 63 </span><span class="caption-text">Scatter plot of data representing the XOR configuration and the neural network performance.</span><a class="headerlink" href="#t05-data-nn" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>You just coded a neural network by hand!</p>
+</section>
+</section>
+</section>
+<section id="part-ii-vectorize-your-neural-network">
+<h2>Part II: Vectorize Your Neural Network<a class="headerlink" href="#part-ii-vectorize-your-neural-network" title="Permalink to this headline">#</a></h2>
+<p>We coded everything for two hidden layers only. Let’s make it more general. But in two steps:</p>
+<section id="dynamic-depth">
+<h3>2.1 Dynamic Depth<a class="headerlink" href="#dynamic-depth" title="Permalink to this headline">#</a></h3>
+<p>Modify your code so that it creates a network of dynamic depth. You can encode the architecture as an array. For instance:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">layers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>would create a network of four layers with three activation units on the first and second layers, two on the before-last hidden layer and the output layer would have one node. To make things easier, keep one output node in the last layer for now.</p>
+<p>Good luck!</p>
+</section>
+<section id="several-output-nodes">
+<h3>2.2 Several Output Nodes<a class="headerlink" href="#several-output-nodes" title="Permalink to this headline">#</a></h3>
+<p>Modify your code further to have more than one output node in the last layer. You may have to change your cost function with the categorical cross-entropy. Feel free to create toy datasets with more than two classes. Or pick-up some of <a href="https://scikit-learn.org/stable/api/sklearn.datasets.html" target="_blank">Scikit-Learn datasets</a>!</p>
+</section>
+</section>
+<section id="part-iii-play">
+<h2>Part III: Play!<a class="headerlink" href="#part-iii-play" title="Permalink to this headline">#</a></h2>
+<section id="momentum-et-all">
+<h3>3.1 Momentum et all<a class="headerlink" href="#momentum-et-all" title="Permalink to this headline">#</a></h3>
+<p>Implement by hand some momentum. The action is in your update rule after you backpropagate. Try to come up with plots to visualize the convergence. Discuss what you see.</p>
+</section>
+<section id="double-spiral-challenge">
+<h3>3.2 Double Spiral Challenge<a class="headerlink" href="#double-spiral-challenge" title="Permalink to this headline">#</a></h3>
+<p>Use your network to tackle more challenging datasets, such as the double spiral. See in the <a class="reference internal" href="#app-t5-snippet-zone"><span class="std std-ref">snippet zone</span></a>, <a class="reference internal" href="#spiral-fun"><span class="std std-ref">Double Spiral Challenge</span></a>, a suggested code to generate data points and plot them.</p>
+<p>Have Fun!</p>
+</section>
+</section>
+<section id="appendix-t5-snippet-zone">
+<span id="app-t5-snippet-zone"></span><h2>Appendix: T5 Snippet Zone<a class="headerlink" href="#appendix-t5-snippet-zone" title="Permalink to this headline">#</a></h2>
+<section id="app-t5-snippet-zone-setup">
+<span id="id1"></span><h3>Setup<a class="headerlink" href="#app-t5-snippet-zone-setup" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">FONTSIZE</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+         <span class="s1">&#39;figure.figsize&#39;</span> <span class="p">:</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span> <span class="p">:</span> <span class="n">FONTSIZE</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span> <span class="p">:</span> <span class="n">FONTSIZE</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span>
+         <span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="n">FONTSIZE</span><span class="p">,</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span> <span class="n">FONTSIZE</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span> <span class="n">FONTSIZE</span><span class="p">,</span>
+         <span class="s1">&#39;xtick.color&#39;</span>    <span class="p">:</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.color&#39;</span>    <span class="p">:</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;axes.facecolor&#39;</span> <span class="p">:</span> <span class="s1">&#39;white&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;axes.edgecolor&#39;</span> <span class="p">:</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlepad&#39;</span>  <span class="p">:</span>  <span class="mi">20</span><span class="p">,</span>
+         <span class="s1">&#39;axes.labelpad&#39;</span>  <span class="p">:</span>  <span class="mi">10</span><span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+<span class="n">XNAME</span> <span class="o">=</span> <span class="s1">&#39;x1&#39;</span><span class="p">;</span> <span class="n">XLABEL</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$x_1$&#39;</span>
+<span class="n">YNAME</span> <span class="o">=</span> <span class="s1">&#39;x2&#39;</span><span class="p">;</span> <span class="n">YLABEL</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$x_2$&#39;</span>
+<span class="n">RANGE</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span> <span class="n">STEP</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="n">output_node</span><span class="p">,</span> <span class="n">boundary_value</span><span class="p">):</span>
+    <span class="n">output_node</span> <span class="o">=</span> <span class="n">output_node</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">predictions</span> <span class="o">=</span> <span class="p">(</span><span class="n">output_node</span> <span class="o">&gt;</span> <span class="n">boundary_value</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">predictions</span>
+
+<span class="k">def</span> <span class="nf">plot_cost_vs_iter</span><span class="p">(</span><span class="n">train_costs</span><span class="p">,</span> <span class="n">test_costs</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Cost evolution&quot;</span><span class="p">):</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">iters</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">train_costs</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">iters</span><span class="p">,</span> <span class="n">train_costs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Training set&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">iters</span><span class="p">,</span> <span class="n">test_costs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Testing set&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Number of iterations&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">iters</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Cost&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+  <span class="k">def</span> <span class="nf">get_decision_surface</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">biases</span><span class="p">,</span> <span class="n">boundary</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">RANGE</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">STEP</span><span class="p">):</span>
+
+    <span class="c1"># Create a grid of points spanning the parameter space:</span>
+    <span class="n">x1v</span><span class="p">,</span> <span class="n">x2v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">range</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">step</span><span class="p">,</span> <span class="n">step</span><span class="p">),</span>
+                            <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">range</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">step</span><span class="p">,</span> <span class="n">step</span><span class="p">))</span>
+    
+    <span class="c1"># Stack it so that it is shaped like X_train: (m,2)</span>
+    <span class="n">X_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">x1v</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">x2v</span><span class="o">.</span><span class="n">ravel</span><span class="p">()]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1"># Feedforward on all grid points and get binary predictions:</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">feedforward</span><span class="p">(</span><span class="n">X_grid</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">biases</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># getting only output node</span>
+    <span class="n">Ypred_grid</span> <span class="o">=</span> <span class="n">predict</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">boundary</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="p">(</span><span class="n">x1v</span><span class="p">,</span> <span class="n">x2v</span><span class="p">,</span> <span class="n">Ypred_grid</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x1v</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">plot_scatter</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">bkg</span><span class="p">,</span> <span class="n">ds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xname</span><span class="o">=</span><span class="n">XNAME</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="n">XLABEL</span><span class="p">,</span> <span class="n">yname</span><span class="o">=</span><span class="n">YNAME</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="n">YLABEL</span><span class="p">,</span> <span class="nb">range</span><span class="o">=</span><span class="n">RANGE</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">STEP</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Scatter plot&quot;</span><span class="p">):</span>
+
+  <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+  <span class="c1"># Decision surface</span>
+  <span class="k">if</span> <span class="n">ds</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span> <span class="o">=</span> <span class="n">ds</span> <span class="c1"># unpack contour data</span>
+    <span class="n">cs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+  <span class="c1"># Scatter signal and background:</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">sig</span><span class="p">[</span><span class="n">xname</span><span class="p">],</span> <span class="n">sig</span><span class="p">[</span><span class="n">yname</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Positive class&#39;</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">bkg</span><span class="p">[</span><span class="n">xname</span><span class="p">],</span> <span class="n">bkg</span><span class="p">[</span><span class="n">yname</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span>     <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Negative class&#39;</span><span class="p">)</span>
+
+  <span class="c1"># Axes, legend and plot:</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="nb">range</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="nb">range</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
+
+  <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.04</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center left&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> 
+  <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+  <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="train-skeleton">
+<span id="app-t5-snippet-zone-train"></span><h3>Train: Skeleton<a class="headerlink" href="#train-skeleton" title="Permalink to this headline">#</a></h3>
+<section id="pretty-printing">
+<h4>Pretty Printing<a class="headerlink" href="#pretty-printing" title="Permalink to this headline">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_every</span><span class="p">(</span><span class="n">iter_idx</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">iter_idx</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">iter_idx</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">elif</span> <span class="n">iter_idx</span> <span class="o">&lt;=</span> <span class="mi">1000</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">iter_idx</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">iter_idx</span> <span class="o">%</span> <span class="mi">1000</span> <span class="o">==</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+<section id="training-loop">
+<h4>Training Loop<a class="headerlink" href="#training-loop" title="Permalink to this headline">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hyperparameters</span>
+<span class="n">alpha</span>  <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">n_iter</span> <span class="o">=</span> <span class="mi">5000</span>
+
+<span class="c1"># Initialization</span>
+<span class="n">m</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>     <span class="c1"># number of data samples</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># number of input features</span>
+<span class="n">q</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># number of nodes in first hidden layer</span>
+<span class="n">r</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># number of nodes in second hidden layer</span>
+
+<span class="c1"># WEIGHT MATRICES + BIASES</span>
+<span class="n">W1</span> <span class="o">=</span> <span class="c1">#...</span>
+<span class="n">W2</span> <span class="o">=</span> <span class="c1">#...</span>
+<span class="n">W3</span> <span class="o">=</span> <span class="c1">#...</span>
+<span class="n">b1</span> <span class="o">=</span> <span class="c1">#...</span>
+<span class="n">b2</span> <span class="o">=</span> <span class="c1">#...</span>
+<span class="n">b3</span> <span class="o">=</span> <span class="c1">#...</span>
+
+<span class="c1"># OUTPUT LAYER</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">y_test</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y_test</span> <span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># Storing cost values for train and test datasets</span>
+<span class="n">costs_train</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">costs_test</span>  <span class="o">=</span> <span class="p">[]</span>
+<span class="n">debug</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting the training</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># -------------------</span>
+<span class="c1">#   Start iterations</span>
+<span class="c1"># -------------------</span>
+<span class="k">for</span> <span class="n">iter_idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_iter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+
+    <span class="c1"># FORWARD PROPAGATION</span>
+    <span class="c1"># Feedforward on test data:</span>
+    <span class="n">nodes_test</span> <span class="o">=</span> <span class="c1">#...</span>
+    <span class="n">ypred_test</span> <span class="o">=</span> <span class="c1">#...</span>
+
+    <span class="c1"># Feedforward on train data:</span>
+    <span class="n">a0</span><span class="p">,</span> <span class="n">z1</span><span class="p">,</span> <span class="n">a1</span><span class="p">,</span> <span class="n">z2</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">z3</span><span class="p">,</span> <span class="n">a3</span> <span class="o">=</span> <span class="c1">#...</span>
+    <span class="n">ypred_train</span> <span class="o">=</span> <span class="c1">#...</span>
+
+    <span class="c1"># Cost computation and storage</span>
+    <span class="n">cost_train</span> <span class="o">=</span> <span class="n">cross_entropy_cost</span><span class="p">(</span><span class="n">ypred_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">cost_test</span>  <span class="o">=</span> <span class="n">cross_entropy_cost</span><span class="p">(</span><span class="n">ypred_test</span><span class="p">,</span>  <span class="n">y_test</span><span class="p">)</span>
+    <span class="n">costs_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cost_train</span><span class="p">)</span>
+    <span class="n">costs_test</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cost_test</span><span class="p">)</span>
+
+    <span class="c1"># BACKWARD PROPAGATION</span>
+    <span class="c1"># Errors delta:</span>
+    <span class="n">delta_3</span> <span class="o">=</span> <span class="c1">#...</span>
+    <span class="n">delta_2</span> <span class="o">=</span> <span class="c1">#...</span>
+    <span class="n">delta_1</span> <span class="o">=</span> <span class="c1">#...</span>
+
+    <span class="c1"># Partial derivatives</span>
+    <span class="n">dCostdW3</span> <span class="o">=</span> <span class="c1">#...</span>
+    <span class="n">dCostdW2</span> <span class="o">=</span> <span class="c1">#...</span>
+    <span class="n">dCostdW1</span> <span class="o">=</span> <span class="c1">#...</span>
+
+    <span class="n">dCostdb3</span> <span class="o">=</span> <span class="c1">#...</span>
+    <span class="n">dCostdb2</span> <span class="o">=</span> <span class="c1">#...</span>
+    <span class="n">dCostdb1</span> <span class="o">=</span> <span class="c1">#...</span>
+
+    <span class="c1"># Print selected iterations</span>
+    <span class="k">if</span> <span class="n">print_every</span><span class="p">(</span><span class="n">iter_idx</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Iteration </span><span class="si">{</span><span class="n">iter_idx</span><span class="si">:</span><span class="s2">&gt;4</span><span class="si">}</span><span class="se">\t</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Train cost: </span><span class="si">{</span><span class="n">cost_train</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="se">\t</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Test cost: </span><span class="si">{</span><span class="n">cost_test</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="se">\t</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Diff: </span><span class="si">{</span><span class="n">cost_test</span> <span class="o">-</span> <span class="n">cost_train</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="n">debug</span> <span class="ow">and</span> <span class="n">iter_idx</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Nodes: a0=</span><span class="si">{</span><span class="n">a0</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, a1=</span><span class="si">{</span><span class="n">a1</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, a2=</span><span class="si">{</span><span class="n">a2</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, a3=</span><span class="si">{</span><span class="n">a3</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> | &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Weights: W1=</span><span class="si">{</span><span class="n">W1</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, W2=</span><span class="si">{</span><span class="n">W2</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, W3=</span><span class="si">{</span><span class="n">W3</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> | &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Gradients: dW1=</span><span class="si">{</span><span class="n">dCostdW1</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, dW2=</span><span class="si">{</span><span class="n">dCostdW2</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">, dW3=</span><span class="si">{</span><span class="n">dCostdW3</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Update of weights and biases</span>
+    <span class="n">W3</span> <span class="o">=</span> <span class="c1">#...</span>
+    <span class="n">W2</span> <span class="o">=</span> <span class="c1">#...</span>
+    <span class="n">W1</span> <span class="o">=</span> <span class="c1">#...</span>
+    <span class="n">b3</span> <span class="o">=</span> <span class="c1">#...</span>
+    <span class="n">b2</span> <span class="o">=</span> <span class="c1">#...</span>
+    <span class="n">b1</span> <span class="o">=</span> <span class="c1">#...</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">End of gradient descent after </span><span class="si">{</span><span class="n">iter_idx</span><span class="si">}</span><span class="s1"> iterations&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="spiral-fun">
+<span id="id2"></span><h3>Double Spiral Challenge<a class="headerlink" href="#spiral-fun" title="Permalink to this headline">#</a></h3>
+<section id="dataset-generation">
+<h4>Dataset Generation<a class="headerlink" href="#dataset-generation" title="Permalink to this headline">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_double_spiral</span><span class="p">(</span><span class="n">n_points_per_class</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">test_fraction</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generate a 2D double spiral dataset.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    n_points_per_class : int</span>
+<span class="sd">        Number of samples for each spiral arm.</span>
+<span class="sd">    noise : float</span>
+<span class="sd">        Standard deviation of Gaussian noise added to the points.</span>
+<span class="sd">    test_fraction : float</span>
+<span class="sd">        Fraction of the dataset reserved for testing.</span>
+<span class="sd">    seed : int</span>
+<span class="sd">        Random seed for reproducibility.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    X_train : ndarray of shape (n_train, 2)</span>
+<span class="sd">        Training features (x1, x2).</span>
+<span class="sd">    y_train : ndarray of shape (n_train, 1)</span>
+<span class="sd">        Training labels (0 or 1).</span>
+<span class="sd">    X_test : ndarray of shape (n_test, 2)</span>
+<span class="sd">        Test features (x1, x2).</span>
+<span class="sd">    y_test : ndarray of shape (n_test, 1)</span>
+<span class="sd">        Test labels (0 or 1).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+    <span class="c1"># Angles for the spirals (0 to 4π gives ~2 full turns)</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">n_points_per_class</span><span class="p">)</span>
+
+    <span class="c1"># Spiral 1 (label 0)</span>
+    <span class="n">r1</span> <span class="o">=</span> <span class="n">theta</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">r1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">noise</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_points_per_class</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">r1</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="n">noise</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_points_per_class</span><span class="p">)</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_points_per_class</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="c1"># Spiral 2 (label 1), shifted by π</span>
+    <span class="n">r2</span> <span class="o">=</span> <span class="n">theta</span>
+    <span class="n">x1_2</span> <span class="o">=</span> <span class="n">r2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">+</span> <span class="n">noise</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_points_per_class</span><span class="p">)</span>
+    <span class="n">x2_2</span> <span class="o">=</span> <span class="n">r2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">+</span> <span class="n">noise</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_points_per_class</span><span class="p">)</span>
+    <span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">n_points_per_class</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="c1"># Stack both spirals</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">x1_2</span><span class="p">,</span> <span class="n">x2_2</span><span class="p">))))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">))</span>
+
+    <span class="c1"># Shuffle the dataset</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">shuffle</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+    <span class="c1"># Train/test split</span>
+    <span class="n">n_test</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="n">test_fraction</span><span class="p">)</span>
+    <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="n">n_test</span><span class="p">],</span> <span class="n">y</span><span class="p">[:</span><span class="n">n_test</span><span class="p">]</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">n_test</span><span class="p">:],</span> <span class="n">y</span><span class="p">[</span><span class="n">n_test</span><span class="p">:]</span>
+
+    <span class="k">return</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span>
+</pre></div>
+</div>
+</section>
+<section id="plotting-the-double-spiral">
+<h4>Plotting the Double Spiral<a class="headerlink" href="#plotting-the-double-spiral" title="Permalink to this headline">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_spiral_dataset</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_test</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                        <span class="n">xname</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;x1&quot;</span><span class="p">,</span> <span class="n">yname</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;x2&quot;</span><span class="p">,</span>
+                        <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Double Spiral Dataset&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot double spiral dataset with optional decision surface.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+    <span class="c1"># Decision surface (if provided)</span>
+    <span class="k">if</span> <span class="n">ds</span><span class="p">:</span>
+        <span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">)</span> <span class="o">=</span> <span class="n">ds</span>
+        <span class="n">cs</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                         <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;dodgerblue&#39;</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+    <span class="c1"># Training set</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train</span><span class="p">[:,</span> <span class="n">xname</span><span class="p">][</span><span class="n">y_train</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">],</span>
+               <span class="n">X_train</span><span class="p">[:,</span> <span class="n">yname</span><span class="p">][</span><span class="n">y_train</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">],</span>
+               <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Positive (train)&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_train</span><span class="p">[:,</span> <span class="n">xname</span><span class="p">][</span><span class="n">y_train</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">],</span>
+               <span class="n">X_train</span><span class="p">[:,</span> <span class="n">yname</span><span class="p">][</span><span class="n">y_train</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">],</span>
+               <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Negative (train)&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Test set (optional)</span>
+    <span class="k">if</span> <span class="n">X_test</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">y_test</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:,</span> <span class="n">xname</span><span class="p">][</span><span class="n">y_test</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">],</span>
+                   <span class="n">X_test</span><span class="p">[:,</span> <span class="n">yname</span><span class="p">][</span><span class="n">y_test</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">],</span>
+                   <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;dodgerblue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Positive (test)&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_test</span><span class="p">[:,</span> <span class="n">xname</span><span class="p">][</span><span class="n">y_test</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">],</span>
+                   <span class="n">X_test</span><span class="p">[:,</span> <span class="n">yname</span><span class="p">][</span><span class="n">y_test</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">],</span>
+                   <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Negative (test)&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Axes, legend, title</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="nb">range</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="nb">range</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.04</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center left&quot;</span><span class="p">,</span> <span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
