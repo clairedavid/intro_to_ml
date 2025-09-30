@@ -138,7 +138,7 @@ def feedforward(input_X, weights, biases):
     b1, b2, b3 = biases
 
     m  = len(input_X)
-    a0 = input_X.reshape((m, 1, -1))
+    a0 = input_X.reshape((m, -1, 1))
 
     # First layer
     z1 = ...
