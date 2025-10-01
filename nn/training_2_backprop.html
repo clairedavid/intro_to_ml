@@ -919,13 +919,13 @@ title="Print to PDF"
 <p class="admonition-title"><span class="caption-number">Definition 63 </span></p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> be functions. For all <span class="math notranslate nohighlight">\(𝑥\)</span> in the domain of <span class="math notranslate nohighlight">\(g\)</span> for which <span class="math notranslate nohighlight">\(g\)</span> is differentiable at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is differentiable at <span class="math notranslate nohighlight">\(g(x)\)</span>, the derivative of the composite function:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-67e3219d-a416-4b56-a97f-9e83ba9a1139">
-<span class="eqno">(98)<a class="headerlink" href="#equation-67e3219d-a416-4b56-a97f-9e83ba9a1139" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c9b3e0a3-db53-41a4-b8e1-697295787fad">
+<span class="eqno">(98)<a class="headerlink" href="#equation-c9b3e0a3-db53-41a4-b8e1-697295787fad" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h(x) = f(g(x)) 
 \end{equation}\]</div>
 <p>is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8607f02e-b03a-470b-b8e7-ab936c76272f">
-<span class="eqno">(99)<a class="headerlink" href="#equation-8607f02e-b03a-470b-b8e7-ab936c76272f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9535dd76-7506-46ad-89bf-e5f7369d52c6">
+<span class="eqno">(99)<a class="headerlink" href="#equation-9535dd76-7506-46ad-89bf-e5f7369d52c6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}} \;\cdot \;  \frac{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}}{\mathrm{d} \; x} = f'\left(g(x)\right) \;\cdot \; g'(x)
 \end{equation}\]</div>
 </section>
@@ -941,8 +941,8 @@ h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maro
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
 <p>What would be the chain rule for three functions?</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f6c9857e-56e2-4cf1-b742-ca0c7d9f9167">
-<span class="eqno">(100)<a class="headerlink" href="#equation-f6c9857e-56e2-4cf1-b742-ca0c7d9f9167" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a0c94998-d041-4b0a-ad97-cde1eb53284d">
+<span class="eqno">(100)<a class="headerlink" href="#equation-a0c94998-d041-4b0a-ad97-cde1eb53284d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 k(x) = h(f(g(x))) 
 \end{equation}\]</div>
 </div>
@@ -1134,7 +1134,7 @@ Using the chain rule as usual:</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-lminus2outerprodelementwiseall">
 <span class="eqno">(122)<a class="headerlink" href="#equation-lminus2outerprodelementwiseall" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
-&amp; \frac{\partial \text { Cost }}{\partial \; W^{(L-1)}} = \frac{1}{m} \sum_{i=1}^m \: \\[1ex] 
+&amp; \frac{\partial \text { Cost }}{\partial \; W^{(L-2)}} = \frac{1}{m} \sum_{i=1}^m \: \\[1ex] 
 &amp; \boldsymbol{a}^{(i, \: L-3)} \otimes \Biggr[ f'(\boldsymbol{z}^{(i, \: L-2)}) \: \odot \: \biggr[ W^{(L-1)} \Bigr[ f'(\boldsymbol{z}^{(i, \: L-1)}) \: \odot \: \bigr[ W^{(L)} \bigr[  f'(\boldsymbol{z}^{(i, \: L)}) \: \odot \: L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \bigr] \bigr] \Bigr] \biggr] \Biggr]
 \end{align*}\end{split}\]</div>
 <p>Can you start to see a pattern here? Compare the equation above with <a class="reference internal" href="#equation-dcostbeforelastsimpleeq">(119)</a>.</p>
@@ -1252,14 +1252,14 @@ Training data set <span class="math notranslate nohighlight">\(X\)</span> of <sp
 <p><strong>Step 0: Weight initialization</strong></p>
 <p><strong>Step 1: Forward propagation</strong><br />
 <span class="math notranslate nohighlight">\(\qquad \quad \bullet\)</span> get list of <span class="math notranslate nohighlight">\(m\)</span> predictions <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}}^{(i)}\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-eaca9c9b-5bb1-4d92-ab5c-62e86ae7c11c">
-<span class="eqno">(131)<a class="headerlink" href="#equation-eaca9c9b-5bb1-4d92-ab5c-62e86ae7c11c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-98381048-c110-4574-91f9-da2c599edb54">
+<span class="eqno">(131)<a class="headerlink" href="#equation-98381048-c110-4574-91f9-da2c599edb54" title="Permalink to this equation">#</a></span>\[\begin{equation}
  f(\boldsymbol{z}^{(i, \; L)}) = \boldsymbol{a}^{(i, \;L)} = \boldsymbol{\hat{y}}^{(i)}
 \end{equation}\]</div>
 <p><strong>Step 2: Backpropagation</strong><br />
 <span class="math notranslate nohighlight">\(\qquad \quad \bullet\)</span> get the cost:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a3d8da7f-a440-4d61-b363-ae9c55dc48e5">
-<span class="eqno">(132)<a class="headerlink" href="#equation-a3d8da7f-a440-4d61-b363-ae9c55dc48e5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-019b498c-0425-4173-b395-2f836a89a3b9">
+<span class="eqno">(132)<a class="headerlink" href="#equation-019b498c-0425-4173-b395-2f836a89a3b9" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Cost} =  \; \frac{1}{m} \; \sum_{i=1}^m \; L \biggl(\;f \Bigl( \;\boldsymbol{z}^{(i, \; L)}\Bigl), \boldsymbol{y}^{(i)} \biggl)\end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(\qquad \quad \bullet\)</span> get all errors:</p>
 <div class="math notranslate nohighlight" id="equation-summarybackproperrors">

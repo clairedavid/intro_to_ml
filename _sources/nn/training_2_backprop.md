@@ -325,7 +325,7 @@ Again with the index notations (and some math), we can work out the proper opera
 ```{math}
 :label: Lminus2outerprodelementwiseall
 \begin{align*}
-& \frac{\partial \text { Cost }}{\partial \; W^{(L-1)}} = \frac{1}{m} \sum_{i=1}^m \: \\[1ex] 
+& \frac{\partial \text { Cost }}{\partial \; W^{(L-2)}} = \frac{1}{m} \sum_{i=1}^m \: \\[1ex] 
 & \boldsymbol{a}^{(i, \: L-3)} \otimes \Biggr[ f'(\boldsymbol{z}^{(i, \: L-2)}) \: \odot \: \biggr[ W^{(L-1)} \Bigr[ f'(\boldsymbol{z}^{(i, \: L-1)}) \: \odot \: \bigr[ W^{(L)} \bigr[  f'(\boldsymbol{z}^{(i, \: L)}) \: \odot \: L^{\prime}(\boldsymbol{a}^{(i, \: L)}, \boldsymbol{y}^{(i)}) \bigr] \bigr] \Bigr] \biggr] \Biggr]
 \end{align*}
 ```
