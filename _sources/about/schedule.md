@@ -1,11 +1,10 @@
 # Schedule
 
-The table below shows a tentative weekly schedule for this course. There may be adjustements. The tutorials will run mostly during the afternoons so that you can learn at your own pace.
+The table below shows a tentative weekly schedule for this course. There may be adjustements. 
 
-&nbsp;  
-&nbsp;  
+&nbsp;
 
-```{image} ../images/schedule_ml_aims-sa-2025.png
+```{image} ../images/schedule_ml_aims-ca-2025.png
 :alt: SCHEDULE
 :width: 100%
 :align: center
