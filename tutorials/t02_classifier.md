@@ -256,36 +256,14 @@ Test your code frequently. To do so, you can assign dummy temporary values for t
 
 You can use again the `should_print_iteration` from the Snippet Zone sub-section {ref}`t1:app:pretty:print` in Tutorial 1.
 
-```{admonition} Subtlety with 2D arrays
-:class: warning
-You may compute some dot products resulting in a scalar. With 2D arrays, the single component of a “scalar” `(1,1)` NumPy array is still treated as a 2D array, and Python cannot access its value directly. To retrieve the actual number — for example, for printing — you need to call `.item()`, e.g. `my_1_x_1_array2d.item()`.
-```
 
-````{admonition} Note on Exit Conditions
-:class: note, dropdown
-
-We saw earlier that we ought to stop the gradient descent loop if the partial derivatives of the cost get close to zero. This can be implemented by checking the norm of the gradient and stopping once this magnitude (always positive, by construction) falls below a predefined threshold. This provides a good measure of convergence.
-
-However, the cost function may continue to decrease even when the gradients are small, potentially missing a better local minimum. To address this, you can perform another check at the end of each loop: stop when the change in cost between iterations drops below a threshold, for example:
-
-```python
-if abs(cost_train_current_iteration - cost_previous_iteration) < 1e-8:
-```
-This is just an example; you’ll need to adapt it to your own variables and, instead of hardcoding the value, define a tolerance parameter (e.g. `cost_tol`) before starting the loop. Such a condition is less sensitive to feature scaling and ensures you don’t stop too early just because the gradient is small while the cost is still decreasing.
-
-You can implement this dual stopping criterion:
-* gradient norm
-* cost change
-and observe the effect on convergence.
-
-````
 
 ```python
 # Hyperparameters
 alpha       = ...    # learning rate
 N           = ...    # maximum number of iterations
 epsilon     = 1e-6   # tolerance threshold for gradient norm (stopping criterion)
-cost_tol    = 1e-8   # tolerance threshold for cost drop (stop. criterion)
+cost_tol    = 1e-8   # tolerance threshold for cost drop (stopping criterion)
 cost_change = np.inf # initialize cost change for first iteration
 
 # Number of features + 1 (number of columns in X)
@@ -339,6 +317,75 @@ print('Optimized parameters:')
 for j in range(len(thetas)):
     print(f'\tParameter {j} = {thetas[j,0]:.4f}')
 ```
+
+```{admonition} Subtlety with 2D arrays
+:class: warning
+You may compute some dot products resulting in a scalar. With 2D arrays, the single component of a “scalar” `(1,1)` NumPy array is still treated as a 2D array, and Python cannot access its value directly. To retrieve the actual number — for example, for printing — you need to call `.item()`, e.g. `my_1_x_1_array2d.item()`.
+```
+
+````{admonition} Note on the exit conditions
+:class: note, dropdown
+
+We saw earlier that we ought to stop the gradient descent loop if the partial derivatives of the cost get close to zero. This can be implemented by checking the norm of the gradient and stopping once its magnitude (always positive, by construction) falls below a predefined threshold. This provides a good measure of convergence.
+
+However, the cost function may continue to decrease even when the gradients are small, potentially missing a better local minimum. To address this, you can perform another check at the end of each loop: stop when the change in cost between iterations drops below a threshold, for example:
+
+```python
+if abs(cost_train_current_iteration - cost_previous_iteration) < 1e-8:
+```
+This is just an example; you’ll need to adapt it to your own variables and, instead of hardcoding the value, define a tolerance parameter (e.g. `cost_tol`) before starting the loop. Such a condition is less sensitive to feature scaling and ensures you don’t stop too early just because the gradient is small while the cost is still decreasing.
+
+In practice, we often stop when __either__ the gradient becomes very small (parameters are barely moving), __or__ the cost stops changing (optimization has plateaued). However, if you want to be conservative and make sure you’re not stopping too early, you can require both conditions to hold. That is, stop only if the gradient is small __and__ the cost has stabilized.
+
+You can implement this dual stopping criterion and observe the effect on convergence.
+````
+
+````{admonition} If you are stuck with "grad_norm"
+:class: note, dropdown
+
+The gradient vector (we use here a more mathematical notation with $J$ for Jacobian, but this equivalent to the cost):
+
+```{math}
+\nabla_\theta J =
+\begin{bmatrix}
+\dfrac{\partial J}{\partial \theta_0} \\
+\dfrac{\partial J}{\partial \theta_1} \\
+\vdots \\
+\dfrac{\partial J}{\partial \theta_n}
+\end{bmatrix}
+```
+
+tells us how sensitive the cost $J$ is to each model parameter $\theta_j$.
+
+The gradient norm:
+```{math}
+\|\nabla_\theta J\|_2 = \sqrt{\sum_{j=0}^{n} \left(\dfrac{\partial J}{\partial \theta_j}\right)^2}
+```
+is a single scalar measuring the overall steepness of the cost surface.  
+You can print it as a single number to assess how “flat” your parameter space is near convergence.  
+
+
+__Hints__   
+1️⃣ The norm of a vector is the square root of its dot product.  
+2️⃣ The dot product of a NumPy vector `a` can be written as `a.T @ a`, where `.T` is the transpose and `@` is the matrix multiplication operator.  
+
+If you’re stuck calculating `grad_norm`, you can instead print each component of your gradient this way:
+
+```python
+    if should_print_iteration(iter_idx, 10, 100, 100):
+        print(
+            f"Iter {iter_idx:>4}\t"
+            f"θ₀ = {thetas[0,0]:>7.3f}\t∂J/∂θ₀ = {grad_cost_train[0,0]:>+8.4f}\t"
+            f"θ₁ = {thetas[1,0]:>7.3f}\t∂J/∂θ₁ = {grad_cost_train[1,0]:>+8.4f}\t"
+            f"θ₂ = {thetas[2,0]:>7.3f}\t∂J/∂θ₂ = {grad_cost_train[2,0]:>+8.4f}\t"
+            f"Train cost = {cost_train:.5e}\t"
+            f"Cost change = {cost_change:>+10.2e}\t"
+            f"Test cost = {cost_test:.5e}"
+        )
+```
+
+And make sure your exit conditions check that all partial derivatives are small before stopping!
+````
 
 If you're stuck, call the instructor or the teaching assistants and we will be happy to help you.
 
