@@ -1368,30 +1368,11 @@ title="Print to PDF"
 <p>Luckily a skeleton is provided. You will have to replace the statments <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">...</span> </code> by proper code. It will mostly consist of calling the functions you defined in the previous section.</p>
 <p>Test your code frequently. To do so, you can assign dummy temporary values for the variables you do not use yet, so that python knows they are defined and your code can run.</p>
 <p>You can use again the <code class="docutils literal notranslate"><span class="pre">should_print_iteration</span></code> from the Snippet Zone sub-section <a class="reference internal" href="t01_linear_regressor.html#t1-app-pretty-print"><span class="std std-ref">Pretty Printing</span></a> in Tutorial 1.</p>
-<div class="warning admonition">
-<p class="admonition-title">Subtlety with 2D arrays</p>
-<p>You may compute some dot products resulting in a scalar. With 2D arrays, the single component of a “scalar” <code class="docutils literal notranslate"><span class="pre">(1,1)</span></code> NumPy array is still treated as a 2D array, and Python cannot access its value directly. To retrieve the actual number — for example, for printing — you need to call <code class="docutils literal notranslate"><span class="pre">.item()</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">my_1_x_1_array2d.item()</span></code>.</p>
-</div>
-<div class="note dropdown admonition">
-<p class="admonition-title">Note on Exit Conditions</p>
-<p>We saw earlier that we ought to stop the gradient descent loop if the partial derivatives of the cost get close to zero. This can be implemented by checking the norm of the gradient and stopping once this magnitude (always positive, by construction) falls below a predefined threshold. This provides a good measure of convergence.</p>
-<p>However, the cost function may continue to decrease even when the gradients are small, potentially missing a better local minimum. To address this, you can perform another check at the end of each loop: stop when the change in cost between iterations drops below a threshold, for example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">cost_train_current_iteration</span> <span class="o">-</span> <span class="n">cost_previous_iteration</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-8</span><span class="p">:</span>
-</pre></div>
-</div>
-<p>This is just an example; you’ll need to adapt it to your own variables and, instead of hardcoding the value, define a tolerance parameter (e.g. <code class="docutils literal notranslate"><span class="pre">cost_tol</span></code>) before starting the loop. Such a condition is less sensitive to feature scaling and ensures you don’t stop too early just because the gradient is small while the cost is still decreasing.</p>
-<p>You can implement this dual stopping criterion:</p>
-<ul class="simple">
-<li><p>gradient norm</p></li>
-<li><p>cost change
-and observe the effect on convergence.</p></li>
-</ul>
-</div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hyperparameters</span>
 <span class="n">alpha</span>       <span class="o">=</span> <span class="o">...</span>    <span class="c1"># learning rate</span>
 <span class="n">N</span>           <span class="o">=</span> <span class="o">...</span>    <span class="c1"># maximum number of iterations</span>
 <span class="n">epsilon</span>     <span class="o">=</span> <span class="mf">1e-6</span>   <span class="c1"># tolerance threshold for gradient norm (stopping criterion)</span>
-<span class="n">cost_tol</span>    <span class="o">=</span> <span class="mf">1e-8</span>   <span class="c1"># tolerance threshold for cost drop (stop. criterion)</span>
+<span class="n">cost_tol</span>    <span class="o">=</span> <span class="mf">1e-8</span>   <span class="c1"># tolerance threshold for cost drop (stopping criterion)</span>
 <span class="n">cost_change</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span> <span class="c1"># initialize cost change for first iteration</span>
 
 <span class="c1"># Number of features + 1 (number of columns in X)</span>
@@ -1445,6 +1426,56 @@ and observe the effect on convergence.</p></li>
 <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">thetas</span><span class="p">)):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">Parameter </span><span class="si">{</span><span class="n">j</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">thetas</span><span class="p">[</span><span class="n">j</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Subtlety with 2D arrays</p>
+<p>You may compute some dot products resulting in a scalar. With 2D arrays, the single component of a “scalar” <code class="docutils literal notranslate"><span class="pre">(1,1)</span></code> NumPy array is still treated as a 2D array, and Python cannot access its value directly. To retrieve the actual number — for example, for printing — you need to call <code class="docutils literal notranslate"><span class="pre">.item()</span></code>, e.g. <code class="docutils literal notranslate"><span class="pre">my_1_x_1_array2d.item()</span></code>.</p>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">Note on the exit conditions</p>
+<p>We saw earlier that we ought to stop the gradient descent loop if the partial derivatives of the cost get close to zero. This can be implemented by checking the norm of the gradient and stopping once its magnitude (always positive, by construction) falls below a predefined threshold. This provides a good measure of convergence.</p>
+<p>However, the cost function may continue to decrease even when the gradients are small, potentially missing a better local minimum. To address this, you can perform another check at the end of each loop: stop when the change in cost between iterations drops below a threshold, for example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">cost_train_current_iteration</span> <span class="o">-</span> <span class="n">cost_previous_iteration</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-8</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>This is just an example; you’ll need to adapt it to your own variables and, instead of hardcoding the value, define a tolerance parameter (e.g. <code class="docutils literal notranslate"><span class="pre">cost_tol</span></code>) before starting the loop. Such a condition is less sensitive to feature scaling and ensures you don’t stop too early just because the gradient is small while the cost is still decreasing.</p>
+<p>In practice, we often stop when <strong>either</strong> the gradient becomes very small (parameters are barely moving), <strong>or</strong> the cost stops changing (optimization has plateaued). However, if you want to be conservative and make sure you’re not stopping too early, you can require both conditions to hold. That is, stop only if the gradient is small <strong>and</strong> the cost has stabilized.</p>
+<p>You can implement this dual stopping criterion and observe the effect on convergence.</p>
+</div>
+<div class="note dropdown admonition">
+<p class="admonition-title">If you are stuck with “grad_norm”</p>
+<p>The gradient vector (we use here a more mathematical notation with <span class="math notranslate nohighlight">\(J\)</span> for Jacobian, but this equivalent to the cost):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\nabla_\theta J =
+\begin{bmatrix}
+\dfrac{\partial J}{\partial \theta_0} \\
+\dfrac{\partial J}{\partial \theta_1} \\
+\vdots \\
+\dfrac{\partial J}{\partial \theta_n}
+\end{bmatrix}\end{split}\]</div>
+<p>tells us how sensitive the cost <span class="math notranslate nohighlight">\(J\)</span> is to each model parameter <span class="math notranslate nohighlight">\(\theta_j\)</span>.</p>
+<p>The gradient norm:</p>
+<div class="math notranslate nohighlight">
+\[\|\nabla_\theta J\|_2 = \sqrt{\sum_{j=0}^{n} \left(\dfrac{\partial J}{\partial \theta_j}\right)^2}\]</div>
+<p>is a single scalar measuring the overall steepness of the cost surface.<br />
+You can print it as a single number to assess how “flat” your parameter space is near convergence.</p>
+<p><strong>Hints</strong><br />
+1️⃣ The norm of a vector is the square root of its dot product.<br />
+2️⃣ The dot product of a NumPy vector <code class="docutils literal notranslate"><span class="pre">a</span></code> can be written as <code class="docutils literal notranslate"><span class="pre">a.T</span> <span class="pre">&#64;</span> <span class="pre">a</span></code>, where <code class="docutils literal notranslate"><span class="pre">.T</span></code> is the transpose and <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> is the matrix multiplication operator.</p>
+<p>If you’re stuck calculating <code class="docutils literal notranslate"><span class="pre">grad_norm</span></code>, you can instead print each component of your gradient this way:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">if</span> <span class="n">should_print_iteration</span><span class="p">(</span><span class="n">iter_idx</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Iter </span><span class="si">{</span><span class="n">iter_idx</span><span class="si">:</span><span class="s2">&gt;4</span><span class="si">}</span><span class="se">\t</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;θ₀ = </span><span class="si">{</span><span class="n">thetas</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;7.3f</span><span class="si">}</span><span class="se">\t</span><span class="s2">∂J/∂θ₀ = </span><span class="si">{</span><span class="n">grad_cost_train</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;+8.4f</span><span class="si">}</span><span class="se">\t</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;θ₁ = </span><span class="si">{</span><span class="n">thetas</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;7.3f</span><span class="si">}</span><span class="se">\t</span><span class="s2">∂J/∂θ₁ = </span><span class="si">{</span><span class="n">grad_cost_train</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;+8.4f</span><span class="si">}</span><span class="se">\t</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;θ₂ = </span><span class="si">{</span><span class="n">thetas</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;7.3f</span><span class="si">}</span><span class="se">\t</span><span class="s2">∂J/∂θ₂ = </span><span class="si">{</span><span class="n">grad_cost_train</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;+8.4f</span><span class="si">}</span><span class="se">\t</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Train cost = </span><span class="si">{</span><span class="n">cost_train</span><span class="si">:</span><span class="s2">.5e</span><span class="si">}</span><span class="se">\t</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Cost change = </span><span class="si">{</span><span class="n">cost_change</span><span class="si">:</span><span class="s2">&gt;+10.2e</span><span class="si">}</span><span class="se">\t</span><span class="s2">&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;Test cost = </span><span class="si">{</span><span class="n">cost_test</span><span class="si">:</span><span class="s2">.5e</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+<p>And make sure your exit conditions check that all partial derivatives are small before stopping!</p>
 </div>
 <p>If you’re stuck, call the instructor or the teaching assistants and we will be happy to help you.</p>
 </section>
