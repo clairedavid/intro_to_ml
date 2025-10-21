@@ -10,6 +10,9 @@ Generally speaking, an error is the gap between the prediction and the true valu
 ````{prf:definition}
 :label: residualDef
 A __residual__ is the difference between the actual and predicted value computed with respect to data samples used to train, validate and tune the model.
+```{math}
+r = y^\text{actual} - y^\text{predicted}
+```
 
 $\rightarrow$ _in-sample_ error
 ````
@@ -116,14 +119,14 @@ Measures the fraction of correct predictions among all predictions
 
 &nbsp;  
 __Precision, or Positive Predictive Value (PPV)__  
-Measures the fraction of true predictions among all __positive predictions__.
+Measures the fraction of true positive predictions among all __positive predictions__.
 \begin{equation}
 \text{Precision} = \frac{\text{True Positives}}{\text{All Positive Predictions}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}}
 \end{equation}
 
 &nbsp;  
 __Recall, or True Positive Rate (TPR)__  
-Measures the fraction of true predictions among all __true observations__.
+Measures the fraction of true positive predictions among all __true observations__.
 \begin{equation}
 \text{Recall} = \frac{\text{True Positives}}{\text{Actual Positives}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}
 \end{equation}

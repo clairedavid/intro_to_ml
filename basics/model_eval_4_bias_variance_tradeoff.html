@@ -937,14 +937,15 @@ In machine learning, we look for general patterns and compromises: a good algori
 <div class="proof definition admonition" id="regularizationdef">
 <p class="admonition-title"><span class="caption-number">Definition 39 </span></p>
 <section class="definition-content" id="proof-content">
-<p><strong>Regularization</strong> in machine learning is a processus consisting of adding constraints on a model’s parameters.</p>
+<p><strong>Regularization</strong> in machine learning is a process consisting of adding constraints on a model’s parameters.</p>
 </section>
 </div><p>The two main types of regularization techniques are the Ridge Regularization (also known as <a class="reference external" href="https://en.wikipedia.org/wiki/Tikhonov_regularization">Tikhonov regularization</a>, albeit the latter is more general) and the Lasso Regularization.</p>
 <section id="ridge-regression">
 <h3>Ridge Regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">#</a></h3>
 <p>The Ridge regression is a linear regression with an additional regularization term added to the cost function:</p>
 <div class="math notranslate nohighlight" id="equation-ridgeeq">
-<span class="eqno">(39)<a class="headerlink" href="#equation-ridgeeq" title="Permalink to this equation">#</a></span>\[ J(\theta) = \frac{1}{2m} \left[ \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right)^2 + {\color{Maroon}\lambda \sum_{j=1}^n \theta_j^2} \right]\]</div>
+<span class="eqno">(39)<a class="headerlink" href="#equation-ridgeeq" title="Permalink to this equation">#</a></span>\[C^{\text{reg}}(\theta) = \frac{1}{2m} \sum_{i=1}^{m} \big( \hat{y}^{(i)} - y^{(i)} \big)^2
++ {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n \theta_j^2}\]</div>
 <p>The hyperparameter <span class="math notranslate nohighlight">\(\lambda\)</span> controls the degree of regularization. If <span class="math notranslate nohighlight">\(\lambda = 0\)</span>, the regularization term vanishes and we have a non-regularized linear regression. You can see the penalty imposed by the term <span class="math notranslate nohighlight">\(\lambda\)</span> will force the parameters <span class="math notranslate nohighlight">\(\theta\)</span> to be as small as possible; this helps avoiding overfitting. If <span class="math notranslate nohighlight">\(\lambda\)</span> gets very large, the parameters can be so shrinked that the model becomes over-simplified to a straight line and thus underfit the data.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -959,12 +960,18 @@ In machine learning, we look for general patterns and compromises: a good algori
 <span class="eqno">(40)<a class="headerlink" href="#equation-regl2weq" title="Permalink to this equation">#</a></span>\[\lambda \left(\left\| \vec{w} \right\|_2\right)^2\]</div>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>The <span class="math notranslate nohighlight">\(\ell_2\)</span> norm is the Euclidian norm <span class="math notranslate nohighlight">\(\left\| x \right\|_2 = \sqrt{x_0^2 + x_1^2 + \cdots + x_n^2}\)</span>.</p>
+<p>The <span class="math notranslate nohighlight">\(\ell_2\)</span> norm is the Euclidian norm <span class="math notranslate nohighlight">\(\|\boldsymbol{x}\|_2 = \sqrt{\sum_{i=0}^{n} x_i^2}\)</span>.</p>
 </aside>
 <p>with <span class="math notranslate nohighlight">\(\left\| \vec{w} \right\|_2\)</span> the <span class="math notranslate nohighlight">\(\ell_2\)</span> norm of the weight vector.</p>
 <p>For logistic regression, the regularized cost function becomes:</p>
 <div class="math notranslate nohighlight" id="equation-ridgelogeq">
-<span class="eqno">(41)<a class="headerlink" href="#equation-ridgelogeq" title="Permalink to this equation">#</a></span>\[ C(\theta) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; y^{(i)} \log( h_\theta(x^{(i)} )) \;+\; (1- y^{(i)}) \log( 1 - h_\theta(x^{(i)} )) \;\;\right] + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n \theta_j^2}\]</div>
+<span class="eqno">(41)<a class="headerlink" href="#equation-ridgelogeq" title="Permalink to this equation">#</a></span>\[C^{\text{reg}}(\theta) = - \frac{1}{m} \sum_{i=1}^m \left[ \;\;
+y^{(i)} \log\big( \hat{y}^{(i)} \big)
+\;+\;
+(1 - y^{(i)}) \log\big( 1 - \hat{y}^{(i)} \big)
+\;\;\right]
++ {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n \theta_j^2}\]</div>
+<p>This is called L2-regularized logistic regression, or sometimes just ridge logistic regression.</p>
 </section>
 <section id="lasso-regularization">
 <span id="class-algs-reg-lasso"></span><h3>Lasso Regularization<a class="headerlink" href="#lasso-regularization" title="Permalink to this headline">#</a></h3>
@@ -974,7 +981,7 @@ In machine learning, we look for general patterns and compromises: a good algori
 </aside>
 <p>Lasso stands for least absolute shrinkage and selection operator. Behind the long acronym is a regularization of the linear regression using the <span class="math notranslate nohighlight">\(\ell_1\)</span> norm. We denote Cost(<span class="math notranslate nohighlight">\(\theta\)</span>) the cost function, i.e. either the Mean Squared Error for linear regression or the cross-entropy loss function <a class="reference internal" href="log_reg_3_cost_function.html#equation-costfunctionlogreg">(19)</a> for logistic regression. The lasso regression cost function is</p>
 <div class="math notranslate nohighlight" id="equation-lassocostf">
-<span class="eqno">(42)<a class="headerlink" href="#equation-lassocostf" title="Permalink to this equation">#</a></span>\[C(\theta) = \text{Cost(}{\theta}\text{)}  + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n | \theta_j | }\]</div>
+<span class="eqno">(42)<a class="headerlink" href="#equation-lassocostf" title="Permalink to this equation">#</a></span>\[C^{\text{reg}}(\theta) = \text{Cost(}{\theta}\text{)}  + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n | \theta_j | }\]</div>
 <p>The regularizing term uses the <span class="math notranslate nohighlight">\(\ell_1\)</span> norm of the weight vector: <span class="math notranslate nohighlight">\(\left\| \vec{w} \right\|_1\)</span>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1026,7 +1033,7 @@ In machine learning, we look for general patterns and compromises: a good algori
 <section class="definition-content" id="proof-content">
 <p>The <strong>variance</strong> is a measure of how sensitive the model’s predictions are to random fluctuations in the training data.</p>
 <div class="math notranslate nohighlight" id="equation-vareq">
-<span class="eqno">(44)<a class="headerlink" href="#equation-vareq" title="Permalink to this equation">#</a></span>\[\text{Variance}(x) = \mathbb{E}\Big[(\hat{f}_{\mathcal{D}}(x) - \mathbb{E}[\hat{f}_{\mathcal{D}}(x)])^2\Big]\]</div>
+<span class="eqno">(44)<a class="headerlink" href="#equation-vareq" title="Permalink to this equation">#</a></span>\[\text{Variance}(x) = \mathbb{E} \Bigl[ \bigl( \hat{f}_{\mathcal{D}}(x) - \mathbb{E}[\hat{f}_{\mathcal{D}}(x)] \bigr)^2 \Bigr]\]</div>
 </section>
 </div><p>As its name suggest, a model incorporating fluctuations in its design will change, aka <em>vary</em>, as soon as it is presented with new data (fluctuating differently). Variance is about the instability of the model due to training data variability.</p>
 <p>A model with high variance is likely to overfit the data.</p>
@@ -1112,13 +1119,13 @@ Bias and variance are defined <em>pointwise</em>.</p>
 <p>The true function <span class="math notranslate nohighlight">\(f(x)\)</span> defines the relationship between <span class="math notranslate nohighlight">\(X\)</span> and the targets <span class="math notranslate nohighlight">\(y\)</span>. But there will be some deviation due to noise. We can model this with an error term <span class="math notranslate nohighlight">\(\epsilon\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-yxerroreq">
 <span class="eqno">(47)<a class="headerlink" href="#equation-yxerroreq" title="Permalink to this equation">#</a></span>\[y = f(x) + \epsilon\]</div>
-<p>We assumed it is normally distributed and with a standard deviation of <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+<p>We assume it is normally distributed and with a standard deviation of <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
 </div>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Hint on how to start</p>
 <p>Start by writing the expression of an expectation of the error:</p>
 <div class="math notranslate nohighlight" id="equation-errorstarteq">
-<span class="eqno">(48)<a class="headerlink" href="#equation-errorstarteq" title="Permalink to this equation">#</a></span>\[\text{Expected Test Error} = \mathbb{E} \Big[ y^\text{test} -  \hat{f}_\mathcal{D}(x^\text{test})\Big]\]</div>
+<span class="eqno">(48)<a class="headerlink" href="#equation-errorstarteq" title="Permalink to this equation">#</a></span>\[\text{Expected Squared Test Error} = \text{Test MSE} = \mathbb{E} \Big[ \big(y^\text{test} - \hat{f}_\mathcal{D}(x^\text{test})\big)^2 \Big]\]</div>
 <p>For the derivation, you can omit the ‘test’ upperscript to lighten the equations a bit.</p>
 <p>Now? Expand this expression and use the properties you know about expectations and variances…</p>
 </div>

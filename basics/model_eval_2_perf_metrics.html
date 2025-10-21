@@ -834,6 +834,8 @@ title="Print to PDF"
 <p class="admonition-title"><span class="caption-number">Definition 25 </span></p>
 <section class="definition-content" id="proof-content">
 <p>A <strong>residual</strong> is the difference between the actual and predicted value computed with respect to data samples used to train, validate and tune the model.</p>
+<div class="math notranslate nohighlight">
+\[r = y^\text{actual} - y^\text{predicted}\]</div>
 <p><span class="math notranslate nohighlight">\(\rightarrow\)</span> <em>in-sample</em> error</p>
 </section>
 </div><p>It is always a good practice to make a scatter plot of all the residuals with respect to the independent variable values; they should be randomly distributed on a band symmetrically centered at zero. If not, this means the chosen model is not appropriate to correctly fit the data.</p>
@@ -902,8 +904,8 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p class="admonition-title"><span class="caption-number">Definition 29 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>root mean squared error (RMSE)</strong> is the square root of the mean squared error:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-111b4465-eb78-48e3-a7a0-147f5d4f745b">
-<span class="eqno">(30)<a class="headerlink" href="#equation-111b4465-eb78-48e3-a7a0-147f5d4f745b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-187ead75-8ea5-4cf0-9b52-9392c2c3ad3f">
+<span class="eqno">(30)<a class="headerlink" href="#equation-187ead75-8ea5-4cf0-9b52-9392c2c3ad3f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{RMSE} = \sqrt{ \frac{\sum_{i=1}^N (y^\text{pred} - y^\text{obs} )^2 }{ N } }
 \end{equation}\]</div>
 </section>
@@ -919,29 +921,29 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p> <br />
 <strong>Accuracy</strong><br />
 Measures the fraction of correct predictions among all predictions</p>
-<div class="amsmath math notranslate nohighlight" id="equation-88a61a49-beb4-4a1f-bd11-647500b44bfc">
-<span class="eqno">(31)<a class="headerlink" href="#equation-88a61a49-beb4-4a1f-bd11-647500b44bfc" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1a290582-f2e1-42b5-83c1-a920726dc26f">
+<span class="eqno">(31)<a class="headerlink" href="#equation-1a290582-f2e1-42b5-83c1-a920726dc26f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Accuracy} = \frac{\text{True predictions}}{\text{All predictions}} = \frac{\text{TP + TN}}{\text{TP + TN + FP + FN}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Precision, or Positive Predictive Value (PPV)</strong><br />
-Measures the fraction of true predictions among all <strong>positive predictions</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-822a3886-e7d3-4fef-b9df-508ef46fde4e">
-<span class="eqno">(32)<a class="headerlink" href="#equation-822a3886-e7d3-4fef-b9df-508ef46fde4e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+Measures the fraction of true positive predictions among all <strong>positive predictions</strong>.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-436323ac-b14b-4bfd-b85e-4d8b3246980a">
+<span class="eqno">(32)<a class="headerlink" href="#equation-436323ac-b14b-4bfd-b85e-4d8b3246980a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Precision} = \frac{\text{True Positives}}{\text{All Positive Predictions}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Recall, or True Positive Rate (TPR)</strong><br />
-Measures the fraction of true predictions among all <strong>true observations</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c18ccbb0-e2cf-47c7-a9ca-5b60eedd6aed">
-<span class="eqno">(33)<a class="headerlink" href="#equation-c18ccbb0-e2cf-47c7-a9ca-5b60eedd6aed" title="Permalink to this equation">#</a></span>\[\begin{equation}
+Measures the fraction of true positive predictions among all <strong>true observations</strong>.</p>
+<div class="amsmath math notranslate nohighlight" id="equation-6a2de7d6-b812-43f2-812f-c7bf78e72550">
+<span class="eqno">(33)<a class="headerlink" href="#equation-6a2de7d6-b812-43f2-812f-c7bf78e72550" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Recall} = \frac{\text{True Positives}}{\text{Actual Positives}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>F-Score, or F1</strong><br />
 Describes the balance between Precision and Recall. It is the harmonic mean of the two:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-12445e39-77a2-41ee-989e-ccafdce383f2">
-<span class="eqno">(34)<a class="headerlink" href="#equation-12445e39-77a2-41ee-989e-ccafdce383f2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-de1893b6-18e2-41f6-8735-ecde6ebc49e7">
+<span class="eqno">(34)<a class="headerlink" href="#equation-de1893b6-18e2-41f6-8735-ecde6ebc49e7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{F1} =2 \; \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
 \end{equation}\]</div>
 </section>

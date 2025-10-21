@@ -790,35 +790,35 @@ title="Print to PDF"
 <section id="ingredients-to-roc">
 <h2>Ingredients to ROC<a class="headerlink" href="#ingredients-to-roc" title="Permalink to this headline">#</a></h2>
 <p>Those elements are concepts previously encountered, yet but baring other names: the <strong>score</strong> and <strong>decision threshold</strong>.</p>
-<p>We saw the classification is done using the output of the sigmoid function and a decision boundary of <span class="math notranslate nohighlight">\(y=0.5\)</span> (see <a class="reference internal" href="log_reg_2_sigmoid.html#decBoundDef">Definition 17</a> in section <a class="reference internal" href="log_reg_2_sigmoid.html#class-sigmoid"><span class="std std-ref">What is the Sigmoid Function?</span></a>). Sometimes the classifier’s output is also called <em>score</em>, aka an estimation of probability, and the decision boundary can be also referred to <em>decision threshold</em>. It’s a cut value above which a data sample is predicted as a signal event (<span class="math notranslate nohighlight">\(y=1\)</span>) and below which it is classified as background (<span class="math notranslate nohighlight">\(y=1\)</span>). We chose <span class="math notranslate nohighlight">\(y^\text{thres.}=0.5\)</span> to cut our sigmoid half way through its output range, but for building a ROC curve, we will vary this decision threshold.</p>
+<p>We saw the classification is done using the output of the sigmoid function and a decision boundary of <span class="math notranslate nohighlight">\(y=0.5\)</span> (see <a class="reference internal" href="log_reg_2_sigmoid.html#decBoundDef">Definition 17</a> in section <a class="reference internal" href="log_reg_2_sigmoid.html#class-sigmoid"><span class="std std-ref">What is the Sigmoid Function?</span></a>). Sometimes the classifier’s output is also called <em>score</em>, aka an estimation of probability, and the decision boundary can be also referred to <em>decision threshold</em>. It’s a cut value above which a data sample is predicted as a signal event (<span class="math notranslate nohighlight">\(y=1\)</span>) and below which it is classified as background (<span class="math notranslate nohighlight">\(y=0\)</span>). We chose <span class="math notranslate nohighlight">\(y^\text{thres.}=0.5\)</span> to cut our sigmoid half way through its output range, but for building a ROC curve, we will vary this decision threshold.</p>
 <p>Now let’s recall (pun intended) the True Positive Rate that was defined above in <a class="reference internal" href="model_eval_2_perf_metrics.html#errormetricsclassdef">Definition 30</a>, but let’s write it again for convenience and add other metrics:</p>
 <div class="proof definition admonition" id="tprfprdef">
 <p class="admonition-title"><span class="caption-number">Definition 32 </span></p>
 <section class="definition-content" id="proof-content">
 <p> <br />
 <strong>True Positive Rate (TPR)</strong>, also called <strong>recall</strong> and <strong>sensitivity</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-ab0fda1f-ff9c-46ac-b57a-2c9b5980859f">
-<span class="eqno">(35)<a class="headerlink" href="#equation-ab0fda1f-ff9c-46ac-b57a-2c9b5980859f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-eb65061a-a034-4add-b240-2b2aa2e08fcb">
+<span class="eqno">(35)<a class="headerlink" href="#equation-eb65061a-a034-4add-b240-2b2aa2e08fcb" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TPR} = \frac{\text{True Positives}}{\text{Actual Positives}} = \frac{\text{True Positives}}{\text{True Positive} + \text{False Negative}}
 \end{equation}\]</div>
 <p> <br />
 <strong>True Negative Rate (TNR)</strong>, also called <strong>specificity</strong></p>
 <p>Ratio of negative instances correctly classified as negative.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6d27b455-aa15-4e2a-b165-083c49ed6a0d">
-<span class="eqno">(36)<a class="headerlink" href="#equation-6d27b455-aa15-4e2a-b165-083c49ed6a0d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8715e643-56dc-497a-a310-4df8b3960d03">
+<span class="eqno">(36)<a class="headerlink" href="#equation-8715e643-56dc-497a-a310-4df8b3960d03" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TNR} = \frac{\text{True Negatives}}{\text{Actual Negatives}} = \frac{\text{True Negatives}}{\text{True Negatives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>False Positive Rate (FPR)</strong></p>
 <p>Ratio of negative instances that are incorrectly classified as positive.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d937ffbc-0e3e-4020-94b8-04df05d9d230">
-<span class="eqno">(37)<a class="headerlink" href="#equation-d937ffbc-0e3e-4020-94b8-04df05d9d230" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b8f67a52-20ea-4db4-9e97-5921029f8f80">
+<span class="eqno">(37)<a class="headerlink" href="#equation-b8f67a52-20ea-4db4-9e97-5921029f8f80" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = \frac{\text{False Positives}}{\text{Actual Negatives}} = \frac{\text{False Positives}}{\text{True Negatives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 The False Positive Rate (FPR) is equal to:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-aeab9c9c-2ec4-4d50-ab7b-8683c9079ecc">
-<span class="eqno">(38)<a class="headerlink" href="#equation-aeab9c9c-2ec4-4d50-ab7b-8683c9079ecc" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-227e70e1-5c07-4010-8188-4f5f3e7ba5da">
+<span class="eqno">(38)<a class="headerlink" href="#equation-227e70e1-5c07-4010-8188-4f5f3e7ba5da" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = 1 - \text{TNR} = 1 - \text{specificity}
 \end{equation}\]</div>
 </section>
