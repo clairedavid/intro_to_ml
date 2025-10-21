@@ -61,7 +61,7 @@ In {numref}`modEval_underoverfit`, the model on the right that overfits the data
 
 ````{prf:definition}
 :label: regularizationdef
-__Regularization__ in machine learning is a processus consisting of adding constraints on a model's parameters.  
+__Regularization__ in machine learning is a process consisting of adding constraints on a model's parameters.  
 ````
 
 The two main types of regularization techniques are the Ridge Regularization (also known as [Tikhonov regularization](https://en.wikipedia.org/wiki/Tikhonov_regularization), albeit the latter is more general) and the Lasso Regularization. 
@@ -70,7 +70,8 @@ The two main types of regularization techniques are the Ridge Regularization (al
 The Ridge regression is a linear regression with an additional regularization term added to the cost function:
 ```{math}
 :label: ridgeeq
- J(\theta) = \frac{1}{2m} \left[ \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right)^2 + {\color{Maroon}\lambda \sum_{j=1}^n \theta_j^2} \right]
+C^{\text{reg}}(\theta) = \frac{1}{2m} \sum_{i=1}^{m} \big( \hat{y}^{(i)} - y^{(i)} \big)^2
++ {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n \theta_j^2}
 ```
 The hyperparameter $\lambda$ controls the degree of regularization. If $\lambda = 0$, the regularization term vanishes and we have a non-regularized linear regression. You can see the penalty imposed by the term $\lambda$ will force the parameters $\theta$ to be as small as possible; this helps avoiding overfitting. If $\lambda$ gets very large, the parameters can be so shrinked that the model becomes over-simplified to a straight line and thus underfit the data.
 
@@ -88,15 +89,22 @@ In the litterature, the parameters are denoted with $b$ for the offset (bias) an
 \lambda \left(\left\| \vec{w} \right\|_2\right)^2
 ```
 ````{margin}
-The $\ell_2$ norm is the Euclidian norm $\left\| x \right\|_2 = \sqrt{x_0^2 + x_1^2 + \cdots + x_n^2}$.
+The $\ell_2$ norm is the Euclidian norm $\|\boldsymbol{x}\|_2 = \sqrt{\sum_{i=0}^{n} x_i^2}$.
 ````
 with $\left\| \vec{w} \right\|_2$ the $\ell_2$ norm of the weight vector.
 
 For logistic regression, the regularized cost function becomes:
 ```{math}
 :label: ridgelogeq
- C(\theta) = - \frac{1}{m} \sum^m_{i=1} \left[ \;\; y^{(i)} \log( h_\theta(x^{(i)} )) \;+\; (1- y^{(i)}) \log( 1 - h_\theta(x^{(i)} )) \;\;\right] + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n \theta_j^2}
+C^{\text{reg}}(\theta) = - \frac{1}{m} \sum_{i=1}^m \left[ \;\;
+y^{(i)} \log\big( \hat{y}^{(i)} \big)
+\;+\;
+(1 - y^{(i)}) \log\big( 1 - \hat{y}^{(i)} \big)
+\;\;\right]
++ {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n \theta_j^2}
 ```
+This is called L2-regularized logistic regression, or sometimes just ridge logistic regression.
+
 (class:algs:reg:lasso)=
 ### Lasso Regularization
 ````{margin}
@@ -105,7 +113,7 @@ The $\ell_1$ norm is the sum of the magnitudes of the vectors. It is also called
 Lasso stands for least absolute shrinkage and selection operator. Behind the long acronym is a regularization of the linear regression using the $\ell_1$ norm. We denote Cost($\theta$) the cost function, i.e. either the Mean Squared Error for linear regression or the cross-entropy loss function {eq}`costFunctionLogReg` for logistic regression. The lasso regression cost function is
 ```{math}
 :label: lassoCostF
-C(\theta) = \text{Cost(}{\theta}\text{)}  + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n | \theta_j | }
+C^{\text{reg}}(\theta) = \text{Cost(}{\theta}\text{)}  + {\color{Maroon}\frac{\lambda}{2m} \sum_{j=1}^n | \theta_j | }
 ```
 The regularizing term uses the $\ell_1$ norm of the weight vector: $\left\| \vec{w} \right\|_1$.
 
@@ -169,7 +177,7 @@ The __variance__ is a measure of how sensitive the model's predictions are to ra
 
 ```{math}
 :label: vareq
-\text{Variance}(x) = \mathbb{E}\Big[(\hat{f}_{\mathcal{D}}(x) - \mathbb{E}[\hat{f}_{\mathcal{D}}(x)])^2\Big]
+\text{Variance}(x) = \mathbb{E} \Bigl[ \bigl( \hat{f}_{\mathcal{D}}(x) - \mathbb{E}[\hat{f}_{\mathcal{D}}(x)] \bigr)^2 \Bigr]
 ```
 ````
 
@@ -279,7 +287,7 @@ The true function $f(x)$ defines the relationship between $X$ and the targets $y
 y = f(x) + \epsilon
 ```
 
-We assumed it is normally distributed and with a standard deviation of $\sigma$.
+We assume it is normally distributed and with a standard deviation of $\sigma$.
 ````
 
 ````{admonition} Hint on how to start
@@ -287,7 +295,7 @@ We assumed it is normally distributed and with a standard deviation of $\sigma$.
 Start by writing the expression of an expectation of the error:
 ```{math}
 :label: errorstarteq
-\text{Expected Test Error} = \mathbb{E} \Big[ y^\text{test} -  \hat{f}_\mathcal{D}(x^\text{test})\Big]
+\text{Expected Squared Test Error} = \text{Test MSE} = \mathbb{E} \Big[ \big(y^\text{test} - \hat{f}_\mathcal{D}(x^\text{test})\big)^2 \Big]
 ```
 For the derivation, you can omit the 'test' upperscript to lighten the equations a bit. 
 

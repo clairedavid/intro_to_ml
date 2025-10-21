@@ -5,7 +5,7 @@ There is in machine learning a very convenient visual to not only see the perfor
 ## Ingredients to ROC
 Those elements are concepts previously encountered, yet but baring other names: the __score__ and __decision threshold__.
 
-We saw the classification is done using the output of the sigmoid function and a decision boundary of $y=0.5$ (see {prf:ref}`decBoundDef` in section {ref}`class:sigmoid`). Sometimes the classifier's output is also called _score_, aka an estimation of probability, and the decision boundary can be also referred to _decision threshold_. It's a cut value above which a data sample is predicted as a signal event ($y=1$) and below which it is classified as background ($y=1$). We chose $y^\text{thres.}=0.5$ to cut our sigmoid half way through its output range, but for building a ROC curve, we will vary this decision threshold.
+We saw the classification is done using the output of the sigmoid function and a decision boundary of $y=0.5$ (see {prf:ref}`decBoundDef` in section {ref}`class:sigmoid`). Sometimes the classifier's output is also called _score_, aka an estimation of probability, and the decision boundary can be also referred to _decision threshold_. It's a cut value above which a data sample is predicted as a signal event ($y=1$) and below which it is classified as background ($y=0$). We chose $y^\text{thres.}=0.5$ to cut our sigmoid half way through its output range, but for building a ROC curve, we will vary this decision threshold.
 
 Now let's recall (pun intended) the True Positive Rate that was defined above in {prf:ref}`errormetricsclassdef`, but let's write it again for convenience and add other metrics:
 

@@ -118,7 +118,7 @@ You should be able to print a list of costs with values identical to the ones yo
 
 __Residuals__  
 There will be another handy function to code. Recall the derivative of the cost function. It contains the difference between the predicted value and the observed one, without squaring them. This difference has the technical name of “residual”.  
-Write another function `get_residuals(...)` computing the residuals, which is common term in both partial derivatives of the cost, $\frac{\partial C(\boldsymbol{\theta})}{\partial \theta_0}$ and $\frac{\partial C(\boldsymbol{\theta})}{\partial \theta_1}$.
+Write another function `get_residuals(...)` computing the residuals, which are a common term in both partial derivatives of the cost, $\frac{\partial C(\boldsymbol{\theta})}{\partial \theta_0}$ and $\frac{\partial C(\boldsymbol{\theta})}{\partial \theta_1}$.
 
 ☝️ Test it! Try to write some code to make sure your function works and compute the right things.
 
