@@ -74,14 +74,14 @@ y^{(m)}\end{pmatrix}
 
 __Hyperparameters__  
 * Max Depth 
-* Minimum sample split
-* Minimum samples per leaf,
-* Maximum leaf nodes  
+* Minimum sample per split
+* Minimum samples per leaf
+* Maximum number of leaf nodes  
 (non-exhaustive list)
 
 
 __Outputs__  
-A collection on decision boundaries segmenting the $j$ feature space.
+A collection on decision boundaries partitioning the feature space.
 
 
 __Initialization:__ at the root node
@@ -89,24 +89,29 @@ __Initialization:__ at the root node
 
 __STEP 1: THRESHOLD COMPUTATION__:  
 
-__For__ each feature $j$ from 1 to $n$:  
+__For__ each feature $j = 1, \ldots, n$ :  
+$\;\;\;\;\;\;\;$ __For__ each candidate threshold $t_j$ scanning the range $x^\text{min}_j$ to $x^\text{max}_j$:  
+$\;\;\;\;\;\;\;\;\;\;\;\;\;\;$ Compute the cost function $C(j, t_j)$  
 &nbsp;  
-$\;\;\;$  __For__ a value of $t_j$ scanning the range $x^\text{min}_j$ to $x^\text{max}_j$:  
-&nbsp;  
-$\;\;\;\;\;\; \rightarrow$ Compute the cost function $C(j, t_j)$  
-&nbsp;  
-$\;\;\;\;\;\; \rightarrow$ Find the pair $(j, t_j)$ that produces the purest subsets, i.e. so that it minimizes:  
+$\;\;\;\;\;\;\;$ Find for this feature the threshold $t_j^*$ associated to the minimum cost:
+
 \begin{equation}
-\min_{(j, \: t_j)} C(j, t_j)
+t_j^* = \arg\min_{t_j} C(j, t_j)
+\end{equation}
+
+After scanning all features $j$, find the tuple $(j^{\text{cut}}, t_{j^{\text{cut}}}^*)$ that minimizes:  
+\begin{equation}
+(j^{\text{cut}}, t_{j^{\text{cut}}}^*) = \arg\min_{j,\, t_j^*} C(j, t_j^*)
 \end{equation}
 
 __STEP 2: BRANCHING__:  
-Split the dataset along the feature $j$ using the threshold $t_j$ into two subsequent new nodes.  
+Split the dataset along the feature $j^{\text{cut}}$ using the threshold $t_{j^{\text{cut}}}^*$ into two subsets  
+(left and right child nodes)
 
 Repeat Step 1 at each new node.
 
 __Exit conditions__  
-At least one condition on one of the hyperparameters is fullfilled 
+Stop when at least one of the hyperparameter constraints is satisfied.
 
 ````
 
