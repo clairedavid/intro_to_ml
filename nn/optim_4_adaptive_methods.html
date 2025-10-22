@@ -832,11 +832,11 @@ AdaGrad performs well on simple problem, like linear regression. With neural net
 <h2>RMSProp<a class="headerlink" href="#rmsprop" title="Permalink to this headline">#</a></h2>
 <p>RMSProp stands for Root Mean Square Propagation. It works the same as AdaGrad except that it keeps track of an exponentially decaying average of past squared gradients:</p>
 <div class="math notranslate nohighlight" id="equation-rmspropeq">
-<span class="eqno">(138)<a class="headerlink" href="#equation-rmspropeq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+<span class="eqno">(139)<a class="headerlink" href="#equation-rmspropeq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
 \boldsymbol{s} \; &amp;\leftarrow \; \beta\boldsymbol{s}  \;+\;  (1 - \beta) \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \;\otimes \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \\[2ex]
 \boldsymbol{W} \; &amp;\leftarrow \; \boldsymbol{W} - \alpha \; \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \oslash \sqrt{\boldsymbol{s} + \epsilon}
 \end{align*}\end{split}\]</div>
-<p>with the decay rate <span class="math notranslate nohighlight">\(\beta\)</span>, between 0 and 1, yet typically set to 0.9. One might ask: what is the point to introduce an extra hyparameter? It turns out the default value works well in most cases and does not require tuning. What the update in the expressions <a class="reference internal" href="#equation-rmspropeq">(138)</a> shows is a recursive way of computing a so-called Exponential Moving Average (EMA). In other words, <span class="math notranslate nohighlight">\(\beta\)</span> acts as a constant smoothing factor, representing the degree of weighting increase. A lower <span class="math notranslate nohighlight">\(\beta\)</span> discounts older observations faster. A higher <span class="math notranslate nohighlight">\(\beta\)</span> gives more weight to the previous gradient, a bit less weight to the previous previous gradient, etc.</p>
+<p>with the decay rate <span class="math notranslate nohighlight">\(\beta\)</span>, between 0 and 1, yet typically set to 0.9. One might ask: what is the point to introduce an extra hyparameter? It turns out the default value works well in most cases and does not require tuning. What the update in the expressions <a class="reference internal" href="#equation-rmspropeq">(139)</a> shows is a recursive way of computing a so-called Exponential Moving Average (EMA). In other words, <span class="math notranslate nohighlight">\(\beta\)</span> acts as a constant smoothing factor, representing the degree of weighting increase. A lower <span class="math notranslate nohighlight">\(\beta\)</span> discounts older observations faster. A higher <span class="math notranslate nohighlight">\(\beta\)</span> gives more weight to the previous gradient, a bit less weight to the previous previous gradient, etc.</p>
 <p>For more elaborated tasks than the simple linear case, RMSProp is robust. It reigned until dethrowned by a newcomer called Adam. Before introducing Adam, let’s first cover the notion of momentum optimization.</p>
 </section>
 <section id="momentum-optimization">
@@ -862,7 +862,7 @@ AdaGrad performs well on simple problem, like linear regression. With neural net
 <p>Adam stands for <em>Adaptative moment estimation</em>. It merges RMSProp with momentum optimization. Recall that RMSProp uses an exponentially decaying average of past squared gradients, while momentum does the same except with gradients (not squared).</p>
 <p>Mathematically:</p>
 <div class="math notranslate nohighlight" id="equation-adameq">
-<span class="eqno">(139)<a class="headerlink" href="#equation-adameq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
+<span class="eqno">(140)<a class="headerlink" href="#equation-adameq" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align*}
 \boldsymbol{m} \; &amp;\leftarrow \; \beta_1 \boldsymbol{m} \; - \; (1 - \beta_1) \; \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}}\\[1ex]
 \boldsymbol{s} \; &amp;\leftarrow \; \; \beta_2\boldsymbol{s}  \;+\;  (1 - \beta_2) \; \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \otimes  \frac{\partial J\left(\boldsymbol{W}\right)}{\partial \boldsymbol{W}} \\[1ex]
 \boldsymbol{\widehat{m}} &amp;\leftarrow \frac{\boldsymbol{m}}{1 - \beta_1^t} \\[1ex]

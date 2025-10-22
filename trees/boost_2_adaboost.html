@@ -842,19 +842,19 @@ w^{(i)} = \frac{1}{m}
 <strong>For</strong> each predictor <span class="math notranslate nohighlight">\(t = 1 , \dots , N^\text{pred}\)</span><br />
 a. Train on all samples and compute the weighted error rate <span class="math notranslate nohighlight">\(r_t\)</span></p>
 <div class="amsmath math notranslate nohighlight" id="equation-7f5c1b9c-821f-46f6-bf81-cb9b75ca51d9">
-<span class="eqno">(54)<a class="headerlink" href="#equation-7f5c1b9c-821f-46f6-bf81-cb9b75ca51d9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<span class="eqno">(55)<a class="headerlink" href="#equation-7f5c1b9c-821f-46f6-bf81-cb9b75ca51d9" title="Permalink to this equation">#</a></span>\[\begin{equation}
         r_t = \frac{\sum_{i = 1}^m w^{(i)} [ \hat{y}_t^{(i)} \neq y^{(i)} ]}{\sum_{i = 1}^m w^{(i)}}
    \end{equation}\]</div>
 <p>b. Give the predictor <span class="math notranslate nohighlight">\(t\)</span> a weight <span class="math notranslate nohighlight">\(W_t\)</span> measuring accuracy</p>
 <div class="amsmath math notranslate nohighlight" id="equation-74230bb9-19e3-42c4-8e07-bbd333a8d5d3">
-<span class="eqno">(55)<a class="headerlink" href="#equation-74230bb9-19e3-42c4-8e07-bbd333a8d5d3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<span class="eqno">(56)<a class="headerlink" href="#equation-74230bb9-19e3-42c4-8e07-bbd333a8d5d3" title="Permalink to this equation">#</a></span>\[\begin{equation}
         W_t = \alpha \log \frac{1 - r_t}{r_t}
    \end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(W_t\)</span> points to a high number if the predictor is good, zero if the predictor is guessing randomly, negative if it is bad.
 <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate.</p>
 <p>c. Update the weights of all data samples:</p>
 <div class="amsmath math notranslate nohighlight" id="equation-b935d770-0c46-4d73-82d0-28b4e10177f2">
-<span class="eqno">(56)<a class="headerlink" href="#equation-b935d770-0c46-4d73-82d0-28b4e10177f2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<span class="eqno">(57)<a class="headerlink" href="#equation-b935d770-0c46-4d73-82d0-28b4e10177f2" title="Permalink to this equation">#</a></span>\[\begin{equation}
         w^{(i)} \longleftarrow
         \begin{cases} 
         w^{(i)} &amp; \text{if } \hat{y}_t^{(i)} = y^{(i)} \\[1ex]
@@ -863,7 +863,7 @@ a. Train on all samples and compute the weighted error rate <span class="math no
    \end{equation}\]</div>
 <p>d. Normalize the weights</p>
 <div class="amsmath math notranslate nohighlight" id="equation-a29a58b7-8e59-431d-9df4-d105f83ebdf1">
-<span class="eqno">(57)<a class="headerlink" href="#equation-a29a58b7-8e59-431d-9df4-d105f83ebdf1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<span class="eqno">(58)<a class="headerlink" href="#equation-a29a58b7-8e59-431d-9df4-d105f83ebdf1" title="Permalink to this equation">#</a></span>\[\begin{equation}
     w^{(i)} \rightarrow \frac{w^{(i)}}{\sum_{i = 1}^m w^{(i)}}
    \end{equation}\]</div>
 <p><strong>Exit conditions</strong></p>
@@ -895,7 +895,7 @@ Base classifiers are decision stumps (one-level tree).<br />
 <h3>Combining the predictors’ outputs<a class="headerlink" href="#combining-the-predictors-outputs" title="Permalink to this headline">#</a></h3>
 <p>The combined prediction is the class obtaining a weighted majority-vote, where votes are weighted with the predictor weights <span class="math notranslate nohighlight">\(W_t\)</span>.</p>
 <div class="math notranslate nohighlight" id="equation-trees-boost-2-adaboost-0">
-<span class="eqno">(58)<a class="headerlink" href="#equation-trees-boost-2-adaboost-0" title="Permalink to this equation">#</a></span>\[\hat{y}(x^\text{new}) = \arg\max_k \; \sum_{t = 1}^{N^\text{pred}} W_t \; \big[ \hat{y}_t(x^\text{new}) = k \big]\]</div>
+<span class="eqno">(59)<a class="headerlink" href="#equation-trees-boost-2-adaboost-0" title="Permalink to this equation">#</a></span>\[\hat{y}(x^\text{new}) = \arg\max_k \; \sum_{t = 1}^{N^\text{pred}} W_t \; \big[ \hat{y}_t(x^\text{new}) = k \big]\]</div>
 <p>The <code class="docutils literal notranslate"><span class="pre">argmax</span></code> operator returns the value of its argument that maximizes a given function. The expression in square brackets acts as an indicator, counting 1 if the condition is true and 0 otherwise. For each class <span class="math notranslate nohighlight">\(k\)</span>, we sum over all predictors <span class="math notranslate nohighlight">\(t\)</span>. The predicted class is the one with the largest weighted sum.</p>
 </section>
 </section>

@@ -991,7 +991,7 @@ title="Print to PDF"
 <h3>Hyperbolic Tangent<a class="headerlink" href="#hyperbolic-tangent" title="Permalink to this headline">#</a></h3>
 <p>Alike the sigmoid, the hyperbolic tangent is S-shaped and continously differentiable. The output values range is different from the sigmoid, as it goes from -1 to 1.</p>
 <div class="math notranslate nohighlight" id="equation-tanh">
-<span class="eqno">(72)<a class="headerlink" href="#equation-tanh" title="Permalink to this equation">#</a></span>\[\tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}}\]</div>
+<span class="eqno">(73)<a class="headerlink" href="#equation-tanh" title="Permalink to this equation">#</a></span>\[\tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}}\]</div>
 <figure class="align-default" id="model-rep-2-tanh">
 <a class="reference internal image-reference" href="../_images/model_rep_2_tanh.png"><img alt="../_images/model_rep_2_tanh.png" src="../_images/model_rep_2_tanh.png" style="width: 100%;" /></a>
 <figcaption>
@@ -1014,7 +1014,7 @@ title="Print to PDF"
 <h3>Rectified Linear Unit (ReLU)<a class="headerlink" href="#rectified-linear-unit-relu" title="Permalink to this headline">#</a></h3>
 <p>Welcome to the family of rectifiers, thee most popular activation function for deep neural networks. The ReLU is defined as:</p>
 <div class="math notranslate nohighlight" id="equation-relu">
-<span class="eqno">(73)<a class="headerlink" href="#equation-relu" title="Permalink to this equation">#</a></span>\[f(z) = \max(0,z)\]</div>
+<span class="eqno">(74)<a class="headerlink" href="#equation-relu" title="Permalink to this equation">#</a></span>\[f(z) = \max(0,z)\]</div>
 <figure class="align-default" id="model-rep-2-relu">
 <a class="reference internal image-reference" href="../_images/model_rep_2_relu.png"><img alt="../_images/model_rep_2_relu.png" src="../_images/model_rep_2_relu.png" style="width: 100%;" /></a>
 <figcaption>
@@ -1042,7 +1042,7 @@ title="Print to PDF"
 <h3>Leaky ReLU<a class="headerlink" href="#leaky-relu" title="Permalink to this headline">#</a></h3>
 <p>It is a ReLU with a small positive slope for negative input values:</p>
 <div class="math notranslate nohighlight" id="equation-leakyrelu">
-<span class="eqno">(74)<a class="headerlink" href="#equation-leakyrelu" title="Permalink to this equation">#</a></span>\[\begin{split}\text{Leaky ReLU}(z) =\begin{cases}\;\;  0.01 z &amp; \text{ if } z &lt; 0 \\\;\;  z &amp; \text{ if } z \geq 0\end{cases} \;\;\;\; \forall \: z \in  \mathbb{R}\end{split}\]</div>
+<span class="eqno">(75)<a class="headerlink" href="#equation-leakyrelu" title="Permalink to this equation">#</a></span>\[\begin{split}\text{Leaky ReLU}(z) =\begin{cases}\;\;  0.01 z &amp; \text{ if } z &lt; 0 \\\;\;  z &amp; \text{ if } z \geq 0\end{cases} \;\;\;\; \forall \: z \in  \mathbb{R}\end{split}\]</div>
 <figure class="align-default" id="model-rep-2-leakyrelu">
 <a class="reference internal image-reference" href="../_images/model_rep_2_leakyrelu.png"><img alt="../_images/model_rep_2_leakyrelu.png" src="../_images/model_rep_2_leakyrelu.png" style="width: 100%;" /></a>
 <figcaption>
@@ -1067,7 +1067,7 @@ title="Print to PDF"
 <h3>Parametric ReLU (PReLU)<a class="headerlink" href="#parametric-relu-prelu" title="Permalink to this headline">#</a></h3>
 <p>The caveat of the Leaky ReLU is addressed by the Parametric ReLU (PReLU), where the small slope of the negative part is tuned with a parameter that is learnt during the backpropagation algorithm. Think of it as an extra hyper-parameter of the network.</p>
 <div class="math notranslate nohighlight" id="equation-paramrelu">
-<span class="eqno">(75)<a class="headerlink" href="#equation-paramrelu" title="Permalink to this equation">#</a></span>\[\begin{split}\text{Parametric ReLU}(z) =\begin{cases}\;\;  a z &amp; \text{ if } z &lt; 0 \\\;\;  z &amp; \text{ if } z \geq 0\end{cases} \;\;\;\; \forall \: z, a \in  \mathbb{R}, a &gt; 0\end{split}\]</div>
+<span class="eqno">(76)<a class="headerlink" href="#equation-paramrelu" title="Permalink to this equation">#</a></span>\[\begin{split}\text{Parametric ReLU}(z) =\begin{cases}\;\;  a z &amp; \text{ if } z &lt; 0 \\\;\;  z &amp; \text{ if } z \geq 0\end{cases} \;\;\;\; \forall \: z, a \in  \mathbb{R}, a &gt; 0\end{split}\]</div>
 <figure class="align-default" id="model-rep-2-paramrelu">
 <a class="reference internal image-reference" href="../_images/model_rep_2_paramrelu.png"><img alt="../_images/model_rep_2_paramrelu.png" src="../_images/model_rep_2_paramrelu.png" style="width: 100%;" /></a>
 <figcaption>

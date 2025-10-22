@@ -908,7 +908,7 @@ Copy code</p>
 <p>We used to write <span class="math notranslate nohighlight">\(h_\boldsymbol{\theta}(\boldsymbol{x})\)</span> for the hypothesis function while computing linear and logistic regression algorithms. It is still valid if we consider <span class="math notranslate nohighlight">\(\theta = ( \boldsymbol{w}, b)\)</span>, where <span class="math notranslate nohighlight">\(\boldsymbol{w}\)</span> is a vector of weights <span class="math notranslate nohighlight">\(w_1, w_2, \cdots, w_n\)</span> and <span class="math notranslate nohighlight">\(b\)</span> the bias term (playing the role of <span class="math notranslate nohighlight">\(\theta_0\)</span>). To distinguish notations between regression and neural network, let’s prefer here the notation: <span class="math notranslate nohighlight">\(h_{\boldsymbol{w}, b}(x)\)</span> for the weighted sum.</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-aneq">
-<span class="eqno">(69)<a class="headerlink" href="#equation-aneq" title="Permalink to this equation">#</a></span>\[\hat{y} = f\left(\sum_{j=1}^n w_j x_j + b \right)\]</div>
+<span class="eqno">(70)<a class="headerlink" href="#equation-aneq" title="Permalink to this equation">#</a></span>\[\hat{y} = f\left(\sum_{j=1}^n w_j x_j + b \right)\]</div>
 <p>This operation is done for one sample row <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(i)}\)</span>, hence reserving the <span class="math notranslate nohighlight">\(i\)</span> index for the sample instances. The sum is done over the input features <span class="math notranslate nohighlight">\(j\)</span> (columns of the <span class="math notranslate nohighlight">\(X\)</span> input matrix). Here the sum starts at <span class="math notranslate nohighlight">\(j=1\)</span> and not zero as the intercept term is written outside of the sum as <span class="math notranslate nohighlight">\(b\)</span>.</p>
 <p>We will say more about activation functions soon, for now let’s write a simple definition:</p>
 <div class="proof definition admonition" id="activfuncdef">
@@ -946,13 +946,13 @@ h_{\boldsymbol{w},b} = \text{step} \left( \boldsymbol{w}^T \boldsymbol{x} + b \r
 </figure>
 <p>The step functions generally employed are the <em>Heaviside</em> or the <em>sign</em> functions:</p>
 <div class="math notranslate nohighlight" id="equation-heaviside">
-<span class="eqno">(70)<a class="headerlink" href="#equation-heaviside" title="Permalink to this equation">#</a></span>\[\begin{split}\forall \: z \in  \mathbb{R}, \: \: H(z) =
+<span class="eqno">(71)<a class="headerlink" href="#equation-heaviside" title="Permalink to this equation">#</a></span>\[\begin{split}\forall \: z \in  \mathbb{R}, \: \: H(z) =
 \begin{cases}
 \;\;  1 &amp; \text{ if } z \geq  0 \\
 \;\;  0 &amp; \text{ if } z &lt; 0
 \end{cases}\end{split}\]</div>
 <div class="math notranslate nohighlight" id="equation-sign">
-<span class="eqno">(71)<a class="headerlink" href="#equation-sign" title="Permalink to this equation">#</a></span>\[\begin{split}\forall \: z \in  \mathbb{R}, \: \: \operatorname{sign}(z) = 
+<span class="eqno">(72)<a class="headerlink" href="#equation-sign" title="Permalink to this equation">#</a></span>\[\begin{split}\forall \: z \in  \mathbb{R}, \: \: \operatorname{sign}(z) = 
  \begin{cases}
 \;\;  +1 &amp; \text{ if } z&gt;0 \\
 \;\;\;   0 &amp; \text{ if } z=0 \\

@@ -883,11 +883,11 @@ title="Print to PDF"
 <p><strong>Step 0: Initial Guess</strong><br />
 We start by an initial guess. In Gradient Boosting for classification, the initial prediction for every samples is the log of the odds. It is an equivalent of the average for logistic regression:</p>
 <div class="math notranslate nohighlight" id="equation-logodds">
-<span class="eqno">(59)<a class="headerlink" href="#equation-logodds" title="Permalink to this equation">#</a></span>\[\text{log(odds) } = \log \frac{N[y=1]}{N[y=0]} \]</div>
+<span class="eqno">(60)<a class="headerlink" href="#equation-logodds" title="Permalink to this equation">#</a></span>\[\text{log(odds) } = \log \frac{N[y=1]}{N[y=0]} \]</div>
 <p>Here we have 2 signal events and 4 background ones, so log(odds) = <span class="math notranslate nohighlight">\(\log \frac{2}{4}\)</span> = -0.69</p>
 <p>How to proceed now with classification? If you recall logistic regression, the binary outcomes were converted as an equivalent of a probability with the logistic function (sigmoid). We will use it again here:</p>
 <div class="math notranslate nohighlight" id="equation-logoddsigmoid">
-<span class="eqno">(60)<a class="headerlink" href="#equation-logoddsigmoid" title="Permalink to this equation">#</a></span>\[\text{ Probability of signal } = \frac{1}{1 + e^{- \text{log(odds)}}} \]</div>
+<span class="eqno">(61)<a class="headerlink" href="#equation-logoddsigmoid" title="Permalink to this equation">#</a></span>\[\text{ Probability of signal } = \frac{1}{1 + e^{- \text{log(odds)}}} \]</div>
 <p>In our example, <span class="math notranslate nohighlight">\(\frac{1}{1 + e^{ - \log \frac{2}{4} }} = \frac{1}{3}\)</span>.</p>
 <p><strong>Step 1: pseudo residuals</strong><br />
 Now let’s calculate the pseudo residuals.</p>
@@ -977,16 +977,16 @@ Now let’s build a tree using the input features but to predict the residuals.<
 <p><strong>Step 3: leaves’ output values</strong><br />
 The predictions are in terms of the log of the odds, whereas leaves are derived from a probability. We will have to translate the residuals in the leaves above as “log of the odds” first. Only after getting the correct leave outputs can we combine trees together. When using Gradient Boost for classification, the most common transformation is the ratio:</p>
 <div class="math notranslate nohighlight" id="equation-residualtoodds">
-<span class="eqno">(61)<a class="headerlink" href="#equation-residualtoodds" title="Permalink to this equation">#</a></span>\[\frac{ \sum \text{Residuals}_i }{\sum [ \text{Previous Probability}_i \times ( 1 -  \text{Previous Probability}_i )]}\]</div>
+<span class="eqno">(62)<a class="headerlink" href="#equation-residualtoodds" title="Permalink to this equation">#</a></span>\[\frac{ \sum \text{Residuals}_i }{\sum [ \text{Previous Probability}_i \times ( 1 -  \text{Previous Probability}_i )]}\]</div>
 <p>The numerator is the sum of residuals in a given leaf <span class="math notranslate nohighlight">\(i\)</span>. The denominator is the product of the previously predicted probabilities for each residual in that same leaf <span class="math notranslate nohighlight">\(i\)</span>. Let’s illustrate with our example. For the leaf on the very left, there is only one residual (from sample row 4) of 0.67 with an associated probability of <span class="math notranslate nohighlight">\(\frac{1}{1 + \exp( - \log \frac{2}{4} )} = \frac{1}{3}\)</span>. So:</p>
 <div class="math notranslate nohighlight" id="equation-leafleft">
-<span class="eqno">(62)<a class="headerlink" href="#equation-leafleft" title="Permalink to this equation">#</a></span>\[\frac{\frac{2}{3}}{ \frac{1}{3} \times ( 1 - \frac{1}{3})} = 3\]</div>
+<span class="eqno">(63)<a class="headerlink" href="#equation-leafleft" title="Permalink to this equation">#</a></span>\[\frac{\frac{2}{3}}{ \frac{1}{3} \times ( 1 - \frac{1}{3})} = 3\]</div>
 <p>The new output value for the leaf is 3. Now the second leaf from the left has two samples in it: rows 1 and 3. The former is signal, with a residual of <span class="math notranslate nohighlight">\(\frac{2}{3}\)</span> and an associated (previous) probability of <span class="math notranslate nohighlight">\(\frac{1}{3}\)</span>, whereas the latter is a background sample with a residual of <span class="math notranslate nohighlight">\(-\frac{1}{3}\)</span> and associated probability of <span class="math notranslate nohighlight">\(\frac{2}{3}\)</span>.</p>
 <div class="math notranslate nohighlight" id="equation-leafmiddle">
-<span class="eqno">(63)<a class="headerlink" href="#equation-leafmiddle" title="Permalink to this equation">#</a></span>\[\frac{ \frac{2}{3} -\frac{1}{3}}{ \frac{1}{3} \times ( 1 - \frac{1}{3}) + \frac{2}{3} \times ( 1 - \frac{2}{3})} = \frac{3}{4} = 0.75\]</div>
+<span class="eqno">(64)<a class="headerlink" href="#equation-leafmiddle" title="Permalink to this equation">#</a></span>\[\frac{ \frac{2}{3} -\frac{1}{3}}{ \frac{1}{3} \times ( 1 - \frac{1}{3}) + \frac{2}{3} \times ( 1 - \frac{2}{3})} = \frac{3}{4} = 0.75\]</div>
 <p>For the last leaf, we have:</p>
 <div class="math notranslate nohighlight" id="equation-leafright">
-<span class="eqno">(64)<a class="headerlink" href="#equation-leafright" title="Permalink to this equation">#</a></span>\[\frac{-\frac{1}{3} -\frac{1}{3} -\frac{1}{3}}{ \frac{2}{3} \times ( 1 - \frac{2}{3}) + \frac{2}{3} \times ( 1 - \frac{2}{3}) + \frac{2}{3} \times ( 1 - \frac{2}{3})} = -\frac{3}{2} = -1.5\]</div>
+<span class="eqno">(65)<a class="headerlink" href="#equation-leafright" title="Permalink to this equation">#</a></span>\[\frac{-\frac{1}{3} -\frac{1}{3} -\frac{1}{3}}{ \frac{2}{3} \times ( 1 - \frac{2}{3}) + \frac{2}{3} \times ( 1 - \frac{2}{3}) + \frac{2}{3} \times ( 1 - \frac{2}{3})} = -\frac{3}{2} = -1.5\]</div>
 <p>The tree has now output values:</p>
 <figure class="align-default" id="boost-2-treegboost-outputs">
 <a class="reference internal image-reference" href="../_images/boost_2_treeGBoost_outputs.png"><img alt="../_images/boost_2_treeGBoost_outputs.png" src="../_images/boost_2_treeGBoost_outputs.png" style="width: 75%;" /></a>
@@ -1007,16 +1007,16 @@ The first tree targeting the residuals is combined with the initial guess:</p>
 <p>Usually the learning rate is around 0.1 but for simplicity here in our example, we will take a larger value of <span class="math notranslate nohighlight">\(\alpha = 0.5\)</span> (to get a more drastic change after only two rounds).
 The first row of index 0 falls into the right leaf. To calculate the new <em>log of the odds</em> prediction for row 0, we sum the initial guess with the learning rate times the leaf output (expressed as a <em>log of the odds</em> from the calculation above):</p>
 <div class="math notranslate nohighlight" id="equation-suminittree">
-<span class="eqno">(65)<a class="headerlink" href="#equation-suminittree" title="Permalink to this equation">#</a></span>\[\text{log(odds) Prediction row 0} = - 0.69 + {\color{Mahogany}\alpha} \times (-1.5) =  - 0.69 + {\color{Mahogany}0.5} \times (-1.5) = -1.44\]</div>
+<span class="eqno">(66)<a class="headerlink" href="#equation-suminittree" title="Permalink to this equation">#</a></span>\[\text{log(odds) Prediction row 0} = - 0.69 + {\color{Mahogany}\alpha} \times (-1.5) =  - 0.69 + {\color{Mahogany}0.5} \times (-1.5) = -1.44\]</div>
 <p>Now we convert the new <em>log of the odds</em> as a probability:</p>
 <div class="math notranslate nohighlight" id="equation-logoddsrow0">
-<span class="eqno">(66)<a class="headerlink" href="#equation-logoddsrow0" title="Permalink to this equation">#</a></span>\[\text{ Probability row 0 } = \frac{1}{1 + e^{- (-1.44) }} =  0.19\]</div>
+<span class="eqno">(67)<a class="headerlink" href="#equation-logoddsrow0" title="Permalink to this equation">#</a></span>\[\text{ Probability row 0 } = \frac{1}{1 + e^{- (-1.44) }} =  0.19\]</div>
 <p>As this row 0 is a background event, we went from an initial guess of probability <span class="math notranslate nohighlight">\(\frac{1}{3}\)</span> to now 0.20, which is closer to zero, so our first residual-fitted-tree added a correction in the right direction. Let’s take row 1 now. It lands in the middle leaf. Thus:</p>
 <div class="math notranslate nohighlight" id="equation-suminittree2">
-<span class="eqno">(67)<a class="headerlink" href="#equation-suminittree2" title="Permalink to this equation">#</a></span>\[\text{log(odds) Prediction row 1} = - 0.69 + {\color{Mahogany}\alpha} \times 0.75 =  - 0.69 + {\color{Mahogany}0.5} \times 0.75 = -0.315\]</div>
+<span class="eqno">(68)<a class="headerlink" href="#equation-suminittree2" title="Permalink to this equation">#</a></span>\[\text{log(odds) Prediction row 1} = - 0.69 + {\color{Mahogany}\alpha} \times 0.75 =  - 0.69 + {\color{Mahogany}0.5} \times 0.75 = -0.315\]</div>
 <p>The probability is:</p>
 <div class="math notranslate nohighlight" id="equation-logoddsrow1">
-<span class="eqno">(68)<a class="headerlink" href="#equation-logoddsrow1" title="Permalink to this equation">#</a></span>\[\text{ Probability row 0 } = \frac{1}{1 + e^{- (-0.315) }} =  0.42\]</div>
+<span class="eqno">(69)<a class="headerlink" href="#equation-logoddsrow1" title="Permalink to this equation">#</a></span>\[\text{ Probability row 0 } = \frac{1}{1 + e^{- (-0.315) }} =  0.42\]</div>
 <p>The event is signal, so our prediction should be close to 1. We went from an initial guess probability of <span class="math notranslate nohighlight">\(\frac{1}{3}\)</span> to 0.42. We indeed go in the right direction! Smoothly, but surely.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

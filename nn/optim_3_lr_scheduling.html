@@ -824,7 +824,7 @@ title="Print to PDF"
 <h2>Motivations<a class="headerlink" href="#motivations" title="Permalink to this headline">#</a></h2>
 <p>We saw in previous lectures that the Gradient Descent algorithm updates the parameters, or weights, in the form:</p>
 <div class="math notranslate nohighlight" id="equation-paramupdate">
-<span class="eqno">(135)<a class="headerlink" href="#equation-paramupdate" title="Permalink to this equation">#</a></span>\[W_j \quad \leftarrow \quad W_j -\alpha \frac{\partial}{\partial W_j} C\left(\boldsymbol{W}\right) \;   \;   \;  \;   \;   \; \forall j \in [0..n]\]</div>
+<span class="eqno">(136)<a class="headerlink" href="#equation-paramupdate" title="Permalink to this equation">#</a></span>\[W_j \quad \leftarrow \quad W_j -\alpha \frac{\partial}{\partial W_j} C\left(\boldsymbol{W}\right) \;   \;   \;  \;   \;   \; \forall j \in [0..n]\]</div>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>Recall that the learning rate <span class="math notranslate nohighlight">\(\alpha\)</span> is the hyperparameter defining the step size on the parameters at each update.</p>
@@ -862,14 +862,14 @@ Example: if we have 1000 training samples splits in batches of size 250 each, th
 <p>The <span class="math notranslate nohighlight">\(t\)</span> argument is the iteration integer, akin to a time yet the value are usually the iteration and/or epoch indices.</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-powerscheduleeq">
-<span class="eqno">(136)<a class="headerlink" href="#equation-powerscheduleeq" title="Permalink to this equation">#</a></span>\[\alpha(t) = \frac{\alpha_0}{\left(1 + \frac{t}{s}\right)^c} \; ,\]</div>
+<span class="eqno">(137)<a class="headerlink" href="#equation-powerscheduleeq" title="Permalink to this equation">#</a></span>\[\alpha(t) = \frac{\alpha_0}{\left(1 + \frac{t}{s}\right)^c} \; ,\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha_0\)</span> is the initial learning rate. The steps <span class="math notranslate nohighlight">\(s\)</span> and power <span class="math notranslate nohighlight">\(c\)</span> (usually 1) are hyperparameters. The learning rate drops at each step; e.g. after <span class="math notranslate nohighlight">\(s\)</span> steps it is divided by 2 (assuming <span class="math notranslate nohighlight">\(c\)</span> = 1).</p>
 </section>
 <section id="time-based-decay-scheduling">
 <h3>Time-Based Decay Scheduling<a class="headerlink" href="#time-based-decay-scheduling" title="Permalink to this headline">#</a></h3>
 <p>The time-based learning rate scheduler is often the standard (e.g. the default implementation in Keras library). It is controlled by a decay parameter <span class="math notranslate nohighlight">\(d = \frac{\alpha_0}{N}\)</span>, where <span class="math notranslate nohighlight">\(N\)</span> is the number of epochs. It is similar (a particular case even) to the power scheduling:</p>
 <div class="math notranslate nohighlight" id="equation-timebaseddecayeq">
-<span class="eqno">(137)<a class="headerlink" href="#equation-timebaseddecayeq" title="Permalink to this equation">#</a></span>\[\alpha(t) = \alpha_0 \times \frac{1}{1 + d \times t} \]</div>
+<span class="eqno">(138)<a class="headerlink" href="#equation-timebaseddecayeq" title="Permalink to this equation">#</a></span>\[\alpha(t) = \alpha_0 \times \frac{1}{1 + d \times t} \]</div>
 <p>As compared to a linear decrease, time-based decay causes learning rate to decrease faster upon training start, and much slower later (see graph below).</p>
 </section>
 <section id="exponential-decay-scheduling">

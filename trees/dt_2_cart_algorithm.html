@@ -795,16 +795,16 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p>The <strong>Gini’s diversity index</strong> is a measure of a node’s impurity.</p>
 <p>It is defined for each tree node <span class="math notranslate nohighlight">\(i\)</span> as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-585d355e-c817-47fc-ada8-2a013ff54662">
-<span class="eqno">(50)<a class="headerlink" href="#equation-585d355e-c817-47fc-ada8-2a013ff54662" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-18628a0f-eaa7-445e-93f7-d1aa3537a039">
+<span class="eqno">(50)<a class="headerlink" href="#equation-18628a0f-eaa7-445e-93f7-d1aa3537a039" title="Permalink to this equation">#</a></span>\[\begin{equation}
 G_i = 1 - \sum_{k=1}^{N_\text{classes}} \left( \frac{N_{k, i}}{ N_i} \right)^2 = 1 - \sum_{k=1}^{N_\text{classes}} \left( p_k \right)^2
 \end{equation}\]</div>
 <p>with <span class="math notranslate nohighlight">\(N_{k, i}\)</span> the number of data samples of class <span class="math notranslate nohighlight">\(k\)</span> in node <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(N_{i}\)</span> the total number of data samples in node <span class="math notranslate nohighlight">\(i\)</span>. The terms <span class="math notranslate nohighlight">\(p_k\)</span> in the sum are equivalent to the probability of getting a sample of class <span class="math notranslate nohighlight">\(k\)</span> in the node <span class="math notranslate nohighlight">\(i\)</span>.</p>
 <p>The Gini’s impurity index ranges from 0 (100% pure node) to 1 (very impure node).</p>
 </section>
 </div><p>If a node has an equal amount of data points from two classes, let’s say 500 points each, the Gini index will be:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9326bf2e-d426-4aea-9625-4c35b8dcdfc7">
-<span class="eqno">(51)<a class="headerlink" href="#equation-9326bf2e-d426-4aea-9625-4c35b8dcdfc7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-27575613-f0b9-4c4f-b781-7d00382a8059">
+<span class="eqno">(51)<a class="headerlink" href="#equation-27575613-f0b9-4c4f-b781-7d00382a8059" title="Permalink to this equation">#</a></span>\[\begin{equation}
 G_i = 1 - \left( \frac{500}{1000} \right)^2 - \left( \frac{500}{1000} \right)^2 = 0.5 
 \end{equation}\]</div>
 <p>With three classes present in equal quantities, it will be <span class="math notranslate nohighlight">\(\frac{2}{3}\)</span>, for four, <span class="math notranslate nohighlight">\(\frac{3}{4}\)</span>, etc.</p>
@@ -816,8 +816,8 @@ G_i = 1 - \left( \frac{500}{1000} \right)^2 - \left( \frac{500}{1000} \right)^2 
 <p class="admonition-title"><span class="caption-number">Definition 48 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The cost function for CART is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4a541d17-71eb-4591-ab3a-b4ba94f716de">
-<span class="eqno">(52)<a class="headerlink" href="#equation-4a541d17-71eb-4591-ab3a-b4ba94f716de" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-46fc9300-a289-4234-b65d-d2e233d275c3">
+<span class="eqno">(52)<a class="headerlink" href="#equation-46fc9300-a289-4234-b65d-d2e233d275c3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 C(j, t_j) = \frac{N_\text{left}}{N_\text{node}} G_\text{left} + \frac{N_\text{right}}{N_\text{node}} G_\text{right}
 \end{equation}\]</div>
 </section>
@@ -857,31 +857,35 @@ y^{(m)}\end{pmatrix}
 <p><strong>Hyperparameters</strong></p>
 <ul class="simple">
 <li><p>Max Depth</p></li>
-<li><p>Minimum sample split</p></li>
-<li><p>Minimum samples per leaf,</p></li>
-<li><p>Maximum leaf nodes<br />
+<li><p>Minimum sample per split</p></li>
+<li><p>Minimum samples per leaf</p></li>
+<li><p>Maximum number of leaf nodes<br />
 (non-exhaustive list)</p></li>
 </ul>
 <p><strong>Outputs</strong><br />
-A collection on decision boundaries segmenting the <span class="math notranslate nohighlight">\(j\)</span> feature space.</p>
+A collection on decision boundaries partitioning the feature space.</p>
 <p><strong>Initialization:</strong> at the root node</p>
 <p><strong>STEP 1: THRESHOLD COMPUTATION</strong>:</p>
-<p><strong>For</strong> each feature <span class="math notranslate nohighlight">\(j\)</span> from 1 to <span class="math notranslate nohighlight">\(n\)</span>:<br />
+<p><strong>For</strong> each feature <span class="math notranslate nohighlight">\(j = 1, \ldots, n\)</span> :<br />
+<span class="math notranslate nohighlight">\(\;\;\;\;\;\;\;\)</span> <strong>For</strong> each candidate threshold <span class="math notranslate nohighlight">\(t_j\)</span> scanning the range <span class="math notranslate nohighlight">\(x^\text{min}_j\)</span> to <span class="math notranslate nohighlight">\(x^\text{max}_j\)</span>:<br />
+<span class="math notranslate nohighlight">\(\;\;\;\;\;\;\;\;\;\;\;\;\;\;\)</span> Compute the cost function <span class="math notranslate nohighlight">\(C(j, t_j)\)</span><br />
  <br />
-<span class="math notranslate nohighlight">\(\;\;\;\)</span>  <strong>For</strong> a value of <span class="math notranslate nohighlight">\(t_j\)</span> scanning the range <span class="math notranslate nohighlight">\(x^\text{min}_j\)</span> to <span class="math notranslate nohighlight">\(x^\text{max}_j\)</span>:<br />
- <br />
-<span class="math notranslate nohighlight">\(\;\;\;\;\;\; \rightarrow\)</span> Compute the cost function <span class="math notranslate nohighlight">\(C(j, t_j)\)</span><br />
- <br />
-<span class="math notranslate nohighlight">\(\;\;\;\;\;\; \rightarrow\)</span> Find the pair <span class="math notranslate nohighlight">\((j, t_j)\)</span> that produces the purest subsets, i.e. so that it minimizes:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b19e8bbd-e044-4dcf-957a-29fc535a3ffa">
-<span class="eqno">(53)<a class="headerlink" href="#equation-b19e8bbd-e044-4dcf-957a-29fc535a3ffa" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\min_{(j, \: t_j)} C(j, t_j)
+<span class="math notranslate nohighlight">\(\;\;\;\;\;\;\;\)</span> Find for this feature the threshold <span class="math notranslate nohighlight">\(t_j^*\)</span> associated to the minimum cost:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-42397aaf-819d-4f85-ac63-04cce3b62d26">
+<span class="eqno">(53)<a class="headerlink" href="#equation-42397aaf-819d-4f85-ac63-04cce3b62d26" title="Permalink to this equation">#</a></span>\[\begin{equation}
+t_j^* = \arg\min_{t_j} C(j, t_j)
+\end{equation}\]</div>
+<p>After scanning all features <span class="math notranslate nohighlight">\(j\)</span>, find the tuple <span class="math notranslate nohighlight">\((j^{\text{cut}}, t_{j^{\text{cut}}}^*)\)</span> that minimizes:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ba3d023a-3a10-4aae-83a9-a8b5a95ff58e">
+<span class="eqno">(54)<a class="headerlink" href="#equation-ba3d023a-3a10-4aae-83a9-a8b5a95ff58e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+(j^{\text{cut}}, t_{j^{\text{cut}}}^*) = \arg\min_{j,\, t_j^*} C(j, t_j^*)
 \end{equation}\]</div>
 <p><strong>STEP 2: BRANCHING</strong>:<br />
-Split the dataset along the feature <span class="math notranslate nohighlight">\(j\)</span> using the threshold <span class="math notranslate nohighlight">\(t_j\)</span> into two subsequent new nodes.</p>
+Split the dataset along the feature <span class="math notranslate nohighlight">\(j^{\text{cut}}\)</span> using the threshold <span class="math notranslate nohighlight">\(t_{j^{\text{cut}}}^*\)</span> into two subsets<br />
+(left and right child nodes)</p>
 <p>Repeat Step 1 at each new node.</p>
 <p><strong>Exit conditions</strong><br />
-At least one condition on one of the hyperparameters is fullfilled</p>
+Stop when at least one of the hyperparameter constraints is satisfied.</p>
 </section>
 </div><p>One of the greatest strength of decision tree is the fact very few assumptions about the training data are made. It differs from linear or polynomial models where we need to know beforehand that the data can be fit with either linear or polynomial function.</p>
 <p>Another advantage: feature scaling is not necessary. No need to standardize the dataset beforehand.</p>

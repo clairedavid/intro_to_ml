@@ -866,27 +866,27 @@ title="Print to PDF"
 <h3>Mean Squared Error (MSE)<a class="headerlink" href="#mean-squared-error-mse" title="Permalink to this headline">#</a></h3>
 <p>The most commonly used loss function is the Mean Squared Error (MSE) that we are now familiar with. If we have only one output node:</p>
 <div class="math notranslate nohighlight" id="equation-lossmseeq">
-<span class="eqno">(76)<a class="headerlink" href="#equation-lossmseeq" title="Permalink to this equation">#</a></span>\[L \left(\;\hat{y}^{(i)}, y^{(i)}\;\right)=  \left(  \hat{y}^{(i)} - y^{(i)}  \right)^2\]</div>
+<span class="eqno">(77)<a class="headerlink" href="#equation-lossmseeq" title="Permalink to this equation">#</a></span>\[L \left(\;\hat{y}^{(i)}, y^{(i)}\;\right)=  \left(  \hat{y}^{(i)} - y^{(i)}  \right)^2\]</div>
 <p>where <span class="math notranslate nohighlight">\(i\)</span> here is the sample number.</p>
 <p>For several output dimensions (e.g. multiple regression targets or classes), we sum the squared differences across all components:</p>
 <div class="math notranslate nohighlight" id="equation-lossmsekeq">
-<span class="eqno">(77)<a class="headerlink" href="#equation-lossmsekeq" title="Permalink to this equation">#</a></span>\[L \left(\;\boldsymbol{\hat{y}}^{(i)}, \boldsymbol{y}^{(i)}\;\right)= \;\sum_{k = 1}^K  \left( \hat{y}^{(i)}_k - y^{(i)}_k \right)^2\]</div>
+<span class="eqno">(78)<a class="headerlink" href="#equation-lossmsekeq" title="Permalink to this equation">#</a></span>\[L \left(\;\boldsymbol{\hat{y}}^{(i)}, \boldsymbol{y}^{(i)}\;\right)= \;\sum_{k = 1}^K  \left( \hat{y}^{(i)}_k - y^{(i)}_k \right)^2\]</div>
 <p>with the <span class="math notranslate nohighlight">\(k\)</span> indices being the prediction or observed value for the node <span class="math notranslate nohighlight">\(k\)</span>.</p>
 <p>Then the cost function would be the average of the losses over all the training sample of <span class="math notranslate nohighlight">\(m\)</span> instances:</p>
 <div class="math notranslate nohighlight" id="equation-costmsekeq">
-<span class="eqno">(78)<a class="headerlink" href="#equation-costmsekeq" title="Permalink to this equation">#</a></span>\[C \left(\;\boldsymbol{\hat{y}}, \boldsymbol{y}\;\right)= \frac{1}{m} \sum_{i=1}^m \sum_{k = 1}^K  \left( \hat{y}^{(i)}_k - y^{(i)}_k \right)^2\]</div>
+<span class="eqno">(79)<a class="headerlink" href="#equation-costmsekeq" title="Permalink to this equation">#</a></span>\[C \left(\;\boldsymbol{\hat{y}}, \boldsymbol{y}\;\right)= \frac{1}{m} \sum_{i=1}^m \sum_{k = 1}^K  \left( \hat{y}^{(i)}_k - y^{(i)}_k \right)^2\]</div>
 </section>
 <section id="absolute-loss">
 <h3>Absolute Loss<a class="headerlink" href="#absolute-loss" title="Permalink to this headline">#</a></h3>
 <p>If there are lots of outliers in the training set, aka samples associated with a large error between the prediction and the observed values, the Mean Squared Errror will make the loss (and cost) very big. A preferable choice would be to take the absolute loss:</p>
 <div class="math notranslate nohighlight" id="equation-lossabseq">
-<span class="eqno">(79)<a class="headerlink" href="#equation-lossabseq" title="Permalink to this equation">#</a></span>\[L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= \left| \;\hat{y}_k^{(i)} - y_k^{(i)} \; \right|\]</div>
+<span class="eqno">(80)<a class="headerlink" href="#equation-lossabseq" title="Permalink to this equation">#</a></span>\[L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= \left| \;\hat{y}_k^{(i)} - y_k^{(i)} \; \right|\]</div>
 </section>
 <section id="huber-loss">
 <h3>Huber Loss<a class="headerlink" href="#huber-loss" title="Permalink to this headline">#</a></h3>
 <p>The Huber Loss is a compromise of the two functions above. It is quadratic when the error is smaller than a threshold <span class="math notranslate nohighlight">\(\delta\)</span> but linear when the error is larger. The linear part makes it less sensitive to outliers than with MSE. The quadratic part allows it to converge faster and be more precise than the absolute error.</p>
 <div class="math notranslate nohighlight" id="equation-losshubereq">
-<span class="eqno">(80)<a class="headerlink" href="#equation-losshubereq" title="Permalink to this equation">#</a></span>\[\begin{split}L_\delta \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= 
+<span class="eqno">(81)<a class="headerlink" href="#equation-losshubereq" title="Permalink to this equation">#</a></span>\[\begin{split}L_\delta \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= 
 \begin{cases}
 \;\; \frac{1}{2}\;\left(\;\hat{y}^{(i)}_k-y^{(i)}_k \;\right)^2 &amp; \text { for } \left|\; \hat{y}^{(i)}_k-y^{(i)}_k \right| \leq \delta \\[2ex]
 \;\; \delta \cdot\left(\;\left|\;\hat{y}^{(i)}_k-y^{(i)}_k\;\right|-\frac{1}{2} \; \delta \; \right), &amp; \text { otherwise }
@@ -899,10 +899,10 @@ title="Print to PDF"
 <h3>Binary Cross-Entropy<a class="headerlink" href="#binary-cross-entropy" title="Permalink to this headline">#</a></h3>
 <p>We are familiar with this one as it was introduced in Lecture 3. We will rewrite it as a reminder:</p>
 <div class="math notranslate nohighlight" id="equation-lossbinceeq">
-<span class="eqno">(81)<a class="headerlink" href="#equation-lossbinceeq" title="Permalink to this equation">#</a></span>\[L \left(\;\hat{y}^{(i)}, y^{(i)}\;\right)=-\left[ \;y^{(i)}  \log \left(\hat{y}^{(i)}\right)+\left(1-y^{(i)}\right) \log \left(1-\hat{y}^{(i)}\right) \; \right]\]</div>
+<span class="eqno">(82)<a class="headerlink" href="#equation-lossbinceeq" title="Permalink to this equation">#</a></span>\[L \left(\;\hat{y}^{(i)}, y^{(i)}\;\right)=-\left[ \;y^{(i)}  \log \left(\hat{y}^{(i)}\right)+\left(1-y^{(i)}\right) \log \left(1-\hat{y}^{(i)}\right) \; \right]\]</div>
 <p>And the cost function will be</p>
 <div class="math notranslate nohighlight" id="equation-costbinceeq">
-<span class="eqno">(82)<a class="headerlink" href="#equation-costbinceeq" title="Permalink to this equation">#</a></span>\[C \left(\;\hat{y}, y\;\right) = - \frac{1}{m} \sum_{i=1}^m \left[ \;y^{(i)}  \log \left(\hat{y}^{(i)}\right)+\left(1-y^{(i)}\right) \log \left(1-\hat{y}^{(i)}\right) \; \right] \]</div>
+<span class="eqno">(83)<a class="headerlink" href="#equation-costbinceeq" title="Permalink to this equation">#</a></span>\[C \left(\;\hat{y}, y\;\right) = - \frac{1}{m} \sum_{i=1}^m \left[ \;y^{(i)}  \log \left(\hat{y}^{(i)}\right)+\left(1-y^{(i)}\right) \log \left(1-\hat{y}^{(i)}\right) \; \right] \]</div>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>Recall that <span class="math notranslate nohighlight">\(\hat{y}^{(i)} = h_{\boldsymbol{W},\boldsymbol{b}}(\boldsymbol{x}^{(i)})\)</span>.</p>
@@ -913,28 +913,28 @@ title="Print to PDF"
 <h3>Categorical Cross-Entropy<a class="headerlink" href="#categorical-cross-entropy" title="Permalink to this headline">#</a></h3>
 <p>A neural network with one output node will classify from two classes: <span class="math notranslate nohighlight">\(y=1\)</span> and <span class="math notranslate nohighlight">\(y=0\)</span>. The cross-entropy is the sum of the actual outcome multiplied by the logarithm of the outcome predicted by the model. If we have more than two classes, we can write the outcome of a given training data instance <span class="math notranslate nohighlight">\(i\)</span> as a vector:</p>
 <div class="math notranslate nohighlight" id="equation-catvecobseq">
-<span class="eqno">(83)<a class="headerlink" href="#equation-catvecobseq" title="Permalink to this equation">#</a></span>\[\boldsymbol{y}^{(i)} = ( 1, 0, 0, \cdots 0)\]</div>
+<span class="eqno">(84)<a class="headerlink" href="#equation-catvecobseq" title="Permalink to this equation">#</a></span>\[\boldsymbol{y}^{(i)} = ( 1, 0, 0, \cdots 0)\]</div>
 <p>of K elements, where K is the number of output nodes. A sample belonging to the class <span class="math notranslate nohighlight">\(k\)</span> corresponds to the row index <span class="math notranslate nohighlight">\(k\)</span>. For instance a sample of the second class (the order is to be defined by convention) would be <span class="math notranslate nohighlight">\(\boldsymbol{y}^{(i)} = (0, 1, 0, \cdots 0 )\)</span>.</p>
 <p>A multi-class neural network would produce vectorial predictions for one sample of the form:</p>
 <div class="math notranslate nohighlight" id="equation-ypredmulticlasseq">
-<span class="eqno">(84)<a class="headerlink" href="#equation-ypredmulticlasseq" title="Permalink to this equation">#</a></span>\[\boldsymbol{\hat{y}}^{(i)} = (0.15, 0.68, \cdots , 0.03)\]</div>
+<span class="eqno">(85)<a class="headerlink" href="#equation-ypredmulticlasseq" title="Permalink to this equation">#</a></span>\[\boldsymbol{\hat{y}}^{(i)} = (0.15, 0.68, \cdots , 0.03)\]</div>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>The categorical cross-entropy is appropriate in combination with an activation function such as the softmax that can produce several probabilities for the number of classes that sum up to 1.</p>
 </aside>
 <p>Mutually exclusive classes would mean that for each <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}}^{(i)} = (\hat{y}^{(i)}_1, \hat{y}^{(i)}_2, \cdots, \hat{y}^{(i)}_K)\)</span>, all output values should add up to 1:</p>
 <div class="math notranslate nohighlight" id="equation-ymulticlassoneeq">
-<span class="eqno">(85)<a class="headerlink" href="#equation-ymulticlassoneeq" title="Permalink to this equation">#</a></span>\[\sum_{k=1}^K \; \hat{y}^{(i)}_k = 1\]</div>
+<span class="eqno">(86)<a class="headerlink" href="#equation-ymulticlassoneeq" title="Permalink to this equation">#</a></span>\[\sum_{k=1}^K \; \hat{y}^{(i)}_k = 1\]</div>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>This is the general equation for <span class="math notranslate nohighlight">\(K\)</span> classes.</p>
 </aside>
-<p>The categorial cross-entropy reduces to the binary equation <a class="reference internal" href="#equation-lossbinceeq">(81)</a> for <span class="math notranslate nohighlight">\(K =2\)</span>.</p>
+<p>The categorial cross-entropy reduces to the binary equation <a class="reference internal" href="#equation-lossbinceeq">(82)</a> for <span class="math notranslate nohighlight">\(K =2\)</span>.</p>
 <div class="math notranslate nohighlight" id="equation-losscateq">
-<span class="eqno">(86)<a class="headerlink" href="#equation-losscateq" title="Permalink to this equation">#</a></span>\[L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)=  - \sum_{k=1}^K \; y^{(i)}_k \log \left( \hat{y}_k^{(i)} \right) \]</div>
+<span class="eqno">(87)<a class="headerlink" href="#equation-losscateq" title="Permalink to this equation">#</a></span>\[L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)=  - \sum_{k=1}^K \; y^{(i)}_k \log \left( \hat{y}_k^{(i)} \right) \]</div>
 <p>And the cost function becomes:</p>
 <div class="math notranslate nohighlight" id="equation-costcateq">
-<span class="eqno">(87)<a class="headerlink" href="#equation-costcateq" title="Permalink to this equation">#</a></span>\[C \left(\;\boldsymbol{\hat{y}}, \boldsymbol{y}\;\right) = - \frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K \; y^{(i)}_k \log \left( \hat{y}^{(i)}_k \right) \]</div>
+<span class="eqno">(88)<a class="headerlink" href="#equation-costcateq" title="Permalink to this equation">#</a></span>\[C \left(\;\boldsymbol{\hat{y}}, \boldsymbol{y}\;\right) = - \frac{1}{m} \sum_{i=1}^m \sum_{k=1}^K \; y^{(i)}_k \log \left( \hat{y}^{(i)}_k \right) \]</div>
 <p>We’re done with the anatomy of our little neurons. Now let’s see how to train them!</p>
 </section>
 </section>

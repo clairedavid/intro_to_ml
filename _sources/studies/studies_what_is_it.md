@@ -28,7 +28,7 @@ The STEP has three goals:
 
 ```{admonition} Group size
 :class: warning
-For the STEP, you can work in groups of 2 or 3. Exceptions can be made if you want to be solo or in a group of 4 (case of an ambitious STEP where workload can be ealsity divided). This will have to be validated by the instructor.
+For the STEP, you can work in groups of 2 or 3. Exceptions can be made if you want to be solo or in a group of 4 (case of an ambitious STEP where workload can be easily divided). This will have to be validated by the instructor.
 ```
 <br>
 
