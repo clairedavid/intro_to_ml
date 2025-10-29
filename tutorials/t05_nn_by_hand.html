@@ -1140,7 +1140,7 @@ title="Print to PDF"
 </figure>
 <section id="part-0-the-math">
 <h2>Part 0: The Math<a class="headerlink" href="#part-0-the-math" title="Permalink to this headline">#</a></h2>
-<p>As a warm-up, you are asked to derive Equations <a class="reference internal" href="../nn/training_2_backprop.html#equation-dcostfirstvectorouterprod">(116)</a>, <a class="reference internal" href="../nn/training_2_backprop.html#equation-defdeltal">(124)</a> – <a class="reference internal" href="../nn/training_2_backprop.html#equation-dcostlayerl">(129)</a> from the section on the <a class="reference internal" href="../nn/training_2_backprop.html#nn-backprop"><span class="std std-ref">Backpropagation Algorithm</span></a>. In class, you saw the main blocks. Here, it is about working out the indices to see which exact tensor operations are being used.</p>
+<p>As a warm-up, you are asked to derive Equations <a class="reference internal" href="../nn/training_2_backprop.html#equation-dcostfirstvectorouterprod">(117)</a>, <a class="reference internal" href="../nn/training_2_backprop.html#equation-defdeltal">(125)</a> – <a class="reference internal" href="../nn/training_2_backprop.html#equation-dcostlayerl">(130)</a> from the section on the <a class="reference internal" href="../nn/training_2_backprop.html#nn-backprop"><span class="std std-ref">Backpropagation Algorithm</span></a>. In class, you saw the main blocks. Here, it is about working out the indices to see which exact tensor operations are being used.</p>
 <ul class="simple">
 <li><p>Remember that a matrix element <span class="math notranslate nohighlight">\(w_{jk}\)</span> of a matrix <span class="math notranslate nohighlight">\(W\)</span> becomes <span class="math notranslate nohighlight">\(w_{kj}\)</span> once it is transposed as <span class="math notranslate nohighlight">\(W^\top\)</span>.</p></li>
 <li><p>The outer product of two vectors <span class="math notranslate nohighlight">\(a \otimes b\)</span> can also be written as: <span class="math notranslate nohighlight">\(a \; b^\top\)</span> .</p></li>
@@ -1285,9 +1285,10 @@ L\left( \hat{y}^{(i)}, y^{(i)}\right) = - \left[ \;\; y^{(i)} \log\left( \hat{y}
 </pre></div>
 </div>
 <div class="note admonition">
-<p class="admonition-title">Check Point</p>
+<p class="admonition-title">Check Point 1</p>
 <p>At this point in the assignment, it is possible to ask for a checkup with the instructor before moving forward to …the backward pass (pun intended).
-Send an email to the instructor with the exact title <code class="docutils literal notranslate"><span class="pre">[Intro</span> <span class="pre">to</span> <span class="pre">ML</span> <span class="pre">2025]</span> <span class="pre">Tutorial</span> <span class="pre">5</span> <span class="pre">Check</span> <span class="pre">1</span></code>, where you paste your completed code of the function above. Do not send any notebook!</p>
+Send an email to the instructor with the exact title <code class="docutils literal notranslate"><span class="pre">[Intro</span> <span class="pre">to</span> <span class="pre">ML</span> <span class="pre">2025]</span> <span class="pre">Tutorial</span> <span class="pre">5</span> <span class="pre">Check</span> <span class="pre">1</span></code>, where you paste your completed code of your weighted sum (question 1.2.1) and the feedforward function above (question 1.3.1).<br />
+⚠️ Do not send any notebook!</p>
 </div>
 </section>
 <section id="predict">
@@ -1373,6 +1374,12 @@ Element-wise multiplication is done using <code class="docutils literal notransl
 <ul class="simple">
 <li><p>In general, use the <code class="docutils literal notranslate"><span class="pre">axis</span></code> argument to choose which dimension(s) to reduce.</p></li>
 </ul>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Check Point 2</p>
+<p>If your code runs without errors, you may inform the instructor of your progress by sending an email titled <code class="docutils literal notranslate"><span class="pre">[Intro</span> <span class="pre">to</span> <span class="pre">ML</span> <span class="pre">2025]</span> <span class="pre">Tutorial</span> <span class="pre">5</span> <span class="pre">Check</span> <span class="pre">2</span></code>.<br />
+Paste your training loop in the email, and attach a text file containing the cell output.<br />
+⚠️ Do not send any notebook!</p>
 </div>
 </section>
 <section id="plots">

@@ -795,16 +795,16 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p>The <strong>Gini’s diversity index</strong> is a measure of a node’s impurity.</p>
 <p>It is defined for each tree node <span class="math notranslate nohighlight">\(i\)</span> as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-18628a0f-eaa7-445e-93f7-d1aa3537a039">
-<span class="eqno">(50)<a class="headerlink" href="#equation-18628a0f-eaa7-445e-93f7-d1aa3537a039" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1fb61895-f338-45d9-89c2-b89b999e01cf">
+<span class="eqno">(50)<a class="headerlink" href="#equation-1fb61895-f338-45d9-89c2-b89b999e01cf" title="Permalink to this equation">#</a></span>\[\begin{equation}
 G_i = 1 - \sum_{k=1}^{N_\text{classes}} \left( \frac{N_{k, i}}{ N_i} \right)^2 = 1 - \sum_{k=1}^{N_\text{classes}} \left( p_k \right)^2
 \end{equation}\]</div>
 <p>with <span class="math notranslate nohighlight">\(N_{k, i}\)</span> the number of data samples of class <span class="math notranslate nohighlight">\(k\)</span> in node <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(N_{i}\)</span> the total number of data samples in node <span class="math notranslate nohighlight">\(i\)</span>. The terms <span class="math notranslate nohighlight">\(p_k\)</span> in the sum are equivalent to the probability of getting a sample of class <span class="math notranslate nohighlight">\(k\)</span> in the node <span class="math notranslate nohighlight">\(i\)</span>.</p>
 <p>The Gini’s impurity index ranges from 0 (100% pure node) to 1 (very impure node).</p>
 </section>
 </div><p>If a node has an equal amount of data points from two classes, let’s say 500 points each, the Gini index will be:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-27575613-f0b9-4c4f-b781-7d00382a8059">
-<span class="eqno">(51)<a class="headerlink" href="#equation-27575613-f0b9-4c4f-b781-7d00382a8059" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-209d2c26-9b8d-42a4-9ea0-95c13ff64c41">
+<span class="eqno">(51)<a class="headerlink" href="#equation-209d2c26-9b8d-42a4-9ea0-95c13ff64c41" title="Permalink to this equation">#</a></span>\[\begin{equation}
 G_i = 1 - \left( \frac{500}{1000} \right)^2 - \left( \frac{500}{1000} \right)^2 = 0.5 
 \end{equation}\]</div>
 <p>With three classes present in equal quantities, it will be <span class="math notranslate nohighlight">\(\frac{2}{3}\)</span>, for four, <span class="math notranslate nohighlight">\(\frac{3}{4}\)</span>, etc.</p>
@@ -816,8 +816,8 @@ G_i = 1 - \left( \frac{500}{1000} \right)^2 - \left( \frac{500}{1000} \right)^2 
 <p class="admonition-title"><span class="caption-number">Definition 48 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The cost function for CART is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-46fc9300-a289-4234-b65d-d2e233d275c3">
-<span class="eqno">(52)<a class="headerlink" href="#equation-46fc9300-a289-4234-b65d-d2e233d275c3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e59d71ca-c295-4211-8d6d-ba55a6a69d84">
+<span class="eqno">(52)<a class="headerlink" href="#equation-e59d71ca-c295-4211-8d6d-ba55a6a69d84" title="Permalink to this equation">#</a></span>\[\begin{equation}
 C(j, t_j) = \frac{N_\text{left}}{N_\text{node}} G_\text{left} + \frac{N_\text{right}}{N_\text{node}} G_\text{right}
 \end{equation}\]</div>
 </section>
@@ -870,14 +870,14 @@ A collection on decision boundaries partitioning the feature space.</p>
 <span class="math notranslate nohighlight">\(\;\;\;\;\;\;\;\)</span> <strong>For</strong> each candidate threshold <span class="math notranslate nohighlight">\(t_j\)</span> scanning the range <span class="math notranslate nohighlight">\(x^\text{min}_j\)</span> to <span class="math notranslate nohighlight">\(x^\text{max}_j\)</span>:<br />
 <span class="math notranslate nohighlight">\(\;\;\;\;\;\;\;\;\;\;\;\;\;\;\)</span> Compute the cost function <span class="math notranslate nohighlight">\(C(j, t_j)\)</span><br />
  <br />
-<span class="math notranslate nohighlight">\(\;\;\;\;\;\;\;\)</span> Find for this feature the threshold <span class="math notranslate nohighlight">\(t_j^*\)</span> associated to the minimum cost:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-42397aaf-819d-4f85-ac63-04cce3b62d26">
-<span class="eqno">(53)<a class="headerlink" href="#equation-42397aaf-819d-4f85-ac63-04cce3b62d26" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<span class="math notranslate nohighlight">\(\;\;\;\;\;\;\;\)</span> Find for this feature the threshold <span class="math notranslate nohighlight">\(t_j^*\)</span> associated with the minimum cost:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a2c68392-6f36-4f1a-8c9f-4269c4e30bf5">
+<span class="eqno">(53)<a class="headerlink" href="#equation-a2c68392-6f36-4f1a-8c9f-4269c4e30bf5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 t_j^* = \arg\min_{t_j} C(j, t_j)
 \end{equation}\]</div>
 <p>After scanning all features <span class="math notranslate nohighlight">\(j\)</span>, find the tuple <span class="math notranslate nohighlight">\((j^{\text{cut}}, t_{j^{\text{cut}}}^*)\)</span> that minimizes:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ba3d023a-3a10-4aae-83a9-a8b5a95ff58e">
-<span class="eqno">(54)<a class="headerlink" href="#equation-ba3d023a-3a10-4aae-83a9-a8b5a95ff58e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ac98ab31-5605-434a-a585-58b43135fe69">
+<span class="eqno">(54)<a class="headerlink" href="#equation-ac98ab31-5605-434a-a585-58b43135fe69" title="Permalink to this equation">#</a></span>\[\begin{equation}
 (j^{\text{cut}}, t_{j^{\text{cut}}}^*) = \arg\min_{j,\, t_j^*} C(j, t_j^*)
 \end{equation}\]</div>
 <p><strong>STEP 2: BRANCHING</strong>:<br />
