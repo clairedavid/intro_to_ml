@@ -93,7 +93,7 @@ __For__ each feature $j = 1, \ldots, n$ :
 $\;\;\;\;\;\;\;$ __For__ each candidate threshold $t_j$ scanning the range $x^\text{min}_j$ to $x^\text{max}_j$:  
 $\;\;\;\;\;\;\;\;\;\;\;\;\;\;$ Compute the cost function $C(j, t_j)$  
 &nbsp;  
-$\;\;\;\;\;\;\;$ Find for this feature the threshold $t_j^*$ associated to the minimum cost:
+$\;\;\;\;\;\;\;$ Find for this feature the threshold $t_j^*$ associated with the minimum cost:
 
 \begin{equation}
 t_j^* = \arg\min_{t_j} C(j, t_j)

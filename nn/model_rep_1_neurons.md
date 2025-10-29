@@ -199,7 +199,7 @@ Moreover, the perceptron doesn't scale well with massive datasets. Other weaknes
 ## Connecting artificial neurons 
 
 ### Layers
-While the computation in each artificial neuron is simple, the interconnections of the network allow for complex patterns to be modelled. Like their organic counterparts where neurons are organized in consecutive layers, artificial neural networks are also arranged in layers. Meurons in each layer receive input from the previous layer and pass their output to the subsequent layer.
+While the computation in each artificial neuron is simple, the interconnections of the network allow for complex patterns to be modelled. Like their organic counterparts where neurons are organized in consecutive layers, artificial neural networks are also arranged in layers. Neurons in each layer receive input from the previous layer and pass their output to the subsequent layer.
 
 ````{prf:definition}
 :label: nnlayerdef
@@ -219,7 +219,7 @@ Each neuron (or node) performs a linear transformation on the inputs (weighted s
 The number of hidden layers is an indicator of the __depth__ of a neural network. 
 ````
 
-A 'minimal' multilayer neural network would have one input, one hidden and one output layers. The term used is shallow, by opposition to deep. Stricly speaking , or rather historically from the first development in the 1990s, neural networks containing more than one hidden layers are considered deep. Deep Neural Networks (DNN) are also called Deep Nets for short. There is a bit of fuzziness when it comes to what we can consider deep, as nowadays it is common to see dozens of hidden layers.
+A 'minimal' multilayer neural network would have one input, one hidden and one output layers. The term used is shallow, by opposition to deep. Strictly speaking , or rather historically from the first development in the 1990s, neural networks containing more than one hidden layers are considered deep. Deep Neural Networks (DNN) are also called Deep Nets for short. There is a bit of fuzziness when it comes to what we can consider deep, as nowadays it is common to see dozens of hidden layers.
 
 
 ```{figure} ../images/model_rep_1_nn_layers.png

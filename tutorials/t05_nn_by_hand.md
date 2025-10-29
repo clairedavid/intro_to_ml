@@ -156,10 +156,11 @@ def feedforward(input_X, weights, biases):
     return nodes
 ```
 
-```{admonition} Check Point
+```{admonition} Check Point 1
 :class: note
 At this point in the assignment, it is possible to ask for a checkup with the instructor before moving forward to ...the backward pass (pun intended).
-Send an email to the instructor with the exact title `[Intro to ML 2025] Tutorial 5 Check 1`, where you paste your completed code of the function above. Do not send any notebook!
+Send an email to the instructor with the exact title `[Intro to ML 2025] Tutorial 5 Check 1`, where you paste your completed code of your weighted sum (question 1.2.1) and the feedforward function above (question 1.3.1).  
+⚠️ Do not send any notebook!
 ```
 
 
@@ -237,6 +238,12 @@ Element-wise multiplication is done using `*`.
 * In general, use the `axis` argument to choose which dimension(s) to reduce.
 ````
 
+```{admonition} Check Point 2
+:class: note
+If your code runs without errors, you may inform the instructor of your progress by sending an email titled `[Intro to ML 2025] Tutorial 5 Check 2`.  
+Paste your training loop in the email, and attach a text file containing the cell output.  
+⚠️ Do not send any notebook!
+```
 
 ### 1.5 Plots
 
