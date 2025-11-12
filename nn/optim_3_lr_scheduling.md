@@ -77,7 +77,7 @@ which will get the learning rate to decrease faster upon training start, and muc
 ```
 
 ### Step-based Decay Scheduling
-Also called piecewise constant scheduling, this approach first uses of a constant learning rate for a given number of epochs and then the learning rate is reduced:
+Also called piecewise constant scheduling, this approach first uses a constant learning rate for a given number of epochs, and then reduces it in steps:
 ````{margin}
 The floor function `floor(x)` or $\lfloor x \rfloor$ returns the greatest integer less than or equal to $x$.
 ````

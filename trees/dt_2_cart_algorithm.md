@@ -115,7 +115,7 @@ Stop when at least one of the hyperparameter constraints is satisfied.
 
 ````
 
-One of the greatest strength of decision tree is the fact very few assumptions about the training data are made. It differs from linear or polynomial models where we need to know beforehand that the data can be fit with either linear or polynomial function.  
+One of the greatest strengths of decision trees is that they make very few assumptions about the training data. This differs from linear or polynomial models, where we need to know beforehand that the data can be fit with either a linear or a polynomial function.
 
 Another advantage: feature scaling is not necessary. No need to standardize the dataset beforehand.
 
