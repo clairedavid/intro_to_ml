@@ -796,7 +796,7 @@ title="Print to PDF"
 <p>You will need to be familiar with the basics of bash for your setup mission.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p><br><br><sup>*</sup> Bash (Bourne Again SHell) is a programming language for Unix-like operative systems. It’s an interactive command-interpreter, that means it allows the user to “talk” to the operating system (OS) and execute tasks. Thanks to scripts written in bash, tasks can be automatized.</p>
+<p><br><br><sup>*</sup> Bash (Bourne Again SHell) is a programming language for Unix-like operating systems. It’s an interactive command-interpreter, that means it allows the user to “talk” to the operating system (OS) and execute tasks. Thanks to scripts written in bash, tasks can be automatized.</p>
 </aside>
 <div class="note admonition">
 <p class="admonition-title">Note to the Unix whisperers</p>
@@ -903,11 +903,13 @@ title="Print to PDF"
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!pwd
 </pre></div>
 </div>
-<p>to see where you are in your Drive and then list the file content with <code class="docutils literal notranslate"><span class="pre">ls</span></code> or to put more details, using the option <code class="docutils literal notranslate"><span class="pre">-l</span></code>:</p>
+<p>to see where you are and then list the file content with <code class="docutils literal notranslate"><span class="pre">ls</span></code> or to put more details, using the option <code class="docutils literal notranslate"><span class="pre">-l</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!ls -l 
 </pre></div>
 </div>
-<p>Then navigate to the folders where your file is using a couple of <code class="docutils literal notranslate"><span class="pre">cd</span></code> and <code class="docutils literal notranslate"><span class="pre">ls</span></code> commands. For the <code class="docutils literal notranslate"><span class="pre">cd</span></code> command, remember to use the <code class="docutils literal notranslate"><span class="pre">%</span></code> symbol at front.</p>
+<p>After mounting, you are in <code class="docutils literal notranslate"><span class="pre">/content</span></code>. You are not inside your Drive yet. Your own files are inside <code class="docutils literal notranslate"><span class="pre">gdrive/MyDrive</span></code>.
+Use the commands listed from the table above to move there. For the <code class="docutils literal notranslate"><span class="pre">cd</span></code> command, remember to use the <code class="docutils literal notranslate"><span class="pre">%</span></code> symbol at front.
+Then keep inspecting <code class="docutils literal notranslate"><span class="pre">MyDrive</span></code> until you find the folder where you saved the data file.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Once you locate your data file in Google Drive, it’s a good practice to store its full path (i.e., the string of characters representing all directories and subdirectories) in a variable. You can name it <code class="docutils literal notranslate"><span class="pre">data_path</span></code> for instance. Careful using <code class="docutils literal notranslate"><span class="pre">path</span></code> as it is a special python variable!</p>
@@ -915,7 +917,7 @@ title="Print to PDF"
 <p><strong>Let’s inspect the file!</strong><br />
 In the section <a class="reference internal" href="#bash-refresher"><span class="std std-ref">Bash (re)fresher</span></a> above, you can see the commands <code class="docutils literal notranslate"><span class="pre">cat</span></code>, <code class="docutils literal notranslate"><span class="pre">head</span></code> and <code class="docutils literal notranslate"><span class="pre">tail</span></code>. The first one will display in the terminal the entire file. What if there are many many lines? This will saturate your output window. Instead, you can use <code class="docutils literal notranslate"><span class="pre">head</span></code> or <code class="docutils literal notranslate"><span class="pre">tail</span></code> to display a portion of the file. For instance, <code class="docutils literal notranslate"><span class="pre">head</span> <span class="pre">-n</span> <span class="pre">10</span></code> shows the first 10 lines, <code class="docutils literal notranslate"><span class="pre">tail</span> <span class="pre">-n</span> <span class="pre">3</span></code> will give you the last three lines.</p>
 <p>In my Colab setup with Drive mounted, it looks like this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_path</span> <span class="o">=</span> <span class="s2">&quot;/content/gdrive/MyDrive/data/intro_ml_2025/&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_path</span> <span class="o">=</span> <span class="s2">&quot;/content/gdrive/MyDrive/data/intro_to_ml_2025/&quot;</span>
 <span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;data_setup.csv&quot;</span>
 </pre></div>
 </div>
@@ -962,7 +964,7 @@ In the section <a class="reference internal" href="#bash-refresher"><span class=
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>You’re done the setup! Enjoy the tutorials!</p>
+<p>You’re done with the setup! Enjoy the tutorials!</p>
 </section>
 </section>
 </section>

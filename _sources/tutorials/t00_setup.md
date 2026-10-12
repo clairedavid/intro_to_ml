@@ -12,7 +12,7 @@ You will be given data files to download and upload to your Google Drive. Storin
 You will need to be familiar with the basics of bash for your setup mission.
 
 ````{margin}
-<br><br><sup>*</sup> Bash (Bourne Again SHell) is a programming language for Unix-like operative systems. It's an interactive command-interpreter, that means it allows the user to "talk" to the operating system (OS) and execute tasks. Thanks to scripts written in bash, tasks can be automatized. 
+<br><br><sup>*</sup> Bash (Bourne Again SHell) is a programming language for Unix-like operating systems. It's an interactive command-interpreter, that means it allows the user to "talk" to the operating system (OS) and execute tasks. Thanks to scripts written in bash, tasks can be automatized. 
 
 ````
 ```{admonition} Note to the Unix whisperers
@@ -80,13 +80,16 @@ You can first do:
 !pwd
 ```
 
-to see where you are in your Drive and then list the file content with `ls` or to put more details, using the option `-l`: 
+to see where you are and then list the file content with `ls` or to put more details, using the option `-l`: 
 
 ```bash
 !ls -l 
 ``` 
 
-Then navigate to the folders where your file is using a couple of `cd` and `ls` commands. For the `cd` command, remember to use the `%` symbol at front. 
+After mounting, you are in `/content`. You are not inside your Drive yet. Your own files are inside `gdrive/MyDrive`. 
+Use the commands listed from the table above to move there. For the `cd` command, remember to use the `%` symbol at front. 
+Then keep inspecting `MyDrive` until you find the folder where you saved the data file.
+
 
 ```{tip}
 Once you locate your data file in Google Drive, it’s a good practice to store its full path (i.e., the string of characters representing all directories and subdirectories) in a variable. You can name it `data_path` for instance. Careful using `path` as it is a special python variable! 
@@ -98,7 +101,7 @@ In the section {ref}`bash:refresher` above, you can see the commands `cat`, `hea
 In my Colab setup with Drive mounted, it looks like this:
 
 ```python
-data_path = "/content/gdrive/MyDrive/data/intro_ml_2025/"
+data_path = "/content/gdrive/MyDrive/data/intro_to_ml_2025/"
 data_file = "data_setup.csv"
 ```
 In bash, variables are prefixed with a `$` sign. To use multiple variables (or a variable and a string) together, just place them back-to-back without any separator.
@@ -147,4 +150,4 @@ def plot_setup_data(csv_file):
 ```
 
 
-You're done the setup! Enjoy the tutorials! 
+You're done with the setup! Enjoy the tutorials! 
