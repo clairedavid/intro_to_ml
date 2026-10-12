@@ -108,16 +108,6 @@ parts:
       - file: studies/studies_list
       - file: studies/studies_submit_yours
 
-  - caption: AI Ethics & Outlook
-    numbered: false
-    chapters:
-    - file: ethics_outlook/ethics_0_intro
-      sections:
-      - file: ethics_outlook/ethics_1_definitions
-      - file: ethics_outlook/ethics_2_why_matters
-      - file: ethics_outlook/ethics_3_resources
-    - file: ethics_outlook/outlook
-
   - caption: Tutorial area
     numbered: false
     chapters:
