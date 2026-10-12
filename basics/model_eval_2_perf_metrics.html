@@ -515,45 +515,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  AI Ethics &amp; Outlook
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ethics_outlook/ethics_0_intro.html">
-   AI Ethics: What is it?
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ethics_outlook/ethics_1_definitions.html">
-     Definitions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ethics_outlook/ethics_2_why_matters.html">
-     Why Does It Matter?
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ethics_outlook/ethics_3_resources.html">
-     Resources
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../ethics_outlook/outlook.html">
-   Outlook
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
   Tutorial area
  </span>
 </p>
@@ -904,8 +865,8 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p class="admonition-title"><span class="caption-number">Definition 29 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>root mean squared error (RMSE)</strong> is the square root of the mean squared error:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-187ead75-8ea5-4cf0-9b52-9392c2c3ad3f">
-<span class="eqno">(30)<a class="headerlink" href="#equation-187ead75-8ea5-4cf0-9b52-9392c2c3ad3f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8cb587a8-e2c5-4c69-b742-3959898b69eb">
+<span class="eqno">(30)<a class="headerlink" href="#equation-8cb587a8-e2c5-4c69-b742-3959898b69eb" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{RMSE} = \sqrt{ \frac{\sum_{i=1}^N (y^\text{pred} - y^\text{obs} )^2 }{ N } }
 \end{equation}\]</div>
 </section>
@@ -921,29 +882,29 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p> <br />
 <strong>Accuracy</strong><br />
 Measures the fraction of correct predictions among all predictions</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1a290582-f2e1-42b5-83c1-a920726dc26f">
-<span class="eqno">(31)<a class="headerlink" href="#equation-1a290582-f2e1-42b5-83c1-a920726dc26f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e18366b3-1658-4b38-88a2-620b3a5cceb6">
+<span class="eqno">(31)<a class="headerlink" href="#equation-e18366b3-1658-4b38-88a2-620b3a5cceb6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Accuracy} = \frac{\text{True predictions}}{\text{All predictions}} = \frac{\text{TP + TN}}{\text{TP + TN + FP + FN}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Precision, or Positive Predictive Value (PPV)</strong><br />
 Measures the fraction of true positive predictions among all <strong>positive predictions</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-436323ac-b14b-4bfd-b85e-4d8b3246980a">
-<span class="eqno">(32)<a class="headerlink" href="#equation-436323ac-b14b-4bfd-b85e-4d8b3246980a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8e21056f-a112-48d8-8951-621a0977faff">
+<span class="eqno">(32)<a class="headerlink" href="#equation-8e21056f-a112-48d8-8951-621a0977faff" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Precision} = \frac{\text{True Positives}}{\text{All Positive Predictions}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Recall, or True Positive Rate (TPR)</strong><br />
 Measures the fraction of true positive predictions among all <strong>true observations</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6a2de7d6-b812-43f2-812f-c7bf78e72550">
-<span class="eqno">(33)<a class="headerlink" href="#equation-6a2de7d6-b812-43f2-812f-c7bf78e72550" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6049cee3-f64a-4987-a984-24d65c786b96">
+<span class="eqno">(33)<a class="headerlink" href="#equation-6049cee3-f64a-4987-a984-24d65c786b96" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Recall} = \frac{\text{True Positives}}{\text{Actual Positives}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>F-Score, or F1</strong><br />
 Describes the balance between Precision and Recall. It is the harmonic mean of the two:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-de1893b6-18e2-41f6-8735-ecde6ebc49e7">
-<span class="eqno">(34)<a class="headerlink" href="#equation-de1893b6-18e2-41f6-8735-ecde6ebc49e7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-dcd0658a-ad3c-4df2-b8dd-efa142d3b77a">
+<span class="eqno">(34)<a class="headerlink" href="#equation-dcd0658a-ad3c-4df2-b8dd-efa142d3b77a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{F1} =2 \; \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
 \end{equation}\]</div>
 </section>

@@ -515,45 +515,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  AI Ethics &amp; Outlook
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ethics_outlook/ethics_0_intro.html">
-   AI Ethics: What is it?
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ethics_outlook/ethics_1_definitions.html">
-     Definitions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ethics_outlook/ethics_2_why_matters.html">
-     Why Does It Matter?
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ethics_outlook/ethics_3_resources.html">
-     Resources
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../ethics_outlook/outlook.html">
-   Outlook
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
   Tutorial area
  </span>
 </p>
@@ -841,20 +802,20 @@ w^{(i)} = \frac{1}{m}
 <p><strong>Start</strong><br />
 <strong>For</strong> each predictor <span class="math notranslate nohighlight">\(t = 1 , \dots , N^\text{pred}\)</span><br />
 a. Train on all samples and compute the weighted error rate <span class="math notranslate nohighlight">\(r_t\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-7f5c1b9c-821f-46f6-bf81-cb9b75ca51d9">
-<span class="eqno">(55)<a class="headerlink" href="#equation-7f5c1b9c-821f-46f6-bf81-cb9b75ca51d9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ea52f655-eeab-4303-8f85-8c383504cc93">
+<span class="eqno">(55)<a class="headerlink" href="#equation-ea52f655-eeab-4303-8f85-8c383504cc93" title="Permalink to this equation">#</a></span>\[\begin{equation}
         r_t = \frac{\sum_{i = 1}^m w^{(i)} [ \hat{y}_t^{(i)} \neq y^{(i)} ]}{\sum_{i = 1}^m w^{(i)}}
    \end{equation}\]</div>
 <p>b. Give the predictor <span class="math notranslate nohighlight">\(t\)</span> a weight <span class="math notranslate nohighlight">\(W_t\)</span> measuring accuracy</p>
-<div class="amsmath math notranslate nohighlight" id="equation-74230bb9-19e3-42c4-8e07-bbd333a8d5d3">
-<span class="eqno">(56)<a class="headerlink" href="#equation-74230bb9-19e3-42c4-8e07-bbd333a8d5d3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4432f512-4208-4914-8c08-f0551e43f6ee">
+<span class="eqno">(56)<a class="headerlink" href="#equation-4432f512-4208-4914-8c08-f0551e43f6ee" title="Permalink to this equation">#</a></span>\[\begin{equation}
         W_t = \alpha \log \frac{1 - r_t}{r_t}
    \end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(W_t\)</span> points to a high number if the predictor is good, zero if the predictor is guessing randomly, negative if it is bad.
 <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate.</p>
 <p>c. Update the weights of all data samples:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b935d770-0c46-4d73-82d0-28b4e10177f2">
-<span class="eqno">(57)<a class="headerlink" href="#equation-b935d770-0c46-4d73-82d0-28b4e10177f2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-53681a92-0c9c-4317-a656-97cfd6aa84a7">
+<span class="eqno">(57)<a class="headerlink" href="#equation-53681a92-0c9c-4317-a656-97cfd6aa84a7" title="Permalink to this equation">#</a></span>\[\begin{equation}
         w^{(i)} \longleftarrow
         \begin{cases} 
         w^{(i)} &amp; \text{if } \hat{y}_t^{(i)} = y^{(i)} \\[1ex]
@@ -862,8 +823,8 @@ a. Train on all samples and compute the weighted error rate <span class="math no
         \end{cases}
    \end{equation}\]</div>
 <p>d. Normalize the weights</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a29a58b7-8e59-431d-9df4-d105f83ebdf1">
-<span class="eqno">(58)<a class="headerlink" href="#equation-a29a58b7-8e59-431d-9df4-d105f83ebdf1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7308bf4e-166d-48f2-a4f4-0f69a5c58dae">
+<span class="eqno">(58)<a class="headerlink" href="#equation-7308bf4e-166d-48f2-a4f4-0f69a5c58dae" title="Permalink to this equation">#</a></span>\[\begin{equation}
     w^{(i)} \rightarrow \frac{w^{(i)}}{\sum_{i = 1}^m w^{(i)}}
    \end{equation}\]</div>
 <p><strong>Exit conditions</strong></p>

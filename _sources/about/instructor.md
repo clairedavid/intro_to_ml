@@ -23,7 +23,7 @@ My main area of research is in collider physics. I have 10+ years' experience wo
 
 During the academic year 2022-2023, I took a leave from York University to build a course on machine learning designed for the [African Institute for Mathematical Sciences](https://nexteinstein.org/) (AIMS) format. I taught this course at [AIMS Senegal](https://aims-senegal.org/), [AIMS South Africa](https://aims.ac.za/) and [AIMS Ghana](https://aims.edu.gh/). During my stay at AIMS South Africa, I was offered the opportunity to become a Resident Researcher in Machine Learning and the Academic Director of a new Master's course [AI for Science](https://ai.aims.ac.za/), founded by Google DeepMind. 
 
-My interests range from advanced machine learning implementations for experimental particle physics to ethics in AI, education in Africa and sustainability on this fragile planet.
+My interests range from advanced machine learning implementations for experimental particle physics to ethics in AI, education and sustainability on this fragile planet.
 
 
 ## Credits
@@ -35,3 +35,5 @@ Thanks to Mike Giles for catching all the typos and having this admirable attent
 I would also like to thank Alex Held, Benjamin Nachman, Bruno Barton-Singer, Clara Nellist, Dag Gillberg, Matthew Feickert, Sascha Caron and Will Leight.
 
 For this course I got inspired by Coursera's Introduction to Machine Learning, by Andrew Ng. I found wonderful tutorials in Machine Learning Mastery, by Dr. Jason Brownlee. Aurélien Géron's book Hands-on Machine Learning with Scikit-Learn, Keras, and TensorFlow ([Second Edition](https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/)) is fabulous. I am grateful to all 'StackOverflowers' helping me debug some parts of code to shape the tutorials and assignments into, I hope, an awesome learning experience for the students.
+
+Extra credits: in 2025, this course has been renovated with the help of AIMS former students and tutors. I am grateful to Ahmed Turkman, Ayman Saeed, David Krame, Isaac Houngue, Jeffrey Katabo, Koomi Amoussouvi, Maria Stickel, Omer Ebead, Ophelia Dankyi, Timothy Hitge and Yassir Aladdin.

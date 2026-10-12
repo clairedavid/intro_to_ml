@@ -21,7 +21,7 @@ There is a powerful result stating that only a three-layer neural network (input
 :label: unitheodef
 In the mathematical theory of artificial neural networks, the _Universal Approximation Theorem_ states that a forward propagation network of a single hidden layer containing a finite number of neurons can approximate continuous functions on compact subsets of $\mathbb{R}^n$.
 ````
-When is meant behind "compact subsets of $\mathbb{R}$ is that the function should not have jumps nor large gaps. This is quite a remarkable result. The simple multilayer perceptron (MLP) can thus mimick any known function, from cosine, to exponential and even more complex curves!
+What is meant by compact subsets of $\mathbb{R}$ is that the function should not have jumps or large gaps. This is quite a remarkable result: a simple multilayer perceptron (MLP) can mimic any known function — from cosine to exponential, and even more complex curves!
 
 ## Main activation functions
 Let's present some common non-linear activation functions, their characteristics, with the pros and cons.  
@@ -73,7 +73,7 @@ __Cons__
 * There is also a _Vanishing Gradient_ problem due to the derivative cancelling for $z \rightarrow - \infty$ and $z \rightarrow + \infty$.  
 
 ### Rectified Linear Unit (ReLU)
-Welcome to the family of rectifiers, thee most popular activation function for deep neural networks. The ReLU is defined as:
+Welcome to the family of rectifiers, the most popular activation function for deep neural networks. The ReLU is defined as:
 
 ```{math}
 :label: ReLU
@@ -193,7 +193,7 @@ __Cons__
 The Scaled Exponential Linear Unit (SELU) is defined as:
 
 ```{math}
-\text{ELU}(z) = \lambda \begin{cases}\;\;  a(e^z -1) & \text{ if } z < 0 \\\;\;  z & \text{ if } z \geq 0\end{cases} \;\;\;\; \forall \: z , a \in  \mathbb{R},
+\text{SELU}(z) = \lambda \begin{cases}\;\;  a(e^z -1) & \text{ if } z < 0 \\\;\;  z & \text{ if } z \geq 0\end{cases} \;\;\;\; \forall \: z , a \in  \mathbb{R},
 ```
 where $\lambda = 1.0507$ and $a = 1.67326$. Why these specific values? The values come from a normalization procedure; the SELU activation introduces self-normalizing properties. It takes care of internal normalization which means each layer preserves the mean and variance from the previous layers. SELU enables this normalization by adjusting the mean and variance. It can be shown that, for self-normalizing neural networks (SNNs), neuron activations are pushed towards zero mean and unit variance when propagated through the network (there are more details and technicalities in this [paper](https://paperswithcode.com/method/selu) for those interested). 
 

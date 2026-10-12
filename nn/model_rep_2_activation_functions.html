@@ -515,45 +515,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  AI Ethics &amp; Outlook
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ethics_outlook/ethics_0_intro.html">
-   AI Ethics: What is it?
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ethics_outlook/ethics_1_definitions.html">
-     Definitions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ethics_outlook/ethics_2_why_matters.html">
-     Why Does It Matter?
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ethics_outlook/ethics_3_resources.html">
-     Resources
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../ethics_outlook/outlook.html">
-   Outlook
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
   Tutorial area
  </span>
 </p>
@@ -959,7 +920,7 @@ title="Print to PDF"
 <section class="theorem-content" id="proof-content">
 <p>In the mathematical theory of artificial neural networks, the <em>Universal Approximation Theorem</em> states that a forward propagation network of a single hidden layer containing a finite number of neurons can approximate continuous functions on compact subsets of <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>.</p>
 </section>
-</div><p>When is meant behind “compact subsets of <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is that the function should not have jumps nor large gaps. This is quite a remarkable result. The simple multilayer perceptron (MLP) can thus mimick any known function, from cosine, to exponential and even more complex curves!</p>
+</div><p>What is meant by compact subsets of <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> is that the function should not have jumps or large gaps. This is quite a remarkable result: a simple multilayer perceptron (MLP) can mimic any known function — from cosine to exponential, and even more complex curves!</p>
 </section>
 </section>
 <section id="main-activation-functions">
@@ -1012,7 +973,7 @@ title="Print to PDF"
 </section>
 <section id="rectified-linear-unit-relu">
 <h3>Rectified Linear Unit (ReLU)<a class="headerlink" href="#rectified-linear-unit-relu" title="Permalink to this headline">#</a></h3>
-<p>Welcome to the family of rectifiers, thee most popular activation function for deep neural networks. The ReLU is defined as:</p>
+<p>Welcome to the family of rectifiers, the most popular activation function for deep neural networks. The ReLU is defined as:</p>
 <div class="math notranslate nohighlight" id="equation-relu">
 <span class="eqno">(74)<a class="headerlink" href="#equation-relu" title="Permalink to this equation">#</a></span>\[f(z) = \max(0,z)\]</div>
 <figure class="align-default" id="model-rep-2-relu">
@@ -1119,7 +1080,7 @@ title="Print to PDF"
 </figure>
 <p>The Scaled Exponential Linear Unit (SELU) is defined as:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\text{ELU}(z) = \lambda \begin{cases}\;\;  a(e^z -1) &amp; \text{ if } z &lt; 0 \\\;\;  z &amp; \text{ if } z \geq 0\end{cases} \;\;\;\; \forall \: z , a \in  \mathbb{R},\end{split}\]</div>
+\[\begin{split}\text{SELU}(z) = \lambda \begin{cases}\;\;  a(e^z -1) &amp; \text{ if } z &lt; 0 \\\;\;  z &amp; \text{ if } z \geq 0\end{cases} \;\;\;\; \forall \: z , a \in  \mathbb{R},\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\lambda = 1.0507\)</span> and <span class="math notranslate nohighlight">\(a = 1.67326\)</span>. Why these specific values? The values come from a normalization procedure; the SELU activation introduces self-normalizing properties. It takes care of internal normalization which means each layer preserves the mean and variance from the previous layers. SELU enables this normalization by adjusting the mean and variance. It can be shown that, for self-normalizing neural networks (SNNs), neuron activations are pushed towards zero mean and unit variance when propagated through the network (there are more details and technicalities in this <a class="reference external" href="https://paperswithcode.com/method/selu">paper</a> for those interested).</p>
 <p><strong>Pros</strong></p>
 <ul class="simple">

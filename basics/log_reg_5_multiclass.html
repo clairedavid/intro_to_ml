@@ -515,45 +515,6 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  AI Ethics &amp; Outlook
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ethics_outlook/ethics_0_intro.html">
-   AI Ethics: What is it?
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ethics_outlook/ethics_1_definitions.html">
-     Definitions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ethics_outlook/ethics_2_why_matters.html">
-     Why Does It Matter?
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ethics_outlook/ethics_3_resources.html">
-     Resources
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../ethics_outlook/outlook.html">
-   Outlook
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
   Tutorial area
  </span>
 </p>
@@ -803,8 +764,8 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-One approach</strong> consists of applying a binary classification for each pair of classes, ignoring the other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of models to train, <span class="math notranslate nohighlight">\(N^\text{model}\)</span> is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2d690158-1ddf-498e-98b4-2c9cad68e625">
-<span class="eqno">(28)<a class="headerlink" href="#equation-2d690158-1ddf-498e-98b4-2c9cad68e625" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-71c89d81-6fa4-4754-be91-0fd532d95840">
+<span class="eqno">(28)<a class="headerlink" href="#equation-71c89d81-6fa4-4754-be91-0fd532d95840" title="Permalink to this equation">#</a></span>\[\begin{equation}
 N^\text{model} = \frac{N^\text{class}(N^\text{class}-1)}{2}
 \end{equation}\]</div>
 <p>Each model predicts one class label. The final decision is the class label receiving the most votes, i.e. being predicted most of the time.</p>
@@ -829,8 +790,8 @@ The pairing makes the number of models to train large and thus computer intensiv
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-All or One-to-Rest approach</strong> consists of training each class against the collection of all other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of pairs to train is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-713194cb-28c4-4f8e-81d3-d8558def7530">
-<span class="eqno">(29)<a class="headerlink" href="#equation-713194cb-28c4-4f8e-81d3-d8558def7530" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1c1f87ba-3454-4d59-a68a-51283080ce74">
+<span class="eqno">(29)<a class="headerlink" href="#equation-1c1f87ba-3454-4d59-a68a-51283080ce74" title="Permalink to this equation">#</a></span>\[\begin{equation}
  N^\text{model} = N^\text{class}
 \end{equation}\]</div>
 <p>The final prediction is given by the highest value of the hypothesis function <span class="math notranslate nohighlight">\(h^{k}_\theta(x)\)</span>, <span class="math notranslate nohighlight">\(k \in [1, N^\text{model}]\)</span> among the <span class="math notranslate nohighlight">\(N^\text{model}\)</span> binary classifiers.</p>
