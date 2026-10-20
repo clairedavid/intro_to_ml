@@ -13,8 +13,6 @@ kernelspec:
 
 
 
-
-
 # Principle Component Analysis (PCA)
 These next two algorithms are forms of *dimensionality reduction*, where we learn a lower-dimensional representation of our data. The lower dimensional space which we project our data into $\mathbb{R}^{L}$ is called a *latent* space and its elements are referred to as latent vectors.
 
@@ -23,6 +21,7 @@ These next two algorithms are forms of *dimensionality reduction*, where we lear
 \DeclareMathOperator*{\argmax}{argmax}
 \newcommand{\xvec}{\mathbf{x}}
 \newcommand{\zvec}{\mathbf{z}}
+\newcommand{\uvec}{\mathbf{u}}
 ```
 
 <!-- ```{code-cell}
@@ -258,7 +257,9 @@ plot.display()
 
 Principle Component Analysis (PCA) is a *nonparametric* form of dimensionality reduction where we *linearly* and *orthogonally* project the data $\mathcal{D}=\{\xvec^{(i)}\mid1\leq i\leq N, \xvec^{(i)}\in\mathbb{R}^{D}\}$ into a lower dimensional subspace $\mathcal{Z}$ ($\mathrm{dim}(\mathcal{Z})=L$) in such a way that the lower dimensional representation can be used to obtain a good reconstruction of the original data. This is achieved by finding the $L$ directions along which the data varies the most (the *principle components*) and projecting the data onto only these directions.
 
-
+```{margin}
+We are using the word *projection* in an intuitive sense here. In formal mathematics it has a precise definition that our transformation matrix does not meet.
+```
 This projection is defined by a matrix $D\times L$ matrix $W$, the projection is given by $\zvec=W^T\xvec$ and "unprojection" is given by $\hat{\xvec}=W\zvec$. We measure the quality of our reconstruction by Mean-Squared Error:
 
 $$
@@ -283,13 +284,15 @@ In the next section we will assume that you're comfortable with *eigenvalues* an
 ```{admonition} Exercise
 :class: seealso
 1.) What does the orthogonality of the projection imply about the *principle components* that make up the projection matrix?<br/>
-2.) What does $W^TW$ equal?<br/>
+2.) What kind of matrix is $W^TW$?<br/>
 3.) Does this mean that the projection matrix is orthogonal?
 ```
 
 ````{admonition} Check your answers
 :class: tip, dropdown
-TODO
+1.) The principle components are *orthogonal* to one another; for principle components $\uvec_i$ and $\uvec_j$ $\uvec_i\uvec_j^T=0$ when $i\neq j$, .  
+2.) $W^TW$ is a diagonal matrix where the diagonal entries are equal to the norm of each principle component.  
+3.) No. The matrix is not square, so $W^TW\neq WW^T$ and the columns and rows are not necessarily orthonormal.
 ````
 
 We'll now build up some intuition for why $U_L$ is the optimal orthogonal projection of the data. Let's do a walkthrough with some toy data.

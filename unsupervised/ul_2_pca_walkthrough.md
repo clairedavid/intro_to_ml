@@ -50,10 +50,6 @@ ax.set_xlabel('X')
 plt.show()
 ```
 
-```{warning}
-It is important to center your data (subtract the mean) to maintain the correctness of the PCA algorithm! **(TODO: Why)**
-```
-
 If we only consider the directions of the $x$-axis and $y$-axis, clearly the data varies more along the $y$-axis. Therefore, a projection onto the $y$-axis would better preserve the data! Thankfully, we are not only limited to these two directions. The widget below allows you try different directions to project the data onto by varying the angle of the projection line from the $x$-axis. 
 
 ```{admonition} Exercise
@@ -189,20 +185,23 @@ chart
 ```
 
 ````{margin}
+For our purposes, 
 ```{math}
-\begin{align}
-&\text{For our purposes, }\\
-&\exptx[\dots]=\frac{1}{N}\sum_{i=1}^{N}\dots
-\end{align}
+\exptx[\dots]=\frac{1}{N}\sum_{i=1}^{N}\dots
 ```
 ````
 
+```{margin}
+Here we're making the stronger assumption that the projection matrix's columns are *orthonormal* (orthogonal and unit). This will make the derivation easier and we will anyway be forced to assume that the principle components are unit later on.
+```
 ````{admonition} Mathematical connection between the loss and the variance
 :class: tip
 
 What you've (hopefully) noticed is that higher variance in the projected data corresponds to lower reconstruction loss! This is why we choose project our data onto the directions with highest variance. Below we'll give a formal explanation for why this is the case:
 
-Assume that our data is centered. Let $W$ be our $D\times L$ projection matrix with *orthogonal* columns.
+Assume that our data is centered. Let $W$ be our $D\times L$ projection matrix with *orthonormal* columns.
+
+
 
 Then {math}`\exptx[W^T\xvec]=W^T\exptx[\xvec]=0`. Hence, the variance of the projected data is
 ```{math}
@@ -262,7 +261,7 @@ Since the latent space for our toy data will be 1D we'll focus on $L=1$ for now.
 \var[W^T\xvec]&=\exptx[\xvec^{T}\uvec\uvec^T\xvec]\\
 &=\exptx[\uvec^T\xvec\xvec^T\uvec]\\
 &=\uvec^T\exptx[\xvec\xvec^T]\uvec\\
-&=\uvec^T\hat{\Sigma}\uvec \text{, by the definition of the covariance matrix for data with mean zero}
+&=\uvec^T\hat{\Sigma}\uvec \text{, by the definition of the empirical covariance matrix for centered data}
 \end{align}
 ```
 Therefore, to maximise the variance of the projected data we should find the $\uvec$ that maximises $\uvec^T\hat{\Sigma}\uvec$. However, this is a poorly defined objective, for any proposed solution vector $\mathbf{v}$, the vector $2\mathbf{v}$ will produce a higher variance! Furthermore, what we really care about is the direction of this vector and from a practical standpoint we don't want our projections to be arbitrarily large. So we will impose the constraint that $\uvec$ should be a unit vector (i.e. $\uvec^T\uvec=1$). 
@@ -318,6 +317,10 @@ Ok! Let's take stock of what we've established
 2. The vectors which maximise the variance will be amongst the eigenvectors of our data's empirical covariance matrix
 3. The eigenvalue associated with each *unit* eigenvector is equal to the variance of data projected onto that eigenvector
 
+```{warning}
+Our derivations have relied on the data being centered (zero mean). Some PCA fitting tools will implicitly center your data under the hood, but if you want to calculate the covariance matrix using $\frac{1}{N}\sum_{i=1}^{N}\xvec^{(i)}{\xvec^{(i)}}^T$, your data **must** be centered. In general, there is no downside to first centering your data.
+```
+
 Therefore we need to find the eigenvector(s) of our empirical covariance matrix with the highest eigenvalue(s)!
 
 We can obtain our empirical covariance matrix easily with numpy:
@@ -340,13 +343,16 @@ $$
 
 
 
-
+```{margin}
+Assume that the eigenvalues are *distinct* (they have unique values). There are degenerate cases which complicate the first question but for most real-world datasets, the eigenvalues will be distinct.
+```
 ```{admonition} Exercise
 :class: seealso
 1.) Is there more than one *unit* eigenvector *per eigenvalue* and if so, how many are there?<br/>
 2.) Find the eigenvalues and *unit* eigenvectors for our toy example by hand. (Hint: When solving for the eigenvectors, the rows of the matrix should be multiples of each other)
 
 ```
+
 
 ````{admonition} Check your answers
 :class: tip, dropdown
@@ -394,7 +400,7 @@ e1_un_proj = e_1*e1_proj_1d[:,None]
 e2_un_proj = e_2*e2_proj_1d[:,None]
 ```
 
-The best eigenvector to choose is the one with the highest eigenvalue! We can visualise all of this below:
+The best eigenvector to choose is the one with the highest eigenvalue! We can visualise all of this below. Make sure you understand this figure before proceeding, if you're unsure of something speak to a classmate, tutor or the lecturer.
 
 ```{code-cell}
 :tags: [remove-input]

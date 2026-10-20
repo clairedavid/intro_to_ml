@@ -25,7 +25,7 @@ AutoEncoders (and especially their more advanced variants) can be used for far m
 ```
 
 ```{warning}
-In this section we'll assume that you're already comfortable with the basics of neural networks. If that's not the case I highly recommend that you review the fundamentals of neural networks before proceeding.
+In this section it is assumed that you're already comfortable with the basics of neural networks. If that's not the case it is highly recommended that you review the fundamentals of neural networks before proceeding.
 ```
 
 In order to understand how AutoEncoders are trained we'll go through an example with the Handwritten Digits dataset from Scikit-Learn. This dataset is similar to MNIST but the images are only $8\times 8$.
