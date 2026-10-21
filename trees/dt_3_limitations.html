@@ -747,12 +747,12 @@ title="Print to PDF"
 <h1>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">#</a></h1>
 <section id="cutting-down-on-overfitting">
 <h2>Cutting down on overfitting<a class="headerlink" href="#cutting-down-on-overfitting" title="Permalink to this headline">#</a></h2>
-<p>Decision trees are choosing the cut values solely on the available dataset. If let unconstrain, they will continue their way cutting through the data noise, ineluctably leading to overfitting. The way to regularize them is done through the hyperparameters, restricting their freedom:</p>
+<p>A decision tree chooses its split thresholds based only on the training data. Left unconstrained, it keeps splitting until it fits the noise, carving the feature space into tiny rectangular regions that hold only a handful of points. That is overfitting. We regularize a tree by restricting its freedom through hyperparameters:</p>
 <ul class="simple">
-<li><p><strong>maximum depth</strong> is stopping the algorithm after the node ‘depth - 1’ (as the starting node is zero)</p></li>
-<li><p><strong>minimum sample split</strong> is the minimum number of samples a node must have before it can be split</p></li>
-<li><p><strong>minimum sample leaf</strong> restricts the number of samples within a leaf, preventing an over-segmentation of the data into small square ‘islands’ with very few data samples in them</p></li>
-<li><p><strong>maximum leaf nodes</strong> is an upper bound on the amount of leaves (final nodes)</p></li>
+<li><p><strong>Maximum depth</strong> (<code class="docutils literal notranslate"><span class="pre">max_depth</span></code>) caps how many levels of splits the tree can make. A tree of depth 2 makes one split at the root node and one or two splits at level one.</p></li>
+<li><p><strong>Minimum samples to split</strong> (<code class="docutils literal notranslate"><span class="pre">min_samples_split</span></code>) is the number of samples a node must contain before it is allowed to split. The algorithm checks the node before splitting it.</p></li>
+<li><p><strong>Minimum samples per leaf</strong> (<code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code>) is the number of samples each child must contain. The algorithm checks the candidate child nodes before making a split.</p></li>
+<li><p><strong>Maximum leaf nodes</strong> (<code class="docutils literal notranslate"><span class="pre">max_leaf_nodes</span></code>) sets an upper limit on the total number of leaves.</p></li>
 </ul>
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
