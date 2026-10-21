@@ -2,11 +2,13 @@
 
 
 ## Cutting down on overfitting
-Decision trees are choosing the cut values solely on the available dataset. If let unconstrain, they will continue their way cutting through the data noise, ineluctably leading to overfitting. The way to regularize them is done through the hyperparameters, restricting their freedom:
-* __maximum depth__ is stopping the algorithm after the node 'depth - 1' (as the starting node is zero)
-* __minimum sample split__ is the minimum number of samples a node must have before it can be split
-* __minimum sample leaf__ restricts the number of samples within a leaf, preventing an over-segmentation of the data into small square 'islands' with very few data samples in them
-* __maximum leaf nodes__ is an upper bound on the amount of leaves (final nodes)
+A decision tree chooses its split thresholds based only on the training data. Left unconstrained, it keeps splitting until it fits the noise, carving the feature space into tiny rectangular regions that hold only a handful of points. That is overfitting. We regularize a tree by restricting its freedom through hyperparameters:
+
+* __Maximum depth__ (`max_depth`) caps how many levels of splits the tree can make. A tree of depth 2 makes one split at the root node and one or two splits at level one.
+* __Minimum samples to split__ (`min_samples_split`) is the number of samples a node must contain before it is allowed to split. The algorithm checks the node before splitting it.
+* __Minimum samples per leaf__ (`min_samples_leaf`) is the number of samples each child must contain. The algorithm checks the candidate child nodes before making a split.
+* __Maximum leaf nodes__ (`max_leaf_nodes`) sets an upper limit on the total number of leaves.
+
 
 ```{admonition} Exercise
 :class: seealso
