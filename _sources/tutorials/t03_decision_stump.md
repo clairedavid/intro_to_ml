@@ -83,7 +83,7 @@ import numpy as np
 
 Use `pd.read_csv` to store the dataset into a dataframe. Explore the variables by printing the first five rows.
 
-The `sample` column stores the labels of the collisions: +1 corresponds to VFB and -1 to ggF. 
+The `sample` column stores the labels of the collisions: +1 corresponds to VBF and -1 to ggF. 
 
 __Tasks:__
 1. How many events does the file contain?
