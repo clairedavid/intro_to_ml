@@ -8,10 +8,11 @@ exclude_patterns:
   - "README.md"
   - ".venv*"
 
-# Force re-execution of notebooks on each build.
+# Use saved notebook outputs for fast site builds.
+# Set execute_notebooks to auto to execute notebooks with missing outputs.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: auto
+  execute_notebooks: "off"
 
 # Define the name of the latex output file for PDF builds
 latex:

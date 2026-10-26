@@ -5,6 +5,10 @@ jupytext:
     format_name: myst
     format_version: 0.13
     jupytext_version: 1.17.3
+mystnb:
+  execution_mode: cache
+  execution_timeout: 300
+  execution_raise_on_error: true
 kernelspec:
   display_name: Python 3
   language: python
@@ -296,5 +300,4 @@ In the next section we will assume that you're comfortable with *eigenvalues* an
 ````
 
 We'll now build up some intuition for why $U_L$ is the optimal orthogonal projection of the data. Let's do a walkthrough with some toy data.
-
 

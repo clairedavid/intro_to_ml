@@ -5,6 +5,10 @@ jupytext:
     format_name: myst
     format_version: 0.13
     jupytext_version: 1.17.3
+mystnb:
+  execution_mode: cache
+  execution_timeout: 300
+  execution_raise_on_error: true
 kernelspec:
   display_name: Python 3
   language: python

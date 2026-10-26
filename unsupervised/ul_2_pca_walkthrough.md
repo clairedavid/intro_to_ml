@@ -5,6 +5,10 @@ jupytext:
     format_name: myst
     format_version: 0.13
     jupytext_version: 1.17.3
+mystnb:
+  execution_mode: cache
+  execution_timeout: 300
+  execution_raise_on_error: true
 kernelspec:
   display_name: Python 3
   language: python
@@ -67,6 +71,9 @@ Try to find the best projection line!
 import altair as alt
 import pandas as pd
 import numpy as np
+
+# Embed the interactive chart in the HTML site.
+alt.renderers.enable("html")
 
 # Disable the 5000 row limit for this session.
 alt.data_transformers.disable_max_rows()
