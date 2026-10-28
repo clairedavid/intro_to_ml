@@ -285,7 +285,7 @@ Modify your code further to have more than one output node in the last layer. Yo
 
 
 ## Part III: Play!
-### 3.1 Momentum et all
+### 3.1 Momentum
 Implement by hand some momentum. The action is in your update rule after you backpropagate. Try to come up with plots to visualize the convergence. Discuss what you see.
 
 ### 3.2 Double Spiral Challenge
