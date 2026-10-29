@@ -6,11 +6,13 @@ author: ""
 logo: logo.png
 exclude_patterns:
   - "README.md"
+  - ".venv*"
 
-# Force re-execution of notebooks on each build.
+# Use saved notebook outputs for fast site builds.
+# Set execute_notebooks to auto to execute notebooks with missing outputs.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: auto
+  execute_notebooks: "off"
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -51,8 +53,14 @@ html:
 sphinx:
   config:
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    mathjax3_config:
+      tex:
+        macros:
+          expt: "\\mathbb{E}"
+          argmin: "\\DeclareMathOperator*{\\argmin}{argmin}"
+          argmax: "\\DeclareMathOperator*{\\argmax}{argmax}"
     html_show_copyright: false
-    html_show_sphinx: false
+    html_show_sphinx: false 
   extra_extensions:
     - sphinx_proof
 
@@ -62,3 +70,4 @@ parse:
     # including those that are enabled by default!
     - dollarmath
     - amsmath
+    - substitution

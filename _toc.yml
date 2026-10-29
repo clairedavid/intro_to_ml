@@ -97,6 +97,10 @@ parts:
     - file: unsupervised/ul_1_kmeans
 
     - file: unsupervised/ul_2_pca
+      sections:
+      - file: unsupervised/ul_2_pca_walkthrough
+      - file: unsupervised/ul_2_pca_higher_dim
+      - file: unsupervised/ul_2_pca_non_lin_and_takeaways.md
 
     - file: unsupervised/ul_3_autoencoders
 
