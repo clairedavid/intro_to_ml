@@ -430,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="optim_1_sdg.html">
+    <a class="reference internal" href="optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -468,10 +468,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -494,8 +506,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -688,44 +700,44 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#terminology-general-definitions">
-   Terminology - General definitions
+   Terminology - general definitions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loss-functions-for-regression">
-   Loss Functions for Regression
+   Loss functions for regression
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#mean-squared-error-mse">
-     Mean Squared Error (MSE)
+     Mean squared error (MSE)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#absolute-loss">
-     Absolute Loss
+     Absolute loss
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#huber-loss">
-     Huber Loss
+     Huber loss
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loss-functions-for-classification">
-   Loss Functions for Classification
+   Loss functions for classification
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#binary-cross-entropy">
-     Binary Cross-Entropy
+     Binary cross-entropy
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#categorical-cross-entropy">
-     Categorical Cross-Entropy
+     Categorical cross-entropy
     </a>
    </li>
   </ul>
@@ -751,44 +763,44 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#terminology-general-definitions">
-   Terminology - General definitions
+   Terminology - general definitions
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loss-functions-for-regression">
-   Loss Functions for Regression
+   Loss functions for regression
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#mean-squared-error-mse">
-     Mean Squared Error (MSE)
+     Mean squared error (MSE)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#absolute-loss">
-     Absolute Loss
+     Absolute loss
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#huber-loss">
-     Huber Loss
+     Huber loss
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loss-functions-for-classification">
-   Loss Functions for Classification
+   Loss functions for classification
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#binary-cross-entropy">
-     Binary Cross-Entropy
+     Binary cross-entropy
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#categorical-cross-entropy">
-     Categorical Cross-Entropy
+     Categorical cross-entropy
     </a>
    </li>
   </ul>
@@ -807,7 +819,7 @@ title="Print to PDF"
 <h1>Loss and Cost Functions<a class="headerlink" href="#loss-and-cost-functions" title="Permalink to this headline">#</a></h1>
 <p>A quick refresher of what we saw in the first lectures… with a few small tweaks in notation to fit the neural network world.</p>
 <section id="terminology-general-definitions">
-<h2>Terminology - General definitions<a class="headerlink" href="#terminology-general-definitions" title="Permalink to this headline">#</a></h2>
+<h2>Terminology - general definitions<a class="headerlink" href="#terminology-general-definitions" title="Permalink to this headline">#</a></h2>
 <p>One should not confuse cost and loss.</p>
 <div class="proof definition admonition" id="costnndef">
 <p class="admonition-title"><span class="caption-number">Definition 60 </span></p>
@@ -822,9 +834,9 @@ title="Print to PDF"
 </div>
 </section>
 <section id="loss-functions-for-regression">
-<h2>Loss Functions for Regression<a class="headerlink" href="#loss-functions-for-regression" title="Permalink to this headline">#</a></h2>
+<h2>Loss functions for regression<a class="headerlink" href="#loss-functions-for-regression" title="Permalink to this headline">#</a></h2>
 <section id="mean-squared-error-mse">
-<h3>Mean Squared Error (MSE)<a class="headerlink" href="#mean-squared-error-mse" title="Permalink to this headline">#</a></h3>
+<h3>Mean squared error (MSE)<a class="headerlink" href="#mean-squared-error-mse" title="Permalink to this headline">#</a></h3>
 <p>The most commonly used loss function is the Mean Squared Error (MSE) that we are now familiar with. If we have only one output node:</p>
 <div class="math notranslate nohighlight" id="equation-lossmseeq">
 <span class="eqno">(77)<a class="headerlink" href="#equation-lossmseeq" title="Permalink to this equation">#</a></span>\[L \left(\;\hat{y}^{(i)}, y^{(i)}\;\right)=  \left(  \hat{y}^{(i)} - y^{(i)}  \right)^2\]</div>
@@ -838,13 +850,13 @@ title="Print to PDF"
 <span class="eqno">(79)<a class="headerlink" href="#equation-costmsekeq" title="Permalink to this equation">#</a></span>\[C \left(\;\boldsymbol{\hat{y}}, \boldsymbol{y}\;\right)= \frac{1}{m} \sum_{i=1}^m \sum_{k = 1}^K  \left( \hat{y}^{(i)}_k - y^{(i)}_k \right)^2\]</div>
 </section>
 <section id="absolute-loss">
-<h3>Absolute Loss<a class="headerlink" href="#absolute-loss" title="Permalink to this headline">#</a></h3>
+<h3>Absolute loss<a class="headerlink" href="#absolute-loss" title="Permalink to this headline">#</a></h3>
 <p>If there are lots of outliers in the training set, aka samples associated with a large error between the prediction and the observed values, the Mean Squared Errror will make the loss (and cost) very big. A preferable choice would be to take the absolute loss:</p>
 <div class="math notranslate nohighlight" id="equation-lossabseq">
 <span class="eqno">(80)<a class="headerlink" href="#equation-lossabseq" title="Permalink to this equation">#</a></span>\[L \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= \left| \;\hat{y}_k^{(i)} - y_k^{(i)} \; \right|\]</div>
 </section>
 <section id="huber-loss">
-<h3>Huber Loss<a class="headerlink" href="#huber-loss" title="Permalink to this headline">#</a></h3>
+<h3>Huber loss<a class="headerlink" href="#huber-loss" title="Permalink to this headline">#</a></h3>
 <p>The Huber Loss is a compromise of the two functions above. It is quadratic when the error is smaller than a threshold <span class="math notranslate nohighlight">\(\delta\)</span> but linear when the error is larger. The linear part makes it less sensitive to outliers than with MSE. The quadratic part allows it to converge faster and be more precise than the absolute error.</p>
 <div class="math notranslate nohighlight" id="equation-losshubereq">
 <span class="eqno">(81)<a class="headerlink" href="#equation-losshubereq" title="Permalink to this equation">#</a></span>\[\begin{split}L_\delta \left(\;\hat{y}^{(i)}_k, y^{(i)}_k\;\right)= 
@@ -855,9 +867,9 @@ title="Print to PDF"
 </section>
 </section>
 <section id="loss-functions-for-classification">
-<h2>Loss Functions for Classification<a class="headerlink" href="#loss-functions-for-classification" title="Permalink to this headline">#</a></h2>
+<h2>Loss functions for classification<a class="headerlink" href="#loss-functions-for-classification" title="Permalink to this headline">#</a></h2>
 <section id="binary-cross-entropy">
-<h3>Binary Cross-Entropy<a class="headerlink" href="#binary-cross-entropy" title="Permalink to this headline">#</a></h3>
+<h3>Binary cross-entropy<a class="headerlink" href="#binary-cross-entropy" title="Permalink to this headline">#</a></h3>
 <p>We are familiar with this one as it was introduced in Lecture 3. We will rewrite it as a reminder:</p>
 <div class="math notranslate nohighlight" id="equation-lossbinceeq">
 <span class="eqno">(82)<a class="headerlink" href="#equation-lossbinceeq" title="Permalink to this equation">#</a></span>\[L \left(\;\hat{y}^{(i)}, y^{(i)}\;\right)=-\left[ \;y^{(i)}  \log \left(\hat{y}^{(i)}\right)+\left(1-y^{(i)}\right) \log \left(1-\hat{y}^{(i)}\right) \; \right]\]</div>
@@ -871,7 +883,7 @@ title="Print to PDF"
 <p>There is nothing new here, except that the predictions <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}}^{(i)}\)</span> from the hypothesis function are not a linear function but the output of the entire neural network forward propagation.</p>
 </section>
 <section id="categorical-cross-entropy">
-<h3>Categorical Cross-Entropy<a class="headerlink" href="#categorical-cross-entropy" title="Permalink to this headline">#</a></h3>
+<h3>Categorical cross-entropy<a class="headerlink" href="#categorical-cross-entropy" title="Permalink to this headline">#</a></h3>
 <p>A neural network with one output node will classify from two classes: <span class="math notranslate nohighlight">\(y=1\)</span> and <span class="math notranslate nohighlight">\(y=0\)</span>. The cross-entropy is the sum of the actual outcome multiplied by the logarithm of the outcome predicted by the model. If we have more than two classes, we can write the outcome of a given training data instance <span class="math notranslate nohighlight">\(i\)</span> as a vector:</p>
 <div class="math notranslate nohighlight" id="equation-catvecobseq">
 <span class="eqno">(84)<a class="headerlink" href="#equation-catvecobseq" title="Permalink to this equation">#</a></span>\[\boldsymbol{y}^{(i)} = ( 1, 0, 0, \cdots 0)\]</div>

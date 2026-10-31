@@ -430,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_1_sdg.html">
+    <a class="reference internal" href="../nn/optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -468,10 +468,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -494,8 +506,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -688,7 +700,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#analytical-solution-normal-equation">
-   Analytical Solution: Normal Equation
+   Analytical solution: normal equation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -713,7 +725,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#graphical-visualization">
-   Graphical Visualization
+   Graphical visualization
   </a>
  </li>
 </ul>
@@ -737,7 +749,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#analytical-solution-normal-equation">
-   Analytical Solution: Normal Equation
+   Analytical solution: normal equation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -762,7 +774,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#graphical-visualization">
-   Graphical Visualization
+   Graphical visualization
   </a>
  </li>
 </ul>
@@ -780,20 +792,20 @@ title="Print to PDF"
 <p>This concept is key in machine learning. We will see the procedure with our example. Recall that our goal is to find values for the model parameters so as to minimize the errors.</p>
 <p>Before diving into the gradient descent, let’s ask ourselves: is there a way to solve this analytically? In the case of linear regression: yes. It is called the Normal Equation.</p>
 <section id="analytical-solution-normal-equation">
-<h2>Analytical Solution: Normal Equation<a class="headerlink" href="#analytical-solution-normal-equation" title="Permalink to this headline">#</a></h2>
+<h2>Analytical solution: normal equation<a class="headerlink" href="#analytical-solution-normal-equation" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="normalEquation">
 <p class="admonition-title"><span class="caption-number">Definition 6 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>Normal Equation</strong> gives the exact solution for the parameters that minimize the mean squared error in linear regression. For a dataset with input matrix <span class="math notranslate nohighlight">\(X\)</span> and output vector <span class="math notranslate nohighlight">\(\boldsymbol{y}\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-acda7f51-fc00-4efb-a8e0-752187e8c400">
-<span class="eqno">(5)<a class="headerlink" href="#equation-acda7f51-fc00-4efb-a8e0-752187e8c400" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-dda14473-d26c-4e5b-83e7-0648129669fa">
+<span class="eqno">(5)<a class="headerlink" href="#equation-dda14473-d26c-4e5b-83e7-0648129669fa" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \theta = (X^T X)^{-1} X^T \boldsymbol{y}
 \end{equation}\]</div>
 </section>
 </div><p>Here, <span class="math notranslate nohighlight">\(X\)</span> includes a column of ones for the intercept term. This formula computes the optimal parameters directly.</p>
 <p>In our 1D case with a single input feature, the parameters can also be written explicitly as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-94fba15e-cf3c-40bd-a119-cc76c1192be8">
-<span class="eqno">(6)<a class="headerlink" href="#equation-94fba15e-cf3c-40bd-a119-cc76c1192be8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1997c171-5b2b-4837-907f-a6ccf29a9806">
+<span class="eqno">(6)<a class="headerlink" href="#equation-1997c171-5b2b-4837-907f-a6ccf29a9806" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \theta_1 = \frac{\sum_i (x_i - \bar{x})(y_i - \bar{y})}{\sum_i (x_i - \bar{x})^2}, \quad
 \theta_0 = \bar{y} - \theta_1 \bar{x}
 \end{equation}\]</div>
@@ -942,7 +954,7 @@ Note that at the step 2.1., there is an implicit loop over all training data sam
 <p>If our parameter is randomly picked on the left side of the U-shaped parabola, the partial derivatives will be negative. As the learning rate is always positive, the incremental update <span class="math notranslate nohighlight">\(-\alpha \frac{d}{d \theta} C(\theta)\)</span> will thus be positive. We will add an increment to our parameter. At the next iteration, we will have a new parameter <span class="math notranslate nohighlight">\(\theta\)</span> closer to the one we look for. The reverse goes with the other side of the curve: with a positive derivative, we will decrease our parameter and slide to the left. All the time we go ‘downhill’ towards the minimum.</p>
 </section>
 <section id="graphical-visualization">
-<span id="linreg-graphvisgd"></span><h2>Graphical Visualization<a class="headerlink" href="#graphical-visualization" title="Permalink to this headline">#</a></h2>
+<span id="linreg-graphvisgd"></span><h2>Graphical visualization<a class="headerlink" href="#graphical-visualization" title="Permalink to this headline">#</a></h2>
 <p>When computing the gradient descent for linear regression, we get new parameters so we can draw a candidate straight line to fit the data. With proper tuning (more on this later), we reach the ideal fit, minimizing the cost function.</p>
 <figure class="align-default" id="linreg-animated">
 <a class="reference internal image-reference" href="../_images/linReg_animated.gif"><img alt="../_images/linReg_animated.gif" src="../_images/linReg_animated.gif" style="width: 80%;" /></a>

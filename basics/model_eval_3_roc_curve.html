@@ -430,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_1_sdg.html">
+    <a class="reference internal" href="../nn/optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -468,10 +468,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -494,8 +506,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -698,7 +710,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#comparing-classifiers">
-   Comparing Classifiers
+   Comparing classifiers
   </a>
  </li>
 </ul>
@@ -732,7 +744,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#comparing-classifiers">
-   Comparing Classifiers
+   Comparing classifiers
   </a>
  </li>
 </ul>
@@ -758,28 +770,28 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p> <br />
 <strong>True Positive Rate (TPR)</strong>, also called <strong>recall</strong> and <strong>sensitivity</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-4a64100e-ae82-484c-b231-8fa01aa9203b">
-<span class="eqno">(35)<a class="headerlink" href="#equation-4a64100e-ae82-484c-b231-8fa01aa9203b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5fbe3aa5-b80c-473b-aa77-230b265e537c">
+<span class="eqno">(35)<a class="headerlink" href="#equation-5fbe3aa5-b80c-473b-aa77-230b265e537c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TPR} = \frac{\text{True Positives}}{\text{Actual Positives}} = \frac{\text{True Positives}}{\text{True Positive} + \text{False Negative}}
 \end{equation}\]</div>
 <p> <br />
 <strong>True Negative Rate (TNR)</strong>, also called <strong>specificity</strong></p>
 <p>Ratio of negative instances correctly classified as negative.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6891cb71-e9f3-4295-b32b-a3f5db16f6e3">
-<span class="eqno">(36)<a class="headerlink" href="#equation-6891cb71-e9f3-4295-b32b-a3f5db16f6e3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e915bb25-6f93-4186-a3bf-c9a12c088e7a">
+<span class="eqno">(36)<a class="headerlink" href="#equation-e915bb25-6f93-4186-a3bf-c9a12c088e7a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TNR} = \frac{\text{True Negatives}}{\text{Actual Negatives}} = \frac{\text{True Negatives}}{\text{True Negatives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>False Positive Rate (FPR)</strong></p>
 <p>Ratio of negative instances that are incorrectly classified as positive.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-24d7b60b-e585-4cde-8fdc-b9ef57baeee1">
-<span class="eqno">(37)<a class="headerlink" href="#equation-24d7b60b-e585-4cde-8fdc-b9ef57baeee1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c5239d27-6bdb-4365-907f-9880906f4423">
+<span class="eqno">(37)<a class="headerlink" href="#equation-c5239d27-6bdb-4365-907f-9880906f4423" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = \frac{\text{False Positives}}{\text{Actual Negatives}} = \frac{\text{False Positives}}{\text{True Negatives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 The False Positive Rate (FPR) is equal to:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-432caacd-2e88-4fbf-b206-7faf93afe079">
-<span class="eqno">(38)<a class="headerlink" href="#equation-432caacd-2e88-4fbf-b206-7faf93afe079" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9e1319aa-7169-4210-bf8b-2912860782b8">
+<span class="eqno">(38)<a class="headerlink" href="#equation-9e1319aa-7169-4210-bf8b-2912860782b8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = 1 - \text{TNR} = 1 - \text{specificity}
 \end{equation}\]</div>
 </section>
@@ -848,7 +860,7 @@ False negatives are real signal samples incorrectly predicted as background (ora
 </div>
 </section>
 <section id="comparing-classifiers">
-<h2>Comparing Classifiers<a class="headerlink" href="#comparing-classifiers" title="Permalink to this headline">#</a></h2>
+<h2>Comparing classifiers<a class="headerlink" href="#comparing-classifiers" title="Permalink to this headline">#</a></h2>
 <p>The ROC has the great advantage to see how different classifiers compare through all the ranges of signal and background efficiencies.</p>
 <figure class="align-default" id="modeval-roc-wiki">
 <a class="reference internal image-reference" href="../_images/modEval_roc_wiki.png"><img alt="../_images/modEval_roc_wiki.png" src="../_images/modEval_roc_wiki.png" style="width: 70%;" /></a>

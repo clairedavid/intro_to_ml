@@ -1,6 +1,6 @@
 # Splitting Datasets for Evaluation
 
-## Training, Validation, and Test Sets
+## Training, validation, and test sets
 In supervised machine learning, we have access to data containing labels, i.e. the input features have associated targets. Whether it is regression or classification, we know the answer. To assess how the model will deal with new cases, we need to compare its predictions with the answers. We cannot perform this comparison if we don't have the labels! To cope, the input data set is split into different data subsets, each corresponding to a step in the optimization workflow:
 
 ````{prf:definition}

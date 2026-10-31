@@ -24,7 +24,7 @@ All of you are coming with different backgrounds and programming proficiencies. 
 Open a fresh Colaboratory file or a local Jupyter Notebook and let's go!
 
 
-## Part I: Linear Regressor By Hand (guided)
+## Part I: Linear regressor by hand (guided)
 
 ### 1.1 Get the data
 
@@ -123,7 +123,7 @@ Write another function `get_residuals(...)` computing the residuals, which are a
 ☝️ Test it! Try to write some code to make sure your function works and compute the right things.
 
 
-### 1.4 Linear Regressor Loop
+### 1.4 Linear regressor loop
 Let’s now get to the core of things: the regressor!
 
 Some guidance:
@@ -252,9 +252,9 @@ This part is intentionally left open-ended. Bring your ideas 💡 and try them o
 
 
 (app:t1:snippet:zone)=
-## Appendix: Snippet Zone
+## Appendix: Snippet zone
 
-### Plotting the Data
+### Plotting the data
 ```python
 import matplotlib.pyplot as plt
 
@@ -266,7 +266,7 @@ plt.tight_layout()
 ```
 
 (t1:app:pretty:print)=
-### Pretty Printing
+### Pretty printing
 
 ```python 
 def should_print_iteration(iter_index, first_step, second_step, index_changing_step):
@@ -287,7 +287,7 @@ def should_print_iteration(iter_index, first_step, second_step, index_changing_s
         return iter_index % second_step == 0
 ```
 
-### Visualizing Gradient Descent
+### Visualizing gradient descent
 You can use as is or wrap it in a function.
 
 ```python
@@ -384,7 +384,7 @@ plt.show()
 ```
 
 
-### Print Table to Compare Manual vs NumPy Fits
+### Print table to compare manual vs NumPy fits
 ```python
 method_names = ["Manual gradient descent", "NumPy least-squares"]
 parameters_list = [MyLinReg2Features.parameters, params_numpy]

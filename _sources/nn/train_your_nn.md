@@ -5,7 +5,7 @@
 
 Time to gather all the notions covered in this lecture and learn how to build a deep learning model.
 
-## ML Frameworks
+## ML frameworks
 
 One could code a deep neural network from scratch in python, declaring all the functions, classes etc... That would be very tedious and likely not computationally optimized for speed. Most importantly: it's been already done. There are indeed dedicated libraries for designing and developing neural networks and deep learning technology. 
 
@@ -36,7 +36,7 @@ TensorFlow offers excellent [visualization tools](https://www.tensorflow.org/res
 
 
 
-## Steps in Building your NN
+## Steps in building your NN
 Designing a machine learning algorithm has a particular workflow. 
 
 The usual steps are:
@@ -76,7 +76,7 @@ Finally, it is a good practice to review assumptions. Are all input features cor
 
 Once these questions have been thought of, it is time to start cooking with the data!
 
-### Step 1. Get the Data
+### Step 1. Get the data
 Dataset formats are plentiful and at times field-related. In experimental particle physics for instance, the common format is `.root`. In this lecture, we will deal with `.csv` textfiles. 
 
 The majority of machine learning programs are using DataFrames, a pythonic data structure from the Pandas python package.
@@ -89,7 +89,7 @@ A DataFrame organizes data into a 2-dimensional table of rows and columns, like 
 
 There are other data handlers, e.g. in PyTorch the `Dataset` and `DataLoader` classes, that are specific to the machine learning framework and used to efficiently train a model. A tutorial link is available at the end of this page.
 
-### Step 2. Visualize the Data
+### Step 2. Visualize the data
 Before even starting to prepare the data for machine learning purposes, it is recommended to see how the data look like.  
 
 As the dataset can be big, so it is cautious to first know the number of columns (features) and rows (data instances). 
@@ -216,7 +216,7 @@ columns_sel = ['flipper_length_mm','bill_length_mm', 'species']
 sns.pairplot(data=penguins.loc[:, columns_sel], hue="species")
 ```
 
-### Step 3. Prepare the Data
+### Step 3. Prepare the data
 
 __Data Cleaning__  
 ````{prf:definition}
@@ -249,7 +249,7 @@ The training, the validation, and/or the test set(s)?
 ```
 
 (DL_trainNN:stepDefine)=
-### Step 4. Define the Model
+### Step 4. Define the model
 Here is the fun part of building the neural network, layers by layers (like a layered dessert).
 
 In the model definition, there will be constraints in the input and output layers imposed by the given problem to solve:
@@ -347,7 +347,7 @@ The Glorot initalization can be done with the method `torch.nn.init.xavier_unifo
 The gain is provided by `nn.init.calculate_gain('relu')`, here for the ReLU function. It needs to be inputted as gains are specific of the activation functions. More on [PyTorch nn.init page](https://pytorch.org/docs/stable/nn.init.html).
 
 
-### Step 5. Train the Model
+### Step 5. Train the model
 Once we have a model, we need two things to train it: a loss function and an optimization algorithm.
 
 __Loss function__  
@@ -391,10 +391,10 @@ for epoch in range(N_epochs):
 
 It is usually more convenient to wrap this inside a user-defined function with the model and other relevant parameters as arguments. This function can then be called several times with different models.
 
-### Step 6. Tune the Model
+### Step 6. Tune the model
 We saw the `GridSearchCV` and `RandomSearchCV` tools from Scikit-Learn. For neural networks, a popular library is `RayTune` ([link to official website](https://docs.ray.io/en/latest/tune/index.html)), which integrates with numerous machine learning frameworks. A good illustrative example is provided in [Ray's official documentation](https://docs.ray.io/en/latest/tune/examples/tune-pytorch-cifar.html#tune-pytorch-cifar-ref).
 
-### Step 7. Evaluate the Model
+### Step 7. Evaluate the model
 As we saw in Step 0, the evaluation will be dictacted by the specifics of the optimization problem. It should be performed on the test set, untouched during the training. The little trick here is to 'unconvert' PyTorch tensors into NumPy arrays before calling the method that computes the performance metrics. 
 A minimal implementation of a binary classifier using the accuracy would look like this:
 ````{margin}
@@ -431,7 +431,7 @@ acc = accuracy_score(all_yobss, all_ypreds)
 ```
 From the list of all observations `all_obss` and their associated predictions `all_preds`, it is possible to plot ROC curves and compare different models.
 
-### Step 8. Make Predictions
+### Step 8. Make predictions
 Now it is time to use the model to make a prediction! 
 
 The input will be a data row of input features (but no target). A first step for PyTorch is to convert this data row into a Tensor. If `row` is a list:
@@ -449,7 +449,7 @@ ypred = ypred.detach().numpy()
 print('Predicted: %.3f (class: %d)' % (ypred, round(ypred)))
 ```
 
-## Summary: Practice Practice Practice
+## Summary: practice practice practice
 You reached the end of this long page. Good. You now know the steps and building coding blocks to start your deep learning journey. But most important is practice. This will be done during tutorials and assignments. A great way to learn is to join ML competition websites such as Kaggle.com ([website](https://www.kaggle.com/)). Another opportunity to become better: your own project! If you are curious about a given scientific field and can find a dataset, play around driven by your own questions!
 
 ```{admonition} Learn More

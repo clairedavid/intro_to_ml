@@ -126,7 +126,7 @@ What about the background ($y=0$)? It's the contrary, if we shift the threshold 
 Conclusion: increasing the decision threshold $T$ moves us on the ROC curve to the left (and down eventually to 0,0). 
 ````
 
-## Comparing Classifiers
+## Comparing classifiers
 The ROC has the great advantage to see how different classifiers compare through all the ranges of signal and background efficiencies. 
 
 ```{figure} ../images/modEval_roc_wiki.png

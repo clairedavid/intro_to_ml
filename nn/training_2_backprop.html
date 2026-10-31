@@ -430,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="optim_1_sdg.html">
+    <a class="reference internal" href="optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -468,10 +468,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -494,8 +506,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -688,7 +700,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#before-diving-into-the-math">
-   Before Diving Into The Math
+   Before diving into the math
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -703,14 +715,14 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#chain-rule-refresher">
-     Chain Rule Refresher
+     Chain rule refresher
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#main-steps">
-   Main Steps
+   Main steps
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -776,7 +788,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#before-diving-into-the-math">
-   Before Diving Into The Math
+   Before diving into the math
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -791,14 +803,14 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#chain-rule-refresher">
-     Chain Rule Refresher
+     Chain rule refresher
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#main-steps">
-   Main Steps
+   Main steps
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -856,7 +868,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="backpropagation-algorithm">
 <span id="nn-backprop"></span><h1>Backpropagation Algorithm<a class="headerlink" href="#backpropagation-algorithm" title="Permalink to this headline">#</a></h1>
 <section id="before-diving-into-the-math">
-<h2>Before Diving Into The Math<a class="headerlink" href="#before-diving-into-the-math" title="Permalink to this headline">#</a></h2>
+<h2>Before diving into the math<a class="headerlink" href="#before-diving-into-the-math" title="Permalink to this headline">#</a></h2>
 <section id="ingredients">
 <h3>Ingredients<a class="headerlink" href="#ingredients" title="Permalink to this headline">#</a></h3>
 <p>The forward propagation, or forward pass, will fill the network with values for all activation units. That includes the last layer of activation units, so the forward pass provides predictions.</p>
@@ -874,19 +886,19 @@ title="Print to PDF"
 </section>
 </div></section>
 <section id="chain-rule-refresher">
-<h3>Chain Rule Refresher<a class="headerlink" href="#chain-rule-refresher" title="Permalink to this headline">#</a></h3>
+<h3>Chain rule refresher<a class="headerlink" href="#chain-rule-refresher" title="Permalink to this headline">#</a></h3>
 <p>A little interlude and refresher of the chain rule will not hurt.</p>
 <div class="proof definition admonition" id="chainruledef">
 <p class="admonition-title"><span class="caption-number">Definition 63 </span></p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> be functions. For all <span class="math notranslate nohighlight">\(𝑥\)</span> in the domain of <span class="math notranslate nohighlight">\(g\)</span> for which <span class="math notranslate nohighlight">\(g\)</span> is differentiable at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is differentiable at <span class="math notranslate nohighlight">\(g(x)\)</span>, the derivative of the composite function:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-69954f5e-cfcb-470a-a16e-6b29313c6b61">
-<span class="eqno">(99)<a class="headerlink" href="#equation-69954f5e-cfcb-470a-a16e-6b29313c6b61" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0fc951f4-ed39-4811-bef2-46d278ab8f91">
+<span class="eqno">(99)<a class="headerlink" href="#equation-0fc951f4-ed39-4811-bef2-46d278ab8f91" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h(x) = f(g(x)) 
 \end{equation}\]</div>
 <p>is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2470097d-cfb1-454f-95d4-4a314d1fe434">
-<span class="eqno">(100)<a class="headerlink" href="#equation-2470097d-cfb1-454f-95d4-4a314d1fe434" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d4efd9bf-1d0c-4d55-9027-9ec414cd2483">
+<span class="eqno">(100)<a class="headerlink" href="#equation-d4efd9bf-1d0c-4d55-9027-9ec414cd2483" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}} \;\cdot \;  \frac{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}}{\mathrm{d} \; x} = f'\left(g(x)\right) \;\cdot \; g'(x)
 \end{equation}\]</div>
 </section>
@@ -902,8 +914,8 @@ h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maro
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
 <p>What would be the chain rule for three functions?</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9c3abd73-43d0-441d-acb6-d8a42f075752">
-<span class="eqno">(101)<a class="headerlink" href="#equation-9c3abd73-43d0-441d-acb6-d8a42f075752" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d78c7f6d-0332-4694-9949-e959755315d0">
+<span class="eqno">(101)<a class="headerlink" href="#equation-d78c7f6d-0332-4694-9949-e959755315d0" title="Permalink to this equation">#</a></span>\[\begin{equation}
 k(x) = h(f(g(x))) 
 \end{equation}\]</div>
 </div>
@@ -920,7 +932,7 @@ We work from the outside first, taking one derivative at a time.</p>
 </section>
 </section>
 <section id="main-steps">
-<span id="nn2-backprop-mainstep"></span><h2>Main Steps<a class="headerlink" href="#main-steps" title="Permalink to this headline">#</a></h2>
+<span id="nn2-backprop-mainstep"></span><h2>Main steps<a class="headerlink" href="#main-steps" title="Permalink to this headline">#</a></h2>
 <p>Before diving into a more mathematical writing, let’s just list the main steps of backpropagation. We will detail steps 2 and 3 very soon:</p>
 <div class="proof algorithm admonition" id="backpropalgo">
 <p class="admonition-title"><span class="caption-number">Algorithm 5 </span> (Backpropagation)</p>
@@ -1213,14 +1225,14 @@ Training data set <span class="math notranslate nohighlight">\(X\)</span> of <sp
 <p><strong>Step 0: Weight initialization</strong></p>
 <p><strong>Step 1: Forward propagation</strong><br />
 <span class="math notranslate nohighlight">\(\qquad \quad \bullet\)</span> get list of <span class="math notranslate nohighlight">\(m\)</span> predictions <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}}^{(i)}\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-3fc896a7-0244-4931-83b3-2dc9a6bb7d7b">
-<span class="eqno">(132)<a class="headerlink" href="#equation-3fc896a7-0244-4931-83b3-2dc9a6bb7d7b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1d876150-fee3-45f3-a608-84c4a534f770">
+<span class="eqno">(132)<a class="headerlink" href="#equation-1d876150-fee3-45f3-a608-84c4a534f770" title="Permalink to this equation">#</a></span>\[\begin{equation}
  f(\boldsymbol{z}^{(i, \; L)}) = \boldsymbol{a}^{(i, \;L)} = \boldsymbol{\hat{y}}^{(i)}
 \end{equation}\]</div>
 <p><strong>Step 2: Backpropagation</strong><br />
 <span class="math notranslate nohighlight">\(\qquad \quad \bullet\)</span> get the cost:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0ab76ebd-0aa3-450d-a798-61098a94bcd8">
-<span class="eqno">(133)<a class="headerlink" href="#equation-0ab76ebd-0aa3-450d-a798-61098a94bcd8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-099fb9f8-18eb-4a97-a9ce-2f405fc7be0a">
+<span class="eqno">(133)<a class="headerlink" href="#equation-099fb9f8-18eb-4a97-a9ce-2f405fc7be0a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Cost} =  \; \frac{1}{m} \; \sum_{i=1}^m \; L \biggl(\;f \Bigl( \;\boldsymbol{z}^{(i, \; L)}\Bigl), \boldsymbol{y}^{(i)} \biggl)\end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(\qquad \quad \bullet\)</span> get all errors:</p>
 <div class="math notranslate nohighlight" id="equation-summarybackproperrors">

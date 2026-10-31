@@ -51,9 +51,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Principal Component Analysis (PCA)" href="ul_2_pca.html" />
+    <link rel="next" title="What is clustering?" href="ul_1_kmeans_clustering.html" />
     <link rel="prev" title="Learning Without Labels?" href="ul_0_intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -428,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_1_sdg.html">
+    <a class="reference internal" href="../nn/optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -466,10 +468,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1 current active">
+ <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
    Clustering: k-Means
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ul_2_pca.html">
@@ -492,8 +506,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -690,9 +704,12 @@ title="Print to PDF"
 <h1>Clustering: k-Means<a class="headerlink" href="#clustering-k-means" title="Permalink to this headline">#</a></h1>
 <br>
 <br>
-<center> Coming soon! </center>
+<p>We will see in this section what clustering is and walk step by step through <span class="math notranslate nohighlight">\(k\)</span>-Means, the simplest and most popular clustering algorithm.</p>
+<p>We will then talk about its limitations and briefly introduce improved algorithms overcoming those shortcomings.
+<br></p>
 <br>
-<br>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -729,10 +746,10 @@ title="Print to PDF"
             <p class="prev-next-title">Learning Without Labels?</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="ul_2_pca.html" title="next page">
+    <a class='right-next' id="next-link" href="ul_1_kmeans_clustering.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Principal Component Analysis (PCA)</p>
+        <p class="prev-next-title">What is clustering?</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

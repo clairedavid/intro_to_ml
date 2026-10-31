@@ -430,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_1_sdg.html">
+    <a class="reference internal" href="../nn/optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -468,10 +468,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -494,8 +506,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -693,7 +705,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cooking-with-the-cost-function">
-   Cooking with the Cost Function
+   Cooking with the cost function
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -727,7 +739,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cooking-with-the-cost-function">
-   Cooking with the Cost Function
+   Cooking with the cost function
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -771,7 +783,7 @@ In Equation <a class="reference internal" href="#equation-costfunctionlinreg">(3
 <span class="eqno">(4)<a class="headerlink" href="#equation-mincostfunction" title="Permalink to this equation">#</a></span>\[\min_{\theta_0, \theta_1} C\left(\theta_0, \theta_1\right)\]</div>
 </section>
 <section id="cooking-with-the-cost-function">
-<h2>Cooking with the Cost Function<a class="headerlink" href="#cooking-with-the-cost-function" title="Permalink to this headline">#</a></h2>
+<h2>Cooking with the cost function<a class="headerlink" href="#cooking-with-the-cost-function" title="Permalink to this headline">#</a></h2>
 <p>Now comes an exercise to compute the cost function ‘by hand’ so you can get a feel for the equation above… and, by a huge extrapolation, the staggering number of computations that happen in any machine learning task.<br />
 We’ll use a super simple dataset with just four samples:</p>
 <figure class="align-default" id="plot-linreg-1234" style="width: 80%">

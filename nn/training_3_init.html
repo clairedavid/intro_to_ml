@@ -430,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="optim_1_sdg.html">
+    <a class="reference internal" href="optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -468,10 +468,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -494,8 +506,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -705,22 +717,22 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#standard-initialization-strategies">
-   Standard Initialization Strategies
+   Standard initialization strategies
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#xavier-weight-initialization">
-     Xavier Weight Initialization
+     Xavier weight initialization
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#lecun-weight-initialization">
-     LeCun Weight Initialization
+     LeCun weight initialization
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#he-weight-initialization">
-     He Weight Initialization
+     He weight initialization
     </a>
    </li>
   </ul>
@@ -763,22 +775,22 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#standard-initialization-strategies">
-   Standard Initialization Strategies
+   Standard initialization strategies
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#xavier-weight-initialization">
-     Xavier Weight Initialization
+     Xavier weight initialization
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#lecun-weight-initialization">
-     LeCun Weight Initialization
+     LeCun weight initialization
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#he-weight-initialization">
-     He Weight Initialization
+     He weight initialization
     </a>
    </li>
   </ul>
@@ -846,7 +858,7 @@ This corresponds to deactivating all neurons. The formula <span class="math notr
 </section>
 </section>
 <section id="standard-initialization-strategies">
-<h2>Standard Initialization Strategies<a class="headerlink" href="#standard-initialization-strategies" title="Permalink to this headline">#</a></h2>
+<h2>Standard initialization strategies<a class="headerlink" href="#standard-initialization-strategies" title="Permalink to this headline">#</a></h2>
 <p>Let’s first define the notion of <em>fan-in</em> and <em>fan-out</em>.</p>
 <div class="proof definition admonition" id="fanindef">
 <p class="admonition-title"><span class="caption-number">Definition 64 </span></p>
@@ -856,7 +868,7 @@ This corresponds to deactivating all neurons. The formula <span class="math notr
 <p>The <strong>fan-out</strong> is the number of outgoing connections, i.e. the number of neurons of the layer.</p>
 </section>
 </div><section id="xavier-weight-initialization">
-<span id="nn2-init-xavier"></span><h3>Xavier Weight Initialization<a class="headerlink" href="#xavier-weight-initialization" title="Permalink to this headline">#</a></h3>
+<span id="nn2-init-xavier"></span><h3>Xavier weight initialization<a class="headerlink" href="#xavier-weight-initialization" title="Permalink to this headline">#</a></h3>
 <p>In their 2010 paper, the authors Glorot and Bengio showed that the signal needs to flow properly while making predictions (forward propagation) as well as in the reverse direction while backpropaging the gradients. What is meant by ‘flowing properly is to have a constraint on the variance:</p>
 <div class="proof property admonition" id="varianceinitxavier">
 <p class="admonition-title"><span class="caption-number">Property 1 </span></p>
@@ -887,7 +899,7 @@ This corresponds to deactivating all neurons. The formula <span class="math notr
 <p>What is important here is the bounding of the variance using the numbers of inputs and outputs. It has been demonstrated that the resulting, properly scaled, distribution of the weights speeds the training considerably.</p>
 </section>
 <section id="lecun-weight-initialization">
-<h3>LeCun Weight Initialization<a class="headerlink" href="#lecun-weight-initialization" title="Permalink to this headline">#</a></h3>
+<h3>LeCun weight initialization<a class="headerlink" href="#lecun-weight-initialization" title="Permalink to this headline">#</a></h3>
 <p>A variant of Xavier initilization has been proposed by Yann LeCun, one of the godfathers of deep learning and among the top most influential AI researchers in the world. His trick is to only use the number of inputs, <em>fan-in</em>.</p>
 <div class="proof definition admonition" id="lecuninitdef">
 <p class="admonition-title"><span class="caption-number">Definition 67 </span></p>
@@ -896,12 +908,12 @@ This corresponds to deactivating all neurons. The formula <span class="math notr
 <div class="math notranslate nohighlight">
 \[ \sigma = \sqrt{\frac{1}{\textit{fan}_\text{ in} }}\]</div>
 </section>
-</div><p>This initialization works with the SELU activation function (see Section <a class="reference internal" href="model_rep_2_activation_functions.html#nn1-activationf-selu"><span class="std std-ref">Scaled Exponential Linear Unit (SELU)</span></a>).</p>
+</div><p>This initialization works with the SELU activation function (see Section <a class="reference internal" href="model_rep_2_activation_functions.html#nn1-activationf-selu"><span class="std std-ref">Scaled exponential linear unit (SELU)</span></a>).</p>
 <p> </p>
 <p>Both Xavier and LeCun methods are for differentiable activation functions. The following method is for non-differentiable activation functions like ReLU.</p>
 </section>
 <section id="he-weight-initialization">
-<h3>He Weight Initialization<a class="headerlink" href="#he-weight-initialization" title="Permalink to this headline">#</a></h3>
+<h3>He weight initialization<a class="headerlink" href="#he-weight-initialization" title="Permalink to this headline">#</a></h3>
 <p>Kaiming He and others published a paper providing a good initialization strategy for the ReLU activation function and its variants.</p>
 <div class="proof definition admonition" id="heinitdef">
 <p class="admonition-title"><span class="caption-number">Definition 68 </span></p>

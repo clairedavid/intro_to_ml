@@ -430,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="optim_1_sdg.html">
+    <a class="reference internal" href="optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -468,10 +468,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -494,8 +506,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -692,28 +704,28 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Learning Rate Schedulers
+  <a class="reference internal nav-link" href="#definition">
+   Definition
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#power-scheduling">
-     Power Scheduling
+     Power scheduling
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#time-based-decay-scheduling">
-     Time-Based Decay Scheduling
+     Time-based decay scheduling
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exponential-decay-scheduling">
-     Exponential Decay Scheduling
+     Exponential decay scheduling
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-based-decay-scheduling">
-     Step-based Decay Scheduling
+     Step-based decay scheduling
     </a>
    </li>
   </ul>
@@ -743,28 +755,28 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   Learning Rate Schedulers
+  <a class="reference internal nav-link" href="#definition">
+   Definition
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#power-scheduling">
-     Power Scheduling
+     Power scheduling
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#time-based-decay-scheduling">
-     Time-Based Decay Scheduling
+     Time-based decay scheduling
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exponential-decay-scheduling">
-     Exponential Decay Scheduling
+     Exponential decay scheduling
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#step-based-decay-scheduling">
-     Step-based Decay Scheduling
+     Step-based decay scheduling
     </a>
    </li>
   </ul>
@@ -794,8 +806,8 @@ title="Print to PDF"
 <p>But we saw that the model’s performance could be drastrically affected by the learning rate value; if too small the descent would take ages to converge, too big it could explode and not converge at all. How to properly choose this crucial hyperparameter?</p>
 <p>In the florishing epoch (pun intended) of deep learning, new optimization techniques have emerged. The two most influencial families are <strong>Learning Rate Schedulers</strong> and <strong>Adaptative Learning Rates</strong>.</p>
 </section>
-<section id="id1">
-<h2>Learning Rate Schedulers<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<section id="definition">
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="learningratescheduledef">
 <p class="admonition-title"><span class="caption-number">Definition 74 </span></p>
 <section class="definition-content" id="proof-content">
@@ -816,25 +828,25 @@ Example: if we have 1000 training samples splits in batches of size 250 each, th
 </div>
 <p>Below are common learning schedules.</p>
 <section id="power-scheduling">
-<h3>Power Scheduling<a class="headerlink" href="#power-scheduling" title="Permalink to this headline">#</a></h3>
+<h3>Power scheduling<a class="headerlink" href="#power-scheduling" title="Permalink to this headline">#</a></h3>
 <p>The learning rate is modified according to:</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
-<p>The <span class="math notranslate nohighlight">\(t\)</span> argument is the iteration integer, akin to a time yet the value are usually the iteration and/or epoch indices.</p>
+<p>The <span class="math notranslate nohighlight">\(t\)</span> argument is the iteration integer, akin to a time yet the values are usually the iteration and/or epoch indices.</p>
 </aside>
 <div class="math notranslate nohighlight" id="equation-powerscheduleeq">
 <span class="eqno">(137)<a class="headerlink" href="#equation-powerscheduleeq" title="Permalink to this equation">#</a></span>\[\alpha(t) = \frac{\alpha_0}{\left(1 + \frac{t}{s}\right)^c} \; ,\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha_0\)</span> is the initial learning rate. The steps <span class="math notranslate nohighlight">\(s\)</span> and power <span class="math notranslate nohighlight">\(c\)</span> (usually 1) are hyperparameters. The learning rate drops at each step; e.g. after <span class="math notranslate nohighlight">\(s\)</span> steps it is divided by 2 (assuming <span class="math notranslate nohighlight">\(c\)</span> = 1).</p>
 </section>
 <section id="time-based-decay-scheduling">
-<h3>Time-Based Decay Scheduling<a class="headerlink" href="#time-based-decay-scheduling" title="Permalink to this headline">#</a></h3>
+<h3>Time-based decay scheduling<a class="headerlink" href="#time-based-decay-scheduling" title="Permalink to this headline">#</a></h3>
 <p>The time-based learning rate scheduler is often the standard (e.g. the default implementation in Keras library). It is controlled by a decay parameter <span class="math notranslate nohighlight">\(d = \frac{\alpha_0}{N}\)</span>, where <span class="math notranslate nohighlight">\(N\)</span> is the number of epochs. It is similar (a particular case even) to the power scheduling:</p>
 <div class="math notranslate nohighlight" id="equation-timebaseddecayeq">
 <span class="eqno">(138)<a class="headerlink" href="#equation-timebaseddecayeq" title="Permalink to this equation">#</a></span>\[\alpha(t) = \alpha_0 \times \frac{1}{1 + d \times t} \]</div>
 <p>As compared to a linear decrease, time-based decay causes learning rate to decrease faster upon training start, and much slower later (see graph below).</p>
 </section>
 <section id="exponential-decay-scheduling">
-<h3>Exponential Decay Scheduling<a class="headerlink" href="#exponential-decay-scheduling" title="Permalink to this headline">#</a></h3>
+<h3>Exponential decay scheduling<a class="headerlink" href="#exponential-decay-scheduling" title="Permalink to this headline">#</a></h3>
 <p>The exponential decay is defined as:</p>
 <div class="math notranslate nohighlight">
 \[\alpha(t) = \alpha_0 \times 0.1^{-t/s} \; ,\]</div>
@@ -848,7 +860,7 @@ Example: if we have 1000 training samples splits in batches of size 250 each, th
 </figure>
 </section>
 <section id="step-based-decay-scheduling">
-<h3>Step-based Decay Scheduling<a class="headerlink" href="#step-based-decay-scheduling" title="Permalink to this headline">#</a></h3>
+<h3>Step-based decay scheduling<a class="headerlink" href="#step-based-decay-scheduling" title="Permalink to this headline">#</a></h3>
 <p>Also called piecewise constant scheduling, this approach first uses a constant learning rate for a given number of epochs, and then reduces it in steps:</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>

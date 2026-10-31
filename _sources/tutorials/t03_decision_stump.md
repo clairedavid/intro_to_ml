@@ -34,7 +34,7 @@ You will be guided, don't worry.
 ````  
 __<center>This is your mission!</center>__ 
 
-### Inside the Data
+### Inside the data
 
 ````{margin}
 ```{admonition} Learn more
@@ -56,7 +56,7 @@ We will focus on two variable for now:
  
 These variable are already calculated in the data samples.
 
-## Part I: Decision Stump By Hand
+## Part I: Decision stump by hand
 
 ### 1.1 Get the data
 Consider the three datasets:
@@ -92,7 +92,7 @@ __Tasks:__
 Write down the proper commands for neat printing of your results.
 
 
-#### 1.1.2 Visualize the Training Data
+#### 1.1.2 Visualize the training data
 Let's see a nice scatter plot of the training data, with $|\Delta\eta_{jj}|$ on the $x$-axis and $m_{jj}$ on the $y$-axis. The plotting macro is given in the {ref}`app:t3:snippet:zone`. Before using it, you will need to split your dataset into signal and background (if you have a look at the code snippet, you will understand why):
 
 ```python
@@ -119,7 +119,7 @@ Then pass `sig` and `bkg` to the plotting macro.
 Call the macro and look at your data!
 
 
-#### 1.1.3 Prepare Dataset (Features & Labels)
+#### 1.1.3 Prepare dataset (features & labels)
 In this step, we will select the variables of interest (`detajj` and `massjj`) from the training dataset, and convert both the features and labels into NumPy arrays. Copy the following into your notebook and fill in the missing pieces (`...`):
 
 ```python
@@ -128,7 +128,7 @@ X_train = ...
 y_train = ...
 ```
 
-### 1.2 Compute the Gini Index
+### 1.2 Compute the Gini index
 Recall the Gini's index is defined as:  
 \begin{equation*}
 G_i = 1 - \sum_{k=1}^{N_\text{classes}} \left( \frac{N_{k, i}}{ N_i} \right)^2 
@@ -152,7 +152,7 @@ def get_gini_index(y, classes):
 ```
 In the following cells, add a series of tests to make sure your function returns the correct answers.
 
-### 1.3 Compute the Cost Function
+### 1.3 Compute the cost function
 Write a simple function that returns the cost in relative impurity of dividing a node into two sub-nodes, defined as: 
 
 \begin{equation*}
@@ -172,7 +172,7 @@ def get_cost(n_left, gini_left, n_right, gini_right):
 
 ```
 
-### 1.4 Decision Stump: Core of the Action
+### 1.4 Decision stump: core of the action
 Write the key function `get_threshold_min_cost` that will find the threshold on a given feature which minimizes the weighted Gini index, i.e., the value that maximizes the purity of the two resulting sub-nodes.
 
 The function should return both the best threshold and the associated minimum cost. You can use the functions defined above (`get_gini_index`, `get_cost`) to help with the computation.
@@ -216,17 +216,17 @@ A precision on the `precision` option 😉:
 It is the fraction of the feature range to use as step size for the threshold scanning. For example, `precision=0.01` means thresholds will be tested every 1% of (max(feature) - min(feature)).
 ````
 
-### 1.5 What Is the Best Split?
+### 1.5 What is the best split?
 Call `get_threshold_min_cost` on each of the two input features we are considering here. Conclude on the final cut for your decision stump.  
 
 
-### 1.6 Plot the Cut
+### 1.6 Plot the cut
 Adapt the `plot_scatter` macro so that it can also draw the decision boundary from the stump. You can use Matplotlib’s `axhline` or `axvline` methods for drawing a horizontal or vertical line respectively. Try to be as general as possible in the input arguments.
 
 <br>
 You just coded a decision stump by hand!
 
-## Part II: Smarter Threshold Search
+## Part II: Smarter threshold search
 In Part I, we scanned all possible thresholds for each feature, counting left/right labels at every step. This brute-force approach has quadratic complexity with respect to the number of samples: for $m$ samples, each threshold requires $\mathcal{O}(m)$ operations, and there are roughly $m$ thresholds, giving $\mathcal{O}(m^2)$ per feature. That is, in total, $\mathcal{O}(n m^2)$ for $n$ features.
 
 Can we do better? What about sorting each feature first?
@@ -234,7 +234,7 @@ Can we do better? What about sorting each feature first?
 You can have a look at Scikit-Learn’s `DecisionTreeClassifier` on the user guide, chapter <a href="https://scikit-learn.org/stable/modules/tree.html#complexity" target="_blank">Decision Trees</a> to learn more about its efficient implementation. 
 
 
-## Part III: Chain It Recursively: From Stump to Tree
+## Part III: Chain it recursively: from stump to tree
 Now that you've coded a decision stump, how can you grow a full decision tree? Start by writing the pseudo-code first.  
 
 Decide on an exit condition: it could be reaching a maximum depth, a Gini index below a chosen threshold, or a minimum number of samples in a leaf.  
@@ -245,9 +245,9 @@ Have fun taking the best decisions and growing your tree!
 
 
 (app:t3:snippet:zone)=
-## Appendix: T3 Snippet Zone
+## Appendix: T3 snippet zone
 
-### Scatter Plot
+### Scatter plot
 To make titles, labels and legend entries big enough:
 ```python
 import matplotlib.pyplot as plt

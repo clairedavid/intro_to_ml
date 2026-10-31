@@ -66,7 +66,7 @@ __Regularization__ in machine learning is a process consisting of adding constra
 
 The two main types of regularization techniques are the Ridge Regularization (also known as [Tikhonov regularization](https://en.wikipedia.org/wiki/Tikhonov_regularization), albeit the latter is more general) and the Lasso Regularization. 
 
-### Ridge Regression
+### Ridge regression
 The Ridge regression is a linear regression with an additional regularization term added to the cost function:
 ```{math}
 :label: ridgeeq
@@ -106,7 +106,7 @@ y^{(i)} \log\big( \hat{y}^{(i)} \big)
 This is called L2-regularized logistic regression, or sometimes just ridge logistic regression.
 
 (class:algs:reg:lasso)=
-### Lasso Regularization
+### Lasso regularization
 ````{margin}
 The $\ell_1$ norm is the sum of the magnitudes of the vectors. It is also called Manhattan or [Taxicab norm](https://en.wikipedia.org/wiki/Taxicab_geometry).
 ````
@@ -137,7 +137,7 @@ Additional reading are provided below to deepen your understanding in the differ
 ```
 
 
-## Bias & Variance: definitions
+## Bias & variance: definitions
 
 Underfitting and overfitting are symptoms of a fundamental modeling issue. This tension is captured by the notions of bias and variance. We will define them, see how they combine in the total error, and why it is not possible to reduce both simultaneously. This is the infamous dilemma of the bias–variance tradeoff.
 

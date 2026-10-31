@@ -430,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_1_sdg.html">
+    <a class="reference internal" href="../nn/optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -468,10 +468,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -494,8 +506,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -688,12 +700,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-0-the-math">
-   Part 0: The Math
+   Part 0: The math
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-i-code-your-neural-network">
-   Part I: Code Your Neural Network!
+   Part I: Code your neural network!
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -703,17 +715,17 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#get-the-data">
-     1.1 Get the Data
+     1.1 Get the data
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#file-download">
-       1.1.1 File Download
+       1.1.1 File download
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#split-signal-vs-background">
-       1.1.2 Split Signal vs Background
+       1.1.2 Split signal vs background
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -730,12 +742,12 @@ title="Print to PDF"
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#weighted-sum">
-       1.2.1 Weighted Sum
+       1.2.1 Weighted sum
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#activation-functions-and-derivatives">
-       1.2.2 Activation Functions and Derivatives
+       1.2.2 Activation functions and derivatives
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -745,19 +757,19 @@ title="Print to PDF"
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#derivative-of-the-loss">
-       1.2.4 Derivative of the Loss
+       1.2.4 Derivative of the loss
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#feedforward-propagation">
-     1.3 Feedforward Propagation
+     1.3 Feedforward propagation
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#implementing-the-feedforward-function">
-       1.3.1 Implementing the Feedforward Function
+       1.3.1 Implementing the feedforward function
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -769,7 +781,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#neural-network-training">
-     1.4 Neural Network Training
+     1.4 Neural network training
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -784,7 +796,7 @@ title="Print to PDF"
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#scatter-plot">
-       1.5.2 Scatter Plot
+       1.5.2 Scatter plot
       </a>
      </li>
     </ul>
@@ -793,17 +805,17 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-ii-vectorize-your-neural-network">
-   Part II: Vectorize Your Neural Network
+   Part II: Vectorize your neural network
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dynamic-depth">
-     2.1 Dynamic Depth
+     2.1 Dynamic depth
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#several-output-nodes">
-     2.2 Several Output Nodes
+     2.2 Several output nodes
     </a>
    </li>
   </ul>
@@ -820,14 +832,14 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#double-spiral-challenge">
-     3.2 Double Spiral Challenge
+     3.2 Double spiral challenge
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#appendix-t5-snippet-zone">
-   Appendix: T5 Snippet Zone
+   Appendix: T5 snippet zone
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -837,34 +849,34 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#train-skeleton">
-     Train: Skeleton
+     Train: skeleton
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#pretty-printing">
-       Pretty Printing
+       Pretty printing
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#training-loop">
-       Training Loop
+       Training loop
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#spiral-fun">
-     Double Spiral Challenge
+     Double spiral challenge
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dataset-generation">
-       Dataset Generation
+       Dataset generation
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#plotting-the-double-spiral">
-       Plotting the Double Spiral
+       Plotting the double spiral
       </a>
      </li>
     </ul>
@@ -892,12 +904,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-0-the-math">
-   Part 0: The Math
+   Part 0: The math
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-i-code-your-neural-network">
-   Part I: Code Your Neural Network!
+   Part I: Code your neural network!
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -907,17 +919,17 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#get-the-data">
-     1.1 Get the Data
+     1.1 Get the data
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#file-download">
-       1.1.1 File Download
+       1.1.1 File download
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#split-signal-vs-background">
-       1.1.2 Split Signal vs Background
+       1.1.2 Split signal vs background
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -934,12 +946,12 @@ title="Print to PDF"
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#weighted-sum">
-       1.2.1 Weighted Sum
+       1.2.1 Weighted sum
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#activation-functions-and-derivatives">
-       1.2.2 Activation Functions and Derivatives
+       1.2.2 Activation functions and derivatives
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -949,19 +961,19 @@ title="Print to PDF"
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#derivative-of-the-loss">
-       1.2.4 Derivative of the Loss
+       1.2.4 Derivative of the loss
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#feedforward-propagation">
-     1.3 Feedforward Propagation
+     1.3 Feedforward propagation
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#implementing-the-feedforward-function">
-       1.3.1 Implementing the Feedforward Function
+       1.3.1 Implementing the feedforward function
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
@@ -973,7 +985,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#neural-network-training">
-     1.4 Neural Network Training
+     1.4 Neural network training
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -988,7 +1000,7 @@ title="Print to PDF"
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#scatter-plot">
-       1.5.2 Scatter Plot
+       1.5.2 Scatter plot
       </a>
      </li>
     </ul>
@@ -997,17 +1009,17 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-ii-vectorize-your-neural-network">
-   Part II: Vectorize Your Neural Network
+   Part II: Vectorize your neural network
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dynamic-depth">
-     2.1 Dynamic Depth
+     2.1 Dynamic depth
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#several-output-nodes">
-     2.2 Several Output Nodes
+     2.2 Several output nodes
     </a>
    </li>
   </ul>
@@ -1024,14 +1036,14 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#double-spiral-challenge">
-     3.2 Double Spiral Challenge
+     3.2 Double spiral challenge
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#appendix-t5-snippet-zone">
-   Appendix: T5 Snippet Zone
+   Appendix: T5 snippet zone
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -1041,34 +1053,34 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#train-skeleton">
-     Train: Skeleton
+     Train: skeleton
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#pretty-printing">
-       Pretty Printing
+       Pretty printing
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#training-loop">
-       Training Loop
+       Training loop
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#spiral-fun">
-     Double Spiral Challenge
+     Double spiral challenge
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#dataset-generation">
-       Dataset Generation
+       Dataset generation
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#plotting-the-double-spiral">
-       Plotting the Double Spiral
+       Plotting the double spiral
       </a>
      </li>
     </ul>
@@ -1100,7 +1112,7 @@ title="Print to PDF"
 </figcaption>
 </figure>
 <section id="part-0-the-math">
-<h2>Part 0: The Math<a class="headerlink" href="#part-0-the-math" title="Permalink to this headline">#</a></h2>
+<h2>Part 0: The math<a class="headerlink" href="#part-0-the-math" title="Permalink to this headline">#</a></h2>
 <p>As a warm-up, you are asked to derive Equations <a class="reference internal" href="../nn/training_2_backprop.html#equation-dcostfirstvectorouterprod">(117)</a>, <a class="reference internal" href="../nn/training_2_backprop.html#equation-defdeltal">(125)</a> – <a class="reference internal" href="../nn/training_2_backprop.html#equation-dcostlayerl">(130)</a> from the section on the <a class="reference internal" href="../nn/training_2_backprop.html#nn-backprop"><span class="std std-ref">Backpropagation Algorithm</span></a>. In class, you saw the main blocks. Here, it is about working out the indices to see which exact tensor operations are being used.</p>
 <ul class="simple">
 <li><p>Remember that a matrix element <span class="math notranslate nohighlight">\(w_{jk}\)</span> of a matrix <span class="math notranslate nohighlight">\(W\)</span> becomes <span class="math notranslate nohighlight">\(w_{kj}\)</span> once it is transposed as <span class="math notranslate nohighlight">\(W^\top\)</span>.</p></li>
@@ -1109,26 +1121,26 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="part-i-code-your-neural-network">
-<h2>Part I: Code Your Neural Network!<a class="headerlink" href="#part-i-code-your-neural-network" title="Permalink to this headline">#</a></h2>
+<h2>Part I: Code your neural network!<a class="headerlink" href="#part-i-code-your-neural-network" title="Permalink to this headline">#</a></h2>
 <section id="setup">
 <h3>1.0 Setup<a class="headerlink" href="#setup" title="Permalink to this headline">#</a></h3>
-<p>Copy the code from the <a class="reference internal" href="#app-t5-snippet-zone-setup"><span class="std std-ref">Setup</span></a> in <a class="reference internal" href="#app-t5-snippet-zone"><span class="std std-ref">Appendix: T5 Snippet Zone</span></a> into a fresh Colaboratory notebook.</p>
+<p>Copy the code from the <a class="reference internal" href="#app-t5-snippet-zone-setup"><span class="std std-ref">Setup</span></a> in <a class="reference internal" href="#app-t5-snippet-zone"><span class="std std-ref">Appendix: T5 snippet zone</span></a> into a fresh Colaboratory notebook.</p>
 <div class="tip admonition">
 <p class="admonition-title">Advice</p>
 <p>Read everything first before starting</p>
 </div>
 </section>
 <section id="get-the-data">
-<h3>1.1 Get the Data<a class="headerlink" href="#get-the-data" title="Permalink to this headline">#</a></h3>
+<h3>1.1 Get the data<a class="headerlink" href="#get-the-data" title="Permalink to this headline">#</a></h3>
 <section id="file-download">
-<h4>1.1.1 File Download<a class="headerlink" href="#file-download" title="Permalink to this headline">#</a></h4>
+<h4>1.1.1 File download<a class="headerlink" href="#file-download" title="Permalink to this headline">#</a></h4>
 <p>Retrieve the files:</p>
 <p><a href="https://drive.google.com/uc?export=download&id=1oyWJCdJ7LrHN_1xUMkiED8FR-TV8qlFn">ml_tutorial_5_data_train.csv</a><br />
 <a href="https://drive.google.com/uc?export=download&id=1g7DVcMQMGfce2fQ8x3FeZqXHbdrrcbQP">ml_tutorial_5_data_test.csv</a></p>
 <br>
 </section>
 <section id="split-signal-vs-background">
-<h4>1.1.2 Split Signal vs Background<a class="headerlink" href="#split-signal-vs-background" title="Permalink to this headline">#</a></h4>
+<h4>1.1.2 Split signal vs background<a class="headerlink" href="#split-signal-vs-background" title="Permalink to this headline">#</a></h4>
 <p>Create a <code class="docutils literal notranslate"><span class="pre">sig</span></code> and <code class="docutils literal notranslate"><span class="pre">bkg</span></code> dataframes that collect the real signal and value samples.  We will need this later on.<br />
 Hint: we did this already in <a class="reference internal" href="t03_decision_stump.html#t03"><span class="std std-ref">Tutorial 3</span></a>.</p>
 </section>
@@ -1148,7 +1160,7 @@ Hint: we did this already in <a class="reference internal" href="t03_decision_st
 <section id="functions">
 <h3>1.2 Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h3>
 <section id="weighted-sum">
-<h4>1.2.1 Weighted Sum<a class="headerlink" href="#weighted-sum" title="Permalink to this headline">#</a></h4>
+<h4>1.2.1 Weighted sum<a class="headerlink" href="#weighted-sum" title="Permalink to this headline">#</a></h4>
 <p>Create the function <code class="docutils literal notranslate"><span class="pre">z</span></code> that compute the weighted sum of a given activation unit, as seen in class. You do not have to worry about the dimensions of objects here, this will come later. Make sure the names of the arguments are self-explanatory:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">z</span><span class="p">(</span> <span class="o">...</span> <span class="p">,</span> <span class="o">...</span> <span class="p">,</span> <span class="o">...</span> <span class="p">):</span>
     <span class="c1">#...</span>
@@ -1157,7 +1169,7 @@ Hint: we did this already in <a class="reference internal" href="t03_decision_st
 </div>
 </section>
 <section id="activation-functions-and-derivatives">
-<h4>1.2.2 Activation Functions and Derivatives<a class="headerlink" href="#activation-functions-and-derivatives" title="Permalink to this headline">#</a></h4>
+<h4>1.2.2 Activation functions and derivatives<a class="headerlink" href="#activation-functions-and-derivatives" title="Permalink to this headline">#</a></h4>
 <p>Write the hyperbolic tangent and sigmoid activation functions, followed by their derivatives:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tanh</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
     <span class="k">return</span> <span class="c1">#... </span>
@@ -1190,7 +1202,7 @@ Hint: we did this already in <a class="reference internal" href="t03_decision_st
 </div>
 </section>
 <section id="derivative-of-the-loss">
-<h4>1.2.4 Derivative of the Loss<a class="headerlink" href="#derivative-of-the-loss" title="Permalink to this headline">#</a></h4>
+<h4>1.2.4 Derivative of the loss<a class="headerlink" href="#derivative-of-the-loss" title="Permalink to this headline">#</a></h4>
 <p>As seen in class, the loss function for classification is defined as:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
@@ -1210,7 +1222,7 @@ L\left( \hat{y}^{(i)}, y^{(i)}\right) = - \left[ \;\; y^{(i)} \log\left( \hat{y}
 </section>
 </section>
 <section id="feedforward-propagation">
-<h3>1.3 Feedforward Propagation<a class="headerlink" href="#feedforward-propagation" title="Permalink to this headline">#</a></h3>
+<h3>1.3 Feedforward propagation<a class="headerlink" href="#feedforward-propagation" title="Permalink to this headline">#</a></h3>
 <p>It is time to write the feedforward function!</p>
 <p>We will start with the following network for now:</p>
 <ul class="simple">
@@ -1219,7 +1231,7 @@ L\left( \hat{y}^{(i)}, y^{(i)}\right) = - \left[ \;\; y^{(i)} \log\left( \hat{y}
 <li><p>The output layer uses the sigmoid function</p></li>
 </ul>
 <section id="implementing-the-feedforward-function">
-<h4>1.3.1 Implementing the Feedforward Function<a class="headerlink" href="#implementing-the-feedforward-function" title="Permalink to this headline">#</a></h4>
+<h4>1.3.1 Implementing the feedforward function<a class="headerlink" href="#implementing-the-feedforward-function" title="Permalink to this headline">#</a></h4>
 <p>The number of activation units in each layer is dynamic. Your code should work with tensors <span class="math notranslate nohighlight">\((i, j, k)\)</span> with <span class="math notranslate nohighlight">\(i\)</span> the index referring to the  <span class="math notranslate nohighlight">\(i\)</span><sup>th</sup> sample, <span class="math notranslate nohighlight">\(j\)</span> the index of the activation unit and <span class="math notranslate nohighlight">\(k\)</span> here should be 1, as we consider a column vector. The weights and biases are given as input, stored in lists. The input data has been reshaped for your convenience (and a bit less of debugging time 😉).</p>
 <p>Complete the function below that does the feedforward propagation of the network, using the equations shown in class. Look at the output to see how to name your variables!</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">feedforward</span><span class="p">(</span><span class="n">input_X</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">biases</span><span class="p">):</span>
@@ -1274,8 +1286,8 @@ Send an email to the instructor with the exact title <code class="docutils liter
 </section>
 </section>
 <section id="neural-network-training">
-<h3>1.4 Neural Network Training<a class="headerlink" href="#neural-network-training" title="Permalink to this headline">#</a></h3>
-<p>Time to train! Copy paste the code in <a class="reference internal" href="#app-t5-snippet-zone-train"><span class="std std-ref">Train: Skeleton</span></a> as your starting point. To help you further, hyperparameters are given. Replace the <code class="docutils literal notranslate"><span class="pre">#...</span></code> with your own code.</p>
+<h3>1.4 Neural network training<a class="headerlink" href="#neural-network-training" title="Permalink to this headline">#</a></h3>
+<p>Time to train! Copy paste the code in <a class="reference internal" href="#app-t5-snippet-zone-train"><span class="std std-ref">Train: skeleton</span></a> as your starting point. To help you further, hyperparameters are given. Replace the <code class="docutils literal notranslate"><span class="pre">#...</span></code> with your own code.</p>
 <div class="tip dropdown admonition">
 <p class="admonition-title">Weight Initialization</p>
 <p>The weight matrices and bias vectors can be simply initialized with a random number between 0 and 1. Use:</p>
@@ -1350,7 +1362,7 @@ Paste your training loop in the email, and attach a text file containing the cel
 <p>Call the provided function <code class="docutils literal notranslate"><span class="pre">plot_cost_vs_iter</span></code> in the <a class="reference internal" href="#app-t5-snippet-zone-setup"><span class="std std-ref">Setup</span></a> to plot the cost evolution of both the training and testing datasets.</p>
 </section>
 <section id="scatter-plot">
-<h4>1.5.2 Scatter Plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">#</a></h4>
+<h4>1.5.2 Scatter plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">#</a></h4>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">get_decision_surface</span></code> and <code class="docutils literal notranslate"><span class="pre">plot_scatter</span></code> functions (in <a class="reference internal" href="#app-t5-snippet-zone-setup"><span class="std std-ref">Setup</span></a>) to visualize the decision boundaries of your trained neural network. Did your neural network successfully learn the XOR function?</p>
 <p>If all goes well, you should obtain something like this:</p>
 <figure class="align-default" id="t05-data-nn">
@@ -1364,10 +1376,10 @@ Paste your training loop in the email, and attach a text file containing the cel
 </section>
 </section>
 <section id="part-ii-vectorize-your-neural-network">
-<h2>Part II: Vectorize Your Neural Network<a class="headerlink" href="#part-ii-vectorize-your-neural-network" title="Permalink to this headline">#</a></h2>
+<h2>Part II: Vectorize your neural network<a class="headerlink" href="#part-ii-vectorize-your-neural-network" title="Permalink to this headline">#</a></h2>
 <p>We coded everything for two hidden layers only. Let’s make it more general. But in two steps:</p>
 <section id="dynamic-depth">
-<h3>2.1 Dynamic Depth<a class="headerlink" href="#dynamic-depth" title="Permalink to this headline">#</a></h3>
+<h3>2.1 Dynamic depth<a class="headerlink" href="#dynamic-depth" title="Permalink to this headline">#</a></h3>
 <p>Modify your code so that it creates a network of dynamic depth. You can encode the architecture as an array. For instance:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">layers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
@@ -1376,7 +1388,7 @@ Paste your training loop in the email, and attach a text file containing the cel
 <p>Good luck!</p>
 </section>
 <section id="several-output-nodes">
-<h3>2.2 Several Output Nodes<a class="headerlink" href="#several-output-nodes" title="Permalink to this headline">#</a></h3>
+<h3>2.2 Several output nodes<a class="headerlink" href="#several-output-nodes" title="Permalink to this headline">#</a></h3>
 <p>Modify your code further to have more than one output node in the last layer. You may have to change your cost function with the categorical cross-entropy. Feel free to create toy datasets with more than two classes. Or pick-up some of <a href="https://scikit-learn.org/stable/api/sklearn.datasets.html" target="_blank">Scikit-Learn datasets</a>!</p>
 </section>
 </section>
@@ -1387,13 +1399,13 @@ Paste your training loop in the email, and attach a text file containing the cel
 <p>Implement by hand some momentum. The action is in your update rule after you backpropagate. Try to come up with plots to visualize the convergence. Discuss what you see.</p>
 </section>
 <section id="double-spiral-challenge">
-<h3>3.2 Double Spiral Challenge<a class="headerlink" href="#double-spiral-challenge" title="Permalink to this headline">#</a></h3>
-<p>Use your network to tackle more challenging datasets, such as the double spiral. See in the <a class="reference internal" href="#app-t5-snippet-zone"><span class="std std-ref">snippet zone</span></a>, <a class="reference internal" href="#spiral-fun"><span class="std std-ref">Double Spiral Challenge</span></a>, a suggested code to generate data points and plot them.</p>
+<h3>3.2 Double spiral challenge<a class="headerlink" href="#double-spiral-challenge" title="Permalink to this headline">#</a></h3>
+<p>Use your network to tackle more challenging datasets, such as the double spiral. See in the <a class="reference internal" href="#app-t5-snippet-zone"><span class="std std-ref">snippet zone</span></a>, <a class="reference internal" href="#spiral-fun"><span class="std std-ref">Double spiral challenge</span></a>, a suggested code to generate data points and plot them.</p>
 <p>Have Fun!</p>
 </section>
 </section>
 <section id="appendix-t5-snippet-zone">
-<span id="app-t5-snippet-zone"></span><h2>Appendix: T5 Snippet Zone<a class="headerlink" href="#appendix-t5-snippet-zone" title="Permalink to this headline">#</a></h2>
+<span id="app-t5-snippet-zone"></span><h2>Appendix: T5 snippet zone<a class="headerlink" href="#appendix-t5-snippet-zone" title="Permalink to this headline">#</a></h2>
 <section id="app-t5-snippet-zone-setup">
 <span id="id1"></span><h3>Setup<a class="headerlink" href="#app-t5-snippet-zone-setup" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1484,9 +1496,9 @@ Paste your training loop in the email, and attach a text file containing the cel
 </div>
 </section>
 <section id="train-skeleton">
-<span id="app-t5-snippet-zone-train"></span><h3>Train: Skeleton<a class="headerlink" href="#train-skeleton" title="Permalink to this headline">#</a></h3>
+<span id="app-t5-snippet-zone-train"></span><h3>Train: skeleton<a class="headerlink" href="#train-skeleton" title="Permalink to this headline">#</a></h3>
 <section id="pretty-printing">
-<h4>Pretty Printing<a class="headerlink" href="#pretty-printing" title="Permalink to this headline">#</a></h4>
+<h4>Pretty printing<a class="headerlink" href="#pretty-printing" title="Permalink to this headline">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_every</span><span class="p">(</span><span class="n">iter_idx</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">iter_idx</span> <span class="o">&lt;=</span> <span class="mi">100</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">iter_idx</span> <span class="o">%</span> <span class="mi">10</span> <span class="o">==</span> <span class="mi">0</span>
@@ -1498,7 +1510,7 @@ Paste your training loop in the email, and attach a text file containing the cel
 </div>
 </section>
 <section id="training-loop">
-<h4>Training Loop<a class="headerlink" href="#training-loop" title="Permalink to this headline">#</a></h4>
+<h4>Training loop<a class="headerlink" href="#training-loop" title="Permalink to this headline">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Hyperparameters</span>
 <span class="n">alpha</span>  <span class="o">=</span> <span class="mf">0.05</span>
 <span class="n">n_iter</span> <span class="o">=</span> <span class="mi">5000</span>
@@ -1592,9 +1604,9 @@ Paste your training loop in the email, and attach a text file containing the cel
 </section>
 </section>
 <section id="spiral-fun">
-<span id="id2"></span><h3>Double Spiral Challenge<a class="headerlink" href="#spiral-fun" title="Permalink to this headline">#</a></h3>
+<span id="id2"></span><h3>Double spiral challenge<a class="headerlink" href="#spiral-fun" title="Permalink to this headline">#</a></h3>
 <section id="dataset-generation">
-<h4>Dataset Generation<a class="headerlink" href="#dataset-generation" title="Permalink to this headline">#</a></h4>
+<h4>Dataset generation<a class="headerlink" href="#dataset-generation" title="Permalink to this headline">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_double_spiral</span><span class="p">(</span><span class="n">n_points_per_class</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">test_fraction</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generate a 2D double spiral dataset.</span>
@@ -1657,7 +1669,7 @@ Paste your training loop in the email, and attach a text file containing the cel
 </div>
 </section>
 <section id="plotting-the-double-spiral">
-<h4>Plotting the Double Spiral<a class="headerlink" href="#plotting-the-double-spiral" title="Permalink to this headline">#</a></h4>
+<h4>Plotting the double spiral<a class="headerlink" href="#plotting-the-double-spiral" title="Permalink to this headline">#</a></h4>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_spiral_dataset</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">X_test</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_test</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                         <span class="n">xname</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;x1&quot;</span><span class="p">,</span> <span class="n">yname</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;x2&quot;</span><span class="p">,</span>
                         <span class="nb">range</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Double Spiral Dataset&quot;</span><span class="p">):</span>

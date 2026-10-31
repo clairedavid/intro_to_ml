@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Resources &#8212; Introduction&lt;br&gt; to Machine Learning</title>
+    <title>What is clustering? &#8212; Introduction&lt;br&gt; to Machine Learning</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Outlook" href="outlook.html" />
-    <link rel="prev" title="Why Does It Matter?" href="ethics_2_why_matters.html" />
+    <link rel="next" title="Principal Component Analysis (PCA)" href="ul_2_pca.html" />
+    <link rel="prev" title="Clustering: k-Means" href="ul_1_kmeans.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -428,7 +428,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_1_sdg.html">
+    <a class="reference internal" href="../nn/optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -460,24 +460,36 @@ const thebe_selector_output = ".output, .cell_output"
   Unsupervised Learning
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../unsupervised/ul_0_intro.html">
+  <a class="reference internal" href="ul_0_intro.html">
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../unsupervised/ul_2_pca.html">
+  <a class="reference internal" href="ul_2_pca.html">
    Principal Component Analysis (PCA)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../unsupervised/ul_3_autoencoders.html">
+  <a class="reference internal" href="ul_3_autoencoders.html">
    Autoencoders
   </a>
  </li>
@@ -492,8 +504,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -509,45 +521,6 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  AI Ethics &amp; Outlook
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="ethics_0_intro.html">
-   AI Ethics: What is it?
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="ethics_1_definitions.html">
-     Definitions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ethics_2_why_matters.html">
-     Why Does It Matter?
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Resources
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="outlook.html">
-   Outlook
-  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -664,7 +637,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/ethics_outlook/ethics_3_resources.md"
+        <a href="../_sources/unsupervised/ul_1_kmeans_clustering.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -713,7 +686,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Resources</h1>
+                <h1>What is clustering?</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -725,13 +698,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="resources">
-<h1>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h1>
-<br>
-<br>
-<center> Coming soon! </center>
-<br>
-<br>
+  <section class="tex2jax_ignore mathjax_ignore" id="what-is-clustering">
+<h1>What is clustering?<a class="headerlink" href="#what-is-clustering" title="Permalink to this headline">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
@@ -747,7 +715,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./ethics_outlook"
+            path: "./unsupervised"
         },
         predefinedOutput: true
     }
@@ -761,17 +729,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="ethics_2_why_matters.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="ul_1_kmeans.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Why Does It Matter?</p>
+            <p class="prev-next-title">Clustering: k-Means</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="outlook.html" title="next page">
+    <a class='right-next' id="next-link" href="ul_2_pca.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Outlook</p>
+        <p class="prev-next-title">Principal Component Analysis (PCA)</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -89,7 +89,7 @@ Now you may wonder how one can compute complex functions with such a simple oper
 Yes it can! And it has a name: it is called the perceptron.
 
 
-## The Perceptron
+## The perceptron
 
 ### Presentation
 

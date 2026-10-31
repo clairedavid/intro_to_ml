@@ -69,7 +69,7 @@ At that time, there were heuristics found before 2010 (you will see why soon) co
 Luckily the same authors in the same paper suggested a way to mitigate this, and with other experts (and papers) they proposed 'modern' initialization methods that we will present in the next section.
 
 
-## Standard Initialization Strategies
+## Standard initialization strategies
 Let's first define the notion of _fan-in_ and _fan-out_. 
 
 ````{prf:definition}
@@ -82,7 +82,7 @@ The __fan-out__ is the number of outgoing connections, i.e. the number of neuron
 
 ````
 (NN2_init:Xavier)=
-### Xavier Weight Initialization
+### Xavier weight initialization
 In their 2010 paper, the authors Glorot and Bengio showed that the signal needs to flow properly while making predictions (forward propagation) as well as in the reverse direction while backpropaging the gradients. What is meant by 'flowing properly is to have a constraint on the variance:
 
 ```{prf:property}
@@ -115,7 +115,7 @@ The Xavier initialization works well for sigmoid, tanh and softmax activation fu
 What is important here is the bounding of the variance using the numbers of inputs and outputs. It has been demonstrated that the resulting, properly scaled, distribution of the weights speeds the training considerably. 
 
 
-### LeCun Weight Initialization
+### LeCun weight initialization
 
 A variant of Xavier initilization has been proposed by Yann LeCun, one of the godfathers of deep learning and among the top most influential AI researchers in the world. His trick is to only use the number of inputs, _fan-in_. 
 
@@ -133,7 +133,7 @@ This initialization works with the SELU activation function (see Section {ref}`N
 
 Both Xavier and LeCun methods are for differentiable activation functions. The following method is for non-differentiable activation functions like ReLU.
 
-### He Weight Initialization
+### He weight initialization
 
 Kaiming He and others published a paper providing a good initialization strategy for the ReLU activation function and its variants. 
 

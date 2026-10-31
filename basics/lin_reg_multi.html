@@ -426,7 +426,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_1_sdg.html">
+    <a class="reference internal" href="../nn/optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -464,10 +464,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -490,8 +502,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -743,12 +755,12 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>          x1        x2           x3        x4
-0  44.849334 -1.481324  1943.825179  0.089510
-1  47.653204  0.515143  2104.844633 -0.016540
-2  54.603920 -2.409636  1892.785431 -0.292960
-3  49.593198 -2.567706  2018.627104  0.122205
-4  47.661995  1.663852  2016.138361  0.009196
-5  44.533510  2.684321  2008.487666  0.096691
+0  58.820707  1.162700  2013.934215 -0.096379
+1  53.656230 -2.929452  1765.281410  0.017261
+2  56.699154 -2.999147  1904.081348  0.039987
+3  53.746988  1.235088  2113.855418  0.051713
+4  51.503610 -1.340673  1973.266580 -0.124509
+5  55.332418 -0.048100  1944.726633 -0.066280
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -778,45 +790,45 @@ title="Print to PDF"
   <tbody>
     <tr>
       <th>0</th>
-      <td>44.849334</td>
-      <td>-1.481324</td>
-      <td>1943.825179</td>
-      <td>0.089510</td>
+      <td>58.820707</td>
+      <td>1.162700</td>
+      <td>2013.934215</td>
+      <td>-0.096379</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>47.653204</td>
-      <td>0.515143</td>
-      <td>2104.844633</td>
-      <td>-0.016540</td>
+      <td>53.656230</td>
+      <td>-2.929452</td>
+      <td>1765.281410</td>
+      <td>0.017261</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>54.603920</td>
-      <td>-2.409636</td>
-      <td>1892.785431</td>
-      <td>-0.292960</td>
+      <td>56.699154</td>
+      <td>-2.999147</td>
+      <td>1904.081348</td>
+      <td>0.039987</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>49.593198</td>
-      <td>-2.567706</td>
-      <td>2018.627104</td>
-      <td>0.122205</td>
+      <td>53.746988</td>
+      <td>1.235088</td>
+      <td>2113.855418</td>
+      <td>0.051713</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>47.661995</td>
-      <td>1.663852</td>
-      <td>2016.138361</td>
-      <td>0.009196</td>
+      <td>51.503610</td>
+      <td>-1.340673</td>
+      <td>1973.266580</td>
+      <td>-0.124509</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>44.533510</td>
-      <td>2.684321</td>
-      <td>2008.487666</td>
-      <td>0.096691</td>
+      <td>55.332418</td>
+      <td>-0.048100</td>
+      <td>1944.726633</td>
+      <td>-0.066280</td>
     </tr>
   </tbody>
 </table>

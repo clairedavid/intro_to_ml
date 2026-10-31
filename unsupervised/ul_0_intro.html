@@ -428,7 +428,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_1_sdg.html">
+    <a class="reference internal" href="../nn/optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -466,10 +466,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="ul_2_pca.html">
@@ -492,8 +504,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -690,7 +702,16 @@ title="Print to PDF"
 <h1>Learning Without Labels?<a class="headerlink" href="#learning-without-labels" title="Permalink to this headline">#</a></h1>
 <br>
 <br>
-<center> Coming soon! </center>
+<p>Unsupervised learning is a vast family of techniques identifying relationships in unlabelled data. Here, the dataset is purely made of the input features. No associated targets. No record of the “truth.” The immediate question we can ask ourselves is then:</p>
+<div class="text-center docutils">
+<p>How do we learn?</p>
+</div>
+<p>As much as I stress that questions are a good guide to progress in one’s understanding, this one is actually misleading. It implicitly assumes that labels are necessary. They are not. Patterns can be found in the data without targets. The question we now ought to ask is rather:</p>
+<div class="text-center docutils">
+<p>What can we learn?</p>
+</div>
+<p>A dataset, in particular a large one, contains information on its own. The goal of unsupervised learning is to discover hidden patterns within the data. They are “hidden” because datasets are unlabelled and most often high-dimensional, so they are not directly obvious. We will see the types of patterns we can reveal.</p>
+<p>This chapter offers a very short introduction to unsupervised learning. This sub-domain is so rich that it would deserve an entire course on its own. We will go over two tasks: clustering and dimensionality reduction, presenting the most popular techniques as foundational knowledge.</p>
 <br>
 <br>
 </section>

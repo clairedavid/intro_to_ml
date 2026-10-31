@@ -1,7 +1,7 @@
 (nn:backprop)=
 # Backpropagation Algorithm
 
-## Before Diving Into The Math 
+## Before diving into the math 
 ### Ingredients
 
 The forward propagation, or forward pass, will fill the network with values for all activation units. That includes the last layer of activation units, so the forward pass provides predictions. 
@@ -21,7 +21,7 @@ __Backpropagation__, short for __backward propagation of errors__, is an algorit
 It automatically computes error gradients to then repeatedly adjust all weights and biases to reduce the overall error.
 ````
 
-### Chain Rule Refresher
+### Chain rule refresher
 
 A little interlude and refresher of the chain rule will not hurt.
 
@@ -70,7 +70,7 @@ We work from the outside first, taking one derivative at a time.
 
 
 (NN2:backprop:mainstep)=
-## Main Steps
+## Main steps
 Before diving into a more mathematical writing, let's just list the main steps of backpropagation. We will detail steps 2 and 3 very soon:
 
 ````{prf:algorithm} Backpropagation

@@ -16,7 +16,7 @@ But we saw that the model's performance could be drastrically affected by the le
 
 In the florishing epoch (pun intended) of deep learning, new optimization techniques have emerged. The two most influencial families are __Learning Rate Schedulers__ and __Adaptative Learning Rates__. 
 
-## Learning Rate Schedulers
+## Definition
 ````{prf:definition}
 :label: learningratescheduledef
 In a training procedure involving a learning rate, a __learning rate scheduler__ is a method consisting of modifying the learning rate at the beginning of each iteration. 
@@ -41,10 +41,10 @@ How should the learning rate vary? Should it increase? Decrease? Both?
 
 Below are common learning schedules.
 
-### Power Scheduling
+### Power scheduling
 The learning rate is modified according to:
 ````{margin}
-The $t$ argument is the iteration integer, akin to a time yet the value are usually the iteration and/or epoch indices. 
+The $t$ argument is the iteration integer, akin to a time yet the values are usually the iteration and/or epoch indices. 
 ````
 ```{math}
 :label: powerscheduleeq
@@ -52,7 +52,7 @@ The $t$ argument is the iteration integer, akin to a time yet the value are usua
 ```
 where $\alpha_0$ is the initial learning rate. The steps $s$ and power $c$ (usually 1) are hyperparameters. The learning rate drops at each step; e.g. after $s$ steps it is divided by 2 (assuming $c$ = 1).  
 
-### Time-Based Decay Scheduling
+### Time-based decay scheduling
 The time-based learning rate scheduler is often the standard (e.g. the default implementation in Keras library). It is controlled by a decay parameter $d = \frac{\alpha_0}{N}$, where $N$ is the number of epochs. It is similar (a particular case even) to the power scheduling:
 ```{math}
 :label: timebaseddecayeq
@@ -60,7 +60,7 @@ The time-based learning rate scheduler is often the standard (e.g. the default i
 ```
 As compared to a linear decrease, time-based decay causes learning rate to decrease faster upon training start, and much slower later (see graph below).
 
-### Exponential Decay Scheduling
+### Exponential decay scheduling
 The exponential decay is defined as:
 ```{math}
 \alpha(t) = \alpha_0 \times 0.1^{-t/s} \; ,
@@ -76,7 +76,7 @@ which will get the learning rate to decrease faster upon training start, and muc
  <sub>Image: neptune.ai</sub> 
 ```
 
-### Step-based Decay Scheduling
+### Step-based decay scheduling
 Also called piecewise constant scheduling, this approach first uses a constant learning rate for a given number of epochs, and then reduces it in steps:
 ````{margin}
 The floor function `floor(x)` or $\lfloor x \rfloor$ returns the greatest integer less than or equal to $x$.

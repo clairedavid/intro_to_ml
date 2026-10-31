@@ -430,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="optim_1_sdg.html">
+    <a class="reference internal" href="optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -468,10 +468,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -494,8 +506,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -688,7 +700,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-is-feedforward-propagation">
-   What is Feedforward Propagation?
+   What is feedforward propagation?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -720,7 +732,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#general-rule-for-forward-propagation">
-   General rule for Forward Propagation
+   General rule for forward propagation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -749,7 +761,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#what-is-feedforward-propagation">
-   What is Feedforward Propagation?
+   What is feedforward propagation?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -781,7 +793,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#general-rule-for-forward-propagation">
-   General rule for Forward Propagation
+   General rule for forward propagation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -802,7 +814,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="feedforward-propagation">
 <h1>Feedforward Propagation<a class="headerlink" href="#feedforward-propagation" title="Permalink to this headline">#</a></h1>
 <section id="what-is-feedforward-propagation">
-<h2>What is Feedforward Propagation?<a class="headerlink" href="#what-is-feedforward-propagation" title="Permalink to this headline">#</a></h2>
+<h2>What is feedforward propagation?<a class="headerlink" href="#what-is-feedforward-propagation" title="Permalink to this headline">#</a></h2>
 <p>This is one of the key steps in the training of a neural network. It comes after initialization of the network (all weights and biases), which we will covered later. The forward direction means going from the input to the output nodes.</p>
 <div class="proof definition admonition" id="feedforwardpropdef">
 <p class="admonition-title"><span class="caption-number">Definition 61 </span></p>
@@ -930,7 +942,7 @@ b_r^{(2)}
 <p>And the elegant, light version:</p>
 <div class="math notranslate nohighlight" id="equation-secondlayermatrixeq">
 <span class="eqno">(95)<a class="headerlink" href="#equation-secondlayermatrixeq" title="Permalink to this equation">#</a></span>\[\boldsymbol{a}^{(i, \: 2)} = f\left[ \; \left(W^{(2)}\right)^\top \; \boldsymbol{a}^{(i, \: 1)} \;+\; \boldsymbol{b}^{(2)} \;\right]\]</div>
-<p>We start seeing a pattern here looking at the matricial equations <a class="reference internal" href="#equation-firstlayermatrixeq">(93)</a> and <a class="reference internal" href="#equation-secondlayermatrixeq">(95)</a>. More on this soon in Section <a class="reference internal" href="#nn1-forwardprop-rule"><span class="std std-ref">General rule for Forward Propagation</span></a>. Let’s finish the process with the last layer.</p>
+<p>We start seeing a pattern here looking at the matricial equations <a class="reference internal" href="#equation-firstlayermatrixeq">(93)</a> and <a class="reference internal" href="#equation-secondlayermatrixeq">(95)</a>. More on this soon in Section <a class="reference internal" href="#nn1-forwardprop-rule"><span class="std std-ref">General rule for forward propagation</span></a>. Let’s finish the process with the last layer.</p>
 </section>
 <section id="computation-of-the-third-hidden-layer">
 <h3>Computation of the third hidden layer<a class="headerlink" href="#computation-of-the-third-hidden-layer" title="Permalink to this headline">#</a></h3>
@@ -943,7 +955,7 @@ b_r^{(2)}
 </section>
 </section>
 <section id="general-rule-for-forward-propagation">
-<span id="nn1-forwardprop-rule"></span><h2>General rule for Forward Propagation<a class="headerlink" href="#general-rule-for-forward-propagation" title="Permalink to this headline">#</a></h2>
+<span id="nn1-forwardprop-rule"></span><h2>General rule for forward propagation<a class="headerlink" href="#general-rule-for-forward-propagation" title="Permalink to this headline">#</a></h2>
 <p>If we rewrite the first layer of inputs for a given sample <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(i)}\)</span> as a “layer zero” <span class="math notranslate nohighlight">\(\boldsymbol{a}^{(i, \: 0)}\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-xisazeroeq">
 <span class="eqno">(97)<a class="headerlink" href="#equation-xisazeroeq" title="Permalink to this equation">#</a></span>\[\begin{split}\boldsymbol{x}^{(i)} = \begin{pmatrix} 

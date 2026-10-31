@@ -430,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_1_sdg.html">
+    <a class="reference internal" href="../nn/optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -468,10 +468,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -494,8 +506,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -703,7 +715,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary-on-linear-regression">
-   Summary on Linear Regression
+   Summary on linear regression
   </a>
  </li>
 </ul>
@@ -742,7 +754,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary-on-linear-regression">
-   Summary on Linear Regression
+   Summary on linear regression
   </a>
  </li>
 </ul>
@@ -815,7 +827,7 @@ End of gradient descent after <span class="m">1000</span> iterations
 <p>In mathematics, zero is exactly zero. In computing, variables can store very small numbers considered zero but with trailing non-zero digits. A good cutoff to declare the gradient descent algorithm successful is to exit when e.g. the cost function’s relative decrease is lower than a given threshold, for instance <span class="math notranslate nohighlight">\(10^{-6}\)</span>.</p>
 </section>
 <section id="summary-on-linear-regression">
-<h2>Summary on Linear Regression<a class="headerlink" href="#summary-on-linear-regression" title="Permalink to this headline">#</a></h2>
+<h2>Summary on linear regression<a class="headerlink" href="#summary-on-linear-regression" title="Permalink to this headline">#</a></h2>
 <div class="success admonition">
 <p class="admonition-title">Key concepts</p>
 <p><strong>Linear Regression</strong> is the procedure that estimate a real-valued dependent variable (target) from independent variables (input features) assuming a linear relationship between <span class="math notranslate nohighlight">\(n\)</span> input features and <span class="math notranslate nohighlight">\(n+1\)</span> coefficients (parameters, or weight). The extra one is the offset parameter.</p>

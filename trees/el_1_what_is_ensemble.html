@@ -428,7 +428,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_1_sdg.html">
+    <a class="reference internal" href="../nn/optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -466,10 +466,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -492,8 +504,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -696,7 +708,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bagging-and-pasting">
-   Bagging and Pasting
+   Bagging and pasting
   </a>
  </li>
 </ul>
@@ -730,7 +742,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bagging-and-pasting">
-   Bagging and Pasting
+   Bagging and pasting
   </a>
  </li>
 </ul>
@@ -774,7 +786,7 @@ The fascinating part: the global prediction not only outperforms each individual
 <p>There is another concept important in ensemble learning: bagging.</p>
 </section>
 <section id="bagging-and-pasting">
-<h2>Bagging and Pasting<a class="headerlink" href="#bagging-and-pasting" title="Permalink to this headline">#</a></h2>
+<h2>Bagging and pasting<a class="headerlink" href="#bagging-and-pasting" title="Permalink to this headline">#</a></h2>
 <p>Remember that in ensemble learning, diversity is key. Yet it can be impractical to train very diverse learners, each having their own specificities and drawbacks to pay attention to. An alternative approach is to deal only with one algorithm but increase the diversity in the dataset. Like shuffling a deck of cards, bagging involves training predictors on randomized subsets of the dataset.</p>
 <div class="proof definition admonition" id="baggingdef">
 <p class="admonition-title"><span class="caption-number">Definition 51 </span></p>

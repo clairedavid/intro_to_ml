@@ -430,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="optim_1_sdg.html">
+    <a class="reference internal" href="optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -468,10 +468,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -494,8 +506,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -720,12 +732,12 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#hyperbolic-tangent">
-     Hyperbolic Tangent
+     Hyperbolic tangent
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#rectified-linear-unit-relu">
-     Rectified Linear Unit (ReLU)
+     Rectified linear unit (ReLU)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -740,22 +752,22 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exponential-linear-units-elus">
-     Exponential Linear Units (ELUs)
+     Exponential linear units (ELUs)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#scaled-exponential-linear-unit-selu">
-     Scaled Exponential Linear Unit (SELU)
+     Scaled exponential linear unit (SELU)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#gaussian-error-linear-unit-gelu">
-     Gaussian Error Linear Unit (GELU)
+     Gaussian error linear unit (GELU)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#sigmoid-linear-unit-silu-and-swish">
-     Sigmoid Linear Unit (SiLU) and Swish
+     Sigmoid linear unit (SiLU) and swish
     </a>
    </li>
   </ul>
@@ -830,12 +842,12 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#hyperbolic-tangent">
-     Hyperbolic Tangent
+     Hyperbolic tangent
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#rectified-linear-unit-relu">
-     Rectified Linear Unit (ReLU)
+     Rectified linear unit (ReLU)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -850,22 +862,22 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#exponential-linear-units-elus">
-     Exponential Linear Units (ELUs)
+     Exponential linear units (ELUs)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#scaled-exponential-linear-unit-selu">
-     Scaled Exponential Linear Unit (SELU)
+     Scaled exponential linear unit (SELU)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#gaussian-error-linear-unit-gelu">
-     Gaussian Error Linear Unit (GELU)
+     Gaussian error linear unit (GELU)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#sigmoid-linear-unit-silu-and-swish">
-     Sigmoid Linear Unit (SiLU) and Swish
+     Sigmoid linear unit (SiLU) and swish
     </a>
    </li>
   </ul>
@@ -949,7 +961,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="hyperbolic-tangent">
-<h3>Hyperbolic Tangent<a class="headerlink" href="#hyperbolic-tangent" title="Permalink to this headline">#</a></h3>
+<h3>Hyperbolic tangent<a class="headerlink" href="#hyperbolic-tangent" title="Permalink to this headline">#</a></h3>
 <p>Alike the sigmoid, the hyperbolic tangent is S-shaped and continously differentiable. The output values range is different from the sigmoid, as it goes from -1 to 1.</p>
 <div class="math notranslate nohighlight" id="equation-tanh">
 <span class="eqno">(73)<a class="headerlink" href="#equation-tanh" title="Permalink to this equation">#</a></span>\[\tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}}\]</div>
@@ -972,7 +984,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="rectified-linear-unit-relu">
-<h3>Rectified Linear Unit (ReLU)<a class="headerlink" href="#rectified-linear-unit-relu" title="Permalink to this headline">#</a></h3>
+<h3>Rectified linear unit (ReLU)<a class="headerlink" href="#rectified-linear-unit-relu" title="Permalink to this headline">#</a></h3>
 <p>Welcome to the family of rectifiers, the most popular activation function for deep neural networks. The ReLU is defined as:</p>
 <div class="math notranslate nohighlight" id="equation-relu">
 <span class="eqno">(74)<a class="headerlink" href="#equation-relu" title="Permalink to this equation">#</a></span>\[f(z) = \max(0,z)\]</div>
@@ -1046,7 +1058,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="exponential-linear-units-elus">
-<h3>Exponential Linear Units (ELUs)<a class="headerlink" href="#exponential-linear-units-elus" title="Permalink to this headline">#</a></h3>
+<h3>Exponential linear units (ELUs)<a class="headerlink" href="#exponential-linear-units-elus" title="Permalink to this headline">#</a></h3>
 <p>It does not have Rectifier in the name but the Exponential Linear Unit is another variant of ReLU.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\text{ELU}(z) =\begin{cases}\;\;  a(e^z -1) &amp; \text{ if } z &lt; 0 \\\;\;  z &amp; \text{ if } z \geq 0\end{cases} \;\;\;\; \forall \: z , a \in  \mathbb{R}, a &gt; 0\end{split}\]</div>
@@ -1070,7 +1082,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="scaled-exponential-linear-unit-selu">
-<span id="nn1-activationf-selu"></span><h3>Scaled Exponential Linear Unit (SELU)<a class="headerlink" href="#scaled-exponential-linear-unit-selu" title="Permalink to this headline">#</a></h3>
+<span id="nn1-activationf-selu"></span><h3>Scaled exponential linear unit (SELU)<a class="headerlink" href="#scaled-exponential-linear-unit-selu" title="Permalink to this headline">#</a></h3>
 <figure class="align-default" id="model-rep-2-selu">
 <a class="reference internal image-reference" href="../_images/model_rep_2_selu.png"><img alt="../_images/model_rep_2_selu.png" src="../_images/model_rep_2_selu.png" style="width: 100%;" /></a>
 <figcaption>
@@ -1093,7 +1105,7 @@ title="Print to PDF"
 </ul>
 </section>
 <section id="gaussian-error-linear-unit-gelu">
-<h3>Gaussian Error Linear Unit (GELU)<a class="headerlink" href="#gaussian-error-linear-unit-gelu" title="Permalink to this headline">#</a></h3>
+<h3>Gaussian error linear unit (GELU)<a class="headerlink" href="#gaussian-error-linear-unit-gelu" title="Permalink to this headline">#</a></h3>
 <p>Another modification of ReLU is the Gaussian Error Linear Unit. It can be thought of as a smoother ReLU.<br />
 The definition is:</p>
 <div class="math notranslate nohighlight">
@@ -1121,7 +1133,7 @@ Natural Language Processing (NLP) that deals, among others, with tasks such as t
 </ul>
 </section>
 <section id="sigmoid-linear-unit-silu-and-swish">
-<h3>Sigmoid Linear Unit (SiLU) and Swish<a class="headerlink" href="#sigmoid-linear-unit-silu-and-swish" title="Permalink to this headline">#</a></h3>
+<h3>Sigmoid linear unit (SiLU) and swish<a class="headerlink" href="#sigmoid-linear-unit-silu-and-swish" title="Permalink to this headline">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>The original definition is defined as <span class="math notranslate nohighlight">\(f(z) = x \cdot \text{sigmoid}(\beta z)\)</span>, with <span class="math notranslate nohighlight">\(\beta\)</span> a learnable parameter. Yet as most implementations set <span class="math notranslate nohighlight">\(\beta =1\)</span>, the function is usually named “Swish-1”. But if <span class="math notranslate nohighlight">\(\beta \rightarrow \infty\)</span>, then the Swish becomes like the ReLU function.</p>

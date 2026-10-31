@@ -430,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_1_sdg.html">
+    <a class="reference internal" href="../nn/optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -468,10 +468,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -494,8 +506,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -688,12 +700,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#one-to-one-approach">
-   One-to-One approach
+   One-to-one approach
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#one-to-all-approach">
-   One-to-All approach
+   One-to-all approach
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -722,12 +734,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#one-to-one-approach">
-   One-to-One approach
+   One-to-one approach
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#one-to-all-approach">
-   One-to-All approach
+   One-to-all approach
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -758,14 +770,14 @@ title="Print to PDF"
 </figure>
 <p>There are two main approaches of such methods for multiclass classification.</p>
 <section id="one-to-one-approach">
-<h2>One-to-One approach<a class="headerlink" href="#one-to-one-approach" title="Permalink to this headline">#</a></h2>
+<h2>One-to-one approach<a class="headerlink" href="#one-to-one-approach" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="multiclass1to1def">
 <p class="admonition-title"><span class="caption-number">Definition 21 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-One approach</strong> consists of applying a binary classification for each pair of classes, ignoring the other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of models to train, <span class="math notranslate nohighlight">\(N^\text{model}\)</span> is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-71c89d81-6fa4-4754-be91-0fd532d95840">
-<span class="eqno">(28)<a class="headerlink" href="#equation-71c89d81-6fa4-4754-be91-0fd532d95840" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7fdc5c77-c07d-4184-bd74-0b24937c2596">
+<span class="eqno">(28)<a class="headerlink" href="#equation-7fdc5c77-c07d-4184-bd74-0b24937c2596" title="Permalink to this equation">#</a></span>\[\begin{equation}
 N^\text{model} = \frac{N^\text{class}(N^\text{class}-1)}{2}
 \end{equation}\]</div>
 <p>Each model predicts one class label. The final decision is the class label receiving the most votes, i.e. being predicted most of the time.</p>
@@ -784,14 +796,14 @@ The sample size is more balanced between the two chosen classes than if datasets
 The pairing makes the number of models to train large and thus computer intensive.</p>
 </section>
 <section id="one-to-all-approach">
-<h2>One-to-All approach<a class="headerlink" href="#one-to-all-approach" title="Permalink to this headline">#</a></h2>
+<h2>One-to-all approach<a class="headerlink" href="#one-to-all-approach" title="Permalink to this headline">#</a></h2>
 <div class="proof definition admonition" id="multiclass1toalldef">
 <p class="admonition-title"><span class="caption-number">Definition 22 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-All or One-to-Rest approach</strong> consists of training each class against the collection of all other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of pairs to train is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1c1f87ba-3454-4d59-a68a-51283080ce74">
-<span class="eqno">(29)<a class="headerlink" href="#equation-1c1f87ba-3454-4d59-a68a-51283080ce74" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0dffdb6a-a33b-4121-9305-2986c284dfea">
+<span class="eqno">(29)<a class="headerlink" href="#equation-0dffdb6a-a33b-4121-9305-2986c284dfea" title="Permalink to this equation">#</a></span>\[\begin{equation}
  N^\text{model} = N^\text{class}
 \end{equation}\]</div>
 <p>The final prediction is given by the highest value of the hypothesis function <span class="math notranslate nohighlight">\(h^{k}_\theta(x)\)</span>, <span class="math notranslate nohighlight">\(k \in [1, N^\text{model}]\)</span> among the <span class="math notranslate nohighlight">\(N^\text{model}\)</span> binary classifiers.</p>

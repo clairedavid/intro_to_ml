@@ -1,7 +1,7 @@
 # Gradient Descent for Logistic Regression
 
 
-The gradient descent for classification follows the same procedure as described in {prf:ref}`GD_algo_multi` in Section {ref}`linRegMulti:gradDesc` with the definition of the cost function from Equation {eq}`costFunctionLogReg` above.
+The gradient descent for classification follows the same procedure as described in {prf:ref}`gd_algo_multi` in Section {ref}`linRegMulti:gradDesc` with the definition of the cost function from Equation {eq}`costFunctionLogReg` above.
 
 
 ## Derivatives in the linear case
@@ -30,7 +30,7 @@ This is left as an exercise 😉 to check your understanding and practice writin
 
 ```{admonition} Exercise
 :class: seealso
-Based on the algorithm {prf:ref}`GD_algo_multi` in Section {ref}`linRegMulti:gradDesc`, adapt it for logistic regression and write the corresponding pseudo-code, highlighting the differences and including the elements specific to classification.
+Based on the algorithm {prf:ref}`gd_algo_multi` in Section {ref}`linRegMulti:gradDesc`, adapt it for logistic regression and write the corresponding pseudo-code, highlighting the differences and including the elements specific to classification.
 ```
 
 You will put this into practice in the second tutorial, where you’ll code a classifier by hand!

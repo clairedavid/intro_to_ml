@@ -4,48 +4,48 @@
 Difficult STEP are highlighted with a 🧠 emoji.
 ````
 
-## Linear Regressor’s Stability
+## Linear regressor’s stability
 Find visuals to depict the zones of divergence of the linear regressor (in 1D) with respect to the choice of initial random parameters and learning rate.
 
-## Feature Ranking with Different Classifiers
+## Feature ranking with different classifiers
 Is feature importance absolute, or relative to a given classifier? Explore this by comparing how different classifiers or regressors rank features.
 
-## Gradient Double Descent (GDD)
+## Gradient double descent (GDD)
 Train a simple model with enough flexibility to fit the training data exactly, and let it run for a long time. Track both training and test performance over the course of optimization. You should be able to observe the phenomenon known as _Gradient Double Descent_. Think of a general visual that could encompass all your relevant parameters of the study.
 
-## Support Vector Machine  
+## Support vector machine  
 For several datasets, compare the performance of an SVM vs a Random Forest classifiers (if time, add a neural network).
 
-## AdaBoost by Hand 🧠 
+## AdaBoost by hand 🧠 
 Implement a version of the AdaBoost algorithm by hand and compare it with Scikit-Learn. Choose the relevant metrics and visuals. 
 Bonus: find the error in Scikit-Learn in the calculation of the probability!
 
-## GradientBoost by Hand 🧠🧠
+## GradientBoost by hand 🧠🧠
 Implement a version of the Gradient Boosting algorithm and compare it with the state-of-the-art XGBoost.
 
-## Padding vs Not Padding  
+## Padding vs not padding  
 Is a neural network performing the same (accuracy & speed) if the computations are split between weights and biases or if the weight matrix is padded with an extra row/column to include the biases?
 
 ## Manual implementation of momentum
 Showcase the effect of adding momentum in a neural network. Pick a relevant dataset and, as much as possible, illustrate it with clear visuals.
 
-## Optimizers by Hand 🧠
+## Optimizers by hand 🧠
 Implement the update rules of RMSProp and/or Adam, and illustrate how they differ from vanilla SGD.
 Extension: visualize the trajectory of parameters on a simple loss surface to highlight the differences.
 
-## Compare Adam with L-BFGS Method
+## Compare Adam with L-BFGS method
 Study the rate of convergence of Adam vs L-BFGS. Is there some virtue of starting off with a second order method and switch to a first order one?
 Note: you are not required to implement them manually.  
 
-## Neural Network Initialization  
+## Neural network initialization  
 Compare the performance (and possible cases of divergence) of a neural network with different initialization schemes. 
 Extension: display the variance at each layer and ideally, how the variance evolves during training.
 
-## Loss Landscape Visualization
+## Loss landscape visualization
 In linear regression, we could see the exact loss landscape because the parameter space was only two-dimensional. With neural networks, this is no longer directly possible due to the high dimensionality of the parameter space.
 Are there tools, metrics, or tricks that can still provide a visual representation of such complex loss landscapes?
 
-## Stochastic vs Batch 
+## Stochastic vs batch 
 Showcase the pros & cons of the Stochastic Gradient Descent vs Batch Gradient Descent by varying the number of features, sample size and complexity of the data set.
 
 ## Clustering++

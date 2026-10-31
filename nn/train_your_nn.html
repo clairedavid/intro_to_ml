@@ -430,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="optim_1_sdg.html">
+    <a class="reference internal" href="optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -468,10 +468,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -494,8 +506,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -698,7 +710,7 @@ title="Print to PDF"
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ml-frameworks">
-     ML Frameworks
+     ML frameworks
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
@@ -720,7 +732,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#steps-in-building-your-nn">
-     Steps in Building your NN
+     Steps in building your NN
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
@@ -730,49 +742,49 @@ title="Print to PDF"
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-1-get-the-data">
-       Step 1. Get the Data
+       Step 1. Get the data
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-2-visualize-the-data">
-       Step 2. Visualize the Data
+       Step 2. Visualize the data
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-3-prepare-the-data">
-       Step 3. Prepare the Data
+       Step 3. Prepare the data
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-4-define-the-model">
-       Step 4. Define the Model
+       Step 4. Define the model
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-5-train-the-model">
-       Step 5. Train the Model
+       Step 5. Train the model
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-6-tune-the-model">
-       Step 6. Tune the Model
+       Step 6. Tune the model
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-7-evaluate-the-model">
-       Step 7. Evaluate the Model
+       Step 7. Evaluate the model
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-8-make-predictions">
-       Step 8. Make Predictions
+       Step 8. Make predictions
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#summary-practice-practice-practice">
-     Summary: Practice Practice Practice
+     Summary: practice practice practice
     </a>
    </li>
   </ul>
@@ -808,7 +820,7 @@ title="Print to PDF"
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ml-frameworks">
-     ML Frameworks
+     ML frameworks
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
@@ -830,7 +842,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#steps-in-building-your-nn">
-     Steps in Building your NN
+     Steps in building your NN
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h3 nav-item toc-entry">
@@ -840,49 +852,49 @@ title="Print to PDF"
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-1-get-the-data">
-       Step 1. Get the Data
+       Step 1. Get the data
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-2-visualize-the-data">
-       Step 2. Visualize the Data
+       Step 2. Visualize the data
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-3-prepare-the-data">
-       Step 3. Prepare the Data
+       Step 3. Prepare the data
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-4-define-the-model">
-       Step 4. Define the Model
+       Step 4. Define the model
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-5-train-the-model">
-       Step 5. Train the Model
+       Step 5. Train the model
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-6-tune-the-model">
-       Step 6. Tune the Model
+       Step 6. Tune the model
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-7-evaluate-the-model">
-       Step 7. Evaluate the Model
+       Step 7. Evaluate the model
       </a>
      </li>
      <li class="toc-h3 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-8-make-predictions">
-       Step 8. Make Predictions
+       Step 8. Make predictions
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#summary-practice-practice-practice">
-     Summary: Practice Practice Practice
+     Summary: practice practice practice
     </a>
    </li>
   </ul>
@@ -904,7 +916,7 @@ title="Print to PDF"
 <span id="nn-train"></span><h1>Let’s train our NN!<a class="headerlink" href="#let-s-train-our-nn" title="Permalink to this headline">#</a></h1>
 <p>Time to gather all the notions covered in this lecture and learn how to build a deep learning model.</p>
 <section id="ml-frameworks">
-<h2>ML Frameworks<a class="headerlink" href="#ml-frameworks" title="Permalink to this headline">#</a></h2>
+<h2>ML frameworks<a class="headerlink" href="#ml-frameworks" title="Permalink to this headline">#</a></h2>
 <p>One could code a deep neural network from scratch in python, declaring all the functions, classes etc… That would be very tedious and likely not computationally optimized for speed. Most importantly: it’s been already done. There are indeed dedicated libraries for designing and developing neural networks and deep learning technology.</p>
 <p>The most powerful and popular open-source machine learning frameworks are Keras, PyTorch and TensorFlow. They are used by both researchers and developers because they provide fast and flexible implementation. Here is a very short comparison; more links are listed at the bottom of this page for further reading.</p>
 <section id="keras">
@@ -924,7 +936,7 @@ Keras is easily readable and concise, renown for its user-friendliness and modul
 </aside>
 <p>A PyTorch Tensor is a data structure that is conceptually identical to a NumPy array. Yet, on top of many functions operating on these n-dimensional arrays, the PyTorch tensors are designed to take advantage of parallel computation capabilities of a GPU.</p>
 <p>The other strong feature of PyTorch is its powerful paradigm of computational graphs encompassed in its AutoGrad module. AutoGrad performs automatic differentiation for building and training neural networks. When using AutoGrad, the forward pass of your network will define a computational graph; nodes in the graph will be Tensors, and edges will be functions that produce output Tensors from input Tensors. Backpropagating through this graph then allows you to easily compute gradients. In other words, the logic of a neural net architecture are defined by a graph whose components can be added dynamically.</p>
-<p>While AutoGrad is powerful, it is a bit too low-level for building large and complex networks. The higher end <code class="docutils literal notranslate"><span class="pre">nn</span></code> package can define Modules, equivalent to neural network layers, with also predefined ready-to-use loss functions. We will see some of it in the Section <a class="reference internal" href="#dl-trainnn-stepdefine"><span class="std std-ref">Step 4. Define the Model</span></a>.</p>
+<p>While AutoGrad is powerful, it is a bit too low-level for building large and complex networks. The higher end <code class="docutils literal notranslate"><span class="pre">nn</span></code> package can define Modules, equivalent to neural network layers, with also predefined ready-to-use loss functions. We will see some of it in the Section <a class="reference internal" href="#dl-trainnn-stepdefine"><span class="std std-ref">Step 4. Define the model</span></a>.</p>
 </section>
 <section id="tensorflow">
 <h3>TensorFlow<a class="headerlink" href="#tensorflow" title="Permalink to this headline">#</a></h3>
@@ -934,7 +946,7 @@ It supports various programming languages besides python (JavaSCript, C++, Java)
 </section>
 </section>
 <section id="steps-in-building-your-nn">
-<h2>Steps in Building your NN<a class="headerlink" href="#steps-in-building-your-nn" title="Permalink to this headline">#</a></h2>
+<h2>Steps in building your NN<a class="headerlink" href="#steps-in-building-your-nn" title="Permalink to this headline">#</a></h2>
 <p>Designing a machine learning algorithm has a particular workflow.</p>
 <p>The usual steps are:</p>
 <ol class="simple">
@@ -966,7 +978,7 @@ Finally, it is a good practice to review assumptions. Are all input features cor
 <p>Once these questions have been thought of, it is time to start cooking with the data!</p>
 </section>
 <section id="step-1-get-the-data">
-<h3>Step 1. Get the Data<a class="headerlink" href="#step-1-get-the-data" title="Permalink to this headline">#</a></h3>
+<h3>Step 1. Get the data<a class="headerlink" href="#step-1-get-the-data" title="Permalink to this headline">#</a></h3>
 <p>Dataset formats are plentiful and at times field-related. In experimental particle physics for instance, the common format is <code class="docutils literal notranslate"><span class="pre">.root</span></code>. In this lecture, we will deal with <code class="docutils literal notranslate"><span class="pre">.csv</span></code> textfiles.</p>
 <p>The majority of machine learning programs are using DataFrames, a pythonic data structure from the Pandas python package.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;the_dataset_file.csv&#39;</span><span class="p">)</span> 
@@ -977,7 +989,7 @@ Finally, it is a good practice to review assumptions. Are all input features cor
 <p>There are other data handlers, e.g. in PyTorch the <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> and <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> classes, that are specific to the machine learning framework and used to efficiently train a model. A tutorial link is available at the end of this page.</p>
 </section>
 <section id="step-2-visualize-the-data">
-<h3>Step 2. Visualize the Data<a class="headerlink" href="#step-2-visualize-the-data" title="Permalink to this headline">#</a></h3>
+<h3>Step 2. Visualize the data<a class="headerlink" href="#step-2-visualize-the-data" title="Permalink to this headline">#</a></h3>
 <p>Before even starting to prepare the data for machine learning purposes, it is recommended to see how the data look like.</p>
 <p>As the dataset can be big, so it is cautious to first know the number of columns (features) and rows (data instances).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Counting the number of rows</span>
@@ -1082,7 +1094,7 @@ Finally, it is a good practice to review assumptions. Are all input features cor
 </div>
 </section>
 <section id="step-3-prepare-the-data">
-<h3>Step 3. Prepare the Data<a class="headerlink" href="#step-3-prepare-the-data" title="Permalink to this headline">#</a></h3>
+<h3>Step 3. Prepare the data<a class="headerlink" href="#step-3-prepare-the-data" title="Permalink to this headline">#</a></h3>
 <p><strong>Data Cleaning</strong></p>
 <div class="proof definition admonition" id="datacleaning">
 <p class="admonition-title"><span class="caption-number">Definition 76 </span></p>
@@ -1111,7 +1123,7 @@ The training, the validation, and/or the test set(s)?</p>
 </div>
 </section>
 <section id="step-4-define-the-model">
-<span id="dl-trainnn-stepdefine"></span><h3>Step 4. Define the Model<a class="headerlink" href="#step-4-define-the-model" title="Permalink to this headline">#</a></h3>
+<span id="dl-trainnn-stepdefine"></span><h3>Step 4. Define the model<a class="headerlink" href="#step-4-define-the-model" title="Permalink to this headline">#</a></h3>
 <p>Here is the fun part of building the neural network, layers by layers (like a layered dessert).</p>
 <p>In the model definition, there will be constraints in the input and output layers imposed by the given problem to solve:</p>
 <ul class="simple">
@@ -1151,7 +1163,7 @@ This is real code! “DL1” is a Deep Learning algorithm developed for the ATLA
 </pre></div>
 </div>
 <p><sub>Credit: Manuel Guth</sub></p>
-<p>The input layer contains the feature (recall that <code class="docutils literal notranslate"><span class="pre">.shape[1]</span></code> returns the number of columns, i.e. features). The <code class="docutils literal notranslate"><span class="pre">l_units</span></code> list was obtained by trials and errors. ‘Dense’ for the hidden layers means the regular deeply connected neural network layer. Their non-linear activation function is ReLU. The output layer contains 3 nodes as there are 3 classes: <span class="math notranslate nohighlight">\(b\)</span>-jets, <span class="math notranslate nohighlight">\(c\)</span>-jets and light-jets. The weight initialization is done via the Glorot-Uniform, as we saw in the Section <a class="reference internal" href="training_3_init.html#nn2-init-xavier"><span class="std std-ref">Xavier Weight Initialization</span></a>.</p>
+<p>The input layer contains the feature (recall that <code class="docutils literal notranslate"><span class="pre">.shape[1]</span></code> returns the number of columns, i.e. features). The <code class="docutils literal notranslate"><span class="pre">l_units</span></code> list was obtained by trials and errors. ‘Dense’ for the hidden layers means the regular deeply connected neural network layer. Their non-linear activation function is ReLU. The output layer contains 3 nodes as there are 3 classes: <span class="math notranslate nohighlight">\(b\)</span>-jets, <span class="math notranslate nohighlight">\(c\)</span>-jets and light-jets. The weight initialization is done via the Glorot-Uniform, as we saw in the Section <a class="reference internal" href="training_3_init.html#nn2-init-xavier"><span class="std std-ref">Xavier weight initialization</span></a>.</p>
 <p><strong>Example in PyTorch</strong><br />
 PyTorch is less intuitive than Keras but working at a lower level (that is to say the user has to do more coding, e.g. wrapping the methods into a loop, etc). Yet it is beneficial in terms of learning experience, as well of flexibility once the model is more complex.</p>
 <p>Let’s see how to define a fully-connected model in PyTorch. For this we create an instance of the PyTorch base class <code class="docutils literal notranslate"><span class="pre">torch.nn.Module</span></code>. The <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> method defines the layers and other components of a model, and the <code class="docutils literal notranslate"><span class="pre">forward()</span></code> method where the computation gets done.</p>
@@ -1200,7 +1212,7 @@ PyTorch is less intuitive than Keras but working at a lower level (that is to sa
 The gain is provided by <code class="docutils literal notranslate"><span class="pre">nn.init.calculate_gain('relu')</span></code>, here for the ReLU function. It needs to be inputted as gains are specific of the activation functions. More on <a class="reference external" href="https://pytorch.org/docs/stable/nn.init.html">PyTorch nn.init page</a>.</p>
 </section>
 <section id="step-5-train-the-model">
-<h3>Step 5. Train the Model<a class="headerlink" href="#step-5-train-the-model" title="Permalink to this headline">#</a></h3>
+<h3>Step 5. Train the model<a class="headerlink" href="#step-5-train-the-model" title="Permalink to this headline">#</a></h3>
 <p>Once we have a model, we need two things to train it: a loss function and an optimization algorithm.</p>
 <p><strong>Loss function</strong><br />
 PyTorch <code class="docutils literal notranslate"><span class="pre">torch.nn</span></code> package has <a class="reference external" href="https://pytorch.org/docs/stable/nn.html#loss-functions">predefined loss functions</a>. The most common ones being</p>
@@ -1242,11 +1254,11 @@ PyTorch has optimizers of the shelf thanks to its <code class="docutils literal 
 <p>It is usually more convenient to wrap this inside a user-defined function with the model and other relevant parameters as arguments. This function can then be called several times with different models.</p>
 </section>
 <section id="step-6-tune-the-model">
-<h3>Step 6. Tune the Model<a class="headerlink" href="#step-6-tune-the-model" title="Permalink to this headline">#</a></h3>
+<h3>Step 6. Tune the model<a class="headerlink" href="#step-6-tune-the-model" title="Permalink to this headline">#</a></h3>
 <p>We saw the <code class="docutils literal notranslate"><span class="pre">GridSearchCV</span></code> and <code class="docutils literal notranslate"><span class="pre">RandomSearchCV</span></code> tools from Scikit-Learn. For neural networks, a popular library is <code class="docutils literal notranslate"><span class="pre">RayTune</span></code> (<a class="reference external" href="https://docs.ray.io/en/latest/tune/index.html">link to official website</a>), which integrates with numerous machine learning frameworks. A good illustrative example is provided in <a class="reference external" href="https://docs.ray.io/en/latest/tune/examples/tune-pytorch-cifar.html#tune-pytorch-cifar-ref">Ray’s official documentation</a>.</p>
 </section>
 <section id="step-7-evaluate-the-model">
-<h3>Step 7. Evaluate the Model<a class="headerlink" href="#step-7-evaluate-the-model" title="Permalink to this headline">#</a></h3>
+<h3>Step 7. Evaluate the model<a class="headerlink" href="#step-7-evaluate-the-model" title="Permalink to this headline">#</a></h3>
 <p>As we saw in Step 0, the evaluation will be dictacted by the specifics of the optimization problem. It should be performed on the test set, untouched during the training. The little trick here is to ‘unconvert’ PyTorch tensors into NumPy arrays before calling the method that computes the performance metrics.
 A minimal implementation of a binary classifier using the accuracy would look like this:</p>
 <aside class="margin sidebar">
@@ -1286,7 +1298,7 @@ A minimal implementation of a binary classifier using the accuracy would look li
 <p>From the list of all observations <code class="docutils literal notranslate"><span class="pre">all_obss</span></code> and their associated predictions <code class="docutils literal notranslate"><span class="pre">all_preds</span></code>, it is possible to plot ROC curves and compare different models.</p>
 </section>
 <section id="step-8-make-predictions">
-<h3>Step 8. Make Predictions<a class="headerlink" href="#step-8-make-predictions" title="Permalink to this headline">#</a></h3>
+<h3>Step 8. Make predictions<a class="headerlink" href="#step-8-make-predictions" title="Permalink to this headline">#</a></h3>
 <p>Now it is time to use the model to make a prediction!</p>
 <p>The input will be a data row of input features (but no target). A first step for PyTorch is to convert this data row into a Tensor. If <code class="docutils literal notranslate"><span class="pre">row</span></code> is a list:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert row to data</span>
@@ -1304,7 +1316,7 @@ A minimal implementation of a binary classifier using the accuracy would look li
 </section>
 </section>
 <section id="summary-practice-practice-practice">
-<h2>Summary: Practice Practice Practice<a class="headerlink" href="#summary-practice-practice-practice" title="Permalink to this headline">#</a></h2>
+<h2>Summary: practice practice practice<a class="headerlink" href="#summary-practice-practice-practice" title="Permalink to this headline">#</a></h2>
 <p>You reached the end of this long page. Good. You now know the steps and building coding blocks to start your deep learning journey. But most important is practice. This will be done during tutorials and assignments. A great way to learn is to join ML competition websites such as Kaggle.com (<a class="reference external" href="https://www.kaggle.com/">website</a>). Another opportunity to become better: your own project! If you are curious about a given scientific field and can find a dataset, play around driven by your own questions!</p>
 <div class="seealso admonition">
 <p class="admonition-title">Learn More</p>

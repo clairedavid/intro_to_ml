@@ -1,6 +1,6 @@
 # Feedforward Propagation
 
-## What is Feedforward Propagation?
+## What is feedforward propagation?
 
 This is one of the key steps in the training of a neural network. It comes after initialization of the network (all weights and biases), which we will covered later. The forward direction means going from the input to the output nodes. 
 
@@ -182,7 +182,7 @@ We have computed a value for each activation unit for a given data sample $\bold
 Let's now get a general formula.
 
 (NN1:forwardprop:rule)=
-## General rule for Forward Propagation
+## General rule for forward propagation
 
 If we rewrite the first layer of inputs for a given sample $\boldsymbol{x}^{(i)}$ as a "layer zero" $\boldsymbol{a}^{(i, \: 0)}$:
 ```{math}

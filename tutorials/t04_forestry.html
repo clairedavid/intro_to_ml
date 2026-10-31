@@ -430,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_1_sdg.html">
+    <a class="reference internal" href="../nn/optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -468,10 +468,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -494,8 +506,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -698,34 +710,34 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#inspect-the-data">
-     1.1 Inspect the Data
+     1.1 Inspect the data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#visualize-the-data">
-     1.2 Visualize the Data
+     1.2 Visualize the data
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#decision-tree">
-   2. Decision Tree
+   2. Decision tree
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#grow-a-tree">
-     2.1 Grow a Tree
+     2.1 Grow a tree
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#see-your-tree">
-     2.2 See your Tree
+     2.2 See your tree
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#comment-your-tree">
-     2.3 Comment your Tree
+     2.3 Comment your tree
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -742,12 +754,12 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#confusion-matrix">
-     3.1 Confusion Matrix
+     3.1 Confusion matrix
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#write-your-metrics-and-compare">
-     3.2 Write Your Metrics (and compare)
+     3.2 Write your metrics (and compare)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -759,7 +771,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#roc-the-tree">
-   4. ROC The Tree
+   4. ROC the tree
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -769,24 +781,24 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#check-scikit-learn-s-scores">
-     4.2 Check: Scikit-Learn’s Scores
+     4.2 Check: Scikit-Learn’s scores
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#shallow-vs-deep-comment">
-     4.3 Shallow vs Deep: Comment
+     4.3 Shallow vs deep: comment
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#decision-surface">
-   5. Decision Surface
+   5. Decision surface
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#draw-the-decision-surface">
-     5.1 Draw the Decision Surface
+     5.1 Draw the decision surface
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -798,7 +810,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-forest">
-   6. The Forest
+   6. The forest
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -886,34 +898,34 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#inspect-the-data">
-     1.1 Inspect the Data
+     1.1 Inspect the data
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#visualize-the-data">
-     1.2 Visualize the Data
+     1.2 Visualize the data
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#decision-tree">
-   2. Decision Tree
+   2. Decision tree
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#grow-a-tree">
-     2.1 Grow a Tree
+     2.1 Grow a tree
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#see-your-tree">
-     2.2 See your Tree
+     2.2 See your tree
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#comment-your-tree">
-     2.3 Comment your Tree
+     2.3 Comment your tree
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -930,12 +942,12 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#confusion-matrix">
-     3.1 Confusion Matrix
+     3.1 Confusion matrix
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#write-your-metrics-and-compare">
-     3.2 Write Your Metrics (and compare)
+     3.2 Write your metrics (and compare)
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -947,7 +959,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#roc-the-tree">
-   4. ROC The Tree
+   4. ROC the tree
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -957,24 +969,24 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#check-scikit-learn-s-scores">
-     4.2 Check: Scikit-Learn’s Scores
+     4.2 Check: Scikit-Learn’s scores
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#shallow-vs-deep-comment">
-     4.3 Shallow vs Deep: Comment
+     4.3 Shallow vs deep: comment
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#decision-surface">
-   5. Decision Surface
+   5. Decision surface
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#draw-the-decision-surface">
-     5.1 Draw the Decision Surface
+     5.1 Draw the decision surface
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -986,7 +998,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-forest">
-   6. The Forest
+   6. The forest
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -1083,12 +1095,12 @@ title="Print to PDF"
 Explore the variables by printing the first five rows.</p>
 <p>Reminder: the <code class="docutils literal notranslate"><span class="pre">sample</span></code> column stores the labels of the collisions: +1 corresponds to VFB and -1 to ggF.</p>
 <section id="inspect-the-data">
-<h3>1.1 Inspect the Data<a class="headerlink" href="#inspect-the-data" title="Permalink to this headline">#</a></h3>
+<h3>1.1 Inspect the data<a class="headerlink" href="#inspect-the-data" title="Permalink to this headline">#</a></h3>
 <p>How many events (rows) does each file contain?<br />
 How many events of each process (VFB and ggF) does each file contain?</p>
 </section>
 <section id="visualize-the-data">
-<h3>1.2 Visualize the Data<a class="headerlink" href="#visualize-the-data" title="Permalink to this headline">#</a></h3>
+<h3>1.2 Visualize the data<a class="headerlink" href="#visualize-the-data" title="Permalink to this headline">#</a></h3>
 <p>Let’s draw a scatter plot to see how the data look like. Like in the previous tutorial, we will focus on two variables for now: <span class="math notranslate nohighlight">\(|\Delta\eta_{jj}|\)</span> on the <span class="math notranslate nohighlight">\(x\)</span>-axis and <span class="math notranslate nohighlight">\(m_{jj}\)</span> on the <span class="math notranslate nohighlight">\(y\)</span>-axis.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Variables of interest</span>
 <span class="n">XNAME</span> <span class="o">=</span> <span class="s1">&#39;detajj&#39;</span><span class="p">;</span> <span class="n">XLABEL</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$|\Delta\eta_</span><span class="si">{jj}</span><span class="s1">|$&#39;</span>
@@ -1110,22 +1122,22 @@ How many events of each process (VFB and ggF) does each file contain?</p>
 <p class="admonition-title">Hint</p>
 <p><code class="docutils literal notranslate"><span class="pre">df.loc[rows,</span> <span class="pre">columns]</span></code> lets you filter both rows and columns at the same time.</p>
 </div>
-<p>Call the macro from <a class="reference internal" href="t03_decision_stump.html#app-t3-snippet-zone"><span class="std std-ref">Appendix: T3 Snippet Zone</span></a> and look at your data!</p>
+<p>Call the macro from <a class="reference internal" href="t03_decision_stump.html#app-t3-snippet-zone"><span class="std std-ref">Appendix: T3 snippet zone</span></a> and look at your data!</p>
 </section>
 </section>
 <section id="decision-tree">
-<h2>2. Decision Tree<a class="headerlink" href="#decision-tree" title="Permalink to this headline">#</a></h2>
+<h2>2. Decision tree<a class="headerlink" href="#decision-tree" title="Permalink to this headline">#</a></h2>
 <p>Let’s use Scikit-Learn to make a first shallow decision tree.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">tree</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">export_text</span>
 </pre></div>
 </div>
 <section id="grow-a-tree">
-<h3>2.1 Grow a Tree<a class="headerlink" href="#grow-a-tree" title="Permalink to this headline">#</a></h3>
+<h3>2.1 Grow a tree<a class="headerlink" href="#grow-a-tree" title="Permalink to this headline">#</a></h3>
 <p>Make a decision tree with a maximum depth of 2.</p>
 </section>
 <section id="see-your-tree">
-<h3>2.2 See your Tree<a class="headerlink" href="#see-your-tree" title="Permalink to this headline">#</a></h3>
+<h3>2.2 See your tree<a class="headerlink" href="#see-your-tree" title="Permalink to this headline">#</a></h3>
 <p>Using the function <code class="docutils literal notranslate"><span class="pre">tree.plot_tree</span></code> from Scikit-Learn, visualize your trained tree. Call it with the <code class="docutils literal notranslate"><span class="pre">filled</span></code> option activated. You should see something like this:</p>
 <figure class="align-default" id="t04-shallowtree">
 <a class="reference internal image-reference" href="../_images/t04_shallowtree.png"><img alt="../_images/t04_shallowtree.png" src="../_images/t04_shallowtree.png" style="width: 90%;" /></a>
@@ -1136,7 +1148,7 @@ How many events of each process (VFB and ggF) does each file contain?</p>
 </figure>
 </section>
 <section id="comment-your-tree">
-<h3>2.3 Comment your Tree<a class="headerlink" href="#comment-your-tree" title="Permalink to this headline">#</a></h3>
+<h3>2.3 Comment your tree<a class="headerlink" href="#comment-your-tree" title="Permalink to this headline">#</a></h3>
 <p>Describe what is this representation about. How are the variables encoded in Scikit-Learn? Which direction (left/right) chosen if the condition is true/false? What does the colouring in some nodes correspond to? Where goes the signal, where goes the background? Which leaves are the purest? For which category?</p>
 </section>
 <section id="accuracy">
@@ -1158,12 +1170,12 @@ How many events of each process (VFB and ggF) does each file contain?</p>
 </pre></div>
 </div>
 <section id="confusion-matrix">
-<h3>3.1 Confusion Matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">#</a></h3>
+<h3>3.1 Confusion matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">#</a></h3>
 <p>Using the <code class="docutils literal notranslate"><span class="pre">predict()</span></code> method on your classifier, write the code to show the confusion matrix.</p>
 <p>How is the confusion matrix encoded in Scikit-Learn? Is it the same as in the lecture? Find and explain in which cells are the True Positives (TP), True Negatives (TN), False Positive (FP) and False Negatives (FN).</p>
 </section>
 <section id="write-your-metrics-and-compare">
-<h3>3.2 Write Your Metrics (and compare)<a class="headerlink" href="#write-your-metrics-and-compare" title="Permalink to this headline">#</a></h3>
+<h3>3.2 Write your metrics (and compare)<a class="headerlink" href="#write-your-metrics-and-compare" title="Permalink to this headline">#</a></h3>
 <p>Let’s code it by hand here and then compare with Scikit-Learn.</p>
 <p>You will write a function <code class="docutils literal notranslate"><span class="pre">print_metrics</span></code> that extract the TP, TN, FP, FN from the confusion matrix. Then calculate and print the following:</p>
 <aside class="margin sidebar">
@@ -1213,7 +1225,7 @@ How many events of each process (VFB and ggF) does each file contain?</p>
 </section>
 </section>
 <section id="roc-the-tree">
-<h2>4. ROC The Tree<a class="headerlink" href="#roc-the-tree" title="Permalink to this headline">#</a></h2>
+<h2>4. ROC the tree<a class="headerlink" href="#roc-the-tree" title="Permalink to this headline">#</a></h2>
 <p>Let’s use Scikit-Learn <code class="docutils literal notranslate"><span class="pre">metrics</span></code> to get the ingredients to plot a ROC curve. We need continuous probabilities.  How are probabilities calculated? Let’s show the first 5 entries of <code class="docutils literal notranslate"><span class="pre">X_train</span></code>. Recall the decision tree (Figure <a class="reference internal" href="#t04-shallowtree"><span class="std std-numref">Fig. 60</span></a>) we plotted above.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
@@ -1228,7 +1240,7 @@ How many events of each process (VFB and ggF) does each file contain?</p>
 </div>
 </section>
 <section id="check-scikit-learn-s-scores">
-<h3>4.2 Check: Scikit-Learn’s Scores<a class="headerlink" href="#check-scikit-learn-s-scores" title="Permalink to this headline">#</a></h3>
+<h3>4.2 Check: Scikit-Learn’s scores<a class="headerlink" href="#check-scikit-learn-s-scores" title="Permalink to this headline">#</a></h3>
 <p>Check your answers with <code class="docutils literal notranslate"><span class="pre">predict_proba</span></code> and explain the output array__</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y_scores_train</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 <span class="n">y_scores_train</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
@@ -1249,15 +1261,15 @@ A macro to plot the ROC curve is provided in the <a class="reference internal" h
 <p>Use your function <code class="docutils literal notranslate"><span class="pre">print_metrics</span></code> to see the performance and plot its ROC curve.</p>
 </section>
 <section id="shallow-vs-deep-comment">
-<h3>4.3 Shallow vs Deep: Comment<a class="headerlink" href="#shallow-vs-deep-comment" title="Permalink to this headline">#</a></h3>
+<h3>4.3 Shallow vs deep: comment<a class="headerlink" href="#shallow-vs-deep-comment" title="Permalink to this headline">#</a></h3>
 <p>How does the performance of this tree compare with the shallow tree of depth 2? What is likely to happen here?</p>
 </section>
 </section>
 <section id="decision-surface">
-<h2>5. Decision Surface<a class="headerlink" href="#decision-surface" title="Permalink to this headline">#</a></h2>
+<h2>5. Decision surface<a class="headerlink" href="#decision-surface" title="Permalink to this headline">#</a></h2>
 <p>We can create a graphical display to showcase the prediction for each point in the feature space. If we stick to two inputs like in this tutorial, we can easily visualize how well the model performs at grasping the main patterns in the data.</p>
 <section id="draw-the-decision-surface">
-<h3>5.1 Draw the Decision Surface<a class="headerlink" href="#draw-the-decision-surface" title="Permalink to this headline">#</a></h3>
+<h3>5.1 Draw the decision surface<a class="headerlink" href="#draw-the-decision-surface" title="Permalink to this headline">#</a></h3>
 <p>A macro is provided in the <a class="reference internal" href="#app-t4-snippet-zone"><span class="std std-ref">Appendix: T4 Snippet Zone</span></a>. Copy-paste it to your notebook. Then, modify the <code class="docutils literal notranslate"><span class="pre">plot_scatter</span></code> function with these two additions:</p>
 <ul class="simple">
 <li><p>add an optional argument <code class="docutils literal notranslate"><span class="pre">ds=None</span></code></p></li>
@@ -1306,7 +1318,7 @@ A macro to plot the ROC curve is provided in the <a class="reference internal" h
 </section>
 </section>
 <section id="the-forest">
-<h2>6. The Forest<a class="headerlink" href="#the-forest" title="Permalink to this headline">#</a></h2>
+<h2>6. The forest<a class="headerlink" href="#the-forest" title="Permalink to this headline">#</a></h2>
 <p>Let’s plant a forest now. We need the following imports:</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>

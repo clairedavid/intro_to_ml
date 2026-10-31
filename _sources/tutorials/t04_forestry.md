@@ -29,11 +29,11 @@ Explore the variables by printing the first five rows.
 
 Reminder: the `sample` column stores the labels of the collisions: +1 corresponds to VFB and -1 to ggF.
 
-### 1.1 Inspect the Data
+### 1.1 Inspect the data
 How many events (rows) does each file contain?  
 How many events of each process (VFB and ggF) does each file contain?  
 
-### 1.2 Visualize the Data
+### 1.2 Visualize the data
 Let's draw a scatter plot to see how the data look like. Like in the previous tutorial, we will focus on two variables for now: $|\Delta\eta_{jj}|$ on the $x$-axis and $m_{jj}$ on the $y$-axis. 
 
 ```python
@@ -59,7 +59,7 @@ Then pass `sig` and `bkg` to the plotting macro.
 ```
 Call the macro from {ref}`app:t3:snippet:zone` and look at your data!
 
-## 2. Decision Tree
+## 2. Decision tree
 Let's use Scikit-Learn to make a first shallow decision tree.
 
 ```python
@@ -67,10 +67,10 @@ from sklearn import tree
 from sklearn.tree import export_text
 ```
 
-### 2.1 Grow a Tree
+### 2.1 Grow a tree
 Make a decision tree with a maximum depth of 2. 
 
-### 2.2 See your Tree
+### 2.2 See your tree
 Using the function `tree.plot_tree` from Scikit-Learn, visualize your trained tree. Call it with the `filled` option activated. You should see something like this:
 
 
@@ -83,7 +83,7 @@ Using the function `tree.plot_tree` from Scikit-Learn, visualize your trained tr
  <sub>Image: from Scikit-Learn `tree` library</sub>
 ```
 
-### 2.3 Comment your Tree
+### 2.3 Comment your tree
 Describe what is this representation about. How are the variables encoded in Scikit-Learn? Which direction (left/right) chosen if the condition is true/false? What does the colouring in some nodes correspond to? Where goes the signal, where goes the background? Which leaves are the purest? For which category?
 
 ### 2.4 Accuracy 
@@ -104,13 +104,13 @@ disp.plot()
 plt.show()
 ```
 
-### 3.1 Confusion Matrix
+### 3.1 Confusion matrix
 
 Using the `predict()` method on your classifier, write the code to show the confusion matrix. 
  
 How is the confusion matrix encoded in Scikit-Learn? Is it the same as in the lecture? Find and explain in which cells are the True Positives (TP), True Negatives (TN), False Positive (FP) and False Negatives (FN). 
 
-### 3.2 Write Your Metrics (and compare)
+### 3.2 Write your metrics (and compare)
 Let's code it by hand here and then compare with Scikit-Learn. 
 
 You will write a function `print_metrics` that extract the TP, TN, FP, FN from the confusion matrix. Then calculate and print the following:
@@ -158,7 +158,7 @@ How does the performance change when assessed on the test dataset? Which error t
 
 
 
-## 4. ROC The Tree
+## 4. ROC the tree
 Let's use Scikit-Learn `metrics` to get the ingredients to plot a ROC curve. We need continuous probabilities.  How are probabilities calculated? Let's show the first 5 entries of `X_train`. Recall the decision tree (Figure {numref}`t04_shallowtree`) we plotted above.
 ```python
 X_train[:5]
@@ -175,7 +175,7 @@ What are the signal probabilities for the first five entries?
 First, find for each event in which leaf it falls according to the input values.
 ```
 
-### 4.2 Check: Scikit-Learn's Scores
+### 4.2 Check: Scikit-Learn's scores
 Check your answers with `predict_proba` and explain the output array__  
 ```python
 y_scores_train = clf.predict_proba(X_train)
@@ -202,14 +202,14 @@ tree_clf_depth20.fit(X_train, y_train)
 Use your function `print_metrics` to see the performance and plot its ROC curve.
 
 
-### 4.3 Shallow vs Deep: Comment
+### 4.3 Shallow vs deep: comment
 How does the performance of this tree compare with the shallow tree of depth 2? What is likely to happen here?
 
 
-## 5. Decision Surface
+## 5. Decision surface
 We can create a graphical display to showcase the prediction for each point in the feature space. If we stick to two inputs like in this tutorial, we can easily visualize how well the model performs at grasping the main patterns in the data.
 
-### 5.1 Draw the Decision Surface
+### 5.1 Draw the decision surface
 A macro is provided in the {ref}`app:t4:snippet:zone`. Copy-paste it to your notebook. Then, modify the `plot_scatter` function with these two additions:
 * add an optional argument `ds=None`
 * add before the legend the following:
@@ -253,7 +253,7 @@ Call it again with the tree of depth 20.
 Comment on the decision surface with the deep tree: what is happening? How to cope?
 
 
-## 6. The Forest
+## 6. The forest
 Let's plant a forest now. We need the following imports:
 ````{margin}
 ```{tip}

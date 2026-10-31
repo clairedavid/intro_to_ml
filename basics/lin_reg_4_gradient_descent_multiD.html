@@ -430,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_1_sdg.html">
+    <a class="reference internal" href="../nn/optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -468,10 +468,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -494,8 +506,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -688,12 +700,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#gradient-descent-in-multilinear-regression">
-   Gradient Descent in Multilinear Regression
+   Gradient descent in multilinear regression
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#feature-scaling-normalization">
-   Feature Scaling &amp; Normalization
+   Feature scaling &amp; normalization
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -734,12 +746,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#gradient-descent-in-multilinear-regression">
-   Gradient Descent in Multilinear Regression
+   Gradient descent in multilinear regression
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#feature-scaling-normalization">
-   Feature Scaling &amp; Normalization
+   Feature scaling &amp; normalization
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -804,45 +816,45 @@ Additional input features can be visualized in the form of a table:</p>
   <tbody>
     <tr>
       <th>0</th>
-      <td>44.849334</td>
-      <td>-1.481324</td>
-      <td>1943.825179</td>
-      <td>0.089510</td>
+      <td>58.820707</td>
+      <td>1.162700</td>
+      <td>2013.934215</td>
+      <td>-0.096379</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>47.653204</td>
-      <td>0.515143</td>
-      <td>2104.844633</td>
-      <td>-0.016540</td>
+      <td>53.656230</td>
+      <td>-2.929452</td>
+      <td>1765.281410</td>
+      <td>0.017261</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>54.603920</td>
-      <td>-2.409636</td>
-      <td>1892.785431</td>
-      <td>-0.292960</td>
+      <td>56.699154</td>
+      <td>-2.999147</td>
+      <td>1904.081348</td>
+      <td>0.039987</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>49.593198</td>
-      <td>-2.567706</td>
-      <td>2018.627104</td>
-      <td>0.122205</td>
+      <td>53.746988</td>
+      <td>1.235088</td>
+      <td>2113.855418</td>
+      <td>0.051713</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>47.661995</td>
-      <td>1.663852</td>
-      <td>2016.138361</td>
-      <td>0.009196</td>
+      <td>51.503610</td>
+      <td>-1.340673</td>
+      <td>1973.266580</td>
+      <td>-0.124509</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>44.533510</td>
-      <td>2.684321</td>
-      <td>2008.487666</td>
-      <td>0.096691</td>
+      <td>55.332418</td>
+      <td>-0.048100</td>
+      <td>1944.726633</td>
+      <td>-0.066280</td>
     </tr>
   </tbody>
 </table>
@@ -906,7 +918,7 @@ h_\theta(\boldsymbol{x^{(i)}}) = \theta_0 + \theta_1 x^{(i)}_1 + \theta_2 x^{(i)
   \begin{pmatrix} \theta_0 \\\theta_1 \\ \\\vdots \\  \\\theta_n \\\end{pmatrix} = \; \boldsymbol{x^{(i)}} \cdot  \boldsymbol{\theta}
 \end{equation*}\]</div>
 <section id="gradient-descent-in-multilinear-regression">
-<span id="linregmulti-graddesc"></span><h2>Gradient Descent in Multilinear Regression<a class="headerlink" href="#gradient-descent-in-multilinear-regression" title="Permalink to this headline">#</a></h2>
+<span id="linregmulti-graddesc"></span><h2>Gradient descent in multilinear regression<a class="headerlink" href="#gradient-descent-in-multilinear-regression" title="Permalink to this headline">#</a></h2>
 <p>We will revisit our algorithm to generalize it to <span class="math notranslate nohighlight">\(\theta_n\)</span> parameters:</p>
 <div class="proof algorithm admonition" id="gd_algo_multi">
 <p class="admonition-title"><span class="caption-number">Algorithm 2 </span> (Gradient Descent for Multivariate Linear Regression)</p>
@@ -983,7 +995,7 @@ The optimized values of model parameters <span class="math notranslate nohighlig
 <span class="eqno">(15)<a class="headerlink" href="#equation-partialdevlinreg" title="Permalink to this equation">#</a></span>\[\frac{\partial}{\partial \theta_j} C(\boldsymbol{\theta}) = \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) \; x_j^{(i)}\]</div>
 </section>
 <section id="feature-scaling-normalization">
-<span id="warmup-linregmulti-featurescalnorm"></span><h2>Feature Scaling &amp; Normalization<a class="headerlink" href="#feature-scaling-normalization" title="Permalink to this headline">#</a></h2>
+<span id="warmup-linregmulti-featurescalnorm"></span><h2>Feature scaling &amp; normalization<a class="headerlink" href="#feature-scaling-normalization" title="Permalink to this headline">#</a></h2>
 <p>In the <a class="reference internal" href="lin_reg_3_gradient_descent_1d.html#linreg-graphvisgd"><span class="std std-ref">previous sub-section on Graphical Visualization</span></a>, the shown <a class="reference internal" href="lin_reg_3_gradient_descent_1d.html#plot-linreg-3d"><span class="std std-ref">3D plot of the cost function</span></a> with respect to the <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> parameters was not really bowl-shaped but stretched. This happens when the features are of different ranges. One parameter will have an increment size larger than the other.</p>
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>

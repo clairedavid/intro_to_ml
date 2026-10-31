@@ -430,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_1_sdg.html">
+    <a class="reference internal" href="../nn/optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -468,10 +468,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -494,8 +506,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -756,16 +768,16 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p>The <strong>Gini’s diversity index</strong> is a measure of a node’s impurity.</p>
 <p>It is defined for each tree node <span class="math notranslate nohighlight">\(i\)</span> as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-77be02e3-56d2-4dcd-841d-e35691b637ad">
-<span class="eqno">(50)<a class="headerlink" href="#equation-77be02e3-56d2-4dcd-841d-e35691b637ad" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-80904708-6a10-4255-aff7-923cd0fb8eb5">
+<span class="eqno">(50)<a class="headerlink" href="#equation-80904708-6a10-4255-aff7-923cd0fb8eb5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 G_i = 1 - \sum_{k=1}^{N_\text{classes}} \left( \frac{N_{k, i}}{ N_i} \right)^2 = 1 - \sum_{k=1}^{N_\text{classes}} \left( p_k \right)^2
 \end{equation}\]</div>
 <p>with <span class="math notranslate nohighlight">\(N_{k, i}\)</span> the number of data samples of class <span class="math notranslate nohighlight">\(k\)</span> in node <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(N_{i}\)</span> the total number of data samples in node <span class="math notranslate nohighlight">\(i\)</span>. The terms <span class="math notranslate nohighlight">\(p_k\)</span> in the sum are equivalent to the probability of getting a sample of class <span class="math notranslate nohighlight">\(k\)</span> in the node <span class="math notranslate nohighlight">\(i\)</span>.</p>
 <p>The Gini’s impurity index ranges from 0 (100% pure node) to 1 (very impure node).</p>
 </section>
 </div><p>If a node has an equal amount of data points from two classes, let’s say 500 points each, the Gini index will be:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-578774d0-e579-4300-a783-9961b6d8addc">
-<span class="eqno">(51)<a class="headerlink" href="#equation-578774d0-e579-4300-a783-9961b6d8addc" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b55dcb3d-decd-4a17-be05-9531e026d00a">
+<span class="eqno">(51)<a class="headerlink" href="#equation-b55dcb3d-decd-4a17-be05-9531e026d00a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 G_i = 1 - \left( \frac{500}{1000} \right)^2 - \left( \frac{500}{1000} \right)^2 = 0.5 
 \end{equation}\]</div>
 <p>With three classes present in equal quantities, it will be <span class="math notranslate nohighlight">\(\frac{2}{3}\)</span>, for four, <span class="math notranslate nohighlight">\(\frac{3}{4}\)</span>, etc.</p>
@@ -777,8 +789,8 @@ G_i = 1 - \left( \frac{500}{1000} \right)^2 - \left( \frac{500}{1000} \right)^2 
 <p class="admonition-title"><span class="caption-number">Definition 48 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The cost function for CART is defined as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-344129ca-ba15-4a9a-8173-c9453c1b3d14">
-<span class="eqno">(52)<a class="headerlink" href="#equation-344129ca-ba15-4a9a-8173-c9453c1b3d14" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f3ab4ac2-9200-4adb-b4fe-29b245555ab3">
+<span class="eqno">(52)<a class="headerlink" href="#equation-f3ab4ac2-9200-4adb-b4fe-29b245555ab3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 C(j, t_j) = \frac{N_\text{left}}{N_\text{node}} G_\text{left} + \frac{N_\text{right}}{N_\text{node}} G_\text{right}
 \end{equation}\]</div>
 </section>
@@ -832,13 +844,13 @@ A collection on decision boundaries partitioning the feature space.</p>
 <span class="math notranslate nohighlight">\(\;\;\;\;\;\;\;\;\;\;\;\;\;\;\)</span> Compute the cost function <span class="math notranslate nohighlight">\(C(j, t_j)\)</span><br />
  <br />
 <span class="math notranslate nohighlight">\(\;\;\;\;\;\;\;\)</span> Find for this feature the threshold <span class="math notranslate nohighlight">\(t_j^*\)</span> associated with the minimum cost:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-879efc7d-fa2c-4c64-b8be-bb16146b7bbb">
-<span class="eqno">(53)<a class="headerlink" href="#equation-879efc7d-fa2c-4c64-b8be-bb16146b7bbb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-cf28d712-0592-45fd-b6ed-e1fd4ab8df02">
+<span class="eqno">(53)<a class="headerlink" href="#equation-cf28d712-0592-45fd-b6ed-e1fd4ab8df02" title="Permalink to this equation">#</a></span>\[\begin{equation}
 t_j^* = \arg\min_{t_j} C(j, t_j)
 \end{equation}\]</div>
 <p>After scanning all features <span class="math notranslate nohighlight">\(j\)</span>, find the tuple <span class="math notranslate nohighlight">\((j^{\text{cut}}, t_{j^{\text{cut}}}^*)\)</span> that minimizes:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-81df8e11-467c-42d1-b354-79dc9904134b">
-<span class="eqno">(54)<a class="headerlink" href="#equation-81df8e11-467c-42d1-b354-79dc9904134b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-35c23a2b-f022-4aa2-a018-840ebfae9e9b">
+<span class="eqno">(54)<a class="headerlink" href="#equation-35c23a2b-f022-4aa2-a018-840ebfae9e9b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 (j^{\text{cut}}, t_{j^{\text{cut}}}^*) = \arg\min_{j,\, t_j^*} C(j, t_j^*)
 \end{equation}\]</div>
 <p><strong>STEP 2: BRANCHING</strong>:<br />

@@ -428,7 +428,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_1_sdg.html">
+    <a class="reference internal" href="../nn/optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -466,10 +466,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -492,8 +504,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="studies_what_is_it.html">
    What is STEP?
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -686,37 +698,37 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#linear-regressors-stability">
-   Linear Regressor’s Stability
+   Linear regressor’s stability
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#feature-ranking-with-different-classifiers">
-   Feature Ranking with Different Classifiers
+   Feature ranking with different classifiers
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#gradient-double-descent-gdd">
-   Gradient Double Descent (GDD)
+   Gradient double descent (GDD)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#support-vector-machine">
-   Support Vector Machine
+   Support vector machine
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#adaboost-by-hand">
-   AdaBoost by Hand 🧠
+   AdaBoost by hand 🧠
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#gradientboost-by-hand">
-   GradientBoost by Hand 🧠🧠
+   GradientBoost by hand 🧠🧠
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#padding-vs-not-padding">
-   Padding vs Not Padding
+   Padding vs not padding
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -726,27 +738,27 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#optimizers-by-hand">
-   Optimizers by Hand 🧠
+   Optimizers by hand 🧠
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#compare-adam-with-l-bfgs-method">
-   Compare Adam with L-BFGS Method
+   Compare Adam with L-BFGS method
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#neural-network-initialization">
-   Neural Network Initialization
+   Neural network initialization
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loss-landscape-visualization">
-   Loss Landscape Visualization
+   Loss landscape visualization
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#stochastic-vs-batch">
-   Stochastic vs Batch
+   Stochastic vs batch
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -780,37 +792,37 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#linear-regressors-stability">
-   Linear Regressor’s Stability
+   Linear regressor’s stability
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#feature-ranking-with-different-classifiers">
-   Feature Ranking with Different Classifiers
+   Feature ranking with different classifiers
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#gradient-double-descent-gdd">
-   Gradient Double Descent (GDD)
+   Gradient double descent (GDD)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#support-vector-machine">
-   Support Vector Machine
+   Support vector machine
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#adaboost-by-hand">
-   AdaBoost by Hand 🧠
+   AdaBoost by hand 🧠
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#gradientboost-by-hand">
-   GradientBoost by Hand 🧠🧠
+   GradientBoost by hand 🧠🧠
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#padding-vs-not-padding">
-   Padding vs Not Padding
+   Padding vs not padding
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -820,27 +832,27 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#optimizers-by-hand">
-   Optimizers by Hand 🧠
+   Optimizers by hand 🧠
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#compare-adam-with-l-bfgs-method">
-   Compare Adam with L-BFGS Method
+   Compare Adam with L-BFGS method
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#neural-network-initialization">
-   Neural Network Initialization
+   Neural network initialization
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loss-landscape-visualization">
-   Loss Landscape Visualization
+   Loss landscape visualization
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#stochastic-vs-batch">
-   Stochastic vs Batch
+   Stochastic vs batch
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -870,32 +882,32 @@ title="Print to PDF"
 <p>Difficult STEP are highlighted with a 🧠 emoji.</p>
 </aside>
 <section id="linear-regressors-stability">
-<h2>Linear Regressor’s Stability<a class="headerlink" href="#linear-regressors-stability" title="Permalink to this headline">#</a></h2>
+<h2>Linear regressor’s stability<a class="headerlink" href="#linear-regressors-stability" title="Permalink to this headline">#</a></h2>
 <p>Find visuals to depict the zones of divergence of the linear regressor (in 1D) with respect to the choice of initial random parameters and learning rate.</p>
 </section>
 <section id="feature-ranking-with-different-classifiers">
-<h2>Feature Ranking with Different Classifiers<a class="headerlink" href="#feature-ranking-with-different-classifiers" title="Permalink to this headline">#</a></h2>
+<h2>Feature ranking with different classifiers<a class="headerlink" href="#feature-ranking-with-different-classifiers" title="Permalink to this headline">#</a></h2>
 <p>Is feature importance absolute, or relative to a given classifier? Explore this by comparing how different classifiers or regressors rank features.</p>
 </section>
 <section id="gradient-double-descent-gdd">
-<h2>Gradient Double Descent (GDD)<a class="headerlink" href="#gradient-double-descent-gdd" title="Permalink to this headline">#</a></h2>
+<h2>Gradient double descent (GDD)<a class="headerlink" href="#gradient-double-descent-gdd" title="Permalink to this headline">#</a></h2>
 <p>Train a simple model with enough flexibility to fit the training data exactly, and let it run for a long time. Track both training and test performance over the course of optimization. You should be able to observe the phenomenon known as <em>Gradient Double Descent</em>. Think of a general visual that could encompass all your relevant parameters of the study.</p>
 </section>
 <section id="support-vector-machine">
-<h2>Support Vector Machine<a class="headerlink" href="#support-vector-machine" title="Permalink to this headline">#</a></h2>
+<h2>Support vector machine<a class="headerlink" href="#support-vector-machine" title="Permalink to this headline">#</a></h2>
 <p>For several datasets, compare the performance of an SVM vs a Random Forest classifiers (if time, add a neural network).</p>
 </section>
 <section id="adaboost-by-hand">
-<h2>AdaBoost by Hand 🧠<a class="headerlink" href="#adaboost-by-hand" title="Permalink to this headline">#</a></h2>
+<h2>AdaBoost by hand 🧠<a class="headerlink" href="#adaboost-by-hand" title="Permalink to this headline">#</a></h2>
 <p>Implement a version of the AdaBoost algorithm by hand and compare it with Scikit-Learn. Choose the relevant metrics and visuals.
 Bonus: find the error in Scikit-Learn in the calculation of the probability!</p>
 </section>
 <section id="gradientboost-by-hand">
-<h2>GradientBoost by Hand 🧠🧠<a class="headerlink" href="#gradientboost-by-hand" title="Permalink to this headline">#</a></h2>
+<h2>GradientBoost by hand 🧠🧠<a class="headerlink" href="#gradientboost-by-hand" title="Permalink to this headline">#</a></h2>
 <p>Implement a version of the Gradient Boosting algorithm and compare it with the state-of-the-art XGBoost.</p>
 </section>
 <section id="padding-vs-not-padding">
-<h2>Padding vs Not Padding<a class="headerlink" href="#padding-vs-not-padding" title="Permalink to this headline">#</a></h2>
+<h2>Padding vs not padding<a class="headerlink" href="#padding-vs-not-padding" title="Permalink to this headline">#</a></h2>
 <p>Is a neural network performing the same (accuracy &amp; speed) if the computations are split between weights and biases or if the weight matrix is padded with an extra row/column to include the biases?</p>
 </section>
 <section id="manual-implementation-of-momentum">
@@ -903,27 +915,27 @@ Bonus: find the error in Scikit-Learn in the calculation of the probability!</p>
 <p>Showcase the effect of adding momentum in a neural network. Pick a relevant dataset and, as much as possible, illustrate it with clear visuals.</p>
 </section>
 <section id="optimizers-by-hand">
-<h2>Optimizers by Hand 🧠<a class="headerlink" href="#optimizers-by-hand" title="Permalink to this headline">#</a></h2>
+<h2>Optimizers by hand 🧠<a class="headerlink" href="#optimizers-by-hand" title="Permalink to this headline">#</a></h2>
 <p>Implement the update rules of RMSProp and/or Adam, and illustrate how they differ from vanilla SGD.
 Extension: visualize the trajectory of parameters on a simple loss surface to highlight the differences.</p>
 </section>
 <section id="compare-adam-with-l-bfgs-method">
-<h2>Compare Adam with L-BFGS Method<a class="headerlink" href="#compare-adam-with-l-bfgs-method" title="Permalink to this headline">#</a></h2>
+<h2>Compare Adam with L-BFGS method<a class="headerlink" href="#compare-adam-with-l-bfgs-method" title="Permalink to this headline">#</a></h2>
 <p>Study the rate of convergence of Adam vs L-BFGS. Is there some virtue of starting off with a second order method and switch to a first order one?
 Note: you are not required to implement them manually.</p>
 </section>
 <section id="neural-network-initialization">
-<h2>Neural Network Initialization<a class="headerlink" href="#neural-network-initialization" title="Permalink to this headline">#</a></h2>
+<h2>Neural network initialization<a class="headerlink" href="#neural-network-initialization" title="Permalink to this headline">#</a></h2>
 <p>Compare the performance (and possible cases of divergence) of a neural network with different initialization schemes.
 Extension: display the variance at each layer and ideally, how the variance evolves during training.</p>
 </section>
 <section id="loss-landscape-visualization">
-<h2>Loss Landscape Visualization<a class="headerlink" href="#loss-landscape-visualization" title="Permalink to this headline">#</a></h2>
+<h2>Loss landscape visualization<a class="headerlink" href="#loss-landscape-visualization" title="Permalink to this headline">#</a></h2>
 <p>In linear regression, we could see the exact loss landscape because the parameter space was only two-dimensional. With neural networks, this is no longer directly possible due to the high dimensionality of the parameter space.
 Are there tools, metrics, or tricks that can still provide a visual representation of such complex loss landscapes?</p>
 </section>
 <section id="stochastic-vs-batch">
-<h2>Stochastic vs Batch<a class="headerlink" href="#stochastic-vs-batch" title="Permalink to this headline">#</a></h2>
+<h2>Stochastic vs batch<a class="headerlink" href="#stochastic-vs-batch" title="Permalink to this headline">#</a></h2>
 <p>Showcase the pros &amp; cons of the Stochastic Gradient Descent vs Batch Gradient Descent by varying the number of features, sample size and complexity of the data set.</p>
 </section>
 <section id="clustering">

@@ -50,7 +50,7 @@ with the decay rate $\beta$, between 0 and 1, yet typically set to 0.9. One migh
 
 For more elaborated tasks than the simple linear case, RMSProp is robust. It reigned until dethrowned by a newcomer called Adam. Before introducing Adam, let's first cover the notion of momentum optimization.
 
-## Momentum Optimization
+## Momentum optimization
 ````{margin}
 ```{warning}
 The algorithm name borrows the momentum concept from physics, yet it is a only metaphor. 

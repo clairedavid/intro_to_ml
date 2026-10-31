@@ -430,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_1_sdg.html">
+    <a class="reference internal" href="../nn/optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -468,10 +468,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -494,8 +506,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -698,19 +710,19 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ridge-regression">
-     Ridge Regression
+     Ridge regression
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#lasso-regularization">
-     Lasso Regularization
+     Lasso regularization
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bias-variance-definitions">
-   Bias &amp; Variance: definitions
+   Bias &amp; variance: definitions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -783,19 +795,19 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ridge-regression">
-     Ridge Regression
+     Ridge regression
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#lasso-regularization">
-     Lasso Regularization
+     Lasso regularization
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bias-variance-definitions">
-   Bias &amp; Variance: definitions
+   Bias &amp; variance: definitions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -902,7 +914,7 @@ In machine learning, we look for general patterns and compromises: a good algori
 </section>
 </div><p>The two main types of regularization techniques are the Ridge Regularization (also known as <a class="reference external" href="https://en.wikipedia.org/wiki/Tikhonov_regularization">Tikhonov regularization</a>, albeit the latter is more general) and the Lasso Regularization.</p>
 <section id="ridge-regression">
-<h3>Ridge Regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">#</a></h3>
+<h3>Ridge regression<a class="headerlink" href="#ridge-regression" title="Permalink to this headline">#</a></h3>
 <p>The Ridge regression is a linear regression with an additional regularization term added to the cost function:</p>
 <div class="math notranslate nohighlight" id="equation-ridgeeq">
 <span class="eqno">(39)<a class="headerlink" href="#equation-ridgeeq" title="Permalink to this equation">#</a></span>\[C^{\text{reg}}(\theta) = \frac{1}{2m} \sum_{i=1}^{m} \big( \hat{y}^{(i)} - y^{(i)} \big)^2
@@ -935,7 +947,7 @@ y^{(i)} \log\big( \hat{y}^{(i)} \big)
 <p>This is called L2-regularized logistic regression, or sometimes just ridge logistic regression.</p>
 </section>
 <section id="lasso-regularization">
-<span id="class-algs-reg-lasso"></span><h3>Lasso Regularization<a class="headerlink" href="#lasso-regularization" title="Permalink to this headline">#</a></h3>
+<span id="class-algs-reg-lasso"></span><h3>Lasso regularization<a class="headerlink" href="#lasso-regularization" title="Permalink to this headline">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>The <span class="math notranslate nohighlight">\(\ell_1\)</span> norm is the sum of the magnitudes of the vectors. It is also called Manhattan or <a class="reference external" href="https://en.wikipedia.org/wiki/Taxicab_geometry">Taxicab norm</a>.</p>
@@ -962,7 +974,7 @@ y^{(i)} \log\big( \hat{y}^{(i)} \big)
 </section>
 </section>
 <section id="bias-variance-definitions">
-<h2>Bias &amp; Variance: definitions<a class="headerlink" href="#bias-variance-definitions" title="Permalink to this headline">#</a></h2>
+<h2>Bias &amp; variance: definitions<a class="headerlink" href="#bias-variance-definitions" title="Permalink to this headline">#</a></h2>
 <p>Underfitting and overfitting are symptoms of a fundamental modeling issue. This tension is captured by the notions of bias and variance. We will define them, see how they combine in the total error, and why it is not possible to reduce both simultaneously. This is the infamous dilemma of the bias–variance tradeoff.</p>
 <section id="bias">
 <h3>Bias<a class="headerlink" href="#bias" title="Permalink to this headline">#</a></h3>

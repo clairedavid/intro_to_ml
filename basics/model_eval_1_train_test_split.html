@@ -430,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_1_sdg.html">
+    <a class="reference internal" href="../nn/optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -468,10 +468,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -494,8 +506,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -688,7 +700,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#training-validation-and-test-sets">
-   Training, Validation, and Test Sets
+   Training, validation, and test sets
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -717,7 +729,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#training-validation-and-test-sets">
-   Training, Validation, and Test Sets
+   Training, validation, and test sets
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -738,7 +750,7 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="splitting-datasets-for-evaluation">
 <h1>Splitting Datasets for Evaluation<a class="headerlink" href="#splitting-datasets-for-evaluation" title="Permalink to this headline">#</a></h1>
 <section id="training-validation-and-test-sets">
-<h2>Training, Validation, and Test Sets<a class="headerlink" href="#training-validation-and-test-sets" title="Permalink to this headline">#</a></h2>
+<h2>Training, validation, and test sets<a class="headerlink" href="#training-validation-and-test-sets" title="Permalink to this headline">#</a></h2>
 <p>In supervised machine learning, we have access to data containing labels, i.e. the input features have associated targets. Whether it is regression or classification, we know the answer. To assess how the model will deal with new cases, we need to compare its predictions with the answers. We cannot perform this comparison if we don’t have the labels! To cope, the input data set is split into different data subsets, each corresponding to a step in the optimization workflow:</p>
 <div class="proof definition admonition" id="trainvaltestsetsdef">
 <p class="admonition-title"><span class="caption-number">Definition 23 </span></p>

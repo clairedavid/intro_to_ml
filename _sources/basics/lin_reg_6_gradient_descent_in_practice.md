@@ -66,7 +66,7 @@ For each learning rate situation above, illustrate with a plot (qualitative draw
 ## Knowing when to stop
 In mathematics, zero is exactly zero. In computing, variables can store very small numbers considered zero but with trailing non-zero digits. A good cutoff to declare the gradient descent algorithm successful is to exit when e.g. the cost function's relative decrease is lower than a given threshold, for instance $10^{-6}$.
 
-## Summary on Linear Regression
+## Summary on linear regression
 
 ```{admonition} Key concepts
 :class: success  

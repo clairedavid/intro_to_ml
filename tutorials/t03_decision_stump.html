@@ -430,7 +430,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nn/optim_1_sdg.html">
+    <a class="reference internal" href="../nn/optim_1_sgd.html">
      Stochastic Gradient Descent
     </a>
    </li>
@@ -468,10 +468,22 @@ const thebe_selector_output = ".output, .cell_output"
    Learning Without Labels?
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../unsupervised/ul_1_kmeans.html">
    Clustering: k-Means
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_clustering.html">
+     What is clustering?
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../unsupervised/ul_2_pca.html">
@@ -494,8 +506,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../studies/studies_what_is_it.html">
    What is STEP?
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -698,14 +710,14 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#inside-the-data">
-     Inside the Data
+     Inside the data
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-i-decision-stump-by-hand">
-   Part I: Decision Stump By Hand
+   Part I: Decision stump by hand
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -720,61 +732,61 @@ title="Print to PDF"
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#visualize-the-training-data">
-       1.1.2 Visualize the Training Data
+       1.1.2 Visualize the training data
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#prepare-dataset-features-labels">
-       1.1.3 Prepare Dataset (Features &amp; Labels)
+       1.1.3 Prepare dataset (features &amp; labels)
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#compute-the-gini-index">
-     1.2 Compute the Gini Index
+     1.2 Compute the Gini index
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#compute-the-cost-function">
-     1.3 Compute the Cost Function
+     1.3 Compute the cost function
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#decision-stump-core-of-the-action">
-     1.4 Decision Stump: Core of the Action
+     1.4 Decision stump: core of the action
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-is-the-best-split">
-     1.5 What Is the Best Split?
+     1.5 What is the best split?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#plot-the-cut">
-     1.6 Plot the Cut
+     1.6 Plot the cut
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-ii-smarter-threshold-search">
-   Part II: Smarter Threshold Search
+   Part II: Smarter threshold search
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-iii-chain-it-recursively-from-stump-to-tree">
-   Part III: Chain It Recursively: From Stump to Tree
+   Part III: Chain it recursively: from stump to tree
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#appendix-t3-snippet-zone">
-   Appendix: T3 Snippet Zone
+   Appendix: T3 snippet zone
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#scatter-plot">
-     Scatter Plot
+     Scatter plot
     </a>
    </li>
   </ul>
@@ -810,14 +822,14 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#inside-the-data">
-     Inside the Data
+     Inside the data
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-i-decision-stump-by-hand">
-   Part I: Decision Stump By Hand
+   Part I: Decision stump by hand
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -832,61 +844,61 @@ title="Print to PDF"
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#visualize-the-training-data">
-       1.1.2 Visualize the Training Data
+       1.1.2 Visualize the training data
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#prepare-dataset-features-labels">
-       1.1.3 Prepare Dataset (Features &amp; Labels)
+       1.1.3 Prepare dataset (features &amp; labels)
       </a>
      </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#compute-the-gini-index">
-     1.2 Compute the Gini Index
+     1.2 Compute the Gini index
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#compute-the-cost-function">
-     1.3 Compute the Cost Function
+     1.3 Compute the cost function
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#decision-stump-core-of-the-action">
-     1.4 Decision Stump: Core of the Action
+     1.4 Decision stump: core of the action
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#what-is-the-best-split">
-     1.5 What Is the Best Split?
+     1.5 What is the best split?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#plot-the-cut">
-     1.6 Plot the Cut
+     1.6 Plot the cut
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-ii-smarter-threshold-search">
-   Part II: Smarter Threshold Search
+   Part II: Smarter threshold search
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#part-iii-chain-it-recursively-from-stump-to-tree">
-   Part III: Chain It Recursively: From Stump to Tree
+   Part III: Chain it recursively: from stump to tree
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#appendix-t3-snippet-zone">
-   Appendix: T3 Snippet Zone
+   Appendix: T3 snippet zone
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#scatter-plot">
-     Scatter Plot
+     Scatter plot
     </a>
    </li>
   </ul>
@@ -937,7 +949,7 @@ title="Print to PDF"
 <p><strong><center>This is your mission!</center></strong></p>
 </section>
 <section id="inside-the-data">
-<h3>Inside the Data<a class="headerlink" href="#inside-the-data" title="Permalink to this headline">#</a></h3>
+<h3>Inside the data<a class="headerlink" href="#inside-the-data" title="Permalink to this headline">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <div class="seealso admonition">
@@ -961,7 +973,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="part-i-decision-stump-by-hand">
-<h2>Part I: Decision Stump By Hand<a class="headerlink" href="#part-i-decision-stump-by-hand" title="Permalink to this headline">#</a></h2>
+<h2>Part I: Decision stump by hand<a class="headerlink" href="#part-i-decision-stump-by-hand" title="Permalink to this headline">#</a></h2>
 <section id="get-the-data">
 <h3>1.1 Get the data<a class="headerlink" href="#get-the-data" title="Permalink to this headline">#</a></h3>
 <p>Consider the three datasets:</p>
@@ -991,8 +1003,8 @@ title="Print to PDF"
 <p>Write down the proper commands for neat printing of your results.</p>
 </section>
 <section id="visualize-the-training-data">
-<h4>1.1.2 Visualize the Training Data<a class="headerlink" href="#visualize-the-training-data" title="Permalink to this headline">#</a></h4>
-<p>Let’s see a nice scatter plot of the training data, with <span class="math notranslate nohighlight">\(|\Delta\eta_{jj}|\)</span> on the <span class="math notranslate nohighlight">\(x\)</span>-axis and <span class="math notranslate nohighlight">\(m_{jj}\)</span> on the <span class="math notranslate nohighlight">\(y\)</span>-axis. The plotting macro is given in the <a class="reference internal" href="#app-t3-snippet-zone"><span class="std std-ref">Appendix: T3 Snippet Zone</span></a>. Before using it, you will need to split your dataset into signal and background (if you have a look at the code snippet, you will understand why):</p>
+<h4>1.1.2 Visualize the training data<a class="headerlink" href="#visualize-the-training-data" title="Permalink to this headline">#</a></h4>
+<p>Let’s see a nice scatter plot of the training data, with <span class="math notranslate nohighlight">\(|\Delta\eta_{jj}|\)</span> on the <span class="math notranslate nohighlight">\(x\)</span>-axis and <span class="math notranslate nohighlight">\(m_{jj}\)</span> on the <span class="math notranslate nohighlight">\(y\)</span>-axis. The plotting macro is given in the <a class="reference internal" href="#app-t3-snippet-zone"><span class="std std-ref">Appendix: T3 snippet zone</span></a>. Before using it, you will need to split your dataset into signal and background (if you have a look at the code snippet, you will understand why):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Variables of interest</span>
 <span class="n">XNAME</span> <span class="o">=</span> <span class="s1">&#39;detajj&#39;</span><span class="p">;</span> <span class="n">XLABEL</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$|\Delta\eta_</span><span class="si">{jj}</span><span class="s1">|$&#39;</span>
 <span class="n">YNAME</span> <span class="o">=</span> <span class="s1">&#39;massjj&#39;</span><span class="p">;</span> <span class="n">YLABEL</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$m_</span><span class="si">{jj}</span><span class="s1">$ (GeV)&#39;</span>
@@ -1016,7 +1028,7 @@ title="Print to PDF"
 <p>Call the macro and look at your data!</p>
 </section>
 <section id="prepare-dataset-features-labels">
-<h4>1.1.3 Prepare Dataset (Features &amp; Labels)<a class="headerlink" href="#prepare-dataset-features-labels" title="Permalink to this headline">#</a></h4>
+<h4>1.1.3 Prepare dataset (features &amp; labels)<a class="headerlink" href="#prepare-dataset-features-labels" title="Permalink to this headline">#</a></h4>
 <p>In this step, we will select the variables of interest (<code class="docutils literal notranslate"><span class="pre">detajj</span></code> and <code class="docutils literal notranslate"><span class="pre">massjj</span></code>) from the training dataset, and convert both the features and labels into NumPy arrays. Copy the following into your notebook and fill in the missing pieces (<code class="docutils literal notranslate"><span class="pre">...</span></code>):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract detajj &amp; massjj and convert to NumPy</span>
 <span class="n">X_train</span> <span class="o">=</span> <span class="o">...</span>
@@ -1026,7 +1038,7 @@ title="Print to PDF"
 </section>
 </section>
 <section id="compute-the-gini-index">
-<h3>1.2 Compute the Gini Index<a class="headerlink" href="#compute-the-gini-index" title="Permalink to this headline">#</a></h3>
+<h3>1.2 Compute the Gini index<a class="headerlink" href="#compute-the-gini-index" title="Permalink to this headline">#</a></h3>
 <p>Recall the Gini’s index is defined as:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
@@ -1048,7 +1060,7 @@ G_i = 1 - \sum_{k=1}^{N_\text{classes}} \left( \frac{N_{k, i}}{ N_i} \right)^2
 <p>In the following cells, add a series of tests to make sure your function returns the correct answers.</p>
 </section>
 <section id="compute-the-cost-function">
-<h3>1.3 Compute the Cost Function<a class="headerlink" href="#compute-the-cost-function" title="Permalink to this headline">#</a></h3>
+<h3>1.3 Compute the cost function<a class="headerlink" href="#compute-the-cost-function" title="Permalink to this headline">#</a></h3>
 <p>Write a simple function that returns the cost in relative impurity of dividing a node into two sub-nodes, defined as:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{equation*}
@@ -1067,7 +1079,7 @@ J(j, t_j) = \frac{N_\text{left}}{N_\text{node}} G_\text{left} + \frac{N_\text{ri
 </div>
 </section>
 <section id="decision-stump-core-of-the-action">
-<h3>1.4 Decision Stump: Core of the Action<a class="headerlink" href="#decision-stump-core-of-the-action" title="Permalink to this headline">#</a></h3>
+<h3>1.4 Decision stump: core of the action<a class="headerlink" href="#decision-stump-core-of-the-action" title="Permalink to this headline">#</a></h3>
 <p>Write the key function <code class="docutils literal notranslate"><span class="pre">get_threshold_min_cost</span></code> that will find the threshold on a given feature which minimizes the weighted Gini index, i.e., the value that maximizes the purity of the two resulting sub-nodes.</p>
 <p>The function should return both the best threshold and the associated minimum cost. You can use the functions defined above (<code class="docutils literal notranslate"><span class="pre">get_gini_index</span></code>, <code class="docutils literal notranslate"><span class="pre">get_cost</span></code>) to help with the computation.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_threshold_min_cost</span><span class="p">(</span><span class="n">feature_values</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">classes</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
@@ -1110,33 +1122,33 @@ It is the fraction of the feature range to use as step size for the threshold sc
 </div>
 </section>
 <section id="what-is-the-best-split">
-<h3>1.5 What Is the Best Split?<a class="headerlink" href="#what-is-the-best-split" title="Permalink to this headline">#</a></h3>
+<h3>1.5 What is the best split?<a class="headerlink" href="#what-is-the-best-split" title="Permalink to this headline">#</a></h3>
 <p>Call <code class="docutils literal notranslate"><span class="pre">get_threshold_min_cost</span></code> on each of the two input features we are considering here. Conclude on the final cut for your decision stump.</p>
 </section>
 <section id="plot-the-cut">
-<h3>1.6 Plot the Cut<a class="headerlink" href="#plot-the-cut" title="Permalink to this headline">#</a></h3>
+<h3>1.6 Plot the cut<a class="headerlink" href="#plot-the-cut" title="Permalink to this headline">#</a></h3>
 <p>Adapt the <code class="docutils literal notranslate"><span class="pre">plot_scatter</span></code> macro so that it can also draw the decision boundary from the stump. You can use Matplotlib’s <code class="docutils literal notranslate"><span class="pre">axhline</span></code> or <code class="docutils literal notranslate"><span class="pre">axvline</span></code> methods for drawing a horizontal or vertical line respectively. Try to be as general as possible in the input arguments.</p>
 <br>
 You just coded a decision stump by hand!
 </section>
 </section>
 <section id="part-ii-smarter-threshold-search">
-<h2>Part II: Smarter Threshold Search<a class="headerlink" href="#part-ii-smarter-threshold-search" title="Permalink to this headline">#</a></h2>
+<h2>Part II: Smarter threshold search<a class="headerlink" href="#part-ii-smarter-threshold-search" title="Permalink to this headline">#</a></h2>
 <p>In Part I, we scanned all possible thresholds for each feature, counting left/right labels at every step. This brute-force approach has quadratic complexity with respect to the number of samples: for <span class="math notranslate nohighlight">\(m\)</span> samples, each threshold requires <span class="math notranslate nohighlight">\(\mathcal{O}(m)\)</span> operations, and there are roughly <span class="math notranslate nohighlight">\(m\)</span> thresholds, giving <span class="math notranslate nohighlight">\(\mathcal{O}(m^2)\)</span> per feature. That is, in total, <span class="math notranslate nohighlight">\(\mathcal{O}(n m^2)\)</span> for <span class="math notranslate nohighlight">\(n\)</span> features.</p>
 <p>Can we do better? What about sorting each feature first?</p>
 <p>You can have a look at Scikit-Learn’s <code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code> on the user guide, chapter <a href="https://scikit-learn.org/stable/modules/tree.html#complexity" target="_blank">Decision Trees</a> to learn more about its efficient implementation.</p>
 </section>
 <section id="part-iii-chain-it-recursively-from-stump-to-tree">
-<h2>Part III: Chain It Recursively: From Stump to Tree<a class="headerlink" href="#part-iii-chain-it-recursively-from-stump-to-tree" title="Permalink to this headline">#</a></h2>
+<h2>Part III: Chain it recursively: from stump to tree<a class="headerlink" href="#part-iii-chain-it-recursively-from-stump-to-tree" title="Permalink to this headline">#</a></h2>
 <p>Now that you’ve coded a decision stump, how can you grow a full decision tree? Start by writing the pseudo-code first.</p>
 <p>Decide on an exit condition: it could be reaching a maximum depth, a Gini index below a chosen threshold, or a minimum number of samples in a leaf.</p>
 <p>Think about the output format: how will you record the sequence of splits in the feature space in a simple, readable way?</p>
 <p>Have fun taking the best decisions and growing your tree!</p>
 </section>
 <section id="appendix-t3-snippet-zone">
-<span id="app-t3-snippet-zone"></span><h2>Appendix: T3 Snippet Zone<a class="headerlink" href="#appendix-t3-snippet-zone" title="Permalink to this headline">#</a></h2>
+<span id="app-t3-snippet-zone"></span><h2>Appendix: T3 snippet zone<a class="headerlink" href="#appendix-t3-snippet-zone" title="Permalink to this headline">#</a></h2>
 <section id="scatter-plot">
-<h3>Scatter Plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">#</a></h3>
+<h3>Scatter plot<a class="headerlink" href="#scatter-plot" title="Permalink to this headline">#</a></h3>
 <p>To make titles, labels and legend entries big enough:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 

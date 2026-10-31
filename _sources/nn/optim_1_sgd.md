@@ -4,7 +4,7 @@
 
 Introduced in the previous lectures, Gradient Descent is a powerful algorithm to find the minimum of a function. Yet it has limitations, which are circumvented by alternative approaches, the most popular one being Stochastic Gradient Descent.
 
-## Limitations of Batch Gradient Descent
+## Limitations of batch gradient descent
 The Gradient Descent algorithm computes the cost and its derivatives using all training instances within a batch. We refer to this as __Batch Gradient Descent__.
 
 ````{prf:definition}
@@ -48,7 +48,7 @@ In some of the literature, it is said that stochastic and randomness are synonym
 Actually, it is possible to apply stochastic modeling to a non-random phenomenon. For instance one can use a [Monte Carlo method to approximate the value of $\pi$](https://en.wikipedia.org/wiki/Monte_Carlo_method#Overview). 
 
 
-## Stochastic Gradient Descent Definition
+## Stochastic gradient descent definition
 ````{prf:definition}
 :label: SGDdef
 __Stochastic Gradient Descent__ is an optimization technique that performs Gradient Descent using one randomly picked training sample from the dataset.
@@ -76,7 +76,7 @@ This approach is not without drawbacks.
 As you see from the pros and cons above, there is a dilemma by voluntary adding randomness in the algorithm. On the one hand, it can escape local minima, i.e. getting parameter values not minimizing the cost function. But on the other hand, it never converges precisely to the optimal parameter values.
 
 
-## Improving  Stochastic Gradient Descent
+## Improving  stochastic gradient descent
 There are solutions to help the algorithm settle at the global minimum. 
 
 One of them is a compromise between Batch and Stochastic Gradient Descent called __Mini-Batch Gradient Descent__. Instead of picking only one training instance, a small subset of examples from the dataset are used to compute the cost derivatives. This offers a good middle ground: it is still much faster and less memory intensive than Batch Gradient Descent, will zigzag less and get closer to the read minimum than with the fully stochastic method. However the reduced noise (by summing over more samples) presents a higher risk to get stuck into a local minimum.
