@@ -2,7 +2,7 @@
 
 <br>
 
-## STEP = Study Through Exploration and Presentation
+## STEP = study through exploration and presentation
 
 <br>
 

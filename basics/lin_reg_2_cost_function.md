@@ -32,7 +32,7 @@ The initial goal to "fit the data well" can now be formulated in a mathematical 
 \min_{\theta_0, \theta_1} C\left(\theta_0, \theta_1\right)
 ```
 
-## Cooking with the Cost Function 
+## Cooking with the cost function 
 Now comes an exercise to compute the cost function 'by hand' so you can get a feel for the equation above... and, by a huge extrapolation, the staggering number of computations that happen in any machine learning task.  
 We'll use a super simple dataset with just four samples:
 

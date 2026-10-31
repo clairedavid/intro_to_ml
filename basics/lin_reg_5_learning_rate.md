@@ -3,7 +3,7 @@
 
 The learning rate $\alpha$ is a hyperparameter intervening in the calculation of the step size at which the parameters will be incremented or decremented. It controls the speed at which the algorithm 'learns.' Or said more mathematically, it sets how fast -- or slow -- we want the gradient descent to converge to the minimum cost.
 
-## Learning Rate and Convergence
+## Learning rate and convergence
 The learning rate is not directly setting the step size. It is a coefficient. With a fixed $\alpha$, the gradient descent can converge as the steps will become smaller and smaller due to the fact that the derivatives $\frac{\partial }{\partial \theta_j} C(\boldsymbol{\theta})$ will get smaller (caution: in absolute value!) as much as we approach the minimum:
 
 ````{margin}
@@ -19,7 +19,7 @@ even if $\alpha$ remains constant.
  <sub>Image from the author</sub>
  ```
 
-## Learning Rate and Divergence
+## Learning rate and divergence
 A learning rate too big will generate an updated parameter on the other side of the slope.  
 Two cases:
 * __The zig-zag__: if the next parameter $\theta'$ is at a smaller distance to the $\theta^{\min C}$ minimizing the cost function ($ | \theta' - \theta^{\min C} |  < | \theta - \theta^{\min C} |$), the gradient descent will generate parameters oscillating on each side of the slope until convergence. It will converge, but it will require a lot more steps. 

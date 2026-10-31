@@ -15,7 +15,7 @@ Let's for instance consider three classes, labelled with their colours and distr
 
 There are two main approaches of such methods for multiclass classification.
 
-## One-to-One approach
+## One-to-one approach
 
 ````{prf:definition}
 :label: multiclass1to1def
@@ -49,7 +49,7 @@ __Con__
 The pairing makes the number of models to train large and thus computer intensive.
 
 
-## One-to-All approach
+## One-to-all approach
 
 ````{prf:definition}
 :label: multiclass1toalldef

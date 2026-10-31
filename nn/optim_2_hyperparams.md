@@ -11,7 +11,7 @@ If your model has five hyperparameters and you want to try 10 different values f
 
 Luckily, some tools are available to do the tuning!
 
-## Grid Search
+## Grid search
 Here comes a great method called Grid Search. This process has been coded as a tool available in python libraries such as Scikit-Learn and PyTorch, as we will soon see. 
 
 ### Definition
@@ -81,7 +81,7 @@ Grid Search has several drawbacks:
 
 Here is when the Randomized Search comes into play.
 
-## Randomized Search
+## Randomized search
 ### Definition
 ````{prf:definition}
 :label: randomsearchdef

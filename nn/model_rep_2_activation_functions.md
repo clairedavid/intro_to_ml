@@ -47,7 +47,7 @@ __Pros__
 __Cons__  
 * The sigmoid's derivative vanishes at its extreme input values ($z \rightarrow - \infty$ and $z \rightarrow + \infty$) and is thus proned to the issue called _Vanishing Gradient_ problem (see {ref}`NN1:activationF:risksGradient`).
 
-### Hyperbolic Tangent
+### Hyperbolic tangent
 Alike the sigmoid, the hyperbolic tangent is S-shaped and continously differentiable. The output values range is different from the sigmoid, as it goes from -1 to 1. 
 ```{math}
 :label: tanh
@@ -72,7 +72,7 @@ __Cons__
 * The gradient is much steeper than for the sigmoid (risk of jumps while descending)
 * There is also a _Vanishing Gradient_ problem due to the derivative cancelling for $z \rightarrow - \infty$ and $z \rightarrow + \infty$.  
 
-### Rectified Linear Unit (ReLU)
+### Rectified linear unit (ReLU)
 Welcome to the family of rectifiers, the most popular activation function for deep neural networks. The ReLU is defined as:
 
 ```{math}
@@ -153,7 +153,7 @@ __Pros__
 __Cons__  
 * There is an extra parameter to tweak in the network, the slope value $a$, which is not trivial to get as its optimized value is different depending on the data to fit
 
-### Exponential Linear Units (ELUs) 
+### Exponential linear units (ELUs) 
 It does not have Rectifier in the name but the Exponential Linear Unit is another variant of ReLU. 
 
 ```{math}
@@ -179,7 +179,7 @@ __Cons__
 * For positive inputs, there is a risk of experiencing the Exploding Gradient problem (explanations further below in {ref}`NN1:activationF:risksGradient`)
 
 (NN1:activationF:SELU)=
-### Scaled Exponential Linear Unit (SELU)
+### Scaled exponential linear unit (SELU)
 
 ```{figure} ../images/model_rep_2_selu.png
 ---
@@ -205,7 +205,7 @@ __Cons__
 * Not really a caveat in itself, but the SELU is outperforming other activation functions only for very deep networks 
 
 
-### Gaussian Error Linear Unit (GELU)
+### Gaussian error linear unit (GELU)
 Another modification of ReLU is the Gaussian Error Linear Unit. It can be thought of as a smoother ReLU.  
 The definition is:
 ```{math}
@@ -235,7 +235,7 @@ __Cons__
 * GELU is time-consuming to compute
 
 
-### Sigmoid Linear Unit (SiLU) and Swish
+### Sigmoid linear unit (SiLU) and swish
 ````{margin}
 The original definition is defined as $f(z) = x \cdot \text{sigmoid}(\beta z)$, with $\beta$ a learnable parameter. Yet as most implementations set $\beta =1$, the function is usually named "Swish-1". But if $\beta \rightarrow \infty$, then the Swish becomes like the ReLU function.
 ````

@@ -32,7 +32,7 @@ The hard voting could appear advantageous, it is however impossible to know how 
 
 There is another concept important in ensemble learning: bagging.  
 
-## Bagging and Pasting
+## Bagging and pasting
 
 Remember that in ensemble learning, diversity is key. Yet it can be impractical to train very diverse learners, each having their own specificities and drawbacks to pay attention to. An alternative approach is to deal only with one algorithm but increase the diversity in the dataset. Like shuffling a deck of cards, bagging involves training predictors on randomized subsets of the dataset.
 

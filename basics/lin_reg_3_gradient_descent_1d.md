@@ -4,7 +4,7 @@ This concept is key in machine learning. We will see the procedure with our exam
 
 Before diving into the gradient descent, let's ask ourselves: is there a way to solve this analytically? In the case of linear regression: yes. It is called the Normal Equation.
 
-## Analytical Solution: Normal Equation
+## Analytical solution: normal equation
 
 
 ````{prf:definition}
@@ -189,7 +189,7 @@ This illustration helps see why the minus sign in Equation {eq}`eqGDlinCost` is 
 If our parameter is randomly picked on the left side of the U-shaped parabola, the partial derivatives will be negative. As the learning rate is always positive, the incremental update $-\alpha \frac{d}{d \theta} C(\theta)$ will thus be positive. We will add an increment to our parameter. At the next iteration, we will have a new parameter $\theta$ closer to the one we look for. The reverse goes with the other side of the curve: with a positive derivative, we will decrease our parameter and slide to the left. All the time we go 'downhill' towards the minimum.
 
 (linReg:GraphVisGD)=
-## Graphical Visualization
+## Graphical visualization
 When computing the gradient descent for linear regression, we get new parameters so we can draw a candidate straight line to fit the data. With proper tuning (more on this later), we reach the ideal fit, minimizing the cost function.
 
 ```{figure} ../images/linReg_animated.gif

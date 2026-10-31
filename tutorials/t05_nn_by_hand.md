@@ -16,7 +16,7 @@ We’ll use the network to solve the classic XOR problem. This is how the data l
 Scatter plot of data representing the XOR configuration: it is not linearly separable.
 ```
 
-## Part 0: The Math
+## Part 0: The math
 As a warm-up, you are asked to derive Equations {eq}`dCostfirstvectorouterprod`, {eq}`defdeltaL` -- {eq}`dCostlayerl` from the section on the {ref}`nn:backprop`. In class, you saw the main blocks. Here, it is about working out the indices to see which exact tensor operations are being used.
 
 * Remember that a matrix element $w_{jk}$ of a matrix $W$ becomes $w_{kj}$ once it is transposed as $W^\top$.   
@@ -24,7 +24,7 @@ As a warm-up, you are asked to derive Equations {eq}`dCostfirstvectorouterprod`,
 * Refrain from using indices already taken in the course ($i$, $\ell$, $m$, $n$) to avoid confusion with sample index, layer number, total number of samples and number of features, respectively. Lots of other letters are available 😉.
 
 
-## Part I: Code Your Neural Network!
+## Part I: Code your neural network!
 
 ### 1.0 Setup
 Copy the code from the {ref}`app:t5:snippet:zone:setup` in {ref}`app:t5:snippet:zone` into a fresh Colaboratory notebook. 
@@ -35,9 +35,9 @@ Read everything first before starting
 ```
 
 
-### 1.1 Get the Data
+### 1.1 Get the data
 
-#### 1.1.1 File Download
+#### 1.1.1 File download
 Retrieve the files:
 
 <a href="https://drive.google.com/uc?export=download&id=1oyWJCdJ7LrHN_1xUMkiED8FR-TV8qlFn">ml_tutorial_5_data_train.csv</a>  
@@ -45,7 +45,7 @@ Retrieve the files:
 
 <br>
 
-#### 1.1.2 Split Signal vs Background
+#### 1.1.2 Split signal vs background
 Create a `sig` and `bkg` dataframes that collect the real signal and value samples.  We will need this later on.  
 Hint: we did this already in {ref}`Tutorial 3<t03>`. 
 
@@ -61,7 +61,7 @@ y_test =
 ```
 
 ### 1.2 Functions
-#### 1.2.1 Weighted Sum
+#### 1.2.1 Weighted sum
 Create the function `z` that compute the weighted sum of a given activation unit, as seen in class. You do not have to worry about the dimensions of objects here, this will come later. Make sure the names of the arguments are self-explanatory:
 ```python
 def z( ... , ... , ... ):
@@ -69,7 +69,7 @@ def z( ... , ... , ... ):
     return #...
 ```
 
-#### 1.2.2 Activation Functions and Derivatives
+#### 1.2.2 Activation functions and derivatives
 Write the hyperbolic tangent and sigmoid activation functions, followed by their derivatives:
 ```python
 def tanh(z):
@@ -100,7 +100,7 @@ def cross_entropy_cost(y_pred, y_true):
     return #... 
 ```
 
-#### 1.2.4 Derivative of the Loss 
+#### 1.2.4 Derivative of the loss 
 As seen in class, the loss function for classification is defined as:
 \begin{equation*}
 L\left( \hat{y}^{(i)}, y^{(i)}\right) = - \left[ \;\; y^{(i)} \log\left( \hat{y}^{(i)} \right) \;\;+\;\; \left(1- y^{(i)}\right) \log\left( 1 - \hat{y}^{(i)} \right) \;\;\right]
@@ -117,7 +117,7 @@ def L_prime(y_pred, y_true):
     return #...
 ```
 
-### 1.3 Feedforward Propagation
+### 1.3 Feedforward propagation
 It is time to write the feedforward function! 
 
 
@@ -126,7 +126,7 @@ We will start with the following network for now:
 * The nodes of the hidden layers use the hyperbolic tangent as activation function
 * The output layer uses the sigmoid function 
 
-#### 1.3.1 Implementing the Feedforward Function
+#### 1.3.1 Implementing the feedforward function
 The number of activation units in each layer is dynamic. Your code should work with tensors $(i, j, k)$ with $i$ the index referring to the  $i$<sup>th</sup> sample, $j$ the index of the activation unit and $k$ here should be 1, as we consider a column vector. The weights and biases are given as input, stored in lists. The input data has been reshaped for your convenience (and a bit less of debugging time 😉).
 
 Complete the function below that does the feedforward propagation of the network, using the equations shown in class. Look at the output to see how to name your variables!
@@ -183,7 +183,7 @@ The `predict` function is already provided in the setup. Your task is to think a
 Keep your answers short and clear.
 
 
-### 1.4 Neural Network Training
+### 1.4 Neural network training
 Time to train! Copy paste the code in {ref}`app:t5:snippet:zone:train` as your starting point. To help you further, hyperparameters are given. Replace the `#...` with your own code.
 
 
@@ -250,7 +250,7 @@ Paste your training loop in the email, and attach a text file containing the cel
 #### 1.5.1 Cost evolution
 Call the provided function `plot_cost_vs_iter` in the {ref}`app:t5:snippet:zone:setup` to plot the cost evolution of both the training and testing datasets.
 
-#### 1.5.2 Scatter Plot
+#### 1.5.2 Scatter plot
 Use the `get_decision_surface` and `plot_scatter` functions (in {ref}`app:t5:snippet:zone:setup`) to visualize the decision boundaries of your trained neural network. Did your neural network successfully learn the XOR function?
 
 If all goes well, you should obtain something like this:
@@ -266,10 +266,10 @@ Scatter plot of data representing the XOR configuration and the neural network p
 You just coded a neural network by hand!
 
 
-## Part II: Vectorize Your Neural Network
+## Part II: Vectorize your neural network
 We coded everything for two hidden layers only. Let's make it more general. But in two steps:
 
-### 2.1 Dynamic Depth
+### 2.1 Dynamic depth
 Modify your code so that it creates a network of dynamic depth. You can encode the architecture as an array. For instance:
 ```python
 layers = [3, 3, 2, 1]
@@ -279,7 +279,7 @@ would create a network of four layers with three activation units on the first a
 Good luck!
 
 
-### 2.2 Several Output Nodes
+### 2.2 Several output nodes
 Modify your code further to have more than one output node in the last layer. You may have to change your cost function with the categorical cross-entropy. Feel free to create toy datasets with more than two classes. Or pick-up some of <a href="https://scikit-learn.org/stable/api/sklearn.datasets.html" target="_blank">Scikit-Learn datasets</a>! 
 
 
@@ -288,14 +288,14 @@ Modify your code further to have more than one output node in the last layer. Yo
 ### 3.1 Momentum
 Implement by hand some momentum. The action is in your update rule after you backpropagate. Try to come up with plots to visualize the convergence. Discuss what you see.
 
-### 3.2 Double Spiral Challenge
+### 3.2 Double spiral challenge
 Use your network to tackle more challenging datasets, such as the double spiral. See in the {ref}`snippet zone<app:t5:snippet:zone>`, {ref}`spiral:fun`, a suggested code to generate data points and plot them.
 
 Have Fun!
 
 
 (app:t5:snippet:zone)=
-## Appendix: T5 Snippet Zone
+## Appendix: T5 snippet zone
 
 (app:t5:snippet:zone:setup)=
 ### Setup
@@ -388,9 +388,9 @@ def plot_scatter(sig, bkg, ds=None,
 ```
 
 (app:t5:snippet:zone:train)=
-### Train: Skeleton
+### Train: skeleton
 
-#### Pretty Printing
+#### Pretty printing
 
 ```python
 def print_every(iter_idx):
@@ -402,7 +402,7 @@ def print_every(iter_idx):
         return iter_idx % 1000 == 0
 ```
 
-#### Training Loop
+#### Training loop
 ```python
 # Hyperparameters
 alpha  = 0.05
@@ -494,8 +494,8 @@ for iter_idx in range(1, n_iter + 1):
 print(f'\nEnd of gradient descent after {iter_idx} iterations')
 ```
 (spiral:fun)=
-### Double Spiral Challenge
-#### Dataset Generation
+### Double spiral challenge
+#### Dataset generation
 ```python
 def generate_double_spiral(n_points_per_class=500, noise=0.2, test_fraction=0.2, seed=42):
     """
@@ -557,7 +557,7 @@ def generate_double_spiral(n_points_per_class=500, noise=0.2, test_fraction=0.2,
     return X_train, y_train, X_test, y_test
 ```
 
-#### Plotting the Double Spiral
+#### Plotting the double spiral
 
 ```python
 def plot_spiral_dataset(X_train, y_train, X_test=None, y_test=None, ds=None,

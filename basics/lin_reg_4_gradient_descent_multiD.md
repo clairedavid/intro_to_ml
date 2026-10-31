@@ -71,7 +71,7 @@ where $\boldsymbol{x}^{(i)}$ a __row vector__ of $n+1$ elements, $x^{(i)} = (x^{
 \end{equation*}
 
 (linRegMulti:gradDesc)=
-## Gradient Descent in Multilinear Regression
+## Gradient descent in multilinear regression
 We will revisit our algorithm to generalize it to $\theta_n$ parameters:
 
 ````{prf:algorithm} Gradient Descent for Multivariate Linear Regression
@@ -147,7 +147,7 @@ With the linear hypothesis, the partial derivatives of $C(\boldsymbol{\theta})$ 
 \frac{\partial}{\partial \theta_j} C(\boldsymbol{\theta}) = \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) \; x_j^{(i)}
 ```
 (warmup:linregmulti:featurescalnorm)=
-## Feature Scaling & Normalization
+## Feature scaling & normalization
 In the {ref}`previous sub-section on Graphical Visualization <linReg:GraphVisGD>`, the shown {ref}`3D plot of the cost function<plot_linReg_3D>` with respect to the $\boldsymbol{\theta}$ parameters was not really bowl-shaped but stretched. This happens when the features are of different ranges. One parameter will have an increment size larger than the other. 
 
 ```{admonition} Exercise

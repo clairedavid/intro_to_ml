@@ -26,7 +26,7 @@ Click here for a [Guided Tour of Colab](https://colab.research.google.com/).
 The exercises and programming practice for this course will be done on [Colaboratory](https://research.google.com/colaboratory/faq.html), Google's online front end interface from its cloud. Datasets on GDrive can be accessed via a Jupyter Notebook on Colab.
 
 
-## Large Language Models & AI assistants
+## Large language models & AI assistants
 
 It can be very tempting to surrender too soon with those mindboggling Large Language Models! On the one hand, they can generate clean, well-structured code that follows best practices. On the other hand, they provide instant access to answers: the joy — usually after frustrations and confusion — of figuring things out on your own is completely missed, along with the true learning opportunity that comes with it.
 

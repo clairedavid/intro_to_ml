@@ -39,7 +39,7 @@ Hadron showers are on average longer in the direction of the incoming hadron (de
 ---
 ```
 
-## Part I: Linear Classifier By Hand (Guided)
+## Part I: Linear classifier by hand (guided)
 
 ### 1.1 Get the data
 
@@ -56,10 +56,10 @@ import pandas as pd
 
 ### 1.2 Data pre-processing
 
-#### 1.2.1 Explore the Data
+#### 1.2.1 Explore the data
 Read the dataset into a dataframe `df`. What are the columns? Which column stores the labels (targets)? How many samples are there?
 
-#### 1.2.2 Labels to Binary
+#### 1.2.2 Labels to binary
 The target column contains alphabetical labels. Create an extra column in your dataframe called `y` containing 1 if the sample is an electron shower and 0 if it is a hadron one.  
 
 _Hint: you can first create an extra column full of 0, then apply a filter using the `.loc` property from DataFrame. It can be in the form:_
@@ -69,7 +69,7 @@ df.loc[ CONDITION, COLUMN_TO_UPDATE] = VALUE
 Read the [pandas documentation on `.loc`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.loc.html). 
 
 
-#### 1.2.3 Create Feature Matrix $X$
+#### 1.2.3 Create feature matrix $X$
 Select the input feature columns and create the feature matrix $X$ of shape $(m, n)$, and extract the target vector $y$ of shape $(m,)$. Call the method `.to_numpy()` like you did in Tutorial 1. Check if you have the correct shapes:
 
 ```python
@@ -81,7 +81,7 @@ print("X shape:", X.shape)
 print("y shape:", y.shape)
 ```
 
-#### 1.2.4 Train/Test Split
+#### 1.2.4 Train/test split
 Split the dataset into training and testing sets using 80/20 proportion. For this, copy paste the following in your code:
 
 ```python
@@ -98,7 +98,7 @@ print(f"X_test:  {X_test.shape},  y_test: {y_test.shape}")
 
 Do the shape make sense? 
 
-#### 1.2.5 Feature Scaling
+#### 1.2.5 Feature scaling
 Let's scale our input features using the standardization method. Which dataset(s) should be scaled and why?
 
 ```python
@@ -117,7 +117,7 @@ print("X_train_scaled mean:", X_train_scaled.mean(axis=0))
 print("X_train_scaled std:", X_train_scaled.std(axis=0))
 ```
 
-#### 1.2.6 Feature Matrix Augmentation
+#### 1.2.6 Feature matrix augmentation
 We will add a column of ones to our matrix $X$ to simplify the vectorized computations with the bias term ($\theta_0$ in our notations). For this, use NumPy's `hstack` method:
 
 ```python
@@ -140,7 +140,7 @@ We saw a lot of functions in the lectures: hypothesis, logistic, cost, etc. We w
 In the following you will work with __two dimensional__ NumPy arrays. Make sure the objects you declare in the code have the correct dimension (number of rows and number of columns).
 ```
 
-#### 1.3.1 Hypothesis Function
+#### 1.3.1 Hypothesis function
 ````{margin}
 <sup>*</sup> docstring, short for "documentation string," is a commented paragraph of code at the top of a file or of the definition of a function. It explains the arguments, their types, what the function should return, etc. Think of it as a mini manual. Writing docstring is a common practice to make code readable.
 ````
@@ -170,7 +170,7 @@ def lin_sum(X, thetas):
 
 What should be the dimensions of the returned object? Make sure your function returns a 2D array with the correct shape. 
 
-#### 1.3.2 Logistic Function
+#### 1.3.2 Logistic function
  Write a function computing the logistic function:
 
 ```python 
@@ -181,7 +181,7 @@ What should be the dimensions of the returned object? Make sure your function re
 ```
 Be careful to call the correct library so that your function works with arrays both as inputs and outputs.
 
-#### 1.3.3 Partial Derivatives of Cross-Entropy Cost Function
+#### 1.3.3 Partial derivatives of cross-entropy cost function
 In the linear assumption, the partial derivatives of the cross-entropy cost function are (amazingly) the same as with the Mean Square Error: 
 ```{math}
 \frac{\partial}{\partial \theta_j} \text{Cost}(\boldsymbol{\theta}) = \frac{1}{m} \sum_{i=1}^{m} \left( h_\theta(x^{(i)}) -  y^{(i)}\right) x_j^{(i)}
@@ -216,7 +216,7 @@ You can use `reshape(-1, 1)` on the relevant variable(s) to ensure they have the
 
 The output is the vector of partial derivatives with respect to each parameter ($\theta_j$ in our notations). Remember to test your function with small dummy arrays of the correct shape!
 
-#### 1.3.4 Cross-Entropy Cost Function
+#### 1.3.4 Cross-entropy cost function
 Write a function computing the total cost from the vectors of predicted and true values. Reminder of the cross-entropy cost:
 
 ```{math}
@@ -247,7 +247,7 @@ For numerical stability, you can clip your vector of scores `y_pred` to a small 
   Why clip values close to 1 as well? Look at the cross-entropy cost: you’ll see why clipping on both ends is necessary. 
 ````
 
-### 1.4 Classifier Loop
+### 1.4 Classifier loop
 The core of the action.
 
 Luckily a skeleton is provided. You will have to replace the statments `# ... ` by proper code. It will mostly consist of calling the functions you defined in the previous section.
@@ -402,16 +402,16 @@ You should get something like this:
   width: 90%
 ---
 ```
-#### 1.5.1 Plot Interpretation
+#### 1.5.1 Plot interpretation
 Describe the plot; what is the fundamental difference between the two series train and test?
 
 #### 1.5.2 Cost gap?
 What would it mean if there were a larger gap between the training and test cost values?
 
-### 1.6 Performance Measures
+### 1.6 Performance measures
 We will write our own functions to quantitatively assess the performance of the classifier.
 
-#### 1.6.1 Binary Predictions
+#### 1.6.1 Binary predictions
 Before counting the true and false predictions, we need... predictions! So far, we have written functions that output a continuous value between 0 and 1, which can be interpreted as a probability. The function below converts these values into binary predictions (0 or 1). For the decision boundary, we will use 0.5 for now. Copy this to your notebook:
 
 ```python
@@ -430,7 +430,7 @@ Write a function to compute the classifier’s accuracy manually. By "manually" 
 Do the same for the recall. Compute it step by step, and then compare your results with those of your peers!
 
 
-## Part II: Draw Decision Boundaries
+## Part II: Draw decision boundaries
 By drawing a decision boundary, you will grasp how the hypothesis formulation translates into a graphical separation in the feature space. We will work out the math behind this parametrization.
 
 __The goal__  
@@ -453,7 +453,7 @@ plot_scatter(all_sig, all_bkg,
 ```
 
 
-### 2.2 Useful Functions
+### 2.2 Useful functions
 Recall the logistic function:
 ```{math}
 \hat{y} = \frac{1}{1 + e^{-z}}
@@ -464,9 +464,9 @@ Write a function `scale_inputs` that scales a list of raw input features, either
 
 Write the function `unscale_inputs` that does the contrary.
 
-### 2.3 Boundary Line Coordinates
+### 2.3 Boundary line coordinates
 
-#### 2.3.1 Line Equation 
+#### 2.3.1 Line equation 
 For a given threshold $\hat{y}$, write the equation of the line boundary: $x_2 = f(\boldsymbol{\theta}, x_1, \widehat{y})$.
 
 #### 2.3.2 Coordinate points 
@@ -487,7 +487,7 @@ It's convenient to store the result in a dictionary. For instance you can have k
 ```
 
 
-### 2.4 Let's Plot the Boundary
+### 2.4 Let's plot the boundary
 In the scatter plot code provided, uncomment the boundary section and draw the line(s) using the Matplotlib `plot` function. It will have this form: 
 ```python
    #... 
@@ -521,10 +521,10 @@ This is less guided, yet can be done in groups with an OOP-Jedi.
 ```
 
 (app:t2:snippet:zone)=
-## Appendix: T2 Snippet Zone
+## Appendix: T2 snippet zone
 
 (snippet:cost:iter)=
-### Plotting Macro: Cost vs Iteration
+### Plotting macro: cost vs iteration
 ```python
 def plot_cost_vs_iter(train_costs, test_costs, title="Gradient Descent: Cost evolution"):
   
@@ -544,7 +544,7 @@ def plot_cost_vs_iter(train_costs, test_costs, title="Gradient Descent: Cost evo
   plt.show()
 ```
 (snippet:cost:scatter)=
-### Scatter Plot (Part II)
+### Scatter plot (Part II)
 ```python
 X1NAME = 'shower_depth'; X1LABEL = 'Shower depth [mm]'
 X2NAME = 'shower_width'; X2LABEL = 'Shower width [mm]'
