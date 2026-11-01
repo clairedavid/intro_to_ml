@@ -142,7 +142,7 @@ Now let's build a tree using the input features but to predict the residuals.
   name: boost_2_treeGBoost
   width: 80%
 ---
- . First tree predicting the residuals.  
+First tree predicting the residuals.  
  <sub>Image from the author</sub>
 ```
 The tree is very minimal because we only have six samples in the dataset! Usually there can be up to 32 leaves in Gradient Boosting intermediary trees.
@@ -181,7 +181,7 @@ The tree has now output values:
   name: boost_2_treeGBoost_outputs
   width: 75%
 ---
- . First tree predicting the residuals with output values for each leaves as 'predictions' (log of odds).  
+First tree predicting the residuals with output values for each leaves as 'predictions' (log of odds).  
  <sub>Image from the author</sub>
 ```
 
@@ -193,7 +193,7 @@ The first tree targeting the residuals is combined with the initial guess:
   name: boost_2_treeGBoost_combi1
   width: 90%
 ---
- . The initial guess and the first tree are combined. The tree is scaled by a learning rate $\alpha$.  
+The initial guess and the first tree are combined. The tree is scaled by a learning rate $\alpha$.  
  <sub>Image from the author</sub>
 ```
 
@@ -298,7 +298,7 @@ We go back to step 2 to compute the new pseudo residuals from the last set of pr
   name: boost_2_treeGBoost_combi_gen
   width: 90%
 ---
- . The Gradient Boosting sums the trees fitting the pseudo residuals from the previous predition.  
+The Gradient Boosting sums the trees fitting the pseudo residuals from the previous predition.  
  <sub>Image from the author</sub>
 ```
 

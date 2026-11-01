@@ -115,7 +115,7 @@ This picture below helps to visualize. From a given parameterization, that is to
 width: 75%
 name: squareErrVisual
 ---
-: Visualization of errors (dotted vertical lines) between observed and predicted values.  
+Visualization of errors (dotted vertical lines) between observed and predicted values.  
 Image: Don Cowan.
 ```
 To see how well the prediction fit the data, we want the sum of all these errors to be as small as possible. In other words, we want to solve a minimization problem. 

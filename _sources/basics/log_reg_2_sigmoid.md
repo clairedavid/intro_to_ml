@@ -35,7 +35,7 @@ name: scattersigmoid
 scale: 70%
 align: center
 ---
-: Data 1D distribution and sigmoid overlaid
+Data 1D distribution and sigmoid overlaid
 ```  
 First of all, the curve is not overshooting below or above our discrete outcomes' range. Second: for data points either far left or far right, instead of creating a large error with a straight line as previously, the S-curve actually takes the values of our target-variables (asymptotically). Consequence: the error between the prediction and observed values will be very small, even negligible. We will not have an unwanted shift and mis-classification like before. 
 
@@ -85,7 +85,7 @@ In the section {ref}`class:sigmoid:better` above, we can split the data sample u
 * if the logistic function outputs a value $y^\text{pred} < 0.5$, the event is classified as background 
 * if the logistic function outputs a value $y^\text{pred} \geq 0.5$, the event is classified as signal
 
-This way and looking at the distribution on {numref}`scattersigmoid`, the majority of data points will be correctly classified with the $1/2$ horizontal threshold.
+This way and looking at the distribution on {numref}`Figure %s <scattersigmoid>`, the majority of data points will be correctly classified with the $1/2$ horizontal threshold.
 
 ```{warning}
 Careful with how the logistic function is used. We are not computing it directly with $\boldsymbol{x}^{(i)}$ as argument but we calculate $\sigma(\boldsymbol{x}^{(i)}\, \boldsymbol{\theta})$.

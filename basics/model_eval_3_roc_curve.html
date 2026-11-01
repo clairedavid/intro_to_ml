@@ -770,28 +770,28 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p> <br />
 <strong>True Positive Rate (TPR)</strong>, also called <strong>recall</strong> and <strong>sensitivity</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-5fbe3aa5-b80c-473b-aa77-230b265e537c">
-<span class="eqno">(35)<a class="headerlink" href="#equation-5fbe3aa5-b80c-473b-aa77-230b265e537c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8823ffdc-d846-4b64-bee6-24ab4a08b456">
+<span class="eqno">(35)<a class="headerlink" href="#equation-8823ffdc-d846-4b64-bee6-24ab4a08b456" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TPR} = \frac{\text{True Positives}}{\text{Actual Positives}} = \frac{\text{True Positives}}{\text{True Positive} + \text{False Negative}}
 \end{equation}\]</div>
 <p> <br />
 <strong>True Negative Rate (TNR)</strong>, also called <strong>specificity</strong></p>
 <p>Ratio of negative instances correctly classified as negative.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e915bb25-6f93-4186-a3bf-c9a12c088e7a">
-<span class="eqno">(36)<a class="headerlink" href="#equation-e915bb25-6f93-4186-a3bf-c9a12c088e7a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0d44cc6f-e182-4cff-b03d-0f56c044d848">
+<span class="eqno">(36)<a class="headerlink" href="#equation-0d44cc6f-e182-4cff-b03d-0f56c044d848" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TNR} = \frac{\text{True Negatives}}{\text{Actual Negatives}} = \frac{\text{True Negatives}}{\text{True Negatives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>False Positive Rate (FPR)</strong></p>
 <p>Ratio of negative instances that are incorrectly classified as positive.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c5239d27-6bdb-4365-907f-9880906f4423">
-<span class="eqno">(37)<a class="headerlink" href="#equation-c5239d27-6bdb-4365-907f-9880906f4423" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f47ffb30-d9ac-45d6-bfab-4cd4141e78f6">
+<span class="eqno">(37)<a class="headerlink" href="#equation-f47ffb30-d9ac-45d6-bfab-4cd4141e78f6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = \frac{\text{False Positives}}{\text{Actual Negatives}} = \frac{\text{False Positives}}{\text{True Negatives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 The False Positive Rate (FPR) is equal to:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9e1319aa-7169-4210-bf8b-2912860782b8">
-<span class="eqno">(38)<a class="headerlink" href="#equation-9e1319aa-7169-4210-bf8b-2912860782b8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a2a68704-30a7-416b-8d93-5386f21358c4">
+<span class="eqno">(38)<a class="headerlink" href="#equation-a2a68704-30a7-416b-8d93-5386f21358c4" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = 1 - \text{TNR} = 1 - \text{specificity}
 \end{equation}\]</div>
 </section>
@@ -808,7 +808,7 @@ The False Positive Rate (FPR) is equal to:</p>
 <figure class="align-default" id="modeval-score-distrib-roc">
 <a class="reference internal image-reference" href="../_images/modEval_score_distrib_roc.png"><img alt="../_images/modEval_score_distrib_roc.png" src="../_images/modEval_score_distrib_roc.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text">: The logistic function predicts scores for two classes, the background (in blue) and the signal (in red). The distributions of the scores are shown on the left as two normalized smooth curves.<br />
+<p><span class="caption-number">Figure 17: </span><span class="caption-text">The logistic function predicts scores for two classes, the background (in blue) and the signal (in red). The distributions of the scores are shown on the left as two normalized smooth curves.<br />
 <sub>Image from the author</sub></span><a class="headerlink" href="#modeval-score-distrib-roc" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -818,7 +818,7 @@ The False Positive Rate (FPR) is equal to:</p>
 <figure class="align-default" id="modeval-distrib-nolabels">
 <a class="reference internal image-reference" href="../_images/modEval_distrib_nolabels.png"><img alt="../_images/modEval_distrib_nolabels.png" src="../_images/modEval_distrib_nolabels.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 18 </span><span class="caption-text">: Overlapping distributions of the scores between our two classes means prediction errors.<br />
+<p><span class="caption-number">Figure 18: </span><span class="caption-text">Overlapping distributions of the scores between our two classes means prediction errors.<br />
 <sub>Image from the author</sub></span><a class="headerlink" href="#modeval-distrib-nolabels" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -831,7 +831,7 @@ The False Positive Rate (FPR) is equal to:</p>
 <figure class="align-default" id="modeval-distrib-alllabels">
 <a class="reference internal image-reference" href="../_images/modEval_distrib_alllabels.png"><img alt="../_images/modEval_distrib_alllabels.png" src="../_images/modEval_distrib_alllabels.png" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">: Score distributions of background (blue) and signal (red) and the predictions from a given threshold (green vertical line). More explanation in the text below.<br />
+<p><span class="caption-number">Figure 19: </span><span class="caption-text">Score distributions of background (blue) and signal (red) and the predictions from a given threshold (green vertical line). More explanation in the text below.<br />
 <sub>Image from the author</sub></span><a class="headerlink" href="#modeval-distrib-alllabels" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -844,7 +844,7 @@ False negatives are real signal samples incorrectly predicted as background (ora
 <figure class="align-default" id="modeval-roc">
 <a class="reference internal image-reference" href="../_images/modEval_ROC.png"><img alt="../_images/modEval_ROC.png" src="../_images/modEval_ROC.png" style="width: 60%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">: ROC curve (dark orange) illustrating the relationship between true positive rate (TPR) and false positive rate (FPR). The dashed diagonal line represents a random classifier.<br />
+<p><span class="caption-number">Figure 20: </span><span class="caption-text">ROC curve (dark orange) illustrating the relationship between true positive rate (TPR) and false positive rate (FPR). The dashed diagonal line represents a random classifier.<br />
 <sub>Image from the author</sub></span><a class="headerlink" href="#modeval-roc" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -865,7 +865,7 @@ False negatives are real signal samples incorrectly predicted as background (ora
 <figure class="align-default" id="modeval-roc-wiki">
 <a class="reference internal image-reference" href="../_images/modEval_roc_wiki.png"><img alt="../_images/modEval_roc_wiki.png" src="../_images/modEval_roc_wiki.png" style="width: 70%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">: Several ROC curves can be overlaid to then compare classifiers. A poor classifier will be near the “random classifier” line or in other words using pure luck (it will be right on average 50% of the time). The ideal classifier corresponds to the top left dot, where 100% of the real signal samples are correctly classified as signal and thus the False Positive Rate is zero.<br />
+<p><span class="caption-number">Figure 21: </span><span class="caption-text">Several ROC curves can be overlaid to then compare classifiers. A poor classifier will be near the “random classifier” line or in other words using pure luck (it will be right on average 50% of the time). The ideal classifier corresponds to the top left dot, where 100% of the real signal samples are correctly classified as signal and thus the False Positive Rate is zero.<br />
 <sub>Image: Modified work by the author, original by <a class="reference external" href="https://en.wikipedia.org/wiki/File:Roc_curve.svg">Wikipedia</a></sub></span><a class="headerlink" href="#modeval-roc-wiki" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>

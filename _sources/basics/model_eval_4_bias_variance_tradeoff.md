@@ -11,7 +11,7 @@ Let's have a look at the three cases below:
   name: modEval_underoverfit
   width: 1200px
 ---
-: Example of several regression models attempting to fit data points (blue dots) generated from a true function (orange curve). A fitting attempt is depicted in blue for a polynomial of degree 1 (left), degree 4 (middle) and degree 15 (right). 
+Example of several regression models attempting to fit data points (blue dots) generated from a true function (orange curve). A fitting attempt is depicted in blue for a polynomial of degree 1 (left), degree 4 (middle) and degree 15 (right). 
   
  <sub>Source: [scikit-learn.org (with associated python code)](https://scikit-learn.org/stable/auto_examples/model_selection/plot_underfitting_overfitting.html)</sub>
 ```
@@ -57,7 +57,7 @@ But there is a trick! Let's have those degrees of freedom (you get that with low
 (modEval:reg)=
 ## Regularization to cope with overtraining
 
-In {numref}`modEval_underoverfit`, the model on the right that overfits the data is extremely wiggly. To produce such sharp peaks, some of the polynomial’s coefficients (the model parameters) must take on very large values to “force” the curve through the points. What if we added the values of the model parameters (the $\boldsymbol{\theta}$ components) to the cost function? Since the cost is to be minimized, this could discourage the curve from becoming too wiggly. This is the idea behind the most common regularization techniques.
+In {numref}`Figure %s <modEval_underoverfit>`, the model on the right that overfits the data is extremely wiggly. To produce such sharp peaks, some of the polynomial’s coefficients (the model parameters) must take on very large values to “force” the curve through the points. What if we added the values of the model parameters (the $\boldsymbol{\theta}$ components) to the cost function? Since the cost is to be minimized, this could discourage the curve from becoming too wiggly. This is the idea behind the most common regularization techniques.
 
 ````{prf:definition}
 :label: regularizationdef
@@ -196,7 +196,7 @@ Below is a good visualization of the two tendencies for both regression and clas
   name: modEval_underoverfit_reg_class_table
   width: 100%
 ---
-: Illustration of situations of high bias (left) and high variance (right) for regression and classification.  
+Illustration of situations of high bias (left) and high variance (right) for regression and classification.  
  <sub>Image: LinkedIn Machine Learning India</sub>
 ```
 

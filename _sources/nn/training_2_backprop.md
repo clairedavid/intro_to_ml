@@ -190,7 +190,7 @@ Let's take a similar network as the one in the previous lecture but layers are l
   name: training_2_3_nn_lastlayers
   width: 100%
 ---
- . Feedforward neural network with the notations for the  
+Feedforward neural network with the notations for the  
  last, before last and before before last layers.    
 <sub>Image from the author</sub>
 ```

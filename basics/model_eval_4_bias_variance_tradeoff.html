@@ -868,7 +868,7 @@ title="Print to PDF"
 <figure class="align-default" id="modeval-underoverfit">
 <a class="reference internal image-reference" href="../_images/modEval_underoverfit.png"><img alt="../_images/modEval_underoverfit.png" src="../_images/modEval_underoverfit.png" style="width: 1200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">: Example of several regression models attempting to fit data points (blue dots) generated from a true function (orange curve). A fitting attempt is depicted in blue for a polynomial of degree 1 (left), degree 4 (middle) and degree 15 (right).</span><a class="headerlink" href="#modeval-underoverfit" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Figure 22: </span><span class="caption-text">Example of several regression models attempting to fit data points (blue dots) generated from a true function (orange curve). A fitting attempt is depicted in blue for a polynomial of degree 1 (left), degree 4 (middle) and degree 15 (right).</span><a class="headerlink" href="#modeval-underoverfit" title="Permalink to this image">#</a></p>
 <div class="legend">
 <p><sub>Source: <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_underfitting_overfitting.html">scikit-learn.org (with associated python code)</a></sub></p>
 </div>
@@ -906,7 +906,7 @@ In machine learning, we look for general patterns and compromises: a good algori
 </section>
 <section id="regularization-to-cope-with-overtraining">
 <span id="modeval-reg"></span><h2>Regularization to cope with overtraining<a class="headerlink" href="#regularization-to-cope-with-overtraining" title="Permalink to this headline">#</a></h2>
-<p>In <a class="reference internal" href="#modeval-underoverfit"><span class="std std-numref">Fig. 22</span></a>, the model on the right that overfits the data is extremely wiggly. To produce such sharp peaks, some of the polynomial’s coefficients (the model parameters) must take on very large values to “force” the curve through the points. What if we added the values of the model parameters (the <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> components) to the cost function? Since the cost is to be minimized, this could discourage the curve from becoming too wiggly. This is the idea behind the most common regularization techniques.</p>
+<p>In <a class="reference internal" href="#modeval-underoverfit"><span class="std std-numref">Figure 22</span></a>, the model on the right that overfits the data is extremely wiggly. To produce such sharp peaks, some of the polynomial’s coefficients (the model parameters) must take on very large values to “force” the curve through the points. What if we added the values of the model parameters (the <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> components) to the cost function? Since the cost is to be minimized, this could discourage the curve from becoming too wiggly. This is the idea behind the most common regularization techniques.</p>
 <div class="proof definition admonition" id="regularizationdef">
 <p class="admonition-title"><span class="caption-number">Definition 39 </span></p>
 <section class="definition-content" id="proof-content">
@@ -1019,7 +1019,7 @@ y^{(i)} \log\big( \hat{y}^{(i)} \big)
 <figure class="align-default" id="modeval-underoverfit-reg-class-table">
 <a class="reference internal image-reference" href="../_images/modEval_underoverfit_reg_class_table.jpg"><img alt="../_images/modEval_underoverfit_reg_class_table.jpg" src="../_images/modEval_underoverfit_reg_class_table.jpg" style="width: 100%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">: Illustration of situations of high bias (left) and high variance (right) for regression and classification.<br />
+<p><span class="caption-number">Figure 23: </span><span class="caption-text">Illustration of situations of high bias (left) and high variance (right) for regression and classification.<br />
 <sub>Image: LinkedIn Machine Learning India</sub></span><a class="headerlink" href="#modeval-underoverfit-reg-class-table" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -1029,7 +1029,7 @@ y^{(i)} \log\big( \hat{y}^{(i)} \big)
 <figure class="align-default" id="modeval-training-test-error">
 <a class="reference internal image-reference" href="../_images/modEval_training_test_error.png"><img alt="../_images/modEval_training_test_error.png" src="../_images/modEval_training_test_error.png" style="width: 70%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Visualization of the error (cost function) with respect to the model’s complexity for the training and test sets. The ideal complexity is in the middle region where both the training and test errors are low and close to one another.<br />
+<p><span class="caption-number">Figure 24: </span><span class="caption-text">Visualization of the error (cost function) with respect to the model’s complexity for the training and test sets. The ideal complexity is in the middle region where both the training and test errors are low and close to one another.<br />
 <sub>Image: from the author, inspired by <a class="reference external" href="https://dziganto.github.io/cross-validation/data%20science/machine%20learning/model%20tuning/python/Model-Tuning-with-Validation-and-Cross-Validation/">David Ziganto</a></sub></span><a class="headerlink" href="#modeval-training-test-error" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>

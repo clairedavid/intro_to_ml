@@ -51,6 +51,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Principal Component Analysis (PCA)" href="ul_2_pca.html" />
@@ -674,12 +676,53 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definition">
+   Definition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#similarity-measures">
+   Similarity measures
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-euclidean-distance">
+     The Euclidean distance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-cosine-similarity">
+     The cosine similarity
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -691,6 +734,36 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definition">
+   Definition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#similarity-measures">
+   Similarity measures
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-euclidean-distance">
+     The Euclidean distance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-cosine-similarity">
+     The cosine similarity
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -700,6 +773,57 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="what-is-clustering">
 <h1>What is clustering?<a class="headerlink" href="#what-is-clustering" title="Permalink to this headline">#</a></h1>
+<section id="definition">
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">#</a></h2>
+<div class="proof definition admonition" id="clusteringdef">
+<p class="admonition-title"><span class="caption-number">Definition 77 </span></p>
+<section class="definition-content" id="proof-content">
+<p><strong>Clustering</strong> is the task of grouping unlabelled data into subsets called <strong>clusters</strong>, according to a similarity measure.</p>
+<p><strong>Clusters</strong> are groups of data points sharing a similarity, i.e. points in the same cluster are more similar to each other than to points in other clusters.</p>
+</section>
+</div><figure class="align-default" id="clustering-intro" style="width: 100%">
+<div class="cell_output docutils container">
+<img alt="../_images/clustering_plots_7_2.png" src="../_images/clustering_plots_7_2.png" />
+</div>
+<figcaption>
+<p><span class="caption-number">Figure 57: </span><span class="caption-text">Unlabelled data (left) are grouped into clusters (right).</span><a class="headerlink" href="#clustering-intro" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In a sense, clustering labels data, although the meaning of each cluster is not known in advance.</p>
+<p>Clustering is often a first step to explore a dataset. It is also referred to as “cluster analysis” in the literature (usually in statistics and social sciences). Note that clustering does not necessarily imply the use of machine learning techniques, although the term is now mostly employed in the context of ML.</p>
+</section>
+<section id="similarity-measures">
+<h2>Similarity measures<a class="headerlink" href="#similarity-measures" title="Permalink to this headline">#</a></h2>
+<p>What does it mean for two data points to be similar?</p>
+<section id="the-euclidean-distance">
+<h3>The Euclidean distance<a class="headerlink" href="#the-euclidean-distance" title="Permalink to this headline">#</a></h3>
+<p>The most obvious metric of similarity is closeness, referring to the “shortest distance” between data points in the feature space. The mathematical translation of a straight-line distance between two data points is the Euclidean distance.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Because differences are squared, variables with high values will dominate the distance calculation. It is essential here to standardize or normalize the data before proceeding.</p>
+</div>
+</aside>
+<div class="proof definition admonition" id="euclideandistancedef">
+<p class="admonition-title"><span class="caption-number">Definition 78 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>Euclidean distance</strong> measures the length of the shortest path between two points in an <span class="math notranslate nohighlight">\(n\)</span>-dimensional space.</p>
+<p>Given two vectors <span class="math notranslate nohighlight">\(\mathbf{u} = (u_1, \dots, u_n)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v} = (v_1, \dots, v_n)\)</span> in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span>, it is defined as</p>
+<div class="math notranslate nohighlight">
+\[
+d(\mathbf{u}, \mathbf{v}) = \lVert \mathbf{u} - \mathbf{v} \rVert_2 = \sqrt{\sum_{j=1}^{n} \left(u_j - v_j\right)^2}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(u_j - v_j\)</span> is the difference between the two vectors along the <span class="math notranslate nohighlight">\(j\)</span>-th feature.</p>
+</section>
+</div><p>You can recognise the 2-norm in {prf:ref}euclideandistancedef; in data science references, the Euclidean distance is often called the L2 distance.</p>
+<p>We will see in the following section that this distance is at the core of the <span class="math notranslate nohighlight">\(k\)</span>-Means algorithm (you may already guess why from its name).</p>
+</section>
+<section id="the-cosine-similarity">
+<h3>The cosine similarity<a class="headerlink" href="#the-cosine-similarity" title="Permalink to this headline">#</a></h3>
+<p>Multidimensional data can be seen as a collection of data points, but also of vectors departing from a central point and with as many components as features. What if some vectors from a dataset have very different norms but are aligned in the same direction? They would not be similar in scale but definitely close in their angular separation. The idea behind cosine similarity is to measure that directional closeness. It is widely used in data mining and recommender systems.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

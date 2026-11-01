@@ -27,7 +27,7 @@ Let's say we have the following network with $x_n$ input features, one first hid
   name: training_1_nn_notations
   width: 100%
 ---
- . A feedforward neural network with the notation we will use for the forward propagation equations (more in text).    
+A feedforward neural network with the notation we will use for the forward propagation equations (more in text).    
 <sub>Image from the author</sub>
 ```
 

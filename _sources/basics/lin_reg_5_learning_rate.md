@@ -14,7 +14,7 @@ Recall that the step size is given by $-\alpha \frac{d}{d \theta} C(\boldsymbol{
   name: linReg_smaller_steps
   width: 80%
 ---
-: The step size is reduced at the next iteration of the gradient descent,  
+The step size is reduced at the next iteration of the gradient descent,  
 even if $\alpha$ remains constant.  
  <sub>Image from the author</sub>
  ```
@@ -31,7 +31,7 @@ The divergence is illustrated on the right in the figure below:
   name: linReg _learningRate_small_big
   width: 100%
 ---
-: The learning rate determines the step at which the parameters will be updated (left). Small enough: the gradient descent will converge (middle). If too large, the overshoot can lead to a diverging gradient, no more "descending" towards the minimum (right).  
+The learning rate determines the step at which the parameters will be updated (left). Small enough: the gradient descent will converge (middle). If too large, the overshoot can lead to a diverging gradient, no more "descending" towards the minimum (right).  
 <sub>Image from [kjronline.org](https://www.kjronline.org/ViewImage.php?Type=F&aid=658625&id=F7&afn=68_KJR_21_1_33&fn=kjr-21-33-g007_0068KJR)</sub>
  ```
 

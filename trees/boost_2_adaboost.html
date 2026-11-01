@@ -814,20 +814,20 @@ w^{(i)} = \frac{1}{m}
 <p><strong>Start</strong><br />
 <strong>For</strong> each predictor <span class="math notranslate nohighlight">\(t = 1 , \dots , N^\text{pred}\)</span><br />
 a. Train on all samples and compute the weighted error rate <span class="math notranslate nohighlight">\(r_t\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-22de5593-b137-4eda-bef9-90120c08d447">
-<span class="eqno">(55)<a class="headerlink" href="#equation-22de5593-b137-4eda-bef9-90120c08d447" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-55134a1f-f1e7-4ec4-acb1-a7637199662c">
+<span class="eqno">(55)<a class="headerlink" href="#equation-55134a1f-f1e7-4ec4-acb1-a7637199662c" title="Permalink to this equation">#</a></span>\[\begin{equation}
         r_t = \frac{\sum_{i = 1}^m w^{(i)} [ \hat{y}_t^{(i)} \neq y^{(i)} ]}{\sum_{i = 1}^m w^{(i)}}
    \end{equation}\]</div>
 <p>b. Give the predictor <span class="math notranslate nohighlight">\(t\)</span> a weight <span class="math notranslate nohighlight">\(W_t\)</span> measuring accuracy</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f40b836b-d549-4666-99d9-aa62533189ed">
-<span class="eqno">(56)<a class="headerlink" href="#equation-f40b836b-d549-4666-99d9-aa62533189ed" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-86acb481-d569-4415-a311-ecdbe5afad50">
+<span class="eqno">(56)<a class="headerlink" href="#equation-86acb481-d569-4415-a311-ecdbe5afad50" title="Permalink to this equation">#</a></span>\[\begin{equation}
         W_t = \alpha \log \frac{1 - r_t}{r_t}
    \end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(W_t\)</span> points to a high number if the predictor is good, zero if the predictor is guessing randomly, negative if it is bad.
 <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate.</p>
 <p>c. Update the weights of all data samples:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-477ab335-a7b5-45cf-bfae-4f144349d9ea">
-<span class="eqno">(57)<a class="headerlink" href="#equation-477ab335-a7b5-45cf-bfae-4f144349d9ea" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-12a12456-4b6c-425d-af0f-ffa41d6d052c">
+<span class="eqno">(57)<a class="headerlink" href="#equation-12a12456-4b6c-425d-af0f-ffa41d6d052c" title="Permalink to this equation">#</a></span>\[\begin{equation}
         w^{(i)} \longleftarrow
         \begin{cases} 
         w^{(i)} &amp; \text{if } \hat{y}_t^{(i)} = y^{(i)} \\[1ex]
@@ -835,8 +835,8 @@ a. Train on all samples and compute the weighted error rate <span class="math no
         \end{cases}
    \end{equation}\]</div>
 <p>d. Normalize the weights</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f94a9a33-f09e-49e6-bf51-91d295c05a88">
-<span class="eqno">(58)<a class="headerlink" href="#equation-f94a9a33-f09e-49e6-bf51-91d295c05a88" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c6f81466-f28c-49a7-9b06-24ad38983280">
+<span class="eqno">(58)<a class="headerlink" href="#equation-c6f81466-f28c-49a7-9b06-24ad38983280" title="Permalink to this equation">#</a></span>\[\begin{equation}
     w^{(i)} \rightarrow \frac{w^{(i)}}{\sum_{i = 1}^m w^{(i)}}
    \end{equation}\]</div>
 <p><strong>Exit conditions</strong></p>
@@ -852,7 +852,7 @@ a. Train on all samples and compute the weighted error rate <span class="math no
 <figure class="align-default" id="boost-2-adaboost">
 <a class="reference internal image-reference" href="../_images/boost_2_adaboost.png"><img alt="../_images/boost_2_adaboost.png" src="../_images/boost_2_adaboost.png" style="width: 80%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">. Visual of AdaBoost.<br />
+<p><span class="caption-number">Figure 28: </span><span class="caption-text">Visual of AdaBoost.<br />
 Misclassified samples are given a higher weight for the next predictor.<br />
 Base classifiers are decision stumps (one-level tree).<br />
 <sub>Source: modified work by the author, originally from subscription.packtpub.com</sub></span><a class="headerlink" href="#boost-2-adaboost" title="Permalink to this image">#</a></p>

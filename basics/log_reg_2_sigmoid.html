@@ -798,7 +798,7 @@ title="Print to PDF"
 <figure class="align-center" id="scattersigmoid">
 <a class="reference internal image-reference" href="../_images/logReg_scatter1D_sigmoid.png"><img alt="../_images/logReg_scatter1D_sigmoid.png" src="../_images/logReg_scatter1D_sigmoid.png" style="width: 672.0px; height: 378.0px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">: Data 1D distribution and sigmoid overlaid</span><a class="headerlink" href="#scattersigmoid" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Figure 11: </span><span class="caption-text">Data 1D distribution and sigmoid overlaid</span><a class="headerlink" href="#scattersigmoid" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>First of all, the curve is not overshooting below or above our discrete outcomes’ range. Second: for data points either far left or far right, instead of creating a large error with a straight line as previously, the S-curve actually takes the values of our target-variables (asymptotically). Consequence: the error between the prediction and observed values will be very small, even negligible. We will not have an unwanted shift and mis-classification like before.</p>
@@ -839,7 +839,7 @@ Previously with linear regression, we could predict the target <span class="math
 <li><p>if the logistic function outputs a value <span class="math notranslate nohighlight">\(y^\text{pred} &lt; 0.5\)</span>, the event is classified as background</p></li>
 <li><p>if the logistic function outputs a value <span class="math notranslate nohighlight">\(y^\text{pred} \geq 0.5\)</span>, the event is classified as signal</p></li>
 </ul>
-<p>This way and looking at the distribution on <a class="reference internal" href="#scattersigmoid"><span class="std std-numref">Fig. 11</span></a>, the majority of data points will be correctly classified with the <span class="math notranslate nohighlight">\(1/2\)</span> horizontal threshold.</p>
+<p>This way and looking at the distribution on <a class="reference internal" href="#scattersigmoid"><span class="std std-numref">Figure 11</span></a>, the majority of data points will be correctly classified with the <span class="math notranslate nohighlight">\(1/2\)</span> horizontal threshold.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Careful with how the logistic function is used. We are not computing it directly with <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(i)}\)</span> as argument but we calculate <span class="math notranslate nohighlight">\(\sigma(\boldsymbol{x}^{(i)}\, \boldsymbol{\theta})\)</span>.</p>

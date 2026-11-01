@@ -23,7 +23,7 @@ In particle physics, the Higgs boson plays an essential role, in particular (pun
   name: t03_higgsfeyn
   width: 90%
 ---
- .  Feynman diagrams for the gluon-gluon Fusion (ggF) process on the left and Vector Boson Fusion (VBF) on the right.  
+ Feynman diagrams for the gluon-gluon Fusion (ggF) process on the left and Vector Boson Fusion (VBF) on the right.  
  <sub>Image: ATLAS, CERN</sub>
 ```
 

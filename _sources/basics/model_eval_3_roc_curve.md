@@ -59,7 +59,7 @@ Let's unpack this. First, recall the logistic function in classification. As inp
   name: modEval_score_distrib_roc
   width: 100%
 ---
-: The logistic function predicts scores for two classes, the background (in blue) and the signal (in red). The distributions of the scores are shown on the left as two normalized smooth curves.  
+The logistic function predicts scores for two classes, the background (in blue) and the signal (in red). The distributions of the scores are shown on the left as two normalized smooth curves.  
 <sub>Image from the author</sub>
 ```
 
@@ -74,7 +74,7 @@ Let's see it closer:
   name: modEval_distrib_nolabels
   width: 100%
 ---
-: Overlapping distributions of the scores between our two classes means prediction errors.  
+Overlapping distributions of the scores between our two classes means prediction errors.  
 <sub>Image from the author</sub>
 ```
 ```{admonition} Exercise
@@ -88,7 +88,7 @@ From the figure above, identify where are the True Positives, True Negatives, Fa
   name: modEval_distrib_alllabels
   width: 100%
 ---
-: Score distributions of background (blue) and signal (red) and the predictions from a given threshold (green vertical line). More explanation in the text below.  
+Score distributions of background (blue) and signal (red) and the predictions from a given threshold (green vertical line). More explanation in the text below.  
 <sub>Image from the author</sub>
 ```
 
@@ -106,7 +106,7 @@ For a given threshold, it is possible to compute the True Positive Rate (TPR) an
   name: modEval_ROC
   width: 60%
 ---
-: ROC curve (dark orange) illustrating the relationship between true positive rate (TPR) and false positive rate (FPR). The dashed diagonal line represents a random classifier.  
+ROC curve (dark orange) illustrating the relationship between true positive rate (TPR) and false positive rate (FPR). The dashed diagonal line represents a random classifier.  
 <sub>Image from the author</sub>
 ```
 
@@ -134,7 +134,7 @@ The ROC has the great advantage to see how different classifiers compare through
   name: modEval_roc_wiki
   width: 70%
 ---
-: Several ROC curves can be overlaid to then compare classifiers. A poor classifier will be near the "random classifier" line or in other words using pure luck (it will be right on average 50% of the time). The ideal classifier corresponds to the top left dot, where 100% of the real signal samples are correctly classified as signal and thus the False Positive Rate is zero.  
+Several ROC curves can be overlaid to then compare classifiers. A poor classifier will be near the "random classifier" line or in other words using pure luck (it will be right on average 50% of the time). The ideal classifier corresponds to the top left dot, where 100% of the real signal samples are correctly classified as signal and thus the False Positive Rate is zero.  
 <sub>Image: Modified work by the author, original by [Wikipedia](https://en.wikipedia.org/wiki/File:Roc_curve.svg)</sub>
 ```
 
