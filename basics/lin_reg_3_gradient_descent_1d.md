@@ -182,7 +182,7 @@ This illustration helps see why the minus sign in Equation {eq}`eqGDlinCost` is 
   name: costSignDirection
   width: 90%
 ---
-: The sign of the cost function's derivative changes for two different parameter values either lower (left) or greater (right) than the parameter value for which the cost function is minimized.  
+The sign of the cost function's derivative changes for two different parameter values either lower (left) or greater (right) than the parameter value for which the cost function is minimized.  
  <sub>Image from the author</sub>
  ```
 

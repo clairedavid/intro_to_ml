@@ -36,7 +36,7 @@ We know that one! A reminder of its definition:
   name: model_rep_2_sigmoid
   width: 100%
 ---
- . The sigmoid activation function and its derivative.  
+The sigmoid activation function and its derivative.  
 <sub>Image: [www.v7labs.com](https://www.v7labs.com/blog/neural-networks-activation-functions)</sub>
 ```
 
@@ -59,7 +59,7 @@ Alike the sigmoid, the hyperbolic tangent is S-shaped and continously differenti
   name: model_rep_2_tanh
   width: 100%
 ---
- . The hyperbolic tangent function and its derivative.  
+The hyperbolic tangent function and its derivative.  
 <sub>Image: [www.v7labs.com](https://www.v7labs.com/blog/neural-networks-activation-functions)</sub>
 ```
 
@@ -85,7 +85,7 @@ f(z) = \max(0,z)
   name: model_rep_2_relu
   width: 100%
 ---
- . The Rectified Linear Unit (ReLU) function and its derivative.  
+The Rectified Linear Unit (ReLU) function and its derivative.  
 <sub>Image: [www.v7labs.com](https://www.v7labs.com/blog/neural-networks-activation-functions)</sub>
 ```
 
@@ -116,7 +116,7 @@ It is a ReLU with a small positive slope for negative input values:
   name: model_rep_2_leakyrelu
   width: 100%
 ---
- . The Leaky Rectified Linear Unit (ReLU) function and its derivative. The gradient in the negative area is 0.01, not zero.    
+The Leaky Rectified Linear Unit (ReLU) function and its derivative. The gradient in the negative area is 0.01, not zero.    
 <sub>Image: [www.v7labs.com](https://www.v7labs.com/blog/neural-networks-activation-functions)</sub>
 ```
 The Leaky ReLU offers improvements compared to the classical ReLU:
@@ -144,7 +144,7 @@ The caveat of the Leaky ReLU is addressed by the Parametric ReLU (PReLU), where 
   name: model_rep_2_paramrelu
   width: 100%
 ---
- . The Parametric Rectified Linear Unit (ReLU) function and its derivative.  
+The Parametric Rectified Linear Unit (ReLU) function and its derivative.  
 <sub>Image: [www.v7labs.com](https://www.v7labs.com/blog/neural-networks-activation-functions)</sub>
 ```
 __Pros__  
@@ -166,7 +166,7 @@ with $a$ a hyper-parameter to be tuned.
   name: model_rep_2_elu
   width: 100%
 ---
- . The Exponential Linear Unit (ELU) function and its derivative.  
+The Exponential Linear Unit (ELU) function and its derivative.  
 <sub>Image: [www.v7labs.com](https://www.v7labs.com/blog/neural-networks-activation-functions)</sub>
 ```
 
@@ -186,7 +186,7 @@ __Cons__
   name: model_rep_2_selu
   width: 100%
 ---
- . The Scaled Exponential Linear Unit (SELU) function.  
+The Scaled Exponential Linear Unit (SELU) function.  
 <sub>Image: [www.v7labs.com](https://www.v7labs.com/blog/neural-networks-activation-functions)</sub>
 ```
 
@@ -218,7 +218,7 @@ where $\Phi(z)$ is the cumulative distribution function of the standard normal d
   name: model_rep_2_gelu
   width: 100%
 ---
- . The Gaussian Error Linear Unit (GELU) function overlaid with ReLU and ELU.  
+The Gaussian Error Linear Unit (GELU) function overlaid with ReLU and ELU.  
 <sub>Image: [www.v7labs.com](https://www.v7labs.com/blog/neural-networks-activation-functions)</sub>
 ```
 
@@ -249,7 +249,7 @@ f(z) = \frac{z}{1 + e^{-z}}
   name: model_rep_2_swish
   width: 100%
 ---
- . The Swish activation function.  
+The Swish activation function.  
 <sub>Image: [www.v7labs.com](https://www.v7labs.com/blog/neural-networks-activation-functions)</sub>
 ```
 The Swish function exhibits increased classification accuracy and consistently matches or outperforms ReLU activation function on deep networks (especially on image classification).

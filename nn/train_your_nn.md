@@ -167,7 +167,7 @@ The `color` argument is required. It is a good practice to set the size of the d
   name: train_your_nn_scatter_alpha
   width: 100%
 ---
- . A scatter plot with full opacity (left) and `alpha=0.1` (right). The transparency brings out the areas of high data density.  
+A scatter plot with full opacity (left) and `alpha=0.1` (right). The transparency brings out the areas of high data density.  
 <sub>Images: Aurélien Géron, _Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, Second Edition_</sub>
 ```
 
@@ -191,7 +191,7 @@ The `hue` argument will produce as many series (seaborn will colour them automat
   name: train_your_nn_pen_jointplot
   width: 70%
 ---
- . The `jointplot()` method in Seaborn.  
+The `jointplot()` method in Seaborn.  
  <sub>Source: [seaborn.pydata.org](https://seaborn.pydata.org/tutorial/introduction#multivariate-views-on-complex-datasets)</sub>
 ```
 
@@ -206,7 +206,7 @@ It looks magnificent:
   name: train_your_nn_pen_pairplot
   width: 100%
 ---
- . The `pairplot()` method in Seaborn.  
+The `pairplot()` method in Seaborn.  
  <sub>Source: [seaborn.pydata.org](https://seaborn.pydata.org/tutorial/introduction#multivariate-views-on-complex-datasets)</sub>
 ```
 

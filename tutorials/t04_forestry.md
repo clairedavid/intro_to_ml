@@ -79,7 +79,7 @@ Using the function `tree.plot_tree` from Scikit-Learn, visualize your trained tr
   name: t04_shallowtree
   width: 90%
 ---
- .  Representation of the Decision Tree.  
+ Representation of the Decision Tree.  
  <sub>Image: from Scikit-Learn `tree` library</sub>
 ```
 
@@ -159,7 +159,7 @@ How does the performance change when assessed on the test dataset? Which error t
 
 
 ## 4. ROC the tree
-Let's use Scikit-Learn `metrics` to get the ingredients to plot a ROC curve. We need continuous probabilities.  How are probabilities calculated? Let's show the first 5 entries of `X_train`. Recall the decision tree (Figure {numref}`t04_shallowtree`) we plotted above.
+Let's use Scikit-Learn `metrics` to get the ingredients to plot a ROC curve. We need continuous probabilities.  How are probabilities calculated? Let's show the first 5 entries of `X_train`. Recall the decision tree ({numref}`Figure %s <t04_shallowtree>`) we plotted above.
 ```python
 X_train[:5]
 ```
@@ -243,7 +243,7 @@ plot_scatter(sig, bkg, DS_xyz, title="Decision Surface for DT Depth 2")
   name:  t04_decisionsurfaced2
   width: 70%
 ---
- . Decision Surface of a decision tree of depth 2.  
+Decision Surface of a decision tree of depth 2.  
  <sub>Scikit-Learn</sub>
 ```
 

@@ -168,7 +168,7 @@ The $\theta$ parameters will descend (or converge) slowly on large ranges and qu
   name: withandoutScaling
   width: 100%
 ---
-: The contour without feature scaling is skewed and takes up an oval shape. If normalized, the path towards the minimum is shorter.  
+The contour without feature scaling is skewed and takes up an oval shape. If normalized, the path towards the minimum is shorter.  
  <sub>Source: [enjoyalgorithms.com](https://www.enjoyalgorithms.com/blog/need-of-feature-scaling-in-machine-learning) </sub>
 ```
 

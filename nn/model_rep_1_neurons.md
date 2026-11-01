@@ -7,7 +7,7 @@
   name: model_rep_1_neuron_bio
   width: 80%
 ---
- . Anatomy of a brain cell, the neuron.  
+Anatomy of a brain cell, the neuron.  
  <sub>Source: [Wikimedia - BruceBlaus](https://en.wikipedia.org/wiki/Neuron#/media/File:Blausen_0657_MultipolarNeuron.png) </sub>
 ```
 As neural networks are inspired from biological brain cells, let's start with an anatomical introduction. Neurons are each made of a cell body and one long extension called axon, which at the end has ramifications to connect to other neurons' dentritic branches (around the next neuron cell's body). The information propagates in the form an electric signal along the axon. At the end of the axon's branches (telodendria) are synaptic terminals that are terminal structures releasing, depending on the electrical impulse, chemical messengers called neurotransmitters. Those transmitters propagate the information chemically to the next neuron.
@@ -48,7 +48,7 @@ Each input values $x_j$ is associated with a weight $w_j$. In terms of component
   name: model_rep_1_neuron_art
   width: 90%
 ---
- . Schematics of an artificial neuron. The artificial neuron (center blue) receives $x_n$ input features and a bias term $b$. It computes a weighted sum $\sum$. The activation function $f$ decides if the neuron is activated, i.e. 'fires' the information to the output value $\hat{y}$.  
+Schematics of an artificial neuron. The artificial neuron (center blue) receives $x_n$ input features and a bias term $b$. It computes a weighted sum $\sum$. The activation function $f$ decides if the neuron is activated, i.e. 'fires' the information to the output value $\hat{y}$.  
  <sub>Image from the author</sub>
 ```
 
@@ -112,7 +112,7 @@ A perceptron is thus a linear binary classifier.
   name: model_rep_1_perceptron
   width: 90%
 ---
- . Schematics of a perceptron.   
+Schematics of a perceptron.   
  <sub>Image from the author</sub>
 ```
 The step functions generally employed are the _Heaviside_ or the _sign_ functions:
@@ -164,7 +164,7 @@ to get the remaining probability in the last outcome possible (but bear in mind 
   name: model_rep_1_andorxor
   width: 100%
 ---
- . The XOR is an exclusive OR (true if only the two logical inputs are different). As the data is not linearly separable, a perceptron is unable to solve it.  
+The XOR is an exclusive OR (true if only the two logical inputs are different). As the data is not linearly separable, a perceptron is unable to solve it.  
  <sub>Image: extsdd.tistory.com</sub>
 ```
 
@@ -227,7 +227,7 @@ A 'minimal' multilayer neural network would have one input, one hidden and one o
   name: model_rep_1_nn_layers
   width: 90%
 ---
- . Example of a fully connected, feedforward neural network with 2 hidden layers and output size of 2. Bias neurons are represented in yellow circles with +1.  
+Example of a fully connected, feedforward neural network with 2 hidden layers and output size of 2. Bias neurons are represented in yellow circles with +1.  
  <sub>Image from the author</sub>
 ```
 

@@ -70,7 +70,7 @@ To visualize the work of the decision tree classifier, the `graphviz` library cr
   name: dt_1_viz_tree
   width: 50%
 ---
- . Example of a Decision Tree drawn from sklearn pre-loaded dataset _iris_. The root node is at the top, at depth zero. The tree stops at depth = 2 (final leaves).
+Example of a Decision Tree drawn from sklearn pre-loaded dataset _iris_. The root node is at the top, at depth zero. The tree stops at depth = 2 (final leaves).
  ```
 
 Such a flowchart above tells how future predictions are made. Predicting the class of a new data point ($x_1^\text{new}$, $x_2^\text{new}$), one simply follows the 'route' of the tree starting from the root node (on top) and 'answering' the conditions. Is $x_1$ lower than 2.45? Yes, go to the left (and it corresponds to predicted class A). If not, go to the next node evaluating $x_2$ feature, etc.

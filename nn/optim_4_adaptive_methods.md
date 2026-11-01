@@ -19,7 +19,7 @@ This first adaptative algorithm was published in 2011. Compared to the classical
   name: optim_4_adagrad
   width: 80%
 ---
- . The Gradient Descent (blue) vs AdaGrad (orange).  
+The Gradient Descent (blue) vs AdaGrad (orange).  
 <sub>Image: Aurélien Géron, _Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow, Second Edition_</sub> 
 ```
 In the figure above, the AdaGrad takes a more direct thus shorter path than Gradient Descent, as AdaGrad has its learning rate reduced in the direction of steepest descent. This is done by squaring each gradient component into a vector $\boldsymbol{s}$. The steepest a gradient component, the larger the square of this component $s_j$. The weights are updated in almost the same way as with Gradient Descent, yet each component is divided by $\boldsymbol{s} + \epsilon$. The added term $\epsilon$ is to prevent a division by zero (typically 10$^{-10}$). As a result, the algorithm detects how to change the learning rate dynamically and specifically on the large gradient components to adapt to their steep slope.

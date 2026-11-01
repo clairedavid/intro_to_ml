@@ -25,7 +25,7 @@ There are two major drawbacks here:
   name: optim_1_gd_minima
   width: 90%
 ---
- . 3D representation of a cost function (height) with respect to the $\boldsymbol{\theta}$ parameters with two gradient descent paths, one towards a local minimum (right) and the other towards the global minimum (left).  
+3D representation of a cost function (height) with respect to the $\boldsymbol{\theta}$ parameters with two gradient descent paths, one towards a local minimum (right) and the other towards the global minimum (left).  
  <sub>Source: Stanford Lecture Collection</sub>
 ```
 
@@ -91,7 +91,7 @@ The other solution involves __changing the learning rate $\boldsymbol{\alpha}$__
   name: optim_1_sgd_vs_bgd
   width: 90%
 ---
- . The difference in the trajectories of parameters between Batch, Mini-Batch and Stochastic Gradient Descents.  
+The difference in the trajectories of parameters between Batch, Mini-Batch and Stochastic Gradient Descents.  
  <sub>Image: Medium</sub> 
 ```
 

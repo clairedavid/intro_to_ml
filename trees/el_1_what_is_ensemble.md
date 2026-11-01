@@ -50,7 +50,7 @@ Recall the instability characteristic to decision trees. By varying the dataset 
   name: el_1_bagging
   width: 90%
 ---
- . Visual of bootstrap aggregating or bagging.  
+Visual of bootstrap aggregating or bagging.  
  <sub>Source: Wikipedia</sub>
  ```
 

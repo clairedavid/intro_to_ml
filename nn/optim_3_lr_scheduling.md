@@ -72,7 +72,7 @@ which will get the learning rate to decrease faster upon training start, and muc
   name: optim_3_lr_decays
   width: 90%
 ---
- . Evolution of the learning rate vs 'time' as the number of epochs for three schedulers: linear decrease, time-based decay and exponential decay.  
+Evolution of the learning rate vs 'time' as the number of epochs for three schedulers: linear decrease, time-based decay and exponential decay.  
  <sub>Image: neptune.ai</sub> 
 ```
 
@@ -90,7 +90,7 @@ The floor function `floor(x)` or $\lfloor x \rfloor$ returns the greatest intege
   name: optim_3_lr_step
   width: 90%
 ---
- . Step-based learning rate decay.  
+Step-based learning rate decay.  
  <sub>Image: neptune.ai</sub> 
 ```
 
