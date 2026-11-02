@@ -62,5 +62,53 @@ We will see in the following section that this distance is at the core of the $k
 
 ### The cosine similarity
 
-Multidimensional data can be seen as a collection of data points, but also of vectors departing from a central point and with as many components as features. What if some vectors from a dataset have very different norms but are aligned in the same direction? They would not be similar in scale but definitely close in their angular separation. The idea behind cosine similarity is to measure that directional closeness. It is widely used in data mining and recommender systems.
+Multidimensional data can be seen as a collection of data points, but also of vectors departing from the origin and with as many components as features. What if some vectors from a dataset have very different norms but are aligned in the same direction? They would not be similar in scale but definitely close in their angular separation. The idea behind cosine similarity is to measure that directional closeness. It is widely used in text mining and recommender systems.
 
+Let's take an example in text mining. If the dataset lists the word count of many words for different books and articles, a thousand-page book about particle physics (random topic 😉) will have a large number of occurrences of the word _particle_. A short article also about particle physics will have far fewer occurrences. Yet those two documents are on the same topic. In that sense, the magnitude (number of occurrences) does not matter. What is important is the ratio of certain words (_particle_) over others (e.g. _elephants_ for a book about biology). 
+
+The cosine similarity helps define "angular clusters" in the dataset, as seen below.  
+
+
+```{glue:figure} plot_cosine_clusters
+:name: plot_cosine_clusters
+:figwidth: 100%
+
+Unlabelled dataset (left) clustered according to cosine similarity (right).
+```
+
+Note that in our text mining example above, the features would be non-negative, hence we would only have data points in the first quadrant. 
+
+
+````{prf:definition}
+:label: cosinesimidef
+
+The __cosine similarity__ is a measure of how similar the directions of two non-zero vectors $\mathbf{u}$ and $\mathbf{v}$ in $\mathbb{R}^n$ are.
+
+It is the cosine of the angle $\theta$ between the two vectors:
+
+$$
+S_C(\mathbf{u}, \mathbf{v}) = \cos(\theta) = \frac{\mathbf{u} \cdot \mathbf{v}}{\lVert \mathbf{u} \rVert_2 \, \lVert \mathbf{v} \rVert_2}
+= \frac{\sum_{j=1}^{n} u_j \, v_j}{\sqrt{\sum_{j=1}^{n} u_j^2} \; \sqrt{\sum_{j=1}^{n} v_j^2}}
+$$ (cosinesimilarityeq)
+
+where $\mathbf{u} \cdot \mathbf{v}$ is the dot product of the two vectors and $\lVert \cdot \rVert_2$ their 2-norm.
+
+````
+
+As the definition states, the cosine similarity cannot be calculated with a zero vector. It is thus important to check the dataset beforehand to make sure all vectors are non-zero.
+
+What values can it take? The cosine lies between $-1$ and $1$, so:
+
+- $1$ (Angle: 0°): The vectors point in the exact same direction. They are highly similar.
+- $0$ (Angle: 90°): The vectors are perpendicular (orthogonal). This indicates no relationship or shared context.
+- $-1$ (Angle: 180°): The vectors point in diametrically opposite directions. They are completely dissimilar.
+
+If features are non-negative, such as a word count, then the range is from 0 to 1.
+
+```{admonition} Learn More
+:class: seealso
+
+* Curious about other distance measures? The SciPy documentation is here for you: [Distance computations (`scipy.spatial.distance`)](https://docs.scipy.org/doc/scipy/reference/spatial.distance.html)
+* [4 Distance Measures for Machine Learning](https://machinelearningmastery.com/distance-measures-for-machine-learning/) (machinelearningmastery.com): definitions and code snippets
+
+```

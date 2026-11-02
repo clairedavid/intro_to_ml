@@ -821,7 +821,45 @@ d(\mathbf{u}, \mathbf{v}) = \lVert \mathbf{u} - \mathbf{v} \rVert_2 = \sqrt{\sum
 </section>
 <section id="the-cosine-similarity">
 <h3>The cosine similarity<a class="headerlink" href="#the-cosine-similarity" title="Permalink to this headline">#</a></h3>
-<p>Multidimensional data can be seen as a collection of data points, but also of vectors departing from a central point and with as many components as features. What if some vectors from a dataset have very different norms but are aligned in the same direction? They would not be similar in scale but definitely close in their angular separation. The idea behind cosine similarity is to measure that directional closeness. It is widely used in data mining and recommender systems.</p>
+<p>Multidimensional data can be seen as a collection of data points, but also of vectors departing from the origin and with as many components as features. What if some vectors from a dataset have very different norms but are aligned in the same direction? They would not be similar in scale but definitely close in their angular separation. The idea behind cosine similarity is to measure that directional closeness. It is widely used in text mining and recommender systems.</p>
+<p>Let’s take an example in text mining. If the dataset lists the word count of many words for different books and articles, a thousand-page book about particle physics (random topic 😉) will have a large number of occurrences of the word <em>particle</em>. A short article also about particle physics will have far fewer occurrences. Yet those two documents are on the same topic. In that sense, the magnitude (number of occurrences) does not matter. What is important is the ratio of certain words (<em>particle</em>) over others (e.g. <em>elephants</em> for a book about biology).</p>
+<p>The cosine similarity helps define “angular clusters” in the dataset, as seen below.</p>
+<figure class="align-default" id="plot-cosine-clusters" style="width: 100%">
+<div class="cell_output docutils container">
+<img alt="../_images/clustering_plots_11_2.png" src="../_images/clustering_plots_11_2.png" />
+</div>
+<figcaption>
+<p><span class="caption-number">Figure 58: </span><span class="caption-text">Unlabelled dataset (left) clustered according to cosine similarity (right).</span><a class="headerlink" href="#plot-cosine-clusters" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Note that in our text mining example above, the features would be non-negative, hence we would only have data points in the first quadrant.</p>
+<div class="proof definition admonition" id="cosinesimidef">
+<p class="admonition-title"><span class="caption-number">Definition 79 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>cosine similarity</strong> is a measure of how similar the directions of two non-zero vectors <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> are.</p>
+<p>It is the cosine of the angle <span class="math notranslate nohighlight">\(\theta\)</span> between the two vectors:</p>
+<div class="math notranslate nohighlight" id="equation-cosinesimilarityeq">
+<span class="eqno">(141)<a class="headerlink" href="#equation-cosinesimilarityeq" title="Permalink to this equation">#</a></span>\[
+S_C(\mathbf{u}, \mathbf{v}) = \cos(\theta) = \frac{\mathbf{u} \cdot \mathbf{v}}{\lVert \mathbf{u} \rVert_2 \, \lVert \mathbf{v} \rVert_2}
+= \frac{\sum_{j=1}^{n} u_j \, v_j}{\sqrt{\sum_{j=1}^{n} u_j^2} \; \sqrt{\sum_{j=1}^{n} v_j^2}}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{u} \cdot \mathbf{v}\)</span> is the dot product of the two vectors and <span class="math notranslate nohighlight">\(\lVert \cdot \rVert_2\)</span> their 2-norm.</p>
+</section>
+</div><p>As the definition states, the cosine similarity cannot be calculated with a zero vector. It is thus important to check the dataset beforehand to make sure all vectors are non-zero.</p>
+<p>What values can it take? The cosine lies between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(1\)</span>, so:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(1\)</span> (Angle: 0°): The vectors point in the exact same direction. They are highly similar.</p></li>
+<li><p><span class="math notranslate nohighlight">\(0\)</span> (Angle: 90°): The vectors are perpendicular (orthogonal). This indicates no relationship or shared context.</p></li>
+<li><p><span class="math notranslate nohighlight">\(-1\)</span> (Angle: 180°): The vectors point in diametrically opposite directions. They are completely dissimilar.</p></li>
+</ul>
+<p>If features are non-negative, such as a word count, then the range is from 0 to 1.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Learn More</p>
+<ul class="simple">
+<li><p>Curious about other distance measures? The SciPy documentation is here for you: <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/spatial.distance.html">Distance computations (<code class="docutils literal notranslate"><span class="pre">scipy.spatial.distance</span></code>)</a></p></li>
+<li><p><a class="reference external" href="https://machinelearningmastery.com/distance-measures-for-machine-learning/">4 Distance Measures for Machine Learning</a> (machinelearningmastery.com): definitions and code snippets</p></li>
+</ul>
+</div>
 </section>
 </section>
 </section>
@@ -877,10 +915,10 @@ d(\mathbf{u}, \mathbf{v}) = \lVert \mathbf{u} - \mathbf{v} \rVert_2 = \sqrt{\sum
     <div class="extra_footer">
       <div style="display:flex; align-items:center; gap:10px;">
   <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-    <img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" alt="CC Logo">
+    <img src="https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png" alt="CC BY-NC-SA 4.0 licence badge">
   </a>
   <div>
-    By Claire David • © 2025<br>
+    By Claire David • © 2022–2026<br>
     <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
   </div>
 </div>

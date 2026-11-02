@@ -748,6 +748,11 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cosine-similarity-clusters-by-direction">
+   Cosine similarity: clusters by direction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#k-means-step-by-step">
    k-means step by step
   </a>
@@ -834,6 +839,11 @@ title="Print to PDF"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cosine-similarity-clusters-by-direction">
+   Cosine similarity: clusters by direction
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#k-means-step-by-step">
@@ -1085,6 +1095,105 @@ title="Print to PDF"
 </div>
 </div>
 </section>
+</section>
+<section id="cosine-similarity-clusters-by-direction">
+<h2>Cosine similarity: clusters by direction<a class="headerlink" href="#cosine-similarity-clusters-by-direction" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">COS_COLS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;#e2655a&quot;</span><span class="p">,</span> <span class="s2">&quot;#4fae78&quot;</span><span class="p">,</span> <span class="s2">&quot;#5b8fd6&quot;</span><span class="p">,</span> <span class="s2">&quot;#e3a53c&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;#9b72c9&quot;</span><span class="p">,</span> <span class="s2">&quot;#3fb0ad&quot;</span><span class="p">,</span> <span class="s2">&quot;#d97fae&quot;</span><span class="p">]</span>    <span class="c1"># 7 clusters</span>
+<span class="n">COS_L</span> <span class="o">=</span> <span class="mi">8</span>                                      <span class="c1"># axes run from -COS_L to COS_L</span>
+<span class="n">FRAME</span> <span class="o">=</span> <span class="s2">&quot;#8b93a1&quot;</span>                              <span class="c1"># lighter grey for the outer frame</span>
+
+
+<span class="k">def</span> <span class="nf">cosine_data</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">7</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Points along 7 irregular directions (with one wide empty sector),</span>
+<span class="sd">    at very different distances from the origin.&quot;&quot;&quot;</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="c1">#        angle(deg) spread(deg)  n   r_min  r_scale</span>
+    <span class="n">spec</span> <span class="o">=</span> <span class="p">[(</span>   <span class="mi">18</span><span class="p">,</span>       <span class="mf">3.5</span><span class="p">,</span>      <span class="mi">40</span><span class="p">,</span>  <span class="mf">1.2</span><span class="p">,</span>   <span class="mf">2.6</span><span class="p">),</span>
+            <span class="p">(</span>   <span class="mi">47</span><span class="p">,</span>       <span class="mf">7.5</span><span class="p">,</span>      <span class="mi">24</span><span class="p">,</span>  <span class="mf">1.0</span><span class="p">,</span>   <span class="mf">1.6</span><span class="p">),</span>
+            <span class="p">(</span>  <span class="mi">112</span><span class="p">,</span>       <span class="mf">2.8</span><span class="p">,</span>      <span class="mi">46</span><span class="p">,</span>  <span class="mf">2.0</span><span class="p">,</span>   <span class="mf">2.2</span><span class="p">),</span>
+            <span class="p">(</span>  <span class="mi">138</span><span class="p">,</span>       <span class="mf">5.5</span><span class="p">,</span>      <span class="mi">28</span><span class="p">,</span>  <span class="mf">0.9</span><span class="p">,</span>   <span class="mf">1.4</span><span class="p">),</span>
+            <span class="p">(</span>  <span class="mi">196</span><span class="p">,</span>       <span class="mf">4.5</span><span class="p">,</span>      <span class="mi">38</span><span class="p">,</span>  <span class="mf">1.5</span><span class="p">,</span>   <span class="mf">3.0</span><span class="p">),</span>
+            <span class="p">(</span>  <span class="mi">231</span><span class="p">,</span>       <span class="mf">9.0</span><span class="p">,</span>      <span class="mi">20</span><span class="p">,</span>  <span class="mf">1.0</span><span class="p">,</span>   <span class="mf">1.2</span><span class="p">),</span>
+            <span class="p">(</span>  <span class="mi">342</span><span class="p">,</span>       <span class="mf">4.0</span><span class="p">,</span>      <span class="mi">34</span><span class="p">,</span>  <span class="mf">1.8</span><span class="p">,</span>   <span class="mf">2.4</span><span class="p">)]</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">lab</span><span class="p">,</span> <span class="n">dirs</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">sp</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">r0</span><span class="p">,</span> <span class="n">rs</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">spec</span><span class="p">):</span>
+        <span class="n">th0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+        <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">P</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>                       <span class="c1"># keep only points inside the frame</span>
+            <span class="n">th</span> <span class="o">=</span> <span class="n">th0</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span> <span class="o">*</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+            <span class="n">r</span> <span class="o">=</span> <span class="n">r0</span> <span class="o">+</span> <span class="n">rng</span><span class="o">.</span><span class="n">gamma</span><span class="p">(</span><span class="mf">1.6</span><span class="p">,</span> <span class="n">rs</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>      <span class="c1"># long tail: some points far out</span>
+            <span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">c_</span><span class="p">[</span><span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">th</span><span class="p">),</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">th</span><span class="p">)]</span>
+            <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">P</span><span class="p">,</span> <span class="n">Q</span><span class="p">[(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">COS_L</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="mi">1</span><span class="p">)]])</span>
+        <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">P</span><span class="p">[:</span><span class="n">n</span><span class="p">]);</span> <span class="n">lab</span> <span class="o">+=</span> <span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
+        <span class="n">dirs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">th0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">lab</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dirs</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_cos_box</span><span class="p">(</span><span class="n">ax</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="n">COS_L</span><span class="p">,</span> <span class="n">COS_L</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="n">COS_L</span><span class="p">,</span> <span class="n">COS_L</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([]);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="n">FRAME</span><span class="p">);</span> <span class="n">s</span><span class="o">.</span><span class="n">set_linewidth</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="c1"># central cross: the feature axes through the origin</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">AX</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">AX</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">COS_L</span> <span class="o">-</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="s2">&quot;$x_1$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">INK</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;bottom&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.35</span><span class="p">,</span> <span class="n">COS_L</span> <span class="o">-</span> <span class="mf">0.35</span><span class="p">,</span> <span class="s2">&quot;$x_2$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">INK</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s2">&quot;top&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">cosine_clusters_fig</span><span class="p">():</span>
+    <span class="sd">&quot;&quot;&quot;Before -&gt; after: grey points, arrow, points coloured by direction.&quot;&quot;&quot;</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">lab</span><span class="p">,</span> <span class="n">dirs</span> <span class="o">=</span> <span class="n">cosine_data</span><span class="p">()</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mf">4.6</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">220</span><span class="p">)</span>
+    <span class="n">gs</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_gridspec</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">width_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">wspace</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">ax_l</span><span class="p">,</span> <span class="n">ax_a</span><span class="p">,</span> <span class="n">ax_r</span> <span class="o">=</span> <span class="p">(</span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">gs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">(</span><span class="n">ax_l</span><span class="p">,</span> <span class="n">ax_r</span><span class="p">):</span>
+        <span class="n">_cos_box</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">ax_l</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">GREY_INTRO</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">th</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">dirs</span><span class="p">):</span>           <span class="c1"># faint ray along each cluster direction</span>
+        <span class="n">ax_r</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">COS_L</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">th</span><span class="p">)],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">COS_L</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">th</span><span class="p">)],</span>
+                  <span class="n">color</span><span class="o">=</span><span class="n">COS_COLS</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.45</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax_r</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="p">[</span><span class="n">COS_COLS</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">lab</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span>
+                 <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="c1"># same arrow as the intro figure</span>
+    <span class="n">ax_a</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+    <span class="n">W</span><span class="p">,</span> <span class="n">H</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">get_size_inches</span><span class="p">();</span> <span class="n">bb</span> <span class="o">=</span> <span class="n">ax_a</span><span class="o">.</span><span class="n">get_position</span><span class="p">()</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="p">(</span><span class="n">bb</span><span class="o">.</span><span class="n">height</span> <span class="o">*</span> <span class="n">H</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">bb</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="n">W</span><span class="p">)</span>
+    <span class="n">ax_a</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span> <span class="n">ax_a</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">r</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">Lr</span><span class="p">,</span> <span class="n">xc</span> <span class="o">=</span> <span class="mf">0.42</span><span class="p">,</span> <span class="mf">0.50</span>
+    <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">xc</span> <span class="o">-</span> <span class="n">Lr</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">xc</span> <span class="o">+</span> <span class="n">Lr</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">sh</span><span class="p">,</span> <span class="n">hh</span><span class="p">,</span> <span class="n">hl</span> <span class="o">=</span> <span class="mf">0.082</span> <span class="o">*</span> <span class="n">Lr</span><span class="p">,</span> <span class="mf">0.178</span> <span class="o">*</span> <span class="n">Lr</span><span class="p">,</span> <span class="mf">0.31</span> <span class="o">*</span> <span class="n">Lr</span>
+    <span class="n">ax_a</span><span class="o">.</span><span class="n">add_patch</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">Polygon</span><span class="p">(</span>
+        <span class="p">[(</span><span class="n">x0</span><span class="p">,</span> <span class="o">-</span><span class="n">sh</span><span class="p">),</span> <span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">hl</span><span class="p">,</span> <span class="o">-</span><span class="n">sh</span><span class="p">),</span> <span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">hl</span><span class="p">,</span> <span class="o">-</span><span class="n">hh</span><span class="p">),</span> <span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+         <span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">hl</span><span class="p">,</span> <span class="n">hh</span><span class="p">),</span> <span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">hl</span><span class="p">,</span> <span class="n">sh</span><span class="p">),</span> <span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">sh</span><span class="p">)],</span>
+        <span class="n">closed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s2">&quot;#b5b5b5&quot;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">fig</span>
+
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">cosine_clusters_fig</span><span class="p">()</span>
+
+<span class="n">glue</span><span class="p">(</span><span class="s2">&quot;plot_cosine_clusters&quot;</span><span class="p">,</span> <span class="n">fig</span><span class="p">,</span> <span class="n">display</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Latin Modern Roman&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Latin Modern Roman&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Latin Modern Roman&#39; not found.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Latin Modern Roman&#39; not found.
+</pre></div>
+</div>
+<img alt="../_images/clustering_plots_11_5.png" src="../_images/clustering_plots_11_5.png" />
+</div>
+</div>
 </section>
 <section id="k-means-step-by-step">
 <h2>k-means step by step<a class="headerlink" href="#k-means-step-by-step" title="Permalink to this headline">#</a></h2>
@@ -1459,7 +1568,7 @@ title="Print to PDF"
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Latin Modern Roman&#39; not found.
 </pre></div>
 </div>
-<img alt="../_images/clustering_plots_13_99.png" src="../_images/clustering_plots_13_99.png" />
+<img alt="../_images/clustering_plots_15_99.png" src="../_images/clustering_plots_15_99.png" />
 </div>
 </div>
 </section>
@@ -1948,7 +2057,7 @@ title="Print to PDF"
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Latin Modern Roman&#39; not found.
 </pre></div>
 </div>
-<img alt="../_images/clustering_plots_15_159.png" src="../_images/clustering_plots_15_159.png" />
+<img alt="../_images/clustering_plots_17_159.png" src="../_images/clustering_plots_17_159.png" />
 </div>
 </div>
 </section>
@@ -2280,7 +2389,7 @@ title="Print to PDF"
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Latin Modern Roman&#39; not found.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in callback &lt;function _draw_all_if_interactive at 0x10f4d2e50&gt; (for post_execute):
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in callback &lt;function _draw_all_if_interactive at 0x10ae27e50&gt; (for post_execute):
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
@@ -2967,7 +3076,7 @@ title="Print to PDF"
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Latin Modern Roman&#39; not found.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in callback &lt;function _draw_all_if_interactive at 0x10f4d2e50&gt; (for post_execute):
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in callback &lt;function _draw_all_if_interactive at 0x10ae27e50&gt; (for post_execute):
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
@@ -3657,7 +3766,7 @@ title="Print to PDF"
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Latin Modern Roman&#39; not found.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in callback &lt;function _draw_all_if_interactive at 0x10f4d2e50&gt; (for post_execute):
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in callback &lt;function _draw_all_if_interactive at 0x10ae27e50&gt; (for post_execute):
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
@@ -4344,7 +4453,7 @@ title="Print to PDF"
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Latin Modern Roman&#39; not found.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in callback &lt;function _draw_all_if_interactive at 0x10f4d2e50&gt; (for post_execute):
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in callback &lt;function _draw_all_if_interactive at 0x10ae27e50&gt; (for post_execute):
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
@@ -5033,7 +5142,7 @@ title="Print to PDF"
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Latin Modern Roman&#39; not found.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in callback &lt;function _draw_all_if_interactive at 0x10f4d2e50&gt; (for post_execute):
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in callback &lt;function _draw_all_if_interactive at 0x10ae27e50&gt; (for post_execute):
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
@@ -5720,7 +5829,7 @@ title="Print to PDF"
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>findfont: Font family &#39;Latin Modern Roman&#39; not found.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in callback &lt;function _draw_all_if_interactive at 0x10f4d2e50&gt; (for post_execute):
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in callback &lt;function _draw_all_if_interactive at 0x10ae27e50&gt; (for post_execute):
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
@@ -6119,10 +6228,10 @@ title="Print to PDF"
     <div class="extra_footer">
       <div style="display:flex; align-items:center; gap:10px;">
   <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
-    <img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" alt="CC Logo">
+    <img src="https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png" alt="CC BY-NC-SA 4.0 licence badge">
   </a>
   <div>
-    By Claire David • © 2025<br>
+    By Claire David • © 2022–2026<br>
     <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>
   </div>
 </div>
