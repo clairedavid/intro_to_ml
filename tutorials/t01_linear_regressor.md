@@ -192,7 +192,7 @@ print(f"\nEnd of gradient descent after {iter_idx+1} iterations")
 ```
 
 ### 1.5 Visualize the gradient descent
-We will reproduce the plots from {numref}`plot_linReg_3D` seen in class. The plotting macros are given in the {ref}`app:t1:snippet:zone`.  Copy paste 🎁 and see!
+We will reproduce the plots from {numref}`Figure %s <plot_linReg_3D>` seen in class. The plotting macros are given in the {ref}`app:t1:snippet:zone`.  Copy paste 🎁 and see!
 
 ### 1.6 Let's check with NumPy
 Let's compare with NumPy `polyfit`:
