@@ -27,6 +27,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/kmeans_carousel.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,6 +44,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/kmeans_carousel.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -55,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Principal Component Analysis (PCA)" href="ul_2_pca.html" />
+    <link rel="next" title="\(k\)-Means Step by Step" href="ul_1_kmeans_steps.html" />
     <link rel="prev" title="Clustering: k-Means" href="ul_1_kmeans.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -483,6 +485,14 @@ const thebe_selector_output = ".output, .cell_output"
      What is clustering?
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ul_1_kmeans_steps.html">
+     <span class="math notranslate nohighlight">
+      \(k\)
+     </span>
+     -Means Step by Step
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -816,13 +826,13 @@ d(\mathbf{u}, \mathbf{v}) = \lVert \mathbf{u} - \mathbf{v} \rVert_2 = \sqrt{\sum
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(u_j - v_j\)</span> is the difference between the two vectors along the <span class="math notranslate nohighlight">\(j\)</span>-th feature.</p>
 </section>
-</div><p>You can recognise the 2-norm in {prf:ref}euclideandistancedef; in data science references, the Euclidean distance is often called the L2 distance.</p>
+</div><p>You can recognise the <span class="math notranslate nohighlight">\(\ell_2\)</span> norm in <a class="reference internal" href="#euclideandistancedef">Definition 78</a>; in data science references, the Euclidean distance is often called the L2 distance.</p>
 <p>We will see in the following section that this distance is at the core of the <span class="math notranslate nohighlight">\(k\)</span>-Means algorithm (you may already guess why from its name).</p>
 </section>
 <section id="the-cosine-similarity">
 <h3>The cosine similarity<a class="headerlink" href="#the-cosine-similarity" title="Permalink to this headline">#</a></h3>
 <p>Multidimensional data can be seen as a collection of data points, but also of vectors departing from the origin and with as many components as features. What if some vectors from a dataset have very different norms but are aligned in the same direction? They would not be similar in scale but definitely close in their angular separation. The idea behind cosine similarity is to measure that directional closeness. It is widely used in text mining and recommender systems.</p>
-<p>Let’s take an example in text mining. If the dataset lists the word count of many words for different books and articles, a thousand-page book about particle physics (random topic 😉) will have a large number of occurrences of the word <em>particle</em>. A short article also about particle physics will have far fewer occurrences. Yet those two documents are on the same topic. In that sense, the magnitude (number of occurrences) does not matter. What is important is the ratio of certain words (<em>particle</em>) over others (e.g. <em>elephants</em> for a book about biology).</p>
+<p>Let’s take an example in text mining. If the dataset lists the word count of many words for different books and articles, a thousand-page book about particle physics – random topic 😉 – will have a large number of occurrences of the word <em>particle</em>. A short article also about particle physics will have far fewer occurrences. Yet those two documents are on the same topic. In that sense, the magnitude, in our example the raw number of occurrences, does not matter. What is important is the ratio of certain words, like <em>particle</em>, over others, such as <em>elephant</em>, which would be frequent in a book about biology.</p>
 <p>The cosine similarity helps define “angular clusters” in the dataset, as seen below.</p>
 <figure class="align-default" id="plot-cosine-clusters" style="width: 100%">
 <div class="cell_output docutils container">
@@ -843,14 +853,14 @@ d(\mathbf{u}, \mathbf{v}) = \lVert \mathbf{u} - \mathbf{v} \rVert_2 = \sqrt{\sum
 S_C(\mathbf{u}, \mathbf{v}) = \cos(\theta) = \frac{\mathbf{u} \cdot \mathbf{v}}{\lVert \mathbf{u} \rVert_2 \, \lVert \mathbf{v} \rVert_2}
 = \frac{\sum_{j=1}^{n} u_j \, v_j}{\sqrt{\sum_{j=1}^{n} u_j^2} \; \sqrt{\sum_{j=1}^{n} v_j^2}}
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{u} \cdot \mathbf{v}\)</span> is the dot product of the two vectors and <span class="math notranslate nohighlight">\(\lVert \cdot \rVert_2\)</span> their 2-norm.</p>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{u} \cdot \mathbf{v}\)</span> is the dot product of the two vectors and <span class="math notranslate nohighlight">\(\lVert \cdot \rVert_2\)</span> their <span class="math notranslate nohighlight">\(\ell_2\)</span> norm.</p>
 </section>
 </div><p>As the definition states, the cosine similarity cannot be calculated with a zero vector. It is thus important to check the dataset beforehand to make sure all vectors are non-zero.</p>
 <p>What values can it take? The cosine lies between <span class="math notranslate nohighlight">\(-1\)</span> and <span class="math notranslate nohighlight">\(1\)</span>, so:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(1\)</span> (Angle: 0°): The vectors point in the exact same direction. They are highly similar.</p></li>
-<li><p><span class="math notranslate nohighlight">\(0\)</span> (Angle: 90°): The vectors are perpendicular (orthogonal). This indicates no relationship or shared context.</p></li>
-<li><p><span class="math notranslate nohighlight">\(-1\)</span> (Angle: 180°): The vectors point in diametrically opposite directions. They are completely dissimilar.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S_C = 1 \;\Leftrightarrow\; \theta = 0^\circ\)</span>: the vectors point in exactly the same direction. They are highly similar.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S_C = 0 \;\Leftrightarrow\; \theta = 90^\circ\)</span>: the vectors are perpendicular, or orthogonal. This indicates no relationship or shared context.</p></li>
+<li><p><span class="math notranslate nohighlight">\(S_C = -1 \;\Leftrightarrow\; \theta = 180^\circ\)</span>: the vectors point in diametrically opposite directions. They are completely dissimilar.</p></li>
 </ul>
 <p>If features are non-negative, such as a word count, then the range is from 0 to 1.</p>
 <div class="seealso admonition">
@@ -898,10 +908,10 @@ S_C(\mathbf{u}, \mathbf{v}) = \cos(\theta) = \frac{\mathbf{u} \cdot \mathbf{v}}{
             <p class="prev-next-title">Clustering: k-Means</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="ul_2_pca.html" title="next page">
+    <a class='right-next' id="next-link" href="ul_1_kmeans_steps.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Principal Component Analysis (PCA)</p>
+        <p class="prev-next-title"><span class="math notranslate nohighlight">\(k\)</span>-Means Step by Step</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

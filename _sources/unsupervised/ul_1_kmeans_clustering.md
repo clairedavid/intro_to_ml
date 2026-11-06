@@ -54,7 +54,7 @@ $$
 where $u_j - v_j$ is the difference between the two vectors along the $j$-th feature.
 
 ````
-You can recognise the 2-norm in {prf:ref}euclideandistancedef; in data science references, the Euclidean distance is often called the L2 distance.
+You can recognise the $\ell_2$ norm in {prf:ref}`euclideandistancedef`; in data science references, the Euclidean distance is often called the L2 distance.
 
 We will see in the following section that this distance is at the core of the $k$-Means algorithm (you may already guess why from its name).
 
@@ -64,7 +64,7 @@ We will see in the following section that this distance is at the core of the $k
 
 Multidimensional data can be seen as a collection of data points, but also of vectors departing from the origin and with as many components as features. What if some vectors from a dataset have very different norms but are aligned in the same direction? They would not be similar in scale but definitely close in their angular separation. The idea behind cosine similarity is to measure that directional closeness. It is widely used in text mining and recommender systems.
 
-Let's take an example in text mining. If the dataset lists the word count of many words for different books and articles, a thousand-page book about particle physics (random topic 😉) will have a large number of occurrences of the word _particle_. A short article also about particle physics will have far fewer occurrences. Yet those two documents are on the same topic. In that sense, the magnitude (number of occurrences) does not matter. What is important is the ratio of certain words (_particle_) over others (e.g. _elephants_ for a book about biology). 
+Let's take an example in text mining. If the dataset lists the word count of many words for different books and articles, a thousand-page book about particle physics -- random topic 😉 -- will have a large number of occurrences of the word _particle_. A short article also about particle physics will have far fewer occurrences. Yet those two documents are on the same topic. In that sense, the magnitude, in our example the raw number of occurrences, does not matter. What is important is the ratio of certain words, like _particle_, over others, such as _elephant_, which would be frequent in a book about biology.
 
 The cosine similarity helps define "angular clusters" in the dataset, as seen below.  
 
@@ -91,7 +91,7 @@ S_C(\mathbf{u}, \mathbf{v}) = \cos(\theta) = \frac{\mathbf{u} \cdot \mathbf{v}}{
 = \frac{\sum_{j=1}^{n} u_j \, v_j}{\sqrt{\sum_{j=1}^{n} u_j^2} \; \sqrt{\sum_{j=1}^{n} v_j^2}}
 $$ (cosinesimilarityeq)
 
-where $\mathbf{u} \cdot \mathbf{v}$ is the dot product of the two vectors and $\lVert \cdot \rVert_2$ their 2-norm.
+where $\mathbf{u} \cdot \mathbf{v}$ is the dot product of the two vectors and $\lVert \cdot \rVert_2$ their $\ell_2$ norm.
 
 ````
 
@@ -99,9 +99,9 @@ As the definition states, the cosine similarity cannot be calculated with a zero
 
 What values can it take? The cosine lies between $-1$ and $1$, so:
 
-- $1$ (Angle: 0°): The vectors point in the exact same direction. They are highly similar.
-- $0$ (Angle: 90°): The vectors are perpendicular (orthogonal). This indicates no relationship or shared context.
-- $-1$ (Angle: 180°): The vectors point in diametrically opposite directions. They are completely dissimilar.
+- $S_C = 1 \;\Leftrightarrow\; \theta = 0^\circ$: the vectors point in exactly the same direction. They are highly similar.
+- $S_C = 0 \;\Leftrightarrow\; \theta = 90^\circ$: the vectors are perpendicular, or orthogonal. This indicates no relationship or shared context.
+- $S_C = -1 \;\Leftrightarrow\; \theta = 180^\circ$: the vectors point in diametrically opposite directions. They are completely dissimilar.
 
 If features are non-negative, such as a word count, then the range is from 0 to 1.
 

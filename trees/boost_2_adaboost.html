@@ -27,6 +27,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/kmeans_carousel.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,6 +44,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/kmeans_carousel.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -483,6 +485,14 @@ const thebe_selector_output = ".output, .cell_output"
      What is clustering?
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_steps.html">
+     <span class="math notranslate nohighlight">
+      \(k\)
+     </span>
+     -Means Step by Step
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -814,20 +824,20 @@ w^{(i)} = \frac{1}{m}
 <p><strong>Start</strong><br />
 <strong>For</strong> each predictor <span class="math notranslate nohighlight">\(t = 1 , \dots , N^\text{pred}\)</span><br />
 a. Train on all samples and compute the weighted error rate <span class="math notranslate nohighlight">\(r_t\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-55134a1f-f1e7-4ec4-acb1-a7637199662c">
-<span class="eqno">(55)<a class="headerlink" href="#equation-55134a1f-f1e7-4ec4-acb1-a7637199662c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-02ec8cd7-3b0c-4b2d-93df-ee92233ba0de">
+<span class="eqno">(55)<a class="headerlink" href="#equation-02ec8cd7-3b0c-4b2d-93df-ee92233ba0de" title="Permalink to this equation">#</a></span>\[\begin{equation}
         r_t = \frac{\sum_{i = 1}^m w^{(i)} [ \hat{y}_t^{(i)} \neq y^{(i)} ]}{\sum_{i = 1}^m w^{(i)}}
    \end{equation}\]</div>
 <p>b. Give the predictor <span class="math notranslate nohighlight">\(t\)</span> a weight <span class="math notranslate nohighlight">\(W_t\)</span> measuring accuracy</p>
-<div class="amsmath math notranslate nohighlight" id="equation-86acb481-d569-4415-a311-ecdbe5afad50">
-<span class="eqno">(56)<a class="headerlink" href="#equation-86acb481-d569-4415-a311-ecdbe5afad50" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ac546de9-43c0-430e-ba01-0e9ae3880493">
+<span class="eqno">(56)<a class="headerlink" href="#equation-ac546de9-43c0-430e-ba01-0e9ae3880493" title="Permalink to this equation">#</a></span>\[\begin{equation}
         W_t = \alpha \log \frac{1 - r_t}{r_t}
    \end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(W_t\)</span> points to a high number if the predictor is good, zero if the predictor is guessing randomly, negative if it is bad.
 <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate.</p>
 <p>c. Update the weights of all data samples:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-12a12456-4b6c-425d-af0f-ffa41d6d052c">
-<span class="eqno">(57)<a class="headerlink" href="#equation-12a12456-4b6c-425d-af0f-ffa41d6d052c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b9b29bc4-ae1a-4b11-84da-8a9e0bf0315a">
+<span class="eqno">(57)<a class="headerlink" href="#equation-b9b29bc4-ae1a-4b11-84da-8a9e0bf0315a" title="Permalink to this equation">#</a></span>\[\begin{equation}
         w^{(i)} \longleftarrow
         \begin{cases} 
         w^{(i)} &amp; \text{if } \hat{y}_t^{(i)} = y^{(i)} \\[1ex]
@@ -835,8 +845,8 @@ a. Train on all samples and compute the weighted error rate <span class="math no
         \end{cases}
    \end{equation}\]</div>
 <p>d. Normalize the weights</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c6f81466-f28c-49a7-9b06-24ad38983280">
-<span class="eqno">(58)<a class="headerlink" href="#equation-c6f81466-f28c-49a7-9b06-24ad38983280" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c22d0d4a-ab4f-4673-9289-bfb9343b7cb4">
+<span class="eqno">(58)<a class="headerlink" href="#equation-c22d0d4a-ab4f-4673-9289-bfb9343b7cb4" title="Permalink to this equation">#</a></span>\[\begin{equation}
     w^{(i)} \rightarrow \frac{w^{(i)}}{\sum_{i = 1}^m w^{(i)}}
    \end{equation}\]</div>
 <p><strong>Exit conditions</strong></p>

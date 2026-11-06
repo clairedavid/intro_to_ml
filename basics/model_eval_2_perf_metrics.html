@@ -27,6 +27,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/kmeans_carousel.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -43,6 +44,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/kmeans_carousel.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -483,6 +485,14 @@ const thebe_selector_output = ".output, .cell_output"
      What is clustering?
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_steps.html">
+     <span class="math notranslate nohighlight">
+      \(k\)
+     </span>
+     -Means Step by Step
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -877,8 +887,8 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p class="admonition-title"><span class="caption-number">Definition 29 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>root mean squared error (RMSE)</strong> is the square root of the mean squared error:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b67e7dcf-432a-4300-b64a-c49d908a66dd">
-<span class="eqno">(30)<a class="headerlink" href="#equation-b67e7dcf-432a-4300-b64a-c49d908a66dd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5225ae87-d8c2-4d1f-af6a-49b567519922">
+<span class="eqno">(30)<a class="headerlink" href="#equation-5225ae87-d8c2-4d1f-af6a-49b567519922" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{RMSE} = \sqrt{ \frac{\sum_{i=1}^N (y^\text{pred} - y^\text{obs} )^2 }{ N } }
 \end{equation}\]</div>
 </section>
@@ -894,29 +904,29 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p> <br />
 <strong>Accuracy</strong><br />
 Measures the fraction of correct predictions among all predictions</p>
-<div class="amsmath math notranslate nohighlight" id="equation-afef7175-ebce-42d1-816f-c12efcc1386d">
-<span class="eqno">(31)<a class="headerlink" href="#equation-afef7175-ebce-42d1-816f-c12efcc1386d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-415168d6-fba0-4994-b10e-ab54af938144">
+<span class="eqno">(31)<a class="headerlink" href="#equation-415168d6-fba0-4994-b10e-ab54af938144" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Accuracy} = \frac{\text{True predictions}}{\text{All predictions}} = \frac{\text{TP + TN}}{\text{TP + TN + FP + FN}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Precision, or Positive Predictive Value (PPV)</strong><br />
 Measures the fraction of true positive predictions among all <strong>positive predictions</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-707d10a0-8fb2-4c83-bcbe-f8439ea834f9">
-<span class="eqno">(32)<a class="headerlink" href="#equation-707d10a0-8fb2-4c83-bcbe-f8439ea834f9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-eb69c8e5-14af-4a8f-86ad-02271c408682">
+<span class="eqno">(32)<a class="headerlink" href="#equation-eb69c8e5-14af-4a8f-86ad-02271c408682" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Precision} = \frac{\text{True Positives}}{\text{All Positive Predictions}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Recall, or True Positive Rate (TPR)</strong><br />
 Measures the fraction of true positive predictions among all <strong>true observations</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e0f339b4-b000-4735-9b40-1573edc4654b">
-<span class="eqno">(33)<a class="headerlink" href="#equation-e0f339b4-b000-4735-9b40-1573edc4654b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ee2bb3ce-44b5-407b-8f7f-b0e8511707c6">
+<span class="eqno">(33)<a class="headerlink" href="#equation-ee2bb3ce-44b5-407b-8f7f-b0e8511707c6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Recall} = \frac{\text{True Positives}}{\text{Actual Positives}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>F-Score, or F1</strong><br />
 Describes the balance between Precision and Recall. It is the harmonic mean of the two:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bef3938e-9947-4f76-b5c1-04a5afb75d14">
-<span class="eqno">(34)<a class="headerlink" href="#equation-bef3938e-9947-4f76-b5c1-04a5afb75d14" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9d24c93f-1925-4262-93ae-fcea995aa6bf">
+<span class="eqno">(34)<a class="headerlink" href="#equation-9d24c93f-1925-4262-93ae-fcea995aa6bf" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{F1} =2 \; \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
 \end{equation}\]</div>
 </section>
