@@ -12,7 +12,7 @@ Before diving into the procedure, let's define a central notion (pun intended).
 
 A __centroid__ is a position in feature space representing the centre of a cluster. 
 
-In the $k$-Means algorithm, the centroid corresponds to the centre of mass of the points, i.e. its coordinates are the arithmetic means of each feature.
+In the $k$-Means algorithm, the centroid corresponds to the centre of mass of the points assigned to it, i.e. its coordinates are the arithmetic means of each feature.
 
 ```` 
 
@@ -53,18 +53,153 @@ Let's go through a visual and simple case to intuitively present how $k$-Means w
 A step-by-step illustrated example of the $k$-Means algorithm with two clusters ($k = 2$).
 ```
 
+The algorithm is simple: it alternately updates the assignment of data points to clusters and the centroid positions. We can't go wrong (well, we will soon see that it can lead to bad results). As each step can only improve -- or keep as is -- the clustering and as there is a finite number of possibilities to assign $m$ data points to $k$ clusters, the algorithm always converges.
 
+Let's write it down in a more mathematical way.
 
+## $k$-Means: a (very) simple case of EM algorithm
 
+Here we have two unknowns: the assignment of each data point to a given cluster and the positions of the centroids of the clusters. We saw from the illustrated example that we cannot optimize for both at the same time. We need to fix one, optimize the other and vice versa. And repeat until convergence. 
 
+The $k$-Means algorithm can be seen as a very simple case of an EM algorithm, a big family of iterative methods in probabilistic machine learning. The E stands for Expectation, and M for Maximization. We won't go into details but the main idea is the E-step gives a function for the expectation of a log-likelihood. The M-step is about maximizing the log-likelihood by tweaking its parameters. Then those optimized parameters are defining a new expectation function used for the next E-step.
 
+Here it is much simple. There is no probability distribution: our centroid positions are deterministic (or if you really want to see a Gaussian, think of one with a standard deviation of zero and mean centred on a given centroid's position). 
 
+The $k$-Means algorithm alternates bewteen:
 
+* __Expectation-step__:  
+  Centroid positions fixed; assign each point to its nearest centroid
+* __Maximization-step__:  
+  Fix the assignment points-cluster; move each centroid to the mean of its cluster.
 
+But wait: what is being maximized here?  
 
-
+This brings us to the definition of the cost. Yes, again, there is a cost in the story.
 
 
 ## The associated cost
 
-We can rephrase this as a minimization problem: the main objective of the $k$-Means algorithm is to minimize the sum of the squared distances between the points and their respective cluster centroid.
+In the previous chapters on supervised learning, we saw algorithms with a cost to minimize, let it be the MSE, or one using the Gini index. Here we only find the closest centroid for each data point, and compute the mean of the data points belonging to a given cluster. Where is the cost? It is actually hidden.
+
+
+````{prf:definition}
+:label: kmeanscostdef
+
+In $k$-Means, each iteration reduces the __within-cluster sum of squared distances__: 
+
+$$
+J(c, \boldsymbol{\mu}) = \sum_{i=1}^{m} \left\lVert \boldsymbol{x}^{(i)} - \boldsymbol{\mu}_{c^{(i)}} \right\rVert_2^2
+= \sum_{k=1}^{K} \sum_{i \in \mathcal{C}_k} \left\lVert \boldsymbol{x}^{(i)} - \boldsymbol{\mu}_k \right\rVert_2^2
+$$ (kmeanscosteq)
+
+where
+
+- $\boldsymbol{\mu} = (\boldsymbol{\mu}_1, \dots, \boldsymbol{\mu}_K)$ are the $K$ centroids, with $\boldsymbol{\mu}_k \in \mathbb{R}^n$,
+- $c = (c^{(1)}, \dots, c^{(m)})$ are the cluster assignments, with $c^{(i)} \in \{1, \dots, K\}$ the cluster of data point $\boldsymbol{x}^{(i)}$,
+- $\mathcal{C}_k = \{\, i : c^{(i)} = k \,\}$ is the set of indices of the data points assigned to cluster $k$.
+
+````
+
+$k$-Means is a minimization problem: its main objective is to minimize the sum of the squared distances between the points and their respective cluster centroid. 
+The cost can been seen as one sum, over all data points, computing the square distance between each data point and its associated cluster. Or equivalently, a sum of sums, per cluster, where the squared distances of all points from a given cluster are first added. And then adding all these $K$ sums together.
+
+Why aren't we using the cost in the algorithm? We do in a way: computing the mean is exactly the point that minimizes $J(c, \boldsymbol{\mu})$ for a given cluster. 
+
+The cost is useless then? Not really, it serves for evaluation. Especially if the algorithm falls into a local minimum due to e.g. an unfortunate centroid initialization (more on that later).
+
+````{grid} 2
+:gutter: 3
+
+```{grid-item-card} E-step
+:text-align: center
+
+$$
+c^{(i)} = \underset{k \in \{1, \dots, K\}}{\arg\min} \left\lVert \boldsymbol{x}^{(i)} - \boldsymbol{\mu}_k \right\rVert_2^2
+$$
+
+Centroids $\boldsymbol{\mu}_k$ given, filling cluster assignment $c^{(i)}$.
+```
+
+```{grid-item-card} M-step
+:text-align: center
+
+$$
+\frac{\partial J}{\partial \boldsymbol{\mu}_k} = 0
+\;\Longrightarrow\;
+\boldsymbol{\mu}_k = \frac{1}{|\mathcal{C}_k|} \sum_{i \in \mathcal{C}_k} \boldsymbol{x}^{(i)}
+$$
+
+The mean is exactly the point that minimizes $J$ for a given cluster.
+```
+
+````
+
+
+## The pseudo-code
+
+This is left as an exercise, and an opportunity to practice pseudocode writing!
+
+
+````{admonition} Exercise
+:class: seealso
+From the illustrated step-by-step example and the equations above, write the $k$-Means pseudocode.
+````
+
+````{admonition} To get started
+:class: hint, dropdown
+Write first the general skeleton:
+* What are the inputs?
+* What are the outputs?
+* No spoiler: we know it is iterative, so where and when/how does the loop start and stop?
+````
+
+````{admonition} Another hint: a skeleton
+:class: hint, dropdown
+Here is the general structure of the pseudocode for $k$-Means without math.
+
+```{prf:algorithm} k-Means skeleton
+:nonumber:
+
+$$
+\begin{array}{rl}
+\text{1:} & \text{Select } K \text{ data points as initial centroids.} \\
+\text{2:} & \textbf{repeat} \\
+\text{3:} & \quad \text{Form } K \text{ clusters by assigning each point to its closest centroid.} \\
+\text{4:} & \quad \text{Recompute the centroid of each cluster.} \\
+\text{5:} & \textbf{until } \text{the centroids do not change.}
+\end{array}
+$$
+```
+
+Adapted from Tan et al., *Introduction to Data Mining* (2nd ed.), Algorithm 7.1.
+
+Now you have to insert the math!
+````
+
+````{admonition} Check your answer
+:class: tip, dropdown
+
+```{prf:algorithm} $k$-Means
+:label: kmeansalgo
+
+$$
+\begin{array}{rl}
+ & \textbf{Input: } \text{data } \boldsymbol{x}^{(1)}, \dots, \boldsymbol{x}^{(m)} \in \mathbb{R}^{n} \\
+ & \textbf{Hyperparameters: } \text{number of clusters } K, \text{ maximum iterations } N_{\max} \\
+ & \textbf{Output: } \text{assignments } c^{(1)}, \dots, c^{(m)}, \text{ centroids } \boldsymbol{\mu}_1, \dots, \boldsymbol{\mu}_K \\[6pt]
+\text{1:} & \text{Choose } K \text{ distinct data points at random as } \boldsymbol{\mu}_1, \dots, \boldsymbol{\mu}_K \\
+\text{2:} & \textbf{repeat} \\
+\text{3:} & \quad \textbf{for } i = 1, \dots, m \textbf{ do} \\
+\text{4:} & \qquad c^{(i)} \leftarrow \underset{k \in \{1, \dots, K\}}{\arg\min} \left\lVert \boldsymbol{x}^{(i)} - \boldsymbol{\mu}_k \right\rVert_2^2 \\[4pt]
+\text{5:} & \quad \textbf{for } k = 1, \dots, K \textbf{ do} \\
+\text{6:} & \qquad \mathcal{C}_k \leftarrow \{\, i : c^{(i)} = k \,\} \\
+\text{7:} & \qquad \boldsymbol{\mu}_k \leftarrow \dfrac{1}{|\mathcal{C}_k|} \displaystyle\sum_{i \in \mathcal{C}_k} \boldsymbol{x}^{(i)} \\[4pt]
+\text{8:} & \textbf{until } \text{no } c^{(i)} \text{ changes } \textbf{or } N_{\max} \text{ iterations reached} \\
+\text{9:} & \textbf{return } c^{(1)}, \dots, c^{(m)} \text{ and } \boldsymbol{\mu}_1, \dots, \boldsymbol{\mu}_K
+\end{array}
+$$
+```
+````
+
+
+It all looks beautiful. But $k$-Means has its limitations. Some we can address, others we cannot, as we are about to see in the next section.

@@ -902,13 +902,13 @@ title="Print to PDF"
 <p class="admonition-title"><span class="caption-number">Definition 63 </span></p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span> be functions. For all <span class="math notranslate nohighlight">\(𝑥\)</span> in the domain of <span class="math notranslate nohighlight">\(g\)</span> for which <span class="math notranslate nohighlight">\(g\)</span> is differentiable at <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(f\)</span> is differentiable at <span class="math notranslate nohighlight">\(g(x)\)</span>, the derivative of the composite function:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-64475cf1-d873-4f81-b61b-4968e7aef887">
-<span class="eqno">(99)<a class="headerlink" href="#equation-64475cf1-d873-4f81-b61b-4968e7aef887" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f6f293b2-3ebf-428d-a4ec-bc565e5d950d">
+<span class="eqno">(99)<a class="headerlink" href="#equation-f6f293b2-3ebf-428d-a4ec-bc565e5d950d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h(x) = f(g(x)) 
 \end{equation}\]</div>
 <p>is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-987c93b1-c7ba-4512-99aa-174a39771dd6">
-<span class="eqno">(100)<a class="headerlink" href="#equation-987c93b1-c7ba-4512-99aa-174a39771dd6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5de34799-03dd-4da8-85cd-747f05edc94a">
+<span class="eqno">(100)<a class="headerlink" href="#equation-5de34799-03dd-4da8-85cd-747f05edc94a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}} \;\cdot \;  \frac{\mathrm{{\color{Maroon}d}} \; {\color{Maroon}g(x)}}{\mathrm{d} \; x} = f'\left(g(x)\right) \;\cdot \; g'(x)
 \end{equation}\]</div>
 </section>
@@ -924,8 +924,8 @@ h'(x) = \frac{\mathrm{d} \; f(g(x)) }{\mathrm{{\color{Maroon}d}} \; {\color{Maro
 <div class="seealso admonition">
 <p class="admonition-title">Exercise</p>
 <p>What would be the chain rule for three functions?</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b2e9dafc-3cf6-4abe-ba5b-8a73f64b40bf">
-<span class="eqno">(101)<a class="headerlink" href="#equation-b2e9dafc-3cf6-4abe-ba5b-8a73f64b40bf" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ce83fbbd-aeec-47ca-91dd-d6bc6534c643">
+<span class="eqno">(101)<a class="headerlink" href="#equation-ce83fbbd-aeec-47ca-91dd-d6bc6534c643" title="Permalink to this equation">#</a></span>\[\begin{equation}
 k(x) = h(f(g(x))) 
 \end{equation}\]</div>
 </div>
@@ -1235,14 +1235,14 @@ Training data set <span class="math notranslate nohighlight">\(X\)</span> of <sp
 <p><strong>Step 0: Weight initialization</strong></p>
 <p><strong>Step 1: Forward propagation</strong><br />
 <span class="math notranslate nohighlight">\(\qquad \quad \bullet\)</span> get list of <span class="math notranslate nohighlight">\(m\)</span> predictions <span class="math notranslate nohighlight">\(\boldsymbol{\hat{y}}^{(i)}\)</span></p>
-<div class="amsmath math notranslate nohighlight" id="equation-739e492f-8d14-4954-91d3-db6b71f56a35">
-<span class="eqno">(132)<a class="headerlink" href="#equation-739e492f-8d14-4954-91d3-db6b71f56a35" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-acebac36-d19a-4d30-9da2-9dda9b5f47b2">
+<span class="eqno">(132)<a class="headerlink" href="#equation-acebac36-d19a-4d30-9da2-9dda9b5f47b2" title="Permalink to this equation">#</a></span>\[\begin{equation}
  f(\boldsymbol{z}^{(i, \; L)}) = \boldsymbol{a}^{(i, \;L)} = \boldsymbol{\hat{y}}^{(i)}
 \end{equation}\]</div>
 <p><strong>Step 2: Backpropagation</strong><br />
 <span class="math notranslate nohighlight">\(\qquad \quad \bullet\)</span> get the cost:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-18e22b02-6949-484b-a403-e45a84eb96ac">
-<span class="eqno">(133)<a class="headerlink" href="#equation-18e22b02-6949-484b-a403-e45a84eb96ac" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-68757986-b148-43c8-b100-216ead431422">
+<span class="eqno">(133)<a class="headerlink" href="#equation-68757986-b148-43c8-b100-216ead431422" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Cost} =  \; \frac{1}{m} \; \sum_{i=1}^m \; L \biggl(\;f \Bigl( \;\boldsymbol{z}^{(i, \; L)}\Bigl), \boldsymbol{y}^{(i)} \biggl)\end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(\qquad \quad \bullet\)</span> get all errors:</p>
 <div class="math notranslate nohighlight" id="equation-summarybackproperrors">
