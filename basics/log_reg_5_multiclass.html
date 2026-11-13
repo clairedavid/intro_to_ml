@@ -493,6 +493,15 @@ const thebe_selector_output = ".output, .cell_output"
      -Means Step by Step
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_challenges.html">
+     Challenging
+     <span class="math notranslate nohighlight">
+      \(k\)
+     </span>
+     -Means
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -786,8 +795,8 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-One approach</strong> consists of applying a binary classification for each pair of classes, ignoring the other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of models to train, <span class="math notranslate nohighlight">\(N^\text{model}\)</span> is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bcd0666e-f32e-4e1c-9fb3-0a2a31299924">
-<span class="eqno">(28)<a class="headerlink" href="#equation-bcd0666e-f32e-4e1c-9fb3-0a2a31299924" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a55c8be7-930b-4fbe-a309-306f104c102c">
+<span class="eqno">(28)<a class="headerlink" href="#equation-a55c8be7-930b-4fbe-a309-306f104c102c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 N^\text{model} = \frac{N^\text{class}(N^\text{class}-1)}{2}
 \end{equation}\]</div>
 <p>Each model predicts one class label. The final decision is the class label receiving the most votes, i.e. being predicted most of the time.</p>
@@ -812,8 +821,8 @@ The pairing makes the number of models to train large and thus computer intensiv
 <section class="definition-content" id="proof-content">
 <p>The <strong>One-to-All or One-to-Rest approach</strong> consists of training each class against the collection of all other classes.</p>
 <p>With a dataset made of <span class="math notranslate nohighlight">\(N^\text{class}\)</span> classes, the number of pairs to train is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c7e285f9-afaf-4bbd-a729-5104c3b68fa7">
-<span class="eqno">(29)<a class="headerlink" href="#equation-c7e285f9-afaf-4bbd-a729-5104c3b68fa7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2983c9a2-40f2-4253-94ad-4bfc8039c91e">
+<span class="eqno">(29)<a class="headerlink" href="#equation-2983c9a2-40f2-4253-94ad-4bfc8039c91e" title="Permalink to this equation">#</a></span>\[\begin{equation}
  N^\text{model} = N^\text{class}
 \end{equation}\]</div>
 <p>The final prediction is given by the highest value of the hypothesis function <span class="math notranslate nohighlight">\(h^{k}_\theta(x)\)</span>, <span class="math notranslate nohighlight">\(k \in [1, N^\text{model}]\)</span> among the <span class="math notranslate nohighlight">\(N^\text{model}\)</span> binary classifiers.</p>

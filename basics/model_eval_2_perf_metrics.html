@@ -493,6 +493,15 @@ const thebe_selector_output = ".output, .cell_output"
      -Means Step by Step
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_challenges.html">
+     Challenging
+     <span class="math notranslate nohighlight">
+      \(k\)
+     </span>
+     -Means
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -887,8 +896,8 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p class="admonition-title"><span class="caption-number">Definition 29 </span></p>
 <section class="definition-content" id="proof-content">
 <p>The <strong>root mean squared error (RMSE)</strong> is the square root of the mean squared error:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8b19df22-0b68-4edf-a935-3944cec1726a">
-<span class="eqno">(30)<a class="headerlink" href="#equation-8b19df22-0b68-4edf-a935-3944cec1726a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8f08dab0-d1e1-4a7a-9127-f9f8f6ecad86">
+<span class="eqno">(30)<a class="headerlink" href="#equation-8f08dab0-d1e1-4a7a-9127-f9f8f6ecad86" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{RMSE} = \sqrt{ \frac{\sum_{i=1}^N (y^\text{pred} - y^\text{obs} )^2 }{ N } }
 \end{equation}\]</div>
 </section>
@@ -904,29 +913,29 @@ Error of accepting the null hypothesis when the alternative one is actually true
 <p> <br />
 <strong>Accuracy</strong><br />
 Measures the fraction of correct predictions among all predictions</p>
-<div class="amsmath math notranslate nohighlight" id="equation-438cbce6-394d-470e-9713-f43cf01213b5">
-<span class="eqno">(31)<a class="headerlink" href="#equation-438cbce6-394d-470e-9713-f43cf01213b5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-43445350-d6ed-43d3-9533-21b754a8423e">
+<span class="eqno">(31)<a class="headerlink" href="#equation-43445350-d6ed-43d3-9533-21b754a8423e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Accuracy} = \frac{\text{True predictions}}{\text{All predictions}} = \frac{\text{TP + TN}}{\text{TP + TN + FP + FN}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Precision, or Positive Predictive Value (PPV)</strong><br />
 Measures the fraction of true positive predictions among all <strong>positive predictions</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-524735ad-9cdd-45c7-926a-004c66efcd84">
-<span class="eqno">(32)<a class="headerlink" href="#equation-524735ad-9cdd-45c7-926a-004c66efcd84" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-950ea54e-da11-423b-a67a-f68cf6816df4">
+<span class="eqno">(32)<a class="headerlink" href="#equation-950ea54e-da11-423b-a67a-f68cf6816df4" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Precision} = \frac{\text{True Positives}}{\text{All Positive Predictions}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>Recall, or True Positive Rate (TPR)</strong><br />
 Measures the fraction of true positive predictions among all <strong>true observations</strong>.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cbaa878e-b6fa-45ea-a8b3-f01e64d8592c">
-<span class="eqno">(33)<a class="headerlink" href="#equation-cbaa878e-b6fa-45ea-a8b3-f01e64d8592c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-335d2aa7-3d8e-416f-ad03-9a3250572faa">
+<span class="eqno">(33)<a class="headerlink" href="#equation-335d2aa7-3d8e-416f-ad03-9a3250572faa" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{Recall} = \frac{\text{True Positives}}{\text{Actual Positives}} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>F-Score, or F1</strong><br />
 Describes the balance between Precision and Recall. It is the harmonic mean of the two:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2b29dc2e-9b5d-4da8-ab1d-31d1f55da16b">
-<span class="eqno">(34)<a class="headerlink" href="#equation-2b29dc2e-9b5d-4da8-ab1d-31d1f55da16b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-969409ff-df5a-426b-a764-04c3b707b304">
+<span class="eqno">(34)<a class="headerlink" href="#equation-969409ff-df5a-426b-a764-04c3b707b304" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{F1} =2 \; \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
 \end{equation}\]</div>
 </section>

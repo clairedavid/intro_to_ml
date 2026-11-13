@@ -493,6 +493,15 @@ const thebe_selector_output = ".output, .cell_output"
      -Means Step by Step
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../unsupervised/ul_1_kmeans_challenges.html">
+     Challenging
+     <span class="math notranslate nohighlight">
+      \(k\)
+     </span>
+     -Means
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
@@ -780,28 +789,28 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p> <br />
 <strong>True Positive Rate (TPR)</strong>, also called <strong>recall</strong> and <strong>sensitivity</strong></p>
-<div class="amsmath math notranslate nohighlight" id="equation-74afdefe-f735-44c6-b2db-8f0c2008f971">
-<span class="eqno">(35)<a class="headerlink" href="#equation-74afdefe-f735-44c6-b2db-8f0c2008f971" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-186d0a53-89f4-42ff-a9ff-bd6f5b319b71">
+<span class="eqno">(35)<a class="headerlink" href="#equation-186d0a53-89f4-42ff-a9ff-bd6f5b319b71" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TPR} = \frac{\text{True Positives}}{\text{Actual Positives}} = \frac{\text{True Positives}}{\text{True Positive} + \text{False Negative}}
 \end{equation}\]</div>
 <p> <br />
 <strong>True Negative Rate (TNR)</strong>, also called <strong>specificity</strong></p>
 <p>Ratio of negative instances correctly classified as negative.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-75607399-6501-4509-a812-86adb3f9bd59">
-<span class="eqno">(36)<a class="headerlink" href="#equation-75607399-6501-4509-a812-86adb3f9bd59" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2ffdd9f9-98a5-453e-b947-283bacb169f1">
+<span class="eqno">(36)<a class="headerlink" href="#equation-2ffdd9f9-98a5-453e-b947-283bacb169f1" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{TNR} = \frac{\text{True Negatives}}{\text{Actual Negatives}} = \frac{\text{True Negatives}}{\text{True Negatives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 <strong>False Positive Rate (FPR)</strong></p>
 <p>Ratio of negative instances that are incorrectly classified as positive.</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4fc4dee0-20c8-428f-8c11-dc46e6d76468">
-<span class="eqno">(37)<a class="headerlink" href="#equation-4fc4dee0-20c8-428f-8c11-dc46e6d76468" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4157901f-5804-40d9-958c-4c40e1983775">
+<span class="eqno">(37)<a class="headerlink" href="#equation-4157901f-5804-40d9-958c-4c40e1983775" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = \frac{\text{False Positives}}{\text{Actual Negatives}} = \frac{\text{False Positives}}{\text{True Negatives} + \text{False Positives}}
 \end{equation}\]</div>
 <p> <br />
 The False Positive Rate (FPR) is equal to:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3002a256-af3c-4a7c-b335-0c6760e80012">
-<span class="eqno">(38)<a class="headerlink" href="#equation-3002a256-af3c-4a7c-b335-0c6760e80012" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-bc66dc2a-cf42-4743-ad0e-0f4c21dff449">
+<span class="eqno">(38)<a class="headerlink" href="#equation-bc66dc2a-cf42-4743-ad0e-0f4c21dff449" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \text{FPR} = 1 - \text{TNR} = 1 - \text{specificity}
 \end{equation}\]</div>
 </section>

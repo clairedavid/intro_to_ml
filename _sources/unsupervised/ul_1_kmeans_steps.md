@@ -38,7 +38,7 @@ Let's go through a visual and simple case to intuitively present how $k$-Means w
 <div class="km-carousel" tabindex="0">
   <div class="km-slide"><img src="../_static/kmeans/kmeans_01_points.png" alt="k-Means example, frame 1 of 8"><p class="km-caption"><span class="km-count">1 / 8.</span> Initialization. We need to know the number of clusters beforehand: How many clusters here?</p></div>
   <div class="km-slide"><img src="../_static/kmeans/kmeans_02_dataset.png" alt="k-Means example, frame 2 of 8"><p class="km-caption"><span class="km-count">2 / 8.</span> We roughly see two clusters. We can pick two random data points and set them as 'centroids' to start the algorithm. Here let's pick A (4, 10) and B (6, 11).</p></div>
-  <div class="km-slide"><img src="../_static/kmeans/kmeans_03_init.png" alt="k-Means example, frame 3 of 8"><p class="km-caption"><span class="km-count">3 / 8.</span> Now let's assign each other data point to either <i>μ</i><sub>1</sub> (red cluster) or <i>μ</i><sub>2</sub> (green cluster) following the <i>k</i>-Means rule.</p></div>
+  <div class="km-slide"><img src="../_static/kmeans/kmeans_03_init.png" alt="k-Means example, frame 3 of 8"><p class="km-caption"><span class="km-count">3 / 8.</span> Now let's assign all the data points to either <i>μ</i><sub>1</sub> (red cluster) or <i>μ</i><sub>2</sub> (green cluster) following the <i>k</i>-Means rule.</p></div>
   <div class="km-slide"><img src="../_static/kmeans/kmeans_04_iter1_assign.png" alt="k-Means example, frame 4 of 8"><p class="km-caption"><span class="km-count">4 / 8.</span> Points are coloured (assigned): the so-called E-step (expectation) is done. Is it over? No! We need to update our centroids to put them at the centre of mass of their cluster.</p></div>
   <div class="km-slide"><img src="../_static/kmeans/kmeans_05_iter1_update.png" alt="k-Means example, frame 5 of 8"><p class="km-caption"><span class="km-count">5 / 8.</span> M-step: let's recompute the centroid positions to minimize the sum of squared distances of each cluster point with respect to their centroid (more on why it is called M-step later). Are we done? No! The rule is not followed: point E is closer to <i>μ</i><sub>2</sub> than to <i>μ</i><sub>1</sub>, and point B is closer to <i>μ</i><sub>1</sub> than to <i>μ</i><sub>2</sub>. They need to switch clusters.</p></div>
   <div class="km-slide"><img src="../_static/kmeans/kmeans_06_iter2_assign.png" alt="k-Means example, frame 6 of 8"><p class="km-caption"><span class="km-count">6 / 8.</span> E-step again: we reassign each point to the cluster matching its closest centroid. Point E is now green and B red. Good. Are we done? No! We need to recompute the centroids' positions again.</p></div>
@@ -50,7 +50,7 @@ Let's go through a visual and simple case to intuitively present how $k$-Means w
 </div>
 
 ```{div} text-center
-A step-by-step illustrated example of the $k$-Means algorithm with two clusters ($k = 2$).
+A step-by-step illustrated example of the $k$-Means algorithm with two clusters ($K = 2$).
 ```
 
 The algorithm is simple: it alternately updates the assignment of data points to clusters and the centroid positions. We can't go wrong (well, we will soon see that it can lead to bad results). As each step can only improve -- or keep as is -- the clustering and as there is a finite number of possibilities to assign $m$ data points to $k$ clusters, the algorithm always converges.
