@@ -57,9 +57,9 @@ The $k$-Means++ algorithm is an improvement, but it is not perfect. There are ca
 In `scikit-learn`, __mini-batch $\boldsymbol{k}$-Means__ is implemented via the `MiniBatchKMeans` class in the `sklearn.cluster` module. It speeds up clustering on massive datasets by updating cluster centroids using small, random subsamples (mini-batches) instead of the entire dataset on every iteration.
 
 ````
-- __Sensitivity to outliers__: they may be picked as the initial centroids and alter the outcome.
+- __Sensitivity to outliers__: they may be picked as the initial centroids and alter the outcome. It is advised, if relevant of course, to clean the data beforehand.
 
-- __Not scalable__: the initialization is sequential, with $K$ passes over the dataset. It can't be parallelized. This is a bottleneck slowing down the algorithm, especially for very large datasets. A fix? **$\boldsymbol{k}$-Means||** (pronounced “$k$-means parallel”), where candidate centroids are sampled in rounds, executed in parallel. 
+- __Not scalable__: the initialization is sequential, with $K$ passes over the dataset. It can't be parallelized. This is a bottleneck slowing down the algorithm, especially for very large datasets. A fix? **$\boldsymbol{k}$-Means||** (pronounced as “$k$-means parallel”), where candidate centroids are sampled in rounds, executed in parallel. 
 
 
 ```{admonition} Learn More
@@ -72,9 +72,78 @@ B. Bahmani, B. Moseley, A. Vattani, R. Kumar and S. Vassilvitskii, _Scalable K-M
 
 ## Knowing the number of clusters beforehand
 
+With $k$-Means, we need to provide the number of clusters $K$ as input. But how do we know the number of clusters in advance? Most of the time, we do not. There are two methods helping us figure out the 'best $K$.'
+
+First, we can run $k$-Means with several values of $K$ and use the cost as a proxy for evaluating the goodness of the clustering. The more clusters, the lower the cost will be. But there is a sharp descending slope at the start, until the curve flattens out. At that 'elbow,' we can find the number of clusters closest to the true $K$ (the notion of 'true $K$' is slightly misleading: there can be population clusters responding differently to a given drug and new clusters if more human groups are surveyed or more features added to the dataset).
+
+Second, we can use the average silhouette coefficient, computed with all pairwise distances between all points in the dataset. This metric combines two measures: the cohesion (or compactness) and the separation. As you may guess, the former quantifies how close points within a cluster are. The latter assesses how far the point is from the nearest other cluster.
+
+````{prf:definition}
+:label: silhouettedef
+
+The __silhouette coefficient__ of a point $i$ is defined as
+
+$$
+s_i = \frac{b_i - a_i}{\max(a_i, b_i)}
+$$ (silhouettecoefeq)
+
+where
+
+- $a_i$ is the __cohesion__: the average distance from point $i$ to the other points of its own cluster.
+- $b_i$ is the __separation__: the average distance to the points of the nearest other cluster.
+
+```` 
+
+We want the cohesion to be small, ideally near 0. We want the separation to be large. If a cluster has only one point, the silhouette coefficient of that point is 0 by convention. From Equation {eq}`silhouettecoefeq`, the silhouette coefficient will range from $-1$ to $1$. A negative value is likely because the point is at the edge of its cluster and close to another one. We want the silhouette to be positive and as close to $1$ as possible.  
+
+The average silhouette coefficient can be calculated within a cluster, by averaging the silhouette coefficients of points belonging to the cluster. It can also be computed over all points in the dataset, and this is where it becomes very handy to get a good value for $K$.
+
+Let's consider the following dataset:
+
+```{glue:figure} plot_kmeans_choosek_data
+:name: choosekunlabelledscatter
+:figwidth: 75%
+
+Unlabelled dataset of 500 points. We have a rough idea of the true number of clusters.
+```
+
+{numref}`Figure %s <choosekcostsilhouette>` shows the cost (left) and the average silhouette coefficient over all points (right) for different values of $K$ (running $k$-Means each time).
+
+```{glue:figure} plot_kmeans_choosek_curves
+:name: choosekcostsilhouette
+
+Resulting cost $J$ (left) and average silhouette coefficient (right) versus the number of clusters $K$ for the $k$-Means algorithm on the dataset shown in {numref}`Figure %s <choosekunlabelledscatter>`. 
+```
+
+The cost sharply drops and starts stabilizing around $K = 4$ and $K = 5$. For the silhouette, we get a peak for $K = 4$. Is this the right answer? Actually, the points were generated with 5 clusters, the bottom two overlapping. Here the silhouette could not pick this up. The cost curve does a better job, as a careful look at its variation could hint that 5 might be the last point before it flattens out. It's important to keep in mind that these plots only give insight into what the best number of clusters might be, not necessarily the truth.
+
+
+```{admonition} Learn More
+:class: seealso
+- Chapter 7 on “Cluster Analysis: Basic Concepts and Algorithms”  
+P.-N. Tan, M. Steinbach, A. Karpatne and V. Kumar, _Introduction to Data Mining_, 2019  
+[Free chapter from the authors](https://www-users.cse.umn.edu/~kumar001/dmbook/ch7_clustering.pdf)   
+```
 
 
 ## When $k$-Means fails
 
+There are configurations where, no matter how clever the initialization and even with the right number of clusters, $k$-Means fails.
 
+The algorithm struggles with clusters of different sizes or different densities, as shown in {numref}`Figures %s <kmeansfailsizes>` and {numref}`%s <kmeansfaildensities>`.
 
+```{glue:figure} plot_kmeans_fail_sizes
+:name: kmeansfailsizes
+:figwidth: 90%
+
+One large and two small clusters (left). The $k$-Means algorithm ($K = 3$) converges, but fails to distinguish the correct clusters: it cuts slices off the large one (right).
+```
+
+```{glue:figure} plot_kmeans_fail_densities
+:name: kmeansfaildensities
+:figwidth: 90%
+
+One large sparse cluster and two small dense ones (left). The difference in density tricks the $k$-Means algorithm ($K = 3$): it converges, but merges the two dense clusters and splits the sparse one (right).
+```
+
+In summary, the $k$-Means algorithm is simple and powerful, yet not error-free. In the next section, we will introduce some alternatives.

@@ -802,14 +802,14 @@ title="Print to PDF"
 <ol>
 <li><p>Choose an initial centroid <span class="math notranslate nohighlight">\(\boldsymbol{\mu}_1\)</span> uniformly at random from <span class="math notranslate nohighlight">\(\boldsymbol{x}^{(1)}, \dots, \boldsymbol{x}^{(m)} \in \mathbb{R}^{n}\)</span></p></li>
 <li><p>Compute the Euclidean distance of every remaining data point to the nearest centroid already chosen</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a8370cc4-52db-4fef-8c51-54d742e8aa98">
-<span class="eqno">(143)<a class="headerlink" href="#equation-a8370cc4-52db-4fef-8c51-54d742e8aa98" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7a0377b1-1fc9-4826-8f00-4eecbbd17dc3">
+<span class="eqno">(143)<a class="headerlink" href="#equation-7a0377b1-1fc9-4826-8f00-4eecbbd17dc3" title="Permalink to this equation">#</a></span>\[\begin{equation}
    D\big(\boldsymbol{x}^{(i)}\big) = \min_{k} \, d\big(\boldsymbol{x}^{(i)}, \boldsymbol{\mu}_k\big)
    \end{equation}\]</div>
 </li>
 <li><p>Choose the next centroid <span class="math notranslate nohighlight">\(\boldsymbol{\mu}_k\)</span>, using weighted random sampling, where data points are drawn with a probability of</p>
-<div class="amsmath math notranslate nohighlight" id="equation-02985e34-a956-4056-b5a3-73f56014b698">
-<span class="eqno">(144)<a class="headerlink" href="#equation-02985e34-a956-4056-b5a3-73f56014b698" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f2818e9b-6c27-4824-8062-4bf3e6b98431">
+<span class="eqno">(144)<a class="headerlink" href="#equation-f2818e9b-6c27-4824-8062-4bf3e6b98431" title="Permalink to this equation">#</a></span>\[\begin{equation}
    P\big(\boldsymbol{x}^{(i)}\big) = \frac{D\big(\boldsymbol{x}^{(i)}\big)^2}{\sum_{l=1}^{m} D\big(\boldsymbol{x}^{(l)}\big)^2}
    \end{equation}\]</div>
 </li>
@@ -832,8 +832,8 @@ title="Print to PDF"
 <p>An illustrated example of <span class="math notranslate nohighlight">\(k\)</span>-Means++ with three clusters (<span class="math notranslate nohighlight">\(K = 3\)</span>).</p>
 </div>
 <p>This initialization works better than the standard (random) initialization. Actually, the authors managed to put an upper bound on the cost, on average, with respect to the best possible cost <span class="math notranslate nohighlight">\(J_\text{opt}\)</span>. The proof is found in the paper cited below. In short, they showed that the expectation of the cost of <span class="math notranslate nohighlight">\(k\)</span>-Means++ <span class="math notranslate nohighlight">\(J_{k\text{-Means++}}\)</span> satisfies:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7291051e-bb5e-4b7c-8a6d-da7a1056c10f">
-<span class="eqno">(145)<a class="headerlink" href="#equation-7291051e-bb5e-4b7c-8a6d-da7a1056c10f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ab035acb-50d8-4a63-9705-8a036f5a21f0">
+<span class="eqno">(145)<a class="headerlink" href="#equation-ab035acb-50d8-4a63-9705-8a036f5a21f0" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \mathbb{E}\big[J_{k\text{-Means++}}\big] \le 8(\ln K + 2)\, J_{\text{opt}}
 \end{equation}\]</div>
 <p>The <span class="math notranslate nohighlight">\(k\)</span>-Means++ algorithm is an improvement, but it is not perfect. There are caveats:</p>
@@ -842,8 +842,8 @@ title="Print to PDF"
 <p>In <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>, <strong>mini-batch <span class="math notranslate nohighlight">\(\boldsymbol{k}\)</span>-Means</strong> is implemented via the <code class="docutils literal notranslate"><span class="pre">MiniBatchKMeans</span></code> class in the <code class="docutils literal notranslate"><span class="pre">sklearn.cluster</span></code> module. It speeds up clustering on massive datasets by updating cluster centroids using small, random subsamples (mini-batches) instead of the entire dataset on every iteration.</p>
 </aside>
 <ul class="simple">
-<li><p><strong>Sensitivity to outliers</strong>: they may be picked as the initial centroids and alter the outcome.</p></li>
-<li><p><strong>Not scalable</strong>: the initialization is sequential, with <span class="math notranslate nohighlight">\(K\)</span> passes over the dataset. It can’t be parallelized. This is a bottleneck slowing down the algorithm, especially for very large datasets. A fix? <strong><span class="math notranslate nohighlight">\(\boldsymbol{k}\)</span>-Means||</strong> (pronounced “<span class="math notranslate nohighlight">\(k\)</span>-means parallel”), where candidate centroids are sampled in rounds, executed in parallel.</p></li>
+<li><p><strong>Sensitivity to outliers</strong>: they may be picked as the initial centroids and alter the outcome. It is advised, if relevant of course, to clean the data beforehand.</p></li>
+<li><p><strong>Not scalable</strong>: the initialization is sequential, with <span class="math notranslate nohighlight">\(K\)</span> passes over the dataset. It can’t be parallelized. This is a bottleneck slowing down the algorithm, especially for very large datasets. A fix? <strong><span class="math notranslate nohighlight">\(\boldsymbol{k}\)</span>-Means||</strong> (pronounced as “<span class="math notranslate nohighlight">\(k\)</span>-means parallel”), where candidate centroids are sampled in rounds, executed in parallel.</p></li>
 </ul>
 <div class="seealso admonition">
 <p class="admonition-title">Learn More</p>
@@ -857,9 +857,74 @@ B. Bahmani, B. Moseley, A. Vattani, R. Kumar and S. Vassilvitskii, <em>Scalable 
 </section>
 <section id="knowing-the-number-of-clusters-beforehand">
 <h2>Knowing the number of clusters beforehand<a class="headerlink" href="#knowing-the-number-of-clusters-beforehand" title="Permalink to this headline">#</a></h2>
+<p>With <span class="math notranslate nohighlight">\(k\)</span>-Means, we need to provide the number of clusters <span class="math notranslate nohighlight">\(K\)</span> as input. But how do we know the number of clusters in advance? Most of the time, we do not. There are two methods helping us figure out the ‘best <span class="math notranslate nohighlight">\(K\)</span>.’</p>
+<p>First, we can run <span class="math notranslate nohighlight">\(k\)</span>-Means with several values of <span class="math notranslate nohighlight">\(K\)</span> and use the cost as a proxy for evaluating the goodness of the clustering. The more clusters, the lower the cost will be. But there is a sharp descending slope at the start, until the curve flattens out. At that ‘elbow,’ we can find the number of clusters closest to the true <span class="math notranslate nohighlight">\(K\)</span> (the notion of ‘true <span class="math notranslate nohighlight">\(K\)</span>’ is slightly misleading: there can be population clusters responding differently to a given drug and new clusters if more human groups are surveyed or more features added to the dataset).</p>
+<p>Second, we can use the average silhouette coefficient, computed with all pairwise distances between all points in the dataset. This metric combines two measures: the cohesion (or compactness) and the separation. As you may guess, the former quantifies how close points within a cluster are. The latter assesses how far the point is from the nearest other cluster.</p>
+<div class="proof definition admonition" id="silhouettedef">
+<p class="admonition-title"><span class="caption-number">Definition 82 </span></p>
+<section class="definition-content" id="proof-content">
+<p>The <strong>silhouette coefficient</strong> of a point <span class="math notranslate nohighlight">\(i\)</span> is defined as</p>
+<div class="math notranslate nohighlight" id="equation-silhouettecoefeq">
+<span class="eqno">(146)<a class="headerlink" href="#equation-silhouettecoefeq" title="Permalink to this equation">#</a></span>\[
+s_i = \frac{b_i - a_i}{\max(a_i, b_i)}
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a_i\)</span> is the <strong>cohesion</strong>: the average distance from point <span class="math notranslate nohighlight">\(i\)</span> to the other points of its own cluster.</p></li>
+<li><p><span class="math notranslate nohighlight">\(b_i\)</span> is the <strong>separation</strong>: the average distance to the points of the nearest other cluster.</p></li>
+</ul>
+</section>
+</div><p>We want the cohesion to be small, ideally near 0. We want the separation to be large. If a cluster has only one point, the silhouette coefficient of that point is 0 by convention. From Equation <a class="reference internal" href="#equation-silhouettecoefeq">(146)</a>, the silhouette coefficient will range from <span class="math notranslate nohighlight">\(-1\)</span> to <span class="math notranslate nohighlight">\(1\)</span>. A negative value is likely because the point is at the edge of its cluster and close to another one. We want the silhouette to be positive and as close to <span class="math notranslate nohighlight">\(1\)</span> as possible.</p>
+<p>The average silhouette coefficient can be calculated within a cluster, by averaging the silhouette coefficients of points belonging to the cluster. It can also be computed over all points in the dataset, and this is where it becomes very handy to get a good value for <span class="math notranslate nohighlight">\(K\)</span>.</p>
+<p>Let’s consider the following dataset:</p>
+<figure class="align-default" id="choosekunlabelledscatter" style="width: 75%">
+<div class="cell_output docutils container">
+<img alt="../_images/clustering_plots_33_2.png" src="../_images/clustering_plots_33_2.png" />
+</div>
+<figcaption>
+<p><span class="caption-number">Figure 59: </span><span class="caption-text">Unlabelled dataset of 500 points. We have a rough idea of the true number of clusters.</span><a class="headerlink" href="#choosekunlabelledscatter" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="#choosekcostsilhouette"><span class="std std-numref">Figure 60</span></a> shows the cost (left) and the average silhouette coefficient over all points (right) for different values of <span class="math notranslate nohighlight">\(K\)</span> (running <span class="math notranslate nohighlight">\(k\)</span>-Means each time).</p>
+<figure class="align-default" id="choosekcostsilhouette">
+<div class="cell_output docutils container">
+<img alt="../_images/clustering_plots_33_95.png" src="../_images/clustering_plots_33_95.png" />
+</div>
+<figcaption>
+<p><span class="caption-number">Figure 60: </span><span class="caption-text">Resulting cost <span class="math notranslate nohighlight">\(J\)</span> (left) and average silhouette coefficient (right) versus the number of clusters <span class="math notranslate nohighlight">\(K\)</span> for the <span class="math notranslate nohighlight">\(k\)</span>-Means algorithm on the dataset shown in <a class="reference internal" href="#choosekunlabelledscatter"><span class="std std-numref">Figure 59</span></a>.</span><a class="headerlink" href="#choosekcostsilhouette" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The cost sharply drops and starts stabilizing around <span class="math notranslate nohighlight">\(K = 4\)</span> and <span class="math notranslate nohighlight">\(K = 5\)</span>. For the silhouette, we get a peak for <span class="math notranslate nohighlight">\(K = 4\)</span>. Is this the right answer? Actually, the points were generated with 5 clusters, the bottom two overlapping. Here the silhouette could not pick this up. The cost curve does a better job, as a careful look at its variation could hint that 5 might be the last point before it flattens out. It’s important to keep in mind that these plots only give insight into what the best number of clusters might be, not necessarily the truth.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Learn More</p>
+<ul class="simple">
+<li><p>Chapter 7 on “Cluster Analysis: Basic Concepts and Algorithms”<br />
+P.-N. Tan, M. Steinbach, A. Karpatne and V. Kumar, <em>Introduction to Data Mining</em>, 2019<br />
+<a class="reference external" href="https://www-users.cse.umn.edu/~kumar001/dmbook/ch7_clustering.pdf">Free chapter from the authors</a></p></li>
+</ul>
+</div>
 </section>
 <section id="when-k-means-fails">
 <h2>When <span class="math notranslate nohighlight">\(k\)</span>-Means fails<a class="headerlink" href="#when-k-means-fails" title="Permalink to this headline">#</a></h2>
+<p>There are configurations where, no matter how clever the initialization and even with the right number of clusters, <span class="math notranslate nohighlight">\(k\)</span>-Means fails.</p>
+<p>The algorithm struggles with clusters of different sizes or different densities, as shown in <a class="reference internal" href="#kmeansfailsizes"><span class="std std-numref">Figures 61</span></a> and <a class="reference internal" href="#kmeansfaildensities"><span class="std std-numref">62</span></a>.</p>
+<figure class="align-default" id="kmeansfailsizes" style="width: 90%">
+<div class="cell_output docutils container">
+<img alt="../_images/clustering_plots_35_2.png" src="../_images/clustering_plots_35_2.png" />
+</div>
+<figcaption>
+<p><span class="caption-number">Figure 61: </span><span class="caption-text">One large and two small clusters (left). The <span class="math notranslate nohighlight">\(k\)</span>-Means algorithm (<span class="math notranslate nohighlight">\(K = 3\)</span>) converges, but fails to distinguish the correct clusters: it cuts slices off the large one (right).</span><a class="headerlink" href="#kmeansfailsizes" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="kmeansfaildensities" style="width: 90%">
+<div class="cell_output docutils container">
+<img alt="../_images/clustering_plots_35_5.png" src="../_images/clustering_plots_35_5.png" />
+</div>
+<figcaption>
+<p><span class="caption-number">Figure 62: </span><span class="caption-text">One large sparse cluster and two small dense ones (left). The difference in density tricks the <span class="math notranslate nohighlight">\(k\)</span>-Means algorithm (<span class="math notranslate nohighlight">\(K = 3\)</span>): it converges, but merges the two dense clusters and splits the sparse one (right).</span><a class="headerlink" href="#kmeansfaildensities" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>In summary, the <span class="math notranslate nohighlight">\(k\)</span>-Means algorithm is simple and powerful, yet not error-free. In the next section, we will introduce some alternatives.</p>
 </section>
 </section>
 

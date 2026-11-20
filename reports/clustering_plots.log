@@ -1,0 +1,102 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/usr/local/lib/python3.9/site-packages/nbclient/client.py", line 1112, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/usr/local/lib/python3.9/site-packages/nbclient/util.py", line 74, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/usr/local/lib/python3.9/site-packages/nbclient/util.py", line 53, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/local/Cellar/python@3.9/3.9.10/Frameworks/Python.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/usr/local/lib/python3.9/site-packages/nbclient/client.py", line 553, in async_execute
+    await self.async_execute_cell(
+  File "/usr/local/lib/python3.9/site-packages/nbclient/client.py", line 857, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/usr/local/lib/python3.9/site-packages/nbclient/client.py", line 760, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+def _disc(rng, centre, radius, n):
+    """n points uniformly spread in a disc."""
+    r = radius * np.sqrt(rng.uniform(0, 1, n)); t = rng.uniform(0, 2 * np.pi, n)
+    return np.c_[centre[0] + r * np.cos(t), centre[1] + r * np.sin(t)]
+
+
+def size_data(seed=1):
+    """One big cluster between two small ones."""
+    rng = np.random.default_rng(seed)
+    parts = [_disc(rng, (2.3, 8), 1.1, 25), _disc(rng, (8, 8), 3.4, 210), _disc(rng, (13.7, 8), 1.1, 25)]
+    return np.vstack(parts), np.repeat([0, 1, 2], [len(p) for p in parts])
+
+
+def density_data(seed=3):
+    """One large sparse cluster next to two small dense ones, close to each other."""
+    rng = np.random.default_rng(seed)
+    parts = [_disc(rng, (5.6, 8), 4.8, 150), _disc(rng, (13.4, 9.2), 1.0, 100), _disc(rng, (13.4, 6.8), 1.0, 100)]
+    return np.vstack(parts), np.repeat([0, 1, 2], [len(p) for p in parts])
+
+
+def _match_colours(lab_true, lab_km, K):
+    """Give each k-means cluster the colour of the true cluster it overlaps most (one-to-one)."""
+    best = max(permutations(range(K)), key=lambda p: sum((lab_true == p[k])[lab_km == k].sum() for k in range(K)))
+    return np.array([best[k] for k in lab_km])
+
+
+def kmeans_fails_fig(X, lab_true, K=3):
+    """Left: the true clusters. Arrow. Right: what k-means finds, with its centroids."""
+    c, mu = kmeans(X, K)
+    lab_km = _match_colours(lab_true, c, K)
+    fig = plt.figure(figsize=(11, 4.6), dpi=220)
+    gs = fig.add_gridspec(1, 3, width_ratios=[1, 0.55, 1], wspace=0)
+    ax_l, ax_a, ax_r = (fig.add_subplot(gs[0, i]) for i in range(3))
+    for ax, labs in ((ax_l, lab_true), (ax_r, lab_km)):
+        _box(ax, ticks=False)
+        ax.scatter(X[:, 0], X[:, 1], c=[INTRO_COLS[k] for k in labs], s=11, edgecolor="none", alpha=0.9)
+    ax_r.scatter(mu[:, 0], mu[:, 1], s=130, marker="P", c=AX, edgecolor="white", lw=0.9, zorder=5)
+    # same grey arrow as the intro figure
+    ax_a.axis("off")
+    W, H = fig.get_size_inches(); bb = ax_a.get_position()
+    r = (bb.height * H) / (bb.width * W)
+    ax_a.set_xlim(0, 1); ax_a.set_ylim(-r / 2, r / 2)
+    Lr, xc = 0.42, 0.50
+    x0, x1 = xc - Lr / 2, xc + Lr / 2
+    sh, hh, hl = 0.082 * Lr, 0.178 * Lr, 0.31 * Lr
+    ax_a.add_patch(plt.Polygon([(x0, -sh), (x1 - hl, -sh), (x1 - hl, -hh), (x1, 0),
+                                (x1 - hl, hh), (x1 - hl, sh), (x0, sh)], closed=True, fc="#b5b5b5", ec="none"))
+    return fig
+
+
+fig = kmeans_fails_fig(*size_data())
+glue("plot_kmeans_fail_sizes", fig, display=False)
+
+fig = kmeans_fails_fig(*density_data())
+glue("plot_kmeans_fail_densities", fig, display=False)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Input [0;32mIn [17][0m, in [0;36m<cell line: 51>[0;34m()[0m
+[1;32m     46[0m     ax_a[38;5;241m.[39madd_patch(plt[38;5;241m.[39mPolygon([(x0, [38;5;241m-[39msh), (x1 [38;5;241m-[39m hl, [38;5;241m-[39msh), (x1 [38;5;241m-[39m hl, [38;5;241m-[39mhh), (x1, [38;5;241m0[39m),
+[1;32m     47[0m                                 (x1 [38;5;241m-[39m hl, hh), (x1 [38;5;241m-[39m hl, sh), (x0, sh)], closed[38;5;241m=[39m[38;5;28;01mTrue[39;00m, fc[38;5;241m=[39m[38;5;124m"[39m[38;5;124m#b5b5b5[39m[38;5;124m"[39m, ec[38;5;241m=[39m[38;5;124m"[39m[38;5;124mnone[39m[38;5;124m"[39m))
+[1;32m     48[0m     [38;5;28;01mreturn[39;00m fig
+[0;32m---> 51[0m fig [38;5;241m=[39m [43mkmeans_fails_fig[49m[43m([49m[38;5;241;43m*[39;49m[43msize_data[49m[43m([49m[43m)[49m[43m)[49m
+[1;32m     52[0m glue([38;5;124m"[39m[38;5;124mplot_kmeans_fail_sizes[39m[38;5;124m"[39m, fig, display[38;5;241m=[39m[38;5;28;01mFalse[39;00m)
+[1;32m     54[0m fig [38;5;241m=[39m kmeans_fails_fig([38;5;241m*[39mdensity_data())
+
+Input [0;32mIn [17][0m, in [0;36mkmeans_fails_fig[0;34m(X, lab_true, K)[0m
+[1;32m     28[0m [38;5;124;03m"""Left: the true clusters. Arrow. Right: what k-means finds, with its centroids."""[39;00m
+[1;32m     29[0m c, mu [38;5;241m=[39m kmeans(X, K)
+[0;32m---> 30[0m lab_km [38;5;241m=[39m [43m_match_colours[49m[43m([49m[43mlab_true[49m[43m,[49m[43m [49m[43mc[49m[43m,[49m[43m [49m[43mK[49m[43m)[49m
+[1;32m     31[0m fig [38;5;241m=[39m plt[38;5;241m.[39mfigure(figsize[38;5;241m=[39m([38;5;241m11[39m, [38;5;241m4.6[39m), dpi[38;5;241m=[39m[38;5;241m220[39m)
+[1;32m     32[0m gs [38;5;241m=[39m fig[38;5;241m.[39madd_gridspec([38;5;241m1[39m, [38;5;241m3[39m, width_ratios[38;5;241m=[39m[[38;5;241m1[39m, [38;5;241m0.55[39m, [38;5;241m1[39m], wspace[38;5;241m=[39m[38;5;241m0[39m)
+
+Input [0;32mIn [17][0m, in [0;36m_match_colours[0;34m(lab_true, lab_km, K)[0m
+[1;32m     21[0m [38;5;28;01mdef[39;00m [38;5;21m_match_colours[39m(lab_true, lab_km, K):
+[1;32m     22[0m     [38;5;124;03m"""Give each k-means cluster the colour of the true cluster it overlaps most (one-to-one)."""[39;00m
+[0;32m---> 23[0m     best [38;5;241m=[39m [38;5;28mmax[39m([43mpermutations[49m([38;5;28mrange[39m(K)), key[38;5;241m=[39m[38;5;28;01mlambda[39;00m p: [38;5;28msum[39m((lab_true [38;5;241m==[39m p[k])[lab_km [38;5;241m==[39m k][38;5;241m.[39msum() [38;5;28;01mfor[39;00m k [38;5;129;01min[39;00m [38;5;28mrange[39m(K)))
+[1;32m     24[0m     [38;5;28;01mreturn[39;00m np[38;5;241m.[39marray([best[k] [38;5;28;01mfor[39;00m k [38;5;129;01min[39;00m lab_km])
+
+[0;31mNameError[0m: name 'permutations' is not defined
+NameError: name 'permutations' is not defined
+
